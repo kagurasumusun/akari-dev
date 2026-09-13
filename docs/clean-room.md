@@ -55,6 +55,25 @@ branch LLVM-WinCE) the CE OS is `windowsce`/`wince` (aliases
      windows/embedded/...` — `(v=msdn.10)` (CE 4.x/5.0 API & CRT
      reference; also the older CE 3.0-era `ms9xxxxx` pages) and
      `(v=winembedded.60)` (CE 6.0 Platform Builder/run-time docs).
+   * **The official "Windows CE 3.0 Technical Documentation" archive**
+     (Microsoft Download Center id 41197; CHM of the retired MSDN
+     "Windows CE 3.0" library, © 2004 Microsoft) — the complete CE 1/2/3
+     API reference, harvested to corpus `pages3/` / `rows3.json` /
+     `docs/ce3-versions.tsv`.  Each page's `Versions: N and later`
+     Requirements row is the official minimum-CE-version statement, so
+     CE 1.0 / 2.x / 3.0 availability is taken from those rows, never
+     from desktop-Win32 analogy.  (archive.org CE 1.x/2.x CD images are
+     corroboration-only, see `docs/plan-ce-net.md` §4.)
+   * **.NET Compact Framework surface** (for CE 4/5/6): only the
+     `.NET Framework 3.5` class-library pages (`previous-versions/dotnet/
+     netframework-3.5/ms<ID>(v=vs.90)`) whose "Version Information"
+     carries a `.NET Compact Framework → Supported in: N` row (or the CF
+     member icon) — per Microsoft's own CF roadmap statement
+     (`dn197949(v=winembedded.80)`).  Desktop-.NET members without a CF
+     row are **not** part of the CE surface; CF-specific namespaces
+     (`Microsoft.WindowsCE.Forms`, `Microsoft.WindowsMobile.*`) are the
+     documented CE-side additions.  This is the .NET analogue of the
+     "CE is a constrained subset, never desktop by analogy" rule.
    * Microsoft's official Win32/PE/COFF/ABI reference pages.
    * Per-page "Requirements" rows (OS Versions / Header / Link
      Library) are transcribed verbatim into `docs/inventory.md`.

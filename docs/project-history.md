@@ -314,3 +314,21 @@ The present goal is a complete, reproducible and independently maintained WinCE 
 layer for LLVM/Clang/LLD, covering the documented CE 4.2/5.0/6.0 application API surface as
 far as the available official information permits, while keeping the API, CRT, libc and
 system-emulation responsibilities separate.
+
+## 20. Expansion: CE 1.0–6.0 + .NET Compact Framework (2026-09)
+
+User direction (2026-09-14): exhaustively collect CE 1/2/3/4/5/6 official documentation
+(4/5/6 already held), collect the CE 4/5/6 .NET (Compact) Framework documentation, build the
+complete .NET API surface for those generations, and keep implementing. The CE API is a
+constrained subset of desktop Win32 with CE-specific additions (e.g. the CEDB database
+APIs), never a 100% copy — the desktop-Win32-by-analogy prohibition is sharpened, not
+lifted.
+
+* M102a (done): harvested the official "Windows CE 3.0 Technical Documentation" archive
+  (Download Center id 41197, CHM, 8,962 pages) into corpus `pages3/` (+`ce30/`, `rows3.json`,
+  catalog); the per-page `Versions: N and later` rows yield the official CE 1.0/2.x/3.0
+  surface (`docs/ce3-versions.tsv`, 5,091 rows). Pipeline: `tools/ce3-collect.py`.
+* Planned: M102b (.NET CF doc harvest from the official .NET 3.5 class library's CF
+  "Version Information" rows), M102c (complete .NET API surface per CE generation), then
+  CE 1/2/3 header implementation. Full plan: `docs/plan-ce-net.md`.
+
