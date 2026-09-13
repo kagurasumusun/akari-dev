@@ -118,7 +118,11 @@ Plan (policy-compliant, no desktop-.NET import):
 4. Treat the CF "Supported in: N" row as the **only** evidence that a member is
    in the CE surface. Desktop-.NET-only members (no CF row) are **not** CE.
    This keeps the "CE is a constrained subset, never desktop by analogy" rule
-   intact at the .NET level.
+   intact at the .NET level.  Row semantics: MSDN prints an explicit version
+   list ("3.5, 2.0, 1.0" = in all three; "3.5, 2.0" = not in 1.0; "3.5" =
+   3.5-only); a handful of pages (e.g. `Dispose`/`Finalize`) print a bare
+   "1.0"/"2.0" minimum-style row -- recorded verbatim in `docs/cf-surface.tsv`
+   and flagged as ambiguous rather than reinterpreted.
 
 Fallback: the old `msdn.microsoft.com/.../library/*(v=vs.90)` pages (which the
 Learn `w0x726c2` root still links to) now redirect to the modern API browser

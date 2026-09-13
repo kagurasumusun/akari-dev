@@ -61,6 +61,9 @@ TREES = [
                               # (learn.microsoft.com/archive/msdn-magazine),
                               # official Microsoft concept/overview
                               # articles read as CE-era evidence
+    ("pagesnet", "pagesnet"), # .NET Framework 3.5 (v=vs.90) class library
+                              # pages harvested for the CE .NET (Compact)
+                              # Framework surface (M102b; cf-harvest.py)
 ]
 
 
