@@ -1011,6 +1011,11 @@ typedef struct _TV_INSERTSTRUCT {
     TV_ITEM     item;
 } TV_INSERTSTRUCT, FAR *LPTV_INSERTSTRUCT;
 
+/* CE 3.0 archive page _wcesdk_win32_tvinsertstruct_str spells the same
+ * layout TVINSERTSTRUCT (Versions: 2.0 and later; Commctrl.h); alias
+ * the CE 3.0 spelling to the CE 5.0 struct above. */
+typedef TV_INSERTSTRUCT TVINSERTSTRUCT, FAR *LPTVINSERTSTRUCT;
+
 /* ms914062 "TV_HITTESTINFO": "typedef struct _TVHITTESTINFO { POINT
  * pt; UINT flags; HTREEITEM hItem; } TV_HITTESTINFO, FAR*
  * LPTV_HITTESTINFO;".  The new-spelling page ms913985 "TVHITTESTINFO"
@@ -3093,7 +3098,7 @@ typedef struct LVSETINFOTIP {
 #define MCSC_MONTHBK                                 0x0004
 #define MCSC_TRAILINGTEXT                            0x0005
 
-/* ---- NM_ family (11 names; R1) ---- */
+/* ---- NM_ family (12 names; R1 values) ---- */
 #define NM_KEYDOWN                                   (-15)
 #define NM_HOVER                                     (-13)
 #define NM_CUSTOMDRAW                                (-12)
@@ -3105,6 +3110,27 @@ typedef struct LVSETINFOTIP {
 #define NM_DBLCLK                                    (-3)
 #define NM_CLICK                                     (-2)
 #define NM_OUTOFMEMORY                               (-1)
+
+/* NM_NCHITTEST: name documented by the CE 3.0 archive page
+ * _wcesdk_com_nm_nchittests (Versions: 2.0 and later; Commctrl.h),
+ * which publishes no value; -14 is the fixed Win32-ABI notification
+ * code (NM_FIRST - 14, NM_FIRST = 0), corroborated by R1. */
+#define NM_NCHITTEST                                 (-14)
+
+/* ---- SBM_ scroll-bar messages ---- */
+/* Names and wParam/lParam documented by the CE 5.0 scroll-bar pages
+ * (each id below); the pages publish no numeric identifier, so the
+ * values are the fixed Win32-ABI scroll-bar message numbers (M29
+ * fixed-ABI policy), corroborated by R1.  CE 3.0 archive pages give
+ * the minimum versions: SBM_GETSCROLLINFO / SBM_SETSCROLLINFO are
+ * 1.0 and later, the rest 2.0 and later. */
+#define SBM_SETPOS                                   0x00E0        /* ms913244 */
+#define SBM_GETPOS                                   0x00E1        /* ms913219 */
+#define SBM_SETRANGE                                 0x00E2        /* ms913253 */
+#define SBM_GETRANGE                                 0x00E3        /* ms913229 */
+#define SBM_SETRANGEREDRAW                           0x00E6        /* ms913263 */
+#define SBM_SETSCROLLINFO                            0x00E9        /* ms913272 */
+#define SBM_GETSCROLLINFO                            0x00EA        /* ms913236 */
 
 /* ---- PBM_ family (8 names; R1) ---- */
 #define PBM_SETRANGE                                 0x0401

@@ -1152,6 +1152,39 @@ AKARI_CE_IMPORT BOOL  SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID p
                                                       * Unicode version */
 #define SystemParametersInfo SystemParametersInfoW
 
+/* ------------------------------------------------------------------ */
+/* Cursor / capture / mouse-point functions and the POINTSTOPOINT      */
+/* macro.  Every name is documented by its CE 5.0 page (id cited);    */
+/* the CE 3.0 archive pages add the minimum versions (all 1.0 and     */
+/* later except GetMouseMovePoints / mouse_event, 2.0 and later).     */
+/* POINTSTOPOINT body is printed verbatim by the CE 3.0 archive page   */
+/* _wcesdk_win32_pointstopoint.                                        */
+/* ------------------------------------------------------------------ */
+#define POINTSTOPOINT(pt, pts)          \
+    { (pt).x = (SHORT) LOWORD(pts);     \
+      (pt).y = (SHORT) HIWORD(pts); }
+
+AKARI_CE_IMPORT BOOL     ClipCursor(CONST RECT *lpRect) AKARI_CE_NAME(ClipCursor);        /* ms928585 */
+AKARI_CE_IMPORT BOOL     GetClipCursor(LPRECT lpRect) AKARI_CE_NAME(GetClipCursor);       /* ms929220 */
+AKARI_CE_IMPORT HCURSOR  GetCursor(void) AKARI_CE_NAME(GetCursor);                        /* ms929225 */
+AKARI_CE_IMPORT BOOL     GetCursorPos(LPPOINT lpPoint) AKARI_CE_NAME(GetCursorPos);       /* ms929226 */
+AKARI_CE_IMPORT HCURSOR  SetCursor(HCURSOR hCursor) AKARI_CE_NAME(SetCursor);             /* ms940016 */
+AKARI_CE_IMPORT int      ShowCursor(BOOL bShow) AKARI_CE_NAME(ShowCursor);                /* aa453730 */
+AKARI_CE_IMPORT HCURSOR  LoadCursor(HINSTANCE hInstance, LPCTSTR lpCursorName) AKARI_CE_NAME(LoadCursor);   /* aa453410 */
+AKARI_CE_IMPORT HCURSOR  CreateCursor(HINSTANCE hInst, int xHotSpot, int yHotSpot,
+                                      int nWidth, int nHeight, CONST VOID *pvANDPlane,
+                                      CONST VOID *pvXORPlane) AKARI_CE_NAME(CreateCursor); /* ms908167 */
+AKARI_CE_IMPORT BOOL     DestroyCursor(HCURSOR hCursor) AKARI_CE_NAME(DestroyCursor);     /* aa452937 */
+AKARI_CE_IMPORT BOOL     DrawIcon(HDC hDC, int X, int Y, HICON hIcon) AKARI_CE_NAME(DrawIcon); /* aa452971 */
+AKARI_CE_IMPORT HWND     SetCapture(HWND hWnd) AKARI_CE_NAME(SetCapture);                 /* ms940011 */
+AKARI_CE_IMPORT BOOL     ReleaseCapture(void) AKARI_CE_NAME(ReleaseCapture);              /* ms939750 */
+AKARI_CE_IMPORT HWND     GetCapture(void) AKARI_CE_NAME(GetCapture);                      /* ms929208 */
+AKARI_CE_IMPORT UINT     GetDoubleClickTime(void) AKARI_CE_NAME(GetDoubleClickTime);      /* ms929237 */
+AKARI_CE_IMPORT BOOL     GetMouseMovePoints(PPOINT pptBuf, UINT nBufPoints,
+                                            UINT *pnPointsRetrieved) AKARI_CE_NAME(GetMouseMovePoints); /* aa453139 */
+AKARI_CE_IMPORT VOID     mouse_event(DWORD dwFlags, DWORD dx, DWORD dy, DWORD dwData,
+                                     DWORD dwExtraInfo) AKARI_CE_NAME(mouse_event);       /* ms931453 */
+
 /* aa453656 "SetSysColors" takes CONST COLORREF*, and COLORREF is
  * defined with the GDI types in wingdi.h -- see wingdi.h for the
  * declaration (its official page prints Header Winuser.h). */
@@ -1218,6 +1251,31 @@ typedef struct tagNMHDR {
 /* application-defined message range.                                 */
 /* ------------------------------------------------------------------ */
 #define WM_USER 0x0400
+
+/* WM_APP (0x8000): base of the application-defined message range.  The
+ * CE 3.0 archive page _wcesdk_win32_wm_app prints the value verbatim
+ * (Versions: 1.0 and later); CE 5.0 twin ms914107. */
+#define WM_APP                          0x8000         /* ms914107 */
+
+/* --- Scroll Messages --- */
+#define WM_HSCROLL                      0x0114         /* aa453869 */
+#define WM_VSCROLL                      0x0115         /* aa453919 */
+
+/* --- Mouse Messages --- */
+#define WM_LBUTTONUP                    0x0202         /* aa453880 */
+#define WM_LBUTTONDBLCLK                0x0203         /* aa453878 */
+#define WM_SETCURSOR                    0x0020         /* aa453900 */
+#define WM_CAPTURECHANGED               0x0215         /* ms914109 */
+
+/* --- Icon Messages --- */
+#define WM_GETICON                      0x007F         /* aa453863 */
+#define WM_SETICON                      0x0080         /* aa453903 */
+
+/* WM_RASDIALEVENT (0xCCCD): RAS connection notification.  Documented by
+ * the CE 5.0 page ms898580 (name only) and the CE 3.0 archive page
+ * wcesdkr_wm_rasdialevent (Versions: 1.0 and later); 0xCCCD is the
+ * fixed Win32-ABI RAS message number (M29 fixed-ABI policy). */
+#define WM_RASDIALEVENT                 0xCCCD         /* ms898580 */
 
 /* --- GDI Messages --- */
 #define WM_PAINT                       0x000F         /* aa453891 */

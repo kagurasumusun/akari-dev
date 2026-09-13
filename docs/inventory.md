@@ -7597,3 +7597,28 @@ LoadLibrary/LoadDriver dynamic loading).
 
 Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck);
 struct sweep NO-DECL 0 / NO-PAGE 0.
+
+### M103 batch 1: CE 1/2/3 common-subset items (from the official CE 3.0 archive)
+
+Evidence source: the Microsoft Download Center "Windows CE 3.0 Technical
+Documentation" archive (id 41197), harvested to corpus `pages3/` +
+`rows3.json` and summarized in `docs/ce3-versions.tsv`.  Each CE 3.0
+page's `Versions: N and later` row is the official minimum-version
+statement.  This batch closes CE 1.0/2.0-era Win32-subset gaps that the
+CE 4/5/6 trees carried only implicitly.
+
+| item(s) | evidence | Versions | header | value source |
+|---|---|---|---|---|
+| `LOWORD`/`HIWORD`/`LOBYTE`/`HIBYTE` | CE 3.0 `_wcesdk_win32_loword`/`_hiword`/`_lobyte`/`_hibyte` (bodies printed verbatim) | 1.0 and later | Windef.h | page body |
+| `RGB`/`PALETTERGB`/`MAKEROP4` | CE 3.0 `_wcesdk_win32_rgb`/`_palettergb`/`_Win32_makrerop4` | 1.0 and later (RGB/PALETTERGB), 2.0 and later (MAKEROP4) | Wingdi.h | page body |
+| `AF_IRDA`, `sockaddr_irda` | CE 3.0 `wcesdkrsockaddr_irda` | 1.0 and later | Winsock.h | AF_IRDA 26 fixed Winsock ABI number; struct printed |
+| `SBM_GETPOS`/`SBM_SETPOS`/`SBM_GETRANGE`/`SBM_SETRANGE`/`SBM_SETRANGEREDRAW`/`SBM_GETSCROLLINFO`/`SBM_SETSCROLLINFO` | CE 5.0 `ms913219`/`ms913244`/`ms913229`/`ms913253`/`ms913263`/`ms913236`/`ms913272` (names only) + CE 3.0 versions | 1.0 and later (SCROLLINFO pair), 2.0 and later (rest) | Commctrl.h | fixed Win32-ABI scroll-bar message numbers (M29), R1-corroborated |
+| `NM_NCHITTEST` | CE 3.0 `_wcesdk_com_nm_nchittests` (name only) | 2.0 and later | Commctrl.h | -14 fixed ABI (NM_FIRST-14), R1-corroborated |
+| `TVINSERTSTRUCT`/`LPTVINSERTSTRUCT` | CE 3.0 `_wcesdk_win32_tvinsertstruct_str` (struct printed); CE 5.0 `ms914063` prints `TV_INSERTSTRUCT` | 2.0 and later | Commctrl.h | alias of `TV_INSERTSTRUCT` |
+| `WM_APP` | CE 3.0 `_wcesdk_win32_wm_app` prints 0x8000; CE 5.0 `ms914107` | 1.0 and later | Winuser.h | page body |
+| `WM_HSCROLL`/`WM_VSCROLL`/`WM_LBUTTONUP`/`WM_LBUTTONDBLCLK`/`WM_SETCURSOR`/`WM_CAPTURECHANGED`/`WM_GETICON`/`WM_SETICON` | CE 5.0 `aa453869`/`aa453919`/`aa453880`/`aa453878`/`aa453900`/`ms914109`/`aa453863`/`aa453903` (names only) + CE 3.0 versions | 1.0 and later (WM_SETCURSOR 2.0) | Winuser.h | fixed Win32-ABI message numbers (M29) |
+| `WM_RASDIALEVENT` | CE 5.0 `ms898580` + CE 3.0 `wcesdkr_wm_rasdialevent` | 1.0 and later | Winuser.h | 0xCCCD fixed RAS message number |
+| `POINTSTOPOINT` | CE 3.0 `_wcesdk_win32_pointstopoint` (body printed verbatim) | 1.0 and later | Winuser.h | page body |
+| `ClipCursor`/`GetClipCursor`/`GetCursor`/`GetCursorPos`/`SetCursor`/`ShowCursor`/`LoadCursor`/`CreateCursor`/`DestroyCursor`/`DrawIcon`/`SetCapture`/`ReleaseCapture`/`GetCapture`/`GetDoubleClickTime`/`GetMouseMovePoints`/`mouse_event` | CE 5.0 `ms928585`/`ms929220`/`ms929225`/`ms929226`/`ms940016`/`aa453730`/`aa453410`/`ms908167`/`aa452937`/`aa452971`/`ms940011`/`ms939750`/`ms929208`/`ms929237`/`aa453139`/`ms931453` | 1.0 and later (GetMouseMovePoints/mouse_event 2.0) | Winuser.h | prototypes printed |
+
+Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck).

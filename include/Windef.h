@@ -116,6 +116,17 @@ typedef WORD           *LPWORD; /* WORD pointer (GetStringType* arrays) */
 typedef WORD   LANGID;  /* language identifier (16-bit) */
 typedef DWORD  LCID;    /* locale identifier (32-bit)   */
 
+/* Byte/word extraction macros.  Official Windows CE 3.0 archive pages
+ * _wcesdk_win32_loword / _wcesdk_win32_hiword / _wcesdk_win32_lobyte /
+ * _wcesdk_win32_hibyte -- each prints "The X macro is defined as
+ * follows" with the body transcribed verbatim below.  Versions: 1.0
+ * and later; Defined in Windef.h.  These are the canonical fixed
+ * Win32-ABI extraction macros (M29 fixed-ABI policy). */
+#define LOWORD(l)  ((WORD) (l))
+#define HIWORD(l)  ((WORD) (((DWORD) (l) >> 16) & 0xFFFF))
+#define LOBYTE(w)  ((BYTE) (w))
+#define HIBYTE(w)  ((BYTE) (((WORD) (w) >> 8) & 0xFF))
+
 typedef int32_t         LONG_PTR;
 typedef uint32_t        ULONG_PTR;
 typedef uintptr_t       UINT_PTR;

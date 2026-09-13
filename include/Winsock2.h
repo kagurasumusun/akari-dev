@@ -156,6 +156,7 @@ typedef DWORD GROUP;
  * registry (TCP 6 / UDP 17 agree with the socket() table). */
 #define AF_UNSPEC      0
 #define AF_INET        2
+#define AF_IRDA        26
 #define AF_INET6       23
 
 #define SOCK_STREAM    1
@@ -377,6 +378,16 @@ struct sockaddr_in6 {
 struct linger {
     u_short l_onoff;
     u_short l_linger;
+};
+
+/* CE 3.0 archive page wcesdkrsockaddr_irda: IrDA socket address
+ * ("irdaAddressFamily ... is AF_IRDA from the AF_IRDA.H header file";
+ * irdaDeviceID = the SO_IRLMP_ENUMDEVICES device identifier).
+ * Versions: 1.0 and later; Defined in Winsock.h. */
+struct sockaddr_irda {
+    u_short irdaAddressFamily;
+    u_char  irdaDeviceID[4];
+    char    irdaServiceName[25];
 };
 
 /* CE hostent page (ms890319): "only one copy of this structure is

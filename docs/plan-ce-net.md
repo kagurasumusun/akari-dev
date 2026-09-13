@@ -93,6 +93,18 @@ ms<ID>(v=vs.90)`. Verified example (member page):
 
 Plan (policy-compliant, no desktop-.NET import):
 
+0. **Enumeration (done, M103)**: `tools/cf-toc.py` snapshots
+   `previous-versions/dotnet/netframework-3.5/toc.json` →
+   `tools/catalogs/catalog-netfx-35.tsv` (14,764 leaves, book + path columns).
+   The **CF-specific managed reference** ("Additional Managed Reference
+   Topics", ms229434) is 7,530 leaves / 20 namespaces, including
+   `Microsoft.WindowsCE.Forms`, `Microsoft.WindowsMobile.*`,
+   `Microsoft.ServiceModel.Channels.Mail.*`, `Microsoft.Ink`,
+   `Microsoft.StylusInput`, `Microsoft.SqlServer.Server`.  The desktop
+   `System.*` class library subtree is **not** enumerated in this toc.json
+   (migrated to the modern API browser, which drops the CF rows), so part 2
+   (the CF-supported desktop subset) is recovered per the archive policy in
+   §4.
 1. Enumerate the `netframework-3.5` `(v=vs.90)` class-library TOC (reuse the
    existing Learn TOC snapshot technique in `tools/ce-corpus.py`; root anchor
    `w0x726c2(v=vs.90)` works).

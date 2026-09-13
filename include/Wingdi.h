@@ -45,6 +45,14 @@ extern "C" {
 typedef DWORD COLORREF;
 typedef DWORD *LPCOLORREF;
 
+/* Color macros.  Official Windows CE 3.0 archive pages _wcesdk_win32_rgb /
+ * _wcesdk_win32_palettergb / _wcesdk_Win32_makrerop4 -- each prints the
+ * body transcribed verbatim below.  RGB & PALETTERGB: Versions 1.0 and
+ * later; MAKEROP4: 2.0 and later.  Defined in Wingdi.h. */
+#define RGB(r, g, b)         ((DWORD) (((BYTE) (r) | ((WORD) (g) << 8)) | (((DWORD) (BYTE) (b)) << 16)))
+#define PALETTERGB(r, g, b)  (0x02000000 | RGB(r, g, b))
+#define MAKEROP4(fore, back) (DWORD)((((back) << 8) & 0xFF000000) | (fore))
+
 /* ms929207 "GetBValue", ms929246 "GetGValue", aa453161 "GetRValue":
  * COLORREF byte accessors.  Each official CE page prints the macro
  * body verbatim ("The GetBValue macro is defined as follows") and
