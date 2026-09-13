@@ -9,6 +9,15 @@ This tool maps every harvested CE 5.0 leaf (the union of
 exact title match against the committed official TOC catalogs
 (`tools/catalogs/catalog-*.tsv`), and reports the coverage.
 
+The CE 5.0 leaf set is built from the manifest rows that are CE 5.0
+pages: a bare id or an id tagged `(v=msdn.10)`.  Rows tagged
+`(v=winembedded.60)` belong to the CE 6.0 *twin* manifests
+(`*-ce60.manifest`, `m5x-ce60.manifest`, `stdshell6.manifest`, the
+`-dep.manifest` dependency stubs, …) and are skipped so the twin id is
+never mistaken for a CE 5.0 id.  Twin ids are reported bare (the
+`(v=...)` tag is stripped) to match the committed `docs/ce6-twins.tsv`
+format.
+
 Usage:
     python3 tools/ce-twins.py --tree windows-embedded-ce-60
     python3 tools/ce-twins.py --tree windows-ce-net --out /tmp/newnet.json
@@ -22,14 +31,24 @@ import argparse
 import glob
 import json
 import os
+import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAT = os.path.join(ROOT, "tools", "catalogs")
 
 
+def split_tag(pid):
+    """Return (bare_id, tag) from a possibly tagged page id."""
+    pid = pid.strip()
+    m = re.search(r'\((v=[a-z0-9.]+)\)$', pid)
+    if m:
+        return pid[:m.start()].strip(), m.group(0)
+    return pid, ""
+
+
 def catalog_ids(tree):
-    """Return {title: [ids]} from the committed catalog for `tree`."""
+    """Return {title: [bare ids]} from the committed catalog for `tree`."""
     path = os.path.join(CAT, f"catalog-{tree}.tsv")
     if not os.path.exists(path):
         sys.exit(f"no catalog for tree {tree!r}: {path}")
@@ -39,11 +58,17 @@ def catalog_ids(tree):
         if not line or "\t" not in line:
             continue
         pid, title = line.split("\t", 1)
-        out.setdefault(title.strip(), []).append(pid.strip())
+        bare, _ = split_tag(pid)
+        out.setdefault(title.strip(), []).append(bare)
     return out
 
 
 def manifest_leaves():
+    """{title: CE5 bare id} from the CE 5.0 manifest rows only.
+
+    Skips rows whose id is tagged `(v=winembedded.*)` -- those are the
+    CE 6.0 twin manifests, not CE 5.0 leaves.  `(v=msdn.10)` tags are
+    stripped; bare ids pass through unchanged."""
     leaves = {}
     for mf in sorted(glob.glob(os.path.join(ROOT, "tools", "manifests", "*.manifest"))):
         for line in open(mf, encoding="utf-8"):
@@ -51,7 +76,10 @@ def manifest_leaves():
             if not line or "\t" not in line:
                 continue
             pid, title = line.split("\t", 1)
-            leaves.setdefault(title.strip(), pid.strip())
+            bare, tag = split_tag(pid)
+            if tag.startswith("(v=winembedded"):
+                continue
+            leaves.setdefault(title.strip(), bare)
     return leaves
 
 

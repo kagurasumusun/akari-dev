@@ -191,9 +191,14 @@ reclassified):
    (CE5 FindFirstFileEx page prints FindExInfoStandard /
    FindExInfoMaxInfoLevel; the levels page and the CE6 twin print
    GetFileExInfoStandard; both spellings carried in one enum
-   since M87).  Net CE5-vs-CE6 struct mismatches: 0.  The twins
-   table predates the M98 harvest; CE6 twins for the M98 driver
-   books would need a CE6 TOC pass (future work, noted).
+   since M87).  Net CE5-vs-CE6 struct mismatches: 0.  M101
+   performed the full CE 6.0 TOC pass: docs/ce6-twins.tsv
+   regenerated over the 224-manifest whole-corpus set -- 17,057
+   CE 5.0 titles, 13,635 with a CE 6.0 twin, 3,422 without
+   (see docs/ce6-reconciliation.md M101; the driver/DDI books
+   contribute 2,468 titles, 2,160 twinned).  The M101 table is
+   the input for extending the compiled-structure sweep to the
+   M98 driver/DDI books.
 4. Undefined constants / compat macros / Clang-needed types:
    standing held list (HRC, ALC, RVA, ULONG32/64, OAHWND &c.) is
    the recorded backlog of unpublished-but-needed types -- still

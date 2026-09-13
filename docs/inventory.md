@@ -7334,3 +7334,41 @@ tu_compile.c alias includes removed.  e2e recipe updated for the
 invented machine names are gone, b2851a3d).  Gates: make check +
 crosscheck + e2e all GREEN on the clang 22.1.8 artifact 10176580836
 (wince-llvm-5b8f2fb2).
+
+## M101 -- CE 6.0 TOC pass: twins table regenerated over the whole-corpus manifest set
+
+The M22 twins table (`docs/ce6-twins.tsv`, 1,175 CE5->CE6 pairs)
+predated the M98 harvest; the M98c driver/DDI books had no CE 6.0
+twin ids.  M101 closes that gap with a full CE 6.0 TOC pass.
+
+Tool fix: `tools/ce-twins.py` now builds the CE 5.0 leaf set from
+manifest rows that are CE 5.0 pages (bare id or `(v=msdn.10)`),
+skips the CE 6.0 twin manifests (`(v=winembedded.*)` rows -- they had
+been polluting the CE5 id of titles like FILECHANGEINFO), and reports
+bare twin ids (tag stripped) to match the committed table format.
+
+Table regeneration (offline; twin ids from the committed official TOC
+snapshot `tools/catalogs/catalog-windows-embedded-ce-60.tsv`, 23,760
+leaves; no pages fetched, no third-party material):
+
+* CE 5.0 titles across the 224 committed manifests: 17,057
+* CE 6.0 twins resolved by exact title: 13,635
+* no CE 6.0 twin: 3,422 (`-`; recorded, not fabricated)
+* committed rows preserved: 1,175 -- the two historical CE5-id
+  selections the old tool disagreed on are kept as audited
+  (FILECHANGEINFO CE5 ms889030; STORE_INFORMATION CE5 ms891279, one of
+  two genuine CE 5.0 pages -- ms891279 and ms896367, both Winbase.h)
+* new rows: 15,882 (12,502 matched + 3,380 no-twin)
+* driver/DDI books (M98c): 2,468 titles -> 2,160 twins (87.5%),
+  308 no twin
+
+No-twin titles are overwhelmingly book-index/concept/how-to/sample
+nodes the CE 6.0 tree does not republish, plus CE-5.0-only names
+(AVC_VCR_CMD_ANALOG_AUDIO_OUTPUT_MODE, AUDIO_SampleFrequency,
+ATTACHLIST, ...).  Detail: docs/ce6-reconciliation.md M101.
+
+Verification: `make check` (hostcheck 0x420/0x500/0x600 + defcheck),
+`make crosscheck` on the specified LLVM-WinCE artifact (Actions run
+34078339236, artifact 10002884514, clang 22.1.8 -- arm/i386 x
+CE 4.2/5.0/6.0, 253 headers standalone + TU, -Werror) -- ALL GREEN.
+No header, def or export-surface change (table + tool + docs only).

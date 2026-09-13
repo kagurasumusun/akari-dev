@@ -123,3 +123,48 @@ Regenerate the audit with `tools/ce-twins.py` + `build/rows.json`.
 | Var | aa450969 | ee488649 | 3.0 and later | 3.0 and later Note This structure was created solely to depict the organization of data in a version resource and does not appear in any of the header files shipped with an SDK for a CE OS | This structure was created solely to depict the organization of data in a version resource and does not appear in any of the header files shipped with an SDK for a Windows CE OS |  |  |  |
 | VarFileInfo | aa450972 | ee488583 | 3.0 and later | 3.0 and later | Not applicable | Developer Implemented |  |  |
 | WriteDebugLED | aa450990 | ee487992 | 2.12 and later | 2.12 and later | Dbgapi.h | dbgapi.h | Coredll.lib | OEMMain.lib or OEMMain_StaticKITL.lib |
+
+## M101 -- full CE 6.0 TOC pass (whole-corpus manifest set)
+
+The M22 table above covered the 69-manifest set of the time (1,175
+CE 5.0 leaves).  The M98 whole-corpus close-out grew the committed
+manifest set to 224 files (all books incl. the driver/DDI books), and
+the table was left as future work ("CE6 twins for the M98 driver
+books would need a CE6 TOC pass").  M101 performs that pass.
+
+Method fix first: `tools/ce-twins.py` previously globbed every
+`*.manifest` and took the first row per title, so the CE 6.0 *twin*
+manifests (`*-ce60.manifest`, `m54/m55/m57-ce60.manifest`,
+`aygshell-ce60.manifest`, `sip-ce60.manifest`, `stdshell6.manifest`,
+`dbref-ce6-twins.manifest`, `ddraw-ce60.manifest`,
+`snmp-tfx-ce60.manifest` and the 1-2 CE6 rows of the `-dep.manifest`
+stubs) could supply a `(v=winembedded.60)` id as the "CE 5.0" id of a
+title (seen as FILECHANGEINFO).  The tool now skips `(v=winembedded.*)`
+rows when building the CE 5.0 leaf set and reports bare twin ids (the
+`(v=...)` tag stripped), matching the committed table format.
+
+Regeneration (offline; no pages fetched -- the twin ids come from the
+committed official TOC snapshot `tools/catalogs/catalog-windows-embedded-ce-60.tsv`,
+23,760 leaves):
+
+* CE 5.0 titles in the current 224-manifest set: **17,057**
+* resolved to a CE 6.0 twin: **13,635**
+* no CE 6.0 twin: **3,422**
+* committed rows preserved: **1,175** (none dropped; the two historical
+  CE5-id selections that the unfixed tool disagreed on are kept as
+  audited: `FILECHANGEINFO` CE5 `ms889030` and `STORE_INFORMATION`
+  CE5 `ms891279` -- `STORE_INFORMATION` is genuinely documented on two
+  CE 5.0 pages, `ms891279` and `ms896367`, both `Winbase.h`)
+* new rows added: **15,882** (12,502 matched + 3,380 no-twin)
+
+Driver/DDI books (the M98c batch -- `drivers-*.manifest`, `ndis.manifest`,
+`timerdriver.manifest`, `waveaudio.manifest`): **2,468** titles,
+**2,160** with a CE 6.0 twin (87.5%), **308** no twin.
+
+No-twin composition (3,422): book-index/concept/how-to/sample nodes
+the CE 6.0 tree does not republish (`… Functions` 153, `… Reference`
+124, `… Structures` 106, `… Development` 93, `… Samples` 35, ASX
+element pages, …) plus CE-5.0-only API names the CE 6.0 catalog has
+no page for (e.g. `AVC_VCR_CMD_ANALOG_AUDIO_OUTPUT_MODE`,
+`AUDIO_SampleFrequency`, `ATTACHLIST`).  These are recorded with `-`;
+no twin is fabricated.
