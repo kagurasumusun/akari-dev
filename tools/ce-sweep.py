@@ -18,6 +18,7 @@ Embedded CE 6.0 twin pages resolved by tools/ce-twins.py:
 Reports are TSV under build/sweep/ (not committed).
 """
 import html
+import glob
 import json
 import os
 import re
@@ -57,8 +58,13 @@ def page_text(tree, pid):
 
 def members_of(kind, body):
     if kind == "enum":
+        # strip /* ... */ comments (e.g. "/* 0 (implicit) */") so the
+        # final member -- which carries no trailing comma -- is still
+        # seen; consume the initializer (= 2, = 0x0001, ...) so the
+        # value tokens are never mistaken for member names.
+        body = re.sub(r"/\*.*?\*/", "", body, flags=re.S)
         return [m.group(1) for m in re.finditer(
-            r"([A-Za-z_]\w*)\s*(?:=|,|$)", body)]
+            r"([A-Za-z_]\w*)\s*(?:=[^,}]*|,|}|$)", body)]
     out = []
     for b in body.split(";"):
         b = b.strip()
@@ -95,10 +101,44 @@ def page_title(tree, pid):
 
 def twins_map(tree):
     """{ce5_bare: twin_tagged} via the same catalog match ce-twins uses.
-    The twin page's own <title> is verified against the manifest title
-    when the page is local: TOC labels occasionally mislabel pages
-    (e.g. catalog-windows-ce-net title 'IP_DAD_STATE' serves the
-    DMTASKINFO page ms898362); such pairs are dropped."""
+
+    For gen "6" the authoritative committed map `docs/ce6-twins.tsv`
+    (title -> CE6 twin id) is used, resolved back to the CE 5.0 page
+    ids the headers cite through the manifest title index (a title may
+    sit on more than one CE 5.0 id).  For gen "4" (CE .NET) the map is
+    re-derived from the committed catalog, and the twin page's own
+    <title> is verified against the manifest title when the page is
+    local: TOC labels occasionally mislabel pages (e.g.
+    catalog-windows-ce-net title 'IP_DAD_STATE' serves the DMTASKINFO
+    page ms898362); such pairs are dropped."""
+    if tree == "6":
+        table = {}
+        for line in open(os.path.join(ROOT, "docs", "ce6-twins.tsv"),
+                         encoding="utf-8"):
+            line = line.rstrip("\n")
+            if not line or line.startswith("#"):
+                continue
+            p = line.split("\t")
+            if len(p) < 3 or p[2] == "-":
+                continue
+            table[p[0]] = p[2]
+        id_title = {}
+        for mf in sorted(glob.glob(os.path.join(ROOT, "tools",
+                                                "manifests", "*.manifest"))):
+            for line in open(mf, encoding="utf-8"):
+                line = line.rstrip("\n")
+                if not line or "\t" not in line:
+                    continue
+                pid, title = line.split("\t", 1)
+                if "(v=winembedded" in pid:
+                    continue
+                id_title.setdefault(pid.split("(")[0].strip(),
+                                    title.strip())
+        tw = {}
+        for ce5, title in id_title.items():
+            if title in table:
+                tw[ce5] = table[title] + "(v=winembedded.60)"
+        return tw
     cat = {"6": "windows-embedded-ce-60", "4": "windows-ce-net"}[tree]
     path = os.path.join(ROOT, "tools", "catalogs",
                         f"catalog-{cat}.tsv")
@@ -109,7 +149,6 @@ def twins_map(tree):
             continue
         pid, title = line.split("\t", 1)
         by_title.setdefault(title.strip(), []).append(pid.strip())
-    import glob
     tw = {}
     for mf in sorted(glob.glob(os.path.join(ROOT, "tools",
                                             "manifests", "*.manifest"))):

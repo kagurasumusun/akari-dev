@@ -7372,3 +7372,52 @@ Verification: `make check` (hostcheck 0x420/0x500/0x600 + defcheck),
 34078339236, artifact 10002884514, clang 22.1.8 -- arm/i386 x
 CE 4.2/5.0/6.0, 253 headers standalone + TU, -Werror) -- ALL GREEN.
 No header, def or export-surface change (table + tool + docs only).
+
+## M101b -- compiled-structure CE5<->CE6 sweep extended to the M98 books; ce-sweep fixes
+
+With the M101 twins table in place, the M98 close-out sweep was
+extended: the 91 CE 6.0 twin pages of compiled structures whose twin
+had never been preserved were fetched (tools/twin-fetch.py, 4
+workers, 0 failures; +91 to corpus pages6) and the member-list diff
+re-run.
+
+Tool fixes (tools/ce-sweep.py) required to make the sweep trustworthy:
+
+* `members_of()` enum path dropped the final member: it matched a
+  name only when followed by `=`, `,` or end-of-string, so the last
+  enumerator -- which carries no trailing comma and is followed by a
+  `/* n */` comment in our headers -- was silently omitted.  That
+  produced 6 false DIFFs (dvddrvr.h EDVDAudioFreq / EDVDAudioStreamType
+  / EDVDLpcmQuantization / EDVDSyncEventType / EHighlightAction and
+  Shobjidl.h SHGNO).  The enum path now strips comments and consumes
+  the initializer (`=[^,}]*`), so both the final member and value
+  tokens are handled.  The headers were already complete (the M99
+  cross-generation adoptions: DVD_AUDIO_FREQ_96KHZ, DVD_AUDIO_TYPE_SDDS,
+  DVD_LPCM_24, DVD_CC_DATA_EVENT, SELECT_AUTO_ACTIVATED; SHGNO's five
+  names with the M53 desktop-ABI values) -- no header change.
+* `twins_map()` gen-6 path now reads the committed docs/ce6-twins.tsv
+  (title -> CE6 twin) and resolves the CE 5.0 page ids the headers cite
+  through the manifest title index, instead of re-deriving the map from
+  manifests + catalog with its own first-row-wins CE5-id selection.
+  This makes the sweep agree with the committed table.  The gen-4
+  (CE .NET) path keeps its catalog + page-title verification (the
+  TOC-mislabel guard).
+
+Sweep result (tools/ce-sweep.py struct, 148 compiled typedefs):
+
+* CE 5.0 vs CE 6.0 member-list mismatches: **0** (25 SAME; 0 DIFF).
+* One genuine generation difference remains, CE .NET (4.x) vs CE 5.0:
+  `BINDSTATUS` (Urlmon.h, CE5 aa452102 -> CE .NET ms928764) -- the
+  CE .NET page documents an older, shorter enum (32 members, ending at
+  BINDSTATUS_ACCEPTRANGES, spelling BINDSTATUS_ENDUPLOADINGDATA) while
+  the CE 5.0 page documents 52 members including the cookie/P3P
+  statuses.  The header follows the CE 5.0 page; the difference is the
+  expected "earlier archive documents older semantics" pattern.
+* 64 compiled structures still report NO-PAGE: their CE 6.0 twin pages
+  were never harvested (DShow/Dmo/Mlang/Urlmon/Objbase/Msxml2/Iptypes
+  enum pages); this is an un-fetched-twin gap, not a mismatch, and is
+  recorded here rather than silently closed.
+
+Export surface, headers, defs: unchanged.  Corpus: pages6 2655 -> 2746
+(+91, pushed).  Gates: make check + make crosscheck (run 34078339236 /
+artifact 10002884514, clang 22.1.8) -- ALL GREEN.
