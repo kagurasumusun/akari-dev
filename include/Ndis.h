@@ -114,12 +114,17 @@ typedef struct _NDIS_WORK_ITEM {
 
 /* --- Enumerations (printed). ----------------------------------- */
 
-/* ms904999 "NDIS_PARAMETER_TYPE": print (implicit successors). */
+/* ms904090 "NDIS_PARAMETER_TYPE": print `typedef enum
+ * _NDIS_PARAMETER_TYPE {NdisParameterInteger, NdisParameterHexInteger,
+ * NdisParameterString, NdisParameterMultiString, NdisParameterBinary,}
+ * NDIS_PARAMETER_TYPE, *PNDIS_PARAMETER_TYPE;` (implicit successors;
+ * CE 6.0 twin ee483869 prints the same five). */
 typedef enum _NDIS_PARAMETER_TYPE {
-    NdisParameterInteger,
-    NdisParameterHexInteger,
-    NdisParameterString,
-    NdisParameterBinary
+    NdisParameterInteger,              /* 0 (implicit) */
+    NdisParameterHexInteger,           /* 1 */
+    NdisParameterString,               /* 2 */
+    NdisParameterMultiString,          /* 3 */
+    NdisParameterBinary                /* 4 */
 } NDIS_PARAMETER_TYPE, *PNDIS_PARAMETER_TYPE;
 
 /* "NDIS_INTERFACE_TYPE" (Ndis.h data-type row): print
@@ -398,7 +403,7 @@ typedef struct _NDIS_PACKET NDIS_PACKET, *PNDIS_PACKET;
  * MaxPerPacketInfo constant is not printed by any CE page; held. */
 typedef struct _NDIS_PACKET_EXTENSION NDIS_PACKET_EXTENSION, *PNDIS_PACKET_EXTENSION;
 
-/* ms904418 "NDIS_CONFIGURATION_PARAMETER": print `typedef struct
+/* aa447928 "NDIS_CONFIGURATION_PARAMETER": print `typedef struct
  * _NDIS_CONFIGURATION_PARAMETER {NDIS_PARAMETER_TYPE ParameterType;
  * union { ULONG IntegerData; NDIS_STRING StringData; BINARY_DATA
  * BinaryData;} ParameterData;} NDIS_CONFIGURATION_PARAMETER,

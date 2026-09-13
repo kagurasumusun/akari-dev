@@ -58,11 +58,13 @@ def page_text(tree, pid):
 
 def members_of(kind, body):
     if kind == "enum":
-        # strip /* ... */ comments (e.g. "/* 0 (implicit) */") so the
-        # final member -- which carries no trailing comma -- is still
-        # seen; consume the initializer (= 2, = 0x0001, ...) so the
-        # value tokens are never mistaken for member names.
+        # strip /* ... */ and // ... comments (e.g. "/* 0 (implicit) */",
+        # "// force 32-bit size enum") so the final member -- which
+        # carries no trailing comma -- is still seen and comment words
+        # are never mistaken for member names; consume the initializer
+        # (= 2, = 0x0001, ...) so value tokens are not member names.
         body = re.sub(r"/\*.*?\*/", "", body, flags=re.S)
+        body = re.sub(r"//[^\n]*", "", body)
         return [m.group(1) for m in re.finditer(
             r"([A-Za-z_]\w*)\s*(?:=[^,}]*|,|}|$)", body)]
     out = []
@@ -217,13 +219,54 @@ def inventory():
 
 
 # ------------------------------------------------------------- struct
+def twin_by_title(tree):
+    """{title: tagged twin id} for alias-keyed lookup.
+
+    The CE 5.0 page a header cites can carry a title that differs from
+    the typedef alias (e.g. D3DMBACKBUFFER_TYPE is cited as ms907756,
+    whose manifest title is D3DMVALUE); the symbol name is the
+    reliable twin key.  gen "6" reads the committed docs/ce6-twins.tsv;
+    gen "4" (CE .NET) reads the committed catalog."""
+    if tree == "6":
+        out = {}
+        for line in open(os.path.join(ROOT, "docs", "ce6-twins.tsv"),
+                         encoding="utf-8"):
+            line = line.rstrip("\n")
+            if not line or line.startswith("#"):
+                continue
+            p = line.split("\t")
+            if len(p) < 3 or p[2] == "-":
+                continue
+            out[p[0]] = p[2] + "(v=winembedded.60)"
+        return out
+    cat = {"4": "windows-ce-net"}[tree]
+    path = os.path.join(ROOT, "tools", "catalogs", f"catalog-{cat}.tsv")
+    out = {}
+    for line in open(path, encoding="utf-8"):
+        line = line.rstrip("\n")
+        if not line or "\t" not in line:
+            continue
+        pid, title = line.split("\t", 1)
+        out.setdefault(title.strip(), pid.strip())
+    return out
+
+
 def cmd_struct():
     inv = inventory()
     rows = []
     for gen in ("4", "6"):
         tw = twins_map(gen)
+        ttitle = twin_by_title(gen)
         for td in inv["typedefs"]:
-            twin = tw.get(td["id"].split("(")[0])
+            alias = td["alias"].split(",")[0].strip().lstrip("*")
+            want = {alias, (td["tag"] or "").lstrip("_")}
+            twin = None
+            for nm in want:
+                if nm in ttitle:
+                    twin = ttitle[nm]
+                    break
+            if not twin:
+                twin = tw.get(td["id"].split("(")[0])
             if not twin:
                 continue
             txt = page_text(gen, twin)

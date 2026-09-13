@@ -123,7 +123,7 @@ extern "C" {
 #define ERROR_SEM_TIMEOUT                121L
 
 /* Rows 122-162: name/buffer/module errors. */
-#define ERROR_INSUFFICIENT_BUFFER    122L  /* cited by the CE conversion-function pages (ms915519 / ms961248) */
+#define ERROR_INSUFFICIENT_BUFFER    122L  /* cited by the CE conversion-function pages (aa450989 / ms886760) */
 #define ERROR_INVALID_NAME          123L
 #define ERROR_INVALID_LEVEL         124L
 #define ERROR_NO_VOLUME_LABEL       125L
@@ -298,8 +298,8 @@ extern "C" {
 
 /* ERROR_NO_UNICODE_TRANSLATION (1113): outside the rows of the CE
  * numeric table captured above; cited as the failure code of the CE
- * string-conversion functions by the official CE pages ms915519
- * (WideCharToMultiByte) and ms961248 (MultiByteToWideChar). */
+ * string-conversion functions by the official CE pages aa450989
+ * (WideCharToMultiByte) and ms886760 (MultiByteToWideChar). */
 #define ERROR_NO_UNICODE_TRANSLATION         1113L
 
 /*

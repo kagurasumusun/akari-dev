@@ -29,8 +29,9 @@ extern "C" {
 /* aa452397 "UNICODE_PATH": print `#define MAX_PATH 128typedef
  * [string] WCHAR UNICODE_PATH [MAX_PATH];` (IDL attribute).  The
  * DVD-local `#define MAX_PATH 128` is NOT emitted: Windef.h owns
- * MAX_PATH (260, ms913243) and redefining it would break the system
- * surface.  UNICODE_PATH is defined as a 128-WCHAR array per the
+ * MAX_PATH (260; CreateFile aa517318, FindFirstFile ms889678,
+ * GetFileAttributes ms890895) and redefining it would break the
+ * system surface.  UNICODE_PATH is defined as a 128-WCHAR array per the
  * page text ("holds a string of 128 Unicode characters") and the
  * printed array bound. */
 typedef WCHAR UNICODE_PATH[128];

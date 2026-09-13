@@ -7421,3 +7421,78 @@ Sweep result (tools/ce-sweep.py struct, 148 compiled typedefs):
 Export surface, headers, defs: unchanged.  Corpus: pages6 2655 -> 2746
 (+91, pushed).  Gates: make check + make crosscheck (run 34078339236 /
 artifact 10002884514, clang 22.1.8) -- ALL GREEN.
+
+## M101c -- struct sweep closed on the alias-keyed twins; NDIS_PARAMETER_TYPE gap fixed
+
+The M101b sweep left 64 NO-PAGE compiled structures (their CE 6.0
+twin pages had never been fetched).  Those 64 twins were fetched
+(+64 pages6) and the sweep re-run; the remaining NO-DECLs exposed a
+resolution defect: a header can cite a CE 5.0 page whose *title*
+differs from the typedef alias (D3DMBACKBUFFER_TYPE is cited as
+ms907756, whose manifest title is D3DMVALUE), so the twin resolved by
+the cited page's title is the wrong page.  Fixes in tools/ce-sweep.py:
+
+* `twin_by_title()` -- alias/tag-keyed twin lookup.  gen "6" reads the
+  committed docs/ce6-twins.tsv directly; gen "4" reads the CE .NET
+  catalog.  `cmd_struct()` now resolves the twin by the typedef's own
+  alias/tag first, falling back to the cited page id.
+* `members_of()` enum path now also strips `// ...` comments (the
+  "enum" token in a CE 6.0 page's `// force 32-bit size enum` comment
+  had been mis-parsed as a member).
+
+With those, +37 further twin pages were fetched (the alias-keyed
+resolutions pointed at different CE 6.0 pages) and the sweep now reads:
+
+* gen 6: 116 SAME, 6 NO-DECL, 2 DIFF, 1 SAME-ORDER.
+* gen 4: 65 SAME, 4 NO-DECL, 2 DIFF, 1 SAME-ORDER.
+
+The non-SAME rows are all accounted for (none is a header defect):
+
+* BINDSTATUS (gen 6, ee492897): the CE 6.0 page prints
+  BINDSTATUS_COOKIE_STATE_PROMPT twice (an upstream page typo); the
+  header follows the CE 5.0 page (single PROMPT).  No change.
+* BINDSTATUS (gen 4, ms928764): the CE .NET page documents the older,
+  shorter 32-member enum (ends at BINDSTATUS_ACCEPTRANGES, spelling
+  BINDSTATUS_ENDUPLOADINGDATA).  Expected "earlier archive documents
+  older semantics".  No change.
+* EDVDNavException (gen 4, ms898129): CE .NET prints one member
+  (InsufficientParentalLevel); the CE 5.0 page prints two (adds
+  FatalNavigationError).  The header follows CE 5.0.  No change.
+* TYMED (gen 4 + gen 6, SAME-ORDER): the pages print TYMED_NULL last;
+  the header prints it first with its documented value 0 and the
+  documented HGLOBAL=1/FILE=2/ISTREAM=4/ISTORAGE=8 -- same members,
+  same values, different print order.  No change.
+* **NDIS_PARAMETER_TYPE (gen 6, ee483869) -- a real header gap,
+  FIXED.**  The CE 5.0 page ms904090 prints five members
+  `{NdisParameterInteger, NdisParameterHexInteger, NdisParameterString,
+  NdisParameterMultiString, NdisParameterBinary}` (implicit
+  successors); the CE 6.0 twin ee483869 prints the same five, and the
+  CE 5.0 NDIS_CONFIGURATION_PARAMETER page aa447928 also lists
+  NdisParameterMultiString in its Elements.  The header had only four
+  (MultiString missing, Binary implicitly 3).  Added
+  NdisParameterMultiString (3) and NdisParameterBinary is now 4 to
+  match the documented order; the citation id was also wrong
+  (ms904999 -> ms904090).
+
+## M101d -- citation-id audit: 8 transcription typos fixed, 31 unharvested pages preserved
+
+Every page id cited in include/ was checked against the corpus INDEX
+(the authoritative list of preserved pages) and against Learn:
+
+* 8 cited ids are 404s -- transcription typos, now corrected to the
+  official catalog ids: Pimstore.h aa590827 -> aa515357/ms890827
+  (GetRecurrencePattern pages); p2p.h ms895847 -> ms895848
+  (PeerEndEnumeration), ms895871 -> ms895875 (PeerIdentityDelete),
+  ms895895 -> ms895898 (PeerIdentitySetFriendlyName); Ndis.h ms904418
+  -> aa447928 (NDIS_CONFIGURATION_PARAMETER); Dvdata.h ms913243 ->
+  aa517318 (CreateFile, MAX_PATH); winerror.h ms915519 -> aa450989
+  (WideCharToMultiByte) and ms961248 -> ms886760 (MultiByteToWideChar).
+* 31 cited ids resolve on Learn but had never been preserved; fetched
+  and added to the corpus (pages5): aa450596, aa450740, aa451031,
+  aa452750, aa453941, ms885421, ms895035/038/046/049/051/055/073/
+  075/080/083/087/093, ms895725/733/740/748/756/763/766, ms898776/
+  783/913/915, ms900586, ms929934.
+
+Headers: Ndis.h (enum + 1 citation), p2p.h (3), winerror.h (2),
+Dvdata.h (1), Pimstore.h (1).  Export surface and defs: unchanged.
+Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck).

@@ -38,6 +38,18 @@ GPL/LGPL/public-domain-with-unknown-history third-party packages.
 
 ## 3. Evidence hierarchy (allowed spec sources)
 
+**Scope note -- "Windows CE Desktop" (2026-09, user direction).**  The
+project targets **Windows CE in all of its configurations**, including
+the desktop-like configuration that presents a full GUI desktop
+(referred to as "wince desktop").  This is a *Windows CE* platform --
+the WinCE OS, coredll, the Unicode-only CE API, the CE ABI -- and is
+**not** the desktop Windows (Win32/Win64) API.  "wince desktop" never
+licenses bringing Win32/Win64 definitions, values, or APIs into the CE
+surface, and the Win32/Win64 restrictions elsewhere in this file are
+unchanged.  In the verified toolchain (kagurasumusun/llvm-project,
+branch LLVM-WinCE) the CE OS is `windowsce`/`wince` (aliases
+`mingw32ce`), a distinct OS from `windows`/`win32`.
+
 1. Official Microsoft public information:
    * CE-era MSDN pages, now `learn.microsoft.com/.../previous-versions/
      windows/embedded/...` — `(v=msdn.10)` (CE 4.x/5.0 API & CRT

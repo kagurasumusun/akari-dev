@@ -30,7 +30,7 @@
  * (BSTRpwszName / DATEdate / intiIndex / VARIANT_BOOLfDisplayUI /
  * VARIANT_BOOLfDescending), the eaten asterisk in "void pReserved"
  * (CePimCommand), the doc's own misspellings ITask ClearReccurencePattern
- * and GetRecurrence (title GetRecurrencePattern, aa515363/aa590827-era
+ * and GetRecurrence (title GetRecurrencePattern, aa515357 / ms890827
  * prints), and the misspelled interface names in accessor prints
  * (Irecipients / Iexceptions / Iappointment).
  */

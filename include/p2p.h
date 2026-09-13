@@ -75,7 +75,7 @@ AKARI_CE_IMPORT HRESULT WINAPI PeerCreatePeerName(PCWSTR pwzIdentity, PCWSTR pwz
                     PWSTR *ppwzPeerName)
                     AKARI_CE_NAME(PeerCreatePeerName);
 
-/* ms895847 "PeerEndEnumeration" */
+/* ms895848 "PeerEndEnumeration" */
 AKARI_CE_IMPORT HRESULT WINAPI PeerEndEnumeration(HPEERENUM hPeerEnum)
                     AKARI_CE_NAME(PeerEndEnumeration);
 
@@ -104,7 +104,7 @@ AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityCreate(PCWSTR pwzClassifier, PCWSTR p
                     HCRYPTPROV hCryptProv, PWSTR *ppwzIdentity)
                     AKARI_CE_NAME(PeerIdentityCreate);
 
-/* ms895871 "PeerIdentityDelete" */
+/* ms895875 "PeerIdentityDelete" */
 AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityDelete(PCWSTR pwzIdentity)
                     AKARI_CE_NAME(PeerIdentityDelete);
 
@@ -133,7 +133,7 @@ AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityImport(PWSTR *ppwzImportXML,
                     PCWSTR pwzPassword, PCWSTR *ppwzIdentity)
                     AKARI_CE_NAME(PeerIdentityImport);
 
-/* ms895895 "PeerIdentitySetFriendlyName" */
+/* ms895898 "PeerIdentitySetFriendlyName" */
 AKARI_CE_IMPORT HRESULT WINAPI PeerIdentitySetFriendlyName(PCWSTR pwzIdentity,
                     PCWSTR pwzFriendlyName)
                     AKARI_CE_NAME(PeerIdentitySetFriendlyName);
