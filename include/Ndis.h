@@ -127,7 +127,9 @@ typedef enum _NDIS_PARAMETER_TYPE {
     NdisParameterBinary                /* 4 */
 } NDIS_PARAMETER_TYPE, *PNDIS_PARAMETER_TYPE;
 
-/* "NDIS_INTERFACE_TYPE" (Ndis.h data-type row): print
+/* aa448011 "NDIS_INTERFACE_TYPE (Windows CE 5.0)": OS Windows CE
+ * .NET 4.0 and later; Header Ndis.h.  The page prints the enum
+ * verbatim:
  * `typedef enum _NDIS_INTERFACE_TYPE {NdisInterfaceInternal =
  * Internal, NdisInterfaceIsa = Isa, NdisInterfaceEisa = Eisa,
  * NdisInterfaceMca = MicroChannel, NdisInterfaceTurboChannel =
@@ -138,8 +140,9 @@ typedef enum _NDIS_PARAMETER_TYPE {
  * NdisInterfaceInternalPowerBus = InternalPowerBus,
  * NdisInterfacePNPISABus = PNPISABus, NdisInterfacePNPBus =
  * PNPBus, NdisMaximumInterfaceType,} NDIS_INTERFACE_TYPE,
- * *PNDIS_INTERFACE_TYPE;` -- every value expression is an
- * INTERFACE_TYPE enumerator printed by CEDDK.h (ms901367). */
+ * *PNDIS_INTERFACE_TYPE;` -- every value expression (Internal, Isa,
+ * Eisa, ...) is an INTERFACE_TYPE enumerator printed by CEDDK.h
+ * (ms901367), which grounds the value names. */
 typedef enum _NDIS_INTERFACE_TYPE {
     NdisInterfaceInternal         = Internal,
     NdisInterfaceIsa              = Isa,

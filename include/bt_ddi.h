@@ -7,8 +7,8 @@
  * Written from scratch from the official Microsoft Windows Embedded
  * CE 6.0 pages (v=winembedded.60 archive) harvested into build/rows.json:
  * BASEBAND_CONNECTION_DATA aa450297, WODM_BT_SCO_AUDIO_CONTROL
- * ee495648, OID_PAN_AUTHENTICATE ee495- / OID_PAN_CONNECT ee495374 /
- * OID_PAN_DISCONNECT ee495819 / OID_PAN_ENCRYPT ee495824 (Requirements
+ * ee495648, OID_PAN_AUTHENTICATE ee495816 / OID_PAN_CONNECT ee495374 /
+ * OID_PAN_DISCONNECT ee495361 / OID_PAN_ENCRYPT ee495796 (Requirements
  * rows print "Header bt_ddi.h"; Windows CE 5.0 and later).  The
  * lowercase file name is the dominant documented spelling (aygshell.h
  * precedent).  See docs/inventory.md M85.

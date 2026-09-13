@@ -43,9 +43,9 @@ extern "C" {
 /* Enumerations (DVD-Video Renderer Enumerations).                     */
 /* ------------------------------------------------------------------ */
 
-/* aa447766 "EDVDAspectRatioMode".  CE 6 twin ee481106(v=
- * winembedded.60) prints no declaration (enum absent from the CE 6
- * book); the CE 5 page is the sole print -- M99 twin check. */
+/* aa447766 "EDVDAspectRatioMode".  CE 6 twin ee486681(v=
+ * winembedded.60) prints the same two members (name-only, implicit
+ * 0/1) -- M99 twin check. */
 typedef enum {
     DVD_ASPECT_RATIO_MODE_LETTERBOX,   /* 0 (implicit) */
     DVD_ASPECT_RATIO_MODE_PANSCAN      /* 1 */

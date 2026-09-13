@@ -193,7 +193,7 @@ typedef void           *HMETAFILEPICT;                  /* metafile picture hand
 /* Enumeration types (Oaidl.h / Objidl.h / Wtypes.h / Ocidl.h)        */
 /* ------------------------------------------------------------------ */
 
-/* CLSCTX (ms886177; Wtypes.h). */
+/* CLSCTX (ms863882; Wtypes.h). */
 typedef enum _tagCLSCTX {
     CLSCTX_INPROC_SERVER  = 0x1,
     CLSCTX_INPROC_HANDLER = 0x2,
@@ -203,7 +203,7 @@ typedef enum _tagCLSCTX {
 #define CLSCTX_SERVER (CLSCTX_INPROC_SERVER | CLSCTX_LOCAL_SERVER | CLSCTX_REMOTE_SERVER)
 #define CLSCTX_ALL    (CLSCTX_INPROC_HANDLER | CLSCTX_SERVER)
 
-/* DVASPECT (ms886976; Wtypes.h). */
+/* DVASPECT (ms864437; Wtypes.h). */
 typedef enum _tagDVASPECT {
     DVASPECT_CONTENT   = 1,
     DVASPECT_THUMBNAIL = 2,
@@ -211,7 +211,7 @@ typedef enum _tagDVASPECT {
     DVASPECT_DOCPRINT  = 8
 } DVASPECT;
 
-/* TYMED (ms891298). */
+/* TYMED (ms896492). */
 typedef enum _tagTYMED {
     TYMED_NULL     = 0,
     TYMED_HGLOBAL  = 1,
@@ -220,7 +220,7 @@ typedef enum _tagTYMED {
     TYMED_ISTORAGE = 8
 } TYMED;
 
-/* STGC (ms891270; Wtypes.h). */
+/* STGC (ms896217; Wtypes.h). */
 typedef enum _tagSTGC {
     STGC_DEFAULT                 = 0,
     STGC_OVERWRITE               = 1,
@@ -250,7 +250,7 @@ enum {
     STGM_DIRECT_SWMR    = 0x00400000L
 };
 
-/* MKSYS (ms890786). */
+/* MKSYS (ms892349). */
 typedef enum _tagMKSYS {
     MKSYS_NONE             = 0,
     MKSYS_GENERICCOMPOSITE = 1,
@@ -263,7 +263,7 @@ typedef enum _tagMKSYS {
     MKSYS_SESSIONMONIKER   = 9
 } MKSYS;
 
-/* MKRREDUCE (ms890778). */
+/* MKRREDUCE (ms892348). */
 typedef enum _tagMKRREDUCE {
     MKRREDUCE_ONE          = 3 << 16,
     MKRREDUCE_TOUSER       = 2 << 16,
@@ -271,20 +271,20 @@ typedef enum _tagMKRREDUCE {
     MKRREDUCE_ALL          = 0
 } MKRREDUCE;
 
-/* BIND_FLAGS (ms886128). */
+/* BIND_FLAGS (ms863834). */
 typedef enum _tagBIND_FLAGS {
     BIND_MAYBOTHERUSER     = 1,
     BIND_JUSTTESTEXISTENCE = 2
 } BIND_FLAGS;
 
-/* SYSKIND (ms891289). */
+/* SYSKIND (ms896474). */
 typedef enum _tagSYSKIND {
     SYS_WIN16 = 0,
     SYS_WIN32 = SYS_WIN16 + 1,
     SYS_MAC   = SYS_WIN32 + 1
 } SYSKIND;
 
-/* TYPEKIND (ms891302). */
+/* TYPEKIND (ms896496). */
 typedef enum _tagTYPEKIND {
     TKIND_ENUM = 0,
     TKIND_RECORD,
@@ -297,7 +297,7 @@ typedef enum _tagTYPEKIND {
     TKIND_MAX
 } TYPEKIND;
 
-/* VARKIND (ms891679). */
+/* VARKIND (aa519097). */
 typedef enum _tagVARKIND {
     VAR_PERINSTANCE = 0,
     VAR_STATIC      = VAR_PERINSTANCE + 1,
@@ -305,7 +305,7 @@ typedef enum _tagVARKIND {
     VAR_DISPATCH    = VAR_CONST + 1
 } VARKIND;
 
-/* CALLCONV (ms886161). */
+/* CALLCONV (ms863871). */
 typedef enum _tagCALLCONV {
     CC_CDECL      = 1,
     CC_MSCPASCAL  = 2,
@@ -319,7 +319,7 @@ typedef enum _tagCALLCONV {
     CC_MAX        = 9
 } CALLCONV;
 
-/* FUNCKIND (ms886987). */
+/* FUNCKIND (aa515010). */
 typedef enum _tagFUNCKIND {
     FUNC_VIRTUAL     = 0,
     FUNC_PUREVIRTUAL,
@@ -328,7 +328,7 @@ typedef enum _tagFUNCKIND {
     FUNC_DISPATCH
 } FUNCKIND;
 
-/* INVOKEKIND (ms889336).  The page prints the members as aliases of
+/* INVOKEKIND (ms882878).  The page prints the members as aliases of
  * the DISPATCH_* constants; the CE corpus does not publish the
  * DISPATCH_* values, so the documented ordinal order is transcribed. */
 typedef enum _tagINVOKEKIND {
@@ -338,7 +338,7 @@ typedef enum _tagINVOKEKIND {
     INVOKE_PROPERTYPUTREF       /* page: DISPATCH_PROPERTYPUTREF */
 } INVOKEKIND;
 
-/* FUNCFLAGS (ms886002). */
+/* FUNCFLAGS (aa515008). */
 typedef enum _tagFUNCFLAGS {
     FUNCFLAG_FRESTRICTED       = 0x1,
     FUNCFLAG_FSOURCE           = 0x2,
@@ -355,7 +355,7 @@ typedef enum _tagFUNCFLAGS {
     FUNCFLAG_FIMMEDIATEBIND    = 0x1000
 } FUNCFLAGS;
 
-/* ADVF (ms886084). */
+/* ADVF (aa513925). */
 typedef enum _tagADVF {
     ADVF_NODATA          = 1,
     ADVF_PRIMEFIRST      = 2,
@@ -366,7 +366,7 @@ typedef enum _tagADVF {
     ADVF_DATAONSTOP      = 64
 } ADVF;
 
-/* TYPEFLAGS (ms891301). */
+/* TYPEFLAGS (ms896495). */
 typedef enum _tagTYPEFLAGS {
     TYPEFLAG_FAPPOBJECT     = 0x0001,
     TYPEFLAG_FCANCREATE     = 0x0002,
@@ -384,13 +384,13 @@ typedef enum _tagTYPEFLAGS {
     TYPEFLAG_FREVERSEBIND   = 0x2000
 } TYPEFLAGS;
 
-/* DATADIR (ms886961). */
+/* DATADIR (ms864408). */
 typedef enum _tagDATADIR {
     DATADIR_GET = 1,
     DATADIR_SET = 2
 } DATADIR;
 
-/* DESCKIND (ms886963). */
+/* DESCKIND (ms864416). */
 typedef enum _tagDESCKIND {
     DESCKIND_NONE         = 0,
     DESCKIND_FUNCDESC,
@@ -399,24 +399,24 @@ typedef enum _tagDESCKIND {
     DESCKIND_IMPLICITAPPOBJ
 } DESCKIND;
 
-/* DVASPECT2 (ms886977; Ocidl.h). */
+/* DVASPECT2 (ms864438; Ocidl.h). */
 typedef enum _tagDVASPECT2 {
     DVASPECT_OPAQUE     = 16,
     DVASPECT_TRANSPARENT= 32
 } DVASPECT2;
 
-/* DVASPECTINFOFLAG (ms886979; Ocidl.h). */
+/* DVASPECTINFOFLAG (ms864450; Ocidl.h). */
 typedef enum _tagDVASPECTINFOFLAG {
     DVASPECTINFOFLAG_CANOPTIMIZE = 1
 } DVASPECTINFOFLAG;
 
-/* DVEXTENTMODE (ms886981; Ocidl.h). */
+/* DVEXTENTMODE (ms864452; Ocidl.h). */
 typedef enum _tagDVEXTENTMODE {
     DVEXTENT_CONTENT   = 0,
     DVEXTENT_INTEGRAL  = DVEXTENT_CONTENT + 1
 } DVEXTENTMODE;
 
-/* HITRESULT (ms886993; Ocidl.h). */
+/* HITRESULT (aa515087; Ocidl.h). */
 typedef enum _tagHITRESULT {
     HITRESULT_OUTSIDE     = 0,
     HITRESULT_TRANSPARENT = 1,
@@ -424,7 +424,7 @@ typedef enum _tagHITRESULT {
     HITRESULT_HIT         = 3
 } HITRESULT;
 
-/* VIEWSTATUS (ms892127; Ocidl.h). */
+/* VIEWSTATUS (ms897186; Ocidl.h). */
 typedef enum _tagVIEWSTATUS {
     VIEWSTATUS_OPAQUE              = 1,
     VIEWSTATUS_SOLIDBKGND          = 2,

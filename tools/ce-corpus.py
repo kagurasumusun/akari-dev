@@ -57,6 +57,10 @@ TREES = [
     ("pageswm", "pageswm"),   # Windows Mobile 6.5 documentation pages
                               # (official Download Center CHM, see the
                               # tree's provenance note in README)
+    ("pagesmag", "pagesmag"), # MSDN Magazine archive pages
+                              # (learn.microsoft.com/archive/msdn-magazine),
+                              # official Microsoft concept/overview
+                              # articles read as CE-era evidence
 ]
 
 

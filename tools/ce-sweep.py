@@ -33,10 +33,11 @@ TREES = {
     "4": os.path.join(ROOT, "build", "pages4"),
     "6": os.path.join(ROOT, "build", "pages6"),
     "w": os.path.join(ROOT, "build", "pagesw"),
+    "wm": os.path.join(ROOT, "build", "pageswm"),
 }
 
 TYPEDEF_RE = re.compile(
-    r"typedef\s+(struct|enum|union)\s*(\w+)?\s*\{(.*?)\}\s*([\w\s,.*]+?);",
+    r"(?:typedef\s+)?(struct|enum|union)\s*(\w+)?\s*\{(.*?)\}\s*([\w\s,.*]+?);",
     re.S)
 
 
@@ -54,6 +55,31 @@ def page_text(tree, pid):
     s = html.unescape(s)
     s = re.sub(r"[ \t]+", " ", s)
     return s
+
+
+def members_in_text(txt, names):
+    """Those of `names` present as whole words in `txt`."""
+    return [n for n in names
+            if re.search(r"\b" + re.escape(n) + r"\b", txt)]
+
+
+def all_members_in_tree(tree, names):
+    """True when every name in `names` appears somewhere in the tree."""
+    d = TREES.get(tree)
+    if not d or not os.path.isdir(d):
+        return False
+    seen = set()
+    for f in sorted(os.listdir(d)):
+        if not f.endswith(".html"):
+            continue
+        txt = open(os.path.join(d, f), encoding="utf-8",
+                   errors="replace").read()
+        for n in names:
+            if n not in seen and re.search(r"\b" + re.escape(n) + r"\b", txt):
+                seen.add(n)
+        if len(seen) == len(names):
+            return True
+    return False
 
 
 def members_of(kind, body):
@@ -193,22 +219,87 @@ def inventory():
                 text):
             inv["held"].append({"header": fn, "id": m.group(1),
                                 "name": m.group(2)})
-        # typedefs preceded by a comment citing a page id
-        for m in re.finditer(
-                r"/\*(?P<c>[\s\S]*?)\*/\s*\n(?P<t>typedef\s+"
-                r"(?:struct|enum|union)\b[\s\S]*?;)",
-                text):
-            ids = ID_TOKEN.findall(m.group("c"))
-            if not ids:
+        # typedefs preceded by a comment citing a page id.  The id is
+        # taken from the *attached* comment run only -- the contiguous
+        # group of /* ... */ blocks immediately above the typedef,
+        # separated from it (and from each other) by whitespace alone.
+        # (An earlier revision let the non-greedy comment span absorb
+        # distant comments, mis-attributing ids, e.g. EXTENDED_NAME_FORMAT
+        # was cited as ms886726 = IsProcessorFeaturePresent.)
+        # typedefs inside a /* ... */ block are HELD or disabled; never
+        # treat them as live declarations.
+        comment_spans = [(c.start(), c.end())
+                         for c in re.finditer(r"/\*[\s\S]*?\*/", text)]
+        for m in re.finditer(r"typedef\s+(?:struct|enum|union)\b[\s\S]*?;",
+                             text):
+            if any(s <= m.start() < e for s, e in comment_spans):
                 continue
-            td = TYPEDEF_RE.search(m.group("t"))
+            head = text[:m.start()]
+            blocks = list(re.finditer(r"/\*([\s\S]*?)\*/", head))
+            if not blocks:
+                continue
+            run = [blocks[-1]]
+            i = len(blocks) - 2
+            while i >= 0:
+                between = head[blocks[i].end():blocks[i + 1].start()]
+                if between.strip():
+                    break
+                run.append(blocks[i])
+                i -= 1
+            run = run[::-1]
+            td = TYPEDEF_RE.search(m.group(0))
             if not td:
                 continue
+            # Prefer the id paired with this typedef's own name (a
+            # listing comment may cite several, e.g. "FINDEX_SEARCH_OPS
+            # (ms889664)"), then fall back to the first id of the
+            # comment block nearest the typedef.
+            run_text = " ".join(b.group(1) for b in run)
+            alias0 = td.group(4).split(",")[0].strip().lstrip("*")
+            tag0 = (td.group(2) or "").lstrip("_")
+            cid = None
+            for nm in (alias0, tag0):
+                if not nm:
+                    continue
+                pm = re.search(r"(?:ms|aa|ee)\d{4,}(?=\s+\"?" +
+                               re.escape(nm) + r"\b)", run_text)
+                if pm:
+                    cid = pm.group(0)
+                    break
+                pm = re.search(re.escape(nm) + r"\s*\(\s*((?:ms|aa|ee)\d{4,})"
+                               r"\s*\)", run_text)
+                if pm:
+                    cid = pm.group(1)
+                    break
+            if cid is None:
+                # fall back to the nearest comment block that both cites
+                # an id and mentions this typedef's own name (line-style
+                # /* ... */ blocks may repeat the name on an id-less
+                # line, e.g. "NODE_NOTATION} DOMNodeType;"); if no block
+                # mentions the name, take the nearest block with an id.
+                named = None
+                for b in reversed(run):
+                    if not ID_TOKEN.search(b.group(1)):
+                        continue
+                    if named is None:
+                        named = b
+                    if (re.search(r"\b" + re.escape(alias0) + r"\b",
+                                  b.group(1)) or
+                            (tag0 and re.search(r"\b" + re.escape(tag0) +
+                                                r"\b", b.group(1)))):
+                        named = b
+                        break
+                if named is None:
+                    continue
+                ids = ID_TOKEN.findall(named.group(1))
+                if not ids:
+                    continue
+                cid = ids[0]
             inv["typedefs"].append({
-                "header": fn, "id": ids[0], "kind": td.group(1),
+                "header": fn, "id": cid, "kind": td.group(1),
                 "tag": td.group(2) or "", "alias": td.group(4).strip(),
                 "members": members_of(td.group(1), td.group(3)),
-                "text": re.sub(r"\s+", " ", m.group("t"))[:400],
+                "text": re.sub(r"\s+", " ", m.group(0))[:400],
             })
     os.makedirs(SWEEP, exist_ok=True)
     json.dump(inv, open(os.path.join(SWEEP, "inventory.json"), "w"),
@@ -226,7 +317,11 @@ def twin_by_title(tree):
     the typedef alias (e.g. D3DMBACKBUFFER_TYPE is cited as ms907756,
     whose manifest title is D3DMVALUE); the symbol name is the
     reliable twin key.  gen "6" reads the committed docs/ce6-twins.tsv;
-    gen "4" (CE .NET) reads the committed catalog."""
+    gen "4" (CE .NET) reads the committed catalog.  A twin is
+    only returned when the page's own <title> agrees with the lookup
+    key -- the CE .NET TOC occasionally labels a page differently from
+    its own <title> (e.g. catalog 'Touch Screen (Stylus) Registry
+    Settings' serves the 'Touch Screen Registry Settings' page)."""
     if tree == "6":
         out = {}
         for line in open(os.path.join(ROOT, "docs", "ce6-twins.tsv"),
@@ -248,7 +343,26 @@ def twin_by_title(tree):
             continue
         pid, title = line.split("\t", 1)
         out.setdefault(title.strip(), pid.strip())
-    return out
+    return {t: p for t, p in out.items() if title_ok(tree, t, p)}
+
+
+def title_ok(tree, want_title, pid):
+    """True when the twin page's own <title> matches the lookup key.
+
+    Returns True when the page is not local (the committed catalogs are
+    the only offline evidence then) -- the page-title check only fires
+    when the page IS local and disagrees."""
+    bare = pid.split("(")[0]
+    if tree == "6":
+        path = os.path.join(TREES["6"], bare + ".html")
+    else:
+        path = os.path.join(TREES["4"], bare + ".html")
+    if not os.path.exists(path):
+        return True
+    pt = page_title(tree, pid)
+    if pt is None:
+        return True
+    return norm(pt.split("(")[0]) == norm(want_title.split("(")[0])
 
 
 def cmd_struct():
@@ -291,9 +405,39 @@ def cmd_struct():
                     break
             m6 = best
             if not m6:
-                rows.append((gen, td["header"], td["id"], twin,
-                             td["alias"].split(",")[0].strip(),
-                             "NO-DECL", "", ""))
+                # The twin page prints no parseable struct/enum/union
+                # body for our type.  Three documented dispositions:
+                #  (a) the page is a wrong-target twin (e.g. a cited
+                #      grounding page that documents a different type):
+                #      drop the row -- there is nothing to compare;
+                #  (b) every member name appears on the twin page (the
+                #      page documents the members as a value table, not
+                #      a typedef print): TABLE-OK;
+                #  (c) the members are published only by the Windows
+                #      Mobile 6.5 corpus (pageswm) -- some CE enums
+                #      (e.g. SHIC_FEATURE) have no CE page at all:
+                #      WM65-OK.
+                name = td["alias"].split(",")[0].strip()
+                alias = name.lstrip("*")
+                tag = (td["tag"] or "").lstrip("_")
+                named = bool(re.search(r"\b" + re.escape(alias) + r"\b",
+                                       txt)) or bool(
+                    tag and re.search(r"\b" + re.escape(tag) + r"\b", txt))
+                if not named:
+                    continue
+                ours_m = td["members"]
+                found = members_in_text(txt, ours_m)
+                if ours_m and len(found) == len(ours_m):
+                    rows.append((gen, td["header"], td["id"], twin, name,
+                                 "TABLE-OK", "|".join(ours_m),
+                                 "|".join(found)))
+                elif ours_m and all_members_in_tree("wm", ours_m):
+                    rows.append((gen, td["header"], td["id"], twin, name,
+                                 "WM65-OK", "|".join(ours_m),
+                                 "|".join(ours_m)))
+                else:
+                    rows.append((gen, td["header"], td["id"], twin, name,
+                                 "NO-DECL", "", ""))
                 continue
             theirs = members_of(m6.group(1), m6.group(3))
             ours = td["members"]

@@ -7496,3 +7496,104 @@ Every page id cited in include/ was checked against the corpus INDEX
 Headers: Ndis.h (enum + 1 citation), p2p.h (3), winerror.h (2),
 Dvdata.h (1), Pimstore.h (1).  Export surface and defs: unchanged.
 Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck).
+
+## M101e -- gen6 NO-DECL rows resolved individually; CE .NET twin harvest verified; citation sweep closed
+
+The six gen6 NO-DECL struct-sweep rows from M101c were resolved one by
+one.  None was a header-definition defect; each was a parser/twin gap,
+now handled in tools/ce-sweep.py and re-verified:
+
+* DOMNodeType (Msxml2.h) -> SAME.  The twin pages print the enum as
+  `enum tagDOMNodeType { ... } DOMNodeType;` (no `typedef` keyword);
+  TYPEDEF_RE now matches a typedef-less `enum` body.
+* EXTENDED_NAME_FORMAT (Winbase.h) -> SAME.  The inventory() comment
+  span had absorbed a distant book-surface comment and mis-cited
+  ms886726 (IsProcessorFeaturePresent) instead of the header's correct
+  aa450831.  inventory() now takes the id from the *attached* comment
+  run only, prefers the id paired with the typedef's own name (handles
+  listing comments such as "FINDEX_SEARCH_OPS (ms889664)" and the
+  line-style `/* ms897200 "... DOMNodeType ..." */` blocks), and never
+  treats typedefs sitting inside a `/* ... */` HELD block as live.
+* ExtendedDisconnectReasonCode (Discodlg.h, gen6 ee484177 + gen4
+  ms925156) -> TABLE-OK.  The twin pages document the members as a
+  value table (no enum print); the sweep now verifies every header
+  member name appears on the twin page.
+* NDIS_INTERRUPT_MODE (Ndis.h, ee481855) -> TABLE-OK.  The twin page
+  prints only `typedef KINTERRUPT_MODE NDIS_INTERRUPT_MODE, *PNDIS_...;`
+  with a member table; both members verified against the table.
+* WSAESETSERVICEOP (Winsock2.h, ee493906) -> TABLE-OK.  Members
+  verified against the WSASetService parameter table.
+* SHIC_FEATURE (aygshell.h, ee503391) -> WM65-OK.  No CE tree publishes
+  the enumeration (the CE6 twin is the SHGetInputContext function
+  page); the five members are verified against the Windows Mobile 6.5
+  corpus page (pageswm/wm65-SHIC_FEATURE.html), the header's documented
+  source (M52).
+
+Final struct sweep after the fixes (tools/ce-sweep.py struct):
+
+* gen 6: 118 SAME, 3 TABLE-OK, 1 SAME-ORDER, 1 DIFF, 1 WM65-OK --
+  NO-DECL 0, NO-PAGE 0.
+* gen 4: 67 SAME, 1 TABLE-OK, 2 DIFF, 1 SAME-ORDER -- NO-DECL 0.
+
+The remaining DIFF/SAME-ORDER rows are the documented M101c cases
+(BINDSTATUS upstream typo; CE .NET older BINDSTATUS/EDVDNavException
+enums; TYMED print order).
+
+CE .NET twin harvest: verified complete.  build/pages4 holds 6,362 of
+the 6,363 catalog leaves; the one gap (dd320882 "IsValidPtrIn",
+`(v=vs.100)`-tagged) is the known foreign 404 leaf (docs/cenet-readout.md
+M34) and its CE .NET coverage lives at ms885895 "DCOM Supported APIs".
+The CE5 -> CE .NET twin map is now committed as docs/ce4-twins.tsv
+(3,490 matched / 13,567 "-"), mirroring docs/ce6-twins.tsv.  The gen4
+twin resolution no longer fabricates wrong twins: a twin is only used
+when the page's own <title> agrees with the lookup key (catalog title
+"WSAECOMPARATOR"-style TOC mislabels are dropped), and a wrong-target
+twin (a cited grounding page that documents a different type, e.g.
+NDIS_INTERFACE_TYPE's CEDDK.h INTERFACE_TYPE reference) is skipped
+rather than reported NO-DECL.
+
+Citation sweep (every id cited in include/ checked against the corpus
+and the committed catalogs; all cited ids now resolve to a preserved
+page):
+
+* 26 CE5 mis-citations corrected to the official catalog ids (each
+  dedicated page title == the typedef name, and its enum print matches
+  the header members): Iptypes.h IP_PREFIX_ORIGIN ms895049->ms891180,
+  IP_SUFFIX_ORIGIN ms895051->aa450430, SCOPE_LEVEL ms895055->aa450875;
+  Objbase.h CLSCTX ms886177->ms863882, DVASPECT ms886976->ms864437,
+  TYMED ms891298->ms896492, STGC ms891270->ms896217, MKSYS
+  ms890786->ms892349, MKRREDUCE ms890778->ms892348, BIND_FLAGS
+  ms886128->ms863834, SYSKIND ms891289->ms896474, TYPEKIND
+  ms891302->ms896496, VARKIND ms891679->aa519097, CALLCONV
+  ms886161->ms863871, FUNCKIND ms886987->aa515010, INVOKEKIND
+  ms889336->ms882878, FUNCFLAGS ms886002->aa515008, ADVF
+  ms886084->aa513925, TYPEFLAGS ms891301->ms896495, DATADIR
+  ms886961->ms864408, DESCKIND ms886963->ms864416, DVASPECT2
+  ms886977->ms864438, DVASPECTINFOFLAG ms886979->ms864450,
+  DVEXTENTMODE ms886981->ms864452, HITRESULT ms886993->aa515087,
+  VIEWSTATUS ms892127->ms897186.
+* Ndis.h NDIS_INTERFACE_TYPE now cites its own CE5 page aa448011
+  (previously only the INTERFACE_TYPE grounding page ms901367, which
+  remains cited for the value names).
+* bt_ddi.h CE6 ids corrected from the CE6 catalog: OID_PAN_AUTHENTICATE
+  ee495- -> ee495816, OID_PAN_DISCONNECT ee495819 -> ee495361,
+  OID_PAN_ENCRYPT ee495824 -> ee495796 (OID_PAN_CONNECT ee495374 was
+  already right).
+* Bthid.h header prose: BTHHID_IOCTL_HIDDisconnect ee496034 -> ee495827
+  (the per-declaration comment was already correct).
+* dvddrvr.h EDVDAspectRatioMode: the "CE 6 twin" note cited ee481106
+  (DVD-Video Renderer Macros) and claimed the enum is absent from the
+  CE 6 book; the real twin ee486681 prints the same two members --
+  citation and note corrected.
+* SCROLLINFO (Winuser.h) cites the CE6 archive page ee504371, which had
+  never been fetched; fetched and preserved (pages6), layout matches.
+
+Also: MSDN Magazine archive tree added (tools/ce-corpus.py "pagesmag")
+and the Paul Yao eVT 3.0 overview preserved as
+pagesmag/msdn-magazine-2001-01-evt3.html (coredll.dll replaces
+kernel32/user32/gdi32; mbstowcs/wcstombs added to coredll; CE ships 85
+of ~325 desktop GDI functions; Winsock ANSI is a documented exception;
+LoadLibrary/LoadDriver dynamic loading).
+
+Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck);
+struct sweep NO-DECL 0 / NO-PAGE 0.

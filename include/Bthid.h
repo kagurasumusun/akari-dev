@@ -7,7 +7,7 @@
  * Written from scratch from the official Microsoft Windows Embedded
  * CE 6.0 pages (v=winembedded.60 archive) harvested into
  * build/rows.json: BTHHID_IOCTL_HIDConnect ee496033 and
- * BTHHID_IOCTL_HIDDisconnect ee496034 (Requirements rows print
+ * BTHHID_IOCTL_HIDDisconnect ee495827 (Requirements rows print
  * "Header Bthid.h"; Windows CE 5.0 and later).  The connect IOCTL
  * takes the peer device address as a BT_ADDR (Bt_api.h) in the input
  * buffer.  The pages print no CTL_CODE values, so the names are

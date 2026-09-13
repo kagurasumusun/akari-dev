@@ -55,7 +55,7 @@ typedef enum {
     IpDadStatePreferred
 } IP_DAD_STATE;
 
-/* ms895049 "IP_PREFIX_ORIGIN": print (explicit values). */
+/* ms891180 "IP_PREFIX_ORIGIN": print (explicit values). */
 typedef enum {
     IpPrefixOriginOther = 0,
     IpPrefixOriginManual,
@@ -64,7 +64,7 @@ typedef enum {
     IpPrefixOriginRouterAdvertisement
 } IP_PREFIX_ORIGIN;
 
-/* ms895051 "IP_SUFFIX_ORIGIN": print (explicit values). */
+/* aa450430 "IP_SUFFIX_ORIGIN": print (explicit values). */
 typedef enum {
     IpSuffixOriginOther = 0,
     IpSuffixOriginManual,
@@ -74,7 +74,7 @@ typedef enum {
     IpSuffixOriginRandom
 } IP_SUFFIX_ORIGIN;
 
-/* ms895055 "SCOPE_LEVEL": print (explicit values). */
+/* aa450875 "SCOPE_LEVEL": print (explicit values). */
 typedef enum {
     ScopeLevelInterface = 1,
     ScopeLevelLink = 2,
