@@ -88,6 +88,12 @@ official pages.
 ## Layout
 
 ```
+crt/                the C runtime, merged in-tree from
+                    kagurasumusun/wince-crt (crt/include/akari/*.h,
+                    crt/src/crt/{crt0,dllcrt,runtime}.c,
+                    crt/tests/host/).  `make crt` builds it for one
+                    target; `make e2e` drives the same sub-make once
+                    per CE target and links its startup objects.
 include/windows.h   umbrella (declarations whose page says Header:
                     Windows.h, e.g. ExitProcess)
 include/windef.h    base types/macros (CE: TCHAR = WCHAR, WINAPI
@@ -148,10 +154,13 @@ make check          # host: headers + TU compile warning-free under
 make crosscheck WINCECLANG=/path/to/LLVM-WinCE/clang
                     # real-toolchain compile checks for the six
                     # arm/i386-pc-wince{4.2,5.0,6.0} targets
-make e2e WINCECLANG=/path/to/LLVM-WinCE/clang CRTDIR=/path/to/wince-crt
+make crt WINCECLANG=/path/to/LLVM-WinCE/clang
+                    # the in-tree CRT alone (crt/), for one target
+                    # (CRT_TARGET=arm-pc-wince5.0 by default)
+make e2e WINCECLANG=/path/to/LLVM-WinCE/clang
                     # doc-derived import libraries (llvm-dlltool) +
-                    # Akari CRT: link the tests/e2e consumers into
-                    # PE images on all six targets (main app /
+                    # the in-tree CRT: link the tests/e2e consumers
+                    # into PE images on all six targets (main app /
                     # WinMain app / DLL) and assert machine, CE
                     # subsystem and import names
 ```

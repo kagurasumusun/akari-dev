@@ -8440,3 +8440,35 @@ guarded regions in the consumer TU over 470 guarded names.
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600);
 `make crosscheck WINCECLANG=...` OK -- 6 WinCE targets; `make e2e` OK --
 6 WinCE targets.
+
+### M115 -- the CRT is merged in-tree
+
+`kagurasumusun/wince-crt` at `5d21903` is now `crt/`, so the headers,
+the doc-derived import libraries and the startup layer that consumes
+them are versioned, built and verified in one repository.  Nothing was
+rewritten: the tree is copied as-is under the `crt/` prefix
+(`crt/include/akari/*.h`, `crt/src/crt/{crt0,dllcrt,runtime}.c`,
+`crt/tests/host/`, its own `Makefile`, `README.md` and `.gitignore`),
+and the upstream repository is left in place.
+
+The wiring changed, not the CRT.  `CRTDIR` defaults to `$(CURDIR)/crt`
+instead of a sibling checkout, so `make e2e WINCECLANG=...` needs
+nothing but the clang binary; `CRTDIR=` still overrides it for building
+against a different CRT.  A `crt` target was added as the standalone
+entry point (`make crt WINCECLANG=... CRT_TARGET=arm-pc-wince5.0`),
+driving the same sub-make that `e2e` already drove per target with its
+own `TARGET`/`CC`/`AR` and `ARCHFLAGS=-march=armv5tej` on ARM.
+`make clean` now cleans the CRT build too.
+
+Motivation: the CE clang driver already defines a sysroot contract
+(`clang/lib/Driver/ToolChains/WinCE.cpp` looks for
+`<driver>/wince-sysroot`, probing `include/`, `usr/include/`, `lib/`,
+`usr/lib/` and `include/c++/v1`), but nothing assembles one -- every
+existing invocation passes an empty `--sysroot=` and silences
+`warn_drv_wince_sysroot_missing`.  Assembling a sysroot means laying
+headers, import libraries and CRT startup objects down together, which
+is much easier to keep consistent when they are one repository.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600);
+`make e2e WINCECLANG=...` OK -- 6 WinCE targets, with no `CRTDIR`
+override, i.e. against the in-tree CRT.

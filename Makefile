@@ -375,7 +375,7 @@ include/oak/Wavemdd.h \
 include/oak/Wdm.h \
 include/oak/Winddi.h
 
-.PHONY: check hostcheck cxxcheck defcheck defdoc e2e clean
+.PHONY: check hostcheck cxxcheck defcheck defdoc crt e2e clean
 
 check: hostcheck cxxcheck defcheck
 
@@ -501,8 +501,25 @@ hostcheck: $(HDRS) $(OAK_HDRS)
 	done
 	@echo "[hostcheck] OK -- headers compile warning-free for CE $(CE_VERSIONS)"
 
+# The CRT is in-tree, so it can be built on its own; e2e drives the
+# same sub-make once per CE target and passes its own TARGET/CC/AR.
+#   make crt WINCECLANG=/path/to/clang CRT_TARGET=arm-pc-wince5.0
+CRT_TARGET ?= arm-pc-wince5.0
+
+crt:
+	@if [ -z "$(WINCECLANG)" ]; then \
+	  echo "[crt] set WINCECLANG to the WinCE clang binary" >&2; \
+	  exit 2; \
+	fi; \
+	bin=$$(dirname "$(WINCECLANG)"); \
+	case $(CRT_TARGET) in arm*) crtarch="ARCHFLAGS=-march=armv5tej";; \
+	                          *) crtarch="";; esac; \
+	$(MAKE) -C "$(CRTDIR)" TARGET=$(CRT_TARGET) CC=$$bin/clang \
+	  AR=$$bin/llvm-ar $$crtarch
+
 clean:
 	rm -rf build
+	-@$(MAKE) -C "$(CRTDIR)" clean >/dev/null 2>&1
 
 # End-to-end link checks: the doc-derived def files are turned into
 # import libraries with llvm-dlltool (armwince for ARM, i386
@@ -513,7 +530,11 @@ clean:
 # images (main app / WinMain app / DLL).  The images' machine type,
 # CE subsystem and coredll import names are asserted with
 # llvm-readobj.
-#   make e2e WINCECLANG=/path/to/clang CRTDIR=/path/to/wince-crt
+#   make e2e WINCECLANG=/path/to/clang
+#
+# The CRT is in-tree (crt/, merged from kagurasumusun/wince-crt), so
+# e2e needs nothing but the clang binary; CRTDIR only has to be
+# overridden to build against a different CRT checkout.
 #
 # Toolchain adaptation (2026-09-10 LLVM-WinCE artifact, wince-llvm-
 # 01c51ef / 10134447081; superseded 2026-09-11 by 5b8f2fb / artifact
@@ -527,7 +548,7 @@ clean:
 # 0583ffe45).  The ARM e2e objects are therefore pinned to
 # -march=armv5tej to match the wince-crt build (its WCE_ARCHFLAGS)
 # and keep the pipeline on the link-verified ARMv5TE codegen.
-CRTDIR    ?= $(abspath $(CURDIR)/../wince-crt)
+CRTDIR    ?= $(CURDIR)/crt
 
 # M39 note: the M39 ws2 import assertions below resolve through ws2.dll (Ws2.lib
 # per the official CE pages).
@@ -559,7 +580,7 @@ e2e:
 	  exit 2; \
 	fi; \
 	if [ ! -f "$(CRTDIR)/src/crt/crt0.c" ]; then \
-	  echo "[e2e] set CRTDIR to a wince-crt checkout (got $(CRTDIR))" >&2; \
+	  echo "[e2e] the in-tree CRT is missing: no $(CRTDIR)/src/crt/crt0.c" >&2; \
 	  exit 2; \
 	fi; \
 	bin=$$(dirname "$(WINCECLANG)"); \
