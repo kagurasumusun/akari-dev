@@ -48,4 +48,14 @@ extern "C" {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms896158: page-printed definition (Windows CE 1.0 and later.). */
+typedef PVOID CARD_CLIENT_HANDLE;
+
+/* ms896162: page-printed definition (Windows CE 1.0 and later.). */
+typedef UINT32 CARD_EVENT;
+
 #endif /* AKARI_CARDSERV_H */

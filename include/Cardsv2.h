@@ -157,4 +157,27 @@ extern "C" {
 /* ms899316: page-printed prototype (Windows CE 5.0 and later; pcc_serv.dll). */
 STATUS GetSocketStatus(DWORD dwSocketIndex, PDWORD pdwStatus);
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* aa447652: page-printed definition (Windows CE 1.0 and later.). */
+typedef PVOID CARD_WINDOW_HANDLE;
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms896161: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
+STATUS CardDeregisterClient(CARD_CLIENT_HANDLE hCardClient);
+
+/* aa447629: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
+STATUS CardModifyWindow(CARD_WINDOW_HANDLE hCardWindow, UINT16 fAttributes, UINT8 fAccessSpeed);
+
+/* aa447638: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
+STATUS CardReleaseWindow(CARD_WINDOW_HANDLE hCardWin);
+
+/* aa447648: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
+STATUS CardSetEventMask(CARD_CLIENT_HANDLE hCardClient, CARD_EVENT pMaskParms);
+
 #endif /* AKARI_CARDSV2_H */

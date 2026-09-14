@@ -49,4 +49,29 @@ extern "C" {
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms920278: page-printed prototype (Windows CE .NET 4.0 and later.; btd.lib). */
+int HCI_CloseDeviceContext(HANDLE hDeviceContext);
+
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms902083: page-printed definition (Windows CE .NET 4.2 and later.). */
+typedef struct _controller_event_packet {
+    int cSize;
+    unsigned char* pData;
+} ControllerEvent;
+
+/* ms903010: page-printed definition (Windows CE .NET 4.2 and later.). */
+typedef struct _host_buffer_size {
+    unsigned short ACL_Data_Packet_Length;
+    unsigned char SCO_Data_Packet_Length;
+    unsigned short Total_Num_ACL_Data_Packets;
+    unsigned short Total_Num_SCO_Data_Packets;
+} HCI_Buffer_Size;
+
 #endif /* AKARI_BT_DDI_H */

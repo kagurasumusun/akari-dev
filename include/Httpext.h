@@ -73,4 +73,11 @@ typedef struct _HSE_URL_MAPEX_INFO {
  *   aa450965 TerminateExtension:
  *     BOOL WINAPITerminateExtension(DWORD dwFlags );` */
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* wcesdkrTerminateExtension: page-printed prototype (Windows CE OS). */
+BOOL WINAPI TerminateExtension(DWORD dwFlags);
+
 #endif /* AKARI_HTTPEXT_H */

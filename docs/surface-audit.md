@@ -3,19 +3,22 @@
 Measured state -- replaces all earlier "complete" claims.
 
 * documented API-like rows: 8923
-* declared: 5689
-* comment-only: 2323
-* absent: 911
-* coredll doc-def entries: 2377
+* declared: 5888
+* comment-only: 2305
+* absent: 730
+* coredll doc-def entries: 2393
 * verified coredll surface (unmangled): 2138
 
-## D1 -- printed signature, comment-only in include/ (1054)
+## D1 -- printed signature, comment-only in include/ (1422)
 Name printed a full prototype/struct on an official page but
 carried only as a comment record.  These must be declared.
 
 * `AbortProc` [ce5+ce6] lib: Mgprint.lib.
 * `AbortTransfer` [ce5+ce6] lib: -
 * `ABSTRACT` [ce3+ce4] lib: -
+* `ACMDRVOPENDESC` [ce5+ce6] lib: -
+* `ACMDRVSTREAMHEADER` [ce5+ce6] lib: -
+* `ACMDRVSTREAMINSTANCE` [ce5+ce6] lib: -
 * `AcquireRemoveLock` [ce5+ce6] lib: -
 * `AddAfterI` [ce5+ce6] lib: -
 * `AddAttachedSurface` [ce5+ce6] lib: Developer implemented.
@@ -33,6 +36,7 @@ carried only as a comment record.  These must be declared.
 * `ASSERT` [ce3+ce5+ce6] lib: none
 * `ASSERTMSG` [ce3+ce5+ce6] lib: none
 * `ASX` [ce3+ce4] lib: -
+* `ATTACHLIST` [ce5+ce6] lib: -
 * `AudioStream` [ce3+ce4] lib: -
 * `Authentication` [ce3+ce5+ce6] lib: -
 * `AUTHOR` [ce3+ce4] lib: -
@@ -43,10 +47,12 @@ carried only as a comment record.  These must be declared.
 * `Balance` [ce3+ce4] lib: -
 * `Bandwidth` [ce3+ce4] lib: -
 * `BASE` [ce3+ce4] lib: -
+* `BASEBAND_CONNECTION_DATA` [ce5+ce6] lib: -
 * `BaseURL` [ce3+ce4] lib: -
-* `BeforeWindowOpen` [ce5+ce6] lib: -
+* `BD_ADDR` [ce4] lib: -
 * `BIT_MASKS_MATCH` [ce3+ce5+ce6] lib: -
 * `BITMASKS` [ce3+ce5+ce6] lib: -
+* `BlockLockInfo` [ce5+ce6] lib: -
 * `Blt` [ce5+ce6] lib: Developer implemented.
 * `BrowseCallbackProc` [ce5+ce6] lib: Ceshell.lib.
 * `Buffering` [ce3+ce4] lib: -
@@ -62,22 +68,34 @@ carried only as a comment record.  These must be declared.
 * `CanScan` [ce3+ce4] lib: -
 * `CanSeek` [ce3+ce4] lib: -
 * `CanSeekToMarkers` [ce3+ce4] lib: -
+* `CARD_CONFIG_INFO` [ce5+ce6] lib: -
+* `CARD_DATA_PARMS` [ce5+ce6] lib: -
+* `CARD_EVENT_MASK_PARMS` [ce5+ce6] lib: -
+* `CARD_EVENT_PARMS` [ce5+ce6] lib: -
+* `CARD_ISR` [ce5+ce6] lib: -
+* `CARD_REGISTER_PARMS` [ce5+ce6] lib: -
+* `CARD_SOCKET_HANDLE` [ce5+ce6] lib: -
+* `CARD_STATUS` [ce5+ce6] lib: -
+* `CARD_TUPLE_PARMS` [ce5+ce6] lib: -
+* `CARD_WINDOW_ADDRESS` [ce5+ce6] lib: -
+* `CARD_WINDOW_PARMS` [ce5+ce6] lib: -
 * `CardAccessConfigurationRegister` [ce5+ce6] lib: Pcc_serv.dll
-* `CardDeregisterClient` [ce5+ce6] lib: Pcc_serv.dll
 * `CardGetEventMask` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetFirstTuple` [ce5+ce6] lib: Pcc_serv.dll
 * `CardGetNextTuple` [ce5+ce6] lib: Pcc_serv.dll
 * `CardGetParsedTuple` [ce5+ce6] lib: Pcc_serv.dll
 * `CardGetStatus` [ce5+ce6] lib: Pcc_serv.dll
 * `CardGetTupleData` [ce5+ce6] lib: Pcc_serv.dll
 * `CardMapWindow` [ce5+ce6] lib: Pcc_serv.dll
 * `CardMapWindowPhysical` [ce5+ce6] lib: Pcc_serv.dll
-* `CardModifyWindow` [ce5+ce6] lib: Pcc_serv.dll
+* `CardModifyConfiguration` [ce5+ce6] lib: Pcc_serv.dll
+* `CardPowerOff` [ce5+ce6] lib: Cardserv.lib.
+* `CardPowerOn` [ce5+ce6] lib: Cardserv.lib.
 * `CardRegisterClient` [ce5+ce6] lib: Pcc_serv.dll
 * `CardReleaseConfiguration` [ce5+ce6] lib: Pcc_serv.dll
 * `CardReleaseExclusive` [ce5+ce6] lib: Pcc_serv.dll
 * `CardReleaseIRQ` [ce5+ce6] lib: Pcc_serv.dll
 * `CardReleaseSocketMask` [ce5+ce6] lib: Cardserv.lib.
-* `CardReleaseWindow` [ce5+ce6] lib: Pcc_serv.dll
 * `CardRequestConfigRegisterPhAddr` [ce5+ce6] lib: Pcc_serv.dll
 * `CardRequestConfiguration` [ce5+ce6] lib: Pcc_serv.dll
 * `CardRequestDisable` [ce5+ce6] lib: Pcc_serv.dll
@@ -87,24 +105,34 @@ carried only as a comment record.  These must be declared.
 * `CardRequestSocketMask` [ce5+ce6] lib: Cardserv.lib.
 * `CardRequestWindow` [ce5+ce6] lib: Pcc_serv.dll
 * `CardResetFunction` [ce5+ce6] lib: Pcc_serv.dll
-* `CardSetEventMask` [ce5+ce6] lib: Pcc_serv.dll
+* `CD_SENSE_DATA` [ce5+ce6] lib: -
 * `CDM_SETDEFEXT` [ce3+ce5+ce6] lib: -
 * `CDN_TYPECHANGE` [ce3+ce5+ce6] lib: -
+* `CDROM_DISCINFO` [ce5+ce6] lib: -
+* `CDROM_PLAY_AUDIO_MSF` [ce5+ce6] lib: -
+* `CDROM_READ` [ce5+ce6] lib: -
+* `CDROM_TESTUNITREADY` [ce5+ce6] lib: -
+* `CDROM_TOC` [ce5+ce6] lib: -
 * `CEDB_FIND_DATA` [ce3+ce5+ce6] lib: -
 * `CeGetDeviceId` [ce3+ce5+ce6] lib: Ceutil.lib.
 * `CeGetDevMgmtPackageList` [ce4+ce5+ce6] lib: -
 * `CeGetSelectedDeviceId` [ce3+ce5+ce6] lib: Ceutil.lib.
 * `CeGetVolumeInfo` [ce5+ce6] lib: Storeapi.lib
 * `CeHeapCreate` [ce5+ce6] lib: Coredll.lib.
+* `CEL_CRITSEC_DELETE` [ce5+ce6] lib: -
 * `CEL_CRITSEC_ENTER` [ce3+ce4+ce5+ce6] lib: -
+* `CEL_CRITSEC_INIT` [ce5+ce6] lib: -
 * `CEL_CRITSEC_LEAVE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_DATA_LOSS` [ce3+ce4+ce5+ce6] lib: -
+* `CEL_DEBUG_MSG` [ce5+ce6] lib: -
 * `CEL_EVENT_CLOSE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_EVENT_CREATE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_EVENT_DELETE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_EVENT_PULSE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_EVENT_RESET` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_EVENT_SET` [ce3+ce4+ce5+ce6] lib: -
+* `CEL_EXTRA_MODULE_INFO` [ce5+ce6] lib: -
+* `CEL_EXTRA_PROCESS_INFO` [ce5+ce6] lib: -
 * `CEL_HEADER` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_HEAP_ALLOC` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_HEAP_CREATE` [ce3+ce4+ce5+ce6] lib: -
@@ -114,8 +142,14 @@ carried only as a comment record.  These must be declared.
 * `CEL_INT_DATA` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_INTERRUPTS` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_LOG_MARKER` [ce3+ce4+ce5+ce6] lib: -
+* `CEL_MAPFILE_CREATE` [ce5+ce6] lib: -
+* `CEL_MAPFILE_DESTROY` [ce5+ce6] lib: -
+* `CEL_MAPFILE_FLUSH` [ce5+ce6] lib: -
+* `CEL_MAPFILE_VIEW_CLOSE` [ce5+ce6] lib: -
+* `CEL_MEMTRACK_BASELINE` [ce4+ce5+ce6] lib: -
 * `CEL_MODULE_FREE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_MODULE_LOAD` [ce3+ce4+ce5+ce6] lib: -
+* `CEL_MODULE_REFERENCES` [ce5+ce6] lib: -
 * `CEL_MUTEX_CLOSE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_MUTEX_CREATE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_MUTEX_DELETE` [ce3+ce4+ce5+ce6] lib: -
@@ -123,6 +157,7 @@ carried only as a comment record.  These must be declared.
 * `CEL_PROCESS_CLOSE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_PROCESS_CREATE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_PROCESS_DELETE` [ce3+ce4+ce5+ce6] lib: -
+* `CEL_PROCESS_REFCOUNT` [ce5+ce6] lib: -
 * `CEL_PROCESS_TERMINATE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_SEM_CLOSE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_SEM_CREATE` [ce3+ce4+ce5+ce6] lib: -
@@ -170,6 +205,7 @@ carried only as a comment record.  These must be declared.
 * `ClearOrSetFeature` [ce5+ce6] lib: -
 * `Click` [ce3+ce4] lib: -
 * `ClickToPlay` [ce3+ce4] lib: -
+* `CLIENT_CALLBACK` [ce5+ce6] lib: Cardserv.lib.
 * `CloseThemeData` [ce5+ce6] lib: Ietheme.dll.
 * `CloseTransferHandle` [ce5+ce6] lib: -
 * `COLORS` [ce3+ce5+ce6] lib: -
@@ -201,12 +237,28 @@ carried only as a comment record.  These must be declared.
 * `CreationDate` [ce3+ce4] lib: -
 * `CritCheckIn` [ce3+ce5+ce6] lib: -
 * `CritCheckOut` [ce3+ce5+ce6] lib: -
+* `CRYPTOAPI_BLOB` [ce5+ce6] lib: -
+* `CS_SocketCallback` [ce5+ce6] lib: Pcc_serv.dll
 * `CTL_CODE` [ce4] lib: -
 * `CTransInPlaceFilter` [ce3] lib: -
 * `CurrentMarker` [ce3+ce4] lib: -
 * `CurrentPosition` [ce3+ce4] lib: -
 * `CurrentState` [ce3+ce4] lib: -
+* `D3DM_CreateContext` [ce5+ce6] lib: Developer implemented.
+* `D3DM_CreateSurface` [ce5+ce6] lib: Developer implemented.
+* `D3DM_DestroyContext` [ce5+ce6] lib: Developer implemented.
+* `D3DM_DestroySurface` [ce5+ce6] lib: Developer implemented.
+* `D3DM_DLL_ENTRY` [ce5+ce6] lib: -
+* `D3DM_GetAdapterInfo` [ce5+ce6] lib: Developer implemented.
+* `D3DM_GetInfo` [ce5+ce6] lib: Developer implemented.
+* `D3DM_Initialize` [ce5+ce6] lib: Developer implemented.
+* `D3DM_LockSurface` [ce5+ce6] lib: Developer implemented.
 * `D3DM_MAKE_D3DMVALUE` [ce5+ce6] lib: Implemented in D3dmtypes.h.
+* `D3DM_ResourceManager` [ce5+ce6] lib: Developer implemented.
+* `D3DM_SETLIGHT` [ce5+ce6] lib: -
+* `D3DM_SETPALETTE` [ce5+ce6] lib: -
+* `D3DM_UnlockSurface` [ce5+ce6] lib: Developer implemented.
+* `D3DM_ValidateDevice` [ce5+ce6] lib: Developer implemented.
 * `DateTime_GetMonthCal` [ce3+ce5+ce6] lib: Commctrl.lib
 * `DateTime_GetMonthCalColor` [ce3+ce5+ce6] lib: Commctrl.lib
 * `DateTime_GetMonthCalFont` [ce3+ce5+ce6] lib: Commctrl.lib
@@ -226,14 +278,93 @@ carried only as a comment record.  These must be declared.
 * `DbgBreak` [ce3+ce5+ce6] lib: -
 * `DbgLockTrace` [ce3+ce5+ce6] lib: -
 * `DblClick` [ce3+ce4] lib: -
+* `DBLNODE` [ce5+ce6] lib: -
 * `DDALPHABLTFX` [ce3+ce4+ce5+ce6] lib: -
+* `DDCORECAPS` [ce5+ce6] lib: -
 * `DDEnumCallback` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
 * `DDEnumCallbackEx` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
+* `DDGPEAllocSurfaceData` [ce5+ce6] lib: Ddgpe.lib.
+* `DDGPEBltParams` [ce5+ce6] lib: Ddgpe.lib.
+* `DDGPEDriverData` [ce5+ce6] lib: Ddgpe.lib.
 * `DDGPEStandardHeader` [ce5+ce6] lib: Ddgpe.lib.
+* `DDHAL_ADDATTACHEDSURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_BLTDATA` [ce5+ce6] lib: -
+* `DDHAL_CANCREATESURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_CANCREATEVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_COLORCONTROLDATA` [ce5+ce6] lib: -
+* `DDHAL_CREATEPALETTEDATA` [ce5+ce6] lib: -
+* `DDHAL_CREATESURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_CREATEVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_DDCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDCOLORCONTROLCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDMISCELLANEOUS2CALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDMISCELLANEOUSCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDPALETTECALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDSURFACECALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDVIDEOPORTCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DESTROYDRIVERDATA` [ce5+ce6] lib: -
+* `DDHAL_DESTROYPALETTEDATA` [ce5+ce6] lib: -
+* `DDHAL_DESTROYSURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_DESTROYVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_FLIPDATA` [ce5+ce6] lib: -
+* `DDHAL_FLIPTOGDISURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_FLIPVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_GETAVAILDRIVERMEMORYDATA` [ce5+ce6] lib: -
+* `DDHAL_GETBLTSTATUSDATA` [ce5+ce6] lib: -
+* `DDHAL_GETDRIVERINFODATA` [ce5+ce6] lib: -
+* `DDHAL_GETFLIPSTATUSDATA` [ce5+ce6] lib: -
+* `DDHAL_GETHEAPALIGNMENTDATA` [ce5+ce6] lib: -
+* `DDHAL_GETSCANLINEDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTBANDWIDTHDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTCONNECTDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTFIELDDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTFLIPSTATUSDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTINPUTFORMATDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTLINEDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTOUTPUTFORMATDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTSIGNALDATA` [ce5+ce6] lib: -
+* `DDHAL_LOCKDATA` [ce5+ce6] lib: -
+* `DDHAL_SETCLIPLISTDATA` [ce5+ce6] lib: -
+* `DDHAL_SETCOLORKEYDATA` [ce5+ce6] lib: -
+* `DDHAL_SETENTRIESDATA` [ce5+ce6] lib: -
+* `DDHAL_SETEXCLUSIVEMODEDATA` [ce5+ce6] lib: -
+* `DDHAL_SETMODEDATA` [ce5+ce6] lib: -
+* `DDHAL_SETOVERLAYPOSITIONDATA` [ce5+ce6] lib: -
+* `DDHAL_SETPALETTEDATA` [ce5+ce6] lib: -
+* `DDHAL_UNLOCKDATA` [ce5+ce6] lib: -
+* `DDHAL_UPDATENONLOCALHEAPDATA` [ce5+ce6] lib: -
+* `DDHAL_UPDATEOVERLAYDATA` [ce5+ce6] lib: -
+* `DDHAL_UPDATEVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_VPORTCOLORDATA` [ce5+ce6] lib: -
+* `DDHAL_WAITFORVERTICALBLANKDATA` [ce5+ce6] lib: -
+* `DDHAL_WAITFORVPORTSYNCDATA` [ce5+ce6] lib: -
+* `DDHALINFO` [ce5+ce6] lib: -
+* `DDHALMODEINFO` [ce5+ce6] lib: -
+* `DDKISRINFO` [ce5+ce6] lib: -
+* `DDKPCIINFO` [ce5+ce6] lib: -
 * `DDKReg_GetIsrInfo` [ce5+ce6] lib: Coredll.lib.
 * `DDKReg_GetPciInfo` [ce5+ce6] lib: Coredll.lib.
 * `DDKReg_GetWindowInfo` [ce5+ce6] lib: Coredll.lib.
-* `DdsiTouchPanelGetPoint` [ce5+ce6] lib: Tchmdd.lib.
+* `DDKWINDOWINFO` [ce5+ce6] lib: -
+* `DDMORECAPS` [ce5+ce6] lib: -
+* `DDMORESURFACECAPS` [ce5+ce6] lib: -
+* `DDNONLOCALVIDMEMCAPS` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWCLIPPER_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWCLIPPER_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWCLIPPER_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWPALETTE_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWPALETTE_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWPALETTE_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_GBL_MORE` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_MORE` [ce5+ce6] lib: -
+* `DDRAWI_DDVIDEOPORT_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDVIDEOPORT_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DIRECTDRAW_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DIRECTDRAW_INT` [ce5+ce6] lib: -
+* `DDRAWI_DIRECTDRAW_LCL` [ce5+ce6] lib: -
 * `DEBUGCHK` [ce3+ce5+ce6] lib: none
 * `DEBUGLED` [ce3+ce5+ce6] lib: none
 * `DEBUGMSG` [ce3+ce5+ce6] lib: none
@@ -241,21 +372,34 @@ carried only as a comment record.  These must be declared.
 * `DEBUGZONE` [ce3+ce5+ce6] lib: none
 * `DECLARE_IUNKNOWN` [ce3+ce5+ce6] lib: -
 * `DefaultFrame` [ce3+ce4] lib: -
+* `DELETE_SECTOR_INFO` [ce5+ce6] lib: -
 * `DeleteIPAddress` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
 * `DeleteUrlCacheGroup` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
 * `DeregisterDevice` [ce3+ce5+ce6] lib: Coredll.lib.; Coredll.lib
 * `DestroyPalette` [ce5+ce6] lib: Developer implemented.
 * `DestroySurface` [ce5+ce6] lib: Developer implemented.
 * `DestroyVideoPort` [ce5+ce6] lib: Developer implemented.
+* `DEVICE_LIST` [ce5+ce6] lib: -
+* `DEVICE_LOCATION` [ce4+ce5+ce6] lib: -
 * `DialogProc` [ce3+ce5+ce6] lib: Developer implemented.
 * `DIBSIZE` [ce3+ce5+ce6] lib: -
 * `DirectInputCreate` [ce3+ce4+ce5+ce6] lib: -
+* `DirectoryClientRegParams` [ce5+ce6] lib: -
 * `DisplayBackColor` [ce3+ce4] lib: -
 * `DisplayForeColor` [ce3+ce4] lib: -
 * `DisplaySize` [ce3+ce4] lib: -
 * `DllMain` [ce3+ce5+ce6] lib: Coredll.lib.; Coredll.lib, Nk.lib
 * `DllRegisterServer` [ce3+ce4+ce5+ce6] lib: Oleaut32.lib.; Oleaut32.lib.
 * `DllUnregisterServer` [ce3+ce4+ce5+ce6] lib: Oleaut32.lib.; Oleaut32.lib.
+* `DMAdvertiseInterface` [ce5+ce6] lib: -
+* `DMSDLINFO` [ce4+ce5+ce6] lib: -
+* `DMSINVPKGID` [ce4+ce5+ce6] lib: -
+* `DMSINVRECORD` [ce4+ce5+ce6] lib: -
+* `DNS_A_DATA` [ce5+ce6] lib: -
+* `DNS_AAAA_DATA` [ce5+ce6] lib: -
+* `DNS_ATMA_DATA` [ce5+ce6] lib: -
+* `DNS_WINS_DATA` [ce5+ce6] lib: -
+* `DNS_WKS_DATA` [ce5+ce6] lib: -
 * `DnsModifyRecordsInSet_W` [ce5+ce6] lib: Dnsapi.lib.
 * `DnsQuery_W` [ce5+ce6] lib: Dnsapi.lib.
 * `DnsRecordListFree` [ce5+ce6] lib: Dnsapi.lib.
@@ -269,180 +413,20 @@ carried only as a comment record.  These must be declared.
 * `DrvDeleteDeviceBitmap` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvDisablePDEV` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvDisableSurface` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvEnableDriver` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvEnablePDEV` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvEnableSurface` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvEndDoc` [ce5+ce6] lib: -
-* `DrvEscape` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvFillPath` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvGetMasks` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvPaint` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvPowerHandler` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvSetPalette` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvSetPointerShape` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DrvStrokePath` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `DumpGraph` [ce3+ce5+ce6] lib: -
-* `DURATION` [ce3+ce4] lib: -
-* `Duration` [ce3+ce4] lib: -
-* `dwCeLogFlushTimeout` [ce3] lib: -
-* `ECHO` [ce3+ce4] lib: -
-* `Enabled` [ce3+ce4] lib: -
-* `EnablePositionControls` [ce3+ce4] lib: -
-* `EnableTracker` [ce3+ce4] lib: -
-* `ENDMARKER` [ce3+ce4] lib: -
-* `EngCreateDeviceBitmap` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `EngCreateDeviceSurface` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `EngCreatePalette` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
-* `ENTRY` [ce3+ce4] lib: -
-* `EntryCount` [ce3+ce4] lib: -
-* `ENTRYREF` [ce3+ce4] lib: -
-* `EnumCalendarInfo` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumCalendarInfoProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumCard` [ce5+ce6] lib: Pcc_serv.dll
-* `EnumCodePagesProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumDateFormats` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumDateFormatsProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumFontFamProc` [ce3+ce4+ce5+ce6] lib: -
-* `EnumFontsProc` [ce3+ce4+ce5+ce6] lib: -
-* `EnumLocalesProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumModesCallback` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
-* `EnumModesCallback2` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
-* `EnumRegisterWordProc` [ce3+ce4+ce5+ce6] lib: No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.; No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.
-* `EnumSocket` [ce5+ce6] lib: Pcc_serv.dll
-* `EnumSurfacesCallback` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
-* `EnumSurfacesCallback2` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
-* `EnumSystemLocales` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumTimeFormats` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumTimeFormatsProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumUILanguagesProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumVideoCallback` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
-* `EnumWindowsProc` [ce3+ce5+ce6] lib: -
-* `ERASE` [ce3] lib: -
-* `Error` [ce3+ce4] lib: -
-* `ErrorCorrection` [ce3+ce4] lib: -
-* `ErrorDescription` [ce3+ce4] lib: -
-* `ERRORMSG` [ce3+ce5+ce6] lib: none
-* `ETH_COPY_NETWORK_ADDRESS` [ce5+ce6] lib: -
-* `EVENT` [ce3+ce4] lib: -
-* `EXTENSION_CONTROL_BLOCK` [ce3+ce5+ce6] lib: -
-* `FastForward` [ce3+ce4] lib: -
-* `FastReverse` [ce3+ce4] lib: -
-* `FiberProc` [ce5+ce6] lib: Coredll.lib.
-* `FindFirstDevice` [ce5+ce6] lib: -
-* `FindFirstUrlCacheEntryEx` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FindFirstUrlCacheGroup` [ce5+ce6] lib: Wininet.lib.
-* `FindNextUrlCacheGroup` [ce5+ce6] lib: Wininet.lib.
-* `FirewallDeleteRule` [ce5+ce6] lib: Fwapi.lib.
-* `FirewallEnableRule` [ce5+ce6] lib: Fwapi.lib.
-* `FirewallGetRules` [ce5+ce6] lib: Fwapi.lib.
-* `Flip` [ce5+ce6] lib: Developer implemented.
-* `FlipVideoPort` [ce5+ce6] lib: Developer implemented.
-* `FMD_EraseBlock` [ce5+ce6] lib: Developer implemented.
-* `FMD_GetBlockStatus` [ce5+ce6] lib: Developer implemented.
-* `FMD_GetInfo` [ce5+ce6] lib: Developer implemented.
-* `FMD_Init` [ce5+ce6] lib: Developer implemented.
-* `FMD_ReadSector` [ce5+ce6] lib: Developer implemented.
-* `FMD_SetBlockStatus` [ce5+ce6] lib: Developer implemented.
-* `FMD_WriteSector` [ce5+ce6] lib: Developer implemented.
-* `FreeMediaType` [ce3+ce5+ce6] lib: -
-* `FSD_HookVolume` [ce5+ce6] lib: Fsdmgr.lib.
-* `FSD_MountDisk` [ce3+ce5+ce6] lib: Fsdmgr.lib.
-* `FSD_UnmountDisk` [ce3+ce5+ce6] lib: Fsdmgr.lib.
-* `FSDMGR_AcquireFileLock` [ce5+ce6] lib: Fsdmgr.lib.
-* `FSDMGR_CreateFileHandle` [ce3+ce4+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_CreateSearchHandle` [ce3+ce4+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_DeregisterVolume` [ce3+ce4+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_DeviceHandleToHDSK` [ce5+ce6] lib: Fsdmgr.lib
-* `FSDMGR_DiskIoControl` [ce5+ce6] lib: Fsdmgr.lib.
-* `FSDMGR_GetDiskInfo` [ce3+ce4+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_GetRegistryFlag` [ce4+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib.
-* `FSDMGR_GetRegistryString` [ce4+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib.
-* `FSDMGR_GetRegistryValue` [ce5+ce6] lib: Fsdmgr.lib.
-* `FSDMGR_GetVolumeName` [ce3+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_ReadDisk` [ce3+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_RegisterVolume` [ce3+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib
-* `FSDMGR_WriteDisk` [ce3+ce5+ce6] lib: Fsdmgr.lib.; Fsdmgr.lib
-* `FtpCommand` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpCreateDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpDeleteFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpFindFirstFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpGetCurrentDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpGetFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpGetFileEx` [ce5+ce6] lib: Wininet.lib.
-* `FtpGetFileSize` [ce5+ce6] lib: Wininet.lib.
-* `FtpOpenFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpPutFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpPutFileEx` [ce5+ce6] lib: Wininet.lib.
-* `FtpRemoveDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpRenameFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpSetCurrentDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `GET_LPDDRAWSURFACE_GBL_MORE` [ce5+ce6] lib: -
-* `get_VideoWidth` [ce5+ce6] lib: -
-* `GetAvailDriverMemory` [ce5+ce6] lib: Developer implemented.
-* `GetBestInterface` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
-* `GetBltStatus` [ce5+ce6] lib: Developer implemented.
-* `GetCodecDescription` [ce4] lib: -
-* `GetCodecInstalled` [ce4] lib: -
-* `GetCodecURL` [ce4] lib: -
-* `GetCurrentEntry` [ce3+ce4] lib: -
-* `GetDriverInfo` [ce5+ce6] lib: Developer implemented.
-* `GetExtensionVersion` [ce3+ce5+ce6] lib: Not applicable.
-* `GetFilterVersion` [ce3+ce5+ce6] lib: Not applicable.
-* `GetFlipStatus` [ce5+ce6] lib: Developer implemented.
-* `GetGPE` [ce5+ce6] lib: Gpe_lib.lib.
-* `GetHeapAlignment` [ce5+ce6] lib: Developer implemented.
-* `GetMarkerName` [ce3+ce4] lib: -
-* `GetMarkerTime` [ce3+ce4] lib: -
-* `GetMediaInfoString` [ce3+ce4] lib: -
-* `GetMediaParameter` [ce3+ce4] lib: -
-* `GetMediaParameterName` [ce3+ce4] lib: -
-* `GetMoreInfoURL` [ce3+ce4] lib: -
-* `GetRTTAndHopCount` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
-* `GetSerialObject` [ce5+ce6] lib: -
-* `GetSetKeyValues` [ce5+ce6] lib: -
-* `GetSocketIndex` [ce5+ce6] lib: Pcc_serv.dll
-* `GetStatus` [ce5+ce6] lib: -
-* `GetSysmemBltStatus` [ce5+ce6] lib: Developer implemented.
-* `GetThemeBackgroundExtent` [ce5+ce6] lib: Ietheme.dll.
-* `GetThemeColor` [ce5+ce6] lib: Ietheme.dll.
-* `GetTransferStatus` [ce5+ce6] lib: -
-* `GetUrlCacheGroupAttribute` [ce5+ce6] lib: Wininet.lib.
-* `GetVideoPortBandwidth` [ce5+ce6] lib: Developer implemented.
-* `GetVideoPortConnectInfo` [ce5+ce6] lib: Developer implemented.
-* `GetVideoPortField` [ce5+ce6] lib: Developer implemented.
-* `GetVideoPortFlipStatus` [ce5+ce6] lib: Developer implemented.
-* `GetVideoPortInputFormats` [ce5+ce6] lib: Developer implemented.
-* `GetVideoPortLine` [ce5+ce6] lib: Developer implemented.
 
-## D2 -- declared, page says Coredll.lib, missing from coredll-doc.def (30)
+## D2 -- declared, page says Coredll.lib, missing from coredll-doc.def (14)
 * `AbnormalTermination` [ce3+ce5+ce6]
 * `ASYNC_COMPLETION` [ce4+ce5+ce6]
-* `CeLogThreadMigrate` [ce3+ce4]
 * `CreateInstance` [ce4]
-* `DeinitLAP` [ce5+ce6]
-* `GetCurrentProcess` [ce3+ce5+ce6]
-* `GetCurrentProcessId` [ce3+ce5+ce6]
-* `GetCurrentThread` [ce3+ce5+ce6]
-* `GetCurrentThreadId` [ce3+ce5+ce6]
 * `GetExceptionCode` [ce3+ce5+ce6]
 * `GetExceptionInformation` [ce3+ce5+ce6]
-* `HandleBlob` [ce5+ce6]
 * `IP_NAT_DIRECTION` [ce3+ce5+ce6]
 * `IP_NAT_REGISTER_EDITOR` [ce3+ce5+ce6]
 * `IP_NAT_SESSION_MAPPING_STATISTICS` [ce3+ce5+ce6]
 * `IPRcvBuf` [ce3+ce5+ce6]
-* `LAPCreateEnrollmentConfigDialog` [ce5+ce6]
 * `LINEEVENT` [ce4+ce5+ce6]
-* `MatchTarget` [ce5+ce6]
-* `MatchUser` [ce5+ce6]
-* `NKCreateStaticMapping` [ce4]
-* `NKForceCleanBoot` [ce4]
 * `PHONEEVENT` [ce4+ce5+ce6]
 * `SecureZeroMemory` [ce5+ce6]
-* `VerifyUserStart` [ce5+ce6]
-* `VerifyUserStop` [ce5+ce6]
-* `VerifyUserToTop` [ce5+ce6]
-* `VirtualSetPageFlags` [ce3+ce4]
 * `WM_RBUTTONDOWN` [ce4]
 * `WM_RBUTTONUP` [ce4]
 
@@ -450,7 +434,7 @@ carried only as a comment record.  These must be declared.
 Export existence grounded on the device-dump-audited sysroot
 surface (clean-room.md 3.2); prototypes grounded on the pages.
 
-## D4 -- verified coredll surface names not carried anywhere in include/ (1097)
+## D4 -- verified coredll surface names not carried anywhere in include/ (1087)
 Candidate surface gaps (may include CRT-provider names).
 * `ADBAddAccountToGroup`
 * `ADBCreateAccount`
@@ -671,7 +655,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `EnumUILanguagesW`
 * `EventModify`
 * `ExtractResource`
-* `FileSystemPowerFunction`
 * `FilterTrackedItem`
 * `FlushViewOfFileMaybe`
 * `ForcePixelDoubling`
@@ -726,7 +709,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `GetSaveFileNameW`
 * `GetServiceByIndex`
 * `GetStdioPathW`
-* `GetSystemMemoryDivision`
 * `GetSystemTimeAsFileTime`
 * `GetThreadCallStack`
 * `GetThreadId`
@@ -781,7 +763,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `Int_HeapReAlloc`
 * `Int_HeapSize`
 * `InterruptMask`
-* `IsAPIReady`
 * `IsBadPtr`
 * `IsDialogMessageW`
 * `IsEncryptionPermitted`
@@ -861,9 +842,7 @@ Candidate surface gaps (may include CRT-provider names).
 * `PrintTrackedItem`
 * `ProcessDetachAllDLLs`
 * `ProfileCaptureStatus`
-* `ProfileStart`
 * `ProfileStartEx`
-* `ProfileStop`
 * `ProfileSyscall`
 * `QASetWindowsJournalHook`
 * `QAUnhookWindowsJournalHook`
@@ -884,10 +863,8 @@ Candidate surface gaps (may include CRT-provider names).
 * `RectangleAnimation`
 * `RefreshKernelAlarm`
 * `RefreshWatchDogTimer`
-* `RegCopyFile`
 * `RegOpenProcessKey`
 * `RegReplaceKey`
-* `RegRestoreFile`
 * `RegSaveKey`
 * `RegisterAFSEx`
 * `RegisterAFSName`
@@ -959,7 +936,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `SetAPIErrorHandler`
 * `SetAssociatedMenu`
 * `SetCriticalProcess`
-* `SetCurrentUser`
 * `SetDbgZone`
 * `SetDialogAutoScrollBar`
 * `SetEventData`
@@ -970,7 +946,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `SetHandleOwner`
 * `SetHandleOwnerWorkaround`
 * `SetHardwareWatch`
-* `SetInterruptEvent`
 * `SetKernelAlarm`
 * `SetKeyboardTarget`
 * `SetLowestScheduledPriority`
@@ -982,7 +957,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `SetRealTime`
 * `SetStdioPathW`
 * `SetSystemDefaultLCID`
-* `SetSystemMemoryDivision`
 * `SetTimeZoneBias`
 * `SetWDevicePowerHandler`
 * `SetWindowAutoGesture`
@@ -1252,3 +1226,13 @@ Candidate surface gaps (may include CRT-provider names).
 * `_inp`
 * `_inpd`
 * `_inpw`
+* `_invalid_parameter`
+* `_isctype`
+* `_isnan`
+* `_isnanf`
+* `_isunordered`
+* `_isunorderedf`
+* `_itoa`
+* `_itoa_s`
+* `_itow`
+* `_itow_s`

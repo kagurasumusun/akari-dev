@@ -1,0 +1,55 @@
+/*
+ * Notifext.hxx -- declarations recovered from the official
+ * page prints (tools/decl-d1.py, M105 header creation).
+ *
+ * Copyright (c) 2026 Akari API contributors
+ * SPDX-License-Identifier: MIT
+ *
+ * Every declaration below is an official page's own
+ * print (page id cited).  Prints whose types include/
+ * cannot yet resolve are recorded verbatim in the
+ * header comment blocks by later passes; nothing is
+ * dropped or invented.
+ */
+
+#ifndef AKARI_NOTIFEXT_HXX_
+#define AKARI_NOTIFEXT_HXX_
+
+#include "Windef.h"    /* base Win32 types */
+#include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms905402: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPrivate_ClearUserAlarm(void);
+
+/* ms905403: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPrivate_DeleteNotification(CEOID oid);
+
+/* ms905404: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPrivate_FilterType(unsigned int uiFlag);
+
+/* ms905405: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPrivate_Lock(void);
+
+/* ms905406: page-printed prototype (Windows CE 2.10 and later.). */
+int CeNotifyPrivate_Reschedule(CEOID oid, int iDelaySeconds);
+
+/* ms905409: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPrivate_Unlock(void);
+
+/* ms905411: page-printed prototype (Windows CE 2.10 and later.). */
+int CeNotifyPublic_FilterEvent(DWORD dwEvent);
+
+/* ms905413: page-printed prototype (Windows CE 2.10 and later.). */
+int CeNotifyPublic_Initialize(HINSTANCE hInst, HWND hwndUI);
+
+/* ms905414: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPublic_NewPacket(CEOID oidRecord);
+
+/* ms905417: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPublic_UserAlarmSignalled(void);
+
+#endif /* AKARI_NOTIFEXT_HXX_ */

@@ -508,4 +508,11 @@ AKARI_CE_IMPORT DWORD RasSetEapConnectionData(LPCTSTR pszPhonebook, LPCTSTR pszE
 /* ms897117: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
 AKARI_CE_IMPORT DWORD RasSetEapUserData(HANDLE hToken, LPCTSTR pszPhonebook, LPCTSTR pszEntry, BYTE* pbEapData, DWORD dwSizeofEapData) AKARI_CE_NAME(RasSetEapUserData);
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms924957: page-printed definition (Windows CE .NET 4.0 and later.). */
+typedef enum rascntlenum_tag { RASCNTL_SERVER_GET_STATUS, RASCNTL_SERVER_ENABLE, RASCNTL_SERVER_DISABLE, RASCNTL_SERVER_GET_PARAMETERS, RASCNTL_SERVER_SET_PARAMETERS, RASCNTL_SERVER_LINE_ADD, RASCNTL_SERVER_LINE_REMOVE, RASCNTL_SERVER_LINE_ENABLE, RASCNTL_SERVER_LINE_DISABLE, RASCNTL_SERVER_LINE_GET_PARAMETERS, RASCNTL_SERVER_LINE_SET_PARAMETERS, RASCNTL_SERVER_USER_SET_CREDENTIALS, RASCNTL_SERVER_USER_DELETE_CREDENTIALS } RasCntlEnum;
+
 #endif /* AKARI_RAS_H */

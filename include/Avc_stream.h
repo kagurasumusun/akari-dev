@@ -264,4 +264,13 @@ typedef struct  {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* aa448159: page-printed definition (Windows CE .NET 4.0 and later.). */
+typedef struct _STREAM_GetMediaSize_Request {
+    STREAM_MediaType sgms_MediaType;
+} STREAM_GetMediaSize_Request;
+
 #endif /* AKARI_AVC_STREAM_H */

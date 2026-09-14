@@ -7800,3 +7800,120 @@ name absent from def) 358 -> 0; D4 (surface-only, no doc page)
 Gates: make hostcheck GREEN (headers compile warning-free for
 _WIN32_WCE 0x420/0x500/0x600); make defcheck GREEN (2377 exports, no
 duplicates); llvm-dlltool import-lib builds GREEN for both triples.
+
+## M105 -- harvest backfill + type closure + missing-header creation
+
+Three structural gaps attacked this pass, all in service of the
+standing remediation: (a) pages saved in the corpus whose printed
+signatures were never extracted, (b) printed typedef/struct/enum/
+constant definitions carried nowhere, blocking function prototypes
+on "type not fully determined", (c) CE SDK headers named by official
+pages but absent from include/.
+
+### (a) Harvest backfill (tools/ce-resig.py)
+
+The original harvest left `sig` empty on thousands of saved pages
+although the page's <pre><code> syntax block prints a signature.
+ce-resig.py re-reads every saved page with an empty-sig identifier
+row and backfills the print: **3462 signatures recovered**
+(rows.json/rows4.json/rows3.json in the corpus; corpus commit this
+session).  This is a measurement correction: items previously
+invisible to the audit ("never recognized") are now counted, which
+is why D1 rises below even as live declarations grow.
+
+### (b) Type-closure generator (tools/decl-types.py)
+
+Declares printed typedef / enum / struct / #define definitions whose
+constituents are already live, iterating with decl-d1.py to a
+fixpoint.  Guards: the print must declare the page's own identifier
+(pages reprinting another type's definition are skipped); member
+types must resolve (struct-tag self-references allowed); array sizes
+must be numeric or documented constants; nothing invented.  This
+pass: **26 type definitions declared** (Battery.h BATTERY_STATUS,
+Wavedev.h, Halether.h, dsound.h, Sockserv.h, Tchaud.h, Ntddndis.h
+NDIS_802_11_* typedefs, Usb100.h, Msacmdrv.h, Tchddi.h
+TOUCH_PANEL_SAMPLE_FLAGS, ...).
+
+### (c) Missing-header creation (tools/decl-d1.py extension)
+
+Headers named by official printed-signature pages but absent from
+include/ are created with page-cited declarations; case-variant
+spellings resolve onto the shipped file (mmsystem.h -> Mmsystem.h,
+wingdi.h -> Wingdi.h, Ceddk.h -> CEDDK.h, windows.h -> Windows.h,
+...).  **31 new headers** this pass: Armintr.h, Blcommon.h,
+bt_ddi.h(+), Calibrui.h, Cmnintrin.h, dsound.h, Ethdbg.h,
+Gwebypasscoredllthunk.hpp, Halether.h, Htmlctrl.h, Interned.h,
+Kernel.h, Kitl.h, Kitltran.h, Mipsintr.h, Mwinreg.h, Netui.h,
+Nkintr.h, Notifext.hxx, Oalintr.h, Oemwake.h, Oomui.h, Profiler.h,
+Pwinbase.h, Pwindbas.h, Pwinreg.h, Schedlog.h, Sockserv.h,
+Startui.h, Tchaud.h, Windev.h.  With the backfilled prints, decl-d1
+declared **189 + 5 further function prototypes** across these and
+existing headers (incl. Nkintr.h OEM hooks, Kitl transport surface,
+MIPS/ARM/SH intrinsics).
+
+Supporting fixes: Tchddsi.h includes Tchddi.h
+(TOUCH_PANEL_SAMPLE_FLAGS, aa448205).
+
+### coredll def: documented additions (783-tier now 2393 total)
+
+Added on official-page Coredll.lib evidence: GetCurrentProcess,
+GetCurrentProcessId, GetCurrentThread, GetCurrentThreadId (CE 5.0
+pages ms885613-16; declarations upgraded to AKARI_CE_IMPORT in
+Winbase.h), NKCreateStaticMapping, NKForceCleanBoot,
+VirtualSetPageFlags, CeLogThreadMigrate, DeinitLAP,
+LAPCreateEnrollmentConfigDialog, MatchTarget, MatchUser, HandleBlob,
+VerifyUserStart/Stop/ToTop.
+
+### D2 remainder explained (14 rows; none silently dropped)
+
+* `SecureZeroMemory` -- carried in Winnt.h as the official
+  compiler-proof macro; not a coredll export, so no def entry.
+* `WM_RBUTTONDOWN`/`WM_RBUTTONUP` -- message constants, already
+  defined in Winuser.h (0x0204/0x0205); constants are not exports.
+* `LINEEVENT`/`PHONEEVENT`/`ASYNC_COMPLETION` -- callback typedefs
+  declared in Tapi.h; typedefs are not exports.
+* `AbnormalTermination`/`GetExceptionCode`/`GetExceptionInformation`
+  -- declared in Excpt.h from the page prints; the pages' generic
+  Coredll.lib row conflicts with all four device dumps (none export
+  them) and with their SEH-intrinsic nature, so no def entry --
+  evidence-based exclusion, recorded here.
+* `IPRcvBuf`/`IP_NAT_DIRECTION`/`IP_NAT_REGISTER_EDITOR`/
+  `IP_NAT_SESSION_MAPPING_STATISTICS` -- Natedit.h prints; the
+  structs use the BSD spellings uint/uchar for which no official CE
+  typedef page exists; held with prints recorded.
+* `CreateInstance` -- sample-code page (no Header row); record only.
+
+### Still blocked on unpublished types (explicit backlog)
+
+* CeSvc* (Ceutil.h, 12 functions): need HCESVC/PHCESVC -- no
+  official page prints the typedef.
+* ObjectNotify: needs OBJNOTIFY/OBJTYPENAME/MAX_OBJTYPE_NAME chain
+  (Cesync pages print the struct but depend on OBJTYPENAME).
+* InitObjType: needs IReplObjHandler COM interface print.
+* Install_Exit: needs codeINSTALL_EXIT typedef (unpublished).
+* PlatformDeviceListInit/PlatformSendInitialNotifications/
+  PlatformSetSystemPowerState: Pmimpl.h pages print a corrupted
+  token (LPCSTSTR); no clean official print available.
+* TSPI_lineConditionalMediaDetection: both archive prints are
+  glue-damaged at the hdConsultCall parameter; held.
+* ACMDRV*/WAVEFORMATEX chain: WAVEFORMATEX page prints recovered by
+  the backfill (aa452419/ms897187); the struct itself still fails
+  the resolver on glued member prints -- next tooling iteration.
+
+### Audit delta after M105
+
+rows 8923; declared 5689 -> **5888**; comment-only 2323 -> 2305;
+absent 911 -> 730; D1 1054 -> **1422** (rise = backfilled prints now
+measured, not regression); D2 30 -> 14 (all explained above);
+D3 0; D4 1097 -> 1087.  coredll-doc.def 2393 entries.
+include/: 261 -> 292 headers.
+
+Gates: make hostcheck GREEN (0x420/0x500/0x600); make defcheck GREEN
+(2393, no duplicates).
+
+Known audit limitations (check scripts are NOT complete): the audit
+measures only rows harvested into rows*.json; CE 1/2 pages (pagesw)
+are not yet row-harvested; D2 classification needs per-kind rules
+(constants/typedefs/macros vs exports); the 525 unresolved type
+prints and ~1800 unresolved function prints remain tooling-limited
+(glue-damaged prints, unpublished member types).

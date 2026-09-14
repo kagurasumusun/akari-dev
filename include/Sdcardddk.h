@@ -173,4 +173,11 @@ typedef enum _SDCARD_DEVICE_TYPE {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms920440: page-printed definition (Windows CE 5.0 and later.). */
+typedef enum sd_io_transfer_type_tag { SD_IO_READ, SD_IO_WRITE } SD_IO_TRANSFER_TYPE;
+
 #endif /* AKARI_SDCARDDDK_H */

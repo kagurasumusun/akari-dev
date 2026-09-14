@@ -110,4 +110,11 @@ typedef struct TPDC_SAMPLE_RATE {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* aa448205: page-printed definition (Windows CE 1.0 and later.). */
+typedef UINT32 TOUCH_PANEL_SAMPLE_FLAGS, *PTOUCH_PANEL_SAMPLE_FLAGS;
+
 #endif /* AKARI_TCHDDI_H */

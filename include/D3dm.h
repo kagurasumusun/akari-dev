@@ -1613,4 +1613,11 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms907695: page-printed definition (Windows CE 5.0 and later.). */
+#define D3DMCURRENT_DISPLAY_MODE 0x00EFFFFF
+
 #endif /* AKARI_D3DM_H */

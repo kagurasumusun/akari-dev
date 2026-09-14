@@ -82,4 +82,24 @@ AKARI_CE_IMPORT BOOL BatteryDrvrSupportsChangeNotification(void)
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* wceddkBATTERY_STATUS: page-printed definition (Windows CE OS). */
+typedef struct _BATTERY_STATUS {
+    BYTE ACLineStatus;
+    BYTE BatteryFlag;
+    BYTE BatteryLifePercent;
+    BYTE Reserved1;
+    DWORD BatteryLifeTime;
+    DWORD BatteryFullLifeTime;
+    BYTE Reserved2;
+    BYTE BackupBatteryFlag;
+    BYTE BackupBatteryLifePercent;
+    BYTE fBatteriesChangedSinceLastCall;
+    DWORD BackupBatteryLifeTime;
+    DWORD BackupBatteryFullLifeTime;
+} BATTERY_STATUS;
+
 #endif /* AKARI_BATTERY_H */

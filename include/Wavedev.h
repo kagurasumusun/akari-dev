@@ -37,4 +37,17 @@ typedef struct  {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* wceddkMMDRV_MESSAGE_PARAMS: page-printed definition (Windows CE OS). */
+typedef struct _MMDRV_MESSAGE_PARAMS {
+    UINT uDeviceId;
+    UINT uMsg;
+    DWORD dwUser;
+    DWORD dwParam1;
+    DWORD dwParam2;
+} MMDRV_MESSAGE_PARAMS;
+
 #endif /* AKARI_WAVEDEV_H */

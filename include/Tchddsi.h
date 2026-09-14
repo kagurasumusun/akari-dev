@@ -16,6 +16,7 @@
 #define AKARI_TCHDDSI_H
 
 #include <Windows.h>
+#include "Tchddi.h"    /* TOUCH_PANEL_SAMPLE_FLAGS (aa448205) */
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,5 +51,12 @@ AKARI_CE_IMPORT BOOL DdsiTouchPanelSetMode(ULONG iIndex, LPVOID lpInput)
 #ifdef __cplusplus
 }
 #endif
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms898274: page-printed prototype (Windows CE 1.0 and later.; tchmdd.lib). */
+void DdsiTouchPanelGetPoint(TOUCH_PANEL_SAMPLE_FLAGS pTipState, PLONG pUnCalX, PLONG pUnCalY);
 
 #endif /* AKARI_TCHDDSI_H */

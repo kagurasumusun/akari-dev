@@ -530,4 +530,11 @@ struct _D3DMDEVICEFORMAT{
     ULONG Usage;
 };
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* aa447708: page-printed definition (Windows CE 5.0). */
+#define D3DMTSS_TEXTURE 0
+
 #endif /* AKARI_D3DMDDK_H */

@@ -34,12 +34,17 @@ C_KEYWORDS = {"void", "const", "unsigned", "signed", "struct", "enum",
               "union", "char", "short", "int", "long", "float", "double"}
 DECOR = {"IN", "OUT", "OPTIONAL", "WINAPI", "CALLBACK", "FAR", "NEAR",
          "PASCAL", "APIENTRY", "CONST", "EXTERN_C"}
+# COM-interface method prints documented as standalone pages; never
+# free functions of the Win32 surface.
+GENERIC_METHODS = {"Add", "AddRef", "Count", "Event", "Get", "Next",
+                   "Query", "Read", "Release", "Remove", "Reset", "Set",
+                   "Skip", "Write", "Lock", "Unlock"}
 
 
 def load_live(incdir):
     live = set()
     for fn in sorted(os.listdir(incdir)):
-        if not fn.endswith(".h"):
+        if not fn.endswith((".h", ".hxx", ".hpp")):
             continue
         text = open(os.path.join(incdir, fn), encoding="utf-8",
                     errors="replace").read()
@@ -54,7 +59,7 @@ def load_types(incdir):
     tags actually defined in the shipped headers."""
     types = set()
     for fn in sorted(os.listdir(incdir)):
-        if not fn.endswith(".h"):
+        if not fn.endswith((".h", ".hxx", ".hpp")):
             continue
         text = open(os.path.join(incdir, fn), encoding="utf-8",
                     errors="replace").read()
@@ -142,7 +147,8 @@ def parse_sig(sig, res):
     # function-like macros (all caps) and entry points/callback docs
     if re.match(r"^[A-Z0-9_]+$", name) or name.endswith("Proc") \
             or name.endswith("CallbackFunc") \
-            or name in ("DllMain", "WinMain", "wWinMain", "main"):
+            or name in ("DllMain", "WinMain", "wWinMain", "main") \
+            or name in GENERIC_METHODS:
         return None
     ret = " ".join(head_toks[:-1])
     if "CALLBACK" in ret.split():
@@ -264,9 +270,16 @@ def main():
         hdr = hdr.split()[0] if hdr.split() else ""
         # alias headers: the tree carries the base header instead
         hdr = {"Kfuncs.h": "Winbase.h", "Cesync.h": "Objbase.h"}.get(hdr, hdr)
-        if not hdr or not os.path.exists(os.path.join(incdir, hdr)):
+        if not hdr or not re.match(r"^[A-Za-z0-9_]+\.(h|hxx|hpp)$", hdr):
             skipped["noheader"] += 1
             continue
+        # case-insensitive resolution against the shipped tree; a
+        # truly missing header is created further down
+        if not os.path.exists(os.path.join(incdir, hdr)):
+            hit = next((fn for fn in os.listdir(incdir)
+                        if fn.lower() == hdr.lower()), None)
+            if hit:
+                hdr = hit
         lib = (r.get("lib") or "").lower()
         coredll = ("coredll" in lib) or (name in surf) or (name + "W" in surf)
         plist = ", ".join((t + ((" " + a) if a else "")) for t, a in params) \
@@ -281,13 +294,54 @@ def main():
         out.setdefault(hdr, []).append((name, cite, osr, lib.strip(" ."), decl))
         skipped["parsed"] += 1
 
+    # merge case-variant spellings of the same missing header
+    merged = {}
+    for hdr, items in sorted(out.items(), key=lambda kv: kv[0].lower()):
+        key = hdr.lower()
+        if key in merged:
+            tgt = merged[key][0]
+            print(f"(merge {hdr} -> {tgt})")
+            merged[key][1].extend(items)
+        else:
+            merged[key] = [hdr, items]
+    out = {v[0]: v[1] for v in merged.values()}
+
     total = 0
-    for hdr, items in sorted(out.items()):
+    for hdr, items in sorted(out.items(), key=lambda kv: kv[0].lower()):
         total += len(items)
-        print(f"{hdr}: +{len(items)}")
+        path = os.path.join(incdir, hdr)
+        if not os.path.exists(path) and not apply:
+            print(f"{hdr}: would CREATE (+{len(items)} planned)")
+            continue
+        if not os.path.exists(path):
+            guard = "AKARI_" + re.sub(r"[^A-Z0-9]+", "_", hdr.upper()) + "_"
+            text = (
+                "/*\n"
+                f" * {hdr} -- declarations recovered from the official\n"
+                " * page prints (tools/decl-d1.py, M105 header creation).\n"
+                " *\n"
+                " * Copyright (c) 2026 Akari API contributors\n"
+                " * SPDX-License-Identifier: MIT\n"
+                " *\n"
+                " * Every declaration below is an official page's own\n"
+                " * print (page id cited).  Prints whose types include/\n"
+                " * cannot yet resolve are recorded verbatim in the\n"
+                " * header comment blocks by later passes; nothing is\n"
+                " * dropped or invented.\n"
+                " */\n"
+                "\n"
+                f"#ifndef {guard}\n"
+                f"#define {guard}\n"
+                "\n"
+                "#include \"Windef.h\"    /* base Win32 types */\n"
+                "#include \"Winnt.h\"     /* HRESULT, LARGE_INTEGER, ... */\n"
+                f"\n#endif /* {guard} */\n")
+            open(path, "w", encoding="utf-8").write(text)
+            print(f"{hdr}: CREATED (+{len(items)} planned)")
+        else:
+            print(f"{hdr}: +{len(items)}")
         if not apply:
             continue
-        path = os.path.join(incdir, hdr)
         text = open(path, encoding="utf-8").read()
         m = re.search(r"\n#endif /\* [A-Za-z_][A-Za-z0-9_]* \*/\s*$", text)
         if not m:
