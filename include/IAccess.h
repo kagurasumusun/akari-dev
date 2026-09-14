@@ -24,18 +24,18 @@ extern "C" {
 /* ------------------------------------------------------------------
  * Book surface: m107-iaccess (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
-/* aa515095 IAccessControl::GetAllAccessRights (Header: IAccess.h.) */
-/* ms886995 IAccessControl::GetAllAccessRights (Header: IAccess.h.) */
-/* aa515097 IAccessControl::GrantAccessRights (Header: IAccess.h.) */
-/* ms886996 IAccessControl::GrantAccessRights (Header: IAccess.h.) */
-/* aa515099 IAccessControl::IsAccessAllowed (Header: IAccess.h.) */
-/* ms886997 IAccessControl::IsAccessAllowed (Header: IAccess.h.) */
-/* aa515102 IAccessControl::RevokeAccessRights (Header: IAccess.h.) */
-/* ms887001 IAccessControl::RevokeAccessRights (Header: IAccess.h.) */
-/* aa515103 IAccessControl::SetAccessRights (Header: IAccess.h.) */
-/* ms887002 IAccessControl::SetAccessRights (Header: IAccess.h.) */
-/* aa515104 IAccessControl::SetOwner (Header: IAccess.h.) */
-/* ms887003 IAccessControl::SetOwner (Header: IAccess.h.) */
+/* aa515095 IAccessControl::GetAllAccessRights (Header: IAccess.h.): print `HRESULT GetAllAccessRights(LPWSTRlpProperty,PACTRL_ACCESSW* ppAccessList,PTRUSTEEW* ppOwner,PTRUSTEEW* ppGroup);` */
+/* ms886995 IAccessControl::GetAllAccessRights (Header: IAccess.h.): print `HRESULT GetAllAccessRights(LPWSTR lpProperty, PACTRL_ACCESSW* ppAccessList, PTRUSTEEW* ppOwner, PTRUSTEEW* ppGroup);` */
+/* aa515097 IAccessControl::GrantAccessRights (Header: IAccess.h.): print `HRESULT GrantAccessRights(PACTRL_ACCESSWpAccessList);` */
+/* ms886996 IAccessControl::GrantAccessRights (Header: IAccess.h.): print `HRESULT GrantAccessRights(PACTRL_ACCESSW pAccessList);` */
+/* aa515099 IAccessControl::IsAccessAllowed (Header: IAccess.h.): print `HRESULT IsAccessAllowed(PTRUSTEEWpTrustee,LPWSTRlpProperty,ACCESS_RIGHTSAccessRights,BOOL* pfAccessAllowed);` */
+/* ms886997 IAccessControl::IsAccessAllowed (Header: IAccess.h.): print `HRESULT IsAccessAllowed(PTRUSTEEW pTrustee, LPWSTR lpProperty, ACCESS_RIGHTS AccessRights, BOOL* pfAccessAllowed);` */
+/* aa515102 IAccessControl::RevokeAccessRights (Header: IAccess.h.): print `HRESULT RevokeAccessRights(LPWSTRlpProperty,ULONGcTrustees,TRUSTEEWprgTrustees[]);` */
+/* ms887001 IAccessControl::RevokeAccessRights (Header: IAccess.h.): print `HRESULT RevokeAccessRights(LPWSTR lpProperty, ULONG cTrustees, TRUSTEEW prgTrustees[]);` */
+/* aa515103 IAccessControl::SetAccessRights (Header: IAccess.h.): print `HRESULT SetAccessRights(PACTRL_ACCESSWpAccessList);` */
+/* ms887002 IAccessControl::SetAccessRights (Header: IAccess.h.): print `HRESULT SetAccessRights(PACTRL_ACCESSW pAccessList);` */
+/* aa515104 IAccessControl::SetOwner (Header: IAccess.h.): print `HRESULT SetOwner(PTRUSTEEWpOwner,PTRUSTEEWpGroup);` */
+/* ms887003 IAccessControl::SetOwner (Header: IAccess.h.): print `HRESULT SetOwner(PTRUSTEEW pOwner, PTRUSTEEW pGroup);` */
 
 #ifdef __cplusplus
 }

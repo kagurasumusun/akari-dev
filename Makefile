@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 CC      ?= cc
+CXX     ?= c++
 CFLAGS  ?= -O2 -Wall -Wextra -Wshadow -Wstrict-prototypes
 STD      = -std=c11
 INCLUDES = -Iinclude
@@ -15,8 +16,10 @@ CE_VERSIONS = 0x420 0x500 0x600
 
 HDRS = \
 include/Acmdrv.h \
+include/Addauto.h \
 include/Advbacklight.h \
 include/Af_irda.h \
+include/Appdefs.h \
 include/Autodial.h \
 include/Autoras.h \
 include/Av_upnp.h \
@@ -33,6 +36,7 @@ include/Btagpub.h \
 include/Bthapi.h \
 include/Bthid.h \
 include/Bthsdpdef.h \
+include/Buttonview.hpp \
 include/Calibrui.h \
 include/Cchannel.h \
 include/Cdioctl.h \
@@ -41,8 +45,10 @@ include/CEDDK.h \
 include/Celog.h \
 include/Cesync.h \
 include/Ceutil.h \
+include/Comboboxview.hpp \
 include/Comcat.h \
 include/Commctrl.h \
+include/Commctrlview.hpp \
 include/Commdlg.h \
 include/Console.h \
 include/Cpl.h \
@@ -83,8 +89,11 @@ include/Externs.h \
 include/Extfile.h \
 include/Fatui.h \
 include/Fwapi.h \
+include/Gcacheview.hpp \
+include/Gdi.hpp \
 include/getdeviceuniqueid.h \
 include/Gwebypasscoredllthunk.hpp \
+include/Headerview.hpp \
 include/Htmlctrl.h \
 include/Httpext.h \
 include/Httpfilt.h \
@@ -123,6 +132,7 @@ include/Mssoap.h \
 include/Msxml2.h \
 include/Mwinreg.h \
 include/Natedit.h \
+include/Nclientview.hpp \
 include/Netui.h \
 include/newmenu.h \
 include/Nkarm.h \
@@ -149,6 +159,7 @@ include/pm.h \
 include/pnrpdef.h \
 include/pnrpns.h \
 include/Prnport.h \
+include/Progressview.hpp \
 include/Proxy.h \
 include/Prsht.h \
 include/Psapi.h \
@@ -161,6 +172,7 @@ include/Rapi.h \
 include/Rapitypes.h \
 include/Ras.h \
 include/Raseapif.h \
+include/Rebarview.hpp \
 include/Recog.h \
 include/Remoteui.h \
 include/Replfilt.h \
@@ -170,6 +182,7 @@ include/Rules.h \
 include/Sapi.h \
 include/Sapiddk.h \
 include/Schnlsp.h \
+include/Scrollview.hpp \
 include/Sdcard.h \
 include/Sdkddkver.h \
 include/Service.h \
@@ -196,14 +209,18 @@ include/Sphelper.h \
 include/Splapi.h \
 include/Sspi.h \
 include/Startui.h \
+include/Statctlview.hpp \
 include/Storemgr.h \
 include/Streams.h \
 include/strmif.h \
+include/Tabview.hpp \
 include/Tapi.h \
 include/Tapicomn.h \
 include/Tchar.h \
 include/Tchaud.h \
 include/Tlhelp32.h \
+include/Toolbarview.hpp \
+include/Trackbarview.hpp \
 include/Tuple.h \
 include/Tvout.h \
 include/Unimodem.h \
@@ -318,6 +335,7 @@ include/oak/Ntcompat.h \
 include/oak/Ntddndis.h \
 include/oak/Oalintr.h \
 include/oak/Oemwake.h \
+include/oak/Ohcdddsi.h \
 include/oak/Partdrv.h \
 include/oak/PCIbus.h \
 include/oak/PCIReg.h \
@@ -344,9 +362,9 @@ include/oak/Wavemdd.h \
 include/oak/Wdm.h \
 include/oak/Winddi.h
 
-.PHONY: check hostcheck defcheck defdoc e2e clean
+.PHONY: check hostcheck cxxcheck defcheck defdoc e2e clean
 
-check: hostcheck defcheck
+check: hostcheck cxxcheck defcheck
 
 # defdoc regenerates def/*-doc.def from build/rows.json, the record set
 # harvested from the official CE documentation pages by tools/ce-fetch.py
@@ -433,6 +451,24 @@ crosscheck: $(HDRS) $(OAK_HDRS)
 	    tests/host/tu_compile.c || exit 1; \
 	done; \
 	echo "[crosscheck] OK -- $(words $(CE_TRIPLES)) WinCE targets"
+
+# The .hpp cluster is C++-only (classes, enums, static members), so the
+# C hostcheck cannot see it.  cxxcheck compiles every .hpp and the .hxx
+# headers as C++ under the same three CE generation values.
+HPP_HDRS = $(filter %.hpp %.hxx,$(HDRS))
+
+cxxcheck: $(HDRS)
+	@test -n "$(CXX)" || { echo "[cxxcheck] set CXX" >&2; exit 2; }; \
+	for v in $(CE_VERSIONS); do \
+	  echo "[cxxcheck] headers + TU under _WIN32_WCE=$$v (C++)"; \
+	  for h in $(HPP_HDRS); do \
+	    echo "  standalone: $$h"; \
+	    $(CXX) -std=c++17 $(filter-out -Wstrict-prototypes,$(CFLAGS)) \
+	      -Werror -D_WIN32_WCE=$$v $(INCLUDES) \
+	      -include $$h -fsyntax-only -x c++ /dev/null || exit 1; \
+	  done; \
+	done
+	@echo "[cxxcheck] OK -- C++ headers compile warning-free for CE $(CE_VERSIONS)"
 
 hostcheck: $(HDRS) $(OAK_HDRS)
 	@for v in $(CE_VERSIONS); do \

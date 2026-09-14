@@ -1,0 +1,4 @@
+ms920038	TrackBarView_t::DrawChannel
+ms920042	TrackBarView_t::DrawFocus
+ms920044	TrackBarView_t::DrawThumb
+ms920046	TrackBarView_t::DrawTics

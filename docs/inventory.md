@@ -8070,3 +8070,38 @@ of the first generation run.
 
 Gates: hostcheck OK (CE 0x420/0x500/0x600, 240 app + 68 oak headers +
 TU), crosscheck OK (6 WinCE targets), defcheck OK.
+
+### M107d -- the C++ class cluster + the remaining absent tokens
+
+`tools/gen-class-hpp.py` (new) emits the documented C++ class headers.
+The pages of this cluster print their members with the `static` storage
+class (`static void DrawPushable( HDC hdc, ... )`) and their file-scope
+enumerations in full (`enum WidgetId { widInvalid = -1, ... }`), so the
+header is generated from those prints: one `class <Name> { public: ... }`
+per documented class, the page id of every member in its comment, and the
+enums compiled as printed.  The SDK decoration macros the Gdi.hpp pages
+print (`WINGDIAPI` / `INGDIAPI` / `WINUSERAPI`) are defined empty with a
+note: the tree's CE model has no decoration on the 32-bit flat ABI
+(include/Windef.h / include/Wingdi.h), and no page publishes an expansion.
+
+New headers: `Gdi.hpp` (97 members), `Buttonview.hpp`, `Toolbarview.hpp`,
+`Scrollview.hpp`, `Gcacheview.hpp`, `Statctlview.hpp`, `Trackbarview.hpp`,
+`Comboboxview.hpp`, `Headerview.hpp`, `Rebarview.hpp`, `Commctrlview.hpp`,
+`Progressview.hpp`, `Tabview.hpp`, `Nclientview.hpp` (the WidgetId enum),
+and the two dialog-hook ledgers `Appdefs.h` (IApplication::*) /
+`Addauto.h` (IDSAddIn::*), plus `include/oak/Ohcdddsi.h` (17 OHCD DDI
+prototypes, CE 3.0 Device Driver Development pages).
+
+`tools/local-pages.py` (new) materialises `build/pages/` from the corpus
+so the generation runs are reproducible (build/ is a git-ignored
+artifact).
+
+`tools/gen-book.py`: `scan_declared` now records function-pointer typedef
+names (`typedef BOOL (CALLBACK *FONTENUMPROC)(...)` ends with `)` and the
+old pattern never saw it, so documented callbacks looked unpublished);
+`base_of` strips `enum`/`union` tags; qualified class/interface member
+records now carry the page's own printed signature in their comment.
+
+`make cxxcheck` (new; part of `make check`): compiles every `.hpp`/`.hxx`
+as C++17 under `_WIN32_WCE` 0x420/0x500/0x600 -- the C hostcheck cannot
+see the class surface.

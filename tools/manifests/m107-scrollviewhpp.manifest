@@ -1,0 +1,7 @@
+ms919566	ScrollBarInfoInternal
+ms919574	ScrollBarView_t::DrawScrollBar
+ms919579	ScrollBarView_t::GetScrollRects
+ms919582	ScrollBarView_t::GetThumbPixel
+ms919587	ScrollBarView_t::ScrollHitTest
+ms919591	ScrollBarView_t::TrackThumb
+ms919595	SCROLL_STATE

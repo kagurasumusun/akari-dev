@@ -1,0 +1,4 @@
+ms926091	IApplication::AddCommand
+ms926094	IApplication::AddCommandBarButton
+ms926100	IApplication::EnableModeless
+ms926113	IApplication::SetAddInInfo

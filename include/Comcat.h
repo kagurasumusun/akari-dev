@@ -24,30 +24,30 @@ extern "C" {
 /* ------------------------------------------------------------------
  * Book surface: m107-comcat (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
-/* ms879987 ICatInformation::EnumCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887022 ICatInformation::EnumCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880012 ICatInformation::EnumClassesOfCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887023 ICatInformation::EnumClassesOfCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880020 ICatInformation::EnumImplCategoriesOfClass (Header: Comcat.h, Comcat.idl.) */
-/* ms887024 ICatInformation::EnumImplCategoriesOfClass (Header: Comcat.h, Comcat.idl.) */
-/* ms880024 ICatInformation::EnumReqCategoriesOfClass (Header: Comcat.h, Comcat.idl.) */
-/* ms887025 ICatInformation::EnumReqCategoriesOfClass (Header: Comcat.h, Comcat.idl.) */
-/* ms880029 ICatInformation::GetCategoryDesc (Header: Comcat.h, Comcat.idl.) */
-/* ms887026 ICatInformation::GetCategoryDesc (Header: Comcat.h, Comcat.idl.) */
-/* ms880032 ICatInformation::IsClassOfCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887027 ICatInformation::IsClassOfCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880045 ICatRegister::RegisterCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887139 ICatRegister::RegisterCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880052 ICatRegister::RegisterClassImplCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887248 ICatRegister::RegisterClassImplCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880057 ICatRegister::RegisterClassReqCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887259 ICatRegister::RegisterClassReqCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880063 ICatRegister::UnRegisterCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887265 ICatRegister::UnRegisterCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880068 ICatRegister::UnRegisterClassImplCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887266 ICatRegister::UnRegisterClassImplCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms880073 ICatRegister::UnRegisterClassReqCategories (Header: Comcat.h, Comcat.idl.) */
-/* ms887267 ICatRegister::UnRegisterClassReqCategories (Header: Comcat.h, Comcat.idl.) */
+/* ms879987 ICatInformation::EnumCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumCategories(LCIDlcid,IEnumCATEGORYINFO** ppenumCatInfo);` */
+/* ms887022 ICatInformation::EnumCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumCategories(LCID lcid, IEnumCATEGORYINFO** ppenumCatInfo);` */
+/* ms880012 ICatInformation::EnumClassesOfCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumClassesOfCategories(ULONGcImplemented,CATIDrgcatidImpl,ULONGcRequired,CATIDrgcatidReq,IEnumCLSID** ppenumCLSID);` */
+/* ms887023 ICatInformation::EnumClassesOfCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumClassesOfCategories(ULONG cImplemented, CATID rgcatidImpl, ULONG cRequired, CATID rgcatidReq, IEnumCLSID** ppenumCLSID);` */
+/* ms880020 ICatInformation::EnumImplCategoriesOfClass (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumImplCategoriesOfClass(REFCLSIDrclsid,IEnumCATID** ppenumCATD);` */
+/* ms887024 ICatInformation::EnumImplCategoriesOfClass (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumImplCategoriesOfClass(REFCLSID rclsid, IEnumCATID** ppenumCATD);` */
+/* ms880024 ICatInformation::EnumReqCategoriesOfClass (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumReqCategoriesOfClass(REFCLSIDrclsid,IEnumCATID** ppenumCATD);` */
+/* ms887025 ICatInformation::EnumReqCategoriesOfClass (Header: Comcat.h, Comcat.idl.): print `HRESULT EnumReqCategoriesOfClass(REFCLSID rclsid, IEnumCATID** ppenumCATD);` */
+/* ms880029 ICatInformation::GetCategoryDesc (Header: Comcat.h, Comcat.idl.): print `HRESULT GetCategoryDesc(REFCATIDrcatid,LCIDlcid,PWCHAR* ppszDesc);` */
+/* ms887026 ICatInformation::GetCategoryDesc (Header: Comcat.h, Comcat.idl.): print `HRESULT GetCategoryDesc(REFCATID rcatid, LCID lcid, PWCHAR* ppszDesc);` */
+/* ms880032 ICatInformation::IsClassOfCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT IsClassOfCategories(REFCLSIDrclsid,ULONGcImplemented,CATIDrgcatidImpl[],ULONGcRequired,CATIDrgcatidReq[]);` */
+/* ms887027 ICatInformation::IsClassOfCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT IsClassOfCategories(REFCLSID rclsid, ULONG cImplemented, CATID rgcatidImpl[], ULONG cRequired, CATID rgcatidReq[]);` */
+/* ms880045 ICatRegister::RegisterCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT RegisterCategories(ULONGcCategories,CATEGORYINFOrgCategoryInfo[]);` */
+/* ms887139 ICatRegister::RegisterCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT RegisterCategories(ULONG cCategories, CATEGORYINFO rgCategoryInfo[]);` */
+/* ms880052 ICatRegister::RegisterClassImplCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT RegisterClassImplCategories(REFCLSIDrclsid,ULONGcCategories,CATIDrgcatid[]);` */
+/* ms887248 ICatRegister::RegisterClassImplCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT RegisterClassImplCategories(REFCLSID rclsid, ULONG cCategories, CATID rgcatid[]);` */
+/* ms880057 ICatRegister::RegisterClassReqCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT RegisterClassReqCategories(REFCLSIDrclsid,ULONGcCategories,CATIDrgcatid[]);` */
+/* ms887259 ICatRegister::RegisterClassReqCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT RegisterClassReqCategories(REFCLSID rclsid, ULONG cCategories, CATID rgcatid[]);` */
+/* ms880063 ICatRegister::UnRegisterCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT UnRegisterCategories(ULONGcCategories,CATIDrgcatid[]);` */
+/* ms887265 ICatRegister::UnRegisterCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT UnRegisterCategories(ULONG cCategories, CATID rgcatid[]);` */
+/* ms880068 ICatRegister::UnRegisterClassImplCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT UnRegisterClassImplCategories(REFCLSIDrclsid,ULONGcCategories,CATIDrgcatid[]);` */
+/* ms887266 ICatRegister::UnRegisterClassImplCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT UnRegisterClassImplCategories(REFCLSID rclsid, ULONG cCategories, CATID rgcatid[]);` */
+/* ms880073 ICatRegister::UnRegisterClassReqCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT UnRegisterClassReqCategories(REFCLSIDrclsid,ULONGcCategories,CATIDrgcatid[]);` */
+/* ms887267 ICatRegister::UnRegisterClassReqCategories (Header: Comcat.h, Comcat.idl.): print `HRESULT UnRegisterClassReqCategories(REFCLSID rclsid, ULONG cCategories, CATID rgcatid[]);` */
 
 #ifdef __cplusplus
 }

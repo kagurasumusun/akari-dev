@@ -54,6 +54,10 @@ gb = importlib.import_module('gen-book')
 DECOR = ('WINGDIAPI', 'INGDIAPI', 'WINUSERAPI', 'WINBASEAPI', 'WINUSERAPI',
          'STDAPI', 'STDAPICALLTYPE', 'WINAPIV')
 
+PRIM_WORDS = {'const', 'volatile', 'signed', 'unsigned', 'long', 'short',
+              'int', 'char', 'float', 'double', 'struct', 'enum', 'union',
+              '__int64', 'bool'}
+
 DECOR_DEFS = '''/* %s: the CE pages print the class members with the SDK's decoration
  * macros.  No official page of the harvested corpus publishes their
  * expansion; this project's CE model has no decoration on the 32-bit
@@ -120,7 +124,10 @@ def conv_params(paramtext):
         base = gb.base_of(t)
         if not base:
             return None, piece
-        if base not in gb.PRIMS and not gb.known_type(t):
+        # `unsigned int` / `unsigned long` are two words but one
+        # primitive type: accept when every word is a primitive keyword
+        prim = all(w in gb.PRIMS or w in PRIM_WORDS for w in base.split())
+        if not prim and not gb.known_type(t):
             return None, piece
         out.append((t, n))
     return out, None
@@ -240,7 +247,12 @@ def main():
         sys.exit(__doc__)
     gb.load_registry()
     rows = {}
-    for f in gb.ROW_FILES:
+    for f in ('/home/user/wince-docs-corpus/rows.json',
+              '/home/user/wince-docs-corpus/rows3.json',
+              '/home/user/wince-docs-corpus/rows4.json',
+              os.path.join(ROOT, 'build', 'rows.json')):
+        if not os.path.exists(f):
+            continue
         for r in json.load(open(f)):
             rows[r['id'].split('(')[0]] = r
     for manifest in sys.argv[1:]:

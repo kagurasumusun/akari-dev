@@ -1,0 +1,10 @@
+ms905076	ButtonControlRectangleStyle_t
+ms905094	ButtonView_t::DrawCheckBoxandRadioStyle
+ms905098	ButtonView_t::DrawGroupBoxText
+ms905103	ButtonView_t::DrawPushable
+ms905107	ButtonView_t::DrawPushStyle
+ms905115	ButtonView_t::DrawText
+ms905211	ButtonView_t::HitDetect
+ms905216	ButtonView_t::InitDC
+ms905220	ButtonView_t::PaintGroupBox
+ms905231	ButtonView_t::PaintNonPushStyle

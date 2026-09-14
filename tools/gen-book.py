@@ -82,6 +82,14 @@ def scan_declared(txt):
     txt = re.sub(r'//[^\n]*', ' ', txt)
     for m in re.finditer(r'typedef[^;]{0,500}?\b([A-Za-z_]\w*)\s*;', txt):
         DECLARED.add(m.group(1))
+    # M107d: function-pointer typedefs (`typedef BOOL (CALLBACK *NAME)(...)`)
+    # end with ')' before the ';', so the pattern above never sees them --
+    # the generator would then treat NAME as an unpublished type.
+    for m in re.finditer(r'typedef[^;]{0,500}?;', txt):
+        for n in re.findall(r'\b([A-Za-z_]\w*)\s*\)', m.group(0)):
+            DECLARED.add(n)
+        for n in re.findall(r'\*\s*([A-Za-z_]\w*)', m.group(0)):
+            DECLARED.add(n)
     for m in re.finditer(r'\}\s*([\w\s,.*]+?);', txt):
         for a in m.group(1).split(','):
             DECLARED.add(a.strip().lstrip('*').strip())
@@ -94,14 +102,40 @@ def scan_declared(txt):
 
 
 def load_registry():
-    for fn in sorted(os.listdir(os.path.join(ROOT, 'include'))):
-        if fn.endswith('.h'):
-            txt = open(os.path.join(ROOT, 'include', fn),
-                       encoding='utf-8', errors='replace').read()
+    # M107d: the driver/OAL headers and the .hpp/.hxx class headers carry
+    # types too (oak/* are included by app headers), so the registry scans
+    # the same set raw_all() does.
+    for sub in ('include', os.path.join('include', 'oak')):
+        d = os.path.join(ROOT, sub)
+        if not os.path.isdir(d):
+            continue
+        for fn in sorted(os.listdir(d)):
+            if not fn.endswith(('.h', '.hpp', '.hxx')):
+                continue
+            txt = open(os.path.join(d, fn), encoding='utf-8',
+                       errors='replace').read()
             KNOWN.update(re.findall(r'\b([A-Za-z_]\w*)\b', txt))
             scan_declared(txt)
     DECLARED.update(PRIMS)
     KNOWN.update(PRIMS)
+
+
+def split_top_commas(txt):
+    """split a parameter list on top-level commas (nested parens and
+    brackets kept together)"""
+    out, depth, cur = [], 0, ''
+    for ch in txt:
+        if ch in '([{':
+            depth += 1
+        elif ch in ')]}':
+            depth -= 1
+        if ch == ',' and depth == 0:
+            out.append(cur)
+            cur = ''
+        else:
+            cur += ch
+    out.append(cur)
+    return [p for p in (x.strip() for x in out) if p]
 
 
 def page_text(pid):
@@ -127,7 +161,7 @@ def norm_type(t):
 
 def base_of(t):
     t = norm_type0(t)
-    t = re.sub(r'^(const\s+|struct\s+)+', '', t)
+    t = re.sub(r'^(const\s+|struct\s+|enum\s+|union\s+)+', '', t)
     t = t.split('*')[0].strip()
     return t
 
@@ -674,8 +708,22 @@ def emit_group(target, rs, bookname, raw, merge=False):
             emit.append(f'{ret} {cname}{name}({body});')
     for r in records:
         pid = r['id'].split('(')[0]
+        title = r['title'].strip()
         extra = f' (Header: {r["header"].strip()})' if r.get('header') else ''
-        emit.append(f'/* {pid} {r["title"].strip()}{extra} */')
+        # M107d: a class/interface member page usually DOES print the
+        # member's syntax; the row-level parser never saw it because the
+        # title is qualified ('ICatInformation::EnumCategories', or the
+        # dot form the MSMQ pages use).  Record that print verbatim: the
+        # ledger then carries the documented signature even where the
+        # tree deliberately declares nothing (no vtable order published).
+        member = re.split(r'::|\.', title)[-1].strip()
+        member = re.sub(r'\s*\([^)]*\)\s*$', '', member).strip()
+        pr = extract_sig_from_page(pid, member) if member else None
+        if pr:
+            emit.append(f'/* {pid} {title}{extra}: print `{pr}` */')
+        else:
+            emit.append(f'/* {pid} {title}{extra}: page record,'
+                        f' no signature printed */')
 
     if not emit:
         print(f'{target}: nothing new ({len(rs)} rows all carried)')
