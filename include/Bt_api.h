@@ -95,14 +95,18 @@ typedef struct __bth_inquiry_result BthInquiryResult;
 /* ------------------------------------------------------------------ */
 
 /* aa450303 "BthAcceptSCOConnections". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa450303) */
 AKARI_CE_IMPORT int BthAcceptSCOConnections(BOOL fAccept) AKARI_CE_NAME(BthAcceptSCOConnections);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms887570 "BthAuthenticate". */
 AKARI_CE_IMPORT int BthAuthenticate(BT_ADDR *pba) AKARI_CE_NAME(BthAuthenticate);
 
 /* ms887558 "BthAnswerPairRequest". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms887558) */
 AKARI_CE_IMPORT int BthAnswerPairRequest(BT_ADDR *pba, int cPinLength,
                                          unsigned char *ppin) AKARI_CE_NAME(BthAnswerPairRequest);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms887578 "BthCancelInquiry". */
 AKARI_CE_IMPORT int BthCancelInquiry(void) AKARI_CE_NAME(BthCancelInquiry);
@@ -194,8 +198,10 @@ AKARI_CE_IMPORT INT BthNsSetService(LPWSAQUERYSET lpqsRegInfo,
                                     DWORD dwControlFlags) AKARI_CE_NAME(BthNsSetService);
 
 /* ms887871 "BthPairRequest". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms887871) */
 AKARI_CE_IMPORT int BthPairRequest(BT_ADDR *pba, int cPinLength,
                                    unsigned char *ppin) AKARI_CE_NAME(BthPairRequest);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms887872 "BthPerformInquiry". */
 AKARI_CE_IMPORT int BthPerformInquiry(unsigned int LAP, unsigned char length,

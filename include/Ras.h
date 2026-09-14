@@ -22,6 +22,7 @@ typedef struct tagRasCntlServerStatus {
     DWORD dwNumLines;
 } RASCNTL_SERVERSTATUS, *PRASCNTL_SERVERSTATUS;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms896358) */
 /* ms896358 "RASCNTL_SERVER_IPV6_NET_PREFIX": print
  * `typedef struct tagRasCntlServerIPV6NetPrefix {
  * BYTE IPV6NetPrefix[16]; DWORD IPV6NetPrefixBitLength;
@@ -32,6 +33,7 @@ typedef struct tagRasCntlServerIPV6NetPrefix {
     DWORD IPV6NetPrefixBitLength;
     DWORD IPV6NetPrefixCount;
 } RASCNTL_SERVER_IPV6_NET_PREFIX, *PRASCNTL_SERVER_IPV6_NET_PREFIX;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* --- Record-only (page print truncated; values absent). -----------
  * ms896353 "RasCntlEnum": print (truncated on the page, values
@@ -473,6 +475,7 @@ typedef struct tagRasCntlServerUser {
 } RASCNTL_SERVERUSERCREDENTIALS, *PRASCNTL_SERVERUSERCREDENTIALS;
 
 /* ms896357 "RASCNTL_SERVERCONNECTION": print verbatim. */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms896357) */
 typedef struct tagRasCntlServerConnection {
     RASDEVINFO   rasDevInfo;
     HRASCONN     hrasconn;
@@ -481,6 +484,7 @@ typedef struct tagRasCntlServerConnection {
     RASCONNSTATE RasConnState;
     TCHAR        tszUserName[DNLEN + 1 + UNLEN + 1];
 } RASCNTL_SERVERCONNECTION, *PRASCNTL_SERVERCONNECTION;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* VARSTRING -- needed by RasDevConfigDialogEdit (ms897088).  The
  * type page is ms898569 (Header: Tapi.h); the identical print is

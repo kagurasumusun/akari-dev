@@ -30,6 +30,7 @@
 extern "C" {
 #endif
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa450323) */
 /* aa450323 "BthAGOnNetworkEvent": called by the Network Component of
  * the Audio Gateway service when an event occurs; the event ids
  * NETWORK_EVENT_CALL_IN / CALL_OUT / CALL_CONNECT / CALL_DISCONNECT /
@@ -43,6 +44,7 @@ typedef struct _NetworkCallFailedInfo {
     USHORT usCallType;
     DWORD  dwStatus;
 } NetworkCallFailedInfo;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }

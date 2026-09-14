@@ -16,6 +16,7 @@
 
 #include "Windef.h"    /* BOOL, DWORD, void */
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms905263) */
 /* ms905263 "GetPinyinType": print `BOOL GetPinyinType( DWORD*
  * pdwType);`. */
 AKARI_CE_IMPORT BOOL GetPinyinType(DWORD *pdwType)
@@ -25,6 +26,7 @@ AKARI_CE_IMPORT BOOL GetPinyinType(DWORD *pdwType)
  * dwType);`. */
 AKARI_CE_IMPORT BOOL SetPinyinType(DWORD dwType)
                     AKARI_CE_NAME(SetPinyinType);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* "ClearEudpContent": print `void ClearEudpContent(void);`. */
 AKARI_CE_IMPORT void ClearEudpContent(void)

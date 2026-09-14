@@ -645,6 +645,7 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
     AKARI_CE_NAME(Direct3DMobileCreate);
 
 /* ------------------------------------------------------------------ */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms907738) */
 /* Printed macros (D3dmtypes.h pages), verbatim:
  *   ms939145 D3DMCOLOR_ARGB(a,r,g,b)
  *   ms939146 D3DMCOLOR_RGBA(r,g,b,a) = D3DMCOLOR_ARGB(a,r,g,b)
@@ -1283,6 +1284,7 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
 
 /* ms928109 D3DMCREATE_MULTITHREADED: value adopted at the M99 three-generation sweep -- ms928109: the D3DMCreate Constants table prints the value directly (CE 6.0 twin ee491075 prints the same 0x00000004). */
 #define D3DMCREATE_MULTITHREADED            0x00000004
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms907765 D3DM Values (Header: D3dm.h.) */
 /* ms939132 D3DMADAPTER Values (Header: D3dm.h.) */
 /* aa451582 D3DMERR Values (Header: D3dm.h.) */
@@ -1618,6 +1620,8 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
  * (tools/decl-types.py). ----------------------------- */
 
 /* ms907695: page-printed definition (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms907695) */
 #define D3DMCURRENT_DISPLAY_MODE 0x00EFFFFF
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_D3DM_H */

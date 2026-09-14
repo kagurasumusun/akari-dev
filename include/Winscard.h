@@ -107,10 +107,12 @@ AKARI_CE_IMPORT LONG SCardForgetCardType(SCARDCONTEXT hContext,
 AKARI_CE_IMPORT LONG SCardForgetReader(SCARDCONTEXT hContext,
                                        LPCTSTR szReaderName) AKARI_CE_NAME(SCardForgetReader);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms938564) */
 /* ms938564 (CE 5.0+): the page print has a trailing comma after
  * pvMem; removed. */
 AKARI_CE_IMPORT LONG SCardFreeMemory(SCARDCONTEXT hContext,
                                      LPCVOID pvMem) AKARI_CE_NAME(SCardFreeMemory);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 AKARI_CE_IMPORT LONG SCardGetAttrib(SCARDHANDLE hCard, DWORD dwAttrId,
                                     LPBYTE pbAttr,

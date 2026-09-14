@@ -25,6 +25,7 @@ extern "C" {
  * Book surface: drivers-usbfn (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* aa448217 TRANSPORT_COMMAND (page print, compiled) */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa448217) */
 typedef struct _TRANSPORT_COMMAND {
     DWORD Flags;
     DWORD Timeout;
@@ -38,6 +39,7 @@ typedef struct _TRANSPORT_DATA_BUFFER {
     DWORD TransferLength;
     PVOID DataBlock;
 } TRANSPORT_DATA, *PTRANSPORT_DATA;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }

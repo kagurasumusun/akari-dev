@@ -23,6 +23,8 @@
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* ee488618: page-printed prototype (Windows Embedded CE 6.0 and later; coredll.lib). */
+#if _WIN32_WCE >= 0x0600   /* Windows Embedded CE 6.0 and later (ee488618) */
 AKARI_CE_IMPORT HRESULT GetDeviceUniqueID(LPBYTE pbApplicationData, DWORD cbApplictionData, DWORD dwDeviceIDVersion, LPBYTE pbDeviceIDOutput, DWORD* pcbDeviceIDOutput) AKARI_CE_NAME(GetDeviceUniqueID);
+#endif /* _WIN32_WCE >= 0x0600 */
 
 #endif /* AKARI_GETDEVICEUNIQUEID_H_ */

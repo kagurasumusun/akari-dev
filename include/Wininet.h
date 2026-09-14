@@ -250,6 +250,7 @@ typedef enum {
 #define HTTP_STATUS_VERSION_NOT_SUP          505
 
 /* ms918353 "InternetCookieState" -- enum print with values: */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms918353) */
 typedef enum InternetCookieState {
     COOKIE_STATE_UNKNOWN = 0x0,
     COOKIE_STATE_ACCEPT = 0x1,
@@ -259,6 +260,7 @@ typedef enum InternetCookieState {
     COOKIE_STATE_REJECT = 0x5,
     COOKIE_STATE_MAX = COOKIE_STATE_REJECT
 } InternetCookieState;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms906348 "HTTP Response Headers" -- indices printed in parens. */
 /* HTTP_QUERY_TITLE is on this page but absent from the ms918842   */
@@ -473,6 +475,7 @@ AKARI_CE_IMPORT BOOL WINAPI InternetCanonicalizeUrl(LPCTSTR lpszUrl,
     LPWSTR lpszBuffer, LPDWORD lpdwBufferLength, DWORD dwFlags)
                         AKARI_CE_NAME(InternetCanonicalizeUrl);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms918356) */
 /* ms918356 "InternetEnumPerSiteCookieDecisionA": print `BOOL InternetEnumPerSiteCookieDecisionA( LPSTR pszSiteName, unsigned long *pcSiteNameSize, unsigned long *pdwDecision, unsigned long dwIndex);`
  *. */
 AKARI_CE_IMPORT BOOL InternetEnumPerSiteCookieDecisionA(LPSTR pszSiteName, unsigned long *pcSiteNameSize, unsigned long *pdwDecision, unsigned long dwIndex)
@@ -482,6 +485,7 @@ AKARI_CE_IMPORT BOOL InternetEnumPerSiteCookieDecisionA(LPSTR pszSiteName, unsig
  *. */
 AKARI_CE_IMPORT BOOL InternetEnumPerSiteCookieDecisionW(LPSTR pszSiteName, unsigned long *pcSiteNameSize, unsigned long *pdwDecision, unsigned long dwIndex)
                         AKARI_CE_NAME(InternetEnumPerSiteCookieDecisionW);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms918360 "InternetGetConnectedState": print `BOOL InternetGetConnectedState(LPDWORD lpdwFlags,DWORD dwReserved);`
  *. */
@@ -503,6 +507,7 @@ AKARI_CE_IMPORT BOOL InternetGetCookie(LPCTSTR lpszUrl, LPCTSTR lpszCookieName, 
 AKARI_CE_IMPORT BOOL WINAPI InternetGetLastResponseInfo(LPDWORD lpdwError, LPTSTR lpszBuffer, LPDWORD lpdwBufferLength)
                         AKARI_CE_NAME(InternetGetLastResponseInfo);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms918364) */
 /* ms918364 "InternetGetPerSiteCookieDecisionA": print `BOOL InternetGetPerSiteCookieDecisionA ( LPCSTR pchHostName, unsigned long* pResult);`
  *. */
 AKARI_CE_IMPORT BOOL InternetGetPerSiteCookieDecisionA(LPCSTR pchHostName, unsigned long *pResult)
@@ -512,6 +517,7 @@ AKARI_CE_IMPORT BOOL InternetGetPerSiteCookieDecisionA(LPCSTR pchHostName, unsig
  *. */
 AKARI_CE_IMPORT BOOL InternetGetPerSiteCookieDecisionW(LPCSTR pchHostName, unsigned long *pResult)
                         AKARI_CE_NAME(InternetGetPerSiteCookieDecisionW);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms918366 "InternetGoOnline": print `BOOL InternetGoOnline(LPTSTR lpszURL,HWND hwndParent,DWORD dwReserved);`
  *. */
@@ -528,6 +534,7 @@ AKARI_CE_IMPORT BOOL InternetSetCookie(LPCTSTR lpszUrl, LPCTSTR lpszCookieName, 
 AKARI_CE_IMPORT BOOL InternetSetCookieEx(LPCTSTR lpszUrl, LPCTSTR lpszCookieName, LPCTSTR lpszCookieData, DWORD dwFlags, DWORD_PTR dwReserved)
                         AKARI_CE_NAME(InternetSetCookieEx);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms918383) */
 /* ms918383 "InternetSetPerSiteCookieDecisionA": print `BOOL InternetSetPerSiteCookieDecisionA( LPCSTR pchHostName, DWORD dwDecision);`
  *. */
 AKARI_CE_IMPORT BOOL InternetSetPerSiteCookieDecisionA(LPCSTR pchHostName, DWORD dwDecision)
@@ -537,6 +544,7 @@ AKARI_CE_IMPORT BOOL InternetSetPerSiteCookieDecisionA(LPCSTR pchHostName, DWORD
  *. */
 AKARI_CE_IMPORT BOOL InternetSetPerSiteCookieDecisionW(LPCSTR pchHostName, DWORD dwDecision)
                         AKARI_CE_NAME(InternetSetPerSiteCookieDecisionW);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms918387 "InternetTimeFromSystemTime": print `BOOL WINAPI InternetTimeFromSystemTime(CONST SYSTEMTIME* pst, DWORD dwRFC, LPTSTR lpszTime, DWORD cbTime);`
  *. */

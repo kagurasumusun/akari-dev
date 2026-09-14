@@ -16,6 +16,7 @@
 
 /* --- Constants (tables print the values). ----------------------- */
 /* ms912601 "VOIPLAP_E_": failure codes (decimal values as printed). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms912601) */
 #define VOIPLAP_E_NOSERVER                   6001
 #define VOIPLAP_E_NOCREDENTIALS              6002
 #define VOIPLAP_E_CANTCONNECT                6003
@@ -44,6 +45,7 @@ AKARI_CE_IMPORT HRESULT GetPCSyncName(WCHAR *wszNameBuffer,
  * `HRESULT SetPCSyncName(const WCHAR* c_wszPCName);`. */
 AKARI_CE_IMPORT HRESULT SetPCSyncName(const WCHAR *c_wszPCName)
                     AKARI_CE_NAME(SetPCSyncName);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------
  * Book surface: pcauth (tools/gen-book.py; page ids per record)

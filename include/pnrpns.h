@@ -12,6 +12,7 @@
 #include "Winsock2.h"  /* SOCKET_ADDRESS */
 #include "pnrpdef.h"   /* PNRP_CLOUD_STATE, PNRP_CLOUD_FLAGS */
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms896279) */
 /* ms896279 "PNRP_CLOUD_ID": print `typedef struct _PNRP_CLOUD_ID
  * { INT AddressFamily; PNRP_SCOPE Scope; ULONG ScopeID;}
  * PNRP_CLOUD_ID, *PPNRP_CLOUD_ID;` -- PNRP_SCOPE is not published
@@ -33,5 +34,6 @@ typedef struct _PNRPCLOUDINFO PNRPCLOUDINFO;
  * -- PNRP_REGISTERED_ID_STATE is not published on any CE page
  * (named only here) -- recorded, pointer-only. */
 typedef struct _PNRPINFO PNRPINFO;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_PNRPNS_H */

@@ -200,12 +200,14 @@ AKARI_CE_IMPORT BOOL SetUserDefaultUILanguage(LANGID langid)
 AKARI_CE_IMPORT BOOL EnableEUDC(BOOL fEnableEUDC)
                     AKARI_CE_NAME(EnableEUDC);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 5.0 and later. (aa520324) */
 /* aa520324 "GetCharABCWidthsI" (Fonts book): print
  * `BOOL GetCharABCWidthsI( HDC hdc, UINT giFirst, UINT cgi, LPWORD
  * pgi, LPABC lpabc);` (Coredll.lib). */
 AKARI_CE_IMPORT BOOL GetCharABCWidthsI(HDC hdc, UINT giFirst, UINT cgi,
                     LPWORD pgi, LPABC lpabc)
                     AKARI_CE_NAME(GetCharABCWidthsI);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------
  * Book surface: fonts-book (tools/gen-book.py; page ids per record)

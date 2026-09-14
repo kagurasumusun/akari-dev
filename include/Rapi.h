@@ -129,8 +129,10 @@ AKARI_CE_IMPORT void CeGlobalMemoryStatus(LPMEMORYSTATUS lpmst)
 AKARI_CE_IMPORT BOOL CeMoveFile(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName)
     AKARI_CE_NAME(CeMoveFile);
 /* ms879800 CeQueryInstructionSet (RAPI): print `` */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms879800) */
 AKARI_CE_IMPORT BOOL CeQueryInstructionSet(DWORD dwInstructionSet, LPDWORD lpdwCurrentInstructionSet)
     AKARI_CE_NAME(CeQueryInstructionSet);
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa513382 CeRapiFreeBuffer: print `` -- recorded verbatim (no compiled prototype) */
 /* aa513383 CeRapiGetError: print `HRESULT CeRapiGetError(void);` */
 AKARI_CE_IMPORT HRESULT CeRapiGetError(void)

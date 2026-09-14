@@ -123,6 +123,7 @@ extern "C" {
  * Book surface: exchange (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms863932 ContactsSearchCriteria: prototype printed by the page; derived at the M99 sweep. */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms863932) */
 typedef struct ContactsSearchCriteria {
     WCHAR* wszFirstName;
     WCHAR* wszLastName;
@@ -142,6 +143,7 @@ typedef struct GALSearchCriteria {
     WCHAR* wszFirstName;
     WCHAR* wszLastName;
 } GALSearchCriteria;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa513745 OWAEC_E_: documented name-only (no value published; held) */
 /* aa516110 IExchangeClient::CancelPendingRequests (Header: IExchangeClient.h, IExchangeClient.idl.) */

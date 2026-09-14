@@ -24,6 +24,7 @@ typedef struct _ServiceEnumInfo {
     DWORD  dwServiceState;
 } ServiceEnumInfo;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa450908) */
 /* Record-only (unpublished members): aa450906
  * "ServicesexeCallbackFunctions" prints `typedef struct
  * _ServicesExeCallbackFunctions { PFN_SERVICE_SHUTDOWN
@@ -36,6 +37,7 @@ typedef struct _ServiceEnumInfo {
  * value not printed). */
 typedef struct _ServicesExeCallbackFunctions ServicesExeCallbackFunctions;
 typedef struct _ServicesExeCommandLineParams ServicesExeCommandLineParams;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* IOCTL_SERVICE_* names (18): recorded only -- no CE page prints
  * the CTL_CODE values: IOCTL_SERVICE_CALLBACK_FUNCTIONS,

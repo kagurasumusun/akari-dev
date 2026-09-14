@@ -140,6 +140,7 @@ extern DWORD dwCeLogSmallBuf;
  * Book surface: core-celog-reference (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* aa451055 CEL_MAPFILE_VIEW_OPEN (page print, compiled) */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa451055) */
 typedef struct __CEL_MAPFILE_VIEW_OPEN {
     HANDLE hMap;
     HANDLE hProcess;
@@ -157,6 +158,7 @@ typedef enum  {
     CEL_FlushMapGather = 4,
     CEL_NUM_MAPFLUSH_TYPES
 } CEL_MAPFLUSH_TYPE;
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms885146 CEL_CRITSEC_DELETE -- HELD (page print; member types unpublished):
  *   typedef struct __CEL_CRITSEC_DELETE { ... } CEL_CRITSEC_DELETE, *PCEL_CRITSEC_DELETE; */
 /* aa450798 CEL_CRITSEC_ENTER -- HELD (page print; member types unpublished):

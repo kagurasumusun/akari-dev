@@ -41,6 +41,7 @@ extern "C" {
 #endif
 
 /* ms926088 "InitLap (structure)". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms926088) */
 typedef struct _InitLap {
     DWORD size;          /* structure size / version information */
     DWORD capabilities;  /* supported-LAP capability bits (unpublished) */
@@ -85,6 +86,7 @@ VOID VerifyUserToTop(void);
 
 /* ms938427 "DeinitLAP". */
 VOID DeinitLAP(void);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }

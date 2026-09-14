@@ -531,6 +531,15 @@ CRTDIR    ?= $(abspath $(CURDIR)/../wince-crt)
 # coredll-doc.lib wins and the component DLL is never imported.  The
 # pages' own content is still asserted by the symbol checks that follow
 # each of these lines.
+#
+# M111: four asserted imports are generation-specific, so their checks
+# run from CE 5.0 only ($wv is the target generation: 42/50/60).
+# CryptMsgClose takes an HCRYPTMSG, which the pages date to Windows CE
+# 5.0 and later (ms938232), and Wincrypt.h therefore declares both only
+# from 0x0500.  The Bluetooth AG surface -- BthAGPhoneExtInit
+# (ee495665), BthAGNetworkDropCall (ee495838), NETWORK_FLAGS_DROP_ALL
+# (aa450316), BthAGOnNetworkEvent (aa450323) -- is likewise CE 5.0 and
+# later, so a CE 4.2 image imports neither it nor btagsvc*.dll.
 e2e:
 	@if [ -z "$(WINCECLANG)" ]; then \
 	  echo "[e2e] set WINCECLANG to the WinCE clang binary" >&2; \
@@ -546,6 +555,7 @@ e2e:
 	  case $$t in arm*) dtf="-m armce"; march="-march=armv5tej"; mchk="IMAGE_FILE_MACHINE_ARM";; \
 	             *)    dtf="-m i386 --no-leading-underscore"; march=""; mchk="IMAGE_FILE_MACHINE_I386";; \
 	  esac; \
+	  case $$t in *4.2) wv=42;; *5.0) wv=50;; *) wv=60;; esac; \
 	  d=build/e2e/$$t; mkdir -p $$d; \
 	  for f in def/*-doc.def; do \
 	    b=$$(basename $$f .def); \
@@ -661,8 +671,10 @@ e2e:
 	  | grep -q "Symbol: ImmSIPanelState" || exit 1; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
 	  | grep -q "Symbol: CryptAcquireContext" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Symbol: CryptMsgClose" || exit 1; \
+	if [ $$wv -ge 50 ]; then \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Symbol: CryptMsgClose" || exit 1; \
+	fi; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
 	  | grep -q "Symbol: CryptProtectData" || exit 1; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
@@ -747,18 +759,20 @@ e2e:
 	  | grep -q "Symbol: READ_PORT_ULONG" || exit 1; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
 	  | grep -q "Symbol: MmMapIoSpace" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Name: btagsvc_phoneext.dll" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Symbol: BthAGPhoneExtInit" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Name: btagsvc_network.dll" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Symbol: BthAGNetworkDropCall" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Name: btagsvc.dll" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Symbol: BthAGOnNetworkEvent" || exit 1; \
+	if [ $$wv -ge 50 ]; then \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Name: btagsvc_phoneext.dll" || exit 1; \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Symbol: BthAGPhoneExtInit" || exit 1; \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Name: btagsvc_network.dll" || exit 1; \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Symbol: BthAGNetworkDropCall" || exit 1; \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Name: btagsvc.dll" || exit 1; \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Symbol: BthAGOnNetworkEvent" || exit 1; \
+	fi; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
 	  | grep -q "Name: ddraw.dll" || exit 1; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \

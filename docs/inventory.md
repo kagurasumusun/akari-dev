@@ -8356,3 +8356,87 @@ is unsafe; the committed defs are the source of truth.
 
 Gates: `make check` OK; `make crosscheck` OK (six WinCE targets);
 `make e2e` OK (six WinCE targets, three consumer shapes each).
+
+### M111 -- generation separation shipped: `#if _WIN32_WCE` guards in the application layer
+
+M109 measured the split; this ships it.  `tools/gen-guard.py --apply`
+now turns the page-attributed table (`docs/generation-map.tsv`, 5,541
+declarations) into preprocessor guards in the **application layer
+only** -- `include/oak/` is OEM/BSP and out of scope for the user-mode
+`-dev` set, so it is left untouched.
+
+What is guarded, and on what evidence:
+
+* **Documented minima only.**  482 units carry a documented lower bound
+  (`>= 0x0500` for 475, `>= 0x0600` for 11 -- but only those that
+  survived the gates below).  No upper bound is ever emitted: a
+  harvested row proves presence, never absence in a later generation.
+* **A guard unit is the printed block**, not one declaration: the
+  citation comment plus the consecutive declarations that share it, so
+  a page's table is never published half at one generation and half at
+  another.
+* **The condition travels with every name the block introduces.**  For
+  `typedef struct tagLVBKIMAGE { ... } LVBKIMAGE, *LPLVBKIMAGE;` the
+  consumers spell the tail, not the tag; carrying only the primary name
+  broke CE 4.2 compiles on `PPCRED`, `PSS_SOCKET_STATE`,
+  `SCRIPT_LOGATTR`, `PCHANNEL_ENTRY_POINTS_EX`.  Enumerators are
+  included for the same reason (`DecoderInitFlagNoBlock`).
+* **It also travels to the users of a generation-specific type.**  A
+  declaration taking a CE 5.0 type cannot exist on CE 4.2 even when its
+  own page prints no `OS Versions` row (`CEDDK.h` takes `PPVOID`;
+  `Cred.h` takes `PCRED`/`PPCRED`).  Propagation is limited to *types*
+  -- a macro or prototype named on a CE 5.0 page says nothing about
+  everything that mentions it, and an early version that propagated
+  through `BOOL`/`DWORD` reached 9,924 units before it was stopped.
+
+`docs/generation-held.tsv` records the **23 units that were dropped
+because the official pages contradict each other** -- typically a
+"Windows CE 4.0 and later" prototype taking a "Windows CE 5.0 and
+later" type (`D3dm.h`, `Usp10.h`, `Cchannel.h`, and 18 units in
+`Winbase.h`/`Wingdi.h`).  Neither reading may be invented, so those
+pairs stay unguarded and are listed with the page, the label and the
+compile error that showed the conflict.
+
+Two gates decide what survives, and both are the project's own:
+
+1. the shipped consumer TU at `_WIN32_WCE` 0x0420/0x0500/0x0600,
+   compiled **twice** -- with the host compiler (`make check`) and, when
+   `WINCECLANG` is set, with the WinCE cross-compiler and triple that
+   `make crosscheck` uses.  The second half matters: the TU keeps
+   `#if __SIZEOF_POINTER__ == 4` blocks that a 64-bit host silently
+   skips, which is how `DecoderInitFlagNoBlock` first escaped the gate.
+2. the Makefile's own header sweep (`HDRS` + `OAK_HDRS`, 329 headers x 3
+   generations).  A guard can be sound inside its own header and still
+   break another one that includes it (`D3dmddk.h` takes its
+   `D3DM_*_DATA` types from `D3dm.h`).
+
+Each failure is charged to **one unit**, never to a whole header: the
+name in the diagnostic is traced to the guard that published it, or --
+when the name is only *used* where it went missing -- to the header
+whose text lost it, found by diffing every guarded header against its
+pre-guard snapshot.  Three mechanical rules keep the insertions legal:
+no directive inside a multi-line comment (`unterminated #if`), no
+unbalanced range (`extern "C" {` split from its brace broke every C++
+consumer), and a file-scope unit is the whole declaration, bracket
+balance included (cutting `_Static_assert(cond,` from its message left
+`expected expression before 'static'`).
+
+Consumers had to learn the split too.  `tests/host/tu_compile.c` is a
+dispatcher over `static int <name>_usage(void)` functions, so a whole
+function and its dispatch call are wrapped in the strictest condition
+among the APIs it uses; a static helper whose only use disappears
+behind a guard is wrapped with it (`m47_stream_output` is reached only
+through the CE 5.0 `PFN_CMSG_STREAM_OUTPUT`, and the Makefile compiles
+with `-Werror`).  `tests/e2e/e2e_console.c` gained three guards for the
+CE 5.0 `HCRYPTMSG`/`CryptMsg*` and Bluetooth AG blocks, and the four
+`e2e` import assertions that those blocks produce now run from CE 5.0
+only.  Statement-wise wrapping of the TU was tried first and abandoned:
+it cut a declaration block (`expected expression before 'typedef'`) and
+a multi-line comment (`unterminated #if`).
+
+Result: **84 guard units kept in the application layer, 23 held**, 41
+guarded regions in the consumer TU over 470 guarded names.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600);
+`make crosscheck WINCECLANG=...` OK -- 6 WinCE targets; `make e2e` OK --
+6 WinCE targets.

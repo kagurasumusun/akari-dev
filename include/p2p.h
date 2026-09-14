@@ -21,6 +21,7 @@
 typedef HANDLE HPEERENUM;
 typedef struct sockaddr_in6 SOCKADDR_IN6;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms895901) */
 /* ms895901 "PEER_ADDRESS": print
  * `typedef struct peer_address_tag { DWORD dwSize; SOCKADDR_IN6
  * sin6;} PEER_ADDRESS, *PPEER_ADDRESS;` */
@@ -137,5 +138,6 @@ AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityImport(PWSTR *ppwzImportXML,
 AKARI_CE_IMPORT HRESULT WINAPI PeerIdentitySetFriendlyName(PCWSTR pwzIdentity,
                     PCWSTR pwzFriendlyName)
                     AKARI_CE_NAME(PeerIdentitySetFriendlyName);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_P2P_H */

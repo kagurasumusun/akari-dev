@@ -514,9 +514,11 @@ typedef struct tagNMRGINFO {
 
 AKARI_CE_IMPORT BOOL SHSetAppKeyWndAssoc(BYTE bVk, HWND hwnd) AKARI_CE_NAME(SHSetAppKeyWndAssoc);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453735) */
 /* aa453735 (CE 5.0+): not implemented; a stub for application
  * compatibility -- always returns ERROR_CALL_NOT_IMPLEMENTED. */
 AKARI_CE_IMPORT void SHSetBack(int eOp, HWND hwnd) AKARI_CE_NAME(SHSetBack);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453736 (CE .NET 4.0+): changes an input-window context feature;
  * dwFeature takes a value of the SHIC_FEATURE enumeration (declared

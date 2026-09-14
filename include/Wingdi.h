@@ -645,7 +645,9 @@ AKARI_CE_IMPORT int SetDIBitsToDevice(HDC hdc, int XDest, int YDest, DWORD dwWid
     DWORD dwHeight, int XSrc, int YSrc, UINT uStartScan, UINT cScanLines,
     CONST VOID* lpvBits, CONST BITMAPINFO* lpbmi, UINT fuColorUse) AKARI_CE_NAME(SetDIBitsToDevice);
 /* ms940026 "SetLayout" (page prints a stray trailing comma in the parameter list) */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms940026) */
 AKARI_CE_IMPORT DWORD SetLayout(HDC hdc, DWORD dwLayout) AKARI_CE_NAME(SetLayout);
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms940028 "SetPaletteEntries" */
 AKARI_CE_IMPORT UINT SetPaletteEntries(HPALETTE hpal, UINT iStart, UINT cEntries,
     CONST PALETTEENTRY* lppe) AKARI_CE_NAME(SetPaletteEntries);
@@ -989,12 +991,14 @@ AKARI_CE_IMPORT int EnumFontFamiliesW(HDC hdc, LPCWSTR lpszFamily,
                       FONTENUMPROC lpEnumFontFamProc, LPARAM lParam) AKARI_CE_NAME(EnumFontFamiliesW);
 #define EnumFontFamilies EnumFontFamiliesW
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms901124) */
 /* ms901124 "EnumFontFamiliesEx" (ee489844): as EnumFontFamilies with
  * an explicit LOGFONT filter.  OS CE 5.0+; Wingdi.h.  dwFlags is "not
  * used; must be 0".  Export EnumFontFamiliesExW. */
 AKARI_CE_IMPORT int EnumFontFamiliesExW(HDC hdc, LPLOGFONT lpLogfont,
                         FONTENUMPROC lpEnumFontFamExProc, LPARAM lParam,
                         DWORD dwFlags) AKARI_CE_NAME(EnumFontFamiliesExW);
+#endif /* _WIN32_WCE >= 0x0500 */
 #define EnumFontFamiliesEx EnumFontFamiliesExW
 
 /* ms901126 "EnumFonts" (ee489905): enumerates typefaces through the
@@ -1025,18 +1029,22 @@ AKARI_CE_IMPORT BOOL GetCharWidth32W(HDC hdc, UINT iFirstChar, UINT iLastChar,
                      LPINT lpBuffer) AKARI_CE_NAME(GetCharWidth32W);
 #define GetCharWidth32 GetCharWidth32W
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa520325) */
 /* aa520325 "GetFontData" (ee489901): DWORD GetFontData(HDC, DWORD
  * dwTable, DWORD dwOffset, LPVOID, DWORD).  OS CE 5.0+; Windows.h. */
 AKARI_CE_IMPORT DWORD GetFontData(HDC hdc, DWORD dwTable, DWORD dwOffset,
                   LPVOID lpvBuffer, DWORD cbData) AKARI_CE_NAME(GetFontData);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms901132 "GetTextAlign" (ee489856): WINGDIAPI UINT WINAPI
  * GetTextAlign(HDC); CE ABI is __cdecl.  OS CE .NET 4.0+; Windows.h. */
 AKARI_CE_IMPORT UINT GetTextAlign(HDC hdc) AKARI_CE_NAME(GetTextAlign);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms901133) */
 /* ms901133 "GetTextCharacterExtra" (ee489907): int
  * GetTextCharacterExtra(HDC).  OS CE 5.0+; Wingdi.h. */
 AKARI_CE_IMPORT int GetTextCharacterExtra(HDC hdc) AKARI_CE_NAME(GetTextCharacterExtra);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms901134 "GetTextColor" (ee489912): COLORREF GetTextColor(HDC).
  * OS CE 1.0+; Windows.h. */
@@ -1086,9 +1094,11 @@ AKARI_CE_IMPORT BOOL RemoveFontResourceW(LPCWSTR lpFileName) AKARI_CE_NAME(Remov
  * Windows.h. */
 AKARI_CE_IMPORT UINT SetTextAlign(HDC hdc, UINT fmode) AKARI_CE_NAME(SetTextAlign);
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms901144) */
 /* ms901144 "SetTextCharacterExtra" (ee489860): int
  * SetTextCharacterExtra(HDC, int nCharExtra).  OS CE 5.0+; Wingdi.h. */
 AKARI_CE_IMPORT int SetTextCharacterExtra(HDC hdc, int nCharExtra) AKARI_CE_NAME(SetTextCharacterExtra);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms901145 "SetTextColor" (ee489887): COLORREF SetTextColor(HDC,
  * COLORREF).  OS CE .NET 4.0+; Windows.h. */

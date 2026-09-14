@@ -19,11 +19,13 @@
 extern "C" {
 #endif
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms926124) */
 /* ms926124 "LASSReloadConfig" (trusted applications only; resets
  * all AEs to their initial states and reloads the LAP; implicitly
  * calls VerifyUser when master key protection is implemented). */
 AKARI_CE_IMPORT BOOL LASSReloadConfig(void)
     AKARI_CE_NAME(LASSReloadConfig);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }

@@ -124,6 +124,7 @@ typedef void (*PF_SS_CALLBACK)(HANDLE hSocket, UINT16 uSocket, PSS_SOCKET_STATE 
  * declarations above; source: the cited CE reference pages).
  * ------------------------------------------------------------------ */
 /* ms921890(v=msdn.10) SS_POWER_ENTRY: structure print on the page; derived at the M99 sweep (forward-declared above). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later (ms921890) */
 struct SS_POWER_ENTRY{
     UINT8 uPowerLevel;
     UINT8 fSupply;
@@ -141,5 +142,6 @@ struct SS_SOCKETSTATE{
     UINT8 uVpp1;
     UINT8 uVpp2;
 };
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_SOCKSV2_H */

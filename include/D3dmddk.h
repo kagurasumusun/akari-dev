@@ -450,6 +450,7 @@ typedef DWORD (*D3DM_VALIDATEDEVICE_PTR)(D3DM_VALIDATEDEVICE_DATA *);
  * declarations above; source: the cited CE reference pages).
  * ------------------------------------------------------------------ */
 /* aa447719(v=msdn.10) D3DM_CREATESURFACE_DATA: structure print on the page; derived at the M99 sweep (forward-declared above). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 (aa447719) */
 struct _D3DM_CREATESURFACE_DATA{
     D3DMRESOURCETYPE SurfaceType;
     union { D3DMSURFACE_DESC SurfaceDesc;
@@ -536,5 +537,6 @@ struct _D3DMDEVICEFORMAT{
 
 /* aa447708: page-printed definition (Windows CE 5.0). */
 #define D3DMTSS_TEXTURE 0
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_D3DMDDK_H */

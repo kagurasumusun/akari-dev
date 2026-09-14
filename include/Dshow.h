@@ -1789,6 +1789,7 @@ struct IBaseFilter { const IBaseFilterVtbl *lpVtbl; };
 #define IBaseFilter_QueryVendorInfo(T,a) ((T)->lpVtbl->QueryVendorInfo(T,a))
 
 /* ---- IDirectDrawVideo: 16 documented method pages; order R1 ---- */
+#if _WIN32_WCE >= 0x0500   /*  (None) */
 typedef struct IDirectDrawVideoVtbl {
     /* IUnknown */
     HRESULT (WINAPI *QueryInterface)(IDirectDrawVideo*, REFIID, LPVOID*);  /* (R1) */
@@ -1834,6 +1835,7 @@ struct IDirectDrawVideo { const IDirectDrawVideoVtbl *lpVtbl; };
 #define IDirectDrawVideo_WillUseFullScreen(T,a) ((T)->lpVtbl->WillUseFullScreen(T,a))
 
 /* ---- IEnumMediaTypes: 4 documented method pages; order R1 ---- */
+#endif /* _WIN32_WCE >= 0x0500 */
 typedef struct IEnumMediaTypesVtbl {
     /* IUnknown */
     HRESULT (WINAPI *QueryInterface)(IEnumMediaTypes*, REFIID, PVOID*);  /* (R1) */

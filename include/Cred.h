@@ -37,6 +37,7 @@ extern "C" {
 typedef WCHAR *WSTR;    /* the pages' own pointer spelling */
 
 /* ms936976 "CRED". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later (ms936976) */
 typedef struct _CRED {
     DWORD dwVersion;    /* CRED_VER_1 (value held) */
     DWORD dwType;       /* CRED_TYPE_* (values held) */
@@ -48,6 +49,7 @@ typedef struct _CRED {
     DWORD dwBlobSize;
     DWORD dwFlags;
 } CRED, *PCRED, **PPCRED;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms936977 "CredDelete". */
 AKARI_CE_IMPORT HRESULT CredDelete(WSTR wszTarget, DWORD dwTargetLen,
@@ -58,6 +60,7 @@ AKARI_CE_IMPORT HRESULT CredFree(PBYTE pvBuffer)
     AKARI_CE_NAME(CredFree);
 
 /* ms936984 "CredRead". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 4.0 and later. (ms936984) */
 AKARI_CE_IMPORT HRESULT CredRead(WSTR wszTarget, DWORD dwTargetLen,
     DWORD dwType, DWORD dwFlags, PPCRED ppCred) AKARI_CE_NAME(CredRead);
 
@@ -68,6 +71,7 @@ AKARI_CE_IMPORT HRESULT CredUpdate(WSTR wszTarget, DWORD dwTargetLen,
 /* ms936986 "CredWrite". */
 AKARI_CE_IMPORT HRESULT CredWrite(PCRED pCred, DWORD dwFlags)
     AKARI_CE_NAME(CredWrite);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }

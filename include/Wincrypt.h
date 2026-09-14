@@ -75,10 +75,12 @@ typedef unsigned long HCRYPTKEY;
 /* ms925987: "typedef unsigned long HCRYPTPROV;" */
 typedef unsigned long HCRYPTPROV;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms938232) */
 /* HCRYPTMSG has no dedicated data-type page in the CE archive; the
  * CryptMsg* prototypes (ms938232, ms938239, ms938251, ms938271, ...)
  * pass and return it. Handle-carrier design, per the repository model. */
 typedef ULONG_PTR HCRYPTMSG;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms937016 BLOB (Cryptography): tag _CRYPTOAPI_BLOB with the 13
  * documented alias typedef names (no self-named CRYPTOAPI_BLOB
@@ -915,6 +917,7 @@ AKARI_CE_IMPORT DWORD WINAPI CryptMsgCalculateEncodedLength(DWORD dwMsgEncodingT
                                                             LPSTR pszInnerContentObjID,
                                                             DWORD cbData) AKARI_CE_NAME(CryptMsgCalculateEncodedLength);
 
+#if _WIN32_WCE >= 0x0500   /*  (None) */
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgClose(HCRYPTMSG hCryptMsg) AKARI_CE_NAME(CryptMsgClose);
 
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgControl(HCRYPTMSG hCryptMsg, DWORD dwFlags,
@@ -944,6 +947,7 @@ AKARI_CE_IMPORT HCRYPTMSG WINAPI CryptMsgOpenToEncode(DWORD dwMsgEncodingType,
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgUpdate(HCRYPTMSG hCryptMsg, const BYTE *pbData,
                              DWORD cbData,
                              BOOL fFinal) AKARI_CE_NAME(CryptMsgUpdate);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ---- Protected storage (Windows CE .NET 4.0 and later) ----------- */
 

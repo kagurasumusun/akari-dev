@@ -190,6 +190,7 @@ typedef struct {
 typedef WAVEOUTCAPS *LPWAVEOUTCAPS;
 
 /* aa452383 "STREAMPROPS". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa452383) */
 typedef struct tagSTREAMPROPS {
     DWORD dwClassID;
     DWORD dwFlags;
@@ -200,6 +201,7 @@ typedef struct tagAUDIOGAINCLASS {
     DWORD dwPriority;
     DWORD dwRelativeGain;
 } AUDIOGAINCLASS, * PAUDIOGAINCLASS;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa447864 "MMTIME" (Timer Driver book; the wave*GetPosition
  * functions take LPMMTIME). */
@@ -392,10 +394,12 @@ AKARI_CE_IMPORT MMRESULT waveInGetPosition(HWAVEIN hwi,
     LPMMTIME pmmt, UINT cbmmt) AKARI_CE_NAME(waveInGetPosition);
 
 /* aa452429 "waveInGetProperty" (CE-specific property interface). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa452429) */
 AKARI_CE_IMPORT MMRESULT waveInGetProperty(UINT uDeviceID,
     const GUID* pPropSetId, ULONG ulPropId, LPVOID pvPropParams,
     ULONG cbPropParams, LPVOID pvPropData, ULONG cbPropData,
     PULONG pcbReturn) AKARI_CE_NAME(waveInGetProperty);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa452430 "waveInMessage". */
 AKARI_CE_IMPORT MMRESULT waveInMessage(HWAVEIN hwi, UINT uMsg,
@@ -415,10 +419,12 @@ AKARI_CE_IMPORT MMRESULT waveInReset(HWAVEIN hwi)
     AKARI_CE_NAME(waveInReset);
 
 /* aa452437 "waveInSetProperty". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa452437) */
 AKARI_CE_IMPORT MMRESULT waveInSetProperty(UINT uDeviceID,
     const GUID* pPropSetId, ULONG ulPropId, LPVOID pvPropParams,
     ULONG cbPropParams, LPVOID pvPropData, ULONG cbPropData)
     AKARI_CE_NAME(waveInSetProperty);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa452438 "waveInStart". */
 AKARI_CE_IMPORT MMRESULT waveInStart(HWAVEIN hwi)
@@ -468,10 +474,12 @@ AKARI_CE_IMPORT MMRESULT waveOutGetPosition(HWAVEOUT hwo,
     LPMMTIME pmmt, UINT cbmmt) AKARI_CE_NAME(waveOutGetPosition);
 
 /* aa452452 "waveOutGetProperty". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa452452) */
 AKARI_CE_IMPORT MMRESULT waveOutGetProperty(UINT uDeviceID,
     const GUID* pPropSetId, ULONG ulPropId, LPVOID pvPropParams,
     ULONG cbPropParams, LPVOID pvPropData, ULONG cbPropData,
     PULONG pcbReturn) AKARI_CE_NAME(waveOutGetProperty);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa452453 "waveOutGetVolume". */
 AKARI_CE_IMPORT MMRESULT waveOutGetVolume(HWAVEOUT hwo,
@@ -511,10 +519,12 @@ AKARI_CE_IMPORT MMRESULT waveOutSetPlaybackRate(HWAVEOUT hwo,
     DWORD dwRate) AKARI_CE_NAME(waveOutSetPlaybackRate);
 
 /* aa452463 "waveOutSetProperty". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa452463) */
 AKARI_CE_IMPORT MMRESULT waveOutSetProperty(UINT uDeviceID,
     const GUID* pPropSetId, ULONG ulPropId, LPVOID pvPropParams,
     ULONG cbPropParams, LPVOID pvPropData, ULONG cbPropData)
     AKARI_CE_NAME(waveOutSetProperty);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa452464 "waveOutSetVolume". */
 AKARI_CE_IMPORT MMRESULT waveOutSetVolume(HWAVEOUT hwo, DWORD dwVolume)

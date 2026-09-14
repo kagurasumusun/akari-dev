@@ -289,11 +289,13 @@ AKARI_CE_IMPORT const int* WINAPI ScriptString_pcOutChars(SCRIPT_STRING_ANALYSIS
                     AKARI_CE_NAME(ScriptString_pcOutChars);
 
 /* ms906262 "ScriptTextOut": print `HRESULT WINAPI ScriptTextOut( const HDC hdc, SCRIPT_CACHE* psc, int x, int y, UINT fuOptions, const RECT* lprc, const SCRIPT_ANALYSIS* psa, const WCHAR* pwcReserved, int iReserved, const WORD* pwGlyphs, int cGlyphs, const int* piAdvance, const int* piJustify, const GOFFSET* pGoffset)` */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms906262) */
 AKARI_CE_IMPORT HRESULT WINAPI ScriptTextOut(HDC hdc, SCRIPT_CACHE* psc, int x, int y, UINT fuOptions, RECT* lprc, SCRIPT_ANALYSIS* psa, WCHAR* pwcReserved, int iReserved, WORD* pwGlyphs, int cGlyphs, int* piAdvance, int* piJustify, GOFFSET* pGoffset)
                     AKARI_CE_NAME(ScriptTextOut);
 
 /* ms906263 "ScriptXtoCP": print `HRESULT WINAPI ScriptXtoCP( int iX, int cChars, int cGlyphs, const WORD* pwLogClust, const SCRIPT_VISATTR* psva, const int* piAdvance, const SCRIPT_ANALYSIS* psa, int* piCP, int* piTrailing)` */
 AKARI_CE_IMPORT HRESULT WINAPI ScriptXtoCP(int iX, int cChars, int cGlyphs, WORD* pwLogClust, SCRIPT_VISATTR* psva, int* piAdvance, SCRIPT_ANALYSIS* psa, int* piCP, int* piTrailing)
                     AKARI_CE_NAME(ScriptXtoCP);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_USP10_H */

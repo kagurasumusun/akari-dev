@@ -94,6 +94,7 @@
  * Book surface: vail (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms912595 SIPServerRegistrationParameters (page print, compiled) */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms912595) */
 typedef struct SIPServerRegistrationParameters {
     const WCHAR* wszURI;
     const WCHAR* wszServer;
@@ -102,6 +103,7 @@ typedef struct SIPServerRegistrationParameters {
     const WCHAR* wszTransport;
     const WCHAR* wszAuthType;
 } SIPServerRegistrationParameters;
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms912597 VoIPCallEvent (page print, compiled) */
 typedef enum VoIPCallEvent {
     e_vceInvalid = 0,

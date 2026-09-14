@@ -5,6 +5,7 @@
 #ifndef AKARI_PNRPDEF_H
 #define AKARI_PNRPDEF_H
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms896278) */
 /* ms896278 "PNRP_CLOUD_FLAGS": print `typedef enum {
  * PNRP_CLOUD_NO_FLAGS, PNRP_CLOUD_NAME_LOCAL} PNRP_CLOUD_FLAGS;` */
 typedef enum {
@@ -43,5 +44,6 @@ typedef enum {
     PNRP_RESOLVE_CRITERIA_NON_CURRENT_PROCESS_PEER_NAME,
     PNRP_RESOLVE_CRITERIA_REMOTE_PEER_NAME
 } PNRP_RESOLVE_CRITERIA;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_PNRPDEF_H */

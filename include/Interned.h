@@ -26,6 +26,8 @@
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* aa451906: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa451906) */
 HRESULT BeforeWindowOpen(BSTR url, BSTR urlContext, BSTR name, BSTR features, IUnknown* punkEvents);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_INTERNED_H_ */

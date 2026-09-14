@@ -32,11 +32,13 @@ extern "C" {
  * values; a successful return does not mean the fault was reported. */
 typedef int EFaultRepRetVal;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 or later. (ms886799) */
 /* ms886799 "ReportFault (Windows CE 5.0)":
  * EFaultRepRetVal ReportFault(LPEXCEPTION_POINTERS pep, DWORD dwOpt).
  * CE 5.0+; ErrorRep.h; Coredll.lib.  Lets an application that does its
  * own exception handling report faults; dwOpt is reserved (zero). */
 AKARI_CE_IMPORT EFaultRepRetVal ReportFault(LPEXCEPTION_POINTERS pep, DWORD dwOpt) AKARI_CE_NAME(ReportFault);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }

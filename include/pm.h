@@ -229,6 +229,8 @@ AKARI_CE_IMPORT BOOL StopPowerNotifications(HANDLE h)
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* ms919797: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 4.0 and later. (ms919797) */
 AKARI_CE_IMPORT HANDLE RegisterPowerRelationship(PVOID pvParent, PVOID pvChild, PPOWER_CAPABILITIES pCaps, DWORD Flags) AKARI_CE_NAME(RegisterPowerRelationship);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_PM_H */

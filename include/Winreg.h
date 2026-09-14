@@ -68,12 +68,14 @@ typedef DWORD  REGSAM;
 #define REG_CREATED_NEW_KEY     0x00000001u
 #define REG_OPENED_EXISTING_KEY 0x00000002u
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later (aa517116) */
 /* Registry change-notification filters (CeFindFirstRegChange
  * aa517116; values fixed Win32 ABI).  The CE page names only
  * REG_NOTIFY_CHANGE_NAME and REG_NOTIFY_CHANGE_LAST_SET; the other
  * desktop filter bits are not documented for CE and stay undefined. */
 #define REG_NOTIFY_CHANGE_NAME     0x00000001u
 #define REG_NOTIFY_CHANGE_LAST_SET 0x00000004u
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms891448 "RegCloseKey (Windows CE 5.0)":
  * LONG RegCloseKey(HKEY).  CE 1.0+; Winreg.h; Coredll.lib.  Releases
@@ -180,6 +182,7 @@ AKARI_CE_IMPORT LONG RegFlushKeyW(HKEY hKey) AKARI_CE_NAME(RegFlushKeyW);
 
 /* Registry change notification (CE 5.0 and later; Coredll.lib). */
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later (aa517116) */
 /* aa517116 "CeFindFirstRegChange (Windows CE 5.0)":
  * HANDLE CeFindFirstRegChange(HKEY, BOOL, DWORD).  Creates a change
  * notification handle; waiting on it succeeds when a matching change
@@ -197,6 +200,7 @@ AKARI_CE_IMPORT BOOL CeFindNextRegChange(HANDLE hChangeHandle) AKARI_CE_NAME(CeF
  * BOOL CeFindCloseRegChange(HANDLE).  Stops change monitoring; the
  * handle must not be used afterwards. */
 AKARI_CE_IMPORT BOOL CeFindCloseRegChange(HANDLE hChangeHandle) AKARI_CE_NAME(CeFindCloseRegChange);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------
  * Book surface: core-registry-reference (tools/gen-book.py; page ids per record)

@@ -347,6 +347,27 @@ def strip_comments(text):
     return re.sub(r"//[^\n]*", " ", text)
 
 
+def makefile_headers():
+    """the header lists the Makefile itself gates (HDRS + OAK_HDRS).
+
+    The sweep has to check exactly what `make check` checks: the tree
+    carries files nobody compiles standalone (include/Notifext.hxx takes
+    CEOID without including Windbase.h and fails on its own at every
+    generation, on the committed tree as well), and gating on those
+    would charge their pre-existing breakage to the guards."""
+    import subprocess
+    try:
+        r = subprocess.run(
+            ["make", "-s",
+             "--eval=__pv: ; @echo $(HDRS) $(OAK_HDRS)", "__pv"],
+            cwd=ROOT, capture_output=True, text=True, timeout=120)
+    except OSError:
+        return []
+    if r.returncode != 0:
+        return []
+    return [t for t in r.stdout.split() if t.endswith((".h", ".hpp"))]
+
+
 def compiles_at(path, wince, tu=False):
     """standalone compile of one header (or of the shipped consumer TU)
     at one CE generation, exactly as the Makefile compiles it."""
@@ -356,61 +377,373 @@ def compiles_at(path, wince, tu=False):
            f"-D_WIN32_WCE={wince}", "-I", inc,
            "-I", os.path.join(inc, "oak")]
     if tu:
-        cmd += ["-fsyntax-only", os.path.join(ROOT, "tests", "host",
-                                              "tu_compile.c")]
+        # The consumer TU carries `#if __SIZEOF_POINTER__ == 4` blocks, so
+        # a 64-bit host compile silently skips them while every WinCE
+        # target is 32-bit.  When WINCECLANG is set the TU is gated with
+        # the same cross-compiler and triple the Makefile's crosscheck
+        # uses; the host compile stays as the `make check` half.  (Forcing
+        # __SIZEOF_POINTER__=4 on the host is not an option: the TU
+        # deliberately asserts the host pointer size at line 177.)
+        tupath = os.path.join(ROOT, "tests", "host", "tu_compile.c")
+        cmds = [cmd + ["-fsyntax-only", tupath]]
+        clang = os.environ.get("WINCECLANG")
+        triple = {0x420: "arm-pc-wince4.2", 0x500: "arm-pc-wince5.0",
+                  0x600: "arm-pc-wince6.0"}.get(wince)
+        if clang and triple and os.access(clang, os.X_OK):
+            os.makedirs("/tmp/wince-sysroot", exist_ok=True)
+            cmds.append([clang, "-target", triple, "-std=c11",
+                         "-ffreestanding", "--sysroot=/tmp/wince-sysroot",
+                         "-Wno-wince-sysroot-missing", "-Werror",
+                         "-D_WIN32_WCE=%d" % wince, "-I", inc,
+                         "-I", os.path.join(inc, "oak"),
+                         "-fsyntax-only", tupath])
     else:
-        cmd += ["-include", path, "-fsyntax-only", "-x", "c", os.devnull]
-    try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
-    except OSError:
-        return True, ""
-    if r.returncode == 0:
-        return True, ""
-    for lne in (r.stderr or "").splitlines():
-        if "error:" in lne:
-            # keep the "file:line:" prefix: the caller needs to know
-            # which file lost a declaration
-            return False, lne.strip()
-    return False, "compile failed"
+        cmds = [cmd + ["-include", path, "-fsyntax-only", "-x", "c",
+                       os.devnull]]
+    for c in cmds:
+        try:
+            r = subprocess.run(c, capture_output=True, text=True,
+                               timeout=300)
+        except OSError:
+            return True, ""
+        if r.returncode == 0:
+            continue
+        for lne in (r.stderr or "").splitlines():
+            if "error:" in lne:
+                # keep the "file:line:" prefix: the caller needs to know
+                # which file lost a declaration
+                return False, lne.strip()
+        return False, "compile failed"
+    return True, ""
 
 
 TU = os.path.join(ROOT, "tests", "host", "tu_compile.c")
 
 
+def comment_runs(lines):
+    """[(first, last)] of every /* ... */ comment spanning more than one
+    line.  A preprocessor directive cannot sit inside one: the `#if` is
+    swallowed by the comment while its `#endif` is not, which is exactly
+    the `unterminated #if` this file produced when a guard was cut across
+    the M27 GDI note in the shipped consumer TU."""
+    runs = []
+    start = None
+    for i, l in enumerate(lines):
+        j = 0
+        while True:
+            if start is None:
+                k = l.find("/*", j)
+                if k < 0:
+                    break
+                e = l.find("*/", k + 2)
+                if e >= 0:
+                    j = e + 2
+                    continue
+                start = i
+                break
+            e = l.find("*/", j)
+            if e < 0:
+                break
+            runs.append((start, i))
+            start = None
+            j = e + 2
+    if start is not None:
+        runs.append((start, len(lines) - 1))
+    return runs
+
+
+def expand_over_comments(a, b, runs):
+    """grow [a, b] until it neither starts, ends, nor stops inside a
+    multi-line comment."""
+    changed = True
+    while changed:
+        changed = False
+        for r0, r1 in runs:
+            if r0 <= a <= r1 or r0 <= b <= r1 or (a < r0 and b > r1):
+                na, nb = min(a, r0), max(b, r1)
+                # only real growth is progress: two overlapping comment
+                # runs otherwise keep re-triggering each other and the
+                # loop never terminates
+                if (na, nb) != (a, b):
+                    a, b = na, nb
+                    changed = True
+    return a, b
+
+
+TYPEKW = ("typedef", "struct", "union", "enum")
+CKEYWORDS_ENUM = {"enum", "typedef", "struct", "union"}
+
+
+def declared_names(lines, ln, name):
+    """the names a declaration unit *introduces*.
+
+    `declarations()` reports one name per unit -- for
+    `typedef struct tagLVBKIMAGE { ... } LVBKIMAGE, *LPLVBKIMAGE;` that is
+    the tag -- but consumers spell the typedef tail, so the generation of
+    the printed block has to travel with each introduced name (PPCRED,
+    PSS_SOCKET_STATE, SCRIPT_LOGATTR and PCHANNEL_ENTRY_POINTS_EX each
+    broke a 0x0420 compile when only the primary name carried it)."""
+    span = stmt_span(lines, ln)
+    if not span:
+        return {name}
+    flat = " ".join(strip_comments(
+        "\n".join(lines[span[0]:span[1] + 1])).split())
+    out = {name}
+    if re.search(r"\benum\b", flat):
+        # enumerator names: consumers reference `DecoderInitFlagNoBlock`,
+        # not the tag, and a CE 5.0 enumerator is just as unavailable on
+        # CE 4.2 as the enum that declares it
+        body = flat[flat.find("{") + 1:flat.rfind("}")] \
+            if "{" in flat else ""
+        for e in re.finditer(r"([A-Za-z_]\w*)\s*(?:=[^,}]*)?[,}]",
+                             body + "}"):
+            if e.group(1) not in CKEYWORDS_ENUM:
+                out.add(e.group(1))
+    if flat.startswith("#define") or "typedef" not in flat:
+        return out
+    k = flat.rfind("}")
+    tail = flat[k + 1:] if k >= 0 else flat[len("typedef"):]
+    for part in tail.split(","):
+        toks = [t for t in re.split(r"[^A-Za-z0-9_]+", part) if t]
+        if toks and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", toks[-1]):
+            out.add(toks[-1])
+    m = re.match(r"typedef\s+(?:struct|union|enum)\s+([A-Za-z_]\w*)", flat)
+    if m:
+        out.add(m.group(1))
+    # typedef RET (CALLBACK *PFN)(args);
+    for m in re.finditer(r"\(\s*(?:[A-Za-z_]\w*\s+)*\*\s*"
+                         r"([A-Za-z_]\w*)\s*\)\s*\(", flat):
+        out.add(m.group(1))
+    return out
+
+
+def is_type_unit(lines, ln):
+    """True when the unit introduces a type (typedef / struct / union /
+    enum).  Propagation is limited to those: a macro or a prototype named
+    on a CE 5.0 page says nothing about the generation of everything that
+    mentions it, while a *type* does -- a CE 4.2 declaration cannot take
+    a parameter of a type that CE 4.2 does not have."""
+    span = stmt_span(lines, ln)
+    if not span:
+        return False
+    flat = " ".join(strip_comments(
+        "\n".join(lines[span[0]:span[1] + 1])).split())
+    return not flat.startswith("#define") and any(
+        re.match(k + r"\b", flat) or (" " + k + " ") in flat
+        for k in TYPEKW)
+
+
+def bracket_balance(line):
+    """net count of unclosed ( [ { on one line, ignoring string and
+    character literals.  An initialiser-table element is balanced and
+    ends in a comma; the first line of `_Static_assert(cond,` is not."""
+    n = 0
+    quote = None
+    i = 0
+    while i < len(line):
+        c = line[i]
+        if quote:
+            if c == "\\":
+                i += 2
+                continue
+            if c == quote:
+                quote = None
+        elif c in "\"'":
+            quote = c
+        elif c in "([{":
+            n += 1
+        elif c in ")]}":
+            n -= 1
+        i += 1
+    return n
+
+
 def guard_consumer_sites(guarded):
-    """wrap the consumer TU's uses of now-guarded APIs in the same
-    condition.  A CE 4.2 program cannot call a CE 5.0 API; the shipped
-    consumer check has to say so exactly like a real consumer would.
-    `guarded` maps name -> condition."""
+    """make the shipped consumer TU generation-aware at *function*
+    granularity.
+
+    A CE 4.2 program cannot call a CE 5.0 API, so the consumer check has
+    to say so the way a real consumer would.  The TU is a dispatcher over
+    `static int <name>_usage(void)` functions, so a whole function -- and
+    its single dispatch call -- is wrapped in the strictest condition
+    among the guarded APIs it uses.  Wrapping statement-wise instead was
+    tried first and broke the file twice: `tu_compile.c:813: expected
+    expression before 'typedef'` when a declaration block was cut, and
+    `unterminated #if` when the cut landed inside a multi-line comment."""
     text = open(TU, encoding="utf-8", errors="replace").read()
     lines = text.splitlines()
-    hits = []
-    for i, ln in enumerate(lines):
-        s = ln.strip()
-        if not s or s.startswith(("#", "/*", "*", "//")):
+    units = []
+    i = 0
+    while i < len(lines):
+        m = re.match(r"^static\s+int\s+([A-Za-z_][A-Za-z0-9_]*)\s*"
+                     r"\(void\)\s*$", lines[i].rstrip())
+        if not m:
+            i += 1
             continue
-        for name, cond in guarded.items():
-            if re.search(r"\b" + re.escape(name) + r"\b", ln):
-                # extend to the end of the statement
-                j = i
-                while j < len(lines) and not lines[j].rstrip().endswith(";") \
-                        and not lines[j].rstrip().endswith("}") \
-                        and j - i < 40:
-                    j += 1
-                hits.append((i, j, cond, name))
+        j = i + 1
+        while j < len(lines) and lines[j].rstrip() != "}":
+            j += 1
+        if j >= len(lines):
+            break
+        k = i - 1
+        while k >= 0 and (lines[k].strip().startswith(("*", "/*", "//"))
+                          or not lines[k].strip()):
+            k -= 1
+        units.append((m.group(1), k + 1, j))
+        i = j + 1
+    covered = set()
+    for _n, a, b in units:
+        covered.update(range(a, b + 1))
+
+    gset = set(guarded)
+
+    def cond_bound(c):
+        m = re.search(r"_WIN32_WCE >= (0x[0-9a-fA-F]{4})", c or "")
+        return int(m.group(1), 16) if m else 0
+
+    def strictest(a, b):
+        return a if cond_bound(a) >= cond_bound(b) else b
+
+    edits = []
+    conds = {}
+    for name, a, b in units:
+        body = strip_comments("\n".join(lines[a:b + 1]))
+        used = sorted(set(IDENT_ALL.findall(body)) & gset)
+        if not used:
+            continue
+        cond = guarded[used[0]]
+        for u in used[1:]:
+            cond = strictest(cond, guarded[u])
+        conds[name] = cond
+        edits.append([a, b, cond, [f"fn {name}"] + used, 1 + len(used)])
+    for i, ln in enumerate(lines):
+        if i in covered:
+            continue
+        m = re.match(r"\s*if \(([A-Za-z_][A-Za-z0-9_]*)\s*\(\s*\)"
+                     r" != 0\)", ln)
+        if m and m.group(1) in conds:
+            j = i + 1 if (i + 1 < len(lines)
+                          and lines[i + 1].strip() == "return 1;") else i
+            edits.append([i, j, conds[m.group(1)],
+                          [f"dispatch {m.group(1)}"], 1])
+    for i, ln in enumerate(lines):
+        if i in covered:
+            continue
+        s0 = ln.strip()
+        if not s0 or s0.startswith(("#", "/*", "*", "//", "}")):
+            continue
+        hits = [n for n in dict.fromkeys(IDENT_ALL.findall(ln))
+                if n in gset]
+        if not hits:
+            continue
+        # A file-scope use can sit inside a multi-line declaration (the
+        # TU's `typedef char assert_x[(A == 1 && B == 2) ? 1 : -1];`
+        # value assertions are exactly that), so the guarded range has to
+        # be the *whole* declaration: cutting an expression in half left
+        # `... PROGRESS_STOP == 2 &&` followed by the next `static` and
+        # the compiler reported `expected expression before 'static'`.
+        a = i
+        while a > 0:
+            prev = lines[a - 1]
+            st = prev.strip()
+            if (not st or st.startswith(("#", "*", "/*", "//"))
+                    or prev.rstrip().endswith((";", "{", "*/"))
+                    or (bracket_balance(prev) <= 0
+                        and prev.rstrip().endswith((",", "}")))):
                 break
-    # merge overlapping/adjacent ranges with the same condition
+            a -= 1
+        if i - a > 40:
+            continue
+        j = i
+        bal = 0
+        while j < len(lines):
+            bal += bracket_balance(lines[j])
+            if bal <= 0 and lines[j].rstrip().endswith((";", "}", ",")):
+                break
+            j += 1
+            if j - i > 40:
+                break
+        if j >= len(lines) or j - i > 40:
+            continue
+        cond = guarded[hits[0]]
+        for h in hits[1:]:
+            cond = strictest(cond, guarded[h])
+        edits.append([a, j, cond, list(hits), len(hits)])
+
+    runs = comment_runs(lines)
+    edits = [list(expand_over_comments(a, b, runs)) + [c, n[:4], k]
+             for a, b, c, n, k in edits]
+
+    # A static helper whose only use disappears behind a guard becomes an
+    # unused function, and the Makefile compiles the TU with -Werror
+    # (m47_stream_output is only reached through PFN_CMSG_STREAM_OUTPUT,
+    # a CE 5.0 type).  Wrap such a definition in the strictest condition
+    # of the regions that used it.
+    def fn_defs():
+        out = []
+        i = 0
+        while i < len(lines):
+            m = re.match(r"^static\b[^;]*?\b([A-Za-z_]\w*)\s*\(",
+                         lines[i])
+            if not m or lines[i].rstrip().endswith(";"):
+                i += 1
+                continue
+            bal = 0
+            j = i
+            while j < len(lines):
+                bal += bracket_balance(lines[j])
+                if bal <= 0 and "}" in lines[j]:
+                    break
+                j += 1
+                if j - i > 200:
+                    break
+            if j < len(lines):
+                out.append((m.group(1), i, j))
+                i = j + 1
+            else:
+                i += 1
+        return out
+
+    for fname, a, b in fn_defs():
+        inside = [e for e in edits if not (e[1] < a or e[0] > b)]
+        if inside:
+            continue
+        uses = [i for i, ln in enumerate(lines)
+                if not (a <= i <= b)
+                and re.search(r"\b" + re.escape(fname) + r"\b", ln)]
+        if not uses:
+            continue
+        cover = [e for e in edits
+                 if any(e[0] <= u <= e[1] for u in uses)]
+        if len(cover) and all(any(e[0] <= u <= e[1] for e in cover)
+                              for u in uses):
+            cond = cover[0][2]
+            for e in cover[1:]:
+                cond = (cond if cond_bound(cond) >= cond_bound(e[2])
+                        else e[2])
+            edits.append([a, b, cond, [f"static {fname} only used "
+                                       "guarded"], 1])
+    edits.sort()
+    # Merging must not concatenate a note per merged edit: the shipped TU
+    # has initialiser tables whose every line names one guarded API, so a
+    # single region can absorb a thousand edits and the string building
+    # goes quadratic.  Keep the first few names and a count.
     merged = []
-    for a, b, cond, name in sorted(hits):
-        if merged and merged[-1][2] == cond and a <= merged[-1][1] + 1:
+    for a, b, cond, names, n in edits:
+        if merged and a <= merged[-1][1] + 1:
+            merged[-1][2] = (merged[-1][2] if cond_bound(merged[-1][2])
+                             >= cond_bound(cond) else cond)
             merged[-1][1] = max(merged[-1][1], b)
-            merged[-1][3].add(name)
+            if len(merged[-1][3]) < 3:
+                merged[-1][3] += names[:3 - len(merged[-1][3])]
+            merged[-1][4] += n
         else:
-            merged.append([a, b, cond, {name}])
-    for a, b, cond, names in sorted(merged, reverse=True):
-        note = ", ".join(sorted(names)[:3]) + ("..." if len(names) > 3 else "")
+            merged.append([a, b, cond, list(names), n])
+    for a, b, cond, names, n in sorted(merged, key=lambda e: -e[0]):
+        note = ", ".join(names) + (f" +{n - len(names)} more"
+                                   if n > len(names) else "")
         lines.insert(b + 1, f"#endif /* {cond} */")
-        lines.insert(a, f"#if {cond}   /* consumer: {note} */")
+        lines.insert(a, f"#if {cond}   /* {note} */")
     open(TU, "w", encoding="utf-8").write("\n".join(lines) + "\n")
     return len(merged)
 
@@ -539,56 +872,111 @@ def main():
     # conditional is left alone.  After every header the three supported
     # generations are compiled standalone and the header is rolled back
     # if any of them fails.
-    # Cross-header uses: a name another header's code refers to cannot be
-    # hidden from a generation that header still compiles for (CEDDK.h
-    # prints `PDEVMGR_DEVICE_INFORMATION` in a prototype while the
-    # typedef is Winbase.h's).  Such units are skipped and reported, not
-    # guarded -- resolving them needs the *using* declaration's own page
-    # row, which is a separate attribution question.
+    # Type-driven propagation.  A declaration whose parameter or return
+    # type is documented as CE 5.0+ cannot exist on CE 4.2 -- the type
+    # itself is not there -- even when its own page prints no OS
+    # Versions row (CEDDK.h:174 takes PDEVMGR_DEVICE_INFORMATION, whose
+    # typedef is Winbase.h's, CE 5.0+, aa447797).  Such a unit inherits
+    # the strictest condition of the guarded names it uses, and the
+    # whole tree is compiled at all three generations afterwards, so an
+    # unsound propagation fails the gate instead of being shipped.
+    def cond_bound(c):
+        m = re.search(r"_WIN32_WCE >= (0x[0-9a-fA-F]{4})", c or "")
+        return int(m.group(1), 16) if m else 0
+
+    def strictest(a, b):
+        return a if cond_bound(a) >= cond_bound(b) else b
+
+    CKEYWORDS = {"struct", "union", "enum", "void", "int", "char", "long",
+                 "short", "unsigned", "signed", "const", "static", "extern",
+                 "typedef", "return", "if", "else", "for", "while", "switch",
+                 "case", "break", "continue", "default", "sizeof", "NULL"}
+    file_lines = {}
+    gmap = {}
+    for rel, got in per_file.items():
+        file_lines[rel] = open(os.path.join(ROOT, rel), encoding="utf-8",
+                               errors="replace").read().splitlines()
+        for ln, name, cite, osr, lo, hi, g in got:
+            if not g or "<=" in g:
+                continue
+            if not is_type_unit(file_lines[rel], ln):
+                continue
+            for nm in declared_names(file_lines[rel], ln, name):
+                if nm in CKEYWORDS or len(nm) < 3 \
+                        or nm.startswith("AKARI_"):
+                    continue
+                gmap[nm] = strictest(gmap.get(nm, g), g)
+
+    derived = []
+    for _round in range(8):
+        changed = False
+        for rel, got in per_file.items():
+            if rel.startswith("include" + os.sep + "oak"):
+                continue
+            flines = open(os.path.join(ROOT, rel), encoding="utf-8",
+                          errors="replace").read().splitlines()
+            gset2 = set(gmap)
+            for i, (ln, name, cite, osr, lo, hi, g) in enumerate(got):
+                if g or name in CKEYWORDS:
+                    continue
+                span = stmt_span(flines, ln)
+                if not span:
+                    continue
+                code = strip_comments(
+                    "\n".join(flines[span[0]:span[1] + 1]))
+                used = sorted((set(IDENT_ALL.findall(code)) & gset2)
+                              - {name})
+                if not used:
+                    continue
+                cond = gmap[used[0]]
+                for u in used[1:]:
+                    cond = strictest(cond, gmap[u])
+                got[i] = (ln, name, cite, osr, lo, hi, cond)
+                gmap[name] = strictest(gmap.get(name, cond), cond)
+                derived.append((rel, name, cond, used[0]))
+                changed = True
+        if not changed:
+            break
+    print(f"conditions propagated to users of a generation-specific type: "
+          f"{len(derived)}", flush=True)
+    for rel, name, cond, src in derived[:10]:
+        print(f"  {rel}: {name} [{cond}] -- uses {src}")
+
     code_of = {}
     for rel, _got in per_file.items():
         code_of[rel] = strip_comments(
             open(os.path.join(ROOT, rel), encoding="utf-8",
                  errors="replace").read())
+    # OEM/BSP scope is out of the user-mode -dev set: this pass guards
+    # the application layer (include/) only; include/oak is left alone.
+    skipped = 0
     byfile = {}
-    crossheader = []
     for rel, got in per_file.items():
+        if rel.startswith("include" + os.sep + "oak"):
+            continue
         for ln, name, cite, osr, lo, hi, g in got:
             if not g or "<=" in g:
                 continue
-            # every identifier the unit introduces, not just its primary
-            # name: a typedef's pointer tail (`} DEVMGR_DEVICE_INFORMATION,
-            # *PDEVMGR_DEVICE_INFORMATION;`) is what other headers use.
-            span = stmt_span(open(os.path.join(ROOT, rel),
-                                  encoding="utf-8",
-                                  errors="replace").read().splitlines(), ln)
-            unit_lines = open(os.path.join(ROOT, rel), encoding="utf-8",
-                              errors="replace").read().splitlines()
-            first, last = span if span else (ln, ln)
-            names = {name} | {t for t in IDENT_ALL.findall(
-                strip_comments("\n".join(unit_lines[first:last + 1])))
-                if len(t) > 2}
-            users = None
-            for nm in names:
-                for r2, c2 in code_of.items():
-                    if r2 != rel and re.search(r"\b" + re.escape(nm)
-                                               + r"\b", c2):
-                        users = (nm, r2)
-                        break
-                if users:
-                    break
-            if users:
-                crossheader.append((rel, users[0], g, users[1]))
-                continue
             byfile.setdefault(rel, []).append((ln, name, cite, osr, g))
-    applied = rolled = skipped = 0
+    print(f"guard units: {sum(len(v) for v in byfile.values())} "
+          f"in {len(byfile)} application-layer headers", flush=True)
+    applied = 0
+    held_units = []
+    state = {}          # rel -> {path, orig, lines, edits}
+
+    def render(st):
+        out = list(st["lines"])
+        for e in sorted(st["edits"], key=lambda e: -e[0]):
+            out.insert(e[1] + 1, f"#endif /* {e[2]} */")
+            out.insert(e[0], f"#if {e[2]}   /* {e[4]} ({e[3]}) */")
+        open(st["path"], "w", encoding="utf-8").write("\n".join(out) + "\n")
+
     for rel, items in sorted(byfile.items()):
         path = os.path.join(ROOT, rel)
         text = open(path, encoding="utf-8", errors="replace").read()
-        orig = text
         snap = path + ".preguard"
         if not os.path.exists(snap):
-            open(snap, "w", encoding="utf-8").write(orig)
+            open(snap, "w", encoding="utf-8").write(text)
         lines = text.splitlines()
         edits = []
         for ln, name, cite, osr, g in sorted(items):
@@ -601,150 +989,270 @@ def main():
                 skipped += 1
                 continue
             cstart = comment_span(lines, first)
-            # A page's constants/declarations are usually printed as one
-            # block under one citation comment.  Extend the unit over the
-            # consecutive declarations that share that comment, so a
-            # documented set is never split (guarding REG_NOTIFY_CHANGE_
-            # NAME but not REG_NOTIFY_CHANGE_LAST_SET would publish half
-            # a page's table at one generation and half at another).
-            merged = any(e[0] == cstart and e[1] == first - 1 for e in edits)
-            if merged:
-                for i, e in enumerate(edits):
-                    if e[0] == cstart:
-                        edits[i] = (e[0], last, e[2], e[3], e[4])
-                        break
+            # A page's declarations are printed as one block under one
+            # citation; extend the unit over the consecutive declarations
+            # that share that comment so a printed set is never split.
+            hit = [i for i, e in enumerate(edits)
+                   if e[0] == cstart and e[1] == first - 1]
+            if hit:
+                i = hit[0]
+                e = edits[i]
+                edits[i] = (e[0], last, e[2], e[3], e[4],
+                            e[5] | declared_names(lines, ln, name))
                 continue
             if any(not (e[1] < first or e[0] > last) for e in edits):
-                skipped += 1     # overlapping unit
+                skipped += 1
                 continue
-            edits.append((cstart, last, g, cite, osr))
-        # only the last declaration of a merged run may extend it
-        edits.sort()
+            # A guarded range must be brace-balanced on its own: cutting
+            # `extern "C" {` away from its closing brace (Shobjidl.h)
+            # leaves every C++ consumer of the header with an unterminated
+            # linkage block, which cxxcheck reports as "expected '}' at
+            # end of input".
+            if sum(bracket_balance(t)
+                   for t in lines[cstart:last + 1]) != 0:
+                skipped += 1
+                continue
+            edits.append((cstart, last, g, cite, osr,
+                          frozenset(declared_names(lines, ln, name))))
         if not edits:
             continue
-        # merge units that are contiguous (blank lines between them are
-        # part of the same printed block) and carry the same condition
         merged = []
         for e in sorted(edits):
-            if merged and merged[-1][2] == e[2] \
-                    and all(not t.strip() or t.strip().startswith(("*", "/*", "//"))
-                            for t in lines[merged[-1][1] + 1:e[0]]):
-                merged[-1] = (merged[-1][0], e[1], e[2], e[3], e[4])
+            if merged and merged[-1][2] == e[2] and all(
+                    not t.strip() or t.strip().startswith(("*", "/*", "//"))
+                    for t in lines[merged[-1][1] + 1:e[0]]):
+                m = merged[-1]
+                merged[-1] = (m[0], e[1], m[2], m[3], m[4], m[5] | e[5])
             else:
-                merged.append(list(e))
-        edits = [tuple(e) for e in merged]
-        for cstart, last, g, cite, osr in sorted(edits, reverse=True):
-            lines.insert(last + 1, f"#endif /* {g} */")
-            lines.insert(cstart, f"#if {g}   /* {osr} ({cite}) */")
-        open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
-        bad = None
-        for w in (0x420, 0x500, 0x600):
-            ok, err = compiles_at(path, w)
-            if not ok:
-                bad = f"header _WIN32_WCE=0x{w:04x}: {err}"
-                break
-        if bad:
-            open(path, "w", encoding="utf-8").write(orig)
-            rolled += 1
-            print(f"  !! {rel}: rolled back ({len(edits)} guards) -- {bad}")
-        else:
-            applied += len(edits)
-            print(f"  {rel}: +{len(edits)} generation guards")
-    print(f"guards applied: {applied}; headers rolled back: {rolled}; "
-          f"units skipped (nested/overlapping/unbounded): {skipped}")
-    if crossheader:
-        print(f"units held (name also used by another header's code): "
-              f"{len(crossheader)}")
-        for rel, name, g, user in crossheader[:15]:
-            print(f"  {rel}: {name} [{g}] -- also in {user}")
+                merged.append(e)
+        state[rel] = {"path": path, "orig": text, "lines": lines,
+                      "edits": merged}
+        render(state[rel])
 
-    # ---- consumer TU: same conditions on the uses, then the full gate --
-    guarded = {}
-    for rel, got in per_file.items():
-        for ln, name, cite, osr, lo, hi, g in got:
-            if g and "<=" not in g:
-                guarded.setdefault(name, g)
-    n = guard_consumer_sites(guarded)
-    print(f"consumer TU: {n} guarded regions")
-    # the shipped TU must compile at all three generations; a header
-    # whose guard breaks it (a cross-header dependency on a type the
-    # guard hides) is rolled back and reported.
-    # name -> header that guards its declaration, so a cross-header
-    # failure can be traced to the guard that hid the declaration (the
-    # file named by the compiler is only the *user* of the name).
-    guarded_in = {}
-    decl_owner = {}
-    for rel, got in per_file.items():
-        for ln, name, cite, osr, lo, hi, g in got:
-            decl_owner.setdefault(name, rel)
-            if g and "<=" not in g:
-                guarded_in.setdefault(name, rel)
-    done = set()
+    applied = sum(len(st["edits"]) for st in state.values())
+    print(f"guard units written: {applied} in {len(state)} application-layer "
+          f"headers; skipped (nested/overlapping/unbounded): {skipped}",
+          flush=True)
 
-    def rollback(rel, why):
-        nonlocal rolled
-        path = os.path.join(ROOT, rel)
-        snap = path + ".preguard"
-        if not os.path.exists(snap):
-            print(f"  !! {rel}: no pre-guard snapshot; left as is")
+    # name -> the single guard unit that publishes it, so a whole-tree
+    # failure can be charged to one unit instead of a whole header.
+    unit_owner = {}
+    for rel, st in state.items():
+        for e in st["edits"]:
+            for nm in e[5]:
+                unit_owner.setdefault(nm, (rel, e))
+
+    def drop_unit(rel, edit, why):
+        st = state[rel]
+        if edit not in st["edits"]:
             return False
-        import shutil
-        shutil.copyfile(snap, path)
-        rolled += 1
-        done.add(rel)
-        print(f"  !! {rel}: rolled back to its pre-guard state ({why})")
+        st["edits"] = [e for e in st["edits"] if e is not edit]
+        if st["edits"]:
+            render(st)
+        else:
+            open(st["path"], "w", encoding="utf-8").write(st["orig"])
+        held_units.append((rel, edit[3], edit[4], edit[2], why))
+        for nm in edit[5]:
+            if unit_owner.get(nm, (None, None))[1] is edit:
+                unit_owner.pop(nm, None)
         return True
 
-    for _round in range(20):
-        bad_rel = None
+    def try_drop(rel, e, w, head, validate=None):
+        """drop one unit of `rel` and keep it dropped only if the tree
+        failure it was blamed for actually goes away."""
+        st = state[rel]
+        saved = st["edits"]
+        owner = {nm: unit_owner[nm] for nm in e[5] if nm in unit_owner}
+        st["edits"] = [x for x in saved if x is not e]
+        if st["edits"]:
+            render(st)
+        else:
+            open(st["path"], "w", encoding="utf-8").write(st["orig"])
+        ok, err2 = (validate() if validate
+                    else compiles_at(None, w, tu=True))
+        if ok or head not in (err2 or ""):
+            # the unit stays out; record it here rather than through
+            # drop_unit, which would find it already removed
+            held_units.append((rel, e[3], e[4], e[2],
+                               f"0x{w:04x}: {head[:90]}"))
+            for nm in e[5]:
+                if unit_owner.get(nm, (None, None))[1] is e:
+                    unit_owner.pop(nm, None)
+            return True
+        st["edits"] = saved
+        unit_owner.update(owner)
+        render(st)
+        return False
+
+    def triage_header(rel, w, head, validate=None):
+        """a failure with no attributable name: try the header's units one
+        at a time instead of throwing the whole header's guards away
+        (Winbase.h and Wingdi.h carry the largest guard sets in the
+        tree)."""
+        st = state.get(rel)
+        if not st:
+            return False
+        for e in list(st["edits"]):
+            if try_drop(rel, e, w, head, validate):
+                return True
+        return False
+
+    def find_hider(name):
+        """the guarded header whose text lost `name`.
+
+        `unit_owner` only knows the names a unit's own citation
+        introduced; when the compiler reports a missing name this finds
+        the header that actually stopped declaring it by diffing each
+        guarded header against its pre-guard snapshot (CEOID is declared
+        in Windbase.h but reported missing from Notifext.hxx)."""
+        pat = re.compile(r"\b" + re.escape(name) + r"\b")
+        for rel, st in state.items():
+            if not st["edits"]:
+                continue
+            cur = open(st["path"], encoding="utf-8",
+                       errors="replace").read()
+            if pat.search(strip_comments(st["orig"])) \
+                    and not pat.search(strip_comments(cur)):
+                return rel
+        return None
+
+    import shutil
+    pristine = "/tmp/tu_pristine.c"
+    if not os.path.exists(pristine):
+        shutil.copyfile(TU, pristine)
+
+    # The only gate that matters is the whole tree: a guard can be sound
+    # inside its own header and still break another one that includes it
+    # (Shobjidl.h's LPSTRRET, Objbase.h's _tagCY, Winbase.h's
+    # _PROCESS_INFORMATION all did).  Each failure drops exactly the unit
+    # that published the missing name and the tree is rebuilt.
+    for _round in range(600):
+        guarded = {}
+        for rel, st in state.items():
+            for e in st["edits"]:
+                for nm in e[5]:
+                    if nm in CKEYWORDS:
+                        continue
+                    if nm not in guarded or \
+                            cond_bound(e[2]) > cond_bound(guarded[nm]):
+                        guarded[nm] = e[2]
+        shutil.copyfile(pristine, TU)
+        ntu = guard_consumer_sites(guarded)
+        fail = None
         for w in (0x420, 0x500, 0x600):
             ok, err = compiles_at(None, w, tu=True)
-            if ok:
-                continue
-            print(f"  !! TU at 0x{w:04x}: {err}")
-            # the compiler quotes the missing name in typographic quotes
-            m = re.search(r"(?:unknown type name|undeclared)[^A-Za-z_]*"
-                          "([A-Za-z_][A-Za-z0-9_]*)", err)
-            name = m.group(1) if m else None
-            # the guard that hid it lives in the header that declares it,
-            # not in the file the compiler names (that one only uses it).
-            # Find it by diffing every guarded header against its
-            # pre-guard snapshot: the header whose snapshot mentions the
-            # name and whose current text does not is the one that hid it
-            # (a typedef tail such as `*PDEVMGR_DEVICE_INFORMATION` is not
-            # a declaration name, so the attribution table cannot see it).
-            bad_rel = None
-            if name:
-                for rel2, _got in per_file.items():
-                    snap = os.path.join(ROOT, rel2) + ".preguard"
-                    cur = os.path.join(ROOT, rel2)
-                    if not os.path.exists(snap):
-                        continue
-                    pat = re.compile(r"\b" + re.escape(name) + r"\b")
-                    a = strip_comments(open(snap, encoding="utf-8",
-                                            errors="replace").read())
-                    b = strip_comments(open(cur, encoding="utf-8",
-                                            errors="replace").read())
-                    if pat.search(a) and not pat.search(b):
-                        bad_rel = rel2
-                        break
-            if not bad_rel and name:
-                bad_rel = guarded_in.get(name)
-            if not bad_rel:
-                m2 = re.search(r"(include/[A-Za-z0-9_./-]+\.h)", err)
-                bad_rel = m2.group(1) if m2 else None
-            if bad_rel in done:
-                print(f"  !! {bad_rel}: already rolled back; stopping")
-                bad_rel = None
+            if not ok:
+                fail = (w, err)
+                break
+        if not fail:
+            print(f"  whole tree compiles at 0x0420/0x0500/0x0600 with "
+                  f"{ntu} guarded consumer regions after {_round} "
+                  f"unit rollback(s)", flush=True)
             break
-        if not bad_rel:
+        w, err = fail
+        head = err.splitlines()[0][:110]
+        m = re.search(r"(?:unknown type name|undeclared|redefinition of)"
+                      r"[^A-Za-z_]*([A-Za-z_][A-Za-z0-9_]*)", err)
+        name = m.group(1) if m else None
+        target = unit_owner.get(name) if name else None
+        if target and drop_unit(target[0], target[1], f"0x{w:04x}: {head}"):
+            print(f"  !! drop {target[0]} unit for {name} (0x{w:04x})",
+                  flush=True)
+            continue
+        rel2 = find_hider(name) if name else None
+        if not rel2:
+            m2 = re.search(r"(include/[A-Za-z0-9_./-]+\.h(?:pp|xx)?)", err)
+            rel2 = m2.group(1) if m2 else None
+        if rel2 and triage_header(rel2, w, head):
+            print(f"  !! triaged a {rel2} unit away (0x{w:04x})", flush=True)
+            continue
+        print(f"  !! unresolved at 0x{w:04x}: {head}", flush=True)
+        break
+    else:
+        print("  !! rollback budget exhausted", flush=True)
+
+    # Stage 2: the Makefile's own gate is wider than the consumer TU --
+    # hostcheck compiles *every* header standalone at all three
+    # generations, and a guard can satisfy the TU while breaking a header
+    # the TU never includes (D3dmddk.h takes its D3DM_*_DATA types from
+    # D3dm.h).  Sweep until clean, charging each failure to one unit.
+    sweep = makefile_headers() or [rel for _p, rel in header_files()]
+    for _pass in range(400):
+        bad = None
+        for w in (0x420, 0x500, 0x600):
+            for rel in sweep:
+                ok, err = compiles_at(os.path.join(ROOT, rel), w)
+                if not ok:
+                    bad = (w, rel, err)
+                    break
+            if bad:
+                break
+        if not bad:
+            print(f"  header sweep clean at 0x0420/0x0500/0x0600 "
+                  f"({3 * len(sweep)} standalone compiles) after {_pass} "
+                  f"rollback(s)", flush=True)
             break
-        if not rollback(bad_rel, f"hides a declaration another header uses"):
-            break
+        w, rel, err = bad
+        head = err.splitlines()[0][:110]
+        m = re.search(r"(?:unknown type name|undeclared|redefinition of)"
+                      r"[^A-Za-z_]*([A-Za-z_][A-Za-z0-9_]*)", err)
+        name = m.group(1) if m else None
+        target = unit_owner.get(name) if name else None
+        if target and drop_unit(target[0], target[1],
+                                f"sweep {rel} 0x{w:04x}: {head}"):
+            print(f"  !! sweep: drop {target[0]} unit for {name} "
+                  f"({rel} 0x{w:04x})", flush=True)
+            continue
+        rel2 = find_hider(name) if name else None
+        if not rel2:
+            m2 = re.search(r"(include/[A-Za-z0-9_./-]+\.(?:h|hpp|hxx))",
+                           err)
+            rel2 = m2.group(1) if m2 else rel
+        vpath = os.path.join(ROOT, rel)
+        if state.get(rel2) and triage_header(
+                rel2, w, head,
+                lambda: compiles_at(vpath, w)):
+            print(f"  !! sweep: triaged a {rel2} unit away "
+                  f"({rel} 0x{w:04x})", flush=True)
+            continue
+        print(f"  !! sweep unresolved ({rel} 0x{w:04x}): {head}", flush=True)
+        break
+    else:
+        print("  !! sweep rollback budget exhausted", flush=True)
+
+    applied = sum(len(st["edits"]) for st in state.values())
+    print(f"guards kept: {applied}; units held: {len(held_units)}",
+          flush=True)
+    if held_units:
+        with open(os.path.join(ROOT, "docs", "generation-held.tsv"), "w",
+                  encoding="utf-8") as fh:
+            fh.write("header\tpage\tos_versions\twould_be_guard\t"
+                     "reason\n")
+            for rel, cite, osr, g, why in held_units:
+                fh.write("\t".join([rel, cite or "", osr or "", g,
+                                     why.replace("\t", " ")]) + "\n")
+        print(f"wrote {os.path.join(ROOT, 'docs', 'generation-held.tsv')}",
+              flush=True)
+    # final consumer regeneration: the conditions wrapping the shipped
+    # TU must come from the guards that survived *both* stages, or the
+    # consumer check silently stops exercising APIs that are available
+    guarded = {}
+    for rel, st in state.items():
+        for e in st["edits"]:
+            for nm in e[5]:
+                if nm in CKEYWORDS:
+                    continue
+                if nm not in guarded or \
+                        cond_bound(e[2]) > cond_bound(guarded[nm]):
+                    guarded[nm] = e[2]
+    shutil.copyfile(pristine, TU)
+    ntu = guard_consumer_sites(guarded)
+    print(f"consumer TU regenerated from the surviving guards: {ntu} "
+          f"regions over {len(guarded)} guarded names", flush=True)
     for w in (0x420, 0x500, 0x600):
         ok, err = compiles_at(None, w, tu=True)
         print(f"  consumer TU at 0x{w:04x}: "
-              + ("OK" if ok else f"FAIL -- {err}"))
+              + ("OK" if ok else f"FAIL -- {err}"), flush=True)
 
 
 if __name__ == "__main__":

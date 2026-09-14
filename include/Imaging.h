@@ -43,6 +43,7 @@ extern "C" {
 /* Imaging Types book (aa452253; three pages).                         */
 /* ------------------------------------------------------------------ */
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms925572) */
 /* ms925572 "ARGB" (Windows CE 5.0 and later; Imaging.h):
  *   typedef DWORD ARGB;  (verbatim print) */
 typedef DWORD ARGB;
@@ -54,6 +55,7 @@ typedef INT PixelFormat;
 /* ms932258 "PixelFormatID" (Windows CE 5.0 and later; Imaging.h):
  *   typedef PixelFormat PixelFormatID;  (verbatim print) */
 typedef PixelFormat PixelFormatID;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* PROPID -- own-design closure (recorded per the zero-gap policy).    */
@@ -87,6 +89,7 @@ typedef ULONG PROPID;      /* own-design closure; see note above */
 /*   #define BLUE_SHIFT 0                                              */
 /*   #define ALPHA_MASK ((ARGB) 0xff << ALPHA_SHIFT)                   */
 /* ------------------------------------------------------------------ */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms932026) */
 #define ALPHA_SHIFT 24
 #define RED_SHIFT 16
 #define GREEN_SHIFT 8
@@ -345,6 +348,7 @@ enum SinkFlags {
     SinkFlagsComposite       = 0x00100000,
     SinkFlagsWantProps       = 0x00200000
 };
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* ms932271 "PropertyTag Values" (Windows CE 5.0 and later; Imaging.h). */

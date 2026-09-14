@@ -283,7 +283,9 @@ static const void *const api_symbols[] = {
     (const void *) &NKDbgPrintfW,
     (const void *) &RegisterDbgZones,
     (const void *) &WriteDebugLED,
+#if _WIN32_WCE >= 0x0500   /* ReportFault */
     (const void *) &ReportFault,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &AbnormalTermination,
     (const void *) &GetExceptionCode,
     (const void *) &GetExceptionInformation,
@@ -550,9 +552,11 @@ static const void *const api_symbols[] = {
     (const void *) &RegQueryValueExW, (const void *) &RegQueryValueEx,
     (const void *) &RegSetValueExW, (const void *) &RegSetValueEx,
     (const void *) &RegFlushKeyW, (const void *) &RegFlushKey,
+#if _WIN32_WCE >= 0x0500   /* CeFindFirstRegChange, CeFindNextRegChange, CeFindCloseRegChange */
     (const void *) &CeFindFirstRegChange,
     (const void *) &CeFindNextRegChange,
     (const void *) &CeFindCloseRegChange,
+#endif /* _WIN32_WCE >= 0x0500 */
     /* M27: GDI bulk (wingdi.h/winuser.h/winbase.h): 129 GDI
      * Functions declared as exports + 3 GDI color macros
      * (GetRValue/GetGValue/GetBValue) that the official
@@ -666,7 +670,9 @@ static const void *const api_symbols[] = {
     (const void *) &SetBrushOrgEx,
     (const void *) &SetDIBColorTable,
     (const void *) &SetDIBitsToDevice,
+#if _WIN32_WCE >= 0x0500   /* SetLayout */
     (const void *) &SetLayout,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &SetPaletteEntries,
     (const void *) &SetPixel,
     (const void *) &SetRect,
@@ -761,15 +767,21 @@ static const void *const api_symbols[] = {
     /* M36: Fonts-and-text (wingdi.h) and MultiMonitor functions. */
     (const void *) &AddFontResourceW, (const void *) &CreateFontIndirectW,
     (const void *) &DrawTextW, (const void *) &EnumFontFamiliesW,
+#if _WIN32_WCE >= 0x0500   /* EnumFontFamiliesExW */
     (const void *) &EnumFontFamiliesExW, (const void *) &EnumFontsW,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &ExtTextOutW, (const void *) &GetCharABCWidthsW,
+#if _WIN32_WCE >= 0x0500   /* GetFontData, GetTextCharacterExtra */
     (const void *) &GetCharWidth32W, (const void *) &GetFontData,
     (const void *) &GetTextAlign, (const void *) &GetTextCharacterExtra,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GetTextColor, (const void *) &GetTextExtentExPointW,
     (const void *) &GetTextExtentPointW,
     (const void *) &GetTextExtentPoint32W, (const void *) &GetTextFaceW,
     (const void *) &GetTextMetricsW, (const void *) &RemoveFontResourceW,
+#if _WIN32_WCE >= 0x0500   /* SetTextCharacterExtra */
     (const void *) &SetTextAlign, (const void *) &SetTextCharacterExtra,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &SetTextColor, (const void *) &EnumDisplayMonitors,
     (const void *) &GetMonitorInfo, (const void *) &MonitorFromPoint,
     (const void *) &MonitorFromRect, (const void *) &MonitorFromWindow,
@@ -1366,6 +1378,7 @@ typedef char assert_m17_vals[
      LOCKFILE_EXCLUSIVE_LOCK == 2u) ? 1 : -1];
 
 /* M15 registry constants (winreg.h; values per fixed Win32 ABI). */
+#if _WIN32_WCE >= 0x0500   /* REG_NOTIFY_CHANGE_LAST_SET, REG_NOTIFY_CHANGE_NAME */
 typedef char assert_reg_vals[
     (REG_NONE == 0 && REG_SZ == 1 && REG_EXPAND_SZ == 2 &&
      REG_BINARY == 3 && REG_DWORD == 4 &&
@@ -1375,6 +1388,7 @@ typedef char assert_reg_vals[
      REG_CREATED_NEW_KEY == 1u && REG_OPENED_EXISTING_KEY == 2u &&
      REG_NOTIFY_CHANGE_NAME == 1u &&
      REG_NOTIFY_CHANGE_LAST_SET == 4u) ? 1 : -1];
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* M13 NLS constants (winnls.h; values per fixed Win32 ABI). */
 typedef char assert_nls_vals[
@@ -1715,6 +1729,7 @@ static int m23_shaped_usage(void)
     (void) SetupComm((HANDLE) 0, 4096u, 4096u);
     return (dcb.fBinary == 1 && dcb.ByteSize == 8) ? 0 : 1;
 }
+#if _WIN32_WCE >= 0x0500   /* fn m24_shaped_usage, ReportFault */
 
 /* M24 usage shape (compile-only; SEH/debugging declarations). */
 static int m24_shaped_usage(void)
@@ -1747,6 +1762,7 @@ static int m24_shaped_usage(void)
             && de.dwDebugEventCode == 0 && de.u.Exception.dwFirstChance == 0)
            ? 0 : 1;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* M25 usage shape (compile-only; winerror/FormatMessage/NAT/CeLog). */
 static int m25_shaped_usage(void)
@@ -1963,6 +1979,7 @@ static int m26_shaped_usage(void)
             && MAKELRESULT(0, 1) == ((LRESULT) 0x10000))
            ? 0 : 1;
 }
+#if _WIN32_WCE >= 0x0500   /* fn m27_shaped_usage, SetLayout */
 
 /* M27: GDI Reference -- exercise every GDI declaration with typed
  * null arguments; verify the documented (pointer-free) structure
@@ -2123,6 +2140,7 @@ static int m27_shaped_usage(void)
     (void) ValidateRgn((HWND)0, (HRGN)0);
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* M28: window-control function layer -- exercise every declaration with
  * typed null arguments and verify the documented CE structure layouts.
@@ -3824,6 +3842,7 @@ _Static_assert(sizeof(CMSG_STREAM_INFO) == 12, "CMSG_STREAM_INFO 32-bit size");
 _Static_assert(sizeof(VTableProvStruc) == 28, "VTableProvStruc 32-bit size");
 #endif
 
+#if _WIN32_WCE >= 0x0500   /* static m47_stream_output only used guarded, fn m47_shaped_usage, CryptMsgClose +7 more */
 static BOOL WINAPI m47_stream_output(const void *pvArg, BYTE *pbData,
                                      DWORD cbData, BOOL fFinal)
 { (void) pvArg; (void) pbData; (void) cbData; (void) fFinal;
@@ -3939,6 +3958,7 @@ static int m47_shaped_usage(void)
     (void) vts;
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* M48: Cryptography certificate / encode / OID / PFX unit            */
@@ -4299,6 +4319,7 @@ _Static_assert(sizeof(SCARD_ATRMASK) == 76, "SCARD_ATRMASK size");
 _Static_assert(sizeof(SCARD_READERSTATE) == 56,
                "SCARD_READERSTATE 32-bit size");
 #endif
+#if _WIN32_WCE >= 0x0500   /* fn m49_shaped_usage, SCardFreeMemory */
 
 static int m49_shaped_usage(void)
 {
@@ -4351,6 +4372,7 @@ static int m49_shaped_usage(void)
     (void) SCardFreeMemory(hContext, (LPCVOID)0);
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 
 /* ------------------------------------------------------------------ */
@@ -4377,6 +4399,7 @@ _Static_assert(sizeof(SHNOTIFICATIONDATA) == 56,
 _Static_assert(sizeof(SHRGINFO) == 20, "SHRGINFO 32-bit size");
 _Static_assert(sizeof(NMNEWMENU) == 196, "NMNEWMENU 32-bit size");
 #endif
+#if _WIN32_WCE >= 0x0500   /* fn m50_shaped_usage, SHSetBack */
 
 static int m50_shaped_usage(void)
 {
@@ -4472,6 +4495,7 @@ static int m50_shaped_usage(void)
     (void) WC_SIPPREF;
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 
 /* ------------------------------------------------------------------ */
@@ -5135,8 +5159,10 @@ _Static_assert(sizeof(PHYSICAL_ADDRESS) == 8 &&
                "PHYSICAL_ADDRESS = LARGE_INTEGER basis");
 _Static_assert(sizeof(DMA_ADAPTER_OBJECT) == 12,
                "DMA_ADAPTER_OBJECT 32-bit size");
+#if _WIN32_WCE >= 0x0500   /* NetworkCallFailedInfo, NetworkCallFailedInfo */
 _Static_assert(sizeof(NetworkCallFailedInfo) == 8,
                "NetworkCallFailedInfo 32-bit size");
+#endif /* _WIN32_WCE >= 0x0500 */
 _Static_assert(sizeof(DEVMGR_DEVICE_INFORMATION) == 1584,
                "DEVMGR_DEVICE_INFORMATION 32-bit size");
 _Static_assert(SDP_TYPE_NIL == 0x00 && SDP_TYPE_CONTAINER == 0x20,
@@ -5147,10 +5173,12 @@ _Static_assert(SDP_ST_NONE == 0x0000 && SDP_ST_UINT128 == 0x0410 &&
 _Static_assert(NODECONTAINERTYPESEQUENCE == 0 &&
                NODECONTAINERTYPEALTERNATIVE == 1,
                "NODECONTAINERTYPE values (ms895690)");
+#if _WIN32_WCE >= 0x0500   /* NETWORK_FLAGS_DROP_ALL, NETWORK_FLAGS_STATE_OUTGOING, NETWORK_FLAGS_DROP_ACTIVE */
 _Static_assert(NETWORK_FLAGS_DROP_ACTIVE == 0x01 &&
                NETWORK_FLAGS_DROP_ALL == 0x0f &&
                NETWORK_FLAGS_STATE_OUTGOING == 0x08,
                "NETWORK_FLAGS values (aa450315/aa450316)");
+#endif /* _WIN32_WCE >= 0x0500 */
 _Static_assert((int)ConfigurationSpaceUndefined == -1 &&
                PCIConfiguration == 4 && MaximumBusDataType == 11,
                "BUS_DATA_TYPE values (ms896151)");
@@ -5271,6 +5299,7 @@ static int m56_shaped_usage(void)
     (void) lvhti; (void) nmlv; (void) nmlvcd; (void) lvdi;
     return 0;
 }
+#if _WIN32_WCE >= 0x0500   /* fn m57_shaped_usage, BthAGATHandler, BthAGATSetCallback, BthAGNetworkDropCall +9 more */
 
 /* M57: Bluetooth / SNMP / CEDDK shaped usage (declarations + calls). */
 static int m57_shaped_usage(void)
@@ -5376,6 +5405,7 @@ static int m57_shaped_usage(void)
     (void) svbl; (void) pa; (void) dao; (void) ddi; (void) tfx;
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* M58: DVD-Video renderer shaped usage. */
 static int m58_shaped_usage(void)
@@ -5520,6 +5550,7 @@ static int m59_shaped_usage(void)
     (void) dvps;
     return 0;
 }
+#if _WIN32_WCE >= 0x0500   /* fn m53_shaped_usage, SHGetDesktopFolder */
 
 static int m53_shaped_usage(void)
 {
@@ -5590,6 +5621,7 @@ static int m53_shaped_usage(void)
     (void) nci;
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #if __SIZEOF_POINTER__ == 4
 /* M61: MLang 32-bit CE sizes + the published enum values. */
@@ -5852,8 +5884,10 @@ _Static_assert(sizeof(WAVEFORMATEX) == 20, "WAVEFORMATEX size (aa452419)");
 _Static_assert(sizeof(WAVEHDR) == 32, "WAVEHDR size (aa452420)");
 _Static_assert(sizeof(WAVEINCAPS) == 48, "WAVEINCAPS size (aa452422)");
 _Static_assert(sizeof(WAVEOUTCAPS) == 52, "WAVEOUTCAPS size (aa452442)");
+#if _WIN32_WCE >= 0x0500   /* STREAMPROPS, AUDIOGAINCLASS */
 _Static_assert(sizeof(STREAMPROPS) == 8, "STREAMPROPS size (aa452383)");
 _Static_assert(sizeof(AUDIOGAINCLASS) == 8, "AUDIOGAINCLASS size (ms925607)");
+#endif /* _WIN32_WCE >= 0x0500 */
 _Static_assert(sizeof(MMTIME) == 12, "MMTIME size (aa447864)");
 _Static_assert(offsetof(MMTIME, u) == 4, "MMTIME union offset (aa447864)");
 _Static_assert(sizeof(TIMECAPS) == 8, "TIMECAPS size (aa448189)");
@@ -5872,6 +5906,7 @@ _Static_assert(offsetof(MIXERLINE, Target) == 120, "MIXERLINE Target offset (ms9
 _Static_assert(sizeof(MIXERLINECONTROLS) == 24, "MIXERLINECONTROLS size (ms932051)");
 _Static_assert(MAXPNAMELEN == 32, "MAXPNAMELEN printed value (aa452442)");
 #endif
+#if _WIN32_WCE >= 0x0500   /* fn m63_shaped_usage, AUDIOGAINCLASS, STREAMPROPS, waveInGetProperty +1 more */
 
 /* M63: Waveform Audio / Mixer / Timer shaped usage. */
 static int m63_shaped_usage(void)
@@ -5966,11 +6001,13 @@ static int m63_shaped_usage(void)
     (void) hmx; (void) hmxo; (void) tcb; (void) dw;
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #if __SIZEOF_POINTER__ == 4
 /* M64: Imaging API 32-bit CE sizes (transcribed CE 5.0 prints; the CE
  * 6.0 twins print identical bodies -- ee491598/ee490848/ee490096/
  * ee490079/ee491100/ee491044/ee490672). */
+#if _WIN32_WCE >= 0x0500   /* BitmapData, BitmapData, ImageCodecInfo +7 more */
 _Static_assert(sizeof(BitmapData) == 24, "BitmapData size (ms925969)");
 _Static_assert(offsetof(BitmapData, Scan0) == 16, "BitmapData print (ms925969)");
 _Static_assert(sizeof(ImageCodecInfo) == 76, "ImageCodecInfo size (aa452241)");
@@ -5981,7 +6018,9 @@ _Static_assert(sizeof(ColorPalette) == 12, "ColorPalette size (ms926775)");
 _Static_assert(sizeof(PropertyItem) == 16, "PropertyItem size (ms932269)");
 _Static_assert(sizeof(EncoderParameter) == 28, "EncoderParameter size (aa451679)");
 _Static_assert(sizeof(EncoderParameters) == 32, "EncoderParameters size (aa451680)");
+#endif /* _WIN32_WCE >= 0x0500 */
 /* M64 enum values (printed) + sequential readings (recorded). */
+#if _WIN32_WCE >= 0x0500   /* DecoderInitFlagNoBlock, DecoderInitFlagBuiltIn1st, EncoderParameterValueTypeRationalRange +9 more */
 _Static_assert(DecoderInitFlagNoBlock == 0x0001 && DecoderInitFlagBuiltIn1st == 0x0002, "aa451570");
 _Static_assert(EncoderParameterValueTypeRationalRange == 8, "aa451681");
 _Static_assert(ImageCodecFlagsUser == 0x00040000, "aa452239");
@@ -5992,6 +6031,7 @@ _Static_assert((int)SinkFlagsScalable == (int)ImageFlagsScalable, "ms932307 alia
 _Static_assert(BufferDisposalFlagUnmapView == 3, "ms936849 sequential");
 _Static_assert(InterpolationHintBicubic == 4, "ms912048 sequential");
 _Static_assert(EncoderValueFrameDimensionPage == 23, "aa451682 sequential");
+#endif /* _WIN32_WCE >= 0x0500 */
 /* M64: PropertyTag Values -- printed tags (ms932271), spot checks. */
 _Static_assert(PropertyTagArtist == 0x013B, "ms932271");
 _Static_assert(PropertyTagCompression == 0x0103, "ms932271");
@@ -6000,6 +6040,7 @@ _Static_assert(PropertyTagExifPixYDim == 0xA003, "ms932271");
 _Static_assert(PropertyTagThumbnailResolutionY == 0x502E, "ms932271");
 _Static_assert(PropertyTagLuminanceTable == 0x5090, "ms932271");
 #endif
+#if _WIN32_WCE >= 0x0500   /* fn m64_shaped_usage, ALPHA_MASK, ARGB, BitmapData +18 more */
 
 /* M64: Imaging API shaped usage (COM types only; no import surface). */
 static int m64_shaped_usage(void)
@@ -6048,6 +6089,7 @@ static int m64_shaped_usage(void)
     (void) eps;
     return (int)(argb & ALPHA_MASK) + (int)pfid;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #if __SIZEOF_POINTER__ == 4
 /* M65: POOM constants -- printed values (aa513746). */
@@ -6147,13 +6189,16 @@ _Static_assert(sizeof(D3DMVIEWPORT) == 24, "ms907759");
 _Static_assert(D3DMPOOL_MANAGED == 2, "ms907725");
 _Static_assert(D3DMFMT_D24S8 == 23 && D3DMFMT_INDEX32 == 28, "ms907707");
 _Static_assert(D3DMBLEND_SRCALPHASAT == 11, "ms939135");
+#if _WIN32_WCE >= 0x0500   /* D3DMRENDERSTATE_WRAPBIAS, D3DMPV_VALID, D3DMPV_DONOTCOPYDATA */
 _Static_assert(D3DMRENDERSTATE_WRAPBIAS == 32, "ms907738");
 _Static_assert(D3DMPV_VALID == D3DMPV_DONOTCOPYDATA, "ms907762 print");
+#endif /* _WIN32_WCE >= 0x0500 */
 _Static_assert(D3DMERR_DEVICELOST == MAKE_D3DMHRESULT(2152), "aa451582");
 _Static_assert(D3DMERR_ALREADYLOCKED == MAKE_D3DMHRESULT(2158), "aa451582");
 _Static_assert(MAKE_D3DMHRESULT(0) ==
                MAKE_HRESULT(1, 0x877, 0), "ms932027");
 #endif
+#if _WIN32_WCE >= 0x0500   /* fn m67_shaped_usage, D3DMCOLOR_ARGB, D3DMCOLOR_XRGB */
 
 /* M67: D3DM shaped usage. */
 static int m67_shaped_usage(void)
@@ -6188,6 +6233,7 @@ static int m67_shaped_usage(void)
     (void) tex; (void) vb; (void) ib; (void) sc;
     return (int)c;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #if __SIZEOF_POINTER__ == 4
 /* M68: SAPI sizes (verbatim prints; WPARAM/LPARAM are 4-byte on CE). */
@@ -6525,6 +6571,7 @@ static int m70b_shaped_usage(void)
 
 /* M71b: DirectShow interface forwards (61 opaque COM interfaces,
    M44/rtccore policy; method records are comment-only). */
+#if _WIN32_WCE >= 0x0500   /* fn m71_shaped_usage, IDirectDrawVideo */
 static int m71_shaped_usage(void)
 {
     IBaseFilter           *p_IBaseFilter = (IBaseFilter *)0;
@@ -6592,6 +6639,7 @@ static int m71_shaped_usage(void)
     (void)p_IBaseFilter; (void)p_IFilterGraph; (void)p_IAMDevMemoryAllocator; (void)p_IAMDevMemoryControl; (void)p_IAMDroppedFrames; (void)p_IAMMediaContent; (void)p_IAMMediaContentEx; (void)p_IAMPlayList; (void)p_IAMPlayListItem; (void)p_IAMStreamConfig; (void)p_IAMStreamControl; (void)p_IAMStreamSelect; (void)p_IAMTVTuner; (void)p_IAMTuner; (void)p_IAMovieSetup; (void)p_IAsyncReader; (void)p_IBasicAudio; (void)p_IBasicVideo; (void)p_IDMOWrapperFilter; (void)p_IDVREngineHelpers; (void)p_IDirectDrawVideo; (void)p_IDistributorNotify; (void)p_IEnumFilters; (void)p_IEnumMediaTypes; (void)p_IEnumPins; (void)p_IEnumRegFilters; (void)p_IFileSourceFilter; (void)p_IFilterGraph2; (void)p_IFilterMapper; (void)p_IGraphBuilder; (void)p_IGraphVersion; (void)p_IKsPropertySet; (void)p_IMediaControl; (void)p_IMediaEvent; (void)p_IMediaEventEx; (void)p_IMediaEventSink; (void)p_IMediaFilter; (void)p_IMediaPosition; (void)p_IMediaSample; (void)p_IMediaSample2; (void)p_IMediaSeeking; (void)p_IMediaStream; (void)p_IMemAllocator; (void)p_IMemInputPin; (void)p_IMultiMediaStream; (void)p_INonDelegatingUnknown; (void)p_IOverlay; (void)p_IOverlayNotify; (void)p_IPin; (void)p_IQualProp; (void)p_IQualityControl; (void)p_IReferenceClock; (void)p_ISeekingPassThru; (void)p_IStreamBufferCapture; (void)p_IStreamBufferPlayback; (void)p_IStreamSample; (void)p_IVPBaseConfig; (void)p_IVPBaseNotify; (void)p_IVPConfig; (void)p_IVPNotify; (void)p_IVideoWindow;
     return 0;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* M71c: DMO values (printed tables/enums). */
 _Static_assert(DMO_E_INVALIDSTREAMINDEX == 0x80040201L, "aa451595 table");
@@ -6748,6 +6796,7 @@ static int m75c_shaped_usage(void)
     (void)ev; (void)scb;
     return (int)ied.dwRequest + (req.dwFlags != 0u);
 }
+#if _WIN32_WCE >= 0x0500   /* fn m75d_shaped_usage, PEER_ADDRESS, PEER_DATA, PEER_NAME_PAIR +7 more */
 
 static int m75d_shaped_usage(void)
 {
@@ -6801,6 +6850,7 @@ static int m75f_shaped_usage(void)
            + (sr.dwReserved != 0u) + st.dwNumLines
            + (v6.IPV6NetPrefixCount != 0u);
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 static int m77a_shaped_usage(void)
 {
@@ -7057,6 +7107,7 @@ static int m78c_shaped_usage(void)
            + (int)dwd + (prp || prq || pie || pwwc || pwcl || pnso ? 1 : 0)
            + (pdw != NULL) + (pget != NULL);
 }
+#if _WIN32_WCE >= 0x0500   /* fn m79_shaped_usage, STORAGECONTEXT, fn m80_shaped_usage +5 more */
 
 static int m79_shaped_usage(void)
 {
@@ -7117,6 +7168,7 @@ static int m80_shaped_usage(void)
     ci = 0;
     return (int)d + (hr != 0) + (int)l + ci + wbuf[0];
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 static int m82_shaped_usage(void)
 {
@@ -7141,6 +7193,7 @@ static int m82_shaped_usage(void)
     u = SideShowMgr_GetGadgetCount();
     return (int)mst + (int)u + b + (pmh || pmd || pce || pms ? 1 : 0);
 }
+#if _WIN32_WCE >= 0x0500   /* fn m83_shaped_usage, GetCharABCWidthsI, GetPinyinType, SetPinyinType */
 
 static int m83_shaped_usage(void)
 {
@@ -7189,6 +7242,7 @@ static int m83_shaped_usage(void)
            + (int)sc.uDefaultLanguage + (int)sds.DigitSubstitute
            + (int)abc.abcB + (int)u;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 static int m84_shaped_usage(void)
 {
@@ -7312,6 +7366,7 @@ static int m91_fsd_usage(void)
            + (FSDMGR_OpenFileLockState(&fls), 0)
            + (FSDMGR_CloseFileLockState(&fls), 0);
 }
+#if _WIN32_WCE >= 0x0500   /* fn m92_wininet_usage, COOKIE_STATE_ACCEPT, InternetCookieState +5 more */
 
 static int m92_wininet_usage(void)
 {
@@ -7401,6 +7456,7 @@ static int m94_commctrl_usage(void)
     return (int)dw + (int)lvg.cbSize + (int)lvgm.cbSize
            + (int)lvsi.cbSize + (int)scb.dwSize;
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 
 int host_tu_entry(void)
 {
@@ -7444,12 +7500,16 @@ int host_tu_entry(void)
         return 1;
     if (m23_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m24_shaped_usage */
     if (m24_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m25_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m27_shaped_usage */
     if (m27_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m28_shaped_usage() != 0)
         return 1;
     if (m29_shaped_usage() != 0)
@@ -7468,28 +7528,36 @@ int host_tu_entry(void)
         return 1;
     if (m46_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m47_shaped_usage */
     if (m47_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m48_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m49_shaped_usage, dispatch m50_shaped_usage */
     if (m49_shaped_usage() != 0)
         return 1;
     if (m50_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m51_shaped_usage() != 0)
         return 1;
     if (m52_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m53_shaped_usage */
     if (m53_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m54_shaped_usage() != 0)
         return 1;
     if (m55_shaped_usage() != 0)
         return 1;
     if (m56_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m57_shaped_usage */
     if (m57_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m58_shaped_usage() != 0)
         return 1;
     if (m59_shaped_usage() != 0)
@@ -7498,16 +7566,20 @@ int host_tu_entry(void)
         return 1;
     if (m61_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m63_shaped_usage, dispatch m64_shaped_usage */
     if (m63_shaped_usage() != 0)
         return 1;
     if (m64_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m65_shaped_usage() != 0)
         return 1;
     if (m66_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m67_shaped_usage */
     if (m67_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m68_shaped_usage() != 0)
         return 1;
     if (m69_shaped_usage() != 0)
@@ -7516,8 +7588,10 @@ int host_tu_entry(void)
         return 1;
     if (m70b_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m71_shaped_usage */
     if (m71_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m71c_shaped_usage() != 0)
         return 1;
     if (m73a_shaped_usage() != 0)
@@ -7532,12 +7606,14 @@ int host_tu_entry(void)
         return 1;
     if (m75c_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m75d_shaped_usage, dispatch m75e_shaped_usage, dispatch m75f_shaped_usage */
     if (m75d_shaped_usage() != 0)
         return 1;
     if (m75e_shaped_usage() != 0)
         return 1;
     if (m75f_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m77a_shaped_usage() != 0)
         return 1;
     if (m77b_shaped_usage() != 0)
@@ -7550,14 +7626,18 @@ int host_tu_entry(void)
         return 1;
     if (m78c_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m79_shaped_usage, dispatch m80_shaped_usage */
     if (m79_shaped_usage() != 0)
         return 1;
     if (m80_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m82_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m83_shaped_usage */
     if (m83_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     if (m84_shaped_usage() != 0)
         return 1;
     if (m85_alias_usage() != 0)
@@ -7570,11 +7650,13 @@ int host_tu_entry(void)
         return 1;
     if (m91_fsd_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* dispatch m92_wininet_usage, dispatch m93_webview_usage, dispatch m94_commctrl_usage */
     if (m92_wininet_usage() != 0)
         return 1;
     if (m93_webview_usage() != 0)
         return 1;
     if (m94_commctrl_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
     return 0;
 }

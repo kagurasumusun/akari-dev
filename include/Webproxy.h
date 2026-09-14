@@ -8,6 +8,7 @@
 
 #include "Windef.h"    /* DWORD */
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms896347) */
 /* ms896347 "PROXY_HTTP_INFORMATION": print
  * `typedef struct _PROXY_HTTP_INFORMATION { DWORD dwSize;
  * DWORD dwProxyVersion;} PROXY_HTTP_INFORMATION,
@@ -34,6 +35,7 @@ typedef struct _PROXY_HTTP_INFORMATION {
 AKARI_CE_IMPORT DWORD WINAPI ProxyInitializeFilter(
                     PPROXY_HTTP_INFORMATION pInfo)
                     AKARI_CE_NAME(ProxyInitializeFilter);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ProxyUninitializeFilter / ProxyNotifyAddrChange /
  * ProxySignalFilter: prints `DWORD WINAPI

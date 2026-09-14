@@ -58,11 +58,13 @@ extern "C" {
  * (LARGE_INTEGER basis, wudfddi MapIoSpace page). */
 typedef LARGE_INTEGER PHYSICAL_ADDRESS, *PPHYSICAL_ADDRESS;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms896153) */
 /* PPVOID: the pointer-to-PVOID parameter type printed by the
  * BusTransBusAddrToStatic / BusTransBusAddrToVirtual /
  * TransBusAddrToStatic / TransBusAddrToVirtual prototypes
  * (ms896153/ms896154/aa448211/aa448212). */
 typedef PVOID *PPVOID;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms896151 "BUS_DATA_TYPE": values via implicit successors as printed
  * (ConfigurationSpaceUndefined = -1, then Cmos..PNPISAConfiguration,
@@ -119,6 +121,7 @@ typedef struct _DMA_ADAPTER_OBJECT_ {
 /* ------------------------------------------------------------------ */
 
 /* aa447690 "CreateBusAccessHandle". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa447690) */
 HANDLE CreateBusAccessHandle(LPCTSTR lpActiveRegPath);
 
 /* aa447670 "CloseBusAccessHandle". */
@@ -190,6 +193,7 @@ VOID StallExecution(UINT MicrosecondsToStall);
  * StallExecution body (artifact); the CE 6.0 twin ee481529 prints
  * "VOID CalibrateStallCounter(void);". */
 VOID CalibrateStallCounter(void);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* HAL / bus-data functions (CEDDK.lib).                               */
@@ -345,6 +349,7 @@ AKARI_CE_IMPORT VOID MmUnmapIoSpace(PVOID BaseAddress,
                                     ULONG NumberOfBytes) AKARI_CE_NAME(MmUnmapIoSpace);
 
 /* aa448212 "TransBusAddrToVirtual". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 4.0 and later. (aa448212) */
 AKARI_CE_IMPORT BOOL TransBusAddrToVirtual(INTERFACE_TYPE InterfaceType,
                                            ULONG BusNumber,
                                            PHYSICAL_ADDRESS BusAddress,
@@ -357,6 +362,7 @@ AKARI_CE_IMPORT BOOL TransBusAddrToStatic(INTERFACE_TYPE InterfaceType,
                                           PHYSICAL_ADDRESS BusAddress,
                                           ULONG Length, PULONG AddressSpace,
                                           PPVOID MappedAddress) AKARI_CE_NAME(TransBusAddrToStatic);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* Common-buffer DMA functions (CEDDK.lib).                            */

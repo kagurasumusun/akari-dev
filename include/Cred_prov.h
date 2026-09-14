@@ -35,20 +35,24 @@ extern "C" {
 /* PBOOL now declared in Windef.h */
 
 /* ms906527 "HandleBlob". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms906527) */
 DWORD HandleBlob(DWORD dwType, PWCHAR szTarget, PWCHAR szUser,
     PBYTE pInBlob, DWORD dwInSize, PBYTE pOutBlob, PDWORD pdwOutSize,
     DWORD dwFlag);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms926136 "Load Function (Credential Manager)" (prints "Load"). */
 DWORD Load(DWORD dwType, DWORD dwFlags);
 
 /* ms926147 "MatchTarget". */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms926147) */
 DWORD MatchTarget(DWORD dwType, PWSTR wszSrc, PWSTR wszDest,
     DWORD dwFlag, PBOOL pbMatch);
 
 /* ms926153 "MatchUser". */
 DWORD MatchUser(DWORD dwType, PWSTR wszSrc, PWSTR wszDest,
     DWORD dwFlag, PBOOL pbMatch);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms926454 "Unload Function (Credential Manager)" (prints "UnLoad";
  * the capital L spelling is the page's own). */

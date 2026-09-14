@@ -62,9 +62,11 @@ typedef struct _STOREMGR_STOREINFO *PSTOREMGR_STOREINFO;
 typedef struct _CE_VOLUME_INFO CE_VOLUME_INFO, *PCE_VOLUME_INFO,
     *LPCE_VOLUME_INFO;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms892014) */
 /* ms892014 "STORAGECONTEXT": print embeds STOREINFO and PARTINFO by
  * value (both held); held. */
 typedef struct tagSTORAGECONTEXT STORAGECONTEXT, *PSTORAGECONTEXT;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* --- Functions (Storeapi.lib). --------------------------------- */
 /* "DeletePartition": print `BOOL WINAPI DeletePartition(HANDLE hStore,LPCTSTR szPartitionName)` */

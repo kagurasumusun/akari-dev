@@ -2610,6 +2610,7 @@ typedef struct _DevmgrDeviceInformation_tag {
  * Book surface: devmgr (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms898292 DeviceSearchType (page print, compiled) */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms898292) */
 typedef enum  {
     DeviceSearchByLegacyName,
     DeviceSearchByDeviceName,
@@ -2617,6 +2618,7 @@ typedef enum  {
     DeviceSearchByGuid,
     DeviceSearchByParent
 } DeviceSearchType;
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms896106 ActivateDevice: print `HANDLE ActivateDevice(LPCWSTR lpszDevKey, DWORD dwClientInfo);` */
 AKARI_CE_IMPORT HANDLE ActivateDevice(LPCWSTR lpszDevKey, DWORD dwClientInfo)
     AKARI_CE_NAME(ActivateDevice);
@@ -2639,6 +2641,7 @@ AKARI_CE_IMPORT BOOL DeregisterDevice(HANDLE hDevice)
 AKARI_CE_IMPORT BOOL DeviceIoControl(HANDLE hDevice, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped)
     AKARI_CE_NAME(DeviceIoControl);
 /* aa447790 EnumDeviceInterfaces: print `BOOL EnumDeviceInterfaces ( HANDLE h, DWORD dwIndex, GUID *pClass, LPWSTR pszNameBuf, LPDWORD lpdwNameBufSize);` -- verified coredll surface export. */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa447790) */
 AKARI_CE_IMPORT BOOL EnumDeviceInterfaces(HANDLE h, DWORD dwIndex, GUID *pClass, LPWSTR pszNameBuf, LPDWORD lpdwNameBufSize)
     AKARI_CE_NAME(EnumDeviceInterfaces);
 /* aa447798 FindFirstDevice: print `HANDLE FindFirstDevice( DeviceSearchType searchType, LPCVOID pvSearchParam, PDEVMGR_DEVICE_INFORMATION pdi);` */
@@ -2649,6 +2652,7 @@ BOOL FindNextDevice(HANDLE h, PDEVMGR_DEVICE_INFORMATION pdi);
 BOOL GetDeviceInformationByDeviceHandle(HANDLE hDevice, PDEVMGR_DEVICE_INFORMATION pdi);
 /* aa447830 GetDeviceInformationByFileHandle: print `BOOL GetDeviceInformationByFileHandle( HANDLE hFile, PDEVMGR_DEVICE_INFORMATION pdi);` */
 BOOL GetDeviceInformationByFileHandle(HANDLE hFile, PDEVMGR_DEVICE_INFORMATION pdi);
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms919794 RegisterDevice: print `HANDLE RegisterDevice( LPCWSTR lpszType,DWORD dwIndex,LPCWSTR lpszLib,DWORD dwInfo);` */
 AKARI_CE_IMPORT HANDLE RegisterDevice(LPCWSTR lpszType, DWORD dwIndex, LPCWSTR lpszLib, DWORD dwInfo)
     AKARI_CE_NAME(RegisterDevice);
@@ -2656,9 +2660,11 @@ AKARI_CE_IMPORT HANDLE RegisterDevice(LPCWSTR lpszType, DWORD dwIndex, LPCWSTR l
 AKARI_CE_IMPORT BOOL ResourceCreateList(DWORD dwResId, DWORD dwMinimum, DWORD dwCount)
     AKARI_CE_NAME(ResourceCreateList);
 /* ms919854 ResourceDestroyList: print `BOOL ResourceDestroyList ( DWORD dwResId);` */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms919854) */
 BOOL ResourceDestroyList(DWORD dwResId);
 /* ms919857 ResourceMarkAsShareable: print `BOOL ResourceMarkAsShareable( DWORD dwResId, DWORD dwId, DWORD dwLen, BOOL fShareable);` */
 BOOL ResourceMarkAsShareable(DWORD dwResId, DWORD dwId, DWORD dwLen, BOOL fShareable);
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms919859 ResourceRelease: print `BOOL ResourceRelease(DWORD dwResId, DWORD dwBase, DWORD dwLen);` */
 AKARI_CE_IMPORT BOOL ResourceRelease(DWORD dwResId, DWORD dwBase, DWORD dwLen)
     AKARI_CE_NAME(ResourceRelease);
@@ -2666,6 +2672,7 @@ AKARI_CE_IMPORT BOOL ResourceRelease(DWORD dwResId, DWORD dwBase, DWORD dwLen)
 AKARI_CE_IMPORT BOOL ResourceRequest(DWORD dwResId, DWORD dwBase, DWORD dwLen)
     AKARI_CE_NAME(ResourceRequest);
 /* ms919863 ResourceRequestEx: print `BOOL ResourceRequestEx ( DWORD dwResId, DWORD dwId, DWORD dwLen, DWORD dwFlags);` */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms919863) */
 BOOL ResourceRequestEx(DWORD dwResId, DWORD dwId, DWORD dwLen, DWORD dwFlags);
 
 /* ------------------------------------------------------------------
@@ -2690,6 +2697,7 @@ BOOL ResourceRequestEx(DWORD dwResId, DWORD dwId, DWORD dwLen, DWORD dwFlags);
 /* aa517137 CeFsIoControl: print `BOOL CeFsIoControl(LPCWSTR pszDir, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped);` */
 AKARI_CE_IMPORT BOOL CeFsIoControlW(LPCWSTR pszDir, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped)
     AKARI_CE_NAME(CeFsIoControlW);
+#endif /* _WIN32_WCE >= 0x0500 */
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
@@ -2844,13 +2852,16 @@ AKARI_CE_IMPORT BOOL SetUserData(LPBYTE lpbUserData, DWORD dwDataSize) AKARI_CE_
 AKARI_CE_IMPORT BOOL AdvertiseInterface(const GUID* devclass, LPCWSTR name, BOOL fAdd) AKARI_CE_NAME(AdvertiseInterface);
 
 /* aa447798: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa447798) */
 AKARI_CE_IMPORT HANDLE FindFirstDevice(DeviceSearchType searchType, LPCVOID pvSearchParam, PDEVMGR_DEVICE_INFORMATION pdi) AKARI_CE_NAME(FindFirstDevice);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 
 /* --- M104 declarations: printed prototypes recovered
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* ee488642: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+#if _WIN32_WCE >= 0x0600   /* Windows Embedded CE 6.0 (ee488642) */
 AKARI_CE_IMPORT LPVOID VirtualAllocEx(HANDLE hProcess, LPVOID lpAddress, DWORD dwSize, DWORD flAllocationType, DWORD flProtect) AKARI_CE_NAME(VirtualAllocEx);
 
 /* ee488440: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
@@ -2861,5 +2872,6 @@ AKARI_CE_IMPORT BOOL VirtualProtectEx(HANDLE hProcess, LPVOID lpAddress, DWORD d
 
 /* ee488556: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT DWORD VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress, PMEMORY_BASIC_INFORMATION lpBuffer, DWORD dwLength) AKARI_CE_NAME(VirtualQueryEx);
+#endif /* _WIN32_WCE >= 0x0600 */
 
 #endif /* AKARI_WINBASE_H */

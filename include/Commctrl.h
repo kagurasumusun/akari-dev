@@ -1331,6 +1331,7 @@ typedef struct LVGROUP {
     UINT    uAlign;
 } LVGROUP, *PLVGROUP;
 
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453427) */
 /* aa453427 "LVGROUPMETRICS": `typedef struct LVGROUPMETRICS { UINT cbSize; UINT mask; UINT Left; UINT Top; UINT Right; UINT Bottom; COLORREF crLeft; COLORREF crTop; COLORREF crRight; COLORREF crBottom; COLORREF crRightHeader; COLORREF crFooter;} LVGROUPMETRICS, *PLVGROUPMETRICS;` -- all member
  * types resolve, so the structure compiles (32-bit size
  * TU-asserted by the M94 block in tests/host/tu_compile.c). */
@@ -1359,6 +1360,7 @@ typedef struct LVSETINFOTIP {
     int     iItem;
     int     iSubItem;
 } LVSETINFOTIP, *PLVSETINFOTIP;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* Date and Time Picker control (DTM_/DTN_/DateTime_) */
@@ -4442,6 +4444,7 @@ typedef struct LVSETINFOTIP {
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* aa452851: page-printed prototype (Windows CE 5.0). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 (aa452851) */
 BOOL Animate_Close(HWND hwnd);
 
 /* aa452852: page-printed prototype (Windows CE 5.0). */
@@ -4461,6 +4464,7 @@ BOOL Animate_Seek(HWND hwndAnim, UINT wFrame);
 
 /* aa452857: page-printed prototype (Windows CE 5.0). */
 BOOL Animate_Stop(HWND hwndAnim);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* _wcesdk_Header_CreateDragImage: page-printed prototype (Windows CE OS; commctrl.lib). */
 HIMAGELIST Header_CreateDragImage(HWND hwndHD, int iIndex);
@@ -4481,7 +4485,9 @@ HIMAGELIST Header_SetImageList(HWND hwndHD, HIMAGELIST himl);
 DWORD ListView_ApproximateViewRect(HWND hwndLV, int cx, int cy, int iCount);
 
 /* aa453382: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453382) */
 int ListView_EnableGroupView(HWND hwnd, BOOL fEnable);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453315: page-printed prototype (Windows CE 2.0 and later.). */
 BOOL ListView_GetCheckState(HWND hwndLV, UINT iIndex);
@@ -4493,12 +4499,15 @@ BOOL ListView_GetColumnOrderArray(HWND hwndLV, int iCount, int* lpiArray);
 DWORD ListView_GetExtendedListViewStyle(HWND hwndLV);
 
 /* aa453385: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453385) */
 int ListView_GetGroupCount(HWND hwnd);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453346: page-printed prototype (Windows CE 2.0 and later.). */
 INT ListView_GetSelectionMark(HWND hwndLV);
 
 /* aa453389: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453389) */
 HWND ListView_GetToolTips(HWND hwnd);
 
 /* aa453390: page-printed prototype (Windows CE 5.0 and later.). */
@@ -4515,6 +4524,7 @@ UINT ListView_MapIndexToID(HWND hwnd, UINT index);
 
 /* aa453399: page-printed prototype (Windows CE 5.0 and later.). */
 int ListView_RemoveGroup(HWND hwnd, int iGroupId);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453362: page-printed prototype (Windows CE 2.0 and later.). */
 BOOL ListView_SetColumnOrderArray(HWND hwndLV, int iCount, int* lpiArray);
@@ -4523,7 +4533,9 @@ BOOL ListView_SetColumnOrderArray(HWND hwndLV, int iCount, int* lpiArray);
 void ListView_SetExtendedListViewStyle(HWND hwndLV, DWORD dwExStyle);
 
 /* aa453384: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453384) */
 void ListView_SetExtendedListViewStyleEx(HWND hwndLV, DWORD dwExMask, DWORD dwExStyle);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453365: page-printed prototype (Windows CE 2.0 and later.). */
 DWORD ListView_SetIconSpacing(HWND hwndLV, int cx, int cy);
@@ -4535,7 +4547,9 @@ void ListView_SetItemCountEx(HWND hwndLV, int cItems, DWORD dwFlags);
 INT ListView_SetSelectionMark(HWND hwndLV, INT iIndex);
 
 /* aa453404: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453404) */
 HWND ListView_SetToolTips(HWND hwnd, HWND hwndToolTip);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 
 /* --- M104 declarations: printed prototypes recovered
@@ -4545,6 +4559,7 @@ HWND ListView_SetToolTips(HWND hwnd, HWND hwndToolTip);
 BOOL Header_GetItemRect(HWND hwndHD, int iIndex, LPRECT lpItemRect);
 
 /* aa453383: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453383) */
 BOOL ListView_GetBkImage(HWND hwndLV, LPLVBKIMAGE plvbki);
 
 /* aa453386: page-printed prototype (Windows CE 5.0 and later.). */
@@ -4552,11 +4567,13 @@ int ListView_GetGroupInfo(HWND hwnd, int iGroupId, PLVGROUP pgrp);
 
 /* aa453387: page-printed prototype (Windows CE 5.0 and later.). */
 BOOL ListView_GetGroupInfoByIndex(HWND hwnd, int iIndex, PLVGROUP pgrp);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453348: page-printed prototype (Windows CE 2.0 and later.). */
 BOOL ListView_GetSubItemRect(HWND hwndLV, int iItem, int iSubItem, int code, LPRECT lpRect);
 
 /* aa453391: page-printed prototype (Windows CE 5.0 and later.). */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453391) */
 int ListView_InsertGroup(HWND hwnd, int index, PLVGROUP pgrp);
 
 /* aa453400: page-printed prototype (Windows CE 5.0 and later.). */
@@ -4567,6 +4584,7 @@ int ListView_SetGroupInfo(HWND hwnd, int iGroupId, PLVGROUP pgrp);
 
 /* aa453403: page-printed prototype (Windows CE 5.0 and later.). */
 BOOL ListView_SetInfoTip(HWND hwnd, PLVSETINFOTIP plvSetInfoTip);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453380: page-printed prototype (Windows CE 2.0 and later.). */
 INT ListView_SubItemHitTest(HWND hwndLV, LPLVHITTESTINFO pInfo);

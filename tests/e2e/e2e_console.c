@@ -174,15 +174,21 @@ int main(void)
     {
         HCRYPTPROV hProv = 0;
         HCRYPTHASH hHash = 0;
+#if _WIN32_WCE >= 0x0500   /* HCRYPTMSG: Windows CE 5.0 and later
+                            * (ms938232). */
         HCRYPTMSG  hMsg  = 0;
+#endif
         DATA_BLOB  in = {0}, out = {0};
         (void) CryptAcquireContext(&hProv, NULL, NULL, 0, 0);
         (void) CryptCreateHash(hProv, 0, 0, 0, &hHash);
         (void) CryptGenRandom(hProv, 0, NULL);
         (void) CryptDestroyHash(hHash);
         (void) CryptReleaseContext(hProv, 0);
+#if _WIN32_WCE >= 0x0500   /* ms938232: HCRYPTMSG is CE 5.0 and later,
+                            * and these two are the only users of it. */
         hMsg = CryptMsgOpenToEncode(0, 0, 0, NULL, NULL, NULL);
         (void) CryptMsgClose(hMsg);
+#endif
         (void) CryptProtectData(&in, NULL, NULL, NULL, NULL, 0, &out);
     }
     /* M48: Cryptography certificate / encode / OID / PFX unit
@@ -421,9 +427,12 @@ int main(void)
         (void) BthGetBasebandConnections(1, &bbc, (int *)0);
         (void) BthNsLookupServiceBegin((LPWSAQUERYSET)0, 0,
                                        (LPHANDLE)0);
+#if _WIN32_WCE >= 0x0500   /* Bluetooth AG: Windows CE 5.0 and later
+                            * (ee495665, ee495838, aa450316, aa450323). */
         (void) BthAGPhoneExtInit();
         (void) BthAGNetworkDropCall(NETWORK_FLAGS_DROP_ALL);
         (void) BthAGOnNetworkEvent(0, (LPSTR)0);
+#endif
         (void) SnmpUtilOctetsCmp((AsnOctetString *)0,
                                  (AsnOctetString *)0);
         (void) SnmpUtilOidCmp(&aoi, &aoi);

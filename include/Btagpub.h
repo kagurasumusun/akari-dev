@@ -59,6 +59,7 @@ typedef void (*PFN_PhoneExtServiceCallback)(BOOL fHaveService);
 /* ------------------------------------------------------------------ */
 
 /* aa450316 "BthAGNetworkDropCall" flag table. */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa450316) */
 #define NETWORK_FLAGS_DROP_ACTIVE    0x01
 #define NETWORK_FLAGS_DROP_HOLD      0x02
 #define NETWORK_FLAGS_DROP_OFFERING  0x04
@@ -165,6 +166,7 @@ AKARI_CE_IMPORT DWORD BthAGNetworkTransmitDTMF(LPSTR pszDTMF) AKARI_CE_NAME(BthA
 
 /* aa450322 "BthAGNetworkUnholdCall". */
 AKARI_CE_IMPORT DWORD BthAGNetworkUnholdCall(void) AKARI_CE_NAME(BthAGNetworkUnholdCall);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------
  * Book surface: bt-os (tools/gen-book.py; page ids per record)

@@ -114,9 +114,11 @@ extern "C" {
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* aa448150: page-printed prototype (). */
+#if _WIN32_WCE >= 0x0500   /*  (aa448150) */
 DWORD STORE_ExecuteCommand(PTRANSPORT_COMMAND ptcCommand, PTRANSPORT_DATA ptdData);
 
 /* aa448151: page-printed prototype (). */
 BOOL STORE_IsCommandSupported(PTRANSPORT_COMMAND ptcCommand, PBOOL pfDataStageRequired, PDWORD pdwDirection, PDWORD pdwDataSize);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_PROXY_H */

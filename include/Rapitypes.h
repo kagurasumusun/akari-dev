@@ -25,6 +25,7 @@ extern "C" {
  * Book surface: activesync (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms879804 RAPI_CONNECTIONTYPE (RAPI) (page print, compiled) */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later (ms879804) */
 typedef enum  {
     RAPI_CONNECTION_USB = 0,
     RAPI_CONNECTION_IR = 1,
@@ -42,6 +43,7 @@ typedef enum  {
     RAPI_DEVICE_DISCONNECTED = 0,
     RAPI_DEVICE_CONNECTED = 1
 } RAPI_DEVICESTATUS;
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms879802 RAPISTREAMFLAG (RAPI) (page print, compiled) */
 typedef enum tagRAPISTREAMFLAG {
     STREAM_TIMEOUT_READ

@@ -46,8 +46,10 @@ extern "C" {
 /* ------------------------------------------------------------------ */
 
 /* ms918803 "IsAppThemed": print `BOOL IsAppThemed(void);` */
+#if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms918803) */
 AKARI_CE_IMPORT BOOL IsAppThemed(void)
                     AKARI_CE_NAME(IsAppThemed);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* Recorded -- HTHEME by value / return (typedef unpublished)           */
