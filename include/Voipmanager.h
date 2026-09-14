@@ -500,6 +500,42 @@ typedef struct _DirectoryClientRegParams {
     BSTR bstrDomain;
 } DirectoryClientRegParams;
 
+/* --- HELD (M112): the VoIP COM interfaces the pages name only by
+ * `.idl`.
+ *
+ * Eight interfaces are documented but declared nowhere in this tree,
+ * and no page prints an `.h` spelling for them -- only `.idl` tokens:
+ *
+ *   IVoIPMediaMgr            Voipmediamanager.idl   interface page ms912032
+ *   IVoIPDirectoryClient     Voipprov.idl           interface page ms911957
+ *   IVoIPCallerInfoDB        Voipstore.idl          interface page ms911650
+ *   IVoIPCallerInfoDBEnum    Voipstore.idl          interface page ms911546
+ *   IVoIPCallerInfoRecord    Voipstore.idl          interface page ms911658
+ *   IVoIPCallLogDB           Voipstore.idl          interface page ms911672
+ *   IVoIPCallLogDBEnum       Voipstore.idl          interface page ms911665
+ *   IVoIPCallRecord          Voipstore.idl          interface page ms911681
+ *
+ * All 61 of their documented method prints are reproduced verbatim in
+ * docs/voip-interfaces.md -- for example IVoIPDirectoryClient (Windows
+ * CE .NET 4.2):
+ *
+ *   HRESULT put_RegistrationParameters(DirectoryClientRegParams* pdcrp);
+ *   HRESULT put_SipPassword(BSTR bstrSipPassword);
+ *   HRESULT get_SipServerParameters(BSTR* pbstrMyURI, BSTR* pbstrMyServer,
+ *                                   BSTR* pbstrProfileString);
+ *
+ * where DirectoryClientRegParams is the structure printed just above.
+ *
+ * What is missing is not the signatures but the *layout*: a COM
+ * interface declaration is its vtable, so declaring one asserts a
+ * method order, and the only order any page publishes is the
+ * alphabetical Methods table on the interface page (ms912032 lists
+ * AnswerSession, ConferenceSessions, CreatePCToPCSession ...
+ * Uninitialize).  Alphabetical is not vtable order and no page prints
+ * the .idl body, a STDMETHOD-ordered block or a header excerpt, so a
+ * vtable here would be invented rather than transcribed.  Held and
+ * reported rather than guessed. */
+
 #endif /* AKARI_VOIPMANAGER_H */
 
 

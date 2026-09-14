@@ -255,9 +255,15 @@ all -- nothing to ground it in).  These are OEM/BSP or driver layer.
 and `mstsax.idl`'s interfaces (`IMsRdpClient` and friends) ship in
 `Discodlg.h`.  An `.idl` is not a C header, so no file was invented for
 them.  The three exceptions are a real gap, not a naming one:
-`voipmediamanager.idl`, `voipprov.idl` and `voipstore.idl` name
-`IVoIPMediaMgr`, `IVoIPDirectoryClient`, `IVoIPCallerInfoDB` and
-`IVoIPCallerInfoDBEnum`, **none of which the tree declares** -- 70 rows,
-of which exactly one (`VoIPProgressTone`, already shipped) carries a
-printed signature.  Recovering them needs the 69 pages' own syntax
-blocks; that is the remaining work on this axis.
+`voipmediamanager.idl`, `voipprov.idl` and `voipstore.idl` name eight COM
+interfaces, **none of which the tree declares**.  Resolved at M112: the
+69 pages were fetched into the corpus and their 61 method prints
+recovered -- `IVoIPMediaMgr` (ms912032, 21 methods), `IVoIPDirectoryClient`
+(ms911957, 3), `IVoIPCallerInfoDB` (ms911650, 7), `IVoIPCallerInfoDBEnum`
+(ms911546, 3), `IVoIPCallerInfoRecord` (ms911658, 9), `IVoIPCallLogDB`
+(ms911672, 6), `IVoIPCallLogDBEnum` (ms911665, 3), `IVoIPCallRecord`
+(ms911681, 9).  They are *recorded, not declared*: a COM declaration is a
+vtable layout, and the only method order the pages publish is the
+alphabetical Methods table on each interface page, so writing one would
+invent the ABI.  See `docs/voip-interfaces.md`; the hold note lives in
+`include/Voipmanager.h`.
