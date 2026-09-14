@@ -314,6 +314,33 @@ typedef struct _RASPPPIP {
     TCHAR szIpAddress[RAS_MaxIpAddress + 1];
 } RASPPPIP, *LPRASPPPIP;
 
+/* Audit 2026-09-14 (docs/surface-audit.tsv): RASPPPIPV6 was absent
+ * though RASPROJECTION/RASPPPIP (its siblings, same page family) were
+ * already shipped. Verified against three independent mirrors of the
+ * same CE archive page (aa450855 / ms897068 / ee496784, the CE 6.0
+ * twin): OS Versions: Windows CE .NET 4.1 and later.; Header: Ras.h.
+ * Field names transcribed exactly as the CE page prints them
+ * (LocalInterfaceIdentifier, not the later desktop SDK's
+ * bLocalInterfaceIdentifier -- the CE-era archive page never gained
+ * that later desktop rename). Returned by RasGetProjectionInfo for
+ * RASP_PppIp6 (not itself found live at CE 4.1/5.0/6.0 -- see note
+ * below; the struct is shipped as the page documents it regardless,
+ * matching the project's declared-independent-of-consumer policy for
+ * struct records). The page's own Syntax block writes the tag via a
+ * macro alias (`#define RASPPPIPV6 struct tagRASPPPIPV6`) rather than
+ * a typedef; reproduced as printed rather than normalized to a
+ * typedef. */
+#define RASPPPIPV6 struct tagRASPPPIPV6
+RASPPPIPV6 {
+    DWORD dwSize;
+    DWORD dwError;
+    BYTE  LocalInterfaceIdentifier[8];
+    BYTE  PeerInterfaceIdentifier[8];
+    BYTE  LocalCompressionProtocol[2];
+    BYTE  PeerCompressionProtocol[2];
+};
+#define LPRASPPPIPV6 RASPPPIPV6*
+
 /* RASDIALEXTENSIONS: referenced by the RasDial prototype (the CE
  * page says the parameter is ignored and should be NULL).  The CE
  * pages do not print the struct; the layout is adopted from the R1
@@ -530,5 +557,30 @@ AKARI_CE_IMPORT DWORD RasSetEapUserData(HANDLE hToken, LPCTSTR pszPhonebook, LPC
 
 /* ms924957: page-printed definition (Windows CE .NET 4.0 and later.). */
 typedef enum rascntlenum_tag { RASCNTL_SERVER_GET_STATUS, RASCNTL_SERVER_ENABLE, RASCNTL_SERVER_DISABLE, RASCNTL_SERVER_GET_PARAMETERS, RASCNTL_SERVER_SET_PARAMETERS, RASCNTL_SERVER_LINE_ADD, RASCNTL_SERVER_LINE_REMOVE, RASCNTL_SERVER_LINE_ENABLE, RASCNTL_SERVER_LINE_DISABLE, RASCNTL_SERVER_LINE_GET_PARAMETERS, RASCNTL_SERVER_LINE_SET_PARAMETERS, RASCNTL_SERVER_USER_SET_CREDENTIALS, RASCNTL_SERVER_USER_DELETE_CREDENTIALS } RasCntlEnum;
+
+/* --- Audit 2026-09-14 (docs/surface-audit.tsv): the five "RAS Custom
+ * Scripting DLL Functions" (RasGetBuffer/RasFreeBuffer/RasSendBuffer/
+ * RasReceiveBuffer/RasRetrieveBuffer) surfaced as undeclared names
+ * with a Ppp.lib Library row, but they are not coredll imports: each
+ * page's own text says "RAS passes the function pointer ... the
+ * custom-scripting DLL calls X through a function pointer" -- X is a
+ * placeholder name for a callback the DLL author implements, exactly
+ * the callback-typedef shape docs/app-surface.md already excludes
+ * (see BrowseCallbackProc/AbortProc there). What IS declarable is the
+ * PFNRASxxx pointer-to-function typedef each page prints; that is
+ * what is added below. Confirmed via CE 5.0 pages aa450842 (GetBuffer),
+ * ee496582 (FreeBuffer, CE 6.0 twin), aa450860 (SendBuffer), and the
+ * desktop ras.h reference page nc-ras-pfnrasreceivebuffer for the
+ * ReceiveBuffer parameter list (dwTimeOut/hEvent), which the CE-side
+ * RasCustomScriptExecute page corroborates has the same five-parameter
+ * shape on CE (custom-scripting is a coredll RAS feature, unchanged
+ * across the desktop/CE split); RasRetrieveBuffer via aa450859/
+ * ee496641 (CE 6.0 twin). All five: OS Versions: Windows CE .NET 4.0
+ * and later.; Header: Ras.h.; Link Library: Ppp.lib. */
+typedef DWORD (APIENTRY *PFNRASGETBUFFER)(PBYTE *ppBuffer, PDWORD pdwSize);
+typedef DWORD (APIENTRY *PFNRASFREEBUFFER)(PBYTE pBuffer);
+typedef DWORD (APIENTRY *PFNRASSENDBUFFER)(HANDLE hPort, PBYTE pBuffer, PDWORD dwSize);
+typedef DWORD (APIENTRY *PFNRASRECEIVEBUFFER)(HANDLE hPort, PBYTE pBuffer, PDWORD pdwSize, DWORD dwTimeOut, HANDLE hEvent);
+typedef DWORD (APIENTRY *PFNRASRETRIEVEBUFFER)(HANDLE hPort, PBYTE pBuffer, PDWORD pdwSize);
 
 #endif /* AKARI_RAS_H */
