@@ -8296,3 +8296,63 @@ declaration.
 
 Gates: `make check` OK, `make crosscheck` OK on the six WinCE targets
 (tree unchanged apart from the new tool and the new map).
+
+### M110 -- `make e2e` repaired against the current LLVM-WinCE artifact (all six targets link)
+
+End-to-end linking had not been run against the current toolchain
+artifact (`kagurasumusun/llvm-project` run 34078339236, artifact
+10002884514, clang 22.1.8, sha 29d8b88).  It failed before the first
+link, and two real defects in this repository -- not in the toolchain
+-- were the cause.  Both are fixed; `make e2e WINCECLANG=... CRTDIR=...`
+now reports **OK on all six arm/i386-pc-wince{4.2,5.0,6.0} targets**
+(console app / WinMain app / DLL each, with machine, CE subsystem and
+import surface asserted).
+
+**1. `llvm-dlltool -m` was passed a triple.**  The recipe built the
+import libraries with `-m arm-pc-wince`, which this llvm-dlltool
+rejects outright:
+
+```
+$ llvm-dlltool -m arm-pc-wince -d def/coredll-doc.def -l x.lib
+unknown target            # exit 1
+$ llvm-dlltool -m armce   -d def/coredll-doc.def -l x.lib   # OK
+```
+
+`-m arm` is accepted but produces an import library lld-link then
+refuses (`machine type arm conflicts with armce`); `-m armce` yields
+`IMAGE_FILE_MACHINE_ARM (0x1C0)`, which is what `-wince` links.  The
+Makefile now uses `-m armce`, and the README's third spelling
+(`-m armwince`) is corrected to the same.  The x86 arm of the recipe
+(`-m i386 --no-leading-underscore`) was already correct and links
+unchanged.
+
+**2. Three e2e assertions were unsatisfiable.**  `Name: coreimm.dll`,
+`Name: kbdui.dll` and `Name: shmisc.dll` can never match, because
+`ImmGetContext`, `PostKeybdMessage`, `GetAsyncShiftFlags` and
+`SHShowOutOfMemory` are each exported by **two** doc-derived defs: the
+component def built from the page's own Link Library row (Coreimm.lib
+ms906003; Kbdui.lib; Shmisc.lib) and `def/coredll-doc.def`, whose
+tier-2 evidence is the device-dump-audited coredll export surface
+(`docs/clean-room.md` 3.2).  `lld-link` resolves a duplicate import
+name from the first library on the command line and `$d/*.lib` expands
+alphabetically, so `coredll-doc.lib` wins and the component DLL is
+never imported.  Verified in the linked image: `Symbol:
+SHShowOutOfMemory (0)` sits under `Name: coredll.dll`.  The three
+assertions now check the resolved provider; the per-symbol assertions
+that follow them still check exactly what the pages document.  (The
+`MessageBoxW` assertion is on `e2e_winmain.exe` and does pass: that
+consumer calls it at tests/e2e/e2e_winmain.c:22.)
+
+**A regression avoided, recorded so it is not re-attempted blindly.**
+`make defdoc` no longer reproduces the committed defs: regenerating
+from `build/rows.json` alone rewrites 32 defs and **deletes 2,332
+export entries**, because the committed defs also carry the CE 3.0 /
+CE .NET 4.x harvests and the tier-2 export-surface names, which
+`tools/gen-doc-def.py` does not read.  The regeneration was reverted
+(`git checkout def/`) and nothing was committed from it.  Until
+`gen-doc-def.py` takes all harvested record sets plus the tier-2
+surface as inputs, the README's "regenerate with `make defdoc`" advice
+is unsafe; the committed defs are the source of truth.
+
+Gates: `make check` OK; `make crosscheck` OK (six WinCE targets);
+`make e2e` OK (six WinCE targets, three consumer shapes each).

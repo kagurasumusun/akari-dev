@@ -65,7 +65,7 @@ python3 tools/ce-fetch.py tools/manifests/core-synchronization-reference.manifes
 make defdoc                       # writes def/*-doc.def from build/rows.json
 
 # build an import library with the LLVM-WinCE dlltool
-llvm-dlltool -m armwince -d def/coredll-doc.def -l coredll.lib  # ARM CE
+llvm-dlltool -m armce -d def/coredll-doc.def -l coredll.lib    # ARM CE
 llvm-dlltool -m i386 --no-leading-underscore -d def/coredll-doc.def \
     -l coredll-x86.lib                                            # x86 CE
 ```
