@@ -8516,3 +8516,29 @@ absent-name work.
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600);
 `make e2e WINCECLANG=...` OK -- 6 WinCE targets, which rebuilds every
 `def/*.def` through llvm-dlltool and links against the result.
+
+### M117 -- generation audit: two over-guards removed, five reclassified
+
+`docs/generation-audit.md` compares every attributed declaration's
+effective `_WIN32_WCE` minimum against its official `OS Versions:` row,
+in both directions, judged against CE 4.2 as the lowest target built.
+
+Direction 1 (visible earlier than documented): **235** declarations
+documented after CE 4.2 carry no condition, so a 4.2 build sees them.
+Recorded per name; each needs the M111 treatment (wrap the unit, then
+prove all three passes still compile) rather than a blanket edit.
+
+Direction 2 (visible later than documented): **7** were guarded
+`>= 0x0500` although their pages say CE .NET 4.0/4.2.  All seven were
+relaxed and the 0x420 pass re-run.  Two held: `SHGetDesktopFolder`
+(`Shlobj.h`, aa453697) and `RegisterPowerRelationship` (`pm.h`,
+ms919797) -- their guards are removed and CE 4.2 now sees them as
+documented.  Five did not: `TransBusAddrToVirtual`/`TransBusAddrToStatic`
+fail with `unknown type name 'PPVOID'` and
+`CredRead`/`CredUpdate`/`CredWrite` with `unknown type name
+'PPCRED'/'PCRED'`.  Those guards are kept and reclassified as
+**dependency holds**, not generation claims -- added to
+`docs/generation-held.tsv` with the reason, and the in-header comments
+now say so.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).

@@ -60,7 +60,12 @@ AKARI_CE_IMPORT HRESULT CredFree(PBYTE pvBuffer)
     AKARI_CE_NAME(CredFree);
 
 /* ms936984 "CredRead". */
-#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 4.0 and later. (ms936984) */
+#if _WIN32_WCE >= 0x0500
+/* Pages ms936984/ms936985/ms936986 say "Windows CE .NET 4.0 and
+ * later.", so by generation these belong on a CE 4.2 build too.  They
+ * are held at 5.0 because CRED and its pointer types are not declared
+ * on this tree's 0x420 pass ("unknown type name 'PPCRED'/'PCRED'"),
+ * the dependency hold docs/generation-held.tsv records. */
 AKARI_CE_IMPORT HRESULT CredRead(WSTR wszTarget, DWORD dwTargetLen,
     DWORD dwType, DWORD dwFlags, PPCRED ppCred) AKARI_CE_NAME(CredRead);
 
@@ -71,7 +76,7 @@ AKARI_CE_IMPORT HRESULT CredUpdate(WSTR wszTarget, DWORD dwTargetLen,
 /* ms936986 "CredWrite". */
 AKARI_CE_IMPORT HRESULT CredWrite(PCRED pCred, DWORD dwFlags)
     AKARI_CE_NAME(CredWrite);
-#endif /* _WIN32_WCE >= 0x0500 */
+#endif /* _WIN32_WCE >= 0x0500 (CRED dependency, see above) */
 
 #ifdef __cplusplus
 }

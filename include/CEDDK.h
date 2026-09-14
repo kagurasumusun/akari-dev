@@ -349,7 +349,13 @@ AKARI_CE_IMPORT VOID MmUnmapIoSpace(PVOID BaseAddress,
                                     ULONG NumberOfBytes) AKARI_CE_NAME(MmUnmapIoSpace);
 
 /* aa448212 "TransBusAddrToVirtual". */
-#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 4.0 and later. (aa448212) */
+#if _WIN32_WCE >= 0x0500
+/* Pages aa448212 / aa448211 say "Windows CE .NET 4.0 and later.", so by
+ * generation these belong on a CE 4.2 build too.  They are held at 5.0
+ * anyway because the parameter type PPVOID is not declared on this
+ * tree's 0x420 pass ("unknown type name 'PPVOID'"), exactly the
+ * dependency hold docs/generation-held.tsv records.  Relaxing the guard
+ * without PPVOID at 4.2 breaks the 0x420 compile. */
 AKARI_CE_IMPORT BOOL TransBusAddrToVirtual(INTERFACE_TYPE InterfaceType,
                                            ULONG BusNumber,
                                            PHYSICAL_ADDRESS BusAddress,
@@ -362,7 +368,7 @@ AKARI_CE_IMPORT BOOL TransBusAddrToStatic(INTERFACE_TYPE InterfaceType,
                                           PHYSICAL_ADDRESS BusAddress,
                                           ULONG Length, PULONG AddressSpace,
                                           PPVOID MappedAddress) AKARI_CE_NAME(TransBusAddrToStatic);
-#endif /* _WIN32_WCE >= 0x0500 */
+#endif /* _WIN32_WCE >= 0x0500 (PPVOID dependency, see above) */
 
 /* ------------------------------------------------------------------ */
 /* Common-buffer DMA functions (CEDDK.lib).                            */

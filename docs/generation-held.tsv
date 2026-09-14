@@ -22,3 +22,5 @@ include/Wingdi.h	aa453949	Windows CE 5.0 and later.	_WIN32_WCE >= 0x0500	0x0420:
 include/Wingdi.h	ms933897	Windows CE 5.0 and later.	_WIN32_WCE >= 0x0500	0x0420: /home/user/wince-api/include/Wingdi.h:626:31: error: ‘GetOutlineTextMetricsW’ undeclared h
 include/D3dmddk.h	aa447711	Windows CE 5.0	_WIN32_WCE >= 0x0500	sweep include/D3dmddk.h 0x0420: /home/user/wince-api/include/D3dmddk.h:361:41: error: unknown type name ‘D3DM_CREATECONTEXT_DATA’
 include/Socksv2.h			_WIN32_WCE >= 0x0500	sweep include/Socksv2.h 0x0420: /home/user/wince-api/include/Socksv2.h:64:64: error: unknown type name ‘PSS_SOCKET_STATE’
+include/CEDDK.h	aa448212, aa448211	Windows CE .NET 4.0 and later.	_WIN32_WCE >= 0x0500	guard kept though the pages say 4.0: PPVOID is unknown at 0x420 (dependency hold, not a generation claim)
+include/Cred.h	ms936984, ms936985, ms936986	Windows CE .NET 4.0 and later.	_WIN32_WCE >= 0x0500	guard kept though the pages say 4.0: PCRED/PPCRED are unknown at 0x420 (dependency hold, not a generation claim)

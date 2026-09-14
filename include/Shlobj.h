@@ -156,12 +156,12 @@ AKARI_CE_IMPORT HRESULT SHBindToParent(LPCITEMIDLIST pidl, REFIID riid,
                                        VOID **ppv,
                                        LPCITEMIDLIST *ppidlLast) AKARI_CE_NAME(SHBindToParent);
 
-#if _WIN32_WCE >= 0x0500   /* Windows CE .NET 4.2 and later. (aa453697) */
+/* Windows CE .NET 4.2 and later. (aa453697) -- every target this tree builds is CE 4.2 or later, so the
+ * declaration is visible on all of them and needs no guard. */
 /* aa453697 "SHGetDesktopFolder" (Windows CE .NET 4.2 and later;
  * Shlobj.h; Ceshell.lib).  Retrieves the IShellFolder interface of the
  * desktop folder (the namespace root); the caller Releases it. */
 AKARI_CE_IMPORT HRESULT SHGetDesktopFolder(IShellFolder **ppshf) AKARI_CE_NAME(SHGetDesktopFolder);
-#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453702 "SHGetMalloc" (Windows CE 2.12 and later; Shlobj.h;
  * Ceshell.lib).  Retrieves the shell's IMalloc allocator (used to
