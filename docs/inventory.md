@@ -8214,3 +8214,85 @@ defcheck), `make crosscheck WINCECLANG=<LLVM-WinCE artifact
 10002884514, clang 22.1.8, sha 29d8b88>` OK on all six
 arm/i386-pc-wince{4.2,5.0,6.0} targets (240 app + 68 oak headers + TU
 each), audit refreshed (`docs/surface-audit.md`).
+
+### M109 -- per-declaration generation attribution (the CE common/generation-specific split), measured
+
+`tools/gen-guard.py` (new) attributes shipped declarations to the CE
+generation the official pages document, and writes
+`docs/generation-map.tsv` (`header, name, page, os_versions, min, max,
+guard`).  The only input is the per-page **OS Versions** row -- the sole
+published statement of an API's generation -- mapped string-by-string in
+`OS_VERSIONS` (44 distinct strings; a string that is not in the table is
+reported as unmapped and never guessed).  `_WIN32_WCE` values follow the
+documented encoding (`0x0420` = CE 4.20: major in the high byte, the
+minor's two decimal digits in the low byte).
+
+Measured: **5,541 declarations attributed** to a page and therefore to a
+generation range.
+
+| documented minimum | declarations |
+|---|---|
+| 0x0400 (CE .NET 4.0) | 1627 |
+| 0x0300 (CE 3.0) | 1091 |
+| 0x0100 (CE 1.0) | 621 |
+| 0x0200 (CE 2.0) | 581 |
+| 0x0500 (CE 5.0) | 464 |
+| 0x0420 (CE .NET 4.2) | 231 |
+| 0x0210 / 0x0212 / 0x0410 / 0x0101 / 0x0600 / ... | remainder |
+| no generation stated | 31 |
+
+Guard candidates for the three supported targets: **475 declarations at
+`_WIN32_WCE >= 0x0500`** and **11 at `>= 0x0600`** -- i.e. the
+CE-5.0/6.0-specific part of the surface is now identified per
+declaration instead of by book.
+
+Three correctness rules the first runs established, all recorded in the
+tool:
+
+* **A bare generation label is not absence evidence.**  The CE 6.0
+  archive prints an *empty* OS Versions row on its own pages, so
+  "Windows CE 5.0" on a CE 5.0 page says nothing about CE 6.0.
+  Measured example: `Animate_Close` aa452851 prints "Windows CE 5.0"
+  and has a CE 6.0 twin page (ee504340).  The first version of the map
+  emitted `_WIN32_WCE <= 0x0500` for the 48 `Animate_*`/`DateTime_*`
+  macros and would have hidden them from CE 6.0 builds where they
+  exist.  The range of an API is now the **union over every harvested
+  page that documents it**, so a later-generation twin page opens the
+  range.
+* **An upper bound is adopted only when every page of the API
+  enumerates its versions and they agree.**  `PrintDlg` prints
+  "Windows CE 2.0 and 2.01." on aa453544/ms911940 but "Windows CE OS"
+  on the CE 3.0 CHM page: the generations disagree, so no absence claim
+  is made and the case is reported instead of guarded.
+* **Archive labels naming a generation that does not exist are not
+  mapped.**  "Windows CE .NET 3.0 and later." and "Windows CE .NET 2.0
+  and later." (CE .NET is the 4.x line) are listed in `IMPOSSIBLE` and
+  reported; folding them onto a neighbouring generation would be a
+  guess.
+
+**Guards are measured but deliberately not applied.**  `--apply` exists
+and was run; the tree carries no guards, because two blockers are real
+and neither is a mechanical wrap:
+
+1. *cross-header tails.*  A typedef's pointer tail is what other headers
+   use: hiding `} DEVMGR_DEVICE_INFORMATION, *PDEVMGR_DEVICE_INFORMATION;`
+   (Winbase.h, "Windows CE 5.0 and later", aa447797) breaks
+   `include/CEDDK.h:174:26: error: unknown type name
+   'PDEVMGR_DEVICE_INFORMATION'` at `_WIN32_WCE=0x420`.  CEDDK.h's own
+   page row states no generation, so guarding that prototype is not
+   derivable from the pages -- it needs the using declaration's row.
+2. *the consumer TU.*  `tests/host/tu_compile.c` is compiled at all
+   three generations and calls the CE 5.0+ APIs unconditionally; 83 of
+   its regions need the same conditions.  Wrapping them statement-wise
+   produced `tests/host/tu_compile.c:813:1: error: expected expression
+   before 'typedef'` -- the consumer check needs a generation-aware
+   structure of its own before any guard can land.
+
+The apply pass keeps both gates that did work and are worth keeping: a
+per-header standalone compile at all three generations with rollback (9
+headers rolled back on the first run), and a whole-TU compile at all
+three generations with rollback traced to the header that hid the
+declaration.
+
+Gates: `make check` OK, `make crosscheck` OK on the six WinCE targets
+(tree unchanged apart from the new tool and the new map).
