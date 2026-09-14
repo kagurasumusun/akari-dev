@@ -88,6 +88,54 @@ AKARI_CE_IMPORT BOOL CeLogReSync(void) AKARI_CE_NAME(CeLogReSync);
  * 0xFFFFFFFF, all). */
 AKARI_CE_IMPORT void CeLogSetZones(DWORD dwZoneUser, DWORD dwZoneCE, DWORD dwZoneProcess) AKARI_CE_NAME(CeLogSetZones);
 
+/* --- Kernel-callable OEM hooks (official Windows CE 3.0 archive). ---
+ *
+ * The CE 3.0 Platform Builder pages (_wcepb_*, Defined in Celog.h,
+ * Versions 3.0 and later, no Link row) print the hooks the kernel
+ * calls into the OEM event-tracking implementation; they are declared
+ * without import decoration.  The four global variables adjust the
+ * logging thread; the CE 3.0 pages print `extern dwCeLog...;` with
+ * no type, the CE 5.0 twins print `extern DWORD ...;` for the two
+ * buffer sizes (OS Versions: Windows CE 3.0 and later, Header:
+ * Celog.h) -- the DWORD spelling is adopted from the CE 5.0 pages. */
+
+/* _wcepb_CeLogInit "CeLogInit": void CeLogInit(void).  CE 3.0+;
+ * Celog.h.  The kernel calls this when the event-tracking subsystem
+ * is initialized; the OEM initializes the software/hardware needed
+ * to accept event tracking. */
+void CeLogInit(void);
+
+/* _wcepb_CeLogThreadMigrate "CeLogThreadMigrate":
+ * void CeLogThreadMigrate(HANDLE, DWORD).  CE 3.0+; Celog.h.  The
+ * kernel calls this when a thread migrates between processes;
+ * hProcess is the process the thread migrates into, dwReserved is
+ * reserved. */
+void CeLogThreadMigrate(HANDLE hProcess, DWORD dwReserved);
+
+/* ms904009 "dwCeLogLargeBuf (Windows CE 5.0)" (+ CE 3.0 archive
+ * _wcepb_dwCeLogLargeBuf): extern DWORD dwCeLogLargeBuf.  CE 3.0+;
+ * Celog.h.  Size in bytes of the main logging buffer; must be
+ * page-aligned.  Default 128 KB; overridable in OEMInit. */
+extern DWORD dwCeLogLargeBuf;
+
+/* ms904010 "dwCeLogSmallBuf (Windows CE 5.0)" (+ CE 3.0 archive
+ * _wcepb_dwCeLogSmallBuf): extern DWORD dwCeLogSmallBuf.  CE 3.0+;
+ * Celog.h.  Size of the secondary buffer used for interrupt events;
+ * must not exceed 50% of dwCeLogLargeBuf.  Default 4 KB; overridable
+ * in OEMInit. */
+extern DWORD dwCeLogSmallBuf;
+
+/* HELD -- type unpublished (zero-gap policy):
+ *   _wcepb_dwCeLogFlushTimeout "dwCeLogFlushTimeout": the CE 3.0
+ *   page prints `extern dwCeLogFlushTimeout;` with no type, and the
+ *   CE 5.0/6.0 trees carry no page for it.  Milliseconds the logging
+ *   thread waits before flushing the large buffer; default 10000;
+ *   overridable in OEMInit.
+ *   _wcepb_nCeLogThreadPrio "nCeLogThreadPrio": same print shape
+ *   (`extern nCeLogThreadPrio;`, no type; absent from CE 5.0/6.0).
+ *   Priority of the flushing thread (any CeSetThreadPriority value);
+ *   default 248; overridable in OEMInit. */
+
 /* ------------------------------------------------------------------
  * Book surface: core-celog-reference (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */

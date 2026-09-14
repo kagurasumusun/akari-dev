@@ -7622,3 +7622,63 @@ CE 4/5/6 trees carried only implicitly.
 | `ClipCursor`/`GetClipCursor`/`GetCursor`/`GetCursorPos`/`SetCursor`/`ShowCursor`/`LoadCursor`/`CreateCursor`/`DestroyCursor`/`DrawIcon`/`SetCapture`/`ReleaseCapture`/`GetCapture`/`GetDoubleClickTime`/`GetMouseMovePoints`/`mouse_event` | CE 5.0 `ms928585`/`ms929220`/`ms929225`/`ms929226`/`ms940016`/`aa453730`/`aa453410`/`ms908167`/`aa452937`/`aa452971`/`ms940011`/`ms939750`/`ms929208`/`ms929237`/`aa453139`/`ms931453` | 1.0 and later (GetMouseMovePoints/mouse_event 2.0) | Winuser.h | prototypes printed |
 
 Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck).
+
+### M103 batch 2: CEDB replication + password, CeGetRandomSeed, CeLog OEM hooks, RAS client surface, Winsock-1.1 provenance
+
+Evidence source: the official Windows CE 3.0 archive (corpus `pages3/`,
+`docs/ce3-versions.tsv` minimum-version rows) as the primary source for
+every item, plus eleven newly harvested CE 5.0 archive pages (corpus
+`pages5/`, corpus commit 2383fc2a: RASCONN ms896359, RASCONNSTATE
+ms896360, RASCONNSTATUS ms896361, RASDIALPARAMS aa450835, RASENTRY
+aa450836, RASENTRYNAME aa450837, RASIPADDR aa450853, RASPPPIP
+aa450854, RAS_STATS aa450865, dwCeLogLargeBuf ms904009, dwCeLogSmallBuf
+ms904010) fetched selectively to cross-check the CE 3.0 prints and to
+supply the `extern DWORD` types the CE 3.0 pages omit.
+
+Live declarations:
+
+| item(s) | evidence | Versions | header | value source |
+|---|---|---|---|---|
+| `CeRegisterReplNotification`/`CeGetReplChangeMask`/`CeSetReplChangeMask`/`CeGetReplChangeBitsEx`/`CeSetReplChangeBitsEx`/`CeClearReplChangeBitsEx`/`CeGetReplOtherBitsEx`/`CeSetReplOtherBitsEx` | CE 3.0 `_wcesdk_*` pages (prototypes printed; Link to: coredll.lib) | 3.0 and later | Windbase.h | page prototypes |
+| `OEM_CERTIFY_RUN` (1), `OEM_CERTIFY_TRUST` (2), `CeGetCurrentTrust` | CE 3.0 `_wcesdk_CeGetCurrentTrust` (return-value table + prototype; Nk.lib row -> plain prototype, no doc-def claim) | 3.0 and later | Windbase.h | page body |
+| `CheckPassword`/`GetPasswordActive`/`SetPasswordActive` | CE 3.0 `_wcepb_CheckPassword`/`_wcepb_GetPasswordActive`/`_wcepb_SetPasswordActive` (prototypes printed; Fspass component; no Link rows -> plain prototypes); CE 1.01 SDK twin `_wcesdk_CheckPassword` (Winbase.h home, Coredll.lib + Fspass.lib) recorded | 2.10 and later (1.01 for the Winbase.h twin) | Windbase.h | page prototypes |
+| `DB_PEGOID_CHANGED`/`DB_PEGOID_CREATED`/`DB_PEGOID_RECORD_DELETED` | CE 3.0 `_wcesdk_DB_PEGOID_*` (obsolete twins of the DB_CEOID_* messages; values unpublished) | 1.0 | Windbase.h | name-only record beside the DB_CEOID_* block |
+| `CeGetRandomSeed` | CE 3.0 `wcesdkrCeGetRandomSeed` (Nk.lib row -> plain prototype; `__int64` carried as LONGLONG, winnt.h's 64-bit carrier, Dshow.h closure precedent) | 3.0 and later | Winbase.h | page prototype |
+| `CeLogInit`/`CeLogThreadMigrate` | CE 3.0 `_wcepb_CeLogInit`/`_wcepb_CeLogThreadMigrate` (kernel-called OEM hooks, prototypes printed, no Link rows) | 3.0 and later | Celog.h | page prototypes |
+| `extern DWORD dwCeLogLargeBuf`/`dwCeLogSmallBuf` | CE 5.0 ms904009/ms904010 (`extern DWORD ...;`, OS Versions: CE 3.0 and later) + CE 3.0 `_wcepb_*` twins (untyped prints; defaults 128 KB / 4 KB) | 3.0 and later | Celog.h | CE 5.0 page types |
+| `RASIPADDR` | CE 3.0 `wcesdkrRASIPADDR_str` + CE 5.0 aa450853 (struct printed; CE byte-order transposition remark recorded) | 1.0 and later | Ras.h | page body |
+| `RASPROJECTION` | CE 3.0 `wcesdkrRASPROJECTION` (all seven enumerators with values: RASP_Amb 0x10000, RASP_PppNbf 0x803F, RASP_PppIpx 0x802B, RASP_PppIp 0x8021, RASP_PppCcp 0x80FD, RASP_PppLcp 0xC021, RASP_Slip 0x20000; archive print drops two commas -- restored) | 1.0 and later | Ras.h | page body |
+| `RAS_STATS`/`PRAS_STATS` | CE 5.0 aa450865 (struct printed; fifteen DWORD members) | CE .NET 4.0 and later (page row) | Ras.h | page body |
+| `RasDeleteEntry`/`RasRenameEntry`/`RasValidateEntryName` | CE 3.0 `wcesdkrRasDeleteEntry`/`wcesdkrRasRenameEntry`/`wcesdkrRasValidateEntryName` (pure LPWSTR prototypes; Defined in Ras.h, Afdfunc.h; Ppp.lib -- a static support library, so no doc-def claim) | 3.0 (RasDeleteEntry) / 1.0 and later | Ras.h | page prototypes |
+| Winsock-1.1 provenance for `struct linger` / `struct sockaddr_in` (+ IN_ADDR print) | CE 3.0 `wcesdkrLINGER`/`wcesdkrSOCKADDR_IN` (Winsock.h, 1.0 and later; identical prints) annotate the existing CE 5.0-grounded declarations | 1.0 and later | Winsock2.h | citation note |
+
+Held (zero-gap policy -- names documented, facts unpublished; recorded
+verbatim in the headers, nothing invented):
+
+* RAS: `HRASCONN`/`LPHRASCONN` (no CE page prints the typedef); the
+  eleven `RAS_Max*` array-size constants, `UNLEN`/`PWLEN`/`DNLEN`,
+  `RASCS_PAUSED`/`RASCS_DONE` (names printed, no values in the
+  CE 1.0-6.0 trees); the `RASEO_*`/`RASNP_*`/`RASFP_*`/`RASDT_*`
+  flag-name families; structs `RASCONN`, `RASDIALPARAMS`,
+  `RASENTRYNAME`, `RASENTRY` (CE 5.0 adds dwCustomAuthKey),
+  `RASDEVINFO`, `RASCONNSTATUS`, `RASPPPIP` and the enum
+  `RASCONNSTATE` (verbatim prints recorded); the twelve dependent
+  function prototypes `RasDial`/`RasEnumConnections`/
+  `RasEnumDevices`/`RasEnumEntries`/`RasGetConnectStatus`/
+  `RasGetEntryDialParams`/`RasGetEntryProperties`/
+  `RasGetLinkStatistics`/`RasGetProjectionInfo`/`RasHangUp`/
+  `RasSetEntryDialParams`/`RasSetEntryProperties` (verbatim prints
+  recorded).  All in Ras.h.
+* Celog.h: `dwCeLogFlushTimeout`/`nCeLogThreadPrio` -- the CE 3.0
+  pages print `extern <name>;` with no type, and the CE 5.0/6.0
+  trees carry no pages for them (defaults 10000 ms / 248 recorded).
+* Windbase.h: `REPL_CHANGE_WILDCLEAR` (dwFlags value name on the
+  CeGetReplChangeBitsEx page; value unpublished).
+
+Gap report: `docs/ce3-gap.tsv` regenerated against the new headers --
+519 -> 471 missing rows (covered 3975 -> 4023 of 4494).
+
+Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck);
+make crosscheck GREEN on all six arm/i386-pc-wince{4.2,5.0,6.0}
+targets with the LLVM-WinCE artifact 10305951879 (Actions run
+34718349600).

@@ -198,7 +198,7 @@ CE_USER_NOTIFICATION	1.01	1.01 and later	Notify.h		1
 CEBLOB	1.01	1.01 and later	Winsock.h		1
 CeChangeDatabaseLCID	2.10	2.10 and later	Pkfuncs.h		1
 CeCheckPassword	2.0	2.0 and later	Rapi.h		1
-CeClearReplChangeBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	0
+CeClearReplChangeBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	1
 CeClearUserNotification	1.01	1.01 and later	Notify.h	Notify.lib	1
 CeCloseHandle	1.0	1.0 and later	Rapi.h		1
 CeCopyFile	2.0	2.0 and later	Rapi.h		1
@@ -239,16 +239,16 @@ CeFlushDBVol	2.10	2.10 and later	Windbase.h	Fsdbase.lib	1
 CeFreeNotification	2.10	2.10 and later	Windbase.h	Fsdbase.lib	1
 CeGetCallerTrust	3.0	3.0 and later	Winbase.h	Nk.lib	1
 CeGetClassName	2.0	2.0 and later	Rapi.h		1
-CeGetCurrentTrust	3.0	3.0 and later	Windbase.h	Nk.lib	0
+CeGetCurrentTrust	3.0	3.0 and later	Windbase.h	Nk.lib	1
 CeGetDesktopDeviceCaps	2.0	2.0 and later	Rapi.h		1
 CeGetFileAttributes	2.0	2.0 and later	Rapi.h		1
 CeGetFileSize	2.0	2.0 and later	Rapi.h		1
 CeGetFileTime	2.0	2.0 and later	Rapi.h		1
 CeGetLastError	2.0	2.0 and later	Rapi.h		1
-CeGetRandomSeed	3.0	3.0 and later	Winbase.h	Nk.lib	0
-CeGetReplChangeBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	0
-CeGetReplChangeMask	3.0	3.0 and later	Windbase.h	coredll.lib	0
-CeGetReplOtherBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	0
+CeGetRandomSeed	3.0	3.0 and later	Winbase.h	Nk.lib	1
+CeGetReplChangeBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	1
+CeGetReplChangeMask	3.0	3.0 and later	Windbase.h	coredll.lib	1
+CeGetReplOtherBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	1
 CeGetSpecialFolderPath	2.0	2.0 and later	Rapi.h		1
 CeGetStoreInformation	2.0	2.0 and later	Rapi.h		1
 CeGetSystemInfo	2.0	2.0 and later	Rapi.h		1
@@ -316,11 +316,11 @@ CEL_VIRTUAL_COPY	3.0	3.0 and later	Celog.h		1
 CEL_VIRTUAL_FREE	3.0	3.0 and later	Celog.h		1
 CEL_WAIT_MULTI	3.0	3.0 and later	Celog.h		1
 CeLogData	3.0	3.0 and later	Celog.h		1
-CeLogInit	3.0	3.0 and later	Celog.h		0
+CeLogInit	3.0	3.0 and later	Celog.h		1
 CeLogInterrupt	3.0	3.0 and later	Celog.h		1
 CeLogReSync	3.0	3.0 and later	Celog.h		1
 CeLogSetZones	3.0	3.0 and later	Celog.h		1
-CeLogThreadMigrate	3.0	3.0 and later	Celog.h		0
+CeLogThreadMigrate	3.0	3.0 and later	Celog.h		1
 CeMountDBVol	2.10	2.10 and later	Windbase.h	Fsdbase.lib	1
 CeMountDBVol	2.12	2.12 and later	Rapi.h		1
 CeMoveFile	2.0	2.0 and later	Rapi.h		1
@@ -371,7 +371,7 @@ CeRegDeleteKey	2.0	2.0 and later	Rapi.h		1
 CeRegDeleteValue	2.0	2.0 and later	Rapi.h		1
 CeRegEnumKeyEx	2.0	2.0 and later	Rapi.h		1
 CeRegEnumValue	2.0	2.0 and later	Rapi.h		1
-CeRegisterReplNotification	3.0	3.0 and later	Windbase.h	coredll.lib	0
+CeRegisterReplNotification	3.0	3.0 and later	Windbase.h	coredll.lib	1
 CeRegOpenKeyEx	2.0	2.0 and later	Rapi.h		1
 CeRegQueryInfoKey	2.0	2.0 and later	Rapi.h		1
 CeRegQueryValueEx	2.0	2.0 and later	Rapi.h		1
@@ -480,9 +480,9 @@ CeSetEndOfFile	2.0	2.0 and later	Rapi.h		1
 CeSetFileAttributes	2.0	2.0 and later	Rapi.h		1
 CeSetFilePointer	2.0	2.0 and later	Rapi.h		1
 CeSetFileTime	2.0	2.0 and later	Rapi.h		1
-CeSetReplChangeBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	0
-CeSetReplChangeMask	3.0	3.0 and later	Windbase.h	coredll.lib	0
-CeSetReplOtherBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	0
+CeSetReplChangeBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	1
+CeSetReplChangeMask	3.0	3.0 and later	Windbase.h	coredll.lib	1
+CeSetReplOtherBitsEx	3.0	3.0 and later	Windbase.h	coredll.lib	1
 CeSetThreadPriority	3.0	3.0 and later	Windbase.h	Nk.lib	1
 CeSetThreadQuantum	3.0	3.0 and later	Windbase.h	Nk.lib	1
 CeSetUserNotification	1.01	1.01 and later	Notify.h	Notify.lib	1
@@ -510,8 +510,8 @@ CHECK_INVALIDGUID	2.10	2.10 and later	Windbase.h		1
 CHECK_SYSTEMGUID	2.10	2.10 and later	Windbase.h	Fsdbase.lib	1
 CheckMenuItem	1.0	1.0 and later	Winuser.h	Menu.lib	1
 CheckMenuRadioItem	1.0	1.0 and later	Winuser.h	Menu.lib	1
-CheckPassword	1.01	1.01 and later	Winbase.h	Coredll.lib, Fspass.lib	0
-CheckPassword	2.10	2.10 and later	Windbase.h		0
+CheckPassword	1.01	1.01 and later	Winbase.h	Coredll.lib, Fspass.lib	1
+CheckPassword	2.10	2.10 and later	Windbase.h		1
 CheckRadioButton	1.0	1.0 and later	Winuser.h	Dlgmgr.lib	1
 ChildWindowFromPoint	1.0	1.0 and later	Winuser.h		1
 CHOOSECOLOR	2.0	2.0 and later	Commdlg.h		1
@@ -521,7 +521,7 @@ ClearCommError	1.0	1.0 and later	Winbase.h	Serdev.lib	1
 ClearFeature	2.10	2.10 and later			0
 CLIENT_CALLBACK	1.0	1.0 and later			1
 ClientToScreen	1.0	1.0 and later	Winuser.h	Coredll.lib, Winmgr.lib	1
-ClipCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
+ClipCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 CloseClipboard	1.0	1.0 and later	Winuser.h	Clipbd.lib	1
 CloseHandle	1.0	1.0 and later	Winbase.h	Coredll.lib	1
 ClosePipe	2.10	2.10 and later			0
@@ -668,7 +668,7 @@ CreateCaret	1.0	1.0 and later	Winuser.h	Caret.lib	1
 CreateClassMoniker	3.0	3.0 and later	Objbase.h	Ole232.lib	1
 CreateCompatibleBitmap	1.0	1.0 and later	Wingdi.h	Mgbitmap.lib	1
 CreateCompatibleDC	1.0	1.0 and later	Wingdi.h	Mgbase.lib	1
-CreateCursor	1.0	1.0 and later	Winuser.h	Iconcurs.lib	0
+CreateCursor	1.0	1.0 and later	Winuser.h	Iconcurs.lib	1
 CreateDC	2.0	2.0 and later	Wingdi.h	Mgdc.lib	1
 CreateDialog	1.0	1.0 and later	Winuser.h		1
 CreateDialogIndirect	1.0	1.0 and later	Winuser.h	Dlgmgr.lib	1
@@ -802,9 +802,9 @@ DateTime_SetRange	1.0	1.0 and later	Commctrl.h	Commctrl.lib	1
 DateTime_SetSystemtime	2.0	2.0 and later	Commctrl.h	Commctrl.lib	1
 DB_CEOID_CHANGED	1.01	1.01 and later	Winbase.h		1
 DB_CEOID_RECORD_DELETED	1.01	1.01 and later	Windbase.h		1
-DB_PEGOID_CHANGED	1.0	1.0	Windbase.h		0
-DB_PEGOID_CREATED	1.0	1.0	Windbase.h		0
-DB_PEGOID_RECORD_DELETED	1.0	1.0	Windbase.h		0
+DB_PEGOID_CHANGED	1.0	1.0	Windbase.h		1
+DB_PEGOID_CREATED	1.0	1.0	Windbase.h		1
+DB_PEGOID_RECORD_DELETED	1.0	1.0	Windbase.h		1
 DCB	1.0	1.0 and later	Winbase.h		1
 DDALPHABLTFX	2.12	2.12 or later. Version 2.12 requires DXPAK 1.0 or later.			1
 DDBLTFX	2.12	2.12 or later. Version 2.12 requires DXPAK 1.0 or later.			1
@@ -864,7 +864,7 @@ DeregisterDevice	1.0	1.0 and later			1
 DESCKIND	2.0	2.0 and later	Oaidl.h		1
 DestroyAcceleratorTable	1.0	1.0 and later	Winuser.h	Accel.lib	1
 DestroyCaret	1.0	1.0 and later	Winuser.h	Caret.lib	1
-DestroyCursor	1.0	1.0 and later	Winuser.h	Iconcurs.lib	0
+DestroyCursor	1.0	1.0 and later	Winuser.h	Iconcurs.lib	1
 DestroyIcon	1.0	1.0 and later	Winuser.h	Icon.lib	1
 DestroyMenu	1.0	1.0 and later	Winuser.h	Menu.lib	1
 DestroyPropertySheetPage	1.0	1.0 and later	Prsht.h		1
@@ -921,7 +921,7 @@ DOCINFO	2.0	2.0 and later	Wingdi.h		1
 DrawEdge	1.0	1.0 and later	Wingdi.h	Mgdraw.lib	1
 DrawFocusRect	1.0	1.0 and later	Wingdi.h	Rectapi.lib, Mgdraw.lib	1
 DrawFrameControl	2.0	2.0 and later	Winuser.h	Nclient.lib	1
-DrawIcon	1.0	1.0 and later	Winuser.h	Icon.lib	0
+DrawIcon	1.0	1.0 and later	Winuser.h	Icon.lib	1
 DrawIconEx	1.0	1.0 and later	Winuser.h	Icon.lib	1
 DRAWITEMSTRUCT	1.0	1.0 and later	Winuser.h		1
 DrawMenuBar	2.0	2.0 and later	Winuser.h	Drawmbar.lib. Menu.lib	1
@@ -982,9 +982,9 @@ DTN_WMKEYDOWN	2.0	2.0 and later	Commctrl.h		1
 DVASPECT	2.0	2.0 and later	Wtypes.h		1
 DVEXTENTINFO	2.0	2.0 and later	Ocidl.h		1
 DVTARGETDEVICE	2.0	2.0 and later	Objidl.h		1
-dwCeLogFlushTimeout	3.0	3.0 and later	Celog.h		0
-dwCeLogLargeBuf	3.0	3.0 and later	Celog.h		0
-dwCeLogSmallBuf	3.0	3.0 and later	Celog.h		0
+dwCeLogFlushTimeout	3.0	3.0 and later	Celog.h		1
+dwCeLogLargeBuf	3.0	3.0 and later	Celog.h		1
+dwCeLogSmallBuf	3.0	3.0 and later	Celog.h		1
 dwCeLogTLBMiss	3.0	3.0 and later			0
 dwPartialDiffMSec	3.0	3.0 and later			0
 dwPreempt	3.0	3.0 and later	Fwpc.c		0
@@ -1212,7 +1212,7 @@ GetBestRoute	3.0	3.0 and later	Iphlpapi.h	Iphlpapi.lib	1
 GetBkColor	1.0	1.0 and later	Wingdi.h	Mgbase.lib	1
 GetBkMode	1.0	1.0 and later	Wingdi.h	Mgbase.lib	1
 GetBValue	1.0	1.0 and later	Wingdi.h		1
-GetCapture	1.0	1.0 and later	Winuser.h	Foregnd.lib	0
+GetCapture	1.0	1.0 and later	Winuser.h	Foregnd.lib	1
 GetCaretBlinkTime	1.0	1.0 and later	Winuser.h	Caret.lib	1
 GetCaretPos	1.0	1.0 and later	Winuser.h	Caret.lib	1
 GetClassFile	2.10	2.10 and later	Objbase.h		1
@@ -1225,7 +1225,7 @@ GetClipboardDataAlloc	1.0	1.0 and later	Winuser.h	Clipbd.lib	1
 GetClipboardFormatName	1.0	1.0 and later	Winuser.h	Clipbd.lib	1
 GetClipboardOwner	1.0	1.0 and later	Winuser.h	Clipbd.lib	1
 GetClipBox	1.0	1.0 and later	Wingdi.h	Mgrgn.lib	1
-GetClipCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
+GetClipCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 GetClipRgn	1.0	1.0 and later	Wingdi.h	Mgrgn.lib	1
 GetCommandLine	3.0	3.0 and later	Winbase.h	Nk.lib	1
 GetCommMask	1.0	1.0 and later	Wininet.h	Serdev.lib	1
@@ -1241,8 +1241,8 @@ GetCurrentProcess	1.0	1.0 and later	Kfuncs.h	Nk.lib	1
 GetCurrentProcessId	1.0	1.0 and later	Kfuncs.h	Nk.lib	1
 GetCurrentThread	1.0	1.0 and later	Kfuncs.h	Nk.lib	1
 GetCurrentThreadId	1.0	1.0 and later	Kfuncs.h	Nk.lib	1
-GetCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
-GetCursorPos	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
+GetCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
+GetCursorPos	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 GetDateFormat	1.0	1.0 and later	Winnls.h	Coreloc.lib	1
 GetDC	1.0	1.0 and later	Winuser.h	Coredll.lib, Winmgr.lib	1
 GetDCEx	2.10	2.10 and later	Winuser.h	Coredll.lib, Winmgr.lib	1
@@ -1255,7 +1255,7 @@ GetDlgCtrlID	1.0	1.0 and later	Winuser.h	Dlgmgr.lib	1
 GetDlgItem	1.0	1.0 and later	Winuser.h	Dlgmgr.lib	1
 GetDlgItemInt	1.0	1.0 and later	Winuser.h	Dlgmgr.lib	1
 GetDlgItemText	1.0	1.0 and later	Winuser.h	Dlgmgr.lib	1
-GetDoubleClickTime	1.0	1.0 and later	Winuser.h	Wmbase.lib	0
+GetDoubleClickTime	1.0	1.0 and later	Winuser.h	Wmbase.lib	1
 GetDriverName	2.10	2.10 and later	Netui.h		0
 GETDRIVERNAMEPARMS	2.10	2.10 and later	Netui.h		0
 GetEPC	3.0	3.0 and later			0
@@ -1309,7 +1309,7 @@ GetMessageSource	2.0	2.0 and later	Winuser.h	Msgque.lib	1
 GetModuleFileName	2.0	2.0 and later	Winbase.h	Coredll.lib, Nk.lib	1
 GetModuleHandle	2.10	2.10 and later	Winbase.h	Coredll.lib, Nk.lib	1
 GetMonitorInfo	4.0	4.0 and later	Winuser.h	User32.lib	1
-GetMouseMovePoints	2.0	2.0 and later	Winuser.h	Wmgr_c.lib, Uibase.lib	0
+GetMouseMovePoints	2.0	2.0 and later	Winuser.h	Wmgr_c.lib, Uibase.lib	1
 GetNearestColor	1.0	1.0 and later	Wingdi.h	Mgpal.lib	1
 GetNearestPaletteIndex	2.0	2.0 and later	Wingdi.h	Mgpal.lib	1
 GetNetString	2.10	2.10 and later	Netui.h		0
@@ -1326,7 +1326,7 @@ GetOpenFileName	1.0	1.0 and later	Commdlg.h	Fileopen.lib	1
 GetOwnerProcess	2.10	2.10 and later	Pkfuncs.h		0
 GetPaletteEntries	2.0	2.0 and later	Wingdi.h	Coredll.lib, Winmgr.lib	1
 GetParent	1.0	1.0 and later	Winuser.h		1
-GetPasswordActive	2.10	2.10 and later	Windbase.h		0
+GetPasswordActive	2.10	2.10 and later	Windbase.h		1
 getpeername	1.0	1.0 and later	Winsock.h		1
 GetPerAdapterInfo	3.0	3.0 and later	Iphlpapi.h	Iphlpapi.lib	1
 GetPixel	1.0	1.0 and later	Wingdi.h	Mgdraw.lib	1
@@ -1470,7 +1470,7 @@ HeapFree	1.0	1.0 and later	Winbase.h	Lmem.lib	1
 HEAPLIST32	1.0	1.0 and later	Tlhelp32.h		1
 HeapReAlloc	1.0	1.0 and later	Winbase.h	Lmem.lib	1
 HeapSize	1.0	1.0 and later	Winbase.h	Lmem.lib	1
-HIBYTE	1.0	1.0 and later	Windef.h		0
+HIBYTE	1.0	1.0 and later	Windef.h		1
 HideCaret	1.0	1.0 and later	Winuser.h	Caret.lib	1
 HIWORD	1.0	1.0 and later	Windef.h		1
 HMAC_INFO	3.0	3.0 or later	Wincrypt.h		1
@@ -2096,7 +2096,7 @@ lineTranslateDialog	1.0	1.0 and later	Tapi.h	Coredll.lib	1
 LineTranslateDialog	2.10	2.10 and later	Netui.h		0
 LINETRANSLATEOUTPUT	1.0	1.0 and later	Tapi.h		1
 lineUnhold	1.0	1.0 and later	Tapi.h	Coredll.lib	1
-LINGER	1.0	1.0 and later	Winsock.h		0
+LINGER	1.0	1.0 and later	Winsock.h		1
 listen	1.0	1.0 and later	Winsock.h		1
 ListView_ApproximateViewRect	2.0	2.0 and later	Commctrl.h		1
 ListView_Arrange	1.0	1.0 and later	Commctrl.h		1
@@ -2166,7 +2166,7 @@ LMDATA	2.12	2.12 and later	Sip.h		1
 LOAD_DLL_DEBUG_INFO	2.0	2.0 and later	Winbase.h		1
 LoadAccelerators	1.0	1.0 and later	Winuser.h	Accel.lib	1
 LoadBitmap	1.0	1.0 and later	Winuser.h	Loadbmp.lib	1
-LoadCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
+LoadCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 LoadDriver	2.10	2.10 and later	Pkfuncs.h		0
 LoadFSD	2.10	2.10 and later	Winbase.h	Coredll.lib	1
 LoadFSDEx	2.12	2.12 and later	Winbase.h	Device.lib	1
@@ -2180,7 +2180,7 @@ LoadRegTypeLib	2.0	2.0 and later	Oleauto.h		1
 LoadResource	1.0	1.0 and later	Winbase.h	Coredll.lib, Nk.lib	1
 LoadString	1.0	1.0 and later	Winbase.h	Loadstr.lib	1
 LoadTypeLib	2.0	2.0 and later	Oleauto.h	Oleaut32.lib	1
-LOBYTE	1.0	1.0 and later	Windef.h		0
+LOBYTE	1.0	1.0 and later	Windef.h		1
 LocalAlloc	1.0	1.0 and later	Winbase.h	Lmem.lib	1
 LocalFileTimeToFileTime	1.0	1.0 and later	Winbase.h		1
 LocalFree	1.0	1.0 and later	Winbase.h	Lmem.lib	1
@@ -2295,7 +2295,7 @@ MAKELCID	1.0	1.0 and later	Winnt.h		1
 MAKELONG	1.0	1.0 and later	Windef.h		1
 MAKELPARAM	1.0	1.0 and later	Winuser.h		1
 MAKELRESULT	1.0	1.0 and later	Winuser.h		1
-MAKEROP4	2.0	2.0 and later	Wingdi.h		0
+MAKEROP4	2.0	2.0 and later	Wingdi.h		1
 MakeSignature	2.10	2.10 and later	Sspi.h	Schannel.lib	1
 MAKEWORD	1.0	1.0 and later	Windef.h		1
 MAKEWPARAM	1.0	1.0 and later	Winuser.h		1
@@ -2434,7 +2434,7 @@ MonthCal_SetMonthDelta	2.0	2.0 and later	Commctrl.h	Commctrl.lib	1
 MonthCal_SetRange	2.0	2.0 and later	Commctrl.h	Commctrl.lib	1
 MonthCal_SetSelRange	2.0	2.0 and later	Commctrl.h	Commctrl.lib	1
 MonthCal_SetToday	2.0	2.0 and later	Commctrl.h		1
-mouse_event	2.0	2.0 and later	Winuser.h	Wmgr_c.lib, Uibase.lib	0
+mouse_event	2.0	2.0 and later	Winuser.h	Wmgr_c.lib, Uibase.lib	1
 MoveFile	1.0	1.0 and later	Winbase.h	Coredll.lib, Fsmain.lib	1
 MoveWindow	1.0	1.0 and later	Winuser.h		1
 MQCloseCursor	2.0	2.0 and later. Versions prior to 2.12 require the MSMQ add-on pack.	Mq.h	Msmqrt.lib	1
@@ -2488,7 +2488,7 @@ MyFSD_SetFileTime	2.10	2.10 and later	Fsdmgr.h		1
 MyFSD_UnmountDisk	2.10	2.10 and later	Fsdmgr.h		1
 MyFSD_WriteFile	2.10	2.10 and later	Fsdmgr.h		1
 MyFSD_WriteFileWithSeek	2.10	2.10 and later	Fsdmgr.h		1
-nCeLogThreadPrio	3.0	3.0 and later	Celog.h		0
+nCeLogThreadPrio	3.0	3.0 and later	Celog.h		1
 NDIS_BUFFER_LINKAGE	2.0	2.0 and later	Ndis.h		1
 NDIS_BUFFER_TO_SPAN_PAGES	2.0	2.0 and later	Ndis.h		1
 NDIS_PACKET	2.0	2.0 and later	Ndis.h		1
@@ -2788,7 +2788,7 @@ NM_INLINE_SOUND	1.0	1.0 and later	Htmlctrl.h		0
 NM_KEYDOWN	2.0	2.0 and later	Commctrl.h		1
 NM_KILLFOCUS	2.0	2.0 and later	Commctrl.h		1
 NM_META	1.0	1.0 and later	Htmlctrl.h		0
-NM_NCHITTEST	2.0	2.0 and later	Commctrl.h		0
+NM_NCHITTEST	2.0	2.0 and later	Commctrl.h		1
 NM_OUTOFMEMORY	2.0	2.0 and later	Commctrl.h		1
 NM_RCLICK	2.0	2.0 and later	Commctrl.h		1
 NM_RDBLCLK	2.0	2.0 and later	Commctrl.h		1
@@ -2855,7 +2855,7 @@ OEMFlushCache	3.0	3.0 and later			0
 OEMGetExtensionDRAM	2.10	2.10 and later	Nkintr.h		0
 OEMGetRealTime	2.10	2.10 and later	Nkintr.h		0
 OEMIdle	2.10	2.10 and later	Cfwp2.c		0
-OEMInit	2.10	2.10 and later	Nkintr.h		0
+OEMInit	2.10	2.10 and later	Nkintr.h		1
 OEMInitDebugSerial	2.10	2.10 and later	Nkintr.h		0
 OEMInitPageTable	2.10	2.10 and later	Oeminit.asm		0
 OEMInterruptDisable	2.10	2.10 and later	Nkintr.h		0
@@ -2936,7 +2936,7 @@ PageSetupDlg	2.10	2.10 and later	Commdlg.h	Commdlg.lib	1
 PageSetupHook	2.10	2.10 and later	Commdlg.h		1
 PAINTSTRUCT	1.0	1.0 and later	Winuser.h		1
 PALETTEENTRY	2.0	2.0 and later	Wingdi.h		1
-PALETTERGB	1.0	1.0 and later	Wingdi.h		0
+PALETTERGB	1.0	1.0 and later	Wingdi.h		1
 PARAMDATA	2.0	2.0 and later	Oleauto.h		1
 PARAMDESC	2.0	2.0 and later	Oaidl.h		1
 PARSED_CFTABLE	1.0	1.0 and later			1
@@ -3022,7 +3022,7 @@ pOEMCertifyModule	2.10	2.10 and later			0
 pOEMCertifyModuleInit	2.10	2.10 and later			0
 POINT	1.0	1.0 and later	Windef.h		1
 POINTS	1.0	1.0 and later	Windef.h		1
-POINTSTOPOINT	1.0	1.0 and later	Winuser.h		0
+POINTSTOPOINT	1.0	1.0 and later	Winuser.h		1
 Polygon	1.0	1.0 and later	Wingdi.h	Mgdraw.lib	1
 Polyline	1.0	1.0 and later	Wingdi.h	Mgdraw.lib	1
 PopEntryList	1.0	1.0 and later	Ntcompat.h		0
@@ -3168,31 +3168,31 @@ QuerySecurityPackageInfo	2.10	2.10 and later	Sspi.h	Schannel.lib	1
 RaiseException	1.0	1.0 and later	Winbase.h	Coredll.lib	1
 Random	1.0	1.0 and later	Winbase.h	Coredll.lib	1
 RAPIINIT	1.0	1.0 and later	Rapi.h		1
-RASCONN	1.0	1.0 and later	Ras.h		0
+RASCONN	1.0	1.0 and later	Ras.h		1
 RASCONNSTATE	1.0	1.0 and later	Ras.h		1
 RASCONNSTATUS	1.0	1.0 and later	Ras.h		1
-RasDeleteEntry	3.0	3.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
+RasDeleteEntry	3.0	3.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
 RASDEVINFO	1.0	1.0 and later	Ras.h		1
-RasDial	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RASDIALPARAMS	1.0	1.0 and later	Ras.h		0
-RASENTRY	1.0	1.0 and later	Ras.h		0
-RASENTRYNAME	1.0	1.0 and later	Ras.h		0
-RasEnumConnections	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasEnumDevices	3.0	3.0 and later	Ras.h	Ppp.lib	0
-RasEnumEntries	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasGetConnectStatus	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasGetEntryDialParams	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasGetEntryProperties	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasGetLinkStatistics	3.0	3.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasGetProjectionInfo	3.0	3.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasHangUp	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RASIPADDR	1.0	1.0 and later	Ras.h		0
-RASPPPIP	1.0	1.0 and later	Ras.h		0
-RASPROJECTION	1.0	1.0 and later	Ras.h		0
-RasRenameEntry	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasSetEntryDialParams	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasSetEntryProperties	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
-RasValidateEntryName	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	0
+RasDial	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RASDIALPARAMS	1.0	1.0 and later	Ras.h		1
+RASENTRY	1.0	1.0 and later	Ras.h		1
+RASENTRYNAME	1.0	1.0 and later	Ras.h		1
+RasEnumConnections	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasEnumDevices	3.0	3.0 and later	Ras.h	Ppp.lib	1
+RasEnumEntries	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasGetConnectStatus	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasGetEntryDialParams	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasGetEntryProperties	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasGetLinkStatistics	3.0	3.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasGetProjectionInfo	3.0	3.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasHangUp	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RASIPADDR	1.0	1.0 and later	Ras.h		1
+RASPPPIP	1.0	1.0 and later	Ras.h		1
+RASPROJECTION	1.0	1.0 and later	Ras.h		1
+RasRenameEntry	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasSetEntryDialParams	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasSetEntryProperties	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
+RasValidateEntryName	1.0	1.0 and later	Ras.h, Afdfunc.h	Ppp.lib	1
 RB_DELETEBAND	2.0	2.0 and later	Commctrl.h		1
 RB_GETBANDBORDERS	2.0	2.0 and later	Commctrl.h		1
 RB_GETBANDCOUNT	2.0	2.0 and later	Commctrl.h		1
@@ -3284,7 +3284,7 @@ RegQueryInfoKey	1.0	1.0 and later	Winreg.h	Coredll.lib, Fsreg.lib	1
 RegQueryValueEx	1.0	1.0 and later	Winreg.h	Coredll.lib, Fsreg.lib	1
 RegRestoreFile	2.10	2.10 and later	Pwinreg.h		0
 RegSetValueEx	1.0	1.0 and later	Winreg.h	Coredll.lib, Fsreg.lib	1
-ReleaseCapture	1.0	1.0 and later	Winuser.h	Foregnd.lib	0
+ReleaseCapture	1.0	1.0 and later	Winuser.h	Foregnd.lib	1
 ReleaseDC	1.0	1.0 and later	Winuser.h	Coredll.lib, Winmgr.lib	1
 ReleaseFrameLengthControl	2.10	2.10 and later			0
 ReleaseMutex	1.01	1.01 and later	Winbase.h	Nk.lib	1
@@ -3348,13 +3348,13 @@ SB_SETMINHEIGHT	1.0	1.0 and later	Commctrl.h		1
 SB_SETPARTS	1.0	1.0 and later	Commctrl.h		1
 SB_SETTEXT	1.0	1.0 and later	Commctrl.h		1
 SB_SIMPLE	1.0	1.0 and later	Commctrl.h		1
-SBM_GETPOS	2.0	2.0 and later	Commctrl.h		0
-SBM_GETRANGE	2.0	2.0 and later	Commctrl.h		0
-SBM_GETSCROLLINFO	1.0	1.0 and later	Commctrl.h		0
-SBM_SETPOS	2.0	2.0 and later	Commctrl.h		0
-SBM_SETRANGE	2.0	2.0 and later	Commctrl.h		0
-SBM_SETRANGEREDRAW	2.0	2.0 and later	Commctrl.h		0
-SBM_SETSCROLLINFO	1.0	1.0 and later	Commctrl.h		0
+SBM_GETPOS	2.0	2.0 and later	Commctrl.h		1
+SBM_GETRANGE	2.0	2.0 and later	Commctrl.h		1
+SBM_GETSCROLLINFO	1.0	1.0 and later	Commctrl.h		1
+SBM_SETPOS	2.0	2.0 and later	Commctrl.h		1
+SBM_SETRANGE	2.0	2.0 and later	Commctrl.h		1
+SBM_SETRANGEREDRAW	2.0	2.0 and later	Commctrl.h		1
+SBM_SETSCROLLINFO	1.0	1.0 and later	Commctrl.h		1
 SBN_SIMPLEMODECHANGE	2.0	2.0 and later	Commctrl.h		1
 SCARD_IO_REQUEST	3.0	3.0 and later	Winscard.h		1
 SCARD_READERSTATE	3.0	3.0 and later	Winscard.h		1
@@ -3418,7 +3418,7 @@ SetActiveWindow	1.0	1.0 and later	Winuser.h	Caret.lib	1
 SetBkColor	1.0	1.0 and later	Wingdi.h	Mgbase.lib	1
 SetBkMode	1.0	1.0 and later	Wingdi.h	Mgbase.lib	1
 SetBrushOrgEx	1.0	1.0 and later	Wingdi.h	Mgdraw.lib	1
-SetCapture	1.0	1.0 and later	Winuser.h	Foregnd.lib	0
+SetCapture	1.0	1.0 and later	Winuser.h	Foregnd.lib	1
 SetCaretBlinkTime	1.0	1.0 and later	Winuser.h	Caret.lib	1
 SetCaretPos	1.0	1.0 and later	Winuser.h	Caret.lib	1
 SetClassLong	1.0	1.0 and later	Winuser.h		1
@@ -3428,7 +3428,7 @@ SetCommBreak	1.0	1.0 and later	Winbase.h	Serdev.lib	1
 SetCommMask	1.0	1.0 and later	Winbase.h	Serdev.lib	1
 SetCommState	1.0	1.0 and later	Winbase.h	Serdev.lib	1
 SetCommTimeouts	1.0	1.0 and later	Winbase.h	Serdev.lib	1
-SetCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
+SetCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 SetCursorPos	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 SetDaylightTime	2.0	2.0 and later	Winbase.h	Coredll.lib	1
 SetDescriptor	2.10	2.10 and later			0
@@ -3463,7 +3463,7 @@ SetOOMEvent	3.0	3.0 and later	Pkfuncs.h		0
 SetPaletteEntries	2.0	2.0 and later	Wingdi.h	Mgpal.lib	1
 SetParent	1.0	1.0 and later	Winuser.h		1
 SetPassword	2.10	2.10 and later	Windbase.h		1
-SetPasswordActive	2.10	2.10 and later	Windbase.h		0
+SetPasswordActive	2.10	2.10 and later	Windbase.h		1
 SetPixel	2.0	2.0 and later	Wingdi.h	Mgdraw.lib	1
 SetProcPermissions	2.10	2.10 and later	Pkfuncs.h		1
 SetRect	1.0	1.0 and later	Winbase.h	Rectapi.lib	1
@@ -3507,7 +3507,7 @@ SHGetSpecialFolderLocation	1.0	1.0 and 2.12	Shlobj.h		1
 SHGetSpecialFolderPath	2.12	2.12 and later	Shellapi.h		1
 SHLoadDIBitmap	1.0	1.0 and later	Shellapi.h	Shmisc.lib	1
 ShowCaret	1.0	1.0 and later	Winuser.h	Caret.lib	1
-ShowCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	0
+ShowCursor	1.0	1.0 and later	Winuser.h	Cursor.lib, Mcursor.lib	1
 ShowWindow	1.0	1.0 and later	Winuser.h		1
 SHShowOutOfMemory	1.0	1.0 and later	Shellapi.h	Shmisc.lib	1
 shutdown	1.0	1.0 and later	Winsock.h		1
@@ -3578,8 +3578,8 @@ SnmpUtilVarBindListCpy	3.0	3.0 and later	Snmp.h	Snmpapi.lib	1
 SnmpVarBind	3.0	3.0 and later	Snmp.h		1
 SnmpVarBindList	3.0	3.0 and later	Snmp.h		1
 sockaddr	1.0	1.0 and later	Winsock.h		1
-SOCKADDR_IN	1.0	1.0 and later	Winsock.h		0
-sockaddr_irda	1.0	1.0 and later	Winsock.h		0
+SOCKADDR_IN	1.0	1.0 and later	Winsock.h		1
+sockaddr_irda	1.0	1.0 and later	Winsock.h		1
 socket	1.0	1.0 and later	Winsock.h		1
 SORTORDERSPEC	1.0	1.0 and later	Windbase.h		1
 SplAddUserDict	2.10	2.10 and later	Splapi.h	Splusa.lib	0
@@ -3966,7 +3966,7 @@ TV_ITEM	1.0	1.0 and later	Commctrl.h		1
 TV_KEYDOWN	1.0	1.0 and later	Commctrl.h		1
 TV_SORTCB	1.0	1.0 and later	Commctrl.h		1
 TVHITTESTINFO	2.0	2.0 and later	Commctrl.h		1
-TVINSERTSTRUCT	2.0	2.0 and later	Commctrl.h		0
+TVINSERTSTRUCT	2.0	2.0 and later	Commctrl.h		1
 TVITEM	2.0	2.0 and later	Commctrl.h		1
 TVM_CREATEDRAGIMAGE	1.0	1.0 and later	Commctrl.h		1
 TVM_DELETEITEM	1.0	1.0 and later	Commctrl.h		1
@@ -4325,9 +4325,9 @@ WINDOWPOS	1.0	1.0 and later	Winuser.h		1
 WindowProc	1.0	1.0 and later	Winuser.h		1
 WinMain	1.0	1.0 and later	Winuser.h		1
 WM_ACTIVATE	1.0	1.0 and later	Winuser.h		1
-WM_APP	1.0	1.0 and later	Winuser.h		0
+WM_APP	1.0	1.0 and later	Winuser.h		1
 WM_CANCELMODE	1.0	1.0 and later	Winuser.h		1
-WM_CAPTURECHANGED	1.0	1.0 and later	Winuser.h		0
+WM_CAPTURECHANGED	1.0	1.0 and later	Winuser.h		1
 WM_CHAR	1.0	1.0 and later	Winuser.h		1
 WM_CLEAR	1.0	1.0 and later	Winuser.h		1
 WM_CLOSE	1.0	1.0 and later	Winuser.h		1
@@ -4353,13 +4353,13 @@ WM_EXITMENULOOP	1.0	1.0 and later	Winuser.h		1
 WM_FONTCHANGE	1.0	1.0 and later	Winuser.h		1
 WM_GETDLGCODE	1.0	1.0 and later	Winuser.h		1
 WM_GETFONT	1.0	1.0 and later	Winuser.h		1
-WM_GETICON	1.0	1.0 and later	Winuser.h		0
+WM_GETICON	1.0	1.0 and later	Winuser.h		1
 WM_GETTEXT	1.0	1.0 and later	Winuser.h		1
 WM_GETTEXTLENGTH	1.0	1.0 and later	Winuser.h		1
 WM_HELP	1.0	1.0 and later	Winuser.h		1
 WM_HIBERNATE	1.0	1.0 and later	Winuser.h		1
 WM_HOTKEY	2.0	2.0 and later	Winuser.h		1
-WM_HSCROLL	1.0	1.0 and later	Winuser.h		0
+WM_HSCROLL	1.0	1.0 and later	Winuser.h		1
 WM_IM_INFO	2.10	2.10 and later	Winuser.h		1
 WM_IME_CHAR	2.1	2.1 and later	Imm.h		1
 WM_IME_COMPOSITION	2.1	2.1 and later (Japanese version 1.0 and later)	Imm.h		1
@@ -4380,9 +4380,9 @@ WM_KEYFIRST	1.0	1.0 and later	Winuser.h		1
 WM_KEYLAST	1.0	1.0 and later	Winuser.h		1
 WM_KEYUP	1.0	1.0 and later	Winuser.h		1
 WM_KILLFOCUS	1.0	1.0 and later	Winuser.h		1
-WM_LBUTTONDBLCLK	1.0	1.0 and later	Winuser.h		0
+WM_LBUTTONDBLCLK	1.0	1.0 and later	Winuser.h		1
 WM_LBUTTONDOWN	1.0	1.0 and later	Winuser.h		1
-WM_LBUTTONUP	1.0	1.0 and later	Winuser.h		0
+WM_LBUTTONUP	1.0	1.0 and later	Winuser.h		1
 WM_MEASUREITEM	1.0	1.0 and later	Winuser.h		1
 WM_MENUCHAR	1.0	1.0 and later	Winuser.h		1
 WM_MOVE	1.0	1.0 and later	Winuser.h		1
@@ -4393,13 +4393,13 @@ WM_PALETTECHANGED	2.0	2.0 and later	Winuser.h		1
 WM_PASTE	1.0	1.0 and later	Winuser.h		1
 WM_QUERYNEWPALETTE	2.0	2.0 and later	Winuser.h		1
 WM_QUIT	1.0	1.0 and later	Winuser.h		1
-WM_RASDIALEVENT	1.0	1.0 and later	Winuser.h		0
+WM_RASDIALEVENT	1.0	1.0 and later	Winuser.h		1
 WM_RENDERALLFORMATS	1.0	1.0 and later	Winuser.h		1
 WM_RENDERFORMAT	1.0	1.0 and later	Winuser.h		1
-WM_SETCURSOR	2.0	2.0 and later	Winuser.h		0
+WM_SETCURSOR	2.0	2.0 and later	Winuser.h		1
 WM_SETFOCUS	1.0	1.0 and later	Winuser.h		1
 WM_SETFONT	1.0	1.0 and later	Winuser.h		1
-WM_SETICON	1.0	1.0 and later	Winuser.h		0
+WM_SETICON	1.0	1.0 and later	Winuser.h		1
 WM_SETREDRAW	1.0	1.0 and later	Winuser.h		1
 WM_SETTEXT	1.0	1.0 and later	Winuser.h		1
 WM_SETTINGCHANGE	1.0	1.0 and later	Winuser.h		1
@@ -4413,7 +4413,7 @@ WM_SYSKEYDOWN	1.0	1.0 and later	Winuser.h		1
 WM_SYSKEYUP	1.0	1.0 and later	Winuser.h		1
 WM_TIMER	1.0	1.0 and later	Winuser.h		1
 WM_UNDO	1.0	1.0 and later	Winuser.h		1
-WM_VSCROLL	1.0	1.0 and later	Winuser.h		0
+WM_VSCROLL	1.0	1.0 and later	Winuser.h		1
 WM_WINDOWPOSCHANGED	1.0	1.0 and later	Winuser.h		1
 WNDCLASS	1.0	1.0 and later	Winuser.h		1
 WNetAddConnection3	2.0	2.0 and later	Winnetwk.h	Redir.lib	1

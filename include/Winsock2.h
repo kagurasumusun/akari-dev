@@ -348,7 +348,11 @@ struct in_addr {
 typedef struct in_addr IN_ADDR;
 
 /* CE sockaddr_in page (aa450946): sin_family "must be AF_INET";
- * sin_zero pads to sizeof(sockaddr). */
+ * sin_zero pads to sizeof(sockaddr).  The official Windows CE 3.0
+ * archive page wcesdkrSOCKADDR_IN ("SOCKADDR_IN", Versions 1.0 and
+ * later, Defined in Winsock.h) prints the identical struct and the
+ * same IN_ADDR S_un union in its remarks -- the CE 1.0/2.x home was
+ * Winsock.h; this tree ships the single Winsock2.h surface. */
 struct sockaddr_in {
     short    sin_family;
     u_short  sin_port;
@@ -374,7 +378,10 @@ struct sockaddr_in6 {
     u_long          sin6_scope_id;
 };
 
-/* CE linger page (ms894561). */
+/* CE linger page (ms894561).  The official Windows CE 3.0 archive
+ * page wcesdkrLINGER ("LINGER", Versions 1.0 and later, Defined in
+ * Winsock.h) prints the identical struct; l_onoff nonzero enables
+ * SO_LINGER with the l_linger seconds timeout. */
 struct linger {
     u_short l_onoff;
     u_short l_linger;

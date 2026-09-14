@@ -914,6 +914,17 @@ DWORD WaitForMultipleObjects(DWORD nCount,
                              const HANDLE *lpHandles,
                              BOOL fWaitAll, DWORD dwMilliseconds);
 
+/* wcesdkrCeGetRandomSeed "CeGetRandomSeed" (official Windows CE 3.0
+ * archive): __int64 CeGetRandomSeed(void).  CE 3.0+; Winbase.h;
+ * Nk.lib row on the page (a kernel-side export, not Coredll, so no
+ * import decoration and no user-mode doc-def entry).  Returns a
+ * random 64-bit number based on kernel operations, for use as an
+ * algorithm seed.  The page prints `__int64`; LONGLONG (winnt.h's
+ * 64-bit carrier, used in this tree for __int64 prints) is used for
+ * portability.  The page notes the function is available on CE 3.0+
+ * even where an implementation's Winbase.h does not prototype it. */
+LONGLONG CeGetRandomSeed(void);
+
 /* ------------------------------------------------------------------ */
 /* Synchronization: critical sections and interlocked access          */
 /* ------------------------------------------------------------------ */

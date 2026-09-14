@@ -464,7 +464,130 @@ AKARI_CE_IMPORT CEOID CeWriteRecordProps(HANDLE hDbase, CEOID oidRecord,
  *   aa517341 DB_CEOID_DIRECTORY_DELETED   CE 1.01+
  *   ms887719 DB_CEOID_FILE_DELETED        CE 1.01+
  *   ms887825 DB_CEOID_RECORD_DELETED      CE 1.01+
+ *
+ * The official Windows CE 3.0 archive additionally documents the
+ * obsolete Pegasus-era twins of the first three messages (each page
+ * says "This message is obsolete for all supported versions of
+ * Windows CE. Use DB_CEOID_*"); their values are likewise not
+ * printed on any CE page, so they are recorded name-only:
+ *   DB_PEGOID_CHANGED          CE 1.0 (use DB_CEOID_CHANGED)
+ *                              (_wcesdk_DB_PEGOID_CHANGED)
+ *   DB_PEGOID_CREATED          CE 1.0 (use DB_CEOID_CREATED)
+ *                              (_wcesdk_DB_PEGOID_CREATED)
+ *   DB_PEGOID_RECORD_DELETED   CE 1.0 (use DB_CEOID_RECORD_DELETED)
+ *                              (_wcesdk_DB_PEGOID_RECORD_DELETED)
  */
+
+/* --- Replication API (CE 3.0 and later). ----------------------------
+ *
+ * Official Windows CE 3.0 archive pages (Defined in Windbase.h,
+ * Include Winbase.h).  Every page below lists Link to: coredll.lib
+ * except CeGetCurrentTrust, whose page lists Nk.lib (a kernel-side
+ * export, not Coredll) -- that name is therefore declared without
+ * the coredll import decoration and is *not* added to the user-mode
+ * doc def (same conflict model as the Winbase.h Nk.lib rows).
+ *
+ * The pages document the replication-partnership bit model: the
+ * first two mask bits identify up to two partners (CeGetReplChangeMask
+ * remarks: ActiveSync sets 0x00000003 by default), the tri-state bit
+ * guards partner-bit clearing, and a private "other" bit (bit zero
+ * only) is free for the replication process. */
+
+/* _wcesdk_CeRegisterReplNotification "CeRegisterReplNotification":
+ * BOOL CeRegisterReplNotification(CENOTIFYREQUEST *).  CE 3.0+;
+ * Windbase.h; coredll.lib.  Registers for object-store and mounted
+ * database volume notifications; a NULL pRequest removes the
+ * previous registration.  (The page's parameter prose says
+ * "CENOTIFICATION structure" while its printed signature takes
+ * CENOTIFYREQUEST; the printed signature is followed.) */
+AKARI_CE_IMPORT BOOL CeRegisterReplNotification(CENOTIFYREQUEST *pRequest)
+                    AKARI_CE_NAME(CeRegisterReplNotification);
+
+/* _wcesdk_CeGetReplChangeMask "CeGetReplChangeMask":
+ * BOOL CeGetReplChangeMask(LPDWORD).  CE 3.0+; Windbase.h;
+ * coredll.lib.  Retrieves the current replication partnership
+ * mask. */
+AKARI_CE_IMPORT BOOL CeGetReplChangeMask(LPDWORD lpmask) AKARI_CE_NAME(CeGetReplChangeMask);
+
+/* _wcesdk_CeSetReplChangeMask "CeSetReplChangeMask":
+ * BOOL CeSetReplChangeMask(DWORD).  CE 3.0+; Windbase.h;
+ * coredll.lib.  Sets the current replication partnership mask. */
+AKARI_CE_IMPORT BOOL CeSetReplChangeMask(DWORD mask) AKARI_CE_NAME(CeSetReplChangeMask);
+
+/* _wcesdk_CeGetReplChangeBitsEx "CeGetReplChangeBitsEx":
+ * BOOL CeGetReplChangeBitsEx(PCEGUID, CEOID, LPDWORD, DWORD).
+ * CE 3.0+; Windbase.h; coredll.lib.  Reports which partner has not
+ * synchronized a change; dwFlags may be 0 or REPL_CHANGE_WILLCLEAR
+ * (value unpublished; see the flag-constant record below). */
+AKARI_CE_IMPORT BOOL CeGetReplChangeBitsEx(PCEGUID pguid, CEOID oid, LPDWORD lpbits,
+                    DWORD dwFlags) AKARI_CE_NAME(CeGetReplChangeBitsEx);
+
+/* _wcesdk_CeSetReplChangeBitsEx "CeSetReplChangeBitsEx":
+ * BOOL CeSetReplChangeBitsEx(PCEGUID, CEOID, DWORD).  CE 3.0+;
+ * Windbase.h; coredll.lib.  Sets the replication bits for the mask
+ * bits passed. */
+AKARI_CE_IMPORT BOOL CeSetReplChangeBitsEx(PCEGUID pguid, CEOID oid, DWORD mask)
+                    AKARI_CE_NAME(CeSetReplChangeBitsEx);
+
+/* _wcesdk_CeClearReplChangeBitsEx "CeClearReplChangeBitsEx":
+ * BOOL CeClearReplChangeBitsEx(PCEGUID, CEOID, DWORD).  CE 3.0+;
+ * Windbase.h; coredll.lib.  Clears the replication bits for the
+ * mask bits passed; REPL_CHANGE_WILLCLEAR must have been used with
+ * CeGetReplChangeBitsEx first (page remarks). */
+AKARI_CE_IMPORT BOOL CeClearReplChangeBitsEx(PCEGUID pguid, CEOID oid, DWORD mask)
+                    AKARI_CE_NAME(CeClearReplChangeBitsEx);
+
+/* _wcesdk_CeGetReplOtherBitsEx "CeGetReplOtherBitsEx":
+ * BOOL CeGetReplOtherBitsEx(PCEGUID, CEOID, LPDWORD).  CE 3.0+;
+ * Windbase.h; coredll.lib.  Gets the private replication bit; the
+ * returned mask is valid for bit zero only (0x0 or 0x1). */
+AKARI_CE_IMPORT BOOL CeGetReplOtherBitsEx(PCEGUID pguid, CEOID oid, LPDWORD lpbits)
+                    AKARI_CE_NAME(CeGetReplOtherBitsEx);
+
+/* _wcesdk_CeSetReplOtherBitsEx "CeSetReplOtherBitsEx":
+ * BOOL CeSetReplOtherBitsEx(PCEGUID, CEOID, DWORD).  CE 3.0+;
+ * Windbase.h; coredll.lib.  Sets or clears the private replication
+ * bit (only bit zero of `bits` is meaningful). */
+AKARI_CE_IMPORT BOOL CeSetReplOtherBitsEx(PCEGUID pguid, CEOID oid, DWORD bits)
+                    AKARI_CE_NAME(CeSetReplOtherBitsEx);
+
+/* _wcesdk_CeGetCurrentTrust "CeGetCurrentTrust":
+ * DWORD CeGetCurrentTrust(void).  CE 3.0+; Windbase.h; Nk.lib row
+ * on the page.  Retrieves the trust level the OEM assigned to the
+ * calling process when it was loaded.  The page's return-value
+ * table publishes exactly two levels: OEM_CERTIFY_TRUST (2) and
+ * OEM_CERTIFY_RUN (1). */
+#define OEM_CERTIFY_RUN    1
+#define OEM_CERTIFY_TRUST  2
+DWORD CeGetCurrentTrust(void);
+
+/* --- Password functions (CE 2.10 and later; Fspass component). ------
+ *
+ * Official Windows CE 3.0 archive pages, Defined in Windbase.h
+ * (Versions: 2.10 and later).  All three pages require the OEM to
+ * include the Password component (Fspass) in Cesysgen.bat and print
+ * no Include/Link rows, so no import decoration is claimed.  The
+ * CE 3.0 SDK book also carries a CheckPassword page
+ * (_wcesdk_CheckPassword) that lists Defined in Winbase.h,
+ * Versions 1.01 and later, Link to: Coredll.lib, Fspass.lib -- the
+ * same prototype, documented home Winbase.h on that earlier tree. */
+
+/* _wcepb_CheckPassword "CheckPassword":
+ * BOOL CheckPassword(LPWSTR).  CE 2.10+; Windbase.h.  Validates a
+ * password by comparing lpszPassword with the current system
+ * password. */
+BOOL CheckPassword(LPWSTR lpszPassword);
+
+/* _wcepb_GetPasswordActive "GetPasswordActive":
+ * BOOL GetPasswordActive(void).  CE 2.10+; Windbase.h.  TRUE means
+ * an active password exists in the system. */
+BOOL GetPasswordActive(void);
+
+/* _wcepb_SetPasswordActive "SetPasswordActive":
+ * BOOL SetPasswordActive(BOOL, LPWSTR).  CE 2.10+; Windbase.h.
+ * Activates or deactivates the current password; lpszPassword must
+ * match the current password. */
+BOOL SetPasswordActive(BOOL bActive, LPWSTR lpszPassword);
 
 /* --- Flag constants (names recorded; values unpublished). -----------
  *
@@ -473,6 +596,11 @@ AKARI_CE_IMPORT CEOID CeWriteRecordProps(HANDLE hDbase, CEOID oidRecord,
  * as parameter/flag documentation.  Nothing is invented; the lists
  * are recorded so the surface is traceable:
  *
+ * Replication flags (official Windows CE 3.0 archive, Windbase.h):
+ *   REPL_CHANGE_WILLCLEAR -- dwFlags value of CeGetReplChangeBitsEx
+ *   that turns on the tri-state bit; the value is not printed
+ *   (_wcesdk_CeGetReplChangeBitsEx, and the
+ *   _wcesdk_CeClearReplChangeBitsEx remarks).
  * CEVT_* property value types (aa517227 CEPROPVAL et al.):
  *   CEVT_I2 CEVT_UI2 CEVT_I4 CEVT_UI4 CEVT_FILETIME CEVT_LPWSTR
  *   CEVT_BOOL CEVT_R8 CEVT_BLOB CEVT_STREAM (EDB stream property,
