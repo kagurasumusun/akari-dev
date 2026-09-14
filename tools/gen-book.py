@@ -134,7 +134,11 @@ def base_of(t):
 
 def norm_type0(t):
     t = t.strip().replace('SEC_FAR', '').replace('_RPC_FAR', '')
-    return re.sub(r'\s+', ' ', t)
+    # FAR / NEAR are empty decorations here (Windef.h); a print like
+    # 'void FAR* FAR* pp' or 'LPUNKNOWN FAR * ppUnk' must not turn into
+    # an opaque carrier named 'LPUNKNOWN FAR'.
+    t = re.sub(r'\b(FAR|NEAR)\b', ' ', t)
+    return re.sub(r'\s+', ' ', t).strip()
 
 
 def is_ptr(t):
@@ -374,7 +378,7 @@ def canonical_hdr(doc_hdr):
         return None
     if re.search(r'\.(cpp|c|idl|def)$', h):
         return None                      # sample-source reference
-    if not h.endswith('.h'):
+    if not h.endswith(('.h', '.hpp', '.hxx')):
         if h.lower() in ('usbdi', 'developer defined', 'developer implemented'):
             h = h + '.h' if h.lower() == 'usbdi' else None
             if h is None:
@@ -406,11 +410,21 @@ def merge_into(path, section):
 
 
 def raw_all():
+    """every shipped header, so `carried()` sees the whole tree.
+
+    M107c: this used to read only include/*.h, which made the generator
+    blind to include/oak/ (the driver/OAL headers) and to the .hpp/.hxx
+    class headers -- i.e. it could re-emit a name that the tree already
+    carries elsewhere.  .idl/.def are not headers and stay out."""
     raw = ''
-    for fn in sorted(os.listdir(os.path.join(ROOT, 'include'))):
-        if fn.endswith('.h'):
-            raw += open(os.path.join(ROOT, 'include', fn),
-                        encoding='utf-8', errors='replace').read()
+    for sub in ('include', os.path.join('include', 'oak')):
+        d = os.path.join(ROOT, sub)
+        if not os.path.isdir(d):
+            continue
+        for fn in sorted(os.listdir(d)):
+            if fn.endswith(('.h', '.hpp', '.hxx')):
+                raw += open(os.path.join(d, fn),
+                            encoding='utf-8', errors='replace').read()
     return raw
 
 
@@ -473,7 +487,11 @@ def main():
 
 
 def emit_group(target, rs, bookname, raw, merge=False):
-    path = os.path.join(ROOT, 'include', target)
+    # M107c: driver/OAL books emit into include/oak/ (the M105a split:
+    # include/ = application headers, include/oak/ = driver + OAL
+    # headers).  A manifest named "oak-<book>" marks such a book.
+    sub = 'oak' if bookname.startswith('oak-') else ''
+    path = os.path.join(ROOT, 'include', sub, target)
     exists = os.path.exists(path)
     if exists:
         # merge: only names not carried anywhere (incl. this file)
@@ -490,7 +508,10 @@ def emit_group(target, rs, bookname, raw, merge=False):
         if '::' in name or re.search(r'\s(Method|Property)$', name, re.I):
             records.append(r)
             continue
-        if r.get('sig'):
+        _sig = (r.get('sig') or '').lstrip()
+        if _sig.startswith(('typedef', 'struct ', 'enum ', 'union ')):
+            types.append(r)          # M107c: printed type row
+        elif r.get('sig'):
             funcs.append(r)
         elif (r.get('header') and re.match(r'^[A-Za-z_][A-Za-z0-9_]*$', name)
                   and len(name) > 2
@@ -539,12 +560,28 @@ def emit_group(target, rs, bookname, raw, merge=False):
                     need_carriers.add(b)
 
     compiled, held, opaques = [], [], []
+    seen_types = {}
     for r in types:
         name = re.sub(r'\s*\(Windows CE[^)]*\)\s*$', '', r['title']).strip()
         name = re.sub(r'\s*\([^)]*\)\s*$', '', name).strip()
         if carried(name):
             continue
-        decl = extract_type_decl(r['id'])
+        # twin rows (the _wcepb_/wceddk page + the ms.. page of the same
+        # name) must not each emit a typedef: that is a redefinition.
+        if name in seen_types:
+            seen_types[name][1].append(r['id'].split('(')[0])
+            continue
+        seen_types[name] = (r, [r['id'].split('(')[0]])
+        decl = None
+        rsig = re.sub(r'\s+', ' ', (r.get('sig') or '')).strip()
+        if rsig.startswith(('typedef', 'struct ', 'enum ', 'union ')):
+            # the row itself carries the page's print (M107c)
+            m = TYPEDEF_RE.search(rsig)
+            if m:
+                decl = (m.group(1), m.group(2), m.group(3),
+                        [a.strip() for a in m.group(4).split(',')])
+        if decl is None:
+            decl = extract_type_decl(r['id'])
         if decl:
             c = compile_type(decl)
             if c:
@@ -573,7 +610,12 @@ def emit_group(target, rs, bookname, raw, merge=False):
         emit.append(f'typedef struct {c} {c};   /* opaque carrier (layout unpublished) */')
         DECLARED.add(c)
     for r, c in compiled:
-        emit.append(f'/* {r["id"].split("(")[0]} {r["title"].strip()} (page print, compiled) */')
+        nm = re.sub(r'\s*\([^)]*\)\s*$', '', r['title']).strip()
+        twin = seen_types.get(nm, (r, []))[1]
+        extra = ('  [twin page(s): ' + ', '.join(twin[1:]) + ']'
+                 if len(twin) > 1 else '')
+        emit.append(f'/* {r["id"].split("(")[0]} {r["title"].strip()}'
+                    f' (page print, compiled){extra} */')
         emit.append(c)
     for r, decl in held:
         kind, tag, body, aliases = decl
