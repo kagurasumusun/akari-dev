@@ -976,7 +976,7 @@ CeOpenDatabaseEx	ce3+ce4	declared	1	1	1	Coredll.lib.; Fsdbase.lib
 CeOpenDatabaseEx2	ce4	declared	1	1	1	Coredll.lib.
 CEOSVERSIONINFO	ce3+ce5+ce6	declared	0	0	1	
 CePimCommand	ce3+ce5+ce6	declared	0	0	1	Pimstore.lib.
-CEProcessorType	ce3+ce4	absent	0	0	1	
+CEProcessorType	ce3+ce4	comment-only	0	0	1	
 CEPROPVAL	ce3+ce4	declared	0	0	1	
 CeRapiFreeBuffer	ce3+ce5+ce6	declared	0	0	1	Rapi.lib.
 CeRapiGetError	ce3+ce5+ce6	declared	1	0	1	Rapi.lib.
@@ -1933,7 +1933,7 @@ DEVNAMES	ce3+ce5+ce6	declared	0	0	1
 DHCPLeaseTime	ce3	absent	0	0	0	
 DhcpOptions	ce3+ce5+ce6	comment-only	0	0	0	
 DhcpSendOptions	ce3+ce5+ce6	comment-only	0	0	0	
-DIALER_NOTIFICATION	ce4	absent	0	0	1	
+DIALER_NOTIFICATION	ce4	declared	0	0	1	
 DialogBox	ce3+ce5+ce6	declared	0	0	1	
 DialogBoxIndirect	ce3+ce5+ce6	declared	0	0	1	
 DialogBoxIndirectParam	ce3+ce5+ce6	declared	1	1	1	Dlgmgr.lib.; Dlgmgr.lib
@@ -2049,9 +2049,9 @@ DOCINFO	ce3+ce4+ce5+ce6	declared	0	0	1
 DOMAIN_CONTROLLER_INFO	ce5+ce6	declared	0	0	1	
 Domains	ce4	comment-only	0	0	0	
 DOMDocument	ce5+ce6	comment-only	0	0	0	
-DPA	ce4	absent	0	0	1	
-DPA_FastGetPtr	ce4	absent	0	0	1	
-DPA_GetPtr	ce4	absent	1	1	1	
+DPA	ce4	declared	0	0	1	
+DPA_FastGetPtr	ce4	comment-only	0	0	1	
+DPA_GetPtr	ce4	comment-only	1	1	1	
 DrawEdge	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Mgdraw.lib
 DrawFocusRect	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Rectapi.lib, Mgdraw.lib
 DrawFrameControl	ce3+ce5+ce6	declared	1	1	1	Nclient.lib.; Nclient.lib
@@ -2422,8 +2422,8 @@ ExtTextOut	ce3+ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.; Mgrast.lib
 FailRetryWaitMS	ce3	absent	0	0	0	
 FastForward	ce3+ce4	comment-only	0	0	1	
 FastReverse	ce3+ce4	comment-only	0	0	1	
-FATUIDATA	ce3	absent	0	0	1	
-FATUIEvent	ce3	absent	0	0	1	
+FATUIDATA	ce3	declared	0	0	1	
+FATUIEvent	ce3	declared	0	0	1	
 fd_set	ce4+ce5+ce6	declared	0	0	1	
 FiberProc	ce5+ce6	comment-only	0	0	1	Coredll.lib.
 FILE_NOTIFY_INFORMATION	ce5+ce6	declared	0	0	1	
@@ -3184,8 +3184,8 @@ IAccessControl	ce5+ce6	declared	0	0	0	Ole32.lib, Uuid.lib.
 IAdviseSink	ce3+ce5+ce6	declared	0	0	0	Oleaut32.lib, Uuid.lib.
 IAMDevMem	ce3	absent	0	0	1	
 IAppointment	ce5+ce6	declared	0	0	0	Pimstore.lib.
-IAS_QUERY	ce3	absent	0	0	1	
-IAS_SET	ce3	absent	0	0	1	
+IAS_QUERY	ce3	comment-only	0	0	1	
+IAS_SET	ce3	comment-only	0	0	1	
 IAsyncMoniker	ce4+ce5+ce6	declared	0	0	0	Urlmon.lib.; Urlmon.lib.
 IAuthenticate	ce5+ce6	declared	0	0	0	Urlmon.lib.
 IAVTransport	ce5+ce6	comment-only	0	0	0	Av_upnp.lib.
@@ -3325,7 +3325,7 @@ IInternetSession	ce5+ce6	declared	0	0	0	Urlmon.lib.
 IInternetZoneManager	ce5+ce6	declared	0	0	0	Urlmon.lib.
 IKoreanImeUI	ce5+ce6	declared	0	0	0	Uuid.lib.
 ILockBytes	ce3+ce5+ce6	declared	0	0	0	Ole32.lib, Uuid.lib.
-ILTIMING_MESSAGE	ce3+ce4	absent	0	0	1	
+ILTIMING_MESSAGE	ce3+ce4	declared	0	0	1	
 IMAGE_DATA_DIRECTORY	ce3+ce4	absent	0	0	1	
 ImageCodecFlags	ce5+ce6	declared	0	0	0	
 ImageCodecInfo	ce5+ce6	declared	0	0	0	
@@ -3656,7 +3656,7 @@ IOCTL_CELOG_REGISTER	ce4	absent	0	0	0
 IOCTL_COLLECTOR_REGISTER	ce3	absent	0	0	0	
 IOCTL_COLLECTOR_SEND	ce3	absent	0	0	0	
 IOCTL_COLLECTOR_UNREGISTER	ce3	absent	0	0	0	
-IOCTL_CONSOLE_SETCONTROLCHANDLER	ce3+ce4	absent	0	0	0	
+IOCTL_CONSOLE_SETCONTROLCHANDLER	ce3+ce4	comment-only	0	0	0	
 IOCTL_DISK_DELETE_SECTORS	ce5+ce6	absent	0	0	0	
 IOCTL_DISK_DEVICE_INFO	ce5+ce6	comment-only	0	0	0	
 IOCTL_DISK_FORMAT_MEDIA	ce5+ce6	comment-only	0	0	0	
@@ -6029,8 +6029,8 @@ OID_WAN_PROTOCOL_TYPE	ce5+ce6	absent	0	0	0
 OID_WAN_SET_COMP_INFO	ce5+ce6	absent	0	0	0	
 OID_WAN_SET_LINK_INFO	ce5+ce6	absent	0	0	0	
 OleCreate	ce3+ce4+ce5+ce6	declared	1	0	1	Ole32.lib.; Ole32.lib.; Ole232.lib
-OleCreateFontIndirect	ce3	absent	0	0	1	Oleaut32.lib
-OleCreatePropertyFrame	ce3	absent	0	0	1	Oleaut32.lib
+OleCreateFontIndirect	ce3	comment-only	0	0	1	Oleaut32.lib
+OleCreatePropertyFrame	ce3	declared	0	0	1	Oleaut32.lib
 OleDraw	ce3+ce4+ce5+ce6	declared	1	0	1	Ole32.lib.; Ole32.lib.; Ole232.lib
 OLEGETMONIKER	ce4+ce5+ce6	declared	0	0	1	
 OleIsRunning	ce3+ce4+ce5+ce6	declared	1	0	1	Ole32.lib.; Ole32.lib.; Ole232.lib
@@ -8168,7 +8168,7 @@ UDM_SETRANGE32	ce3+ce5+ce6	declared	0	0	1
 UDN_DELTAPOS	ce3+ce5+ce6	declared	0	0	1	
 UdpTimeoutSeconds	ce3	absent	0	0	0	
 UfnGetRegistryInfo	ce5+ce6	absent	0	0	1	UfnClientLibBase.lib.
-UIPARAM	ce3	absent	0	0	1	
+UIPARAM	ce3	declared	0	0	1	
 ULARGE_INTEGER	ce3	declared	0	0	1	
 UnhookInterrupt	ce3	absent	0	0	1	
 UNICODE_PATH	ce4	declared	0	0	1	
@@ -8616,7 +8616,7 @@ WIM_DATA	ce5+ce6	declared	0	0	0
 WIM_OPEN	ce5+ce6	declared	0	0	0	
 WIN32_FILE_ATTRIBUTE_DATA	ce5+ce6	declared	0	0	1	
 WIN32_FIND_DATA	ce3+ce5+ce6	declared	0	0	1	
-WIN_CERTIFICATE	ce3+ce4	absent	0	0	1	
+WIN_CERTIFICATE	ce3+ce4	declared	0	0	1	
 WindowFromPoint	ce3+ce5+ce6	declared	1	1	1	
 WINDOWINFO	ce3+ce4	declared	0	0	1	
 WINDOWPOS	ce3+ce5+ce6	declared	0	0	1	

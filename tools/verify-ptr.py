@@ -37,6 +37,30 @@ _spec.loader.exec_module(gb)
 
 VERBOSE = '--verbose' in sys.argv
 
+# tools/verify-ptr-known.txt -- one `pattern<TAB>reason` per line for the
+# page prints that are damaged in the archive itself (a star lost by the
+# CE-era whitespace stripper, a param whose own description says
+# "pointer to ..."), for pages that print several declarations at once,
+# and for pages whose title merely shares a name with a different API.
+# A mismatch listed here is *explained*, not fixed: include/ is never
+# edited from an unconfirmed print.
+KNOWN = []
+_known_path = os.path.join(_TOOLS, 'verify-ptr-known.txt')
+if os.path.exists(_known_path):
+    for _line in open(_known_path, encoding='utf-8'):
+        _line = _line.rstrip('\n')
+        if not _line or _line.startswith('#'):
+            continue
+        _pat, _reason = (_line.split('\t', 1) + [''])[:2]
+        KNOWN.append((re.compile(_pat), _reason))
+
+
+def known(page, name):
+    for rx, reason in KNOWN:
+        if rx.search(page) or rx.search(name):
+            return reason
+    return None
+
 
 def inc_text():
     parts = []
@@ -111,15 +135,21 @@ def find_decl(code, name):
 def ptr_depth(t):
     """pointer-ness of a parameter type.  Star count, plus the CE/Win32
     P/LP/PP/LPP name prefixes (PCENOTIFYREQUEST and CENOTIFYREQUEST* are
-    the same pointer type and must not be reported as a difference), plus
-    the array-parameter decay."""
+    the same pointer type and must not be reported as a difference), the
+    SAL `I`/`O` salts the SDK-reference pages prepend (ILPDWORD is
+    LPDWORD), plus the array-parameter decay."""
     t = t.strip()
     if '*' in t:
         n = t.count('*')
     else:
         base = t.split()[-1] if t.split() else ''
-        m = re.match(r'^(L?P{1,2})(?=[A-Z0-9_])', base)
-        n = len(m.group(1).lstrip('L')) if m else 0
+        m = re.match(r'^(L?P{1,2})(?=[A-Z0-9_])', base) or \
+            re.match(r'^[IO](L?P{1,2})(?=[A-Z0-9_])', base)
+        if m:
+            grp = m.groups()[-1]
+            n = len(grp.lstrip('L'))
+        else:
+            n = 0
     if re.search(r'\b\w+\s*\[\s*\d*\s*\]\s*$', t):
         n += 1
     return n
@@ -171,6 +201,7 @@ def main():
     code = strip_comments(inc_text())
     checked = mism = 0
     report = []
+    explained = []
     for r in rows:
         sig = (r.get('sig') or '').strip()
         if not sig or sig.startswith(('#', 'typedef', 'struct', 'enum', 'union')):
@@ -214,13 +245,20 @@ def main():
             if len(got) != len(want):
                 continue          # arity differs: overload/other row
             if got != want:
-                mism += 1
-                report.append((r['id'], name, sig, [t for t, _ in params],
-                               [t for t, _ in norm_params(params_txt)],
-                               head))
+                why = known(r['id'], name)
+                if why:
+                    explained.append((r['id'], name, sig, why))
+                else:
+                    mism += 1
+                    report.append((r['id'], name, sig, [t for t, _ in params],
+                                   [t for t, _ in norm_params(params_txt)],
+                                   head))
                 break
     print(f"checked {checked} declared functions against their page prints; "
-          f"{mism} pointer mismatches")
+          f"{mism} unexplained pointer mismatches, "
+          f"{len(explained)} explained by tools/verify-ptr-known.txt")
+    for pid, name, sig, why in explained:
+        print(f"\n[known] {pid} {name}: {why}")
     for pid, name, sig, want, got, head in report:
         print(f"\n{pid} {name}")
         print(f"  print : {sig[:200]}")

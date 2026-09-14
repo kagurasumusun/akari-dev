@@ -3,13 +3,13 @@
 Measured state -- replaces all earlier "complete" claims.
 
 * documented API-like rows: 8934
-* declared: 4999
-* comment-only: 1631
-* absent: 2304
+* declared: 5007
+* comment-only: 1638
+* absent: 2289
 * coredll doc-def entries: 2361
 * verified coredll surface (unmangled): 2138
 
-## D1 -- printed signature, comment-only in include/ (940)
+## D1 -- printed signature, comment-only in include/ (946)
 Name printed a full prototype/struct on an official page but
 carried only as a comment record.  These must be declared.
 
@@ -137,6 +137,7 @@ carried only as a comment record.  These must be declared.
 * `CEL_VIRTUAL_FREE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_WAIT_MULTI` [ce3+ce4+ce5+ce6] lib: -
 * `CeOpenCallerBuffer` [ce5+ce6] lib: coredll.lib
+* `CEProcessorType` [ce3+ce4] lib: -
 * `CeSvcClose` [ce3+ce5+ce6] lib: Coredll.lib.
 * `CeSvcDelete` [ce3+ce5+ce6] lib: Coredll.lib.
 * `CeSvcDeleteVal` [ce3+ce5+ce6] lib: Coredll.lib.
@@ -260,6 +261,8 @@ carried only as a comment record.  These must be declared.
 * `DnsQuery_W` [ce5+ce6] lib: Dnsapi.lib.
 * `DnsRecordListFree` [ce5+ce6] lib: Dnsapi.lib.
 * `DnsReplaceRecordSetW` [ce5+ce6] lib: Dnsapi.lib.
+* `DPA_FastGetPtr` [ce4] lib: -
+* `DPA_GetPtr` [ce4] lib: -
 * `DrawThemeBackground` [ce5+ce6] lib: Ietheme.dll.
 * `DumpGraph` [ce3+ce5+ce6] lib: -
 * `DURATION` [ce3+ce4] lib: -
@@ -388,6 +391,8 @@ carried only as a comment record.  These must be declared.
 * `HwxSetContext` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
 * `HwxSetGuide` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
 * `HwxSetPartial` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `IAS_QUERY` [ce3] lib: -
+* `IAS_SET` [ce3] lib: -
 * `Icmp6SendEcho2` [ce5+ce6] lib: Icmplib.lib.
 * `ICMP_ECHO_REPLY` [ce3+ce5+ce6] lib: -
 * `IcmpSendEcho` [ce3+ce5+ce6] lib: Icmplib.lib.
@@ -408,11 +413,6 @@ carried only as a comment record.  These must be declared.
 * `IMEWRD` [ce4+ce5+ce6] lib: -
 * `IMPLTYPEFLAGS` [ce4+ce5+ce6] lib: -
 * `IMR_CANDIDATEFORM` [ce3+ce4+ce5+ce6] lib: -
-* `IMR_COMPOSITIONFONT` [ce3+ce4+ce5+ce6] lib: -
-* `IMR_COMPOSITIONFORM` [ce3+ce4+ce5+ce6] lib: -
-* `IMR_CONFIRMRECONVERTSTRING` [ce3+ce4+ce5+ce6] lib: -
-* `InitObjType` [ce3+ce5+ce6] lib: Coredll.lib.
-* `Install_Exit` [ce3+ce5+ce6] lib: Coredll.lib.
 
 ## D2 -- declared, page says Coredll.lib, missing from coredll-doc.def (14)
 * `AbnormalTermination` [ce3+ce5+ce6]
@@ -434,7 +434,7 @@ carried only as a comment record.  These must be declared.
 Export existence grounded on the device-dump-audited sysroot
 surface (clean-room.md 3.2); prototypes grounded on the pages.
 
-## D4 -- verified coredll surface names not carried anywhere in include/ (1008)
+## D4 -- verified coredll surface names not carried anywhere in include/ (1007)
 Candidate surface gaps (may include CRT-provider names).
 * `ADBAddAccountToGroup`
 * `ADBCreateAccount`
@@ -595,7 +595,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `DPA_Destroy`
 * `DPA_DestroyCallback`
 * `DPA_EnumCallback`
-* `DPA_GetPtr`
 * `DPA_GetPtrIndex`
 * `DPA_Grow`
 * `DPA_InsertPtr`
@@ -1236,3 +1235,4 @@ Candidate surface gaps (may include CRT-provider names).
 * `_strlwr_s`
 * `_strnicmp`
 * `_strnset`
+* `_strnset_s`

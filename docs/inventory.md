@@ -8011,3 +8011,62 @@ M105); D3 0; D4 1087 -> **1005**.  def 2361.
 
 Gates: make hostcheck GREEN (0x420/0x500/0x600); make defcheck
 GREEN (2361, no duplicates).
+
+### M107b -- the seven absent header tokens (census pass 2)
+
+Census: for every harvested row, split the `Header:` field on `,`/`;` and
+check the token against `include/` (file names) and against the
+identifier set of the whole tree.  Tokens that name a header the tree
+does not carry AND that carry at least one documented row still not
+present in the tree are the real gaps; tokens whose rows are already
+carried are pure bridges and stay unshipped (M100 policy).  Measured
+before M107b: `Splapi.h` 32 rows, `Comcat.h` 26, `Dsound.h`/`dsound.h`
+106 (case pair, one file), `IAccess.h` 13, `Mqoai.h` 72, `Initguid.h`
+14, `Qnetwork.h` 14.
+
+New headers:
+
+* `include/Splapi.h` (32 rows) -- the Speech UI.  `SPLSUGGEST` (ms907067)
+  and `SPLBUFFER` (ms926850) are compiled from the pages' own member
+  prints; `HSPL` is carried as an opaque handle type (no page prints a
+  layout for it); the 14 `Spl*` prototypes compile against the pages'
+  `Splusa.lib` rows with the parameter stars the pages print.
+* `include/Dsound.h` (106 rows, both documented spellings) -- the seven
+  DirectSound structures (DSBCAPS, DSBPOSITIONNOTIFY, DSBUFFERDESC,
+  DSCAPS, DSCBCAPS, DSCBUFFERDESC, DSCCAPS) from the SDK-reference
+  prints, `DSEnumCallback`, `DirectSoundCreate`, `DirectSoundCaptureCreate`
+  (dsound.lib).  `DirectSoundEnumerate` / `DirectSoundCaptureEnumerate`
+  stay record-only: their `LPDSENUMCALLBACK` parameter type has no
+  published typedef (48,849-page scan negative).
+* `include/Comcat.h` (26 rows), `include/IAccess.h` (13), `include/Mqoai.h`
+  (72) -- the component-category, COM access-control and MSMQ OA member
+  ledgers.  The member pages of these three print their methods with the
+  `Header: Comcat.h, Comcat.idl.`-style rows but no C prototype, so the
+  records carry the interface/member names, the page ids and the header
+  token; nothing is declared.
+* `include/Dshow.h` gained the 14 rows whose Header field lists
+  `Dshow.h, Initguid.h, Qnetwork.h` (the IAMMediaContent family).  Their
+  first Header token canonicalizes to Dshow.h, so no `Initguid.h` /
+  `Qnetwork.h` file is created -- recorded in the section comment.
+
+Tooling: `tools/gen-book.py` gained the `parse_piece` pointer fix (the
+old pattern matched the star between type and name with a throwaway
+group, so `const WCHAR * pwszAdd` compiled as by-value -- the whole first
+`Spl*` generation run was wrong and was regenerated), twin-row dedupe for
+both functions and typedefs (the same documented name is printed by the
+CE 5.0 page and by the `_wcesdk_` SDK-reference page).
+
+Verification: `tools/verify-ptr.py` (new) re-parses every harvested
+signature print and compares the pointer depth of every parameter and
+return type against the tree's declaration of the same name.  Result on
+this commit: **3757 declarations checked, 0 unexplained mismatches, 32
+explained** (the ledger `tools/verify-ptr-known.txt` records the class of
+each: archive-lost star, array-parameter decay, multi-declaration page,
+function-pointer typedef page, interface-member page).  Two real tree
+bugs surfaced this way and were fixed in the tree: `Pwinuser.h`
+`BatteryNotifyOfTimeChange` had lost the `FILETIME *` of its second
+parameter (ms896134 prints `FILETIME *pftDelta`), and the `Spl*` family
+of the first generation run.
+
+Gates: hostcheck OK (CE 0x420/0x500/0x600, 240 app + 68 oak headers +
+TU), crosscheck OK (6 WinCE targets), defcheck OK.
