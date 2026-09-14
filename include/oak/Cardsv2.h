@@ -151,11 +151,15 @@ extern "C" {
 #endif
 
 
-/* --- M104 declarations: printed prototypes recovered
- * from the official pages (tools/decl-d1.py). -------- */
-
-/* ms899316: page-printed prototype (Windows CE 5.0 and later; pcc_serv.dll). */
-STATUS GetSocketStatus(DWORD dwSocketIndex, PDWORD pdwStatus);
+/* --- M107a: STATUS-returning prototypes held ----------------------
+ * The pages below print a full prototype but the return type is the
+ * unpublished `STATUS` (no official CE page defines it -- see the
+ * scan note in include/Socksv2.h).  They are recorded verbatim and
+ * not declared, the same treatment Cardserv.h already gives its
+ * STATUS-returning prints; declaring them made the header
+ * uncompilable.
+ * --------------------------------------------------------------- */
+/* ms899316 GetSocketStatus: print `STATUS GetSocketStatus(DWORDdwSocketIndex,PDWORDpdwStatus);` -- HELD (return type unpublished) */
 
 
 /* --- type definitions from official page prints
@@ -165,19 +169,9 @@ STATUS GetSocketStatus(DWORD dwSocketIndex, PDWORD pdwStatus);
 typedef PVOID CARD_WINDOW_HANDLE;
 
 
-/* --- M104 declarations: printed prototypes recovered
- * from the official pages (tools/decl-d1.py). -------- */
-
-/* ms896161: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
-STATUS CardDeregisterClient(CARD_CLIENT_HANDLE hCardClient);
-
-/* aa447629: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
-STATUS CardModifyWindow(CARD_WINDOW_HANDLE hCardWindow, UINT16 fAttributes, UINT8 fAccessSpeed);
-
-/* aa447638: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
-STATUS CardReleaseWindow(CARD_WINDOW_HANDLE hCardWin);
-
-/* aa447648: page-printed prototype (Windows CE 1.0 and later.; pcc_serv.dll). */
-STATUS CardSetEventMask(CARD_CLIENT_HANDLE hCardClient, CARD_EVENT pMaskParms);
+/* aa447648 CardSetEventMask: print `STATUS CardSetEventMask(CARD_CLIENT_HANDLE hCardClient,CARD_EVENT_MASK_PARMS pMaskParms);` -- HELD (return type unpublished) */
+/* aa447638 CardReleaseWindow: print `STATUS CardReleaseWindow(CARD_WINDOW_HANDLE hCardWin);` -- HELD (return type unpublished) */
+/* aa447629 CardModifyWindow: print `STATUS CardModifyWindow(CARD_WINDOW_HANDLE hCardWindow,UINT16fAttributes,UINT8fAccessSpeed);` -- HELD (return type unpublished) */
+/* ms896161 CardDeregisterClient: print `STATUS CardDeregisterClient(CARD_CLIENT_HANDLEhCardClient);` -- HELD (return type unpublished) */
 
 #endif /* AKARI_CARDSV2_H */

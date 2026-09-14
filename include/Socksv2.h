@@ -50,38 +50,69 @@ extern "C" {
  * definitions sit at the end of this header; the pages are the
  * cited CE reference pages).
  * ------------------------------------------------------------------ */
-typedef struct SS_POWER_ENTRY SS_POWER_ENTRY;   /* forward (full definition below) */
-typedef struct SS_SOCKETSTATE SS_SOCKET_STATE;   /* forward (full definition below) */
+typedef struct SS_POWER_ENTRY SS_POWER_ENTRY;    /* forward (full definition below) */
+typedef struct SS_SOCKETSTATE SS_SOCKET_STATE;    /* forward (full definition below) */
+typedef SS_POWER_ENTRY *PSS_POWER_ENTRY;          /* printed alias */
+typedef SS_SOCKET_STATE *PSS_SOCKET_STATE;        /* printed alias */
 
-/* aa447694 CS_SocketCallback: the page prints the prototype under the name PF_SS_CALLBACK (title/print difference); derived at the M99 sweep. */
+/* aa447694 CS_SocketCallback: page print
+ *   `typedef void(*PF_SS_CALLBACK)(HANDLEhSocket,UINT16 uSocket,
+ *    PSS_SOCKET_STATE pSocketState);`
+ * (glued `HANDLEhSocket` split; the type is PF_SS_CALLBACK). */
 typedef void (*PF_SS_CALLBACK)(HANDLE hSocket, UINT16 uSocket, PSS_SOCKET_STATE pSocketState);
 
-/* ms921840 SS_GetPowerEntry: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_GetPowerEntry)(HANDLE hSocket, PDWORD pdwNumOfEntry, PSS_POWER_ENTRY pPowerEntry);
-
-/* ms921851 SS_GetSocket: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_GetSocket)(HANDLE hSocket, PSS_SOCKET_STATEpSocketState);
-
-/* ms921864 SS_GetWindow: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_GetWindow)(UINT32 uWindow, PSS_WINDOW_STATEpWindowState);
-
-/* ms921870 SS_InquireSocket: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_InquireSocket)(HANDLE hSocket, PSS_SOCKET_INFOpSocketInfo);
-
-/* ms921879 SS_InquireWindow: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_InquireWindow)(UINT32 uWindow, PSS_WINDOW_INFOpWindowInfo);
-
-/* ms921896 SS_ResetSocket: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_ResetSocket)(HANDLE hSocket);
-
-/* ms921903 SS_SetSocket: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_SetSocket)(HANDLE hSocket, PSS_SOCKET_STATEpSocketState);
-
-/* ms921913 SS_SetWindow: prototype printed by the page; derived at the M99 sweep. */
-typedef STATUS (*SS_SetWindow)(UINT32 uWindow, PSS_WINDOW_STATEpWindowState);
-
-/* ms921955 SS_TranslateBusAddr: documented name-only (no value published; held) */
-/* aa448144 SS_TranslateSystemAddr: documented name-only (no value published; held) */
+/* ------------------------------------------------------------------
+ * HELD (M107a): the socket-services function-pointer table members.
+ *
+ * Every SS_* entry point returns the type `STATUS`.  No official CE
+ * page in the harvested corpus publishes a definition of `STATUS`
+ * (a scan of all 48,849 preserved pages of the CE 3.0 / CE .NET /
+ * CE 5.0 / CE 6.0 / .NET CF trees for `typedef ... STATUS` returns
+ * zero definition pages -- only uses such as the Card Services and
+ * Socket Services prototypes, and the unrelated `typedef int
+ * NDIS_STATUS, *PNDIS_STATUS;` on ms904981).  The type is therefore
+ * not derivable from official public information and is NOT defined
+ * here; these members are recorded verbatim instead.
+ *
+ * Verbatim print of the SS_SOCKET_SERVICE structure (ms921935,
+ * Windows CE 5.0; Header: Socksv2.h), the one page that prints the
+ * whole table with its spacing intact:
+ *
+ *   typedef struct SS_SOCKET_SERVICE{DWORDdwVersion;
+ *     STATUS(*SS_InquireSocket)(HANDLE hSocket, PSS_SOCKET_INFO pSocketInfo);
+ *     STATUS(*SS_GetSocket)(HANDLE hSocket, PSS_SOCKET_STATE pSocketState);
+ *     STATUS(*SS_SetSocket)(HANDLE hSocket, PSS_SOCKET_STATE pSocketState);
+ *     STATUS(*SS_ResetSocket)(HANDLE hSocket);
+ *     STATUS(*SS_InquireWindow)(UINT32 uWindow, PSS_WINDOW_INFO pWindowInfo);
+ *     STATUS(*SS_GetWindow)(UINT32 uWindow, PSS_WINDOW_STATE pWindowState);
+ *     STATUS(*SS_SetWindow)(UINT32 uWindow, PSS_WINDOW_STATE pWindowState);
+ *     STATUS (*SS_AccessMemory)(HANDLE hSocket, PSS_MEMORY_ACCESS pMemoryAccess);
+ *     STATUS(*SS_GetPowerEntry)(HANDLE hSocket, PDWORD pdwNumofEntry,
+ *                               PSS_POWER_ENTRY pPowerEntry);
+ *     STATUS(*SS_TranslateBusAddr)(HANDLE hSocket, INTERFACE_TYPE InterfaceType,
+ *                                  ULONG BusNumber, PHYSICAL_ADDRESS BusAddress,
+ *                                  PULONG AddressSpace,
+ *                                  PPHYSICAL_ADDRESS TranslatedAddress);
+ *     STATUS (*SS_TranslateSystemAddr)(HANDLE hSocket, PTRANSLATE_SYSTEM_ADDR pTsa);
+ *   } SS_SOCKET_SERVICE, *PSS_SOCKET_SERVICE;
+ *
+ * The per-function pages of the same book (ms921840/ms921851/ms921864/
+ * ms921870/ms921879/ms921896/ms921903/ms921913) print the same
+ * prototypes with the archive's in-prototype whitespace stripped
+ * (`HANDLEhSocket`, `PSS_SOCKET_STATEpSocketState`); the spacing above
+ * is the ms921935 print's own.
+ * ------------------------------------------------------------------ */
+/* ms921896 SS_ResetSocket: print `STATUS (*SS_ResetSocket)(HANDLE hSocket);` -- HELD (return type unpublished) */
+/* ms921840 SS_GetPowerEntry: print `STATUS (*SS_GetPowerEntry)(HANDLE hSocket, PDWORD pdwNumOfEntry, PSS_POWER_ENTRY pPowerEntry);` -- HELD (return type unpublished) */
+/* ms921851 SS_GetSocket: print `STATUS (*SS_GetSocket)(HANDLE hSocket, PSS_SOCKET_STATE pSocketState);` -- HELD (return type unpublished) */
+/* ms921903 SS_SetSocket: print `STATUS (*SS_SetSocket)(HANDLE hSocket, PSS_SOCKET_STATE pSocketState);` -- HELD (return type unpublished) */
+/* ms921870 SS_InquireSocket: print `STATUS (*SS_InquireSocket)(HANDLE hSocket, PSS_SOCKET_INFO pSocketInfo);` -- HELD (return type unpublished) */
+/* ms921864 SS_GetWindow: print `STATUS (*SS_GetWindow)(UINT32 uWindow, PSS_WINDOW_STATE pWindowState);` -- HELD (return type unpublished) */
+/* ms921913 SS_SetWindow: print `STATUS (*SS_SetWindow)(UINT32 uWindow, PSS_WINDOW_STATE pWindowState);` -- HELD (return type unpublished) */
+/* ms921879 SS_InquireWindow: print `STATUS (*SS_InquireWindow)(UINT32 uWindow, PSS_WINDOW_INFO pWindowInfo);` -- HELD (return type unpublished) */
+/* ms921955 SS_TranslateBusAddr: print `STATUS (*SS_TranslateBusAddr)(HANDLE hSocket, INTERFACE_TYPE InterfaceType, ULONG BusNumber, PHYSICAL_ADDRESS BusAddress, PULONG AddressSpace, PPHYSICAL_ADDRESS TranslatedAddress);` -- HELD (return type unpublished) */
+/* aa448144 SS_TranslateSystemAddr: print `STATUS (*SS_TranslateSystemAddr)(HANDLE hSocket, PTRANSLATE_SYSTEM_ADDR pTsa);` -- HELD (return type unpublished; PTRANSLATE_SYSTEM_ADDR has no page) */
+/* HELD: SS_AccessMemory, SS_MEMORY_ACCESS -- named only in the SS_SOCKET_SERVICE print above; no page of its own in the harvested trees */
 
 #ifdef __cplusplus
 }
@@ -97,7 +128,6 @@ struct SS_POWER_ENTRY{
     UINT8 uPowerLevel;
     UINT8 fSupply;
 };
-typedef SS_POWER_ENTRY *PSS_POWER_ENTRY;   /* printed alias */
 
 /* ms921944(v=msdn.10) SS_SOCKET_STATE: structure print on the page; derived at the M99 sweep (forward-declared above). */
 struct SS_SOCKETSTATE{
@@ -111,6 +141,5 @@ struct SS_SOCKETSTATE{
     UINT8 uVpp1;
     UINT8 uVpp2;
 };
-typedef SS_SOCKET_STATE *PSS_SOCKET_STATE;   /* printed alias */
 
 #endif /* AKARI_SOCKSV2_H */

@@ -17,6 +17,7 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Winuser.h"   /* HWND, WPARAM, LPARAM, HICON, PICONINFO (ICONINFO) */
 
 
 /* --- M104 declarations: printed prototypes recovered

@@ -17,6 +17,9 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Objbase.h"   /* BSTR, IUnknown -- the BSTR page (ms886145)
+                        * prints the type but no Header row; this tree
+                        * carries it in Objbase.h */
 
 
 /* --- M104 declarations: printed prototypes recovered

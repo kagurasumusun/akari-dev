@@ -81,13 +81,28 @@ def load_types(incdir):
             if end < 0:
                 continue
             stmt = code[m.end():end]
+            # function-pointer typedefs carry their alias inside the
+            # parameter list: `typedef void (*PF_X)(int);` -> PF_X
+            for fp in re.finditer(r"\(\s*\*\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)",
+                                  stmt):
+                types.add(fp.group(1))
             stmt = re.sub(r"\([^()]*\)", " ", stmt)   # drop fn params
             names = re.sub(r"^.*?[}\]]\s*", "", stmt, flags=re.S)
             for part in names.split(","):
                 part = part.strip().replace("*", " ").strip()
                 toks = part.split()
-                if toks:
-                    types.add(toks[-1])
+                if not toks:
+                    continue
+                # M107a guard: a function-pointer typedef whose base type
+                # cannot be resolved collapses to a single token here
+                # (params dropped above), e.g. `typedef STATUS (*FN)(...)`
+                # -> `STATUS`.  Adding that token would invent a type
+                # definition that does not exist in the tree, which then
+                # let later passes declare prototypes using it.  A real
+                # alias always leaves at least two tokens (base + name).
+                if len(toks) < 2:
+                    continue
+                types.add(toks[-1])
         for m in re.finditer(r"\b(?:struct|union|enum)\s+([A-Za-z_][A-Za-z0-9_]*)",
                              code):
             types.add(m.group(1))

@@ -31,7 +31,7 @@
 #include <newmenu.h>
 #include <Sipapi.h>
 #include <Sip.h>
-#include <Keybd.h>
+#include <oak/Keybd.h>
 #include <Pwinuser.h>
 #include <Shtypes.h>
 #include <Shobjidl.h>

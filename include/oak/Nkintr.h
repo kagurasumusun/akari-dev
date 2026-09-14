@@ -17,6 +17,8 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Winbase.h"   /* LPFILETIME/LPSYSTEMTIME -- the FILETIME page
+                        * (ms885586) prints Header: Winbase.h */
 
 
 /* --- M104 declarations: printed prototypes recovered

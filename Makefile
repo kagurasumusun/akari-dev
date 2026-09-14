@@ -367,35 +367,65 @@ WINCECLANG ?=
 CE_TRIPLES = arm-pc-wince4.2 arm-pc-wince5.0 arm-pc-wince6.0 \
              i386-pc-wince4.2 i386-pc-wince5.0 i386-pc-wince6.0
 
-crosscheck: $(HDRS)
+# Headers the freestanding crosscheck cannot compile by design.  Both
+# are excluded explicitly (never silently) and are still compiled by
+# `make hostcheck`, where the host's own headers/targets make them
+# well-formed:
+#   * include/Tchar.h -- tchar.h is the C run-time library's
+#     generic-text header, not a Windows CE SDK header: no official CE
+#     page carries "Header: Tchar.h" in its Requirements row.  Its
+#     documented content (_tcslen/_tcscpy/... and the TCHAR mapping)
+#     needs <wchar.h>/<string.h>, which are the CRT provider's
+#     responsibility (see README "Scope" and the wince-crt split).
+#   * include/oak/Mipsintr.h -- MIPS-only intrinsics: the page prints
+#     declare the MIPS `_ReturnAddress`/`__ReturnAddress`, which clash
+#     with the compiler builtin of the same name on ARM/x86.
+CROSSCHECK_SKIP = include/Tchar.h include/oak/Mipsintr.h
+CROSSCHECK_HDRS = $(filter-out $(CROSSCHECK_SKIP),$(HDRS))
+CROSSCHECK_OAK  = $(filter-out $(CROSSCHECK_SKIP),$(OAK_HDRS))
+
+crosscheck: $(HDRS) $(OAK_HDRS)
 	@if [ -z "$(WINCECLANG)" ]; then \
 	  echo "[crosscheck] set WINCECLANG to the WinCE clang binary" >&2; \
 	  exit 2; \
 	fi; \
 	tmp=$$(mktemp -d); trap 'rm -rf "$$tmp"' EXIT; \
 	for t in $(CE_TRIPLES); do \
-	  for h in $(HDRS); do \
+	  echo "[crosscheck] $$t skipping (documented): $(CROSSCHECK_SKIP)"; \
+	  for h in $(CROSSCHECK_HDRS); do \
 	    echo "[crosscheck] $$t standalone: $$h"; \
 	    "$(WINCECLANG)" -target $$t -std=c11 -ffreestanding \
 	      --sysroot=$$tmp -Wno-wince-sysroot-missing \
-	      $(CFLAGS) -Werror -I include -include $$h -fsyntax-only \
-	      -x c /dev/null || exit 1; \
+	      $(CFLAGS) -Werror -I include -I include/oak -include $$h \
+	      -fsyntax-only -x c /dev/null || exit 1; \
+	  done; \
+	  for h in $(CROSSCHECK_OAK); do \
+	    echo "[crosscheck] $$t standalone (oak): $$h"; \
+	    "$(WINCECLANG)" -target $$t -std=c11 -ffreestanding \
+	      --sysroot=$$tmp -Wno-wince-sysroot-missing \
+	      $(CFLAGS) -Werror -I include -I include/oak -include $$h \
+	      -fsyntax-only -x c /dev/null || exit 1; \
 	  done; \
 	  echo "[crosscheck] $$t TU"; \
 	  "$(WINCECLANG)" -target $$t -std=c11 -ffreestanding \
 	    --sysroot=$$tmp -Wno-wince-sysroot-missing \
-	    $(CFLAGS) -Werror -I include -fsyntax-only \
+	    $(CFLAGS) -Werror -I include -I include/oak -fsyntax-only \
 	    tests/host/tu_compile.c || exit 1; \
 	done; \
 	echo "[crosscheck] OK -- $(words $(CE_TRIPLES)) WinCE targets"
 
-hostcheck: $(HDRS)
+hostcheck: $(HDRS) $(OAK_HDRS)
 	@for v in $(CE_VERSIONS); do \
 	  echo "[hostcheck] headers + TU under _WIN32_WCE=$$v"; \
 	  cc $(STD) $(CFLAGS) -Werror -D_WIN32_WCE=$$v $(INCLUDES) -fsyntax-only \
 	    tests/host/tu_compile.c || exit 1; \
 	  for h in $(HDRS); do \
 	    echo "  standalone: $$h"; \
+	    cc $(STD) $(CFLAGS) -Werror -D_WIN32_WCE=$$v $(INCLUDES) \
+	      -include $$h -fsyntax-only -x c /dev/null || exit 1; \
+	  done; \
+	  for h in $(OAK_HDRS); do \
+	    echo "  standalone (oak): $$h"; \
 	    cc $(STD) $(CFLAGS) -Werror -D_WIN32_WCE=$$v $(INCLUDES) \
 	      -include $$h -fsyntax-only -x c /dev/null || exit 1; \
 	  done; \
@@ -461,7 +491,8 @@ e2e:
 	    echo "[e2e] $$t compile: $$s"; \
 	    "$(WINCECLANG)" -target $$t -std=c11 -ffreestanding \
 	      --sysroot=$$tmp -Wno-wince-sysroot-missing $$march \
-	      $(CFLAGS) -Werror -I include -c tests/e2e/$$s.c -o $$d/$$s.o || exit 1; \
+	      $(CFLAGS) -Werror -I include -I include/oak -c tests/e2e/$$s.c \
+	        -o $$d/$$s.o || exit 1; \
 	  done; \
 	  echo "[e2e] $$t link: main app / WinMain app / DLL"; \
 	  "$$bin/lld-link" -wince /subsystem:windowsce /entry:mainACRTStartup \

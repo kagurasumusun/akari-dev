@@ -17,6 +17,8 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Winuser.h"   /* NMHDR -- the NMHDR page (ms931479) prints
+                        * Header: Winuser.h */
 
 
 /* --- M104 declarations: printed prototypes recovered

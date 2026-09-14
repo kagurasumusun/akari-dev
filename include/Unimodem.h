@@ -11,6 +11,8 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Tapi.h"      /* VARSTRING/LPVARSTRING -- the VARSTRING page
+                        * (ms898569) prints Header: Tapi.h */
 
 
 /* --- type definitions from official page prints
