@@ -1,4 +1,4 @@
-# Makefile for the Akari API (wince-api)
+# Makefile for the Akari SDK (cellvm-sdk)
 #
 # Copyright (c) 2026 Akari API contributors
 # SPDX-License-Identifier: MIT

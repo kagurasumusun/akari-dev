@@ -1,14 +1,17 @@
-# Akari API (wince-api)
+# Akari SDK (cellvm-sdk)
 
 Clean-room **Win32 API layer for Windows CE 4.x / 5.x / 6.x** whose
 purpose is to provide everything a **WinCE-targeted build needs on a
-plain host (Linux, macOS, ...)**: API headers and coredll import
-libraries, so that a CE program can be compiled and linked anywhere
-the `LLVM-WinCE` clang/lld toolchain runs — replacing the "w32api"
-role of the CE toolchain sysroot without needing that third-party
-tree.  Targets: `arm-pc-wince` (armel) and x86 CE, CE 4.2/5.0/6.0.
-Written from scratch under the same conditions as
-[kagurasumusun/wince-crt](https://github.com/kagurasumusun/wince-crt):
+plain host (Linux, macOS, ...)**: API headers, coredll import
+libraries and — since M115 — the C runtime startup layer, so that a CE
+program can be compiled and linked anywhere the `LLVM-WinCE` clang/lld
+toolchain runs — replacing the "w32api" + "mingwrt" role of the CE
+toolchain sysroot without needing those third-party trees.  Targets:
+`arm-pc-wince` (armel) and x86 CE, CE 4.2/5.0/6.0.  Written from
+scratch under the same conditions as the Akari CRT, which is now
+in-tree at `crt/` (merged from
+[kagurasumusun/wince-crt](https://github.com/kagurasumusun/wince-crt),
+kept upstream as well):
 
 * **Official public information only.** Every declaration is annotated
   with the official Microsoft documentation page it is taken from —
@@ -24,6 +27,15 @@ Written from scratch under the same conditions as
   the verified toolchain behavior of
   `kagurasumusun/llvm-project` (branch `LLVM-WinCE`) anchors ABI
   facts the docs do not state.
+* **CE is not desktop Win32.**  The CE API is a *constrained subset*
+  of Win32 **plus CE-specific APIs**, so nothing is ported on the
+  strength of existing on desktop Windows.  A name is declared only
+  where a CE page documents it for CE, and where the CE page prints
+  less than its desktop twin — a reduced flag set, a narrower
+  prototype, an absent typedef — the CE shape is what ships.  A value
+  no CE page prints is *held and reported*, not filled in from the
+  desktop SDK; third-party trees are consulted at most to confirm a
+  suspicion of contamination, never to supply content.
 * **Own license.** MIT — see LICENSE; every file carries the SPDX
   notice.
 
@@ -31,10 +43,10 @@ Written from scratch under the same conditions as
 
 | Concern | Provider |
 |---|---|
-| Win32 **API headers** for CE (this repo) | **Akari API** (`include/`, `windows.h` umbrella) |
-| Coredll **import libraries** | **Akari API** — `def/coredll-doc.def` derived only from the official per-function documentation pages (see "Export defs" below); build the `.a` with the fork's `llvm-dlltool` |
-| CRT startup glue (entries, argv, ctors) | [wince-crt](https://github.com/kagurasumusun/wince-crt) |
-| C run-time library (libc) headers/objects | out of scope (libc provider) |
+| Win32 **API headers** for CE | **Akari SDK** (`include/`, `windows.h` umbrella) |
+| Coredll **import libraries** | **Akari SDK** — `def/coredll-doc.def` derived only from the official per-function documentation pages (see "Export defs" below); build the `.a` with the fork's `llvm-dlltool` |
+| CRT startup glue (entries, argv, ctors) | **Akari SDK** — `crt/` in-tree (merged from wince-crt at M115) |
+| C run-time library (libc) headers/objects | **not provided** — `crt/src/crt/runtime.c` is startup glue only (`akari_init_args`, `akari_run_ctors`, …), not a libc.  This is the open gap for C++: `libcxx` has CE-side changes in the fork but LLVM `libc` has none, so a C++ link has no C library to resolve against. |
 
 ### Export defs and import libraries (public-information only)
 
