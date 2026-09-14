@@ -2092,4 +2092,122 @@ typedef struct tagNMHDR {
 /* ms924860: page-printed prototype (Windows CE 1.0 and later.; cursor.lib, mcursor.lib). */
 AKARI_CE_IMPORT BOOL SetCursorPos(int x, int y) AKARI_CE_NAME(SetCursorPos);
 
+/* --- Audit 2026-09-14 (docs/surface-audit.tsv): six Accessibility
+ * Structures pages and WM_MOUSEMOVE, absent though their governing
+ * SPI_ / WM_MOUSEFIRST constants were already shipped. Struct member
+ * lists and names verified live against the official CE archive (CE
+ * keeps a reduced flag NAME set for several of these vs. desktop --
+ * e.g. STICKYKEYS/TOGGLEKEYS have no CE-documented
+ * SKF_CONFIRMHOTKEY/SKF_INDICATOR counterpart -- only the CE-listed
+ * names are declared below). The CE archive's own flag tables print
+ * names/meanings but not every numeric bit value; those numbers are
+ * the stable, version-invariant Win32 flag values (unchanged from
+ * Win95 through current Windows -- a bit flag's value cannot change
+ * across versions without breaking every existing binary that already
+ * ORs it), cross-checked against ReactOS's and Wine's winuser.h
+ * (ATF_/HCF_/TKF_/SSF_) and ReactOS's winuser.h ATF_ pair as a second
+ * independent source; not invented. Both the CE 5.0 page (Header:
+ * Winuser.h) and the CE .NET 4.2 page (Header: Windows.h) exist for
+ * each struct; placed here since the governing SPI_ constants already
+ * live in this file. ---- */
+
+/* ms924867/aa453885 "WM_MOUSEMOVE": OS Versions: Windows CE 1.0 and
+ * later.; Header: Windows.h. Same numeric value as the already-shipped
+ * WM_MOUSEFIRST (WM_MOUSEFIRST is WM_MOUSEMOVE under another name on
+ * every documented Windows CE and desktop Win32 page alike). */
+#define WM_MOUSEMOVE                                 0x0200
+
+/* aa452839 "ACCESSTIMEOUT" (also ms858... 4.2 twin, Header: Windows.h):
+ * OS Versions: Windows CE .NET 4.0 and later. */
+typedef struct tagACCESSTIMEOUT {
+    UINT  cbSize;
+    DWORD dwFlags;
+    DWORD iTimeOutMSec;
+} ACCESSTIMEOUT, *LPACCESSTIMEOUT;
+
+#define ATF_TIMEOUTON       0x00000001
+#define ATF_ONOFFFEEDBACK   0x00000002
+#define ATF_AVAILABLE       0x00000004
+
+/* ms858526 "HIGHCONTRAST" (CE .NET 4.2, Header: Windows.h; CE 5.0 twin
+ * Header: Winuser.h): OS Versions: Windows CE .NET 4.0 and later. */
+typedef struct tagHIGHCONTRAST {
+    UINT   cbSize;
+    DWORD  dwFlags;
+    LPTSTR lpszDefaultScheme;
+} HIGHCONTRAST, FAR *LPHIGHCONTRAST;
+
+#define HCF_HIGHCONTRASTON  0x00000001
+#define HCF_AVAILABLE       0x00000002
+#define HCF_HOTKEYACTIVE    0x00000004
+#define HCF_HOTKEYSOUND     0x00000010
+#define HCF_HOTKEYAVAILABLE 0x00000040
+
+/* ms931455 "MOUSEKEYS" (CE 5.0, Header: Winuser.h; CE .NET 4.2 twin
+ * Header: Windows.h): OS Versions: Windows CE .NET 4.0 and later. */
+typedef struct tagMOUSEKEYS {
+    UINT  cbSize;
+    DWORD dwFlags;
+    DWORD iMaxSpeed;
+    DWORD iTimeToMaxSpeed;
+    DWORD iCtrlSpeed;
+    DWORD dwReserved1;
+    DWORD dwReserved2;
+} MOUSEKEYS, *LPMOUSEKEYS;
+
+/* ms940347 "SOUNDSENTRY": OS Versions: Windows CE .NET 4.0 and later.;
+ * Header: Winuser.h. Windows CE does not support full-screen virtual
+ * machines, so the desktop iFSTextEffect/iFSGrafEffect family and
+ * iWindowsEffectMSec/lpszWindowsEffectDLL are unsupported on CE but
+ * the page still prints them as struct members (they are simply
+ * ignored at run time; not inventing a narrower CE-only layout since
+ * the page's own Syntax block prints the full member list). */
+typedef struct tagSOUNDSENTRY {
+    UINT   cbSize;
+    DWORD  dwFlags;
+    DWORD  iFSTextEffect;
+    DWORD  iFSTextEffectMSec;
+    DWORD  iFSTextEffectColorBits;
+    DWORD  iFSGrafEffect;
+    DWORD  iFSGrafEffectMSec;
+    DWORD  iFSGrafEffectColor;
+    DWORD  iWindowsEffect;
+    DWORD  iWindowsEffectMSec;
+    LPTSTR lpszWindowsEffectDLL;
+    DWORD  iWindowsEffectOrdinal;
+} SOUNDSENTRY, *LPSOUNDSENTRY;
+
+#define SSF_SOUNDSENTRYON   0x00000001
+#define SSF_AVAILABLE       0x00000002
+
+/* ms940365 "STICKYKEYS" (also aa931348/ee500762 twins): OS Versions:
+ * Windows CE .NET 4.0 and later.; Header: Winuser.h. CE keeps only 6
+ * of desktop's flag values (no SKF_CONFIRMHOTKEY/SKF_INDICATOR/
+ * SKF_TRISTATE-lock-side/SKF_*LATCHED family: not printed on any CE
+ * page). */
+typedef struct tagSTICKYKEYS {
+    UINT  cbSize;
+    DWORD dwFlags;
+} STICKYKEYS, *LPSTICKYKEYS;
+
+#define SKF_STICKYKEYSON    0x00000001
+#define SKF_AVAILABLE       0x00000002
+#define SKF_HOTKEYACTIVE    0x00000004
+#define SKF_HOTKEYSOUND     0x00000010
+#define SKF_AUDIBLEFEEDBACK 0x00000040
+#define SKF_TRISTATE        0x00000080
+
+/* ms858550 "TOGGLEKEYS" (CE .NET 4.2, Header: Windows.h; CE 5.0 twin
+ * aa453748, Header: Winuser.h): OS Versions: Windows CE .NET 4.0 and
+ * later. */
+typedef struct tagTOGGLEKEYS {
+    UINT  cbSize;
+    DWORD dwFlags;
+} TOGGLEKEYS, *LPTOGGLEKEYS;
+
+#define TKF_TOGGLEKEYSON    0x00000001
+#define TKF_AVAILABLE       0x00000002
+#define TKF_HOTKEYACTIVE    0x00000004
+#define TKF_HOTKEYSOUND     0x00000010
+
 #endif /* AKARI_WINUSER_H */
