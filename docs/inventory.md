@@ -8105,3 +8105,20 @@ records now carry the page's own printed signature in their comment.
 `make cxxcheck` (new; part of `make check`): compiles every `.hpp`/`.hxx`
 as C++17 under `_WIN32_WCE` 0x420/0x500/0x600 -- the C hostcheck cannot
 see the class surface.
+
+### M102b -- the .NET Compact Framework surface (measured)
+
+Part 1 (CF-specific managed reference) is harvested and attested:
+`docs/cf-surface.tsv` 2,048 rows, all carrying the official
+`.NET Compact Framework -> Supported in:` row, in
+`Microsoft.WindowsMobile.*` (1,282), `Microsoft.ServiceModel.*` (638) and
+`Microsoft.WindowsCE.*` (128); corpus `pagesnet/` holds the raw pages.
+Part 2 (the CF-supported subset of the desktop `System.*` class library)
+is blocked by the archive: the official toc.json now points at the modern
+API browser whose pages carry no CF row at all (two samples, zero
+occurrences), and the `(v=vs.90)` desktop pages that the CF pages link
+(`System.Object`, `System.EventArgs`) return 404.  `tools/cf-crawl-vs90.py`
+walks the archive's own link graph (seeded with 2,818 ids from the
+harvested pages) and records what survives; the retired link targets are
+kept in `build/cf-crawl-gone.txt` as the evidence for the negative result.
+No desktop member is added by analogy.

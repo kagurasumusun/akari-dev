@@ -69,7 +69,64 @@ Surface size by minimum CE version (from `docs/ce3-versions.tsv`):
 | 3.0 (+ 4.0 forward) | ~776 |
 | **total with a Versions row** | **5,091** |
 
-### M102b — CE 4/5/6 .NET (Compact) Framework documentation collection — PROPOSED
+### M102b — CE 4/5/6 .NET (Compact) Framework documentation collection — PART 1 DONE, PART 2 BLOCKED (measured)
+
+Harvested and attested (part 1, the CF-specific managed reference):
+`docs/cf-surface.tsv` — 2,048 rows, every one a `(v=vs.90)` page carrying
+the `.NET Compact Framework -> Supported in:` row, in the three CF-only
+namespace families:
+
+| namespace family | rows |
+| --- | --- |
+| `Microsoft.WindowsMobile.*` (DirectX, Forms, PocketOutlook, …) | 1,282 |
+| `Microsoft.ServiceModel.*` (Channels.Mail + its Exchange Web Service proxies) | 638 |
+| `Microsoft.WindowsCE.*` (Forms) | 128 |
+
+Corpus `pagesnet/` holds the raw pages (2,943 files, 120 MB); a 250-page
+sample check found 249 carrying the CF row, i.e. the harvest itself is
+clean.
+
+Part 2 (the **CF-supported subset of the desktop `System.*` class
+library**) is blocked by the archive, not by policy. Two negative results
+measured this session:
+
+1. `tools/catalogs/catalog-netfx-35.tsv` (14,764 leaves from the official
+   `netframework-3.5/toc.json`) now points at the modern API browser
+   (`/en-us/dotnet/api/...?redirectedfrom=msdn`). Fetched verbatim, two
+   samples (`system.string`, `system.windows.ink.applicationgesture`)
+   contain **zero** occurrences of "Compact Framework" — the CF Version
+   Information rows are gone from that rendering.
+2. The `(v=vs.90)` pages themselves still link their desktop relatives
+   (`System.Object -> e5kfa45b(v=vs.90)`, `System.EventArgs ->
+   118wxtk3(v=vs.90)` from `BalloonChangedEventArgs Class`), but those
+   linked pages **404** in the `previous-versions/dotnet/netframework-3.5/`
+   tree — the desktop class-library subtree is retired from Learn.
+
+`tools/cf-crawl-vs90.py` (new) is the link-driven crawler that closed the
+gap as far as the archive allows: it BFS-walks the `(v=vs.90)` link graph
+from the harvested CF pages (seeded with 2,818 ids), saves each page to
+corpus `pagesnet/`, and appends id/title/kind/namespace/assembly/platforms/
+`cf_supported` to `docs/cf-surface-vs90.tsv`. State checkpoints in
+`build/cf-crawl-queue.txt` / `-seen.txt` / `-gone.txt`; the crawl is
+resumable and polite (serial, 0.12 s apart, 404s recorded instead of
+retried). First two batches: 555 ids examined, 318 pages with a CF row
+appended, 164 link targets retired (404) — the retired set is exactly the
+desktop-subtree evidence for negative result 2.
+
+Decision (per §4): the desktop-subset CF surface stays **"not confirmable
+in the primary official source"**. It is not reconstructed from Wayback
+(corroboration-only), not from the modern API browser (it drops the rows),
+and never by analogy — the standing rule "CE is a constrained subset, and
+only an official statement makes something part of it" applies to the
+managed surface exactly as it does to Win32. Open item: if a Microsoft
+Download Center archive of the .NET Framework 3.5 class library (or the
+CF 3.5 CHM) is located, part 2 resumes against it.
+
+M102c (the CE-generation mapping) is folded into `docs/cf-surface.tsv`
+(`cf_supported` version list + `ce_generations` column, e.g. `CE6R3+`),
+and the CF-version → CE-generation table below remains the policy.
+
+### M102b — CE 4/5/6 .NET (Compact) Framework documentation collection — history
 
 Microsoft's official statement (CF roadmap, Compact 2013):
 `https://learn.microsoft.com/en-us/previous-versions/windows/embedded/dn197949(v=winembedded.80)`
