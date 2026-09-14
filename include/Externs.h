@@ -12,7 +12,7 @@
 #ifndef AKARI_EXTERNS_H
 #define AKARI_EXTERNS_H
 
-#include "Ndis.h"      /* NDIS_HANDLE, NDIS_STATUS, PNDIS_WAN_PACKET */
+#include "oak/Ndis.h"      /* NDIS_HANDLE, NDIS_STATUS, PNDIS_WAN_PACKET */
 
 /* --- Recorded prototypes (driver-supplied; not imports). ------- */
 /* "MiniportCancelSendPackets" (aa447841): `VOID MiniportCancelSendPackets( NDIS_HANDLE MiniportAdapterContext,ULONG_PTRCancelId)` */

@@ -25,7 +25,7 @@
 #define AKARI_VOIPMANAGER_H
 
 #include <Windows.h>
-#include "Rtccore.h"   /* RTCSS_* session states (merged struct members) */
+#include "oak/Rtccore.h"   /* RTCSS_* session states (merged struct members) */
 
 /* --- Recorded VAIL interfaces and methods (names + page ids). ---
  * IVoIPCurrentCall (16 methods; Voipmanager.h, Voipmanager.idl.):

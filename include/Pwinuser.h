@@ -37,7 +37,7 @@
 #define AKARI_PWINUSER_H
 
 #include "Windows.h"   /* HWND, BOOL, DWORD, HKL */
-#include "Keybd.h"     /* KEY_STATE_FLAGS (GetAsyncShiftFlags return) */
+#include "oak/Keybd.h"     /* KEY_STATE_FLAGS (GetAsyncShiftFlags return) */
 
 #ifdef __cplusplus
 extern "C" {

@@ -16,15 +16,12 @@ CE_VERSIONS = 0x420 0x500 0x600
 HDRS = \
 include/Acmdrv.h \
 include/Advbacklight.h \
-include/Atapi2.h \
 include/Autodial.h \
 include/Av_upnp.h \
 include/Avc_stream.h \
 include/Avc_unit.h \
 include/Avc_vcr.h \
 include/Avc_vvcr.h \
-include/Battery.h \
-include/Battimpl.h \
 include/Bt_api.h \
 include/Bt_hcip.h \
 include/Btagnetwork.h \
@@ -33,6 +30,7 @@ include/Bthapi.h \
 include/Bthid.h \
 include/Bthsdpdef.h \
 include/CEDDK.h \
+include/Calibrui.h \
 include/Cchannel.h \
 include/Cdioctl.h \
 include/Ce_setup.h \
@@ -50,15 +48,9 @@ include/D3dm.h \
 include/D3dmcaps.h \
 include/D3dmddk.h \
 include/D3dmtypes.h \
-include/Dbgapi.h \
 include/Dccole.h \
-include/Ddgpe.h \
-include/Ddhal.h \
-include/Ddkreg.h \
 include/Ddraw.h \
-include/Ddrawi.h \
-include/Ddrawip.h \
-include/Devload.h \
+include/Ddvdata.h \
 include/Devmgmt.h \
 include/Dinput.h \
 include/Discodlg.h \
@@ -71,23 +63,17 @@ include/Docobj.h \
 include/Dsgetdc.h \
 include/Dshow.h \
 include/Dvdata.h \
+include/Dvddata.h \
 include/Dvdioctl.h \
 include/Dvdnav.h \
 include/Dvp.h \
-include/DwCeDump.h \
 include/ErrorRep.h \
 include/Excpt.h \
 include/Externs.h \
 include/Extfile.h \
-include/Fmd.h \
-include/Fsdmgr.h \
 include/Fwapi.h \
-include/Gpe.h \
-include/Hcdddsi.h \
-include/Hiddi.h \
-include/Hidparse.h \
-include/Hidpddi.h \
-include/Hidpi.h \
+include/Gwebypasscoredllthunk.hpp \
+include/Htmlctrl.h \
 include/Httpext.h \
 include/Httpfilt.h \
 include/IExchangeClient.h \
@@ -95,24 +81,18 @@ include/Icmpapi.h \
 include/Imaging.h \
 include/Imjpskin.h \
 include/Imm.h \
+include/Interned.h \
 include/Ipexport.h \
 include/Iphlpapi.h \
 include/Iprtrmib.h \
 include/Ipsec_api.h \
 include/Iptypes.h \
-include/Keybd.h \
-include/Keybddr.h \
-include/Keybdpdd.h \
+include/Kernel.h \
 include/Kfuncs.h \
 include/Koreanimeui.h \
 include/Lap.h \
 include/Lass.h \
-include/Led_drvr.h \
-include/Lockmgr.h \
-include/Lockmgrhelp.h \
-include/Lockmgrtypes.h \
 include/Mlang.h \
-include/Mmddk.h \
 include/Mmsystem.h \
 include/Mq.h \
 include/Mqmgmt.h \
@@ -125,12 +105,10 @@ include/Msimeui.h \
 include/Mspyime.h \
 include/Mssoap.h \
 include/Msxml2.h \
+include/Mwinreg.h \
 include/Natedit.h \
-include/Ndis.h \
-include/Ndistapi.h \
-include/Nled.h \
+include/Netui.h \
 include/Notify.h \
-include/Ntddndis.h \
 include/Ntlmssp.h \
 include/Nuiouser.h \
 include/Oaidl.h \
@@ -141,21 +119,18 @@ include/Objsafe.h \
 include/Ocidl.h \
 include/Oleauto.h \
 include/Oleidl.h \
-include/PCIReg.h \
-include/PCIbus.h \
-include/PCIrsrc.h \
-include/Partdrv.h \
+include/Oomui.h \
 include/Pegdser.h \
 include/Pimstore.h \
-include/Pkfuncs.h \
 include/Playlist.h \
-include/Pmimpl.h \
-include/Pmpolicy.h \
 include/Prnport.h \
 include/Proxy.h \
 include/Prsht.h \
 include/Psapi.h \
+include/Pwinbase.h \
+include/Pwindbas.h \
 include/Pwingdi.h \
+include/Pwinreg.h \
 include/Pwinuser.h \
 include/Rapi.h \
 include/Rapitypes.h \
@@ -164,19 +139,14 @@ include/Raseapif.h \
 include/Recog.h \
 include/Remoteui.h \
 include/Replfilt.h \
-include/Rndis.h \
-include/Rndismini.h \
 include/Routprot.h \
 include/Rpcdce.h \
-include/Rtccore.h \
 include/Rules.h \
 include/Sapi.h \
 include/Sapiddk.h \
 include/Schnlsp.h \
 include/Sdcard.h \
-include/Sdcardddk.h \
-include/Sdmem.h \
-include/Serhw.h \
+include/Sdkddkver.h \
 include/Service.h \
 include/Shellapi.h \
 include/Shellcb.h \
@@ -192,16 +162,21 @@ include/Smclib.h \
 include/Snmp.h \
 include/Snmpapi.h \
 include/Snmpexts.h \
+include/Sockserv.h \
+include/Socksv2.h \
 include/Sphelper.h \
 include/Sspi.h \
+include/Startui.h \
 include/Storemgr.h \
 include/Streams.h \
 include/Tapi.h \
 include/Tapicomn.h \
-include/Tchddi.h \
-include/Tchddsi.h \
+include/Tchar.h \
+include/Tchaud.h \
 include/Tlhelp32.h \
+include/Tuple.h \
 include/Tvout.h \
+include/Unimodem.h \
 include/Unknwn.h \
 include/Upnp.h \
 include/Upnpdevapi.h \
@@ -210,8 +185,6 @@ include/Urlmon.h \
 include/Urlmonui.h \
 include/Usb100.h \
 include/Usbclient.h \
-include/Usbdi.h \
-include/Usbfntypes.h \
 include/Usbmsc.h \
 include/Usbtypes.h \
 include/Usp10.h \
@@ -220,17 +193,13 @@ include/Voipconfigurationdatastore.h \
 include/Voiperrorcodes.h \
 include/Voiplap.h \
 include/Voipmanager.h \
-include/Waveddsi.h \
-include/Wavedev.h \
-include/Wavemdd.h \
-include/Wdm.h \
 include/Webproxy.h \
 include/Winbase.h \
 include/Winber.h \
 include/Wincrypt.h \
 include/Windbase.h \
-include/Winddi.h \
 include/Windef.h \
+include/Windev.h \
 include/Windns.h \
 include/Windot11.h \
 include/Windows.h \
@@ -247,6 +216,7 @@ include/Winscard.h \
 include/Winsmcrd.h \
 include/Winsock2.h \
 include/Winuser.h \
+include/Winver.h \
 include/Ws2bth.h \
 include/Ws2spi.h \
 include/Ws2tcpip.h \
@@ -257,16 +227,102 @@ include/bt_ddi.h \
 include/dvdcss.h \
 include/dvddrvr.h \
 include/dvdmedia.h \
+include/getdeviceuniqueid.h \
 include/newmenu.h \
 include/p2p.h \
 include/pm.h \
 include/pnrpdef.h \
 include/pnrpns.h \
 include/shellsdk.h \
+include/shintr.h \
 include/sideshow.h \
 include/strmif.h \
 include/webvw.h \
-include/winerror.h \
+include/winerror.h
+
+# OAK/DDK layer (2026-09-14 split): OEM Adaptation Kit / driver-level
+# headers (interrupt/OAL, display/DirectDraw driver internals, storage
+# and bus drivers, HID/keyboard PDD, NDIS miniport, audio drivers, power
+# manager driver hooks, kernel/KITL). These are NOT part of the
+# application "-dev" surface (see docs audit 2026-09-14) and are kept
+# out of HDRS/the default install so that a plain app-developer sysroot
+# never needs -Iinclude/oak. A small, documented set of app-facing
+# headers still reach into this layer for leaked driver-domain types
+# (Winuser.h/Pwinuser.h -> oak/Keybd.h for KEY_STATE_FLAGS;
+# Externs.h/Nuiouser.h -> oak/Ndis.h for NDIS_HANDLE/NDIS_STATUS/NDIS_OID;
+# Voipmanager.h -> oak/Rtccore.h for RTCSS_* session states); those three
+# oak/ headers are therefore always installed even when OAK_HDRS itself
+# is not requested. TODO: wire OAK_HDRS into check/e2e once a BSP/driver
+# consumer exists to validate against (tracked in the 2026-09-14 audit).
+OAK_HDRS = \
+include/oak/Armintr.h \
+include/oak/Atapi2.h \
+include/oak/Battery.h \
+include/oak/Battimpl.h \
+include/oak/Blcommon.h \
+include/oak/Cardserv.h \
+include/oak/Cardsv2.h \
+include/oak/Cmnintrin.h \
+include/oak/Dbgapi.h \
+include/oak/Ddgpe.h \
+include/oak/Ddhal.h \
+include/oak/Ddkreg.h \
+include/oak/Ddrawi.h \
+include/oak/Ddrawip.h \
+include/oak/Devload.h \
+include/oak/DwCeDump.h \
+include/oak/Ethdbg.h \
+include/oak/Fmd.h \
+include/oak/Fsdmgr.h \
+include/oak/Gpe.h \
+include/oak/Halether.h \
+include/oak/Hcdddsi.h \
+include/oak/Hiddi.h \
+include/oak/Hidparse.h \
+include/oak/Hidpddi.h \
+include/oak/Hidpi.h \
+include/oak/Keybd.h \
+include/oak/Keybddr.h \
+include/oak/Keybdpdd.h \
+include/oak/Kitl.h \
+include/oak/Kitltran.h \
+include/oak/Led_drvr.h \
+include/oak/Lockmgr.h \
+include/oak/Lockmgrhelp.h \
+include/oak/Lockmgrtypes.h \
+include/oak/Mipsintr.h \
+include/oak/Mmddk.h \
+include/oak/Ndis.h \
+include/oak/Ndistapi.h \
+include/oak/Nkintr.h \
+include/oak/Nled.h \
+include/oak/Ntddndis.h \
+include/oak/Oalintr.h \
+include/oak/Oemwake.h \
+include/oak/PCIReg.h \
+include/oak/PCIbus.h \
+include/oak/PCIrsrc.h \
+include/oak/Partdrv.h \
+include/oak/Pkfuncs.h \
+include/oak/Pmimpl.h \
+include/oak/Pmpolicy.h \
+include/oak/Profiler.h \
+include/oak/Rndis.h \
+include/oak/Rndismini.h \
+include/oak/Rtccore.h \
+include/oak/Schedlog.h \
+include/oak/Sdcardddk.h \
+include/oak/Sdmem.h \
+include/oak/Serhw.h \
+include/oak/Tchddi.h \
+include/oak/Tchddsi.h \
+include/oak/Usbdi.h \
+include/oak/Usbfntypes.h \
+include/oak/Waveddsi.h \
+include/oak/Wavedev.h \
+include/oak/Wavemdd.h \
+include/oak/Wdm.h \
+include/oak/Winddi.h
 
 .PHONY: check hostcheck defcheck defdoc e2e clean
 

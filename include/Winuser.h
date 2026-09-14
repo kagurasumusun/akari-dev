@@ -40,7 +40,7 @@
 #define AKARI_WINUSER_H
 
 #include "Windef.h"
-#include "Keybd.h"    /* KEY_STATE_FLAGS (PostKeybdMessage parameter, M52) */
+#include "oak/Keybd.h"    /* KEY_STATE_FLAGS (PostKeybdMessage parameter, M52) */
 
 #ifdef __cplusplus
 extern "C" {

@@ -16,6 +16,13 @@
 #ifndef AKARI_WINDOWS_H
 #define AKARI_WINDOWS_H
 
+/* Must come first: establishes _WIN32_WCE (defaulted to the newest
+ * generation this tree documents if the build didn't set it) so that
+ * every component header below can gate declarations on it. Added
+ * 2026-09-14; see docs audit -- this generation-gating mechanism was
+ * previously absent (1 stray _WIN32_WCE check in the whole tree). */
+#include "Sdkddkver.h"
+
 #include "Windef.h"
 #include "Winbase.h"
 /* GDI: CE 5.0 Requirement rows for the GDI Reference items list

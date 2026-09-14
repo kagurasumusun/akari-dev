@@ -13,7 +13,7 @@
 #define AKARI_NUIOUSER_H
 
 #include "Windef.h"    /* DWORD, ULONG, UINT, UCHAR, HANDLE, TCHAR */
-#include "Ndis.h"      /* NDIS_OID (ms904076) */
+#include "oak/Ndis.h"      /* NDIS_OID (ms904076) */
 
 /* "NDISUIO_DEVICE_NOTIFICATION": print `typedef struct {DWORD
  * dwNotificationType;TCHAR ptcDeviceName[MAX_PATH]; UINT
