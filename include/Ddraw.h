@@ -756,4 +756,21 @@ AKARI_CE_IMPORT HRESULT WINAPI DirectDrawEnumerateEx(
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms907792: page-printed prototype (Windows CE 2.12 and later. Version 2.12 requires DXPAK 1.0 or later.; user-defined). */
+BOOL WINAPI DDEnumCallback(GUID FAR* lpGUID, LPSTR lpDriverDescription, LPSTR lpDriverName, LPVOID lpContext);
+
+/* aa451690: page-printed prototype (Windows CE 2.12 and later. Version 2.12 requires DXPAK 1.0 or later.; user-defined). */
+HRESULT WINAPI EnumModesCallback(LPDDSURFACEDESC lpDDSurfaceDesc, LPVOID lpContext);
+
+/* aa451692: page-printed prototype (Windows CE 2.12 and later. Version 2.12 requires DXPAK 1.0 or later.; user-defined). */
+HRESULT WINAPI EnumSurfacesCallback(LPDIRECTDRAWSURFACE lpDDSurface, LPDDSURFACEDESC lpDDSurfaceDesc, LPVOID lpContext);
+
+/* aa451693: page-printed prototype (Windows CE 2.12 and later. Version 2.12 requires DXPAK 1.0 or later.; user-defined). */
+HRESULT WINAPI EnumSurfacesCallback2(LPDIRECTDRAWSURFACE4 lpDDSurface, LPDDSURFACEDESC2 lpDDSurfaceDesc, LPVOID lpContext);
+
+
 #endif /* AKARI_DDRAW_H */

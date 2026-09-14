@@ -219,7 +219,6 @@ EXPORTS
   CeFsIoControlW
   CeGenRandom
   CeGetCallerTrust
-  CeGetCanonicalPathName
   CeGetCanonicalPathNameW
   CeGetChangedRecordCnt
   CeGetChangedRecords
@@ -389,7 +388,6 @@ EXPORTS
   CreateCompatibleDC
   CreateCrit
   CreateCursor
-  CreateDC
   CreateDCW
   CreateDIBPatternBrushPt
   CreateDIBSection
@@ -434,7 +432,6 @@ EXPORTS
   CredRead
   CredUpdate
   CredWrite
-  CryptAcquireContext
   CryptAcquireContextW
   CryptContextAddRef
   CryptCreateHash
@@ -445,15 +442,12 @@ EXPORTS
   CryptDuplicateHash
   CryptDuplicateKey
   CryptEncrypt
-  CryptEnumProviderTypes
   CryptEnumProviderTypesW
-  CryptEnumProviders
   CryptEnumProvidersW
   CryptExportKey
   CryptFindLocalizedName
   CryptGenKey
   CryptGenRandom
-  CryptGetDefaultProvider
   CryptGetDefaultProviderW
   CryptGetHashParam
   CryptGetKeyParam
@@ -475,14 +469,10 @@ EXPORTS
   CryptSetHashParam
   CryptSetKeyParam
   CryptSetProvParam
-  CryptSetProvider
-  CryptSetProviderEx
   CryptSetProviderExW
   CryptSetProviderW
-  CryptSignHash
   CryptSignHashW
   CryptUnprotectData
-  CryptVerifySignature
   CryptVerifySignatureW
   DBCanonicalize
   DDKReg_GetIsrInfo
@@ -567,7 +557,6 @@ EXPORTS
   DisassociateSession
   DismountPartition
   DismountStore
-  DispatchMessage
   DispatchMessageW
   DrawEdge
   DrawFocusRect
@@ -783,7 +772,6 @@ EXPORTS
   GetLocalTime
   GetLocaleInfoW
   GetMenuItemInfoW
-  GetMessage
   GetMessagePos
   GetMessageQueueReadyTimeStamp
   GetMessageSource
@@ -802,12 +790,10 @@ EXPORTS
   GetNlsTables
   GetNumberFormatW
   GetOEMCP
-  GetObject
   GetObjectType
   GetObjectW
   GetOpenClipboardWindow
   GetOpenFileNameW
-  GetOutlineTextMetrics
   GetOutlineTextMetricsW
   GetOverlappedResult
   GetOwnerProcess
@@ -1112,7 +1098,6 @@ EXPORTS
   LoadImageW
   LoadIntChainHandler
   LoadKernelLibrary
-  LoadKeyboardLayout
   LoadKeyboardLayoutW
   LoadLibraryExW
   LoadLibraryW
@@ -1191,7 +1176,6 @@ EXPORTS
   PSLNotify
   PageOutModule
   PatBlt
-  PeekMessage
   PeekMessageW
   PegClearUserNotification
   PegCreateDatabase
@@ -1217,15 +1201,12 @@ EXPORTS
   PlatformResumeSystem
   PlatformValidatePMRegistry
   PlayEnhMetaFile
-  PlaySound
   PlaySoundW
   Polygon
   Polyline
   PostKeybdMessage
-  PostMessage
   PostMessageW
   PostQuitMessage
-  PostThreadMessage
   PostThreadMessageW
   PowerOffSystem
   PowerPolicyNotify
@@ -1253,7 +1234,6 @@ EXPORTS
   RaiseException
   Random
   RasDeleteEntry
-  RasDevConfigDialogEdit
   RasDevConfigDialogEditW
   RasDial
   RasEnumConnections
@@ -1426,10 +1406,8 @@ EXPORTS
   SelectPalette
   SendDlgItemMessageW
   SendInput
-  SendMessage
   SendMessageTimeout
   SendMessageW
-  SendNotifyMessage
   SendNotifyMessageW
   ServiceAddPort
   ServiceClosePort
@@ -1779,25 +1757,16 @@ EXPORTS
   VirtualQueryEx
   VirtualSetAttributes
   VirtualSetPageFlags
-  WNetAddConnection3
   WNetAddConnection3W
-  WNetCancelConnection2
   WNetCancelConnection2W
   WNetCloseEnum
-  WNetConnectionDialog1
   WNetConnectionDialog1W
   WNetDisconnectDialog
-  WNetDisconnectDialog1
   WNetDisconnectDialog1W
-  WNetEnumResource
   WNetEnumResourceW
-  WNetGetConnection
   WNetGetConnectionW
-  WNetGetUniversalName
   WNetGetUniversalNameW
-  WNetGetUser
   WNetGetUserW
-  WNetOpenEnum
   WNetOpenEnumW
   WaitCommEvent
   WaitForAPIReady
@@ -2292,7 +2261,6 @@ EXPORTS
   setvbuf
   sin
   sinh
-  sndPlaySound
   sndPlaySoundW
   sprintf
   sprintf_s
@@ -2418,3 +2386,4 @@ EXPORTS
   wscanf_s
   wsprintfW
   wvsprintfW
+

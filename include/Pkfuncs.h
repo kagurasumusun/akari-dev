@@ -121,4 +121,30 @@ AKARI_CE_IMPORT BOOL VirtualSetPageFlags(LPVOID lpvAddress, DWORD cbSize, DWORD 
 /* ms920093: page-printed prototype (Windows CE 2.10 and later.; nk.lib). */
 AKARI_CE_IMPORT BOOL WriteRegistryToOEM(DWORD dwFlags, LPBYTE lpData, DWORD cbData) AKARI_CE_NAME(WriteRegistryToOEM);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ee488934: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT HRESULT CeCloseCallerBuffer(PVOID pDestMarshalled, PVOID pSrcUnmarshalled, DWORD cbSrc, DWORD ArgumentDescriptor) AKARI_CE_NAME(CeCloseCallerBuffer);
+
+/* ee488382 CeOpenCallerBuffer (Windows Embedded CE 6.0; coredll.lib):
+ * the page prints the five parameters exactly as below but drops the
+ * comma between ArgumentDescriptor and ForceDuplicate (print:
+ * `...DWORD cbSrc, DWORD ArgumentDescriptor BOOL ForceDuplicate);`).
+ * The comma is restored; nothing else is changed. */
+AKARI_CE_IMPORT HRESULT CeOpenCallerBuffer(PVOID* ppDestMarshalled, PVOID pSrcUnmarshalled, DWORD cbSrc, DWORD ArgumentDescriptor, BOOL ForceDuplicate) AKARI_CE_NAME(CeOpenCallerBuffer);
+
+/* ee482772: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT DWORD GetCallerVMProcessId(void) AKARI_CE_NAME(GetCallerVMProcessId);
+
+/* ee482980: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT DWORD GetDirectCallerProcessId(void) AKARI_CE_NAME(GetDirectCallerProcessId);
+
+/* ee482792: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT BOOL SetEventData(HANDLE hEvent, DWORD dwData) AKARI_CE_NAME(SetEventData);
+
+/* ee488184: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT LPVOID VirtualAllocCopyEx(HANDLE hSrcProc, HANDLE hDstProc, LPVOID pAddr, DWORD cbSize, DWORD dwProtect) AKARI_CE_NAME(VirtualAllocCopyEx);
+
 #endif /* AKARI_PKFUNCS_H */

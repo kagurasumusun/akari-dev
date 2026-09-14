@@ -225,4 +225,11 @@ typedef HRESULT (WINAPI *LPDDENUMVIDEOCALLBACK)(
 }
 #endif
 
+/* aa451694 EnumVideoCallback: the page prints Header: Ddraw.h,
+ * but LPDDVIDEOPORTCAPS lives here; declared here to keep both
+ * headers standalone-compilable (callback is user-implemented,
+ * 'user-defined' per the page's Link row). */
+HRESULT WINAPI EnumVideoCallback(LPDDVIDEOPORTCAPS lpDDVideoPortCaps,
+    LPVOID lpContext);
+
 #endif /* AKARI_DVP_H */

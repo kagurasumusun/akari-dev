@@ -70,4 +70,30 @@ AKARI_CE_IMPORT BOOL SetInterruptEvent(DWORD idInt) AKARI_CE_NAME(SetInterruptEv
 /* _wcepb_SetKernelCommDev: page-printed prototype (Windows CE OS). */
 BOOL SetKernelCommDev(UCHAR Service, UCHAR CommDevice);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcepb_KCompareFileTime: page-printed prototype (Windows CE OS). */
+LONG KCompareFileTime(LPFILETIME lpft1, LPFILETIME lpft2);
+
+/* _wcepb_KSystemTimeToFileTime: page-printed prototype (Windows CE OS). */
+BOOL KSystemTimeToFileTime(LPSYSTEMTIME lpst, LPFILETIME lpft);
+
+/* _wcepb_OEMGetRealTime: page-printed prototype (Windows CE OS). */
+BOOL OEMGetRealTime(LPSYSTEMTIME lpst);
+
+/* ms919082: page-printed prototype (Windows CE 2.10 and later.; nk.lib). */
+BOOL OEMSetAlarmTime(LPSYSTEMTIME lpst);
+
+/* ms919096: page-printed prototype (Windows CE 2.10 and later.; nk.lib). */
+BOOL OEMSetRealTime(LPSYSTEMTIME lpst);
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcepb_KFileTimeToSystemTime: page-printed prototype (Windows CE OS). */
+BOOL KFileTimeToSystemTime(const FILETIME* lpft, LPSYSTEMTIME lpst);
+
 #endif /* AKARI_NKINTR_H_ */

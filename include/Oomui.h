@@ -55,4 +55,14 @@ typedef struct _WINDOWINFO {
     UINT32 fToBeTerminated;
 } WINDOWINFO;
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms919135: page-printed prototype (Windows CE 2.10 and later.). */
+BOOL OomUICallback_CloseWindow(WINDOWINFO* pwi);
+
+/* ms919227: page-printed prototype (Windows CE 2.10 and later.). */
+VOID OomUI_SetWindowsInfo(INT cWindows, WINDOWINFO* rgwi);
+
 #endif /* AKARI_OOMUI_H_ */

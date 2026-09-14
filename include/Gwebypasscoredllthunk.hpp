@@ -34,4 +34,11 @@ LRESULT WINAPI SendMessageW_I(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 /* ms919607: page-printed prototype (Windows CE .NET 4.0 and later.). */
 BOOL WINAPI SetForegroundWindow_I(HWND hwnd);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms905514: page-printed prototype (Windows CE .NET 4.0 and later.). */
+HICON WINAPI CreateIconIndirect_I(PICONINFO pii);
+
 #endif /* AKARI_GWEBYPASSCOREDLLTHUNK_HPP_ */

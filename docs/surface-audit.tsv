@@ -359,7 +359,7 @@ ACMDRVSTREAMSIZE	ce5+ce6	declared	0	0	1
 ACN_START	ce5+ce6	declared	0	0	0	
 ACN_STOP	ce5+ce6	declared	0	0	0	
 AcquireCredentialsHandle	ce3+ce5+ce6	declared	1	0	1	Secur32.lib.; Schannel.lib
-AcquireRemoveLock	ce5+ce6	comment-only	0	0	1	
+AcquireRemoveLock	ce5+ce6	declared	0	0	1	
 ActivateDevice	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
 ActivateDeviceEx	ce5+ce6	declared	1	1	1	Coredll.lib.
 ActivateKeyboardLayout	ce5+ce6	declared	1	1	1	Coredll.lib.
@@ -382,7 +382,7 @@ addrinfo	ce4+ce5+ce6	declared	0	0	0
 AddTailI	ce5+ce6	comment-only	0	0	1	
 AdjustWindowRectEx	ce3+ce5+ce6	declared	1	1	1	
 Administration	ce5+ce6	comment-only	0	0	0	
-AdvertiseInterface	ce5+ce6	comment-only	1	1	1	Coredll.lib.
+AdvertiseInterface	ce5+ce6	declared	1	1	1	Coredll.lib.
 ADVF	ce4+ce5+ce6	declared	0	0	1	
 AFPROTOCOLS	ce4+ce5+ce6	declared	0	0	1	
 ALG_ID	ce3+ce4+ce5+ce6	declared	0	0	1	
@@ -448,7 +448,7 @@ Authentication	ce3+ce5+ce6	comment-only	0	0	1
 AUTHOR	ce3+ce4	comment-only	0	0	1	
 AutoDialCleanupModule	ce4+ce5+ce6	declared	1	0	1	Autodial.lib.; Autodial.lib.
 AutoDialEndConnection	ce4+ce5+ce6	declared	1	0	1	Autodial.lib.; Autodial.lib.
-AutoDialGetConnectionStatus	ce4+ce5+ce6	comment-only	0	0	1	Autodial.lib.; Autodial.lib.
+AutoDialGetConnectionStatus	ce4+ce5+ce6	declared	0	0	1	Autodial.lib.; Autodial.lib.
 AutoDialInitializeModule	ce4+ce5+ce6	declared	1	0	1	Autodial.lib.; Autodial.lib.
 AutoDialStartConnection	ce4+ce5+ce6	declared	1	0	1	Autodial.lib.; Autodial.lib.
 Automation	ce3	comment-only	0	0	0	
@@ -480,7 +480,7 @@ BASEBAND_CONNECTION	ce4+ce5+ce6	declared	0	0	1
 BASEBAND_CONNECTION_DATA	ce5+ce6	comment-only	0	0	1	
 BaseURL	ce3+ce4	comment-only	0	0	1	
 BatteryDrvrGetLevels	ce5+ce6	declared	1	1	1	Coredll.lib.
-BatteryDrvrGetStatus	ce3	absent	0	0	1	
+BatteryDrvrGetStatus	ce3	declared	0	0	1	
 BatteryDrvrSupportsChangeNotification	ce5+ce6	declared	1	1	1	Coredll.lib.
 BatteryGetLifeTimeInfo	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.
 BATTERYLIFETIMEINFO	ce5+ce6	declared	0	0	1	
@@ -820,6 +820,7 @@ CEBLOB	ce3+ce4	declared	0	0	1
 CeChangeDatabaseLCID	ce3	declared	1	1	1	
 CeClearReplChangeBitsEx	ce3	declared	1	1	1	coredll.lib
 CeClearUserNotification	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Notify.lib
+CeCloseCallerBuffer	ce5+ce6	declared	1	1	1	coredll.lib
 CeCreateDatabase	ce3+ce4	declared	1	1	1	Coredll.lib.; Fsdbase.lib
 CeCreateDatabaseEx	ce3+ce4	declared	1	1	1	Coredll.lib.; Fsdbase.lib
 CeCreateDatabaseEx2	ce4	declared	1	1	1	Coredll.lib.
@@ -969,6 +970,7 @@ CeOidGetInfoEx	ce3+ce4	declared	1	1	1	Coredll.lib.
 CeOidGetInfoEx2	ce4	declared	1	1	1	Coredll.lib.
 CEOIDINFO	ce3+ce4	declared	0	0	1	
 CEOIDINFOEX	ce4	declared	0	0	1	
+CeOpenCallerBuffer	ce5+ce6	declared	1	1	1	coredll.lib
 CeOpenDatabase	ce3+ce4	declared	1	1	1	Coredll.lib.; Fsdbase.lib
 CeOpenDatabaseEx	ce3+ce4	declared	1	1	1	Coredll.lib.; Fsdbase.lib
 CeOpenDatabaseEx2	ce4	declared	1	1	1	Coredll.lib.
@@ -1746,7 +1748,7 @@ DDCAPS	ce3+ce4+ce5+ce6	declared	0	0	1
 DDCOLORCONTROL	ce3+ce4+ce5+ce6	declared	0	0	1	
 DDCOLORKEY	ce3+ce4+ce5+ce6	declared	0	0	1	
 DDCORECAPS	ce5+ce6	comment-only	0	0	1	
-DDEnumCallback	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
+DDEnumCallback	ce3+ce4+ce5+ce6	declared	0	0	1	User-defined.; User-defined.; user-defined
 DDEnumCallbackEx	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
 DDGPEAllocSurfaceData	ce5+ce6	comment-only	0	0	1	Ddgpe.lib.
 DDGPEBltParams	ce5+ce6	comment-only	0	0	1	Ddgpe.lib.
@@ -1895,7 +1897,7 @@ DeleteUrlCacheEntry	ce3+ce5+ce6	declared	1	0	1	Wininet.lib.; Wininet.lib
 DeleteUrlCacheGroup	ce3+ce5+ce6	comment-only	0	0	1	Wininet.lib.; Wininet.lib
 Dependents	ce4	absent	0	0	0	
 DEREFERENCECONNECTION	ce4+ce5+ce6	declared	0	0	1	Wldap32.lib.; Wldap32.lib.
-DeregisterDevice	ce3+ce5+ce6	comment-only	1	1	1	Coredll.lib.; Coredll.lib
+DeregisterDevice	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
 DeregisterService	ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.
 DESCKIND	ce3+ce4+ce5+ce6	declared	0	0	1	
 DestinationDirs	ce3+ce4	absent	0	0	1	
@@ -1928,7 +1930,7 @@ DEVMGR_DEVICE_INFORMATION	ce5+ce6	declared	0	0	1
 DEVMODE	ce3+ce5+ce6	declared	0	0	1	
 DEVMODEW	ce5+ce6	declared	0	0	1	
 DEVNAMES	ce3+ce5+ce6	declared	0	0	1	
-DHCPLeaseTime	ce3	absent	0	0	0	
+DHCPLeaseTime	ce3	declared	0	0	0	
 DhcpOptions	ce3+ce5+ce6	comment-only	0	0	0	
 DhcpSendOptions	ce3+ce5+ce6	comment-only	0	0	0	
 DIALER_NOTIFICATION	ce4	absent	0	0	1	
@@ -2064,7 +2066,7 @@ DrawThemeBackground	ce5+ce6	comment-only	0	0	1	Ietheme.dll.
 DriverEntry	ce3+ce5+ce6	comment-only	0	0	1	
 DRV_CLOSE	ce5+ce6	declared	0	0	0	
 DRV_OPEN	ce5+ce6	declared	0	0	0	
-DrvAdvPageSetupDlg	ce4+ce5+ce6	comment-only	0	0	1	
+DrvAdvPageSetupDlg	ce4+ce5+ce6	declared	0	0	1	
 DrvAnyBlt	ce5+ce6	comment-only	0	0	1	Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 DrvBitBlt	ce5+ce6	comment-only	0	0	1	Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 DrvCopyBits	ce5+ce6	declared	1	0	1	Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
@@ -2211,7 +2213,7 @@ EC_VIDEOFRAMEREADY	ce4	comment-only	0	0	0
 EC_WINDOW_DESTROYED	ce3+ce5+ce6	comment-only	0	0	0	
 ECHO	ce3+ce4	comment-only	0	0	1	
 echo	ce4	comment-only	0	0	0	
-EDBG_ADAPTER	ce3	absent	0	0	1	
+EDBG_ADAPTER	ce3	declared	0	0	1	
 EDBG_ADDR	ce3+ce4	declared	0	0	1	
 EDBG_BOOT_CALLBACK_FUNC	ce3	absent	0	0	1	
 EDBG_BOOTME_DATA	ce3	absent	0	0	1	
@@ -2221,11 +2223,11 @@ EdbgDeregisterClient	ce3	declared	0	0	1	Ethdbg.lib, Ethdbg.dll
 EdbgGetDeviceInfo	ce3	absent	0	0	1	Edbg.dll
 EdbgInit	ce3	declared	0	0	1	
 EdbgOutputDebugString	ce3	absent	0	0	1	
-EdbgRecv	ce3	absent	0	0	1	Ethdbg.lib
+EdbgRecv	ce3	declared	0	0	1	Ethdbg.lib
 EdbgRegisterBootCallback	ce3	absent	0	0	1	Edbg.dll
-EdbgResetDevice	ce3	absent	0	0	1	
-EdbgSend	ce3	absent	0	0	1	Ethdbg.lib, Edbg.dll
-EdbgSendUDP	ce3	absent	0	0	1	
+EdbgResetDevice	ce3	declared	0	0	1	
+EdbgSend	ce3	declared	0	0	1	Ethdbg.lib, Edbg.dll
+EdbgSendUDP	ce3	declared	0	0	1	
 EDDGPEPixelFormat	ce5+ce6	comment-only	0	0	1	Ddgpe.lib.
 EDDGPEPixelFormatToEGPEFormat	ce5+ce6	comment-only	0	0	0	Ddgpe.lib.
 EDDVDPlaybackState	ce4	declared	0	0	1	
@@ -2343,15 +2345,15 @@ EnumFonts	ce3+ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.; Mgrast2.lib
 EnumFontsProc	ce3+ce4+ce5+ce6	comment-only	0	0	1	
 EnumLocalesProc	ce3+ce4+ce5+ce6	comment-only	0	0	1	Coreloc.lib.; Coreloc.lib.
 ENUMLOGFONT	ce3+ce4+ce5+ce6	declared	0	0	1	
-EnumModesCallback	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
+EnumModesCallback	ce3+ce4+ce5+ce6	declared	0	0	1	User-defined.; User-defined.; user-defined
 EnumModesCallback2	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
 EnumPnpIds	ce5+ce6	declared	1	1	1	Coredll.lib.
 EnumPropsEx	ce5+ce6	declared	1	1	1	Coredll.lib.
 EnumRegisterWordProc	ce3+ce4+ce5+ce6	comment-only	0	0	1	No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.; No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.
 EnumServices	ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.
 EnumSocket	ce5+ce6	comment-only	0	0	1	Pcc_serv.dll
-EnumSurfacesCallback	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
-EnumSurfacesCallback2	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
+EnumSurfacesCallback	ce3+ce4+ce5+ce6	declared	0	0	1	User-defined.; User-defined.; user-defined
+EnumSurfacesCallback2	ce3+ce4+ce5+ce6	declared	0	0	1	User-defined.; User-defined.; user-defined
 EnumSystemCodePages	ce3+ce4+ce5+ce6	declared	1	1	1	Coreloc.lib.; Coreloc.lib.; Coreloc.lib
 EnumSystemLocales	ce3+ce4+ce5+ce6	comment-only	1	1	1	Coreloc.lib.; Coreloc.lib.; Coreloc.lib
 EnumTimeFormats	ce3+ce4+ce5+ce6	comment-only	1	1	1	Coreloc.lib.; Coreloc.lib.; Coreloc.lib
@@ -2359,7 +2361,7 @@ EnumTimeFormatsProc	ce3+ce4+ce5+ce6	comment-only	0	0	1	Coreloc.lib.; Coreloc.lib
 enumTouchPanelSampleFlags	ce5+ce6	comment-only	0	0	0	
 EnumUILanguages	ce3+ce4+ce5+ce6	declared	1	1	1	Coreloc.lib.; Coreloc.lib.
 EnumUILanguagesProc	ce3+ce4+ce5+ce6	comment-only	0	0	1	Coreloc.lib.; Coreloc.lib.
-EnumVideoCallback	ce3+ce4+ce5+ce6	comment-only	0	0	1	User-defined.; User-defined.; user-defined
+EnumVideoCallback	ce3+ce4+ce5+ce6	declared	0	0	1	User-defined.; User-defined.; user-defined
 EnumWindows	ce3+ce5+ce6	declared	1	1	1	
 EnumWindowsProc	ce3+ce5+ce6	comment-only	0	0	1	
 EPGCLinkType	ce4	declared	0	0	1	
@@ -2451,7 +2453,7 @@ FindCloseUrlCache	ce3+ce5+ce6	declared	1	0	1	Wininet.lib.; Wininet.lib
 FINDEX_INFO_LEVELS	ce3+ce4+ce5+ce6	declared	0	0	1	
 FINDEX_SEARCH_OPS	ce3+ce4+ce5+ce6	declared	0	0	1	
 FindFirstChangeNotification	ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.
-FindFirstDevice	ce5+ce6	comment-only	1	1	1	
+FindFirstDevice	ce5+ce6	declared	1	1	1	
 FindFirstFile	ce3+ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.; Coredll.lib, Fsmain.lib
 FindFirstFileEx	ce3+ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.; Fsmain.lib
 FindFirstPartition	ce5+ce6	declared	1	1	1	Storeapi.lib
@@ -2623,6 +2625,7 @@ GetBkMode	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Mgbase.lib
 GetBltStatus	ce5+ce6	comment-only	0	0	1	Developer implemented.
 GetBusNamePrefix	ce5+ce6	declared	0	0	1	
 GetBValue	ce3+ce5+ce6	declared	0	0	1	
+GetCallerVMProcessId	ce5+ce6	declared	1	1	1	coredll.lib
 GetCapture	ce3+ce4	declared	1	1	1	Coredll.lib.; Foregnd.lib
 GetCaretBlinkTime	ce3+ce5+ce6	declared	1	1	1	Caret.lib.; Caret.lib
 GetCaretPos	ce3+ce5+ce6	declared	1	1	1	Caret.lib.; Caret.lib
@@ -2676,8 +2679,10 @@ GetDeviceInformationByDeviceHandle	ce5+ce6	declared	1	1	1
 GetDeviceInformationByFileHandle	ce5+ce6	declared	1	1	1	
 GetDevicePower	ce5+ce6	declared	1	1	1	Coredll.lib.
 GetDevicePowerState	ce5+ce6	declared	0	0	1	
+GetDeviceUniqueID	ce5+ce6	declared	1	1	1	coredll.lib
 GetDialogBaseUnits	ce3+ce5+ce6	declared	1	1	1	Dlgmgr.lib.; Dlgmgr.lib
 GetDIBColorTable	ce5+ce6	declared	1	1	1	Coredll.lib.
+GetDirectCallerProcessId	ce5+ce6	declared	1	1	1	coredll.lib
 GetDiskFreeSpaceEx	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib, Fsmain.lib
 GetDlgCtrlID	ce3+ce5+ce6	declared	1	1	1	Dlgmgr.lib.; Dlgmgr.lib
 GetDlgItem	ce3+ce5+ce6	declared	1	1	1	Dlgmgr.lib.; Dlgmgr.lib
@@ -2810,7 +2815,7 @@ GetScrollInfo	ce3+ce5+ce6	declared	1	1	1	Sbcmn.lib.; Sbcmn.lib
 GetSerialObject	ce5+ce6	comment-only	0	0	1	
 GetServerVariable	ce3	declared	0	0	1	Httpfilt.lib
 GetServiceHandle	ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.
-GetSetKeyValues	ce5+ce6	comment-only	0	0	1	
+GetSetKeyValues	ce5+ce6	declared	0	0	1	
 GetSocketIndex	ce5+ce6	comment-only	0	0	1	Pcc_serv.dll
 GetSocketStatus	ce5+ce6	declared	0	0	1	Pcc_serv.dll
 getsockname	ce3	declared	1	0	1	
@@ -3012,15 +3017,15 @@ Header_DeleteItem	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
 Header_GetImageList	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
 Header_GetItem	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
 Header_GetItemCount	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
-Header_GetItemRect	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
-Header_GetOrderArray	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
+Header_GetItemRect	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
+Header_GetOrderArray	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
 Header_InsertItem	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
 Header_Layout	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
 Header_OrderToIndex	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
 Header_SetHotDivider	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
 Header_SetImageList	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
 Header_SetItem	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
-Header_SetOrderArray	ce3+ce5+ce6	comment-only	0	0	1	Commctrl.lib
+Header_SetOrderArray	ce3+ce5+ce6	declared	0	0	1	Commctrl.lib
 Heap32First	ce3+ce5+ce6	declared	1	0	1	Toolhelp.lib.
 Heap32ListFirst	ce3+ce5+ce6	declared	1	0	1	Toolhelp.lib.
 Heap32ListNext	ce3+ce5+ce6	declared	1	0	1	Toolhelp.lib.
@@ -3512,7 +3517,7 @@ INITCOMMONCONTROLSEX	ce3	declared	0	0	1
 InitCommonControlsEx	ce3	declared	1	0	1	Commctrl.lib
 InitHTMLControl	ce3	declared	0	0	1	
 InitializeCriticalSection	ce3+ce5+ce6	declared	1	1	1	Coremain.lib.; Coremain.lib
-InitializeRemoveLock	ce5+ce6	comment-only	0	0	1	
+InitializeRemoveLock	ce5+ce6	declared	0	0	1	
 InitializeSecurityContext	ce3+ce5+ce6	declared	1	0	1	Secur32.lib.
 InitObjType	ce3+ce5+ce6	comment-only	0	0	1	Coredll.lib.
 InitPubKey	ce3+ce4	absent	0	0	1	Loadauth.lib.
@@ -3524,7 +3529,7 @@ INQUIRY_DATA	ce5+ce6	comment-only	0	0	1
 InquiryResultBuffer	ce4	absent	0	0	0	
 InSendMessage	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.
 InsertMenu	ce3+ce5+ce6	declared	1	1	1	Menu.lib.; Menu.lib
-InsetRect	ce3	absent	0	0	1	
+InsetRect	ce3	declared	0	0	1	
 Install_Exit	ce3+ce5+ce6	comment-only	0	0	1	Coredll.lib.
 Install_Init	ce3+ce5+ce6	comment-only	0	0	1	Developer-provided.
 Int64x32Div32	ce3+ce5+ce6	declared	0	0	1	
@@ -4192,7 +4197,7 @@ Japanese	ce5+ce6	comment-only	0	0	0
 KASSERT	ce3	absent	0	0	1	
 KBDI_AUTOREPEAT_INFO	ce5+ce6	declared	0	0	0	
 KBDI_VKEY_TO_UNICODE_INFO	ce5+ce6	declared	0	0	0	
-KCompareFileTime	ce3	absent	0	0	1	
+KCompareFileTime	ce3	declared	0	0	1	
 KD_BPINFO	ce3	absent	0	0	1	
 KD_IOCTL_CLEAR_CBP	ce3	absent	0	0	0	
 KD_IOCTL_CLEAR_DBP	ce3	absent	0	0	0	
@@ -4213,7 +4218,7 @@ KEYBDINPUT	ce5+ce6	declared	0	0	1
 KeyDown	ce3+ce4	comment-only	0	0	1	
 KeyPress	ce3+ce4	comment-only	0	0	1	
 KeyUp	ce3+ce4	comment-only	0	0	1	
-KFileTimeToSystemTime	ce3	absent	0	0	1	
+KFileTimeToSystemTime	ce3	declared	0	0	1	
 KillTimer	ce3+ce5+ce6	declared	1	1	1	
 KitlInit	ce4	declared	0	0	1	Kitl.lib.
 KITLOutputDebugString	ce4	absent	0	0	1	Kitl.lib.
@@ -4221,10 +4226,10 @@ KitlSendRawData	ce4	declared	0	0	1	Kitl.lib.
 KitlSetTimerCallback	ce4	absent	0	0	1	Kitl.lib.
 KitlStopTimerCallback	ce4	absent	0	0	1	Kitl.lib.
 KITLTRANSPORT	ce4	absent	0	0	1	
-KLocalFileTimeToFileTime	ce4	absent	0	0	1	Nk.lib.
+KLocalFileTimeToFileTime	ce4	declared	0	0	1	Nk.lib.
 Korean	ce5+ce6	comment-only	0	0	0	
 KS_AM_KSPROPSETID_TSRateChange	ce5+ce6	comment-only	0	0	1	
-KSystemTimeToFileTime	ce3	absent	0	0	1	
+KSystemTimeToFileTime	ce3	declared	0	0	1	
 Language	ce3+ce4	comment-only	0	0	1	
 LAPCreateEnrollmentConfigDialog	ce5+ce6	declared	1	0	1	Coredll.lib.
 LASSReloadConfig	ce5+ce6	declared	1	1	1	Coredll.lib.
@@ -4543,7 +4548,7 @@ ListView_EnableGroupView	ce5+ce6	declared	0	0	1
 ListView_EnsureVisible	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_FindItem	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetBkColor	ce3+ce5+ce6	comment-only	0	0	1	
-ListView_GetBkImage	ce5+ce6	comment-only	0	0	1	
+ListView_GetBkImage	ce5+ce6	declared	0	0	1	
 ListView_GetCallbackMask	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetCheckState	ce3+ce5+ce6	declared	0	0	1	
 ListView_GetColumn	ce3+ce5+ce6	comment-only	0	0	1	
@@ -4553,8 +4558,8 @@ ListView_GetCountPerPage	ce3+ce5+ce6	comment-only	0	0	1
 ListView_GetEditControl	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetExtendedListViewStyle	ce3+ce5+ce6	declared	0	0	1	
 ListView_GetGroupCount	ce5+ce6	declared	0	0	1	
-ListView_GetGroupInfo	ce5+ce6	comment-only	0	0	1	
-ListView_GetGroupInfoByIndex	ce5+ce6	comment-only	0	0	1	
+ListView_GetGroupInfo	ce5+ce6	declared	0	0	1	
+ListView_GetGroupInfoByIndex	ce5+ce6	declared	0	0	1	
 ListView_GetGroupMetrics	ce5+ce6	comment-only	0	0	1	
 ListView_GetHeader	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetImageList	ce3+ce5+ce6	comment-only	0	0	1	
@@ -4572,7 +4577,7 @@ ListView_GetOrigin	ce3+ce5+ce6	comment-only	0	0	1
 ListView_GetSelectedCount	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetSelectionMark	ce3+ce5+ce6	declared	0	0	1	
 ListView_GetStringWidth	ce3+ce5+ce6	comment-only	0	0	1	
-ListView_GetSubItemRect	ce3+ce5+ce6	comment-only	0	0	1	
+ListView_GetSubItemRect	ce3+ce5+ce6	declared	0	0	1	
 ListView_GetTextBkColor	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetTextColor	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_GetToolTips	ce5+ce6	declared	0	0	1	
@@ -4582,7 +4587,7 @@ ListView_GetWorkAreas	ce5+ce6	comment-only	0	0	1
 ListView_HasGroup	ce5+ce6	declared	0	0	1	
 ListView_HitTest	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_InsertColumn	ce3+ce5+ce6	comment-only	0	0	1	
-ListView_InsertGroup	ce5+ce6	comment-only	0	0	1	
+ListView_InsertGroup	ce5+ce6	declared	0	0	1	
 ListView_InsertGroupSorted	ce5+ce6	comment-only	0	0	1	
 ListView_InsertItem	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_IsGroupViewEnabled	ce5+ce6	declared	0	0	1	
@@ -4595,18 +4600,18 @@ ListView_RemoveAllGroups	ce5+ce6	comment-only	0	0	1
 ListView_RemoveGroup	ce5+ce6	declared	0	0	1	
 ListView_Scroll	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_SetBkColor	ce3+ce5+ce6	comment-only	0	0	1	
-ListView_SetBkImage	ce5+ce6	comment-only	0	0	1	
+ListView_SetBkImage	ce5+ce6	declared	0	0	1	
 ListView_SetCallbackMask	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_SetColumn	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_SetColumnOrderArray	ce3+ce5+ce6	declared	0	0	1	
 ListView_SetColumnWidth	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_SetExtendedListViewStyle	ce3+ce5+ce6	declared	0	0	1	
 ListView_SetExtendedListViewStyleEx	ce5+ce6	declared	0	0	1	
-ListView_SetGroupInfo	ce5+ce6	comment-only	0	0	1	
+ListView_SetGroupInfo	ce5+ce6	declared	0	0	1	
 ListView_SetGroupMetrics	ce5+ce6	comment-only	0	0	1	
 ListView_SetIconSpacing	ce3+ce5+ce6	declared	0	0	1	
 ListView_SetImageList	ce3+ce5+ce6	comment-only	0	0	1	
-ListView_SetInfoTip	ce5+ce6	comment-only	0	0	1	
+ListView_SetInfoTip	ce5+ce6	declared	0	0	1	
 ListView_SetItem	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_SetItemCount	ce3+ce5+ce6	comment-only	0	0	1	
 ListView_SetItemCountEx	ce3+ce5+ce6	declared	0	0	1	
@@ -4621,7 +4626,7 @@ ListView_SetToolTips	ce5+ce6	declared	0	0	1
 ListView_SetWorkAreas	ce5+ce6	comment-only	0	0	1	
 ListView_SortGroups	ce5+ce6	comment-only	0	0	1	
 ListView_SortItems	ce3+ce5+ce6	comment-only	0	0	1	
-ListView_SubItemHitTest	ce3+ce5+ce6	comment-only	0	0	1	
+ListView_SubItemHitTest	ce3+ce5+ce6	declared	0	0	1	
 ListView_Update	ce3+ce5+ce6	comment-only	0	0	1	
 llMulDiv	ce3+ce5+ce6	declared	0	0	1	
 LMDATA	ce3+ce5+ce6	declared	0	0	1	
@@ -5593,8 +5598,8 @@ NM_CUSTOMDRAW	ce3+ce5+ce6	declared	0	0	1
 NM_DBLCLK	ce3+ce5+ce6	declared	0	0	1	
 NM_HOTSPOT	ce3	absent	0	0	1	
 NM_HOVER	ce3+ce5+ce6	declared	0	0	1	
-NM_HTMLCONTEXT	ce3	absent	0	0	1	
-NM_HTMLVIEW	ce3	absent	0	0	1	
+NM_HTMLCONTEXT	ce3	declared	0	0	1	
+NM_HTMLVIEW	ce3	declared	0	0	1	
 NM_INLINE_IMAGE	ce3	absent	0	0	1	
 NM_INLINE_SOUND	ce3	absent	0	0	1	
 NM_KEYDOWN	ce3+ce5+ce6	declared	0	0	1	
@@ -5707,19 +5712,19 @@ OEMDataAbortHandler	ce4	absent	0	0	1	Nk.lib.
 OEMDebugInit	ce4	declared	0	0	1	Blcommon.lib.
 OEMEthDisableInts	ce3	declared	0	0	1	
 OEMEthEnableInts	ce3	declared	0	0	1	
-OEMEthGetFrame	ce3	absent	0	0	1	
+OEMEthGetFrame	ce3	declared	0	0	1	
 OEMEthGetSecs	ce3	declared	0	0	1	
-OEMEthInit	ce3	absent	0	0	1	
+OEMEthInit	ce3	declared	0	0	1	
 OEMEthISR	ce3	declared	0	0	1	
-OEMEthQueryClientInfo	ce3	absent	0	0	1	
-OEMEthSendFrame	ce3	absent	0	0	1	
+OEMEthQueryClientInfo	ce3	declared	0	0	1	
+OEMEthSendFrame	ce3	declared	0	0	1	
 OEMExtraCCR	ce3	absent	0	0	1	
 OEMFindFirstWakeSource	ce4	absent	0	0	1	Platform OAL.
 OEMFinishEraseFlash	ce4	declared	0	0	1	Blcommon.lib.
 OEMFlushCache	ce3	absent	0	0	1	
 OEMGetExtensionDRAM	ce3	declared	0	0	1	
 OEMGetInterrupt	ce4	absent	0	0	1	Platform OAL.
-OEMGetRealTime	ce3	absent	0	0	1	
+OEMGetRealTime	ce3	declared	0	0	1	
 OEMGetWakeupSource	ce4	declared	0	0	1	Platform OAL.
 OEMHandleVFPException	ce4	absent	0	0	1	Nk.lib.
 OEMIdle	ce3	absent	0	0	1	
@@ -5761,8 +5766,8 @@ OEMRestoreVFPCtrlRegs	ce4	absent	0	0	1	Nk.lib.
 OEMRomChain	ce4	absent	0	0	1	
 OEMSaveCoProcRegister	ce4	absent	0	0	1	Nk.lib.
 OEMSaveVFPCtrlRegs	ce4	absent	0	0	1	Nk.lib.
-OEMSetAlarmTime	ce3+ce4	absent	0	0	1	Nk.lib.
-OEMSetRealTime	ce3+ce4	absent	0	0	1	Nk.lib.
+OEMSetAlarmTime	ce3+ce4	declared	0	0	1	Nk.lib.
+OEMSetRealTime	ce3+ce4	declared	0	0	1	Nk.lib.
 OEMSetWakeupSource	ce4	declared	0	0	1	Platform OAL.
 OEMShowProgress	ce4	declared	0	0	1	Blcommon.lib.
 OEMStartEraseFlash	ce4	declared	0	0	1	Blcommon.lib.
@@ -6048,8 +6053,8 @@ OomUI_Initialize	ce3+ce4	declared	0	0	1
 OomUI_NotRespondingWndProc	ce3+ce4	absent	0	0	1	
 OomUI_OnShow	ce3+ce4	declared	0	0	1	
 OomUI_OomWndProc	ce3+ce4	absent	0	0	1	
-OomUI_SetWindowsInfo	ce3+ce4	absent	0	0	1	
-OomUICallback_CloseWindow	ce3+ce4	absent	0	0	1	
+OomUI_SetWindowsInfo	ce3+ce4	declared	0	0	1	
+OomUICallback_CloseWindow	ce3+ce4	declared	0	0	1	
 OomUICallback_IsCritical	ce3+ce4	declared	0	0	1	
 OomUICallback_NonClientPaint	ce3+ce4	declared	0	0	1	
 Open	ce3+ce4	comment-only	0	0	1	
@@ -6528,7 +6533,7 @@ RasEapBegin	ce4	declared	0	0	0	This function is called by the EAP module, not by
 RasEapEnd	ce4	declared	0	0	0	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
 RasEapFreeMemory	ce4	declared	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
 RasEapGetIdentity	ce4	declared	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
-RasEapGetInfo	ce4	absent	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
+RasEapGetInfo	ce4	declared	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
 RasEapInitialize	ce4	declared	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
 RasEapInvokeConfigUI	ce4	declared	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
 RasEapInvokeInteractiveUI	ce4	declared	0	0	1	This function is called by the EAP module, not by the application. Therefore, no link library is exposed. For more information, see EAP Implementation Details.
@@ -6671,7 +6676,7 @@ RegisterFormatEnumerator	ce4+ce5+ce6	declared	1	0	1	Urlmon.lib.; Urlmon.lib.
 RegisterHotKey	ce3+ce5+ce6	declared	1	1	1	Hotkey.lib.; Hotkey.lib
 RegisterMediaTypeClass	ce4+ce5+ce6	declared	1	0	1	Urlmon.lib.; Urlmon.lib.
 RegisterMediaTypes	ce4+ce5+ce6	declared	1	0	1	Urlmon.lib.; Urlmon.lib.
-RegisterPowerRelationship	ce5+ce6	comment-only	1	1	1	Coredll.lib.
+RegisterPowerRelationship	ce5+ce6	declared	1	1	1	Coredll.lib.
 RegisterService	ce4+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib.
 RegisterTaskBar	ce3+ce4	declared	1	1	1	
 RegisterTypeLib	ce3+ce4+ce5+ce6	declared	1	0	1	Oleaut32.lib.; Oleaut32.lib.; Oleaut32.lib
@@ -6692,8 +6697,8 @@ ReleaseDC	ce3+ce5+ce6	declared	1	1	1	Coredll.lib, Winmgr.lib.; Coredll.lib, Winm
 ReleaseMutex	ce3+ce5+ce6	declared	1	1	1	Nk.lib.; Nk.lib
 ReleasePowerRelationship	ce5+ce6	declared	1	1	1	Coredll.lib.
 ReleasePowerRequirement	ce5+ce6	declared	1	1	1	Coredll.lib.
-ReleaseRemoveLock	ce5+ce6	comment-only	0	0	1	
-ReleaseRemoveLockAndWait	ce5+ce6	comment-only	0	0	1	
+ReleaseRemoveLock	ce5+ce6	declared	0	0	1	
+ReleaseRemoveLockAndWait	ce5+ce6	declared	0	0	1	
 ReleaseSemaphore	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.
 ReleaseStgMedium	ce3+ce4+ce5+ce6	declared	1	0	1	Ole32.lib.; Ole32.lib.
 REM	ce3+ce4	comment-only	0	0	1	
@@ -7126,6 +7131,7 @@ SetEndOfFile	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib, Fsmain.lib
 SetEntries	ce5+ce6	comment-only	0	0	1	Developer implemented.
 SetErrorInfo	ce3+ce4+ce5+ce6	declared	1	0	1	Oleaut32.lib.; Oleaut32.lib.; Oleaut32.lib
 SetEvent	ce3+ce5+ce6	declared	1	0	1	Coredll.lib.
+SetEventData	ce5+ce6	declared	1	1	1	coredll.lib
 SetFileAttributes	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
 SetFilePointer	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib, Fsmain.lib
 SetFileTime	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.
@@ -7278,9 +7284,9 @@ ShowAudioControls	ce3+ce4	comment-only	0	0	1
 ShowCaret	ce3+ce5+ce6	declared	1	1	1	Caret.lib.; Caret.lib
 ShowControls	ce3+ce4	comment-only	0	0	1	
 ShowCursor	ce3+ce4	declared	1	1	1	Cursor.lib, Mcursor.lib.; Cursor.lib, Mcursor.lib
-ShowInternalMessage	ce5+ce6	comment-only	0	0	1	
+ShowInternalMessage	ce5+ce6	declared	0	0	1	
 ShowPositionControls	ce3+ce4	comment-only	0	0	1	
-ShowPrompt	ce5+ce6	comment-only	0	0	1	
+ShowPrompt	ce5+ce6	declared	0	0	1	
 ShowStatusBar	ce3+ce4	comment-only	0	0	1	
 ShowTracker	ce3+ce4	comment-only	0	0	1	
 ShowWindow	ce3+ce5+ce6	declared	1	1	1	
@@ -7602,9 +7608,9 @@ StopPowerNotifications	ce5+ce6	declared	1	1	1	Coredll.lib.
 STORAGE_IDENTIFICATION	ce5+ce6	declared	0	0	1	
 STORAGECONTEXT	ce5+ce6	declared	0	0	1	
 STORAGEDEVICEINFO	ce5+ce6	declared	0	0	1	
-STORE_ExecuteCommand	ce5+ce6	comment-only	0	0	1	
+STORE_ExecuteCommand	ce5+ce6	declared	0	0	1	
 STORE_INFORMATION	ce3+ce4+ce5+ce6	declared	0	0	1	
-STORE_IsCommandSupported	ce5+ce6	comment-only	0	0	1	
+STORE_IsCommandSupported	ce5+ce6	declared	0	0	1	
 STOREINFO	ce3+ce4+ce5+ce6	declared	0	0	1	
 STREAM_AttachBuffers_Request	ce5+ce6	comment-only	0	0	1	
 STREAM_AttachBuffers_Response	ce5+ce6	comment-only	0	0	1	
@@ -8470,6 +8476,8 @@ VIDMEM	ce5+ce6	comment-only	0	0	1
 VIDMEMINFO	ce5+ce6	comment-only	0	0	1	
 VIEWSTATUS	ce4+ce5+ce6	declared	0	0	1	
 VirtualAlloc	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
+VirtualAllocCopyEx	ce5+ce6	declared	1	1	1	coredll.lib
+VirtualAllocEx	ce5+ce6	declared	1	1	1	coredll.lib
 VirtualChannelClose	ce4+ce5+ce6	comment-only	0	0	1	Developer implemented.; Developer-implemented.
 VirtualChannelCloseEx	ce5+ce6	comment-only	0	0	1	Developer implemented.
 VirtualChannelEntry	ce4+ce5+ce6	declared	0	0	1	Developer implemented.; Developer implemented.
@@ -8486,8 +8494,11 @@ VirtualChannelWrite	ce4+ce5+ce6	comment-only	0	0	1	Developer implemented.; Devel
 VirtualChannelWriteEx	ce5+ce6	comment-only	0	0	1	Developer implemented.
 VirtualCopy	ce3	declared	1	1	1	
 VirtualFree	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
+VirtualFreeEx	ce5+ce6	declared	1	1	1	coredll.lib
 VirtualProtect	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
+VirtualProtectEx	ce5+ce6	declared	1	1	1	coredll.lib
 VirtualQuery	ce3+ce5+ce6	declared	1	1	1	Coredll.lib.; Coredll.lib
+VirtualQueryEx	ce5+ce6	declared	1	1	1	coredll.lib
 VirtualSetPageFlags	ce3+ce4	declared	1	0	1	Coredll.lib.
 VMS_	ce5+ce6	comment-only	0	0	0	
 VOIP_E_	ce5+ce6	comment-only	0	0	0	

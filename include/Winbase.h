@@ -1765,10 +1765,14 @@ AKARI_CE_IMPORT BOOL CeGenRandom(DWORD dwLen, BYTE *pbBuffer) AKARI_CE_NAME(CeGe
  * canonical form of the path (0 + ERROR_INVALID_PARAMETER for NULL
  * input, ERROR_INSUFFICIENT_BUFFER when the output buffer is small);
  * the canonical string is written when the buffer is non-NULL. */
-AKARI_CE_IMPORT DWORD CeGetCanonicalPathName(LPCWSTR lpPathName,
+AKARI_CE_IMPORT DWORD CeGetCanonicalPathNameW(LPCWSTR lpPathName,
                              LPWSTR lpCanonicalPathName,
                              DWORD cchCanonicalPathName,
-                             DWORD dwReserved) AKARI_CE_NAME(CeGetCanonicalPathName);
+                             DWORD dwReserved) AKARI_CE_NAME(CeGetCanonicalPathNameW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CeGetCanonicalPathName CeGetCanonicalPathNameW
 
 /* aa517158 "CeGetFileNotificationInfo (Windows CE 5.0)":
  * BOOL CeGetFileNotificationInfo(HANDLE, DWORD, LPVOID, DWORD,
@@ -2624,13 +2628,19 @@ AKARI_CE_IMPORT HANDLE ActivateDeviceEx(LPCWSTR lpszDevKey, LPCVOID lpRegEnts, D
 /* ms898278 DeactivateDevice: print `BOOL DeactivateDevice(HANDLE hDevice);` */
 AKARI_CE_IMPORT BOOL DeactivateDevice(HANDLE hDevice)
     AKARI_CE_NAME(DeactivateDevice);
-/* ms898281 DeregisterDevice: print `BOOL DeregisterDevice(Handle hDevice);` */
-/* (record-only: parameter or return type unpublished) */
+/* ms898281 DeregisterDevice: print `BOOL DeregisterDevice(Handle hDevice);`
+ * The page spells the parameter type "Handle"; the CE 3.0 twin
+ * (_wcesdk_DeregisterDevice) prints the same prototype.  HANDLE is
+ * the device-handle carrier used by every sibling page
+ * (DeactivateDevice ms898278 etc.). */
+AKARI_CE_IMPORT BOOL DeregisterDevice(HANDLE hDevice)
+    AKARI_CE_NAME(DeregisterDevice);
 /* ms898288 DeviceIoControl: print `BOOL DeviceIoControl(HANDLEhDevice,DWORDdwIoControlCode,LPVOIDlpInBuffer,DWORDnInBufferSize,LPVOID lpOutBuffer,DWORDnOutBufferSize,LPDWORDlpBytesReturned,LPOVERLAPPEDlpOverlapped);` */
 AKARI_CE_IMPORT BOOL DeviceIoControl(HANDLE hDevice, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped)
     AKARI_CE_NAME(DeviceIoControl);
-/* aa447790 EnumDeviceInterfaces: print `BOOL EnumDeviceInterfaces ( HANDLE h, DWORD dwIndex, GUID *pClass, LPWSTR pszNameBuf, LPDWORD lpdwNameBufSize);` */
-BOOL EnumDeviceInterfaces(HANDLE h, DWORD dwIndex, GUID pClass, LPWSTR pszNameBuf, LPDWORD lpdwNameBufSize);
+/* aa447790 EnumDeviceInterfaces: print `BOOL EnumDeviceInterfaces ( HANDLE h, DWORD dwIndex, GUID *pClass, LPWSTR pszNameBuf, LPDWORD lpdwNameBufSize);` -- verified coredll surface export. */
+AKARI_CE_IMPORT BOOL EnumDeviceInterfaces(HANDLE h, DWORD dwIndex, GUID *pClass, LPWSTR pszNameBuf, LPDWORD lpdwNameBufSize)
+    AKARI_CE_NAME(EnumDeviceInterfaces);
 /* aa447798 FindFirstDevice: print `HANDLE FindFirstDevice( DeviceSearchType searchType, LPCVOID pvSearchParam, PDEVMGR_DEVICE_INFORMATION pdi);` */
 /* (record-only: parameter or return type unpublished) */
 /* aa447800 FindNextDevice: print `BOOL FindNextDevice( HANDLE h, PDEVMGR_DEVICE_INFORMATION pdi);` */
@@ -2678,8 +2688,12 @@ BOOL ResourceRequestEx(DWORD dwResId, DWORD dwId, DWORD dwLen, DWORD dwFlags);
  * Book surface: fsds-remainder (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* aa517137 CeFsIoControl: print `BOOL CeFsIoControl(LPCWSTR pszDir, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped);` */
-AKARI_CE_IMPORT BOOL CeFsIoControl(LPCWSTR pszDir, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped)
-    AKARI_CE_NAME(CeFsIoControl);
+AKARI_CE_IMPORT BOOL CeFsIoControlW(LPCWSTR pszDir, DWORD dwIoControlCode, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned, LPOVERLAPPED lpOverlapped)
+    AKARI_CE_NAME(CeFsIoControlW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CeFsIoControl CeFsIoControlW
 /* aa517244 CeResyncFilesys: print `BOOL CeResyncFilesys(HANDLE hDevice);` */
 AKARI_CE_IMPORT BOOL CeResyncFilesys(HANDLE hDevice)
     AKARI_CE_NAME(CeResyncFilesys);
@@ -2821,5 +2835,31 @@ HANDLE GetCurrentThread(void);
 
 /* ms919623: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
 AKARI_CE_IMPORT BOOL SetUserData(LPBYTE lpbUserData, DWORD dwDataSize) AKARI_CE_NAME(SetUserData);
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms896109: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT BOOL AdvertiseInterface(const GUID* devclass, LPCWSTR name, BOOL fAdd) AKARI_CE_NAME(AdvertiseInterface);
+
+/* aa447798: page-printed prototype (Windows CE 5.0 and later.). */
+AKARI_CE_IMPORT HANDLE FindFirstDevice(DeviceSearchType searchType, LPCVOID pvSearchParam, PDEVMGR_DEVICE_INFORMATION pdi) AKARI_CE_NAME(FindFirstDevice);
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ee488642: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT LPVOID VirtualAllocEx(HANDLE hProcess, LPVOID lpAddress, DWORD dwSize, DWORD flAllocationType, DWORD flProtect) AKARI_CE_NAME(VirtualAllocEx);
+
+/* ee488440: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT BOOL VirtualFreeEx(HANDLE hProcess, LPVOID lpAddress, DWORD dwSize, DWORD dwFreeType) AKARI_CE_NAME(VirtualFreeEx);
+
+/* ee488232: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT BOOL VirtualProtectEx(HANDLE hProcess, LPVOID lpAddress, DWORD dwSize, DWORD flNewProtect, PDWORD lpflOldProtect) AKARI_CE_NAME(VirtualProtectEx);
+
+/* ee488556: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
+AKARI_CE_IMPORT DWORD VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress, PMEMORY_BASIC_INFORMATION lpBuffer, DWORD dwLength) AKARI_CE_NAME(VirtualQueryEx);
 
 #endif /* AKARI_WINBASE_H */

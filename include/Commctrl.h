@@ -4537,4 +4537,48 @@ INT ListView_SetSelectionMark(HWND hwndLV, INT iIndex);
 /* aa453404: page-printed prototype (Windows CE 5.0 and later.). */
 HWND ListView_SetToolTips(HWND hwnd, HWND hwndToolTip);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcesdk_Header_GetItemRect: page-printed prototype (Windows CE OS; commctrl.lib). */
+BOOL Header_GetItemRect(HWND hwndHD, int iIndex, LPRECT lpItemRect);
+
+/* aa453383: page-printed prototype (Windows CE 5.0 and later.). */
+BOOL ListView_GetBkImage(HWND hwndLV, LPLVBKIMAGE plvbki);
+
+/* aa453386: page-printed prototype (Windows CE 5.0 and later.). */
+int ListView_GetGroupInfo(HWND hwnd, int iGroupId, PLVGROUP pgrp);
+
+/* aa453387: page-printed prototype (Windows CE 5.0 and later.). */
+BOOL ListView_GetGroupInfoByIndex(HWND hwnd, int iIndex, PLVGROUP pgrp);
+
+/* aa453348: page-printed prototype (Windows CE 2.0 and later.). */
+BOOL ListView_GetSubItemRect(HWND hwndLV, int iItem, int iSubItem, int code, LPRECT lpRect);
+
+/* aa453391: page-printed prototype (Windows CE 5.0 and later.). */
+int ListView_InsertGroup(HWND hwnd, int index, PLVGROUP pgrp);
+
+/* aa453400: page-printed prototype (Windows CE 5.0 and later.). */
+BOOL ListView_SetBkImage(HWND hwndLV, LPLVBKIMAGE plvbki);
+
+/* aa453401: page-printed prototype (Windows CE 5.0 and later.). */
+int ListView_SetGroupInfo(HWND hwnd, int iGroupId, PLVGROUP pgrp);
+
+/* aa453403: page-printed prototype (Windows CE 5.0 and later.). */
+BOOL ListView_SetInfoTip(HWND hwnd, PLVSETINFOTIP plvSetInfoTip);
+
+/* aa453380: page-printed prototype (Windows CE 2.0 and later.). */
+INT ListView_SubItemHitTest(HWND hwndLV, LPLVHITTESTINFO pInfo);
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcesdk_Header_GetOrderArray: page-printed prototype (Windows CE OS; commctrl.lib). */
+BOOL Header_GetOrderArray(HWND hwndHD, int iSize, int* lpiArray);
+
+/* _wcesdk_Header_SetOrderArray: page-printed prototype (Windows CE OS; commctrl.lib). */
+BOOL Header_SetOrderArray(HWND hwndHD, int iSize, int* lpiArray);
+
 #endif /* AKARI_COMMCTRL_H */

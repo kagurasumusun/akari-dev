@@ -34,4 +34,11 @@ void OEMCacheRangeFlush(LPVOID pAddr, DWORD dwLength, DWORD dwFlags);
 /* ms903551: page-printed prototype (Windows CE .NET 4.0 and later.; nk.lib). */
 DWORD SC_GetTickCount(void);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms903211: page-printed prototype (Windows CE 2.10 and later.; nk.lib). */
+BOOL KLocalFileTimeToFileTime(const FILETIME* lpft, LPFILETIME lpst);
+
 #endif /* AKARI_KERNEL_H_ */

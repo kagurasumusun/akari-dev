@@ -224,4 +224,11 @@ AKARI_CE_IMPORT BOOL StopPowerNotifications(HANDLE h)
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms919797: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT HANDLE RegisterPowerRelationship(PVOID pvParent, PVOID pvChild, PPOWER_CAPABILITIES pCaps, DWORD Flags) AKARI_CE_NAME(RegisterPowerRelationship);
+
 #endif /* AKARI_PM_H */

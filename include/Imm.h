@@ -260,12 +260,20 @@ AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCCLockCount(HIMCC hIMCC)
 
 /* candidate list / window */
 
-AKARI_CE_IMPORT DWORD ImmGetCandidateList(HIMC hIMC, DWORD deIndex,
+AKARI_CE_IMPORT DWORD ImmGetCandidateListW(HIMC hIMC, DWORD deIndex,
     LPCANDIDATELIST lpCandList, DWORD dwBufLen)
-    AKARI_CE_NAME(ImmGetCandidateList);                 /* ms905995 */
-AKARI_CE_IMPORT DWORD ImmGetCandidateListCount(HIMC hIMC,
+    AKARI_CE_NAME(ImmGetCandidateListW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetCandidateList ImmGetCandidateListW                 /* ms905995 */
+AKARI_CE_IMPORT DWORD ImmGetCandidateListCountW(HIMC hIMC,
     LPDWORD lpdwListCount)
-    AKARI_CE_NAME(ImmGetCandidateListCount);            /* ms905996 */
+    AKARI_CE_NAME(ImmGetCandidateListCountW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetCandidateListCount ImmGetCandidateListCountW            /* ms905996 */
 AKARI_CE_IMPORT BOOL ImmGetCandidateWindow(HIMC hIMC, DWORD dwIndex,
     LPCANDIDATEFORM lpCandidate)
     AKARI_CE_NAME(ImmGetCandidateWindow);               /* ms905997 */
@@ -275,22 +283,38 @@ AKARI_CE_IMPORT BOOL ImmSetCandidateWindow(HIMC hIMC,
 
 /* composition string / window / font */
 
-AKARI_CE_IMPORT LONG ImmGetCompositionString(HIMC hIMC, DWORD dwIndex,
+AKARI_CE_IMPORT LONG ImmGetCompositionStringW(HIMC hIMC, DWORD dwIndex,
     LPVOID lpBuf, DWORD dwBufLen)
-    AKARI_CE_NAME(ImmGetCompositionString);             /* ms906001 */
-AKARI_CE_IMPORT BOOL ImmSetCompositionString(HIMC hIMC, DWORD dwIndex,
+    AKARI_CE_NAME(ImmGetCompositionStringW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetCompositionString ImmGetCompositionStringW             /* ms906001 */
+AKARI_CE_IMPORT BOOL ImmSetCompositionStringW(HIMC hIMC, DWORD dwIndex,
     LPCVOID lpComp, DWORD dwCompLen, LPCVOID lpRead, DWORD dwReadLen)
-    AKARI_CE_NAME(ImmSetCompositionString);             /* ms906031 */
+    AKARI_CE_NAME(ImmSetCompositionStringW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmSetCompositionString ImmSetCompositionStringW             /* ms906031 */
 AKARI_CE_IMPORT BOOL ImmGetCompositionWindow(HIMC hIMC,
     LPCOMPOSITIONFORM lpCompForm)
     AKARI_CE_NAME(ImmGetCompositionWindow);             /* ms906002 */
 AKARI_CE_IMPORT BOOL ImmSetCompositionWindow(HIMC hIMC,
     LPCOMPOSITIONFORM lpCompForm)
     AKARI_CE_NAME(ImmSetCompositionWindow);             /* ms906032 */
-AKARI_CE_IMPORT BOOL ImmGetCompositionFont(HIMC hIMC, LPLOGFONT lplf)
-    AKARI_CE_NAME(ImmGetCompositionFont);               /* ms905998 */
-AKARI_CE_IMPORT BOOL ImmSetCompositionFont(HIMC hIMC, LPLOGFONT lplf)
-    AKARI_CE_NAME(ImmSetCompositionFont);               /* ms906030 */
+AKARI_CE_IMPORT BOOL ImmGetCompositionFontW(HIMC hIMC, LPLOGFONT lplf)
+    AKARI_CE_NAME(ImmGetCompositionFontW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetCompositionFont ImmGetCompositionFontW               /* ms905998 */
+AKARI_CE_IMPORT BOOL ImmSetCompositionFontW(HIMC hIMC, LPLOGFONT lplf)
+    AKARI_CE_NAME(ImmSetCompositionFontW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmSetCompositionFont ImmSetCompositionFontW               /* ms906030 */
 
 /* conversion status / list */
 
@@ -300,9 +324,13 @@ AKARI_CE_IMPORT BOOL ImmGetConversionStatus(HIMC hIMC,
 AKARI_CE_IMPORT BOOL ImmSetConversionStatus(HIMC hIMC,
     DWORD fdwConversion, DWORD fdwSentence)
     AKARI_CE_NAME(ImmSetConversionStatus);              /* ms906033 */
-AKARI_CE_IMPORT UINT ImmGetConversionList(HKL hKL, HIMC hIMC,
+AKARI_CE_IMPORT UINT ImmGetConversionListW(HKL hKL, HIMC hIMC,
     LPCTSTR lpSrc, LPCANDIDATELIST lpDst, DWORD dwBufLen, UINT uFlag)
-    AKARI_CE_NAME(ImmGetConversionList);                /* ms906004 */
+    AKARI_CE_NAME(ImmGetConversionListW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetConversionList ImmGetConversionListW                /* ms906004 */
 
 /* status window / open status / properties */
 
@@ -318,33 +346,61 @@ AKARI_CE_IMPORT HWND ImmGetDefaultIMEWnd(HWND hWnd)
     AKARI_CE_NAME(ImmGetDefaultIMEWnd);                 /* ms906007 */
 AKARI_CE_IMPORT BOOL ImmGetProperty(HKL hKL, DWORD fdwIndex)
     AKARI_CE_NAME(ImmGetProperty);                      /* ms906017 */
-AKARI_CE_IMPORT DWORD ImmGetGuideLine(HIMC hIMC, DWORD dwIndex,
+AKARI_CE_IMPORT DWORD ImmGetGuideLineW(HIMC hIMC, DWORD dwIndex,
     LPTSTR lpBuf, DWORD dwBufLen)
-    AKARI_CE_NAME(ImmGetGuideLine);                     /* ms906009 */
-AKARI_CE_IMPORT BOOL WINAPI ImmGetImeMenuItems(HIMC hIMC, DWORD dwFlags,
+    AKARI_CE_NAME(ImmGetGuideLineW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetGuideLine ImmGetGuideLineW                     /* ms906009 */
+AKARI_CE_IMPORT BOOL WINAPI ImmGetImeMenuItemsW(HIMC hIMC, DWORD dwFlags,
     DWORD dwType, LPIMEMENUITEMINFO lpImeParentMenu,
     LPIMEMENUITEMINFO lpImeMenu, DWORD dwSize)
-    AKARI_CE_NAME(ImmGetImeMenuItems);                  /* ms906015 */
+    AKARI_CE_NAME(ImmGetImeMenuItemsW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetImeMenuItems ImmGetImeMenuItemsW                  /* ms906015 */
 
 /* keyboard layout / IME identity */
 
 AKARI_CE_IMPORT BOOL ImmIsIME(HKL hKL)
     AKARI_CE_NAME(ImmIsIME);                            /* ms906021 */
-AKARI_CE_IMPORT UINT ImmGetDescription(HKL hKL, LPTSTR lpszDescription,
+AKARI_CE_IMPORT UINT ImmGetDescriptionW(HKL hKL, LPTSTR lpszDescription,
     UINT uBufLen)
-    AKARI_CE_NAME(ImmGetDescription);                   /* ms906008 */
-AKARI_CE_IMPORT BOOL ImmGetIMEFileName(HKL hKL, LPTSTR lpszFileName,
+    AKARI_CE_NAME(ImmGetDescriptionW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetDescription ImmGetDescriptionW                   /* ms906008 */
+AKARI_CE_IMPORT BOOL ImmGetIMEFileNameW(HKL hKL, LPTSTR lpszFileName,
     UINT uBufLen)
-    AKARI_CE_NAME(ImmGetIMEFileName);                   /* ms906014 */
-AKARI_CE_IMPORT BOOL ImmConfigureIME(HKL hKL, HWND hWnd, DWORD dwMode,
+    AKARI_CE_NAME(ImmGetIMEFileNameW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetIMEFileName ImmGetIMEFileNameW                   /* ms906014 */
+AKARI_CE_IMPORT BOOL ImmConfigureIMEW(HKL hKL, HWND hWnd, DWORD dwMode,
     LPVOID lpData)
-    AKARI_CE_NAME(ImmConfigureIME);                     /* ms905986 */
-AKARI_CE_IMPORT LRESULT ImmEscape(HKL hKL, HIMC hIMC, UINT uEscape,
+    AKARI_CE_NAME(ImmConfigureIMEW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmConfigureIME ImmConfigureIMEW                     /* ms905986 */
+AKARI_CE_IMPORT LRESULT ImmEscapeW(HKL hKL, HIMC hIMC, UINT uEscape,
     LPVOID lpData)
-    AKARI_CE_NAME(ImmEscape);                           /* ms905993 */
-AKARI_CE_IMPORT BOOL ImmIsUIMessage(HWND hWndIME, UINT msg,
+    AKARI_CE_NAME(ImmEscapeW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmEscape ImmEscapeW                           /* ms905993 */
+AKARI_CE_IMPORT BOOL ImmIsUIMessageW(HWND hWndIME, UINT msg,
     WPARAM wParam, LPARAM lParam)
-    AKARI_CE_NAME(ImmIsUIMessage);                      /* ms906022 */
+    AKARI_CE_NAME(ImmIsUIMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmIsUIMessage ImmIsUIMessageW                      /* ms906022 */
 AKARI_CE_IMPORT BOOL WINAPI ImmGenerateMessage(HIMC hIMC)
     AKARI_CE_NAME(ImmGenerateMessage);                  /* ms905994 */
 AKARI_CE_IMPORT UINT ImmGetVirtualKey(HWND hWnd)
@@ -363,21 +419,37 @@ AKARI_CE_IMPORT BOOL ImmSimulateHotKey(HWND hWnd, DWORD dwHotKeyID)
 
 /* user dictionary (register words) */
 
-AKARI_CE_IMPORT BOOL ImmRegisterWord(HKL hKL, LPCTSTR lpszReading,
+AKARI_CE_IMPORT BOOL ImmRegisterWordW(HKL hKL, LPCTSTR lpszReading,
     DWORD dwStyle, LPCTSTR lpszRegister)
-    AKARI_CE_NAME(ImmRegisterWord);                     /* ms906026: the
+    AKARI_CE_NAME(ImmRegisterWordW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmRegisterWord ImmRegisterWordW                     /* ms906026: the
     archive prints the second parameter type as LPCTSR; LPCTSTR is the
     documented spelling (every other CE page of this set) */
-AKARI_CE_IMPORT BOOL ImmUnregisterWord(HKL hKL, LPCTSTR lpszReading,
+AKARI_CE_IMPORT BOOL ImmUnregisterWordW(HKL hKL, LPCTSTR lpszReading,
     DWORD dwStyle, LPCTSTR lpszUnregister)
-    AKARI_CE_NAME(ImmUnregisterWord);                   /* ms906041 */
-AKARI_CE_IMPORT UINT ImmEnumRegisterWord(HKL hKL,
+    AKARI_CE_NAME(ImmUnregisterWordW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmUnregisterWord ImmUnregisterWordW                   /* ms906041 */
+AKARI_CE_IMPORT UINT ImmEnumRegisterWordW(HKL hKL,
     REGISTERWORDENUMPROC lpfnEnumProc, LPCTSTR lpszReading,
     DWORD dwStyle, LPCTSTR lpszRegister, LPVOID lpData)
-    AKARI_CE_NAME(ImmEnumRegisterWord);                 /* ms905992 */
-AKARI_CE_IMPORT UINT ImmGetRegisterWordStyle(HKL hKL, UINT nItem,
+    AKARI_CE_NAME(ImmEnumRegisterWordW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmEnumRegisterWord ImmEnumRegisterWordW                 /* ms905992 */
+AKARI_CE_IMPORT UINT ImmGetRegisterWordStyleW(HKL hKL, UINT nItem,
     LPSTYLEBUF lpStyleBuf)
-    AKARI_CE_NAME(ImmGetRegisterWordStyle);             /* ms906018 */
+    AKARI_CE_NAME(ImmGetRegisterWordStyleW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define ImmGetRegisterWordStyle ImmGetRegisterWordStyleW             /* ms906018 */
 
 /* IME control / CE-specific */
 

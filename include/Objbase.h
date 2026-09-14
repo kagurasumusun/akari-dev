@@ -110,7 +110,10 @@ typedef OLECHAR         *BSTR;        /* ms886145 */
  * COM API).  The S_OK / S_FALSE / E_* constant names are referenced by
  * the pages; their numeric values are not published in the CE corpus,
  * so they are not defined here. */
+#ifndef AKARI_HRESULT_DEFINED
+#define AKARI_HRESULT_DEFINED
 typedef LONG             HRESULT;
+#endif
 
 /* GUID (the 16-byte COM identifier) and LPGUID are declared in
  * winnt.h; the layout is fixed by the binary form the

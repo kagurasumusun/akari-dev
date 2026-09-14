@@ -411,14 +411,26 @@ AKARI_CE_IMPORT BOOL ShowCaret(HWND hWnd) AKARI_CE_NAME(ShowCaret);             
 /* Link Library row feed def/coredll-doc.def).                        */
 /* ------------------------------------------------------------------ */
 
-AKARI_CE_IMPORT BOOL GetMessage(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,    /* aa453135 */
-                 UINT wMsgFilterMax) AKARI_CE_NAME(GetMessage);
-AKARI_CE_IMPORT BOOL PeekMessage(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,   /* ms911928 */
-                  UINT wMsgFilterMax, UINT wRemoveMsg) AKARI_CE_NAME(PeekMessage);
+AKARI_CE_IMPORT BOOL GetMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,    /* aa453135 */
+                 UINT wMsgFilterMax) AKARI_CE_NAME(GetMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define GetMessage GetMessageW
+AKARI_CE_IMPORT BOOL PeekMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,   /* ms911928 */
+                  UINT wMsgFilterMax, UINT wRemoveMsg) AKARI_CE_NAME(PeekMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define PeekMessage PeekMessageW
 
 /* aa452956 "DispatchMessage": dispatches to the window procedure.  The
  * page prints LONG as the return type. */
-AKARI_CE_IMPORT LONG DispatchMessage(const MSG *lpmsg) AKARI_CE_NAME(DispatchMessage);
+AKARI_CE_IMPORT LONG DispatchMessageW(const MSG *lpmsg) AKARI_CE_NAME(DispatchMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define DispatchMessage DispatchMessageW
 
 /* aa453776 "TranslateMessage": translates virtual-key messages into
  * character messages. */
@@ -426,12 +438,28 @@ AKARI_CE_IMPORT BOOL TranslateMessage(const MSG *lpMsg) AKARI_CE_NAME(TranslateM
 
 /* ms911937 "PostMessage" / ms911939 "PostThreadMessage" /
  * ms939980 "SendMessage" / ms939983 "SendNotifyMessage". */
-AKARI_CE_IMPORT BOOL PostMessage(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(PostMessage);
-AKARI_CE_IMPORT BOOL PostThreadMessage(DWORD idThread, UINT Msg, WPARAM wParam,
-                        LPARAM lParam) AKARI_CE_NAME(PostThreadMessage);
-AKARI_CE_IMPORT LRESULT SendMessage(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendMessage);
-AKARI_CE_IMPORT BOOL SendNotifyMessage(HWND hWnd, UINT Msg, WPARAM wParam,
-                        LPARAM lParam) AKARI_CE_NAME(SendNotifyMessage);
+AKARI_CE_IMPORT BOOL PostMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(PostMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define PostMessage PostMessageW
+AKARI_CE_IMPORT BOOL PostThreadMessageW(DWORD idThread, UINT Msg, WPARAM wParam,
+                        LPARAM lParam) AKARI_CE_NAME(PostThreadMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define PostThreadMessage PostThreadMessageW
+AKARI_CE_IMPORT LRESULT SendMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define SendMessage SendMessageW
+AKARI_CE_IMPORT BOOL SendNotifyMessageW(HWND hWnd, UINT Msg, WPARAM wParam,
+                        LPARAM lParam) AKARI_CE_NAME(SendNotifyMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define SendNotifyMessage SendNotifyMessageW
 
 /* ms911938 "PostQuitMessage": posts WM_QUIT (wParam = nExitCode). */
 AKARI_CE_IMPORT void PostQuitMessage(int nExitCode) AKARI_CE_NAME(PostQuitMessage);
@@ -492,7 +520,11 @@ AKARI_CE_IMPORT DWORD GetKeyboardStatus(VOID) AKARI_CE_NAME(GetKeyboardStatus); 
 AKARI_CE_IMPORT int   GetKeyboardType(int nTypeFlag) AKARI_CE_NAME(GetKeyboardType);                  /* ms929254 */
 
 /* ms911789 "MapVirtualKey". */
-AKARI_CE_IMPORT UINT MapVirtualKey(UINT uCode, UINT uMapType) AKARI_CE_NAME(MapVirtualKey);
+AKARI_CE_IMPORT UINT MapVirtualKeyW(UINT uCode, UINT uMapType) AKARI_CE_NAME(MapVirtualKeyW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define MapVirtualKey MapVirtualKeyW
 
 /* keybd_event (aa453245): synthesizes a keystroke; dwFlags is
  * KEYEVENTF_EXTENDEDKEY / KEYEVENTF_KEYUP. */
@@ -767,20 +799,32 @@ AKARI_CE_IMPORT BOOL PostKeybdMessage(HWND hwnd, UINT VKey,
 
 /* LoadKeyboardLayout (aa453414): the page's signature takes LPCSTR
  * pwszKLID (a layout identifier string). */
-AKARI_CE_IMPORT HKL LoadKeyboardLayout(LPCSTR pwszKLID, UINT Flags) AKARI_CE_NAME(LoadKeyboardLayout);
+AKARI_CE_IMPORT HKL LoadKeyboardLayoutW(LPCSTR pwszKLID, UINT Flags) AKARI_CE_NAME(LoadKeyboardLayoutW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define LoadKeyboardLayout LoadKeyboardLayoutW
 
 /* Hot keys (CE 2.0+). */
 AKARI_CE_IMPORT BOOL RegisterHotKey(HWND hWnd, int id, UINT fsModifiers, UINT vk) AKARI_CE_NAME(RegisterHotKey);
 BOOL UnregisterHotKey(HWND hWnd, int id);
 
 /* Accelerator tables (CE 1.0+; Link Library Accel.lib). */
-AKARI_CE_IMPORT HACCEL CreateAcceleratorTable(LPACCEL lpaccl, int cEntries) AKARI_CE_NAME(CreateAcceleratorTable); /* ms908162 */
+AKARI_CE_IMPORT HACCEL CreateAcceleratorTableW(LPACCEL lpaccl, int cEntries) AKARI_CE_NAME(CreateAcceleratorTableW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CreateAcceleratorTable CreateAcceleratorTableW /* ms908162 */
 AKARI_CE_IMPORT HACCEL LoadAcceleratorsW(HINSTANCE hInstance,                /* aa453407 */
                          LPCTSTR lpTableName) AKARI_CE_NAME(LoadAcceleratorsW);
 #define LoadAccelerators LoadAcceleratorsW
 AKARI_CE_IMPORT BOOL   DestroyAcceleratorTable(HACCEL hAccel) AKARI_CE_NAME(DestroyAcceleratorTable);              /* aa452935 */
-AKARI_CE_IMPORT int    TranslateAccelerator(HWND hWnd, HACCEL hAccTable,    /* aa453775 */
-                            LPMSG lpMsg) AKARI_CE_NAME(TranslateAccelerator);
+AKARI_CE_IMPORT int    TranslateAcceleratorW(HWND hWnd, HACCEL hAccTable,    /* aa453775 */
+                            LPMSG lpMsg) AKARI_CE_NAME(TranslateAcceleratorW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define TranslateAccelerator TranslateAcceleratorW
 
 /* ms932719 "SendInput": synthesizes mouse/keyboard/hardware input. */
 AKARI_CE_IMPORT UINT SendInput(UINT nInputs, LPINPUT pInputs, int cbSize) AKARI_CE_NAME(SendInput);
@@ -866,7 +910,11 @@ AKARI_CE_IMPORT BOOL InvalidateRect(HWND hWnd, const RECT* lpRect, BOOL bErase) 
 /* ms909894 "IsRectEmpty" */
 AKARI_CE_IMPORT BOOL IsRectEmpty(const RECT* lprc) AKARI_CE_NAME(IsRectEmpty);
 /* aa453409 "LoadBitmap" */
-AKARI_CE_IMPORT HBITMAP LoadBitmap(HINSTANCE hInstance, LPCTSTR lpBitmapName) AKARI_CE_NAME(LoadBitmap);
+AKARI_CE_IMPORT HBITMAP LoadBitmapW(HINSTANCE hInstance, LPCTSTR lpBitmapName) AKARI_CE_NAME(LoadBitmapW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define LoadBitmap LoadBitmapW
 /* ms911790 "MapWindowPoints" */
 AKARI_CE_IMPORT int MapWindowPoints(HWND hWndFrom, HWND hWndTo, LPPOINT lpPoints,
     UINT cPoints) AKARI_CE_NAME(MapWindowPoints);
@@ -1021,8 +1069,12 @@ AKARI_CE_IMPORT BOOL  DeleteMenu(HMENU hMenu, UINT uPosition, UINT uFlags) AKARI
 AKARI_CE_IMPORT BOOL  DestroyMenu(HMENU hMenu) AKARI_CE_NAME(DestroyMenu);                       /* aa452940 */
 AKARI_CE_IMPORT BOOL  DrawMenuBar(HWND hWnd) AKARI_CE_NAME(DrawMenuBar);                         /* aa452975 */
 AKARI_CE_IMPORT BOOL  EnableMenuItem(HMENU hMenu, UINT uIDEnableItem, UINT uEnable) AKARI_CE_NAME(EnableMenuItem); /* aa453034 */
-AKARI_CE_IMPORT BOOL  GetMenuItemInfo(HMENU hMenu, UINT uItem, BOOL fByPosition,
-                      LPMENUITEMINFO lpmii) AKARI_CE_NAME(GetMenuItemInfo);          /* aa453134 */
+AKARI_CE_IMPORT BOOL  GetMenuItemInfoW(HMENU hMenu, UINT uItem, BOOL fByPosition,
+                      LPMENUITEMINFO lpmii) AKARI_CE_NAME(GetMenuItemInfoW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define GetMenuItemInfo GetMenuItemInfoW          /* aa453134 */
 AKARI_CE_IMPORT HMENU GetSubMenu(HMENU hMenu, int nPos) AKARI_CE_NAME(GetSubMenu);              /* aa453166 */
 AKARI_CE_IMPORT HMENU GetSystemMenu(HWND hWnd, BOOL bRevert) AKARI_CE_NAME(GetSystemMenu);         /* aa453169 */
 AKARI_CE_IMPORT BOOL  InsertMenuW(HMENU hMenu, UINT uPosition, UINT uFlags,
@@ -1031,8 +1083,12 @@ AKARI_CE_IMPORT BOOL  InsertMenuW(HMENU hMenu, UINT uPosition, UINT uFlags,
 AKARI_CE_IMPORT HMENU LoadMenuW(HINSTANCE hInstance, LPCTSTR lpMenuName) AKARI_CE_NAME(LoadMenuW);          /* aa453415 */
 #define LoadMenu LoadMenuW
 AKARI_CE_IMPORT BOOL  RemoveMenu(HMENU hMenu, UINT uPosition, UINT uFlags) AKARI_CE_NAME(RemoveMenu);        /* ms939775 */
-AKARI_CE_IMPORT BOOL  SetMenuItemInfo(HMENU hMenu, UINT uItem, BOOL fByPosition,
-                      LPCMENUITEMINFO lpmii) AKARI_CE_NAME(SetMenuItemInfo);        /* ms940027 */
+AKARI_CE_IMPORT BOOL  SetMenuItemInfoW(HMENU hMenu, UINT uItem, BOOL fByPosition,
+                      LPCMENUITEMINFO lpmii) AKARI_CE_NAME(SetMenuItemInfoW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define SetMenuItemInfo SetMenuItemInfoW        /* ms940027 */
 AKARI_CE_IMPORT BOOL  TrackPopupMenu(HMENU hMenu, UINT uFlags, int x, int y,
                      int nReserved, HWND hWnd, const RECT* prcRect) AKARI_CE_NAME(TrackPopupMenu); /* aa453773 */
 AKARI_CE_IMPORT BOOL  TrackPopupMenuEx(HMENU hmenu, UINT uFlags, int x, int y,     /* aa453774 */
@@ -1051,23 +1107,35 @@ HWND CreateDialogW(HINSTANCE hInstance, LPCTSTR lpTemplate,       /* ms908169 */
 AKARI_CE_IMPORT HWND CreateDialogIndirect(HINSTANCE hInstance,                    /* ms908170 */
                           LPCDLGTEMPLATE lpTemplate, HWND hWndParent,
                           DLGPROC lpDialogFunc) AKARI_CE_NAME(CreateDialogIndirect);
-AKARI_CE_IMPORT HWND CreateDialogIndirectParam(HINSTANCE hInstance,               /* ms908171 */
+AKARI_CE_IMPORT HWND CreateDialogIndirectParamW(HINSTANCE hInstance,               /* ms908171 */
                                LPCDLGTEMPLATE lpTemplate, HWND hWndParent,
-                               DLGPROC lpDialogFunc, LPARAM lParamInit) AKARI_CE_NAME(CreateDialogIndirectParam);
+                               DLGPROC lpDialogFunc, LPARAM lParamInit) AKARI_CE_NAME(CreateDialogIndirectParamW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CreateDialogIndirectParam CreateDialogIndirectParamW
 HWND CreateDialogParamW(HINSTANCE hInstance, LPCTSTR lpTemplateName, /* ms908172 */
                         HWND hWndParent, DLGPROC lpDialogFunc,
                         LPARAM dwInitParam);
 #define CreateDialogParam CreateDialogParamW
-AKARI_CE_IMPORT LRESULT DefDlgProc(HWND hDlg, UINT Msg, WPARAM wParam,            /* ms908209 */
-                   LPARAM lParam) AKARI_CE_NAME(DefDlgProc);
+AKARI_CE_IMPORT LRESULT DefDlgProcW(HWND hDlg, UINT Msg, WPARAM wParam,            /* ms908209 */
+                   LPARAM lParam) AKARI_CE_NAME(DefDlgProcW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define DefDlgProc DefDlgProcW
 int    DialogBoxW(HINSTANCE hInstance, LPCTSTR lpTemplate,        /* aa452947 */
                   HWND hWndParent, DLGPROC lpDialogFunc);
 #define DialogBox DialogBoxW
 int    DialogBoxIndirect(HINSTANCE hInstance, LPDLGTEMPLATE lpTemplate, /* aa452948 */
                          HWND hWndParent, DLGPROC lpDialogFunc);
-AKARI_CE_IMPORT int    DialogBoxIndirectParam(HINSTANCE hInstance,                /* aa452949 */
+AKARI_CE_IMPORT int    DialogBoxIndirectParamW(HINSTANCE hInstance,                /* aa452949 */
                               LPCDLGTEMPLATE hDialogTemplate, HWND hWndParent,
-                              DLGPROC lpDialogFunc, LPARAM dwInitParam) AKARI_CE_NAME(DialogBoxIndirectParam);
+                              DLGPROC lpDialogFunc, LPARAM dwInitParam) AKARI_CE_NAME(DialogBoxIndirectParamW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define DialogBoxIndirectParam DialogBoxIndirectParamW
 int    DialogBoxParamW(HINSTANCE hInstance, LPCTSTR lpTemplateName, /* aa452950 */
                        HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
 #define DialogBoxParam DialogBoxParamW
@@ -1082,10 +1150,18 @@ AKARI_CE_IMPORT UINT   GetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPTSTR lpStrin
 #define GetDlgItemText GetDlgItemTextW
 AKARI_CE_IMPORT HWND   GetNextDlgGroupItem(HWND hDlg, HWND hCtl, BOOL bPrevious) AKARI_CE_NAME(GetNextDlgGroupItem);  /* aa453145 */
 AKARI_CE_IMPORT HWND   GetNextDlgTabItem(HWND hDlg, HWND hCtl, BOOL bPrevious) AKARI_CE_NAME(GetNextDlgTabItem);    /* aa453146 */
-AKARI_CE_IMPORT BOOL   IsDialogMessage(HWND hDlg, LPMSG lpMsg) AKARI_CE_NAME(IsDialogMessage);                   /* ms909864 */
+AKARI_CE_IMPORT BOOL   IsDialogMessageW(HWND hDlg, LPMSG lpMsg) AKARI_CE_NAME(IsDialogMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define IsDialogMessage IsDialogMessageW                   /* ms909864 */
 AKARI_CE_IMPORT BOOL   MapDialogRect(HWND hDlg, LPRECT lpRect) AKARI_CE_NAME(MapDialogRect);                   /* ms911788 */
-AKARI_CE_IMPORT LONG   SendDlgItemMessage(HWND hDlg, int nIDDlgItem, UINT Msg,    /* ms932717 */
-                          WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendDlgItemMessage);
+AKARI_CE_IMPORT LONG   SendDlgItemMessageW(HWND hDlg, int nIDDlgItem, UINT Msg,    /* ms932717 */
+                          WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendDlgItemMessageW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define SendDlgItemMessage SendDlgItemMessageW
 AKARI_CE_IMPORT BOOL   SetDlgItemInt(HWND hDlg, int nIDDlgItem, UINT uValue,      /* ms940020 */
                      BOOL bSigned) AKARI_CE_NAME(SetDlgItemInt);
 AKARI_CE_IMPORT BOOL   SetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPCTSTR lpString) AKARI_CE_NAME(SetDlgItemTextW); /* ms940021 */
@@ -1170,7 +1246,11 @@ AKARI_CE_IMPORT HCURSOR  GetCursor(void) AKARI_CE_NAME(GetCursor);              
 AKARI_CE_IMPORT BOOL     GetCursorPos(LPPOINT lpPoint) AKARI_CE_NAME(GetCursorPos);       /* ms929226 */
 AKARI_CE_IMPORT HCURSOR  SetCursor(HCURSOR hCursor) AKARI_CE_NAME(SetCursor);             /* ms940016 */
 AKARI_CE_IMPORT int      ShowCursor(BOOL bShow) AKARI_CE_NAME(ShowCursor);                /* aa453730 */
-AKARI_CE_IMPORT HCURSOR  LoadCursor(HINSTANCE hInstance, LPCTSTR lpCursorName) AKARI_CE_NAME(LoadCursor);   /* aa453410 */
+AKARI_CE_IMPORT HCURSOR  LoadCursorW(HINSTANCE hInstance, LPCTSTR lpCursorName) AKARI_CE_NAME(LoadCursorW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define LoadCursor LoadCursorW   /* aa453410 */
 AKARI_CE_IMPORT HCURSOR  CreateCursor(HINSTANCE hInst, int xHotSpot, int yHotSpot,
                                       int nWidth, int nHeight, CONST VOID *pvANDPlane,
                                       CONST VOID *pvXORPlane) AKARI_CE_NAME(CreateCursor); /* ms908167 */

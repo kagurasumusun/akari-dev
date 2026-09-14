@@ -272,11 +272,19 @@ AKARI_CE_IMPORT DWORD    CommDlgExtendedError(void) AKARI_CE_NAME(CommDlgExtende
 /* aa453150 "GetOpenFileName" (CE 1.0+; Fileopen.lib): the page prints
  * no prototype block; the documented signature is
  * "BOOL GetOpenFileName(LPOPENFILENAME lpofn);". */
-AKARI_CE_IMPORT BOOL     GetOpenFileName(LPOPENFILENAME lpofn) AKARI_CE_NAME(GetOpenFileName);              /* aa453150 */
+AKARI_CE_IMPORT BOOL     GetOpenFileNameW(LPOPENFILENAME lpofn) AKARI_CE_NAME(GetOpenFileNameW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define GetOpenFileName GetOpenFileNameW              /* aa453150 */
 
 /* aa453162 "GetSaveFileName" (CE 1.0+; Fileopen.lib):
  * "BOOL GetSaveFileName(LPOPENFILENAME lpofn);". */
-AKARI_CE_IMPORT BOOL     GetSaveFileName(LPOPENFILENAME lpofn) AKARI_CE_NAME(GetSaveFileName);              /* aa453162 */
+AKARI_CE_IMPORT BOOL     GetSaveFileNameW(LPOPENFILENAME lpofn) AKARI_CE_NAME(GetSaveFileNameW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define GetSaveFileName GetSaveFileNameW              /* aa453162 */
 
 /* ms911909 "PageSetupDlg" (CE 2.10+; Commdlg.lib):
  * "BOOL PageSetupDlg(LPPAGESETUPDLG lppsd);". */
@@ -327,5 +335,12 @@ UINT     APIENTRY PrintHookProc(HWND hdlg, UINT uiMsg,
 #ifdef __cplusplus
 }
 #endif
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa452636: page-printed prototype (Windows CE .NET 4.0 and later.). */
+BOOL DrvAdvPageSetupDlg(LPPAGESETUPDLG lppsd, HWND hwndDlg);
 
 #endif /* AKARI_COMMDLG_H */

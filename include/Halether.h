@@ -63,4 +63,35 @@ typedef struct _EDBG_ADDR {
     USHORT wPort;
 } EDBG_ADDR;
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* _wcepb_EDBG_ADAPTER: page-printed definition (Windows CE OS). */
+typedef struct _EDBG_ADAPTER {
+    EDBG_ADDR Addr;
+    DWORD SysIntrVal;
+    DWORD DHCPLeaseTime;
+    DWORD EdbgFlags;
+} EDBG_ADAPTER;
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcepb_EdbgSendUDP: page-printed prototype (Windows CE OS). */
+BOOL EdbgSendUDP(BYTE* pFrameBuffer, EDBG_ADDR* pDestAddr, USHORT SrcPort, BYTE* pData, UINT16 cwLength);
+
+/* _wcepb_OEMEthGetFrame: page-printed prototype (Windows CE OS). */
+BOOL OEMEthGetFrame(BYTE* pData, UINT16* pwLength);
+
+/* _wcepb_OEMEthInit: page-printed prototype (Windows CE OS). */
+BOOL OEMEthInit(EDBG_ADAPTER* pAdapter);
+
+/* _wcepb_OEMEthQueryClientInfo: page-printed prototype (Windows CE OS). */
+BOOL OEMEthQueryClientInfo(UCHAR Id, EDBG_ADDR* pPeerAddr, PUCHAR pWindowSize, PUCHAR* ppBufferPool);
+
+/* _wcepb_OEMEthSendFrame: page-printed prototype (Windows CE OS). */
+BOOL OEMEthSendFrame(BYTE* pData, DWORD dwLength);
+
 #endif /* AKARI_HALETHER_H_ */

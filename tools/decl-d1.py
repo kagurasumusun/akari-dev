@@ -66,7 +66,18 @@ def load_types(incdir):
         code = re.sub(r"(?s)/\*.*?\*/", " ", text)
         code = re.sub(r"//[^\n]*", " ", code)
         for m in re.finditer(r"\btypedef\b", code):
-            end = code.find(";", m.end())
+            i, depth = m.end(), 0
+            end = -1
+            while i < len(code):
+                c = code[i]
+                if c == "{":
+                    depth += 1
+                elif c == "}":
+                    depth -= 1
+                elif c == ";" and depth == 0:
+                    end = i
+                    break
+                i += 1
             if end < 0:
                 continue
             stmt = code[m.end():end]
@@ -99,6 +110,9 @@ def clean_sig(sig):
     s = sig.replace("\n", " ")
     s = re.sub(r"//[^\n]*", " ", s)           # CE3 inline param comments
     s = re.sub(r"\s+", " ", s).strip()
+    # normalize separated pointer stars: "PVOID * p" -> "PVOID* p"
+    s = re.sub(r"\s+\*\s+", "* ", s)
+    s = re.sub(r"\s+\*(?=[A-Za-z_])", "*", s)
     s = s.rstrip(";").strip()
     return s
 

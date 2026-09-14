@@ -365,8 +365,12 @@ AKARI_CE_IMPORT DWORD RasEnumConnections(LPRASCONN lprasconn, LPDWORD lpcb,
                     LPDWORD lpcConnections) AKARI_CE_NAME(RasEnumConnections);
 
 /* wcesdkrRasEnumDevices "RasEnumDevices": CE 3.0+; Ras.h. */
-AKARI_CE_IMPORT DWORD RasEnumDevices(LPRASDEVINFOW lpRasDevinfo, LPDWORD lpcb,
-                    LPDWORD lpcDevices) AKARI_CE_NAME(RasEnumDevices);
+AKARI_CE_IMPORT DWORD RasEnumDevicesW(LPRASDEVINFOW lpRasDevinfo, LPDWORD lpcb,
+                    LPDWORD lpcDevices) AKARI_CE_NAME(RasEnumDevicesW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define RasEnumDevices RasEnumDevicesW
 
 /* wcesdkrRasEnumEntries "RasEnumEntries": CE 1.0+; Ras.h,
  * Afdfunc.h.  lpszPhoneBookPath is ignored on CE. */
@@ -398,9 +402,13 @@ AKARI_CE_IMPORT DWORD RasGetLinkStatistics(HRASCONN hRasConn, DWORD dwSubEntry,
 
 /* wcesdkrRasGetProjectionInfo "RasGetProjectionInfo": CE 3.0+;
  * Ras.h, Afdfunc.h. */
-AKARI_CE_IMPORT DWORD RasGetProjectionInfo(HRASCONN hrasconn,
+AKARI_CE_IMPORT DWORD RasGetProjectionInfoW(HRASCONN hrasconn,
                     RASPROJECTION rasprojection, LPVOID lpprojection,
-                    LPDWORD lpcb) AKARI_CE_NAME(RasGetProjectionInfo);
+                    LPDWORD lpcb) AKARI_CE_NAME(RasGetProjectionInfoW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define RasGetProjectionInfo RasGetProjectionInfoW
 
 /* wcesdkrRasHangUp "RasHangUp": CE 1.0+; Ras.h, Afdfunc.h. */
 AKARI_CE_IMPORT DWORD RasHangUp(HRASCONN Session) AKARI_CE_NAME(RasHangUp);
@@ -494,7 +502,11 @@ typedef VARSTRING *LPVARSTRING;
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* ms897088: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
-AKARI_CE_IMPORT DWORD RasDevConfigDialogEdit(LPCWSTR szDeviceName, LPCWSTR szDeviceType, HWND hWndOwner, LPVOID lpDeviceConfigIn, DWORD dwSize, LPVARSTRING lpDeviceConfigOut) AKARI_CE_NAME(RasDevConfigDialogEdit);
+AKARI_CE_IMPORT DWORD RasDevConfigDialogEditW(LPCWSTR szDeviceName, LPCWSTR szDeviceType, HWND hWndOwner, LPVOID lpDeviceConfigIn, DWORD dwSize, LPVARSTRING lpDeviceConfigOut) AKARI_CE_NAME(RasDevConfigDialogEditW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define RasDevConfigDialogEdit RasDevConfigDialogEditW
 
 /* ms897102: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
 AKARI_CE_IMPORT DWORD RasGetEapConnectionData(LPCTSTR pszPhonebook, LPCTSTR pszEntry, PBYTE pbEapData, PDWORD pdwSizeofEapData) AKARI_CE_NAME(RasGetEapConnectionData);

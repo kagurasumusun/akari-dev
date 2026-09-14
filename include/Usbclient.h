@@ -73,4 +73,23 @@ DWORD DefaultTransferComplete(PVOID Context);
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms896105: page-printed prototype (Windows CE .NET 4.2 and later.). */
+DWORD AcquireRemoveLock(IN PREMOVE_LOCK Lock, IN OPTIONAL PVOID Tag);
+
+/* ms899314: page-printed prototype (Windows CE 2.10 and later.). */
+BOOL GetSetKeyValues(LPCTSTR KeyName, PREG_VALUE_DESCR ValDesc, BOOL bSet, BOOL bOverwrite);
+
+/* ms901365: page-printed prototype (Windows CE .NET 4.0 and later.). */
+BOOL InitializeRemoveLock(IN PREMOVE_LOCK Lock);
+
+/* ms919805: page-printed prototype (Windows CE .NET 4.0 and later.). */
+VOID ReleaseRemoveLock(IN PREMOVE_LOCK Lock, IN OPTIONAL PVOID Tag);
+
+/* ms919806: page-printed prototype (Windows CE .NET 4.0 and later.). */
+VOID ReleaseRemoveLockAndWait(IN PREMOVE_LOCK Lock, IN OPTIONAL PVOID Tag);
+
 #endif /* AKARI_USBCLIENT_H */

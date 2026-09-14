@@ -347,12 +347,20 @@ typedef struct {
 /* ------------------------------------------------------------------ */
 
 /* ms932262 "PlaySound" (LPCSTR parameter spelling as printed). */
-AKARI_CE_IMPORT BOOL WINAPI PlaySound(LPCSTR pszSound, HMODULE hmod,
-    DWORD fdwSound) AKARI_CE_NAME(PlaySound);
+AKARI_CE_IMPORT BOOL WINAPI PlaySoundW(LPCSTR pszSound, HMODULE hmod,
+    DWORD fdwSound) AKARI_CE_NAME(PlaySoundW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define PlaySound PlaySoundW
 
 /* ms932314 "sndPlaySound" (LPCTSTR parameter as printed). */
-AKARI_CE_IMPORT BOOL sndPlaySound(LPCTSTR lpszSoundName, UINT fuSound)
-    AKARI_CE_NAME(sndPlaySound);
+AKARI_CE_IMPORT BOOL sndPlaySoundW(LPCTSTR lpszSoundName, UINT fuSound)
+    AKARI_CE_NAME(sndPlaySoundW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define sndPlaySound sndPlaySoundW
 
 /* aa452421 "waveInAddBuffer". */
 AKARI_CE_IMPORT MMRESULT waveInAddBuffer(HWAVEIN hwi, LPWAVEHDR pwh,

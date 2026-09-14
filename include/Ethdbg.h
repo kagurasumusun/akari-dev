@@ -25,4 +25,17 @@
 /* _wcepb_EdbgDeregisterClient: page-printed prototype (Windows CE OS; ethdbg.lib, ethdbg.dll). */
 BOOL EdbgDeregisterClient(UCHAR Id);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcepb_EdbgRecv: page-printed prototype (Windows CE OS; ethdbg.lib). */
+BOOL EdbgRecv(UCHAR Id, UCHAR* pRecvBuf, DWORD* pdwLen, DWORD Timeout);
+
+/* _wcepb_EdbgResetDevice: page-printed prototype (Windows CE OS). */
+BOOL EdbgResetDevice(CHAR* DeviceName, UCHAR Id, BOOL CleanBoot);
+
+/* _wcepb_EdbgSend: page-printed prototype (Windows CE OS; ethdbg.lib, edbg.dll). */
+BOOL EdbgSend(UCHAR Id, UCHAR* pUserData, DWORD dwUserDataLen);
+
 #endif /* AKARI_ETHDBG_H_ */

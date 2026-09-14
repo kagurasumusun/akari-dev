@@ -25,4 +25,27 @@
 /* _wcesdk_InitHTMLControl: page-printed prototype (Windows CE OS). */
 BOOL InitHTMLControl(HINSTANCE hinst);
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* _wcesdk_NM_HTMLCONTEXT: page-printed definition (Windows CE OS). */
+typedef struct tagNM_HTMLCONTEXT {
+    NMHDR hdr;
+    POINT pt;
+    UINT uTypeFlags;
+    LPSTR szLinkHREF;
+    LPSTR szImageSrc;
+    HBITMAP hbmImage;
+    DWORD dwImageCookie;
+} NM_HTMLCONTEXT;
+
+/* _wcesdk_NM_HTMLVIEW: page-printed definition (Windows CE OS). */
+typedef struct tagNM_HTMLVIEW {
+    NMHDR hdr;
+    LPSTR szTarget;
+    LPSTR szData;
+    DWORD dwCookie;
+} NM_HTMLVIEW;
+
 #endif /* AKARI_HTMLCTRL_H_ */

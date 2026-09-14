@@ -16,6 +16,7 @@
 #define AKARI_PROXY_H
 
 #include <Windows.h>
+#include "Usbmsc.h"    /* TRANSPORT_COMMAND / TRANSPORT_DATA (aa448217/aa448218) */
 
 #ifdef __cplusplus
 extern "C" {
@@ -107,5 +108,15 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa448150: page-printed prototype (). */
+DWORD STORE_ExecuteCommand(PTRANSPORT_COMMAND ptcCommand, PTRANSPORT_DATA ptdData);
+
+/* aa448151: page-printed prototype (). */
+BOOL STORE_IsCommandSupported(PTRANSPORT_COMMAND ptcCommand, PBOOL pfDataStageRequired, PDWORD pdwDirection, PDWORD pdwDataSize);
 
 #endif /* AKARI_PROXY_H */

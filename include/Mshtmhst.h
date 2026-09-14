@@ -63,4 +63,14 @@ typedef enum _NvFocusDirection {
 /* aa451975: page-printed prototype (Windows CE 5.0 and later.). */
 HRESULT GetFilename(BOOL fSave, HWND hwnd, DWORD idFilterRes, LPOLESTR lpstrFileName, DWORD cchFile, long lCustData);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms905429: page-printed prototype (Windows CE 5.0 and later.). */
+HRESULT ShowInternalMessage(HWND hwnd, LPOLESTR lpstrText, LPOLESTR lpstrCaption, DWORD dwType, DWORD dwMessageId, LPOLESTR lpstrHelpFile, DWORD dwHelpContext, LRESULT* plResult);
+
+/* ms905508: page-printed prototype (Windows CE 5.0 and later.). */
+HRESULT ShowPrompt(HWND hwnd, LPOLESTR lpstrMessage, LPOLESTR lpstrDefault, VARIANT* pvarText, LRESULT* plResult);
+
 #endif /* AKARI_MSHTMHST_H */

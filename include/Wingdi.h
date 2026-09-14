@@ -444,7 +444,11 @@ AKARI_CE_IMPORT COLORREF GetNearestColor(HDC hdc, COLORREF crColor) AKARI_CE_NAM
 /* aa453141 "GetNearestPaletteIndex" */
 AKARI_CE_IMPORT UINT GetNearestPaletteIndex(HPALETTE hpal, COLORREF crColor) AKARI_CE_NAME(GetNearestPaletteIndex);
 /* aa453147 "GetObject" */
-AKARI_CE_IMPORT int GetObject(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject) AKARI_CE_NAME(GetObject);
+AKARI_CE_IMPORT int GetObjectW(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject) AKARI_CE_NAME(GetObjectW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define GetObject GetObjectW
 /* aa453148 "GetObjectType" */
 AKARI_CE_IMPORT DWORD GetObjectType(HGDIOBJ h) AKARI_CE_NAME(GetObjectType);
 /* aa453151 "GetPaletteEntries" */
@@ -526,8 +530,12 @@ AKARI_CE_IMPORT HBITMAP CreateCompatibleBitmap(HDC hdc, int nWidth, int nHeight)
 /* ms908166 "CreateCompatibleDC" */
 AKARI_CE_IMPORT HDC CreateCompatibleDC(HDC hdc) AKARI_CE_NAME(CreateCompatibleDC);
 /* ms908168 "CreateDC" */
-AKARI_CE_IMPORT HDC CreateDC(LPCTSTR lpszDriver, LPCTSTR lpszDevice, LPCTSTR lpszOutput,
-    CONST DEVMODE* lpInitData) AKARI_CE_NAME(CreateDC);
+AKARI_CE_IMPORT HDC CreateDCW(LPCTSTR lpszDriver, LPCTSTR lpszDevice, LPCTSTR lpszOutput,
+    CONST DEVMODE* lpInitData) AKARI_CE_NAME(CreateDCW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CreateDC CreateDCW
 /* ms908173 "CreateDIBPatternBrushPt" */
 AKARI_CE_IMPORT HBRUSH CreateDIBPatternBrushPt(const void* lpPackedDIB, UINT iUsage) AKARI_CE_NAME(CreateDIBPatternBrushPt);
 /* ms908174 "CreateDIBSection" */
@@ -609,7 +617,11 @@ AKARI_CE_IMPORT HGDIOBJ SelectObject(HDC hdc, HGDIOBJ hgdiobj) AKARI_CE_NAME(Sel
 /* ms932716 "SelectPalette" */
 AKARI_CE_IMPORT HPALETTE SelectPalette(HDC hdc, HPALETTE hpal, BOOL bForceBackground) AKARI_CE_NAME(SelectPalette);
 /* ms933897 "GetOutlineTextMetrics" */
-AKARI_CE_IMPORT UINT GetOutlineTextMetrics(HDC hdc, UINT cbData, LPOUTLINETEXTMETRICW lpOTM) AKARI_CE_NAME(GetOutlineTextMetrics);
+AKARI_CE_IMPORT UINT GetOutlineTextMetricsW(HDC hdc, UINT cbData, LPOUTLINETEXTMETRICW lpOTM) AKARI_CE_NAME(GetOutlineTextMetricsW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define GetOutlineTextMetrics GetOutlineTextMetricsW
 /* ms939800 "RestoreDC" */
 AKARI_CE_IMPORT BOOL RestoreDC(HDC hdc, int nSavedDC) AKARI_CE_NAME(RestoreDC);
 /* ms939867 "RoundRect" */
@@ -672,7 +684,11 @@ AKARI_CE_IMPORT int  AbortDoc(HDC hdc) AKARI_CE_NAME(AbortDoc);                 
 AKARI_CE_IMPORT int  EndDoc(HDC hdc) AKARI_CE_NAME(EndDoc);                            /* aa453039 */
 AKARI_CE_IMPORT int  EndPage(HDC hdc) AKARI_CE_NAME(EndPage);                           /* aa453040 */
 AKARI_CE_IMPORT int  SetAbortProc(HDC hdc, ABORTPROC lpAbortProc) AKARI_CE_NAME(SetAbortProc); /* ms939985 */
-AKARI_CE_IMPORT int  StartDoc(HDC hdc, CONST DOCINFO* lpdi) AKARI_CE_NAME(StartDoc);     /* ms940349 */
+AKARI_CE_IMPORT int  StartDocW(HDC hdc, CONST DOCINFO* lpdi) AKARI_CE_NAME(StartDocW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define StartDoc StartDocW     /* ms940349 */
 AKARI_CE_IMPORT int  StartPage(HDC hDC) AKARI_CE_NAME(StartPage);                         /* ms940350 */
 
 /* aa452959 "DLGITEMTEMPLATEEX" / aa452961 "DLGTEMPLATEEX": the extended

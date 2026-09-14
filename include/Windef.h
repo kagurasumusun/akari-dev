@@ -38,6 +38,22 @@ extern "C" {
 /* ------------------------------------------------------------------ */
 
 #define WINAPI        /* empty on Windows CE (see header note) */
+
+/* IN / OUT / OPTIONAL: parameter-direction annotations printed by the
+ * official prototypes (e.g. aa447847 MiniportInitialize prints
+ * "IN PNDIS_MEDIUM MediumArray"; ms896105 AcquireRemoveLock prints
+ * "IN OPTIONAL PVOID Tag").  No CE page defines them; per the CE SDK
+ * windef.h convention they expand to nothing (design decision
+ * recorded in docs/inventory.md M106). */
+#ifndef IN
+#define IN
+#endif
+#ifndef OUT
+#define OUT
+#endif
+#ifndef OPTIONAL
+#define OPTIONAL
+#endif
 #define APIENTRY      WINAPI
 #define CALLBACK      WINAPI
 #define WINAPIV       WINAPI   /* varargs public API (e.g. NKDbgPrintfW) */
@@ -146,6 +162,13 @@ typedef ULONG          *PULONG;   /* ULONG pointer (ms886786)         */
 typedef USHORT         *PUSHORT;  /* USHORT pointer (ms886786)        */
 typedef UCHAR          *PUCHAR;   /* UCHAR pointer (ms885211)         */
 typedef LONG            NTSTATUS; /* NT status result type (NAT pages)*/
+/* HRESULT: 32-bit COM/system result (LONG carrier; Objbase.h twin is
+ * guarded by the same marker).  Needed by kernel prototypes such as
+ * CeOpenCallerBuffer (ee488382, Pkfuncs.h). */
+#ifndef AKARI_HRESULT_DEFINED
+#define AKARI_HRESULT_DEFINED
+typedef LONG            HRESULT;
+#endif
 
 typedef void           *LPVOID;
 typedef const void     *LPCVOID;

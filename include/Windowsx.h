@@ -46,4 +46,11 @@ extern "C" {
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcesdk_InsetRect: page-printed prototype (Windows CE OS). */
+BOOL InsetRect(LPRECT lprc, int dx, int dy);
+
 #endif /* AKARI_WINDOWSX_H */

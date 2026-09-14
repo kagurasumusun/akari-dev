@@ -45,7 +45,18 @@ def load_live(code):
 def load_types(code):
     types = set()
     for m in re.finditer(r"\btypedef\b", code):
-        end = code.find(";", m.end())
+        i, depth = m.end(), 0
+        end = -1
+        while i < len(code):
+            c = code[i]
+            if c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+            elif c == ";" and depth == 0:
+                end = i
+                break
+            i += 1
         if end < 0:
             continue
         stmt = code[m.end():end]

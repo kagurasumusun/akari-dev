@@ -5,6 +5,7 @@
 #define AKARI_AUTODIAL_H
 
 #include "Windef.h"    /* DWORD, TCHAR */
+#include "Ras.h"       /* RASCONNSTATUS (AutoDialGetConnectionStatus) */
 
 AKARI_CE_IMPORT DWORD AutoDialCleanupModule(void)
                     AKARI_CE_NAME(AutoDialCleanupModule);
@@ -19,5 +20,12 @@ AKARI_CE_IMPORT DWORD AutoDialStartConnection(TCHAR *szUseDialEntry)
  * AutoDialGetConnectionStatus( RASCONNSTATUS* lpRasConn,
  * TCHAR* szRasName);` -- the RASCONNSTATUS type is not published on
  * any CE page (Ras.h M75f hold family); recorded verbatim. */
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa450292: page-printed prototype (Windows CE .NET 4.0 and later.; autodial.lib). */
+DWORD AutoDialGetConnectionStatus(RASCONNSTATUS* lpRasConn, TCHAR* szRasName);
 
 #endif /* AKARI_AUTODIAL_H */

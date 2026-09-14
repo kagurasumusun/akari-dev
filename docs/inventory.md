@@ -7917,3 +7917,97 @@ are not yet row-harvested; D2 classification needs per-kind rules
 (constants/typedefs/macros vs exports); the 525 unresolved type
 prints and ~1800 unresolved function prints remain tooling-limited
 (glue-damaged prints, unpublished member types).
+
+## M106 -- W-form consistency sweep + CE6 syscall/process surface
+
+### (a) Generic-vs-W inconsistency repaired (69 declarations, 32 def entries)
+
+The verified coredll surface exports only the W form for 69
+documented names (SendMessage, PostMessage, DispatchMessage,
+PeekMessage, GetMessage, GetObject, PlaySound, sndPlaySound,
+CreateDC, StartDoc, GetOutlineTextMetrics, LoadKeyboardLayout,
+LoadBitmap, LoadCursor, TranslateAccelerator, IsDialogMessage,
+DefDlgProc, SendDlgItemMessage, MapVirtualKey, CreateAcceleratorTable,
+DialogBoxIndirectParam, CreateDialogIndirectParam,
+GetMenuItemInfo/SetMenuItemInfo, GetOpenFileName/GetSaveFileName,
+the Imm* family (19), the Crypt* family (8), the WNet* family (9),
+RasEnumDevices/RasGetProjectionInfo/RasDevConfigDialogEdit,
+EnumUILanguages, SendNotifyMessage, PostThreadMessage,
+CeFsIoControl, CeGetCanonicalPathName).  The tree declared them as
+imports under the generic name and the def carried generic entries
+the real coredll never exports -- an import-lib link break.
+Repaired mechanically: each declaration now names the W export and
+carries `#define <generic> <generic>W` with a provenance note; the
+32 wrong generic def entries were dropped (def 2393 -> 2361).
+
+### (b) typedef-scanner bug fixed (struct-derived pointer types)
+
+decl-d1/decl-types cut typedef statements at the first `;`, which
+inside a struct body is the first member -- so every
+`typedef struct {...} X, *PX;` lost PX from the type universe.
+Fix: scan to the first `;` at brace depth zero.  Unlocked 42
+function prototypes + 4 type definitions immediately (incl.
+RegisterPowerRelationship in pm.h, whose PPOWER_CAPABILITIES
+blocker vanished).  tools/decl-retest.py added to re-test every
+record-only print in the tree against the now-complete type
+universe (283 records re-tested; all formerly blocked ones now
+either declare through the pipeline or remain blocked on genuinely
+unpublished types).
+
+### (c) CE 6.0 caller-buffer / cross-process surface (new pages)
+
+Eleven CE 6.0 pages fetched from the official archive (manifest
+ids; corpus commit ac4c7e96) and declared:
+CeOpenCallerBuffer/CeCloseCallerBuffer (ee488382/ee488934;
+Pkfuncs.h; the CE6 syscall caller-buffer boundary), 
+VirtualAllocEx/VirtualFreeEx/VirtualProtectEx/VirtualQueryEx
+(ee488642/ee488440/ee488232/ee488556; Winbase.h), VirtualAllocCopyEx
++ SetEventData + GetCallerVMProcessId + GetDirectCallerProcessId
+(ee488184/ee482792/ee482772/ee482980; Pkfuncs.h),
+GetDeviceUniqueID (ee488618; new header getdeviceuniqueid.h).
+All carry Library: coredll.lib and are verified coredll exports.
+CeOpenCallerBuffer note: the official print drops the comma between
+its last two parameters; restored with an annotation.
+
+### (d) Subsystem gap closures
+
+* Registry: RegReplaceKey/RegSaveKey declared (Pwinreg.h; CE 6.0
+  pages ee489789/ee489766, already saved) + HiveRAMInfo/
+  RegSecureKeyList chain now complete.  RegOpenProcessKey: no
+  official page exists in any CE tree (verified via CE 5.0/6.0
+  manifests) although the coredll dumps export it -- backlog.
+* Device: DeregisterDevice declared (Winbase.h; the page spells the
+  parameter "Handle" -- HANDLE per every sibling page);
+  EnumDeviceInterfaces corrected to `GUID *pClass` + IMP (surface
+  export; the earlier generation had dropped the star).
+* Basic macros: IN/OUT/OPTIONAL added to Windef.h (empty
+  annotations printed by official prototypes; CE SDK convention;
+  design decision -- no CE page defines them).
+* HRESULT now in Windef.h under AKARI_HRESULT_DEFINED (Objbase.h
+  twin guarded) so Pkfuncs.h prototypes compile standalone.
+* Include repairs: Autodial.h->Ras.h (RASCONNSTATUS),
+  Proxy.h->Usbmsc.h (TRANSPORT_*), Tchddsi.h->Tchddi.h,
+  Pwinreg.h->Winreg.h (HKEY), Ndis.h->Ntddndis.h (earlier pass);
+  EnumVideoCallback moved Ddraw.h->Dvp.h to avoid a header cycle.
+
+### Surface-vs-declaration residue (measured, per subsystem)
+
+The verified surface is the ground truth; remaining undeclared
+surface names by user-named subsystem after this pass: process/
+address-space CE6 additions GetProcessId/GetProcessIdOfThread/
+GetThreadId (exported by CE6 coredll dumps; NO official page in the
+CE 6.0 manifest -- cannot declare from docs; recorded as
+surface-known-undocumented), ReadFileScatter/WriteFileGather and
+ReadFileWithSeek/WriteFileWithSeek app-level forms (exported; the
+only official pages are the MyFSD_* driver-side twins, declared in
+Fsdmgr.h), CreateDeviceHandle (CE4 dump only; no page found),
+D4 residue 1005 (mostly CRT/mangled exports + CE 3.0 legacy names).
+
+### Audit after M106
+
+declared 5888 -> **5955**; comment-only 2305 -> 2273; absent
+730 -> 706; D1 1422 -> 1390; D2 14 (unchanged, all explained in
+M105); D3 0; D4 1087 -> **1005**.  def 2361.
+
+Gates: make hostcheck GREEN (0x420/0x500/0x600); make defcheck
+GREEN (2361, no duplicates).

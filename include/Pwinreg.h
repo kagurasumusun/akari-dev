@@ -17,6 +17,7 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Winreg.h"    /* HKEY (RegReplaceKey / RegSaveKey) */
 
 
 /* --- M104 declarations: printed prototypes recovered
@@ -62,5 +63,17 @@ typedef struct RegSecureKeyList {
     DWORD dwNumKeys;
     RegSecureKey* pList;
 } RegSecureKeyList;
+
+/* ee489789 "RegReplaceKey (Windows Embedded CE 6.0)": page-printed
+ * prototype; Header pwinreg.h, Library coredll.lib, CE .NET 4.0 and
+ * later; verified coredll export on all four device dumps. */
+AKARI_CE_IMPORT LONG RegReplaceKey(HKEY hKey, LPCTSTR lpSubKey,
+    LPCTSTR lpNewFile, LPCTSTR lpOldFile) AKARI_CE_NAME(RegReplaceKey);
+
+/* ee489766 "RegSaveKey (Windows Embedded CE 6.0)": page-printed
+ * prototype; Header pwinreg.h, Library coredll.lib, CE .NET 4.0 and
+ * later; verified coredll export on all four device dumps. */
+AKARI_CE_IMPORT LONG RegSaveKey(HKEY hKey, LPCTSTR lpFile,
+    LPSECURITY_ATTRIBUTES lpSecurityAttributes) AKARI_CE_NAME(RegSaveKey);
 
 #endif /* AKARI_PWINREG_H_ */

@@ -166,8 +166,12 @@ typedef BOOL (CALLBACK *UILANGUAGE_ENUMPROC)(LPTSTR lpUILanguageString);
 /* ms905092 "EnumUILanguages": print `BOOL EnumUILanguages(
  * UILANGUAGE_ENUMPROC lpUILanguageEnumProc,DWORDdwFlags);` (glued
  * tokens split; Coreloc.lib). */
-AKARI_CE_IMPORT BOOL EnumUILanguages(UILANGUAGE_ENUMPROC lpUILanguageEnumProc,
-                    DWORD dwFlags) AKARI_CE_NAME(EnumUILanguages);
+AKARI_CE_IMPORT BOOL EnumUILanguagesW(UILANGUAGE_ENUMPROC lpUILanguageEnumProc,
+                    DWORD dwFlags) AKARI_CE_NAME(EnumUILanguagesW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define EnumUILanguages EnumUILanguagesW
 
 /* ms905303 "GetSystemDefaultUILanguage": print
  * `LANGID GetSystemDefaultUILanguage();` (Coreloc.lib). */

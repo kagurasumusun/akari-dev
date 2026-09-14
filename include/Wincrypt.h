@@ -796,11 +796,15 @@ AKARI_CE_IMPORT BOOL WINAPI CPAcquireContext(HCRYPTPROV *phProv, WCHAR *pszConta
                                PVTableProvStruc pVTable) AKARI_CE_NAME(CPAcquireContext);
 
 /* ms937733 (CE 2.10+): page prints BOOLEAN as the return type. */
-AKARI_CE_IMPORT BOOLEAN CryptAcquireContext(HCRYPTPROV *phProv,
+AKARI_CE_IMPORT BOOLEAN CryptAcquireContextW(HCRYPTPROV *phProv,
                                             LPCTSTR pszContainer,
                                             LPCTSTR pszProvider,
                                             DWORD dwProvType,
-                                            DWORD dwFlags) AKARI_CE_NAME(CryptAcquireContext);
+                                            DWORD dwFlags) AKARI_CE_NAME(CryptAcquireContextW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptAcquireContext CryptAcquireContextW
 
 AKARI_CE_IMPORT BOOL WINAPI CryptContextAddRef(HCRYPTPROV hProv, DWORD *pdwReserved,
                                  DWORD dwFlags) AKARI_CE_NAME(CryptContextAddRef);
@@ -835,15 +839,23 @@ AKARI_CE_IMPORT BOOL WINAPI CryptEncrypt(HCRYPTKEY hKey, HCRYPTHASH hHash, BOOL 
                            DWORD dwFlags, BYTE *pbData, DWORD *pdwDataLen,
                            DWORD dwBufLen) AKARI_CE_NAME(CryptEncrypt);
 
-AKARI_CE_IMPORT BOOL WINAPI CryptEnumProviders(DWORD dwIndex, DWORD *pdwReserved,
+AKARI_CE_IMPORT BOOL WINAPI CryptEnumProvidersW(DWORD dwIndex, DWORD *pdwReserved,
                                  DWORD dwFlags, DWORD *pdwProvType,
                                  LPTSTR pszProvName,
-                                 DWORD *pcbProvName) AKARI_CE_NAME(CryptEnumProviders);
+                                 DWORD *pcbProvName) AKARI_CE_NAME(CryptEnumProvidersW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptEnumProviders CryptEnumProvidersW
 
-AKARI_CE_IMPORT BOOL WINAPI CryptEnumProviderTypes(DWORD dwIndex, DWORD *pdwReserved,
+AKARI_CE_IMPORT BOOL WINAPI CryptEnumProviderTypesW(DWORD dwIndex, DWORD *pdwReserved,
                                      DWORD dwFlags, DWORD *pdwProvType,
                                      LPTSTR pszTypeName,
-                                     DWORD *pcbTypeName) AKARI_CE_NAME(CryptEnumProviderTypes);
+                                     DWORD *pcbTypeName) AKARI_CE_NAME(CryptEnumProviderTypesW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptEnumProviderTypes CryptEnumProviderTypesW
 
 /* ms938025: last parameter printed as pdwbDataLen. */
 AKARI_CE_IMPORT BOOL WINAPI CryptExportKey(HCRYPTKEY hKey, HCRYPTKEY hExpKey,
@@ -859,9 +871,13 @@ AKARI_CE_IMPORT BOOL WINAPI CryptGenKey(HCRYPTPROV hProv, ALG_ID Algid, DWORD dw
 AKARI_CE_IMPORT BOOL WINAPI CryptGenRandom(HCRYPTPROV hProv, DWORD dwLen,
                              BYTE *pbBuffer) AKARI_CE_NAME(CryptGenRandom);
 
-AKARI_CE_IMPORT BOOL WINAPI CryptGetDefaultProvider(DWORD dwProvType, DWORD *pdwReserved,
+AKARI_CE_IMPORT BOOL WINAPI CryptGetDefaultProviderW(DWORD dwProvType, DWORD *pdwReserved,
                                       DWORD dwFlags, LPTSTR pszProvName,
-                                      DWORD *pcbProvName) AKARI_CE_NAME(CryptGetDefaultProvider);
+                                      DWORD *pcbProvName) AKARI_CE_NAME(CryptGetDefaultProviderW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptGetDefaultProvider CryptGetDefaultProviderW
 
 /* ms938096: the page prints "CryptGethashParam"; the topic title
  * declares CryptGetHashParam. */
@@ -955,26 +971,42 @@ AKARI_CE_IMPORT BOOL WINAPI CryptSetHashParam(HCRYPTHASH hHash, DWORD dwParam,
 AKARI_CE_IMPORT BOOL WINAPI CryptSetKeyParam(HCRYPTKEY hKey, DWORD dwParam, BYTE *pbData,
                                DWORD dwFlags) AKARI_CE_NAME(CryptSetKeyParam);
 
-AKARI_CE_IMPORT BOOL WINAPI CryptSetProvider(LPCTSTR pszProvName,
-                               DWORD dwProvType) AKARI_CE_NAME(CryptSetProvider);
+AKARI_CE_IMPORT BOOL WINAPI CryptSetProviderW(LPCTSTR pszProvName,
+                               DWORD dwProvType) AKARI_CE_NAME(CryptSetProviderW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptSetProvider CryptSetProviderW
 
-AKARI_CE_IMPORT BOOL WINAPI CryptSetProviderEx(LPCTSTR pszProvName, DWORD dwProvType,
+AKARI_CE_IMPORT BOOL WINAPI CryptSetProviderExW(LPCTSTR pszProvName, DWORD dwProvType,
                                  DWORD *pdwReserved,
-                                 DWORD dwFlags) AKARI_CE_NAME(CryptSetProviderEx);
+                                 DWORD dwFlags) AKARI_CE_NAME(CryptSetProviderExW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptSetProviderEx CryptSetProviderExW
 
 AKARI_CE_IMPORT BOOL WINAPI CryptSetProvParam(HCRYPTPROV hProv, DWORD dwParam,
                                 BYTE *pbData,
                                 DWORD dwFlags) AKARI_CE_NAME(CryptSetProvParam);
 
-AKARI_CE_IMPORT BOOL WINAPI CryptSignHash(HCRYPTHASH hHash, DWORD dwKeySpec,
+AKARI_CE_IMPORT BOOL WINAPI CryptSignHashW(HCRYPTHASH hHash, DWORD dwKeySpec,
                             LPCTSTR sDescription, DWORD dwFlags,
                             BYTE *pbSignature,
-                            DWORD *pdwSigLen) AKARI_CE_NAME(CryptSignHash);
+                            DWORD *pdwSigLen) AKARI_CE_NAME(CryptSignHashW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptSignHash CryptSignHashW
 
-AKARI_CE_IMPORT BOOL WINAPI CryptVerifySignature(HCRYPTHASH hHash, BYTE *pbSignature,
+AKARI_CE_IMPORT BOOL WINAPI CryptVerifySignatureW(HCRYPTHASH hHash, BYTE *pbSignature,
                                    DWORD dwSigLen, HCRYPTKEY hPubKey,
                                    LPCTSTR sDescription,
-                                   DWORD dwFlags) AKARI_CE_NAME(CryptVerifySignature);
+                                   DWORD dwFlags) AKARI_CE_NAME(CryptVerifySignatureW);
+/* the verified coredll surface exports only the W form;
+ * the documented generic name is its alias (CE is
+ * Unicode-only). */
+#define CryptVerifySignature CryptVerifySignatureW
 /* ------------------------------------------------------------------ */
 /* Certificate store unit (M48; Crypt32.lib -- every page below has   */
 /* Requirements row Header: Wincrypt.h / Link Library: Crypt32.lib).  */

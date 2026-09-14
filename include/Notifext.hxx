@@ -52,4 +52,37 @@ void CeNotifyPublic_NewPacket(CEOID oidRecord);
 /* ms905417: page-printed prototype (Windows CE 2.10 and later.). */
 void CeNotifyPublic_UserAlarmSignalled(void);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms905407: page-printed prototype (Windows CE 2.10 and later.). */
+void CeNotifyPrivate_SetUserAlarm(FILETIME* ftWhen);
+
+/* ms905412: page-printed prototype (Windows CE 2.10 and later.). */
+int CeNotifyPublic_FilterUserNotification(CE_USER_NOTIFICATION* pceun);
+
+/* ms905415: page-printed prototype (Windows CE 2.10 and later.). */
+int CeNotifyPublic_PresentSettingsBox(HWND hWnd, CE_USER_NOTIFICATION* pceun, TCHAR* lpszSoundBuffer, void* pExpansion);
+
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms919617: page-printed definition (Windows CE 2.10 and later.). */
+typedef struct tagSettingsDialogData {
+    PCE_USER_NOTIFICATION UserNotification;
+    TCHAR* MappedSoundBuffer;
+    void* pvExtension;
+    HWND hParentWindow;
+    HWND hLedWindow;
+    HWND hVibrateWindow;
+    HWND hDialogWindow;
+    HWND hSoundWindow;
+    HWND hComboWindow;
+    HWND hRepeatWindow;
+    HICON hIcon;
+    BOOL SaveData;
+} SettingsDialogData;
+
 #endif /* AKARI_NOTIFEXT_HXX_ */

@@ -2,14 +2,14 @@
 
 Measured state -- replaces all earlier "complete" claims.
 
-* documented API-like rows: 8923
-* declared: 5888
-* comment-only: 2305
-* absent: 730
-* coredll doc-def entries: 2393
+* documented API-like rows: 8934
+* declared: 5955
+* comment-only: 2273
+* absent: 706
+* coredll doc-def entries: 2361
 * verified coredll surface (unmangled): 2138
 
-## D1 -- printed signature, comment-only in include/ (1422)
+## D1 -- printed signature, comment-only in include/ (1390)
 Name printed a full prototype/struct on an official page but
 carried only as a comment record.  These must be declared.
 
@@ -19,14 +19,12 @@ carried only as a comment record.  These must be declared.
 * `ACMDRVOPENDESC` [ce5+ce6] lib: -
 * `ACMDRVSTREAMHEADER` [ce5+ce6] lib: -
 * `ACMDRVSTREAMINSTANCE` [ce5+ce6] lib: -
-* `AcquireRemoveLock` [ce5+ce6] lib: -
 * `AddAfterI` [ce5+ce6] lib: -
 * `AddAttachedSurface` [ce5+ce6] lib: Developer implemented.
 * `AddBeforeI` [ce5+ce6] lib: -
 * `AddHeadI` [ce5+ce6] lib: -
 * `AddIPAddress` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
 * `AddTailI` [ce5+ce6] lib: -
-* `AdvertiseInterface` [ce5+ce6] lib: Coredll.lib.
 * `AllowChangeDisplaySize` [ce3+ce4] lib: -
 * `AllowHideControls` [ce3+ce4] lib: -
 * `AllowScan` [ce3+ce4] lib: -
@@ -40,7 +38,6 @@ carried only as a comment record.  These must be declared.
 * `AudioStream` [ce3+ce4] lib: -
 * `Authentication` [ce3+ce5+ce6] lib: -
 * `AUTHOR` [ce3+ce4] lib: -
-* `AutoDialGetConnectionStatus` [ce4+ce5+ce6] lib: Autodial.lib.; Autodial.lib.
 * `AutoRewind` [ce3+ce4] lib: -
 * `AutoSize` [ce3+ce4] lib: -
 * `AutoStart` [ce3+ce4] lib: -
@@ -281,7 +278,6 @@ carried only as a comment record.  These must be declared.
 * `DBLNODE` [ce5+ce6] lib: -
 * `DDALPHABLTFX` [ce3+ce4+ce5+ce6] lib: -
 * `DDCORECAPS` [ce5+ce6] lib: -
-* `DDEnumCallback` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
 * `DDEnumCallbackEx` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
 * `DDGPEAllocSurfaceData` [ce5+ce6] lib: Ddgpe.lib.
 * `DDGPEBltParams` [ce5+ce6] lib: Ddgpe.lib.
@@ -375,7 +371,6 @@ carried only as a comment record.  These must be declared.
 * `DELETE_SECTOR_INFO` [ce5+ce6] lib: -
 * `DeleteIPAddress` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
 * `DeleteUrlCacheGroup` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `DeregisterDevice` [ce3+ce5+ce6] lib: Coredll.lib.; Coredll.lib
 * `DestroyPalette` [ce5+ce6] lib: Developer implemented.
 * `DestroySurface` [ce5+ce6] lib: Developer implemented.
 * `DestroyVideoPort` [ce5+ce6] lib: Developer implemented.
@@ -406,13 +401,18 @@ carried only as a comment record.  These must be declared.
 * `DnsReplaceRecordSetW` [ce5+ce6] lib: Dnsapi.lib.
 * `DrawThemeBackground` [ce5+ce6] lib: Ietheme.dll.
 * `DriverEntry` [ce3+ce5+ce6] lib: -
-* `DrvAdvPageSetupDlg` [ce4+ce5+ce6] lib: -
 * `DrvAnyBlt` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvBitBlt` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvCreateDeviceBitmap` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvDeleteDeviceBitmap` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvDisablePDEV` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 * `DrvDisableSurface` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
+* `DrvEnableDriver` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
+* `DrvEnablePDEV` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
+* `DrvEnableSurface` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
+* `DrvEndDoc` [ce5+ce6] lib: -
+* `DrvEscape` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
+* `DrvFillPath` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 
 ## D2 -- declared, page says Coredll.lib, missing from coredll-doc.def (14)
 * `AbnormalTermination` [ce3+ce5+ce6]
@@ -434,7 +434,7 @@ carried only as a comment record.  These must be declared.
 Export existence grounded on the device-dump-audited sysroot
 surface (clean-room.md 3.2); prototypes grounded on the pages.
 
-## D4 -- verified coredll surface names not carried anywhere in include/ (1087)
+## D4 -- verified coredll surface names not carried anywhere in include/ (1005)
 Candidate surface gaps (may include CRT-provider names).
 * `ADBAddAccountToGroup`
 * `ADBCreateAccount`
@@ -495,7 +495,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `CeBeginSyncSession`
 * `CeCallUserProc`
 * `CeCertVerify`
-* `CeCloseCallerBuffer`
 * `CeClosePolicy`
 * `CeConvertSDToStr`
 * `CeConvertStrToSD`
@@ -507,8 +506,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `CeFlushAsynchronousBuffer`
 * `CeFreeAsynchronousBuffer`
 * `CeFreeDuplicateBuffer`
-* `CeFsIoControlW`
-* `CeGetCanonicalPathNameW`
 * `CeGetChangedRecordCnt`
 * `CeGetChangedRecords`
 * `CeGetCustomTrackingData`
@@ -529,7 +526,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `CeMapArgumentArray`
 * `CeMarkRecord`
 * `CeModuleJit`
-* `CeOpenCallerBuffer`
 * `CeOpenFileHandle`
 * `CeOpenModuleByPolicy`
 * `CeOpenPolicy`
@@ -574,25 +570,14 @@ Candidate surface gaps (may include CRT-provider names).
 * `ConnectOsAxsT1`
 * `CreateAPIHandle`
 * `CreateAPISet`
-* `CreateAcceleratorTableW`
 * `CreateBitmapFromPointer`
 * `CreateCrit`
-* `CreateDCW`
 * `CreateDeviceHandle`
-* `CreateDialogIndirectParamW`
 * `CreateEnhMetaFileW`
 * `CreateLocaleView`
 * `CreateServiceHandle`
 * `CreateStaticMapping`
 * `CreateWatchDogTimer`
-* `CryptAcquireContextW`
-* `CryptEnumProviderTypesW`
-* `CryptEnumProvidersW`
-* `CryptGetDefaultProviderW`
-* `CryptSetProviderExW`
-* `CryptSetProviderW`
-* `CryptSignHashW`
-* `CryptVerifySignatureW`
 * `DBCanonicalize`
 * `DPA_Clone`
 * `DPA_Create`
@@ -628,7 +613,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `DebugNotify`
 * `DebugSetProcessKillOnExit`
 * `DecompressBinaryBlock`
-* `DefDlgProcW`
 * `DefWindowProcW`
 * `DefaultImcGet`
 * `DefaultImeWndGet`
@@ -639,11 +623,9 @@ Candidate surface gaps (may include CRT-provider names).
 * `DeregisterAFSName`
 * `DeregisterBluetoothCOMPort`
 * `DeregisterEventSource`
-* `DialogBoxIndirectParamW`
 * `DisableCaretSystemWide`
 * `DisableGestures`
 * `DisablePixelDoubling`
-* `DispatchMessageW`
 * `DumpFileSystemHeap`
 * `DumpKCallProfile`
 * `EnableCaretSystemWide`
@@ -652,7 +634,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `EnumDateFormatsW`
 * `EnumSystemLocalesW`
 * `EnumTimeFormatsW`
-* `EnumUILanguagesW`
 * `EventModify`
 * `ExtractResource`
 * `FilterTrackedItem`
@@ -669,12 +650,9 @@ Candidate surface gaps (may include CRT-provider names).
 * `GetCallStackSnapshot`
 * `GetCallerProcess`
 * `GetCallerProcessIndex`
-* `GetCallerVMProcessId`
 * `GetDeviceByIndex`
 * `GetDeviceHandleFromContext`
 * `GetDeviceKeys`
-* `GetDeviceUniqueID`
-* `GetDirectCallerProcessId`
 * `GetEventData`
 * `GetFSHeapInfo`
 * `GetFileSecurityW`
@@ -685,13 +663,8 @@ Candidate surface gaps (may include CRT-provider names).
 * `GetHeapSnapshot`
 * `GetKPhys`
 * `GetKeyboardTarget`
-* `GetMenuItemInfoW`
-* `GetMessageW`
 * `GetMessageWNoWait`
 * `GetNlsTables`
-* `GetObjectW`
-* `GetOpenFileNameW`
-* `GetOutlineTextMetricsW`
 * `GetOverlappedResult`
 * `GetPasswordStatus`
 * `GetPrivateCallbacks`
@@ -706,7 +679,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `GetRealTime`
 * `GetRomFileBytes`
 * `GetRomFileInfo`
-* `GetSaveFileNameW`
 * `GetServiceByIndex`
 * `GetStdioPathW`
 * `GetSystemTimeAsFileTime`
@@ -722,33 +694,15 @@ Candidate surface gaps (may include CRT-provider names).
 * `HeapAllocTrace`
 * `ImageList_CopyDitherImage`
 * `ImmActivateLayout`
-* `ImmConfigureIMEW`
 * `ImmEnableIME`
-* `ImmEnumRegisterWordW`
-* `ImmEscapeW`
-* `ImmGetCandidateListCountW`
-* `ImmGetCandidateListW`
-* `ImmGetCompositionFontW`
-* `ImmGetCompositionStringW`
-* `ImmGetConversionListW`
-* `ImmGetDescriptionW`
-* `ImmGetGuideLineW`
-* `ImmGetIMEFileNameW`
 * `ImmGetImcInfo`
-* `ImmGetImeMenuItemsW`
 * `ImmGetKeyboardLayout`
-* `ImmGetRegisterWordStyleW`
 * `ImmGetUIClassName`
-* `ImmIsUIMessageW`
 * `ImmProcessKey`
-* `ImmRegisterWordW`
 * `ImmRequestMessageW`
 * `ImmSendNotification`
-* `ImmSetCompositionFontW`
-* `ImmSetCompositionStringW`
 * `ImmSetImeWndIMC`
 * `ImmTranslateMessage`
-* `ImmUnregisterWordW`
 * `Imm_DllEntry`
 * `InitLocale`
 * `InitializeUsrCoredllCallbacks`
@@ -764,7 +718,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `Int_HeapSize`
 * `InterruptMask`
 * `IsBadPtr`
-* `IsDialogMessageW`
 * `IsEncryptionPermitted`
 * `IsExiting`
 * `IsForcePixelDoubling`
@@ -782,10 +735,7 @@ Candidate surface gaps (may include CRT-provider names).
 * `LASSGetValue`
 * `LeaveCritSec`
 * `LoadAnimatedCursor`
-* `LoadBitmapW`
-* `LoadCursorW`
 * `LoadIntChainHandler`
-* `LoadKeyboardLayoutW`
 * `LocalAllocInProcess`
 * `LocalAllocTrace`
 * `LocalFreeInProcess`
@@ -799,7 +749,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `MapCallerPtr`
 * `MapPtrToProcWithSize`
 * `MapPtrUnsecure`
-* `MapVirtualKeyW`
 * `MatchesWildcardMask`
 * `MulDiv`
 * `NKTerminateThread`
@@ -814,7 +763,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `PPSHRestart`
 * `PSLNotify`
 * `PageOutModule`
-* `PeekMessageW`
 * `PegClearUserNotification`
 * `PegCreateDatabase`
 * `PegDeleteDatabase`
@@ -835,9 +783,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `PegWriteRecordProps`
 * `PerformCallBack4`
 * `PlayEnhMetaFile`
-* `PlaySoundW`
-* `PostMessageW`
-* `PostThreadMessageW`
 * `PrepareThreadExit`
 * `PrintTrackedItem`
 * `ProcessDetachAllDLLs`
@@ -849,11 +794,8 @@ Candidate surface gaps (may include CRT-provider names).
 * `QueryAPISetID`
 * `QueryGestures`
 * `REL_UDriverProcIoControl`
-* `RasDevConfigDialogEditW`
-* `RasEnumDevicesW`
 * `RasGetDispPhoneNumW`
 * `RasGetEntryDevConfig`
-* `RasGetProjectionInfoW`
 * `RasHangup`
 * `RasSetEntryDevConfig`
 * `ReadEventLogRaw`
@@ -864,8 +806,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `RefreshKernelAlarm`
 * `RefreshWatchDogTimer`
 * `RegOpenProcessKey`
-* `RegReplaceKey`
-* `RegSaveKey`
 * `RegisterAFSEx`
 * `RegisterAFSName`
 * `RegisterAPISet`
@@ -929,16 +869,12 @@ Candidate surface gaps (may include CRT-provider names).
 * `SHSetNavBarTextI`
 * `SHSipPreferenceI`
 * `SecureWipeAllVolumes`
-* `SendDlgItemMessageW`
-* `SendMessageW`
-* `SendNotifyMessageW`
 * `SetACP`
 * `SetAPIErrorHandler`
 * `SetAssociatedMenu`
 * `SetCriticalProcess`
 * `SetDbgZone`
 * `SetDialogAutoScrollBar`
-* `SetEventData`
 * `SetExceptionHandler`
 * `SetFileSecurityW`
 * `SetGwesOOMEvent`
@@ -949,7 +885,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `SetKernelAlarm`
 * `SetKeyboardTarget`
 * `SetLowestScheduledPriority`
-* `SetMenuItemInfoW`
 * `SetOEMCP`
 * `SetObjectOwner`
 * `SetPasswordStatus`
@@ -965,7 +900,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `ShellModalEnd`
 * `ShowStartupWindow`
 * `SleepTillTick`
-* `StartDocW`
 * `StartWatchDogTimer`
 * `StopBluetoothNotifications`
 * `StopDeviceNotifications`
@@ -1032,7 +966,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `ThreadDetachAllDLLs`
 * `ThreadExceptionExit`
 * `TlsCall`
-* `TranslateAcceleratorW`
 * `TurnOffProfiling`
 * `TurnOnProfiling`
 * `U_rclose`
@@ -1049,22 +982,8 @@ Candidate surface gaps (may include CRT-provider names).
 * `UserCallWindowProc`
 * `VerifyAPIHandle`
 * `VerifyUserAsync`
-* `VirtualAllocCopyEx`
-* `VirtualAllocEx`
 * `VirtualCopyEx`
-* `VirtualFreeEx`
-* `VirtualProtectEx`
-* `VirtualQueryEx`
 * `VirtualSetAttributes`
-* `WNetAddConnection3W`
-* `WNetCancelConnection2W`
-* `WNetConnectionDialog1W`
-* `WNetDisconnectDialog1W`
-* `WNetEnumResourceW`
-* `WNetGetConnectionW`
-* `WNetGetUniversalNameW`
-* `WNetGetUserW`
-* `WNetOpenEnumW`
 * `WaitForAPIReady`
 * `WriteFileGather`
 * `WriteFileWithSeek`
@@ -1236,3 +1155,84 @@ Candidate surface gaps (may include CRT-provider names).
 * `_itoa_s`
 * `_itow`
 * `_itow_s`
+* `_j0`
+* `_j1`
+* `_jn`
+* `_ld12tod`
+* `_ld12tof`
+* `_local_unwind2`
+* `_local_unwind4`
+* `_logb`
+* `_lrotl`
+* `_lrotr`
+* `_ltoa`
+* `_ltoa_s`
+* `_ltow`
+* `_ltow_s`
+* `_mbmemset`
+* `_memccpy`
+* `_memicmp`
+* `_msize`
+* `_nextafter`
+* `_outp`
+* `_outpd`
+* `_outpw`
+* `_purecall`
+* `_putws`
+* `_recalloc`
+* `_rotl`
+* `_rotl64`
+* `_rotr`
+* `_rotr64`
+* `_scalb`
+* `_set_invalid_parameter_handler`
+* `_setjmp3`
+* `_setmode`
+* `_snprintf`
+* `_snprintf_s`
+* `_snwprintf`
+* `_snwprintf_s`
+* `_statusfp`
+* `_strdup`
+* `_stricmp`
+* `_strlwr`
+* `_strlwr_s`
+* `_strnicmp`
+* `_strnset`
+* `_strnset_s`
+* `_strrev`
+* `_strset`
+* `_strset_s`
+* `_strupr`
+* `_strupr_s`
+* `_swab`
+* `_ultoa`
+* `_ultoa_s`
+* `_ultow`
+* `_ultow_s`
+* `_vsnprintf`
+* `_vsnprintf_s`
+* `_vsnwprintf`
+* `_vsnwprintf_s`
+* `_wcsdup`
+* `_wcsicmp`
+* `_wcslwr`
+* `_wcslwr_s`
+* `_wcsnicmp`
+* `_wcsnset`
+* `_wcsnset_s`
+* `_wcsrev`
+* `_wcsset`
+* `_wcsset_s`
+* `_wcsupr`
+* `_wcsupr_s`
+* `_wfdopen`
+* `_wfopen`
+* `_wfopen_s`
+* `_wfreopen`
+* `_wfreopen_s`
+* `_wtol`
+* `_wtoll`
+* `_y0`
+* `_y1`
+* `_yn`

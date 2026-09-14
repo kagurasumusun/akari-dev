@@ -199,4 +199,11 @@ DWORD RasEapInvokeConfigUI(DWORD dwEapTypeId, HINSTANCE hInstance, HWND hwndPare
 /* ms899216: page-printed prototype (Windows CE .NET 4.0 and later.; this function is called by the eap module, not by the application. therefore, no link library is exposed. for more information, see eap implementation details). */
 DWORD RasEapInvokeInteractiveUI(DWORD dwEapTypeId, HINSTANCE hInstance, HWND hwndParent, BYTE* pUIContextData, DWORD dwSizeofUIContextData, BYTE** ppDataFromInteractiveUI, DWORD* pdwSizeOfDataFromInteractiveUI);
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms899213: page-printed prototype (Windows CE .NET 4.0 and later.; this function is called by the eap module, not by the application. therefore, no link library is exposed. for more information, see eap implementation details). */
+DWORD RasEapGetInfo(DWORD dwEapTypeId, PPP_EAP_INFO* pEapInfo);
+
 #endif /* AKARI_RASEAPIF_H */

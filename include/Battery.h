@@ -102,4 +102,11 @@ typedef struct _BATTERY_STATUS {
     DWORD BackupBatteryFullLifeTime;
 } BATTERY_STATUS;
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcepb_BatteryDrvrGetStatus: page-printed prototype (Windows CE OS). */
+BOOL BatteryDrvrGetStatus(PSYSTEM_POWER_STATUS_EX2 pstatus, PBOOL pfBatteriesChangedSinceLastCall);
+
 #endif /* AKARI_BATTERY_H */
