@@ -8472,3 +8472,47 @@ is much easier to keep consistent when they are one repository.
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600);
 `make e2e WINCECLANG=...` OK -- 6 WinCE targets, with no `CRTDIR`
 override, i.e. against the in-tree CRT.
+
+### M116 -- three real export gaps closed, and the surface measurement corrected
+
+`docs/app-surface.md` first reported 117 documented app-layer exports
+undeclared and 237 declared-but-unexported.  Both were wrong.  The
+"declared" test searched raw header text, comments included, so every
+held name the tree records in a comment counted as a declaration --
+`InternetOpen` (`Wininet.h`), `CeSvcClose` (`Ceutil.h`) and
+`Header_GetItem` (`Commctrl.h`) are comment records, not code.
+Re-measured against comment-stripped code, and with the export test
+split between "absent from the library its page names" and "absent from
+every import library", the figures are 357 / 49 / 32 (eVC-era 236 / 19
+/ 18).  The split matters because CE aggregates the surface into
+coredll: 16 of the 49 are exported by `def/coredll-doc.def`
+(`LocalAlloc`, `HeapCreate`, `GetMessagePos`, `GetCapture`,
+`OffsetRgn`, `SHLoadDIBitmap` and the rest) although their pages say
+`Lmem.lib`, `Msgque.lib`, `Foregnd.lib`.
+
+Of the 32 that no import library carries, all were read and none is a
+missing export: 7 parse artifacts, 8 `SNDMSG` common-control macros,
+12 driver/OEM-side entry points, 3 names an app supplies rather than
+imports, and 2 held comment records (`AutoDialGetConnectionStatus`,
+and `DMORegister`, whose page aa451608 prints no Requirements block at
+all).  Three genuine gaps were found and closed:
+
+- `DrawIcon` -> `def/icon-doc.def` (aa452971; `AKARI_CE_NAME(DrawIcon)`
+  in `Winuser.h`)
+- `OleCreatePropertyFrame` -> `def/oleaut32-doc.def`
+  (`_wcesdk_oa96_OleCreatePropertyFrame`; `Olectl.h`)
+- `WSCDeinstallProvider` -> `def/ws2-doc.def` (ms898778; `Ws2spi.h:414`)
+
+Each file stayed alphabetically sorted.  Verified by running
+`llvm-dlltool -m armce` over the three defs and reading the result with
+`llvm-readobj --symbols`: all three names are present in the generated
+import libraries.
+
+The declared-but-not-linkable axis is therefore closed.  What remains
+is the other column -- 357 documented app-layer exports with no
+declaration in code (236 eVC-era) -- which is the held-record and
+absent-name work.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600);
+`make e2e WINCECLANG=...` OK -- 6 WinCE targets, which rebuilds every
+`def/*.def` through llvm-dlltool and links against the result.

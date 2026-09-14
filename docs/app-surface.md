@@ -21,10 +21,28 @@ this tree ships.  Two checks per name:
 
 ## (c) every documented app-layer export
 
-| population | names | not declared | declared but not exported |
-|---|---|---|---|
-| all app-layer exports | 2433 | 117 | 237 |
-| eVC-era (first OS <= CE 4.2) | 1869 | 74 | 152 |
+| population | names | not declared | declared, not exported by its own lib | declared, exported by no lib at all |
+|---|---|---|---|---|
+| all app-layer exports | 2433 | 357 | 49 | 32 |
+| eVC-era (first OS <= CE 4.2) | 1869 | 236 | 19 | 18 |
+
+> **Correction (M116).**  The first revision of this table read
+> `117 / 237` and `74 / 152`.  Those numbers were wrong, and the cause
+> matters: "declared" was tested by searching the **raw** header text,
+> comments included, so every *held* name the tree records in a comment
+> counted as declared.  `InternetOpen` (`Wininet.h`), `CeSvcClose`
+> (`Ceutil.h`) and `Header_GetItem` (`Commctrl.h`) are comment records,
+> not declarations.  Re-measured against comment-stripped code the
+> columns are the ones above, and the "declared" test was further split
+> in two, because a name can be absent from the library its page names
+> and still be linkable: CE aggregates most of the surface into
+> coredll, and 16 of the 49 are exported by `def/coredll-doc.def`
+> (`LocalAlloc`/`LocalFree`/`LocalReAlloc`/`LocalSize`,
+> `HeapCreate`/`HeapFree`/`HeapReAlloc`, `GetMessagePos`,
+> `PostQuitMessage`, `TranslateMessage`, `GetCapture`/`SetCapture`/
+> `ReleaseCapture`, `GetDoubleClickTime`, `OffsetRgn`, `SHLoadDIBitmap`)
+> even though their pages say `Lmem.lib`, `Msgque.lib`, `Foregnd.lib`
+> and so on.  The last column is the one an app actually feels.
 
 Generation split of the same population, from the official
 `OS Versions:` row: **1869** documented as present by CE 4.2, **213**
@@ -43,32 +61,33 @@ smaller than (c)'s: 74 undeclared and 152 unexported, against 117 and
 237.  Nothing an eVC-era app needs is missing that a CE 5/6 app does
 not also miss.
 
-## What the gap lists still contain
+## What the 32 "exported by no lib at all" names are
 
-Both lists are *candidates*, not defects: a name reaches them by
-shape, and several shapes are not linkable exports at all.
-Confirmed by inspection in the top slices:
+Every one was read individually.  None of them is a missing export:
 
-- **callback typedefs** -- `BrowseCallbackProc`, `AbortProc`: the
-  page prints a `Library:` row for the prototype it documents, but
-  the name is a type the app supplies, never imports;
-- **macro / SEH names** -- `AbnormalTermination`, and the
-  `CRYPTFUNC`-prefixed spellings (`CRYPTFUNCCryptDestroyHash`),
-  which are the pages' own macro aliases;
-- **driver-side entry points** -- `ACM_Seek`, `BatteryDrvrGetStatus`:
-  documented with an app-layer library row but called by the OS, not
-  by an app;
-- **one misparsed row** -- `BOOLEAN`, where the print's return type
-  was taken as the name.
+| class | n | names |
+|---|---|---|
+| parse artifact -- the print's return type taken as the name | 7 | `BOOLEAN` `DWORD` `HRESULT` `ULONG` `VOID` `int` `void` |
+| `SNDMSG` common-control macros, not DLL exports | 8 | `Header_CreateDragImage` `Header_GetImageList` `Header_GetItemRect` `Header_GetOrderArray` `Header_OrderToIndex` `Header_SetHotDivider` `Header_SetImageList` `Header_SetOrderArray` |
+| driver / OEM-side entry points -- called by the OS, not by an app | 12 | `ACM_Seek` `BatteryDrvrGetStatus` `DdsiTouchPanelGetPoint` `HCI_CloseDeviceContext` `InitLAP` `MyFSD_CloseVolume` `MyFSD_DeleteAndRenameFileW` `MyFSD_DeviceIoControl` `MyFSD_FlushFileBuffers` `MyFSD_LockFileEx` `MyFSD_Notify` `MyFSD_ReadFileWithSeek` |
+| names an app supplies, never imports | 3 | `AbnormalTermination` (SEH) `CreateInstance` (IClassFactory) `WindowProc` |
+| held comment records -- no declaration, so nothing to export | 2 | `AutoDialGetConnectionStatus` (`Autodial.h`) `DMORegister` (aa451608 prints no Requirements block at all, so no library is documented) |
 
-The remainder is real work and is per-name: the largest unexported
-slices are `Wininet.lib` (46), `Commctrl.lib` (43), `Coredll.lib`
-(34), `Sdcardlib.lib` (18); the largest undeclared slices are
-`Coredll.lib` (43), `Coreimm.lib` (18), `Coreloc.lib` (15),
-`Dlgmgr.lib` (7).  Each needs its page read before it can be either
-added or rejected, which is why this document records the
-measurement rather than a guess at the fix.
+Three names that *were* genuine gaps are exported as of M116:
+`DrawIcon` (`icon-doc.def`, page aa452971), `OleCreatePropertyFrame`
+(`oleaut32-doc.def`, `_wcesdk_oa96_OleCreatePropertyFrame`) and
+`WSCDeinstallProvider` (`ws2-doc.def`, ms898778).  Each is declared with
+`AKARI_CE_IMPORT`, each file stayed alphabetically sorted, and
+`llvm-dlltool -m armce` was run over the three with `llvm-readobj`
+confirming the symbol lands in the import library.
 
-Reproduce with the same three inputs: the corpus rows, `include/`,
-and `def/`; the generation mapping is `OS_VERSIONS` in
-`tools/gen-guard.py`.
+So the **declared-but-not-linkable axis is closed**: no documented
+app-layer export that this tree declares is missing from every import
+library.  The live gap is the other column -- **357 documented
+app-layer exports the tree does not declare in code**, 236 of them
+eVC-era.  Those are the held records and the absent names, and that is
+where the remaining work is.
+
+Reproduce with the same three inputs: the corpus rows, `include/`
+(comments stripped -- see the correction above), and `def/`; the
+generation mapping is `OS_VERSIONS` in `tools/gen-guard.py`.

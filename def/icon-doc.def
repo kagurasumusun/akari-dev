@@ -16,6 +16,7 @@ LIBRARY icon.dll
 EXPORTS
   CreateIconIndirect
   DestroyIcon
+  DrawIcon
   DrawIconEx
   GetIconInfo
   LoadIconW

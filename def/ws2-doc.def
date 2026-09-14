@@ -65,6 +65,7 @@ EXPORTS
   WSAStartup
   WSAStringToAddress
   WSAWaitForMultipleEvents
+  WSCDeinstallProvider
   WSCEnumProtocols
   WSCInstallNameSpace
   WSCInstallProvider

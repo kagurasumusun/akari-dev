@@ -25,6 +25,7 @@ EXPORTS
   GetErrorInfo
   LoadRegTypeLib
   LoadTypeLib
+  OleCreatePropertyFrame
   PropVariantClear
   PropVariantCopy
   RegisterTypeLib
