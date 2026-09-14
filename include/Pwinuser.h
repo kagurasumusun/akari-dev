@@ -110,7 +110,7 @@ AKARI_CE_IMPORT BOOL KeybdGetDeviceInfo(INT iIndex, LPVOID lpOutput) AKARI_CE_NA
 AKARI_CE_IMPORT void BatteryGetLifeTimeInfo(LPSYSTEMTIME pstLastChange, DWORD* pcmsCpuUsage, DWORD* pcmsPreviousCpuUsage)
     AKARI_CE_NAME(BatteryGetLifeTimeInfo);
 /* ms896134 BatteryNotifyOfTimeChange: print `void WINAPI BatteryNotifyOfTimeChange( BOOL fForward, FILETIME *pftDelta);` */
-AKARI_CE_IMPORT void WINAPI BatteryNotifyOfTimeChange(BOOL fForward, FILETIME pftDelta)
+AKARI_CE_IMPORT void WINAPI BatteryNotifyOfTimeChange(BOOL fForward, FILETIME* pftDelta)
     AKARI_CE_NAME(BatteryNotifyOfTimeChange);
 
 /* ------------------------------------------------------------------

@@ -1,0 +1,14 @@
+aa451759	IAMMediaContent::get_AuthorName
+aa451760	IAMMediaContent::get_BaseURL
+aa451761	IAMMediaContent::get_Copyright
+aa451762	IAMMediaContent::get_Description
+aa451763	IAMMediaContent::get_LogoIconURL
+aa451764	IAMMediaContent::get_LogoURL
+aa451765	IAMMediaContent::get_MoreInfoBannerImage
+aa451766	IAMMediaContent::get_MoreInfoBannerURL
+aa451767	IAMMediaContent::get_MoreInfoText
+ms908698	IAMMediaContent::get_MoreInfoURL
+ms908703	IAMMediaContent::get_Rating
+ms908713	IAMMediaContent::get_Title
+ms908716	IAMMediaContent::get_WatermarkURL
+ms908721	IAMMediaContent Interface

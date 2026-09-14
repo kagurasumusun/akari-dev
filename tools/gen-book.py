@@ -179,10 +179,15 @@ def parse_piece(piece):
     sp = split_glued(piece)
     if sp:
         return sp
-    m = re.match(r'^(.*?[\s*])\**\s*([A-Za-z_]\w*)$', piece)
+    # M107b fix: the pointer stars between type and name must be kept.
+    # The earlier pattern matched them with a throwaway `\**` group, so
+    # a spaced print like `const WCHAR * pwszAdd` -- the form every
+    # _wcesdk_ / wcesdkr SDK-reference page uses -- was compiled as a
+    # by-value `const WCHAR`, silently changing the parameter type.
+    m = re.match(r'^(.*?)(\**)\s*([A-Za-z_]\w*)$', piece)
     if m:
-        t = m.group(1).strip()
-        return t, m.group(2)
+        t = (m.group(1).strip() + m.group(2)).strip()
+        return t, m.group(3)
     if known_type(piece):
         return piece, ''
     return None
@@ -498,6 +503,14 @@ def emit_group(target, rs, bookname, raw, merge=False):
 
     need_carriers = set()
     parsed_funcs = []
+    # M107b: the same documented name appears on more than one page (the
+    # CE 5.0 / CE .NET / CE 3.0 archives, and the _wcesdk_ SDK-reference
+    # set), each with its own spacing.  Emit ONE prototype per name --
+    # the archive's own twin copies are recorded in the comment -- so a
+    # header cannot end up with two declarations that differ (a real
+    # compile error when the old parser dropped a pointer star from one
+    # of them, and noise otherwise).
+    seen_names = {}
     for r in funcs:
         name = re.sub(r'\s*\(Windows CE[^)]*\)\s*$', '', r['title']).strip()
         name = re.sub(r'\s*\([^)]*\)\s*$', '', name).strip()
@@ -508,10 +521,15 @@ def emit_group(target, rs, bookname, raw, merge=False):
             alt = extract_sig_from_page(r['id'], name)
             if alt:
                 sig = alt
+        if name in seen_names:
+            seen_names[name][1].append(r['id'].split('(')[0])
+            continue
         if sig.startswith('#define') or sig.startswith('typedef'):
+            seen_names[name] = (r, [r['id'].split('(')[0]])
             parsed_funcs.append((r, None))
             continue
         p = parse_sig(sig)
+        seen_names[name] = (r, [r['id'].split('(')[0]])
         parsed_funcs.append((r, p))
         if p:
             ret, conv, name2, params = p
@@ -584,7 +602,10 @@ def emit_group(target, rs, bookname, raw, merge=False):
             continue
         ret, conv, name, params = p
         eff = sig
-        emit.append(f'/* {pid} {r["title"].strip()}: print `{eff}` */')
+        twin = seen_names.get(name, (r, []))[1]
+        extra = ('  [twin page(s): ' + ', '.join(twin[1:]) + ']'
+                 if len(twin) > 1 else '')
+        emit.append(f'/* {pid} {r["title"].strip()}: print `{eff}`{extra} */')
         ok = known_type(ret) or (is_ptr(ret) and known_type(base_of(ret)))
         if is_ptr(ret) and base_of(ret) in need_carriers:
             ok = True

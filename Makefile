@@ -37,6 +37,7 @@ include/Ce_setup.h \
 include/Celog.h \
 include/Cesync.h \
 include/Ceutil.h \
+include/Comcat.h \
 include/Commctrl.h \
 include/Commdlg.h \
 include/Cpl.h \
@@ -62,6 +63,7 @@ include/Dmoreg.h \
 include/Docobj.h \
 include/Dsgetdc.h \
 include/Dshow.h \
+include/Dsound.h \
 include/Dvdata.h \
 include/Dvddata.h \
 include/Dvdioctl.h \
@@ -76,6 +78,7 @@ include/Gwebypasscoredllthunk.hpp \
 include/Htmlctrl.h \
 include/Httpext.h \
 include/Httpfilt.h \
+include/IAccess.h \
 include/IExchangeClient.h \
 include/Icmpapi.h \
 include/Imaging.h \
@@ -96,6 +99,7 @@ include/Mlang.h \
 include/Mmsystem.h \
 include/Mq.h \
 include/Mqmgmt.h \
+include/Mqoai.h \
 include/Msacmdrv.h \
 include/Msgqueue.h \
 include/Mshtmhst.h \
@@ -165,6 +169,7 @@ include/Snmpexts.h \
 include/Sockserv.h \
 include/Socksv2.h \
 include/Sphelper.h \
+include/Splapi.h \
 include/Sspi.h \
 include/Startui.h \
 include/Storemgr.h \
@@ -239,6 +244,7 @@ include/sideshow.h \
 include/strmif.h \
 include/webvw.h \
 include/winerror.h
+
 
 # OAK/DDK layer (2026-09-14 split): OEM Adaptation Kit / driver-level
 # headers (interrupt/OAL, display/DirectDraw driver internals, storage
