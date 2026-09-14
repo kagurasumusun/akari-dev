@@ -2005,4 +2005,11 @@ typedef struct tagNMHDR {
  * Book surface: cc-controls (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms907564 Controls Messages */
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms924860: page-printed prototype (Windows CE 1.0 and later.; cursor.lib, mcursor.lib). */
+AKARI_CE_IMPORT BOOL SetCursorPos(int x, int y) AKARI_CE_NAME(SetCursorPos);
+
 #endif /* AKARI_WINUSER_H */

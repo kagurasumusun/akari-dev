@@ -724,7 +724,11 @@ typedef struct phonestatus_tag {
 } PHONESTATUS;
 typedef PHONESTATUS *LPPHONESTATUS;
 
-/* VARSTRING page (ms898569). */
+/* VARSTRING page (ms898569).  AKARI_VARSTRING_DEFINED lets Ras.h
+ * carry the same documented definition without a redefinition
+ * conflict when both headers are included. */
+#ifndef AKARI_VARSTRING_DEFINED
+#define AKARI_VARSTRING_DEFINED
 typedef struct varstring_tag {
     DWORD dwTotalSize;
     DWORD dwNeededSize;
@@ -734,6 +738,7 @@ typedef struct varstring_tag {
     DWORD dwStringOffset;
 } VARSTRING;
 typedef VARSTRING *LPVARSTRING;
+#endif /* AKARI_VARSTRING_DEFINED */
 /* ------------------------------------------------------------------ */
 /* TAPI constants (the TAPI Constants pages: 63 pages, 643 values;     */
 /* the 2 constant pages that publish no values are recorded, not      */

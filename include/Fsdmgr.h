@@ -206,4 +206,29 @@ AKARI_CE_IMPORT BOOL FSDMGR_EmptyLockContainer(PFILELOCKSTATE pFileLockState)
 /* ms886160 Setting the File Pointer */
 /* aa516903 Synchronization and Device I/O */
 /* aa516923 Writing to a File */
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms891390: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
+BOOL MyFSD_CloseVolume(PVOLUME pVolume);
+
+/* ms891393: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
+BOOL MyFSD_DeleteAndRenameFileW(PVOLUME pVolume, LPCWSTR pwsOldFileName, LPCWSTR pwsNewFileName);
+
+/* ms891395: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
+BOOL MyFSD_DeviceIoControl(PFILE pFile, DWORD dwIoControlCode, PVOID pInBuf, DWORD nInBufSize, PVOID pOutBuf, DWORD nOutBufSize, PDWORD pBytesReturned, OVERLAPPED* pOverlapped);
+
+/* ms891399: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
+BOOL MyFSD_FlushFileBuffers(PFILE pFile);
+
+/* aa517926: page-printed prototype (Windows CE 5.0 and later.; fsdmgr.lib). */
+BOOL MyFSD_LockFileEx(PFILE pFile, DWORD dwFlags, DWORD dwReserved, DWORD nNumberOfBytesToLockLow, DWORD nNumberOfBytesToLockHigh, LPOVERLAPPED lpOverlapped);
+
+/* ms891407: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
+void MyFSD_Notify(PVOLUME pVolume, DWORD dwFlags);
+
+/* ms891409: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
+BOOL MyFSD_ReadFileWithSeek(PFILE pFile, PVOID pBuffer, DWORD cbRead, PDWORD pcbRead, OVERLAPPED* pOverlapped, DWORD dwLowOffset, DWORD dwHighOffset);
+
 #endif /* AKARI_FSDMGR_H */

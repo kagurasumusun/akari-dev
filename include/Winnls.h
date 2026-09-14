@@ -335,4 +335,10 @@ AKARI_CE_IMPORT BOOL EnumSystemCodePagesW(CODEPAGE_ENUMPROC lpCodePageEnumProc,
 }
 #endif
 
+
+/* ms919323 "GetStringType": same export as ms905272 (GetStringTypeW,
+ * declared above); the generic-name page is aliased exactly like the
+ * GetStringTypeEx precedent. */
+#define GetStringType GetStringTypeW
+
 #endif /* AKARI_WINNLS_H */

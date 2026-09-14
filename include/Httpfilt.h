@@ -207,4 +207,11 @@ typedef struct _HTTP_FILTER_URL_MAP {
  *   aa450967 TerminateFilter:
  *     BOOL WINAPI TerminateFilter( DWORD dwFlags);` */
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa450967: page-printed prototype (Windows CE 3.0 and later.; not applicable). */
+BOOL WINAPI TerminateFilter(DWORD dwFlags);
+
 #endif /* AKARI_HTTPFILT_H */

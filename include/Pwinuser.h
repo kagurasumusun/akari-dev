@@ -124,4 +124,26 @@ AKARI_CE_IMPORT BOOL WINAPI TouchCalibrate(void)
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms902923: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT void GwesPowerOffSystem(void) AKARI_CE_NAME(GwesPowerOffSystem);
+
+/* ms906006: page-printed prototype (Windows CE .NET 4.2 and later.; linked during platform build). */
+BOOL WINAPI ImmGetConversionStatusForeground(DWORD* pfdwConversion, DWORD* pfdwSentence);
+
+/* ms905318: page-printed prototype (Windows CE 1.0 and later.; coredll.dll). */
+AKARI_CE_IMPORT BOOL WINAPI NLedGetDeviceInfo(UINT nInfoId, void* pOutput) AKARI_CE_NAME(NLedGetDeviceInfo);
+
+/* ms905321: page-printed prototype (Windows CE 1.0 and later.; coredll.dll). */
+AKARI_CE_IMPORT BOOL WINAPI NLedSetDevice(UINT nDeviceId, void* pInput) AKARI_CE_NAME(NLedSetDevice);
+
+/* _wcepb_NotifyWinUserSystem: page-printed prototype (Windows CE OS). */
+AKARI_CE_IMPORT void NotifyWinUserSystem(UINT uEvent) AKARI_CE_NAME(NotifyWinUserSystem);
+
+/* ms919550: page-printed prototype (Windows CE 2.10 and later.). */
+AKARI_CE_IMPORT BOOL RegisterTaskBar(HWND hwndTaskbar) AKARI_CE_NAME(RegisterTaskBar);
+
 #endif /* AKARI_PWINUSER_H */

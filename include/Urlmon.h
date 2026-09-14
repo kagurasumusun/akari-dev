@@ -1209,4 +1209,17 @@ AKARI_CE_IMPORT BOOL WINAPI WriteHitLogging(
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms918808: page-printed prototype (Windows CE .NET 4.0 and later.; urlmon.lib). */
+BOOL IsLoggingEnabled(LPCTSTR pszUrl);
+
+/* ms918865: page-printed prototype (Windows CE .NET 4.0 and later.; urlmon.lib). */
+HRESULT URLDownloadToCacheFile(LPUNKNOWN lpUnkcaller, LPCSTR szURL, LPTSTR szFileName, DWORD dwBufLength, DWORD dwReserved, IBindStatusCallback* pBSC);
+
+/* ms918866: page-printed prototype (Windows CE .NET 4.0 and later.; urlmon.lib). */
+HRESULT URLDownloadToFile(LPUNKNOWN pCaller, LPCTSTR szURL, LPCTSTR szFileName, DWORD dwReserved, LPBINDSTATUSCALLBACK lpfnCB);
+
 #endif /* AKARI_URLMON_H */

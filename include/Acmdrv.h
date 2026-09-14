@@ -56,4 +56,11 @@ AKARI_CE_IMPORT DWORD ACM_Write(DWORD dwOpenData, LPCVOID pBuf, DWORD len)
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms896103: page-printed prototype (Windows CE 1.0 and later.; acmdwrap.lib). */
+DWORD ACM_Seek(DWORD dwOpenData, long pos, DWORD type);
+
 #endif /* AKARI_ACMDRV_H */

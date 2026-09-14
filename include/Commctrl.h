@@ -4437,4 +4437,104 @@ typedef struct LVSETINFOTIP {
 /* ms927193 Working with Active and Inactive Pages in a Property Sheet */
 /* ms927196 Working with Advanced Header Control Functionality */
 /* ms927205 Working with Common Controls */
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa452851: page-printed prototype (Windows CE 5.0). */
+BOOL Animate_Close(HWND hwnd);
+
+/* aa452852: page-printed prototype (Windows CE 5.0). */
+HWND Animate_Create(HWND hwndP, UINT id, DWORD dwStyle, HINSTANCE hInstance);
+
+/* aa452853: page-printed prototype (Windows CE 5.0). */
+BOOL Animate_Open(HWND hwndAnim, LPTSTR lpszName);
+
+/* aa452854: page-printed prototype (Windows CE 5.0). */
+BOOL Animate_OpenEx(HWND hwndAnim, HINSTANCE hinst, LPTSTR lpszName);
+
+/* aa452855: page-printed prototype (Windows CE 5.0). */
+BOOL Animate_Play(HWND hwndAnim, UINT wFrom, UINT wTo, UINT cRepeat);
+
+/* aa452856: page-printed prototype (Windows CE 5.0). */
+BOOL Animate_Seek(HWND hwndAnim, UINT wFrame);
+
+/* aa452857: page-printed prototype (Windows CE 5.0). */
+BOOL Animate_Stop(HWND hwndAnim);
+
+/* _wcesdk_Header_CreateDragImage: page-printed prototype (Windows CE OS; commctrl.lib). */
+HIMAGELIST Header_CreateDragImage(HWND hwndHD, int iIndex);
+
+/* _wcesdk_Header_GetImageList: page-printed prototype (Windows CE OS; commctrl.lib). */
+HIMAGELIST Header_GetImageList(HWND hwndHD);
+
+/* _wcesdk_Header_OrderToIndex: page-printed prototype (Windows CE OS; commctrl.lib). */
+int Header_OrderToIndex(HWND hwndHD, int iOrder);
+
+/* _wcesdk_Header_SetHotDivider: page-printed prototype (Windows CE OS; commctrl.lib). */
+int Header_SetHotDivider(HWND hwndHD, BOOL flag, DWORD dwInputValue);
+
+/* _wcesdk_Header_SetImageList: page-printed prototype (Windows CE OS; commctrl.lib). */
+HIMAGELIST Header_SetImageList(HWND hwndHD, HIMAGELIST himl);
+
+/* aa453304: page-printed prototype (Windows CE 2.0 and later.). */
+DWORD ListView_ApproximateViewRect(HWND hwndLV, int cx, int cy, int iCount);
+
+/* aa453382: page-printed prototype (Windows CE 5.0 and later.). */
+int ListView_EnableGroupView(HWND hwnd, BOOL fEnable);
+
+/* aa453315: page-printed prototype (Windows CE 2.0 and later.). */
+BOOL ListView_GetCheckState(HWND hwndLV, UINT iIndex);
+
+/* aa453317: page-printed prototype (Windows CE 2.0 and later.). */
+BOOL ListView_GetColumnOrderArray(HWND hwndLV, int iCount, int* lpiArray);
+
+/* aa453321: page-printed prototype (Windows CE 2.0 and later.). */
+DWORD ListView_GetExtendedListViewStyle(HWND hwndLV);
+
+/* aa453385: page-printed prototype (Windows CE 5.0 and later.). */
+int ListView_GetGroupCount(HWND hwnd);
+
+/* aa453346: page-printed prototype (Windows CE 2.0 and later.). */
+INT ListView_GetSelectionMark(HWND hwndLV);
+
+/* aa453389: page-printed prototype (Windows CE 5.0 and later.). */
+HWND ListView_GetToolTips(HWND hwnd);
+
+/* aa453390: page-printed prototype (Windows CE 5.0 and later.). */
+BOOL ListView_HasGroup(HWND hwnd, int dwGroupId);
+
+/* aa453393: page-printed prototype (Windows CE 5.0 and later.). */
+BOOL ListView_IsGroupViewEnabled(HWND hwnd);
+
+/* aa453394: page-printed prototype (Windows CE 5.0 and later.). */
+UINT ListView_MapIDToIndex(HWND hwnd, UINT id);
+
+/* aa453395: page-printed prototype (Windows CE 5.0 and later.). */
+UINT ListView_MapIndexToID(HWND hwnd, UINT index);
+
+/* aa453399: page-printed prototype (Windows CE 5.0 and later.). */
+int ListView_RemoveGroup(HWND hwnd, int iGroupId);
+
+/* aa453362: page-printed prototype (Windows CE 2.0 and later.). */
+BOOL ListView_SetColumnOrderArray(HWND hwndLV, int iCount, int* lpiArray);
+
+/* aa453364: page-printed prototype (Windows CE 2.0 and later.). */
+void ListView_SetExtendedListViewStyle(HWND hwndLV, DWORD dwExStyle);
+
+/* aa453384: page-printed prototype (Windows CE 5.0 and later.). */
+void ListView_SetExtendedListViewStyleEx(HWND hwndLV, DWORD dwExMask, DWORD dwExStyle);
+
+/* aa453365: page-printed prototype (Windows CE 2.0 and later.). */
+DWORD ListView_SetIconSpacing(HWND hwndLV, int cx, int cy);
+
+/* aa453369: page-printed prototype (Windows CE 2.0 and later.). */
+void ListView_SetItemCountEx(HWND hwndLV, int cItems, DWORD dwFlags);
+
+/* aa453374: page-printed prototype (Windows CE 2.0 and later.). */
+INT ListView_SetSelectionMark(HWND hwndLV, INT iIndex);
+
+/* aa453404: page-printed prototype (Windows CE 5.0 and later.). */
+HWND ListView_SetToolTips(HWND hwnd, HWND hwndToolTip);
+
 #endif /* AKARI_COMMCTRL_H */

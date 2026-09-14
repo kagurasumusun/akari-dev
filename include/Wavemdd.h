@@ -47,4 +47,11 @@ DWORD WAV_Write(DWORD dwOpenData, LPCVOID pBuf, DWORD len);
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms923291: page-printed prototype (Windows CE 1.0 and later.). */
+BOOL WAV_IOControl(DWORD dwOpenData, DWORD dwCode, PBYTE pBufIn, DWORD dwLenIn, PBYTE pBufOut, DWORD dwLenOut, PDWORD pdwActualOut);
+
 #endif /* AKARI_WAVEMDD_H */

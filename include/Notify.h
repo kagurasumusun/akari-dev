@@ -86,4 +86,11 @@ AKARI_CE_IMPORT HANDLE CeSetUserNotificationEx(HANDLE hNotification,            
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms920365: page-printed prototype (Windows CE 2.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT BOOL CeEventHasOccurred(LONG lWhichEvent, TCHAR* pwszEndOfCommandLine) AKARI_CE_NAME(CeEventHasOccurred);
+
 #endif /* AKARI_NOTIFY_H */

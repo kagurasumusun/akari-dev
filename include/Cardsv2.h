@@ -150,4 +150,11 @@ extern "C" {
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms899316: page-printed prototype (Windows CE 5.0 and later; pcc_serv.dll). */
+STATUS GetSocketStatus(DWORD dwSocketIndex, PDWORD pdwStatus);
+
 #endif /* AKARI_CARDSV2_H */

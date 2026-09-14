@@ -33,7 +33,7 @@ typedef struct tagRasCntlServerIPV6NetPrefix {
     DWORD IPV6NetPrefixCount;
 } RASCNTL_SERVER_IPV6_NET_PREFIX, *PRASCNTL_SERVER_IPV6_NET_PREFIX;
 
-/* --- Record-only (members depend on unpublished types). ----------
+/* --- Record-only (page print truncated; values absent). -----------
  * ms896353 "RasCntlEnum": print (truncated on the page, values
  * absent, several commas missing -- verbatim):
  *   typedef enum tagRasCntlEnum { RASCNTL_SERVER_GET_STATUS,
@@ -47,36 +47,65 @@ typedef struct tagRasCntlServerIPV6NetPrefix {
  *   RASCNTL_SERVER_USER_DELETE_CREDENTIALS,
  *   RASCNTL_SERVER_GET_IPV6_NET_PREFIX RASCNTL_SERVER_SET_IPV6_NET_PREFIX
  *   RASCNTL_SERVER_LINE_GET_CO... (page ends mid-identifier)
- * ms896354 "RASCNTL_SERVERLINE": `typedef struct tagRasCntlServerLine
- * {RASDEVINFOrasDevInfo;BOOLbEnable;DWORDbmFlags;
- * UINTDisconnectIdleSeconds;DWORDdwDevConfigSize;BYTEDevConfig[1];}
- * RASCNTL_SERVERLINE, *PRASCNTL_SERVERLINE;` (RASDEVINFO unpublished)
- * CROSS-GENERATION (M86 sweep): the CE 4.0 twin ms924959 prints the
- * same members but drops the semicolon after `BYTE DevConfig[1]`
- * (archive print artifact; members identical).
- * ms896356 "RASCNTL_SERVERUSERCREDENTIALS": `typedef struct
- * tagRasCntlServerUser{TCHAR tszUserName[UNLEN + 1];
- * TCHARtszDomainName[DNLEN + 1];BYTEpassword[PWLEN];DWORDcbPassword;}
- * RASCNTL_SERVERUSERCREDENTIALS, *PRASCNTL_SERVERUSERCREDENTIALS;`
- * (UNLEN/DNLEN/PWLEN unpublished)
- * ms896357 "RASCNTL_SERVERCONNECTION": `typedef struct
- * tagRasCntlServerConnection { RASDEVINFO rasDevInfo;
- * HRASCONN hrasconn; DWORD dwServerIpAddress;
- * DWORD dwClientIpAddress; RASCONNSTATE RasConnState;
- * TCHAR tszUserName[DNLEN + 1 + UNLEN + 1];} RASCNTL_SERVERCONNECTION,
- * *PRASCNTL_SERVERCONNECTION;` (RASDEVINFO/HRASCONN/RASCONNSTATE/
- * UNLEN/DNLEN unpublished). */
+ * The three server structures that the M75f record listed as held
+ * (RASCNTL_SERVERLINE, RASCNTL_SERVERUSERCREDENTIALS,
+ * RASCNTL_SERVERCONNECTION) are declared live at the foot of this
+ * header now that RASDEVINFO/HRASCONN/RASCONNSTATE/UNLEN/DNLEN/
+ * PWLEN are closed. */
 
 /* ================================================================== */
 /* RAS client API (dial-up networking).                              */
-/* Official Windows CE 3.0 archive pages (wcesdkr*, "Versions: N and  */
-/* later", Defined in Ras.h -- the dual-header rows also list         */
-/* Afdfunc.h) cross-checked against the CE 5.0 archive twins          */
-/* (ms896359/ms896360/ms896361/aa450835/aa450836/aa450837/aa450853/   */
-/* aa450854/aa450865), which print identical declarations.  Every     */
-/* client function page lists Link to: Ppp.lib (a static support      */
-/* library, not a DLL), so no doc-def entry is claimed for them.      */
+/* Official Windows CE 3.0 archive pages (wcesdkr*, "Versions: N and */
+/* later", Defined in Ras.h -- the dual-header rows also list        */
+/* Afdfunc.h) cross-checked against the CE 5.0 archive twins         */
+/* (ms896359/ms896360/ms896361/aa450833/aa450835/aa450836/aa450837/  */
+/* aa450853/aa450854/aa450865), which print identical declarations.  */
+/* Every client function page lists Link to: Ppp.lib; the            */
+/* device-dump-audited coredll export surface of the sysroot         */
+/* (corpus coredll def files, clean-room.md 3.2) verifies that all Ras*  */
+/* functions are exported by coredll.dll on CE 4/5/6, so they are    */
+/* declared with the coredll import decoration and carried by        */
+/* def/coredll-doc.def.                                              */
+/*                                                                   */
+/* Value adoptions (clean-room.md 4, R1 = CeGCC-lineage w32api,      */
+/* public domain, CE lineage): the CE pages print the constant NAMES */
+/* but no values; the numeric values below are adopted from R1 with  */
+/* provenance, never copied expression.  Where a CE page prints a    */
+/* value itself (RASPROJECTION), the page wins.                      */
 /* ================================================================== */
+
+/* --- Adopted size/length constants (R1 lineage values). -----------
+ * CE pages printing the names: wcesdkrRASCONN_str, wcesdkrRASDIALPAR
+ * AMS_str, wcesdkrRASENTRY_str, wcesdkrRASENTRYNAME_str,
+ * wcesdkrRASDEVINFO_str, wcesdkrRASCONNSTATUS_str, wcesdkrRASPPPIP
+ * (+ CE 5.0 twins).  No CE page prints a value; adopted from the R1
+ * CE lineage (include/ras.h, include/lmcons.h). */
+#define RAS_MaxEntryName       256
+#define RAS_MaxPhoneNumber     128
+#define RAS_MaxCallbackNumber  RAS_MaxPhoneNumber
+#define RAS_MaxDeviceType      16
+#define RAS_MaxDeviceName      128
+#define RAS_MaxAreaCode        10
+#define RAS_MaxPadType         32
+#define RAS_MaxX25Address      200
+#define RAS_MaxFacilities      200
+#define RAS_MaxUserData        200
+#define RAS_MaxIpAddress       15
+
+/* Account-length constants used by RASDIALPARAMS (CE page prints the
+ * names in the struct print); values adopted from the R1 lineage
+ * lmcons values. */
+#define UNLEN  256
+#define PWLEN  256
+#define DNLEN  15
+
+/* --- Connection handle (opaque). ----------------------------------
+ * No CE page prints the typedef; the R1 CE-lineage ABI fact is a
+ * DECLARE_HANDLE-class opaque pointer (R1 include/ras.h).  The tree
+ * declares HANDLE-class opaque pointers as void* (windef.h HWND
+ * convention). */
+typedef void *HRASCONN;
+typedef HRASCONN *LPHRASCONN;
 
 /* wcesdkrRASIPADDR_str "RASIPADDR" (+ CE 5.0 twin aa450853):
  * struct printed verbatim.  CE 1.0+; Ras.h.  IP address carrier for
@@ -89,6 +118,173 @@ typedef struct RASIPADDR {
     BYTE c;
     BYTE d;
 } RASIPADDR;
+
+/* wcesdkrRASCONN_str "RASCONN" (+ CE 5.0 twin ms896359): struct
+ * printed verbatim.  CE 1.0+; Ras.h.  Returned as an array by
+ * RasEnumConnections. */
+typedef struct _RASCONN {
+    DWORD    dwSize;
+    HRASCONN hrasconn;
+    TCHAR    szEntryName[RAS_MaxEntryName + 1];
+} RASCONN, *LPRASCONN;
+
+/* wcesdkrRASCONNSTATE_str "RASCONNSTATE" (+ CE 5.0 twin ms896360):
+ * enum printed verbatim (the anchors RASCS_PAUSED/RASCS_DONE are
+ * documented as bitmasks classifying paused/done states; their
+ * values 0x1000/0x2000 are adopted from the R1 CE lineage).
+ * CE 1.0+; Ras.h. */
+#define RASCS_PAUSED 0x1000
+#define RASCS_DONE   0x2000
+typedef enum _RASCONNSTATE {
+    RASCS_OpenPort = 0,
+    RASCS_PortOpened,
+    RASCS_ConnectDevice,
+    RASCS_DeviceConnected,
+    RASCS_AllDevicesConnected,
+    RASCS_Authenticate,
+    RASCS_AuthNotify,
+    RASCS_AuthRetry,
+    RASCS_AuthCallback,
+    RASCS_AuthChangePassword,
+    RASCS_AuthProject,
+    RASCS_AuthLinkSpeed,
+    RASCS_AuthAck,
+    RASCS_ReAuthenticate,
+    RASCS_Authenticated,
+    RASCS_PrepareForCallback,
+    RASCS_WaitForModemReset,
+    RASCS_WaitForCallback,
+    RASCS_Projected,
+    RASCS_Interactive = RASCS_PAUSED,
+    RASCS_RetryAuthentication,
+    RASCS_CallbackSetByCaller,
+    RASCS_PasswordExpired,
+    RASCS_Connected = RASCS_DONE,
+    RASCS_Disconnected
+} RASCONNSTATE;
+
+/* wcesdkrRASCONNSTATUS_str "RASCONNSTATUS" (+ CE 5.0 twin
+ * ms896361): struct printed verbatim.  CE 1.0+; Ras.h.  Filled by
+ * RasGetConnectStatus. */
+typedef struct _RASCONNSTATUS {
+    DWORD        dwSize;
+    RASCONNSTATE rasconnstate;
+    DWORD        dwError;
+    TCHAR        szDeviceType[RAS_MaxDeviceType + 1];
+    TCHAR        szDeviceName[RAS_MaxDeviceName + 1];
+} RASCONNSTATUS, *LPRASCONNSTATUS;
+
+/* wcesdkrRASDIALPARAMS_str "RASDIALPARAMS" (+ CE 5.0 twin
+ * aa450835): struct printed verbatim.  CE 1.0+; Ras.h.  CE 3.0+
+ * remark: RasGetEntryDialParams returns a saved-password handle in
+ * szPassword instead of the plain-text password. */
+typedef struct _RASDIALPARAMS {
+    DWORD dwSize;
+    TCHAR szEntryName[RAS_MaxEntryName + 1];
+    TCHAR szPhoneNumber[RAS_MaxPhoneNumber + 1];
+    TCHAR szCallbackNumber[RAS_MaxCallbackNumber + 1];
+    TCHAR szUserName[UNLEN + 1];
+    TCHAR szPassword[PWLEN + 1];
+    TCHAR szDomain[DNLEN + 1];
+} RASDIALPARAMS, *LPRASDIALPARAMS;
+
+/* wcesdkrRASENTRYNAME_str "RASENTRYNAME" (+ CE 5.0 twin aa450837):
+ * struct printed verbatim.  CE 1.0+; Ras.h.  Returned as an array
+ * by RasEnumEntries. */
+typedef struct _RASENTRYNAME {
+    DWORD dwSize;
+    TCHAR szEntryName[RAS_MaxEntryName + 1];
+} RASENTRYNAME, *LPRASENTRYNAME;
+
+/* wcesdkrRASENTRY_str "RASENTRY" (+ CE 5.0 twin aa450836): the
+ * CE 3.0 archive print ends at dwReserved2; the CE 5.0 archive
+ * print appends dwCustomAuthKey -- declared for all supported
+ * targets (CE .NET 4.x and later).  CE 1.0+; Ras.h.
+ * dwfOptions/dwfNetProtocols/dwFramingProtocol flag values below. */
+typedef struct _RASENTRY {
+    DWORD     dwSize;
+    DWORD     dwfOptions;
+    DWORD     dwCountryID;
+    DWORD     dwCountryCode;
+    TCHAR     szAreaCode[RAS_MaxAreaCode + 1];
+    TCHAR     szLocalPhoneNumber[RAS_MaxPhoneNumber + 1];
+    DWORD     dwAlternatesOffset;
+    RASIPADDR ipaddr;
+    RASIPADDR ipaddrDns;
+    RASIPADDR ipaddrDnsAlt;
+    RASIPADDR ipaddrWins;
+    RASIPADDR ipaddrWinsAlt;
+    DWORD     dwFrameSize;
+    DWORD     dwfNetProtocols;
+    DWORD     dwFramingProtocol;
+    TCHAR     szScript[MAX_PATH];
+    TCHAR     szAutoDialDll[MAX_PATH];
+    TCHAR     szAutoDialFunc[MAX_PATH];
+    TCHAR     szDeviceType[RAS_MaxDeviceType + 1];
+    TCHAR     szDeviceName[RAS_MaxDeviceName + 1];
+    TCHAR     szX25PadType[RAS_MaxPadType + 1];
+    TCHAR     szX25Address[RAS_MaxX25Address + 1];
+    TCHAR     szX25Facilities[RAS_MaxFacilities + 1];
+    TCHAR     szX25UserData[RAS_MaxUserData + 1];
+    DWORD     dwChannels;
+    DWORD     dwReserved1;
+    DWORD     dwReserved2;
+    DWORD     dwCustomAuthKey;
+} RASENTRY, *LPRASENTRY;
+
+/* dwfOptions flags: names on the CE 3.0/5.0 RASENTRY pages; values
+ * adopted from the R1 CE lineage.  Six CE-5.0-page flag names have
+ * no value in any allowed source and stay recorded only (below). */
+#define RASEO_UseCountryAndAreaCodes  0x00000001
+#define RASEO_SpecificIpAddr          0x00000002
+#define RASEO_SpecificNameServers     0x00000004
+#define RASEO_IpHeaderCompression     0x00000008
+#define RASEO_RemoteDefaultGateway    0x00000010
+#define RASEO_DisableLcpExtensions    0x00000020
+#define RASEO_ModemLights             0x00000100
+#define RASEO_SwCompression           0x00000200
+#define RASEO_RequireEncryptedPw      0x00000400
+#define RASEO_RequireMsEncryptedPw    0x00000800
+#define RASEO_RequireDataEncryption   0x00001000
+#define RASEO_NetworkLogon            0x00002000
+#define RASEO_UseLogonCredentials     0x00004000
+#define RASEO_PromoteAlternates       0x00008000
+#define RASEO_PreviewUserPw           0x01000000
+#define RASEO_CustomScript            0x80000000
+/* Names recorded without a value (CE 5.0 page names only; absent
+ * from every allowed value source): RASEO_DialAsLocalCall,
+ * RASEO_ProhibitPAP, RASEO_ProhibitCHAP, RASEO_ProhibitEAP,
+ * RASEO_ProhibitMsCHAP, RASEO_ProhibitMsCHAP2. */
+
+/* dwfNetProtocols values (name family on the RASENTRY member prose;
+ * values adopted from the R1 CE lineage). */
+#define RASNP_NetBEUI 0x00000001
+#define RASNP_Ipx     0x00000002
+#define RASNP_Ip      0x00000004
+
+/* dwFramingProtocol values (same provenance). */
+#define RASFP_Ppp  0x00000001
+#define RASFP_Slip 0x00000002
+#define RASFP_Ras  0x00000004
+
+/* wcesdkrRASDEVINFO_str "RASDEVINFO" (+ CE 5.0 twin aa450833):
+ * struct printed verbatim with CHAR arrays (TAPI device strings are
+ * ANSI on CE by the official print).  The RasEnumDevices prototype
+ * uses the W spelling; RASDEVINFOW aliases the same struct.
+ * CE 1.0+; Ras.h. */
+typedef struct tagRASDEVINFO {
+    DWORD dwSize;
+    CHAR  szDeviceType[RAS_MaxDeviceType + 1];
+    CHAR  szDeviceName[RAS_MaxDeviceName + 1];
+} RASDEVINFO, RASDEVINFOW, *LPRASDEVINFO, *LPRASDEVINFOW;
+
+/* szDeviceType string constants (names on the RASDEVINFO page;
+ * literals adopted from the R1 CE lineage). */
+#define RASDT_Modem TEXT("modem")
+#define RASDT_Isdn  TEXT("isdn")
+#define RASDT_X25   TEXT("x25")
+#define RASDT_Vpn   TEXT("vpn")
+#define RASDT_Pad   TEXT("pad")
 
 /* wcesdkrRASPROJECTION "RASPROJECTION": enum printed with values.
  * CE 1.0+; Ras.h.  Passed to RasGetProjectionInfo to select the
@@ -103,7 +299,29 @@ typedef enum _RASPROJECTION {
     RASP_PppCcp = 0x80FD,
     RASP_PppLcp = 0xC021,
     RASP_Slip   = 0x20000
-} RASPROJECTION;
+} RASPROJECTION, *LPRASPROJECTION;
+
+/* wcesdkrRASPPPIP "RASPPPIP" (+ CE 5.0 twin aa450854): struct
+ * printed verbatim.  CE 1.0+; Ras.h.  Returned by
+ * RasGetProjectionInfo for RASP_PppIp.  CE remark: dwSize must
+ * specify the size of the structure without the desktop
+ * szServerIpAddress member. */
+typedef struct _RASPPPIP {
+    DWORD dwSize;
+    DWORD dwError;
+    TCHAR szIpAddress[RAS_MaxIpAddress + 1];
+} RASPPPIP, *LPRASPPPIP;
+
+/* RASDIALEXTENSIONS: referenced by the RasDial prototype (the CE
+ * page says the parameter is ignored and should be NULL).  The CE
+ * pages do not print the struct; the layout is adopted from the R1
+ * CE lineage (ABI fact, clean-room.md 4). */
+typedef struct tagRASDIALEXTENSIONS {
+    DWORD dwSize;
+    DWORD dwfOptions;
+    HWND  hwndParent;
+    ULONG_PTR reserved;
+} RASDIALEXTENSIONS, *LPRASDIALEXTENSIONS;
 
 /* aa450865 "RAS_STATS (Windows CE 5.0)": struct printed verbatim.
  * CE .NET 4.0+ (OS Versions row of the page); Ras.h.  Accumulated
@@ -127,216 +345,167 @@ typedef struct _RAS_STATS {
     DWORD dwConnectDuration;
 } RAS_STATS, *PRAS_STATS;
 
+/* --- RAS client functions. ----------------------------------------
+ * Prototypes printed by the CE 3.0 archive pages (cross-checked
+ * against the CE 5.0 twins where they exist); coredll exports
+ * verified on the audited sysroot surface (CE 4, 5, 6 ARM + CE 6
+ * x86). */
+
+/* wcesdkrRasDial "RasDial": CE 1.0+; Ras.h, Afdfunc.h.  dialExten
+ * sions and phoneBookPath are ignored on CE (NULL); NotifierType
+ * 0xFFFFFFFF makes notifier an HWND receiving WM_RASDIALEVENT. */
+AKARI_CE_IMPORT DWORD RasDial(LPRASDIALEXTENSIONS dialExtensions,
+                    LPTSTR phoneBookPath, LPRASDIALPARAMS rasDialParam,
+                    DWORD NotifierType, LPVOID notifier,
+                    LPHRASCONN pRasConn) AKARI_CE_NAME(RasDial);
+
+/* wcesdkrRasEnumConnections "RasEnumConnections": CE 1.0+; Ras.h,
+ * Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasEnumConnections(LPRASCONN lprasconn, LPDWORD lpcb,
+                    LPDWORD lpcConnections) AKARI_CE_NAME(RasEnumConnections);
+
+/* wcesdkrRasEnumDevices "RasEnumDevices": CE 3.0+; Ras.h. */
+AKARI_CE_IMPORT DWORD RasEnumDevices(LPRASDEVINFOW lpRasDevinfo, LPDWORD lpcb,
+                    LPDWORD lpcDevices) AKARI_CE_NAME(RasEnumDevices);
+
+/* wcesdkrRasEnumEntries "RasEnumEntries": CE 1.0+; Ras.h,
+ * Afdfunc.h.  lpszPhoneBookPath is ignored on CE. */
+AKARI_CE_IMPORT DWORD RasEnumEntries(LPWSTR Reserved, LPWSTR lpszPhoneBookPath,
+                    LPRASENTRYNAME lprasentryname, LPDWORD lpcb,
+                    LPDWORD lpcEntries) AKARI_CE_NAME(RasEnumEntries);
+
+/* wcesdkrRasGetConnectStatus "RasGetConnectStatus": CE 1.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasGetConnectStatus(HRASCONN rasconn,
+                    LPRASCONNSTATUS lprasconnstatus) AKARI_CE_NAME(RasGetConnectStatus);
+
+/* wcesdkrRasGetEntryDialParams "RasGetEntryDialParams": CE 1.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasGetEntryDialParams(LPWSTR lpszPhoneBook,
+                    LPRASDIALPARAMS lpRasDialParams,
+                    LPBOOL lpfPassword) AKARI_CE_NAME(RasGetEntryDialParams);
+
+/* wcesdkrRasGetEntryProperties "RasGetEntryProperties": CE 1.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasGetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry,
+                    LPRASENTRY lpbEntry, LPDWORD lpdwEntrySize,
+                    LPBYTE lpb, LPDWORD lpdwSize) AKARI_CE_NAME(RasGetEntryProperties);
+
+/* wcesdkrRasGetLinkStatistics "RasGetLinkStatistics": CE 3.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasGetLinkStatistics(HRASCONN hRasConn, DWORD dwSubEntry,
+                    RAS_STATS *lpStatistics) AKARI_CE_NAME(RasGetLinkStatistics);
+
+/* wcesdkrRasGetProjectionInfo "RasGetProjectionInfo": CE 3.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasGetProjectionInfo(HRASCONN hrasconn,
+                    RASPROJECTION rasprojection, LPVOID lpprojection,
+                    LPDWORD lpcb) AKARI_CE_NAME(RasGetProjectionInfo);
+
+/* wcesdkrRasHangUp "RasHangUp": CE 1.0+; Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasHangUp(HRASCONN Session) AKARI_CE_NAME(RasHangUp);
+
+/* wcesdkrRasSetEntryDialParams "RasSetEntryDialParams": CE 1.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasSetEntryDialParams(LPWSTR lpszPhoneBook,
+                    LPRASDIALPARAMS lpRasDialParams,
+                    BOOL fRemovePassword) AKARI_CE_NAME(RasSetEntryDialParams);
+
+/* wcesdkrRasSetEntryProperties "RasSetEntryProperties": CE 1.0+;
+ * Ras.h, Afdfunc.h. */
+AKARI_CE_IMPORT DWORD RasSetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry,
+                    LPRASENTRY lpbEntry, DWORD dwEntrySize,
+                    LPBYTE lpb, DWORD dwSize) AKARI_CE_NAME(RasSetEntryProperties);
+
 /* wcesdkrRasDeleteEntry "RasDeleteEntry":
- * DWORD RasDeleteEntry(LPWSTR, LPWSTR).  CE 3.0+; Ras.h, Afdfunc.h;
- * Ppp.lib.  Deletes a phone-book entry (lpszPhonebook is ignored on
- * CE -- entries live in the registry). */
-DWORD RasDeleteEntry(LPWSTR lpszPhonebook, LPWSTR lpszEntry);
+ * DWORD RasDeleteEntry(LPWSTR, LPWSTR).  CE 3.0+; Ras.h, Afdfunc.h.
+ * Deletes a phone-book entry (lpszPhonebook is ignored on CE --
+ * entries live in the registry). */
+AKARI_CE_IMPORT DWORD RasDeleteEntry(LPWSTR lpszPhonebook, LPWSTR lpszEntry)
+                    AKARI_CE_NAME(RasDeleteEntry);
 
 /* wcesdkrRasRenameEntry "RasRenameEntry":
  * DWORD RasRenameEntry(LPWSTR, LPWSTR, LPWSTR).  CE 1.0+; Ras.h,
- * Afdfunc.h; Ppp.lib.  Renames a phone-book entry; call
- * RasValidateEntryName on the new name first. */
-DWORD RasRenameEntry(LPWSTR lpszPhonebook, LPWSTR lpszOldEntry,
-                     LPWSTR lpszNewEntry);
+ * Afdfunc.h.  Renames a phone-book entry; call RasValidateEntryName
+ * on the new name first. */
+AKARI_CE_IMPORT DWORD RasRenameEntry(LPWSTR lpszPhonebook, LPWSTR lpszOldEntry,
+                    LPWSTR lpszNewEntry) AKARI_CE_NAME(RasRenameEntry);
 
 /* wcesdkrRasValidateEntryName "RasValidateEntryName":
  * DWORD RasValidateEntryName(LPWSTR, LPWSTR).  CE 1.0+; Ras.h,
- * Afdfunc.h; Ppp.lib.  Validates an entry name (at least one
- * alphanumeric character; no | > < ? * \ / : characters). */
-DWORD RasValidateEntryName(LPWSTR lpszPhonebook, LPWSTR lpszEntry);
+ * Afdfunc.h.  Validates an entry name (at least one alphanumeric
+ * character; no | > < ? * \ / : characters). */
+AKARI_CE_IMPORT DWORD RasValidateEntryName(LPWSTR lpszPhonebook, LPWSTR lpszEntry)
+                    AKARI_CE_NAME(RasValidateEntryName);
 
-/* --- RAS client declarations HELD (zero-gap policy). ---------------
- *
- * The pages below print their declarations verbatim, but each
- * declaration depends on identifiers that no official CE page
- * (CE 1.0/2.x/3.0 archive, CE 5.0 and CE 6.0 trees) publishes a
- * value or definition for.  Nothing is invented; the prints are
- * recorded so the surface is traceable and the declarations can be
- * completed the day the missing facts are officially published.
- *
- * Handle type (no CE page prints the typedef):
- *   HRASCONN / LPHRASCONN -- "Handle to the remote access
- *   connection" (wcesdkrRASCONN_str member remarks, wcesdkrRasDial
- *   pRasConn parameter).
- *
- * Array-size constants (names printed in the struct prints below;
- * no CE page prints a value):
- *   RAS_MaxEntryName RAS_MaxPhoneNumber RAS_MaxCallbackNumber
- *   RAS_MaxDeviceType RAS_MaxDeviceName RAS_MaxAreaCode
- *   RAS_MaxPadType RAS_MaxX25Address RAS_MaxFacilities
- *   RAS_MaxUserData RAS_MaxIpAddress
- *
- * Account-length constants (names printed in RASDIALPARAMS; no CE
- * page prints a value):  UNLEN PWLEN DNLEN
- *
- * State-class bitmasks (names printed in the RASCONNSTATE remarks:
- * fDoneState = (state & RASCS_DONE), fPausedState = (state &
- * RASCS_PAUSED); no CE page prints values):
- *   RASCS_PAUSED RASCS_DONE
- *
- * wcesdkrRASCONN_str "RASCONN" (+ CE 5.0 twin ms896359).  CE 1.0+;
- * Ras.h.  Held: RAS_MaxEntryName, HRASCONN.
- *   typedef struct _RASCONN {
- *       DWORD dwSize;
- *       HRASCONN hrasconn;
- *       TCHAR szEntryName[RAS_MaxEntryName + 1];
- *   } RASCONN;
- *
- * wcesdkrRASDIALPARAMS_str "RASDIALPARAMS" (+ aa450835).  CE 1.0+;
- * Ras.h.  Held: the RAS_Max size constants and UNLEN/PWLEN/DNLEN.
- *   typedef struct _RASDIALPARAMS {
- *       DWORD dwSize;
- *       TCHAR szEntryName[RAS_MaxEntryName + 1];
- *       TCHAR szPhoneNumber[RAS_MaxPhoneNumber + 1];
- *       TCHAR szCallbackNumber[RAS_MaxCallbackNumber + 1];
- *       TCHAR szUserName[UNLEN + 1];
- *       TCHAR szPassword[PWLEN + 1];
- *       TCHAR szDomain[DNLEN + 1];
- *   } RASDIALPARAMS;
- *   (CE 3.0+ remark: RasGetEntryDialParams returns a saved-password
- *   handle in szPassword instead of the plain-text password.)
- *
- * wcesdkrRASENTRYNAME_str "RASENTRYNAME" (+ aa450837).  CE 1.0+;
- * Ras.h.  Held: RAS_MaxEntryName.
- *   typedef struct _RASENTRYNAME {
- *       DWORD dwSize;
- *       TCHAR szEntryName[RAS_MaxEntryName + 1];
- *   } RASENTRYNAME;
- *
- * wcesdkrRASENTRY_str "RASENTRY" (+ aa450836).  CE 1.0+; Ras.h.
- * Held: RAS_Max* family.  The CE 5.0 twin appends the
- * dwCustomAuthKey member (CE 3.0 print ends at dwReserved2):
- *   typedef struct _RASENTRY {
- *       DWORD dwSize;
- *       DWORD dwfOptions;
- *       DWORD dwCountryID;
- *       DWORD dwCountryCode;
- *       TCHAR szAreaCode[RAS_MaxAreaCode + 1];
- *       TCHAR szLocalPhoneNumber[RAS_MaxPhoneNumber + 1];
- *       DWORD dwAlternatesOffset;
- *       RASIPADDR ipaddr;
- *       RASIPADDR ipaddrDns;
- *       RASIPADDR ipaddrDnsAlt;
- *       RASIPADDR ipaddrWins;
- *       RASIPADDR ipaddrWinsAlt;
- *       DWORD dwFrameSize;
- *       DWORD dwfNetProtocols;
- *       DWORD dwFramingProtocol;
- *       TCHAR szScript[MAX_PATH];
- *       TCHAR szAutoDialDll[MAX_PATH];
- *       TCHAR szAutoDialFunc[MAX_PATH];
- *       TCHAR szDeviceType[RAS_MaxDeviceType + 1];
- *       TCHAR szDeviceName[RAS_MaxDeviceName + 1];
- *       TCHAR szX25PadType[RAS_MaxPadType + 1];
- *       TCHAR szX25Address[RAS_MaxX25Address + 1];
- *       TCHAR szX25Facilities[RAS_MaxFacilities + 1];
- *       TCHAR szX25UserData[RAS_MaxUserData + 1];
- *       DWORD dwChannels;
- *       DWORD dwReserved1;
- *       DWORD dwReserved2;
- *       DWORD dwCustomAuthKey;   (CE 5.0 print only)
- *   } RASENTRY;
- * dwfOptions flag names (names only; no CE page prints values):
- *   CE 3.0 print: RASEO_UseCountryAndAreaCodes RASEO_SpecificIpAddr
- *   RASEO_SpecificNameServers RASEO_IpHeaderCompression
- *   RASEO_RemoteDefaultGateway RASEO_DisableLcpExtensions
- *   RASEO_ModemLights RASEO_SwCompression RASEO_RequireEncryptedPw
- *   RASEO_RequireMsEncryptedPw RASEO_RequireDataEncryption
- *   RASEO_NetworkLogon; CE 5.0 adds RASEO_CustomScript
- *   RASEO_DialAsLocalCall RASEO_PreviewUserPw RASEO_ProhibitCHAP
- *   RASEO_ProhibitEAP RASEO_ProhibitMsCHAP RASEO_ProhibitMsCHAP2
- *   RASEO_ProhibitPAP RASEO_PromoteAlternates
- *   RASEO_UseLogonCredentials.  dwfNetProtocols/dwFramingProtocol
- *   value names (the RASNP_ and RASFP_ families) and RASDT_*
- *   device-type string
- *   names appear in the member prose; no values printed either.
- *
- * wcesdkrRASDEVINFO_str "RASDEVINFO" (+ CE 5.0 twin aa450833).
- * CE 1.0+; Ras.h.  Held: RAS_MaxDeviceType/RAS_MaxDeviceName.
- *   typedef struct tagRASDEVINFO {
- *       DWORD dwSize;
- *       CHAR szDeviceType[RAS_MaxDeviceType + 1];
- *       CHAR szDeviceName[RAS_MaxDeviceName + 1];
- *   } RASDEVINFO;
- *   szDeviceType string constants (names only): RASDT_Modem
- *   RASDT_Isdn RASDT_X25 RASDT_Vpn (CE 3.0+) RASDT_Pad.
- *
- * wcesdkrRASCONNSTATE_str "RASCONNSTATE" (+ ms896360).  CE 1.0+;
- * Ras.h.  Held: RASCS_PAUSED/RASCS_DONE anchors.
- *   typedef enum _RASCONNSTATE {
- *       RASCS_OpenPort = 0, RASCS_PortOpened, RASCS_ConnectDevice,
- *       RASCS_DeviceConnected, RASCS_AllDevicesConnected,
- *       RASCS_Authenticate, RASCS_AuthNotify, RASCS_AuthRetry,
- *       RASCS_AuthCallback, RASCS_AuthChangePassword,
- *       RASCS_AuthProject, RASCS_AuthLinkSpeed, RASCS_AuthAck,
- *       RASCS_ReAuthenticate, RASCS_Authenticated,
- *       RASCS_PrepareForCallback, RASCS_WaitForModemReset,
- *       RASCS_WaitForCallback, RASCS_Projected,
- *       RASCS_Interactive = RASCS_PAUSED,
- *       RASCS_RetryAuthentication, RASCS_CallbackSetByCaller,
- *       RASCS_PasswordExpired, RASCS_Connected = RASCS_DONE,
- *       RASCS_Disconnected
- *   } RASCONNSTATE;
- *
- * wcesdkrRASCONNSTATUS_str "RASCONNSTATUS" (+ ms896361).  CE 1.0+;
- * Ras.h.  Held: RAS_MaxDeviceType/RAS_MaxDeviceName, RASCONNSTATE.
- *   typedef struct _RASCONNSTATUS {
- *       DWORD dwSize;
- *       RASCONNSTATE rasconnstate;
- *       DWORD dwError;
- *       TCHAR szDeviceType[RAS_MaxDeviceType + 1];
- *       TCHAR szDeviceName[RAS_MaxDeviceName + 1];
- *   } RASCONNSTATUS;
- *
- * wcesdkrRASPPPIP "RASPPPIP" (+ aa450854).  CE 1.0+; Ras.h.
- * Held: RAS_MaxIpAddress.  CE remark: dwSize must specify the size
- * of the structure without the desktop szServerIpAddress member.
- *   typedef struct _RASPPPIP {
- *       DWORD dwSize;
- *       DWORD dwError;
- *       TCHAR szIpAddress[RAS_MaxIpAddress + 1];
- *   } RASPPPIP;
- *
- * Held function prototypes (depend on the held types above; pages:
- * wcesdkrRasDial / wcesdkrRasEnumConnections / wcesdkrRasEnumDevices
- * / wcesdkrRasEnumEntries / wcesdkrRasGetConnectStatus /
- * wcesdkrRasGetEntryDialParams / wcesdkrRasGetEntryProperties /
- * wcesdkrRasGetLinkStatistics / wcesdkrRasGetProjectionInfo /
- * wcesdkrRasHangUp / wcesdkrRasSetEntryDialParams /
- * wcesdkrRasSetEntryProperties):
- *   DWORD RasDial(LPRASDIALEXTENSIONS dialExtensions,
- *                 LPTSTR phoneBookPath, LPRASDIALPARAMS rasDialParam,
- *                 DWORD NotifierType, LPVOID notifier,
- *                 LPHRASCONN pRasConn);            (CE 1.0+)
- *   DWORD RasEnumConnections(LPRASCONN lprasconn, LPDWORD lpcb,
- *                 LPDWORD lpcConnections);         (CE 1.0+)
- *   DWORD RasEnumDevices(LPRASDEVINFOW lpRasDevinfo, LPDWORD lpcb,
- *                 LPDWORD lpcDevices);             (CE 3.0+)
- *   DWORD RasEnumEntries(LPWSTR Reserved, LPWSTR lpszPhoneBookPath,
- *                 LPRASENTRYNAME lprasentryname, LPDWORD lpcb,
- *                 LPDWORD lpcEntries);             (CE 1.0+)
- *   DWORD RasGetConnectStatus(HRASCONN rasconn,
- *                 LPRASCONNSTATUS lprasconnstatus); (CE 1.0+)
- *   DWORD RasGetEntryDialParams(LPWSTR lpszPhoneBook,
- *                 LPRASDIALPARAMS lpRasDialParams, LPBOOL lpfPassword);
- *                                                  (CE 1.0+)
- *   DWORD RasGetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry,
- *                 LPRASENTRY lpbEntry, LPDWORD lpdwEntrySize,
- *                 LPBYTE lpb, LPDWORD lpdwSize);   (CE 1.0+)
- *   DWORD RasGetLinkStatistics(HRASCONN hRasConn, DWORD dwSubEntry,
- *                 RAS_STATS *lpStatistics);        (CE 3.0+)
- *   DWORD RasGetProjectionInfo(HRASCONN hrasconn,
- *                 RASPROJECTION rasprojection, LPVOID lpprojection,
- *                 LPDWORD lpcb);                   (CE 3.0+)
- *   DWORD RasHangUp(HRASCONN Session);             (CE 1.0+)
- *   DWORD RasSetEntryDialParams(LPWSTR lpszPhoneBook,
- *                 LPRASDIALPARAMS lpRasDialParams, BOOL fRemovePassword);
- *                                                  (CE 1.0+)
- *   DWORD RasSetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry,
- *                 LPRASENTRY lpbEntry, DWORD dwEntrySize,
- *                 LPBYTE lpb, DWORD dwSize);       (CE 1.0+)
- * (RasDial's dialExtensions parameter references RASDIALEXTENSIONS,
- * likewise unpublished on CE; the parameter is ignored on CE.) */
+/* --- RAS server administration structures that depend on the RAS
+ * client types above (Servers book, used with the RasIOControl
+ * record in Service.h; see docs/inventory.md M75f). */
+
+/* ms896354 "RASCNTL_SERVERLINE": print verbatim (archive glues the
+ * type/parameter spellings; spacing restored).  CROSS-GENERATION
+ * (M86 sweep): the CE 4.0 twin ms924959 prints the same members but
+ * drops the semicolon after `BYTE DevConfig[1]` (archive print
+ * artifact; members identical). */
+typedef struct tagRasCntlServerLine {
+    RASDEVINFO rasDevInfo;
+    BOOL       bEnable;
+    DWORD      bmFlags;
+    UINT       DisconnectIdleSeconds;
+    DWORD      dwDevConfigSize;
+    BYTE       DevConfig[1];
+} RASCNTL_SERVERLINE, *PRASCNTL_SERVERLINE;
+
+/* ms896356 "RASCNTL_SERVERUSERCREDENTIALS": print verbatim. */
+typedef struct tagRasCntlServerUser {
+    TCHAR tszUserName[UNLEN + 1];
+    TCHAR tszDomainName[DNLEN + 1];
+    BYTE  password[PWLEN];
+    DWORD cbPassword;
+} RASCNTL_SERVERUSERCREDENTIALS, *PRASCNTL_SERVERUSERCREDENTIALS;
+
+/* ms896357 "RASCNTL_SERVERCONNECTION": print verbatim. */
+typedef struct tagRasCntlServerConnection {
+    RASDEVINFO   rasDevInfo;
+    HRASCONN     hrasconn;
+    DWORD        dwServerIpAddress;
+    DWORD        dwClientIpAddress;
+    RASCONNSTATE RasConnState;
+    TCHAR        tszUserName[DNLEN + 1 + UNLEN + 1];
+} RASCNTL_SERVERCONNECTION, *PRASCNTL_SERVERCONNECTION;
+
+/* VARSTRING -- needed by RasDevConfigDialogEdit (ms897088).  The
+ * type page is ms898569 (Header: Tapi.h); the identical print is
+ * carried under Tapi.h, guarded so both headers may coexist. */
+#ifndef AKARI_VARSTRING_DEFINED
+#define AKARI_VARSTRING_DEFINED
+typedef struct varstring_tag {
+    DWORD dwTotalSize;
+    DWORD dwNeededSize;
+    DWORD dwUsedSize;
+    DWORD dwStringFormat;
+    DWORD dwStringSize;
+    DWORD dwStringOffset;
+} VARSTRING;
+typedef VARSTRING *LPVARSTRING;
+#endif /* AKARI_VARSTRING_DEFINED */
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms897088: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT DWORD RasDevConfigDialogEdit(LPCWSTR szDeviceName, LPCWSTR szDeviceType, HWND hWndOwner, LPVOID lpDeviceConfigIn, DWORD dwSize, LPVARSTRING lpDeviceConfigOut) AKARI_CE_NAME(RasDevConfigDialogEdit);
+
+/* ms897102: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT DWORD RasGetEapConnectionData(LPCTSTR pszPhonebook, LPCTSTR pszEntry, PBYTE pbEapData, PDWORD pdwSizeofEapData) AKARI_CE_NAME(RasGetEapConnectionData);
+
+/* ms897103: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT DWORD RasGetEapUserData(HANDLE hToken, LPCTSTR pszPhonebook, LPCTSTR pszEntry, PBYTE pbEapData, PDWORD pdwSizeofEapData) AKARI_CE_NAME(RasGetEapUserData);
+
+/* ms897092: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT DWORD RasSetEapConnectionData(LPCTSTR pszPhonebook, LPCTSTR pszEntry, PBYTE pbEapData, PDWORD pdwSizeofEapData) AKARI_CE_NAME(RasSetEapConnectionData);
+
+/* ms897117: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT DWORD RasSetEapUserData(HANDLE hToken, LPCTSTR pszPhonebook, LPCTSTR pszEntry, BYTE* pbEapData, DWORD dwSizeofEapData) AKARI_CE_NAME(RasSetEapUserData);
 
 #endif /* AKARI_RAS_H */

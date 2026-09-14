@@ -2809,4 +2809,17 @@ AKARI_CE_IMPORT BOOL LoadFSDEx(HANDLE hDevice, LPCWSTR lpFSDName, DWORD dwFlag)
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* wcesdkrGetCurrentProcess: page-printed prototype (Windows CE OS; nk.lib). */
+HANDLE GetCurrentProcess(void);
+
+/* wcesdkrGetCurrentThread: page-printed prototype (Windows CE OS; nk.lib). */
+HANDLE GetCurrentThread(void);
+
+/* ms919623: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT BOOL SetUserData(LPBYTE lpbUserData, DWORD dwDataSize) AKARI_CE_NAME(SetUserData);
+
 #endif /* AKARI_WINBASE_H */

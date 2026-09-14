@@ -12,6 +12,8 @@
 #ifndef AKARI_EXTERNS_H
 #define AKARI_EXTERNS_H
 
+#include "Ndis.h"      /* NDIS_HANDLE, NDIS_STATUS, PNDIS_WAN_PACKET */
+
 /* --- Recorded prototypes (driver-supplied; not imports). ------- */
 /* "MiniportCancelSendPackets" (aa447841): `VOID MiniportCancelSendPackets( NDIS_HANDLE MiniportAdapterContext,ULONG_PTRCancelId)` */
 /* "MiniportCheckForHang" (aa447842): `BOOLEAN MiniportCheckForHang(NDIS_HANDLEMiniportAdapterContext)` */
@@ -25,5 +27,18 @@
 /* "MiniportWanSend" (aa447860): `NDIS_STATUS MiniportWanSend( NDIS_HANDLE MiniportAdapterContext, NDIS_HANDLE NdisLinkHandle, PNDIS_WAN_PACKET WanPacket)` */
 
 /* Pages printing no signature (prose descriptions only): MiniportDisableInterrupt, MiniportEnableInterrupt, MiniportISR, MiniportQueryInformation, MiniportReconfigure, MiniportReset, MiniportReturnPacket, MiniportSend, MiniportSetInformation, MiniportShutdown. */
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa447841: page-printed prototype (Windows CE .NET 4.0 and later.). */
+VOID MiniportCancelSendPackets(NDIS_HANDLE MiniportAdapterContext, ULONG_PTR CancelId);
+
+/* aa447846: page-printed prototype (Windows CE .NET 4.0 and later.). */
+VOID MiniportHandleInterrupt(NDIS_HANDLE MiniportAdapterContext);
+
+/* aa447860: page-printed prototype (Windows CE .NET 4.0 and later.). */
+NDIS_STATUS MiniportWanSend(NDIS_HANDLE MiniportAdapterContext, NDIS_HANDLE NdisLinkHandle, PNDIS_WAN_PACKET WanPacket);
 
 #endif /* AKARI_EXTERNS_H */

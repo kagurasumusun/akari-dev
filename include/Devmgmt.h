@@ -500,4 +500,11 @@ HRESULT CeSetDevMgmtTask(DMTASKINFO* pdi);
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms898343: page-printed prototype (Windows CE .NET 4.2 and later.). */
+HANDLE CeStartDevMgmtService(int nAction, HWND hCallbackWnd);
+
 #endif /* AKARI_DEVMGMT_H */

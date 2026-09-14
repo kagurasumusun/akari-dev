@@ -13,6 +13,8 @@
 #ifndef AKARI_PARTDRV_H
 #define AKARI_PARTDRV_H
 
+#include "Windef.h"    /* DWORD, BYTE, BOOL, HANDLE, LPCTSTR, LPDWORD */
+
 /* --- Held structures (SECTORNUM unpublished). ------------------- */
 /* ms891440 "PD_PARTINFO": print `typedef struct _PD_PARTINFO {DWORD
  * cbSize;TCHAR szPartitionName[PARTITIONNAMESIZE];SECTORNUM
@@ -47,5 +49,57 @@ typedef struct _PD_STOREINFO PD_STOREINFO, *PPD_STOREINFO;
 /* `PD_OpenStore DWORD PD_OpenStore(HANDLE hDisk, LPDWORD pdwStoreId);` */
 /* `PD_RenamePartition DWORD PD_RenamePartition(DWORD dwStoreId, LPCTSTR szOldName, LPCTSTR szNewName);` */
 /* `PD_SetPartitionAttrs DWORD PD_SetPartitionAttrs(DWORDdwStoreId, LPCTSTR szPartName, DWORD dwAttr);` */
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms891425: page-printed prototype (Windows CE .NET 4.0 and later.). */
+void PD_ClosePartition(DWORD dwPartitionId);
+
+/* ms891426: page-printed prototype (Windows CE .NET 4.0 and later.). */
+void PD_CloseStore(DWORD dwStoreId);
+
+/* ms891428: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_DeletePartition(DWORD dwStoreId, LPCTSTR szPartName);
+
+/* ms891429: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_DeviceIoControl(DWORD dwPartitionId, DWORD dwCode, PBYTE pInBuf, DWORD nInBufSize, PBYTE pOutBuf, DWORD nOutBufSize, PDWORD pBytesReturned);
+
+/* ms891430: page-printed prototype (Windows CE .NET 4.0 and later.). */
+void PD_FindPartitionClose(DWORD dwSearchId);
+
+/* ms891431: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_FindPartitionNext(DWORD dwSearchId, PD_PARTINFO* pInfo);
+
+/* ms891432: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_FindPartitionStart(DWORD dwStoreId, LPDWORD pdwSearchId);
+
+/* ms891433: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_FormatPartition(DWORD dwStoreId, LPCTSTR szPartName, BYTE bPartType, BOOL bAuto);
+
+/* ms891434: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_FormatStore(DWORD dwStoreId);
+
+/* ms891435: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_GetPartitionInfo(DWORD dwStoreId, LPCTSTR szPartName, PD_PARTINFO* pInfo);
+
+/* ms891436: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_GetStoreInfo(DWORD dwStoreId, PD_STOREINFO* pInfo);
+
+/* ms891437: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_IsStoreFormatted(DWORD dwStoreId);
+
+/* ms891438: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_OpenPartition(DWORD dwStoreId, LPCTSTR szPartName, LPDWORD pdwPartitionId);
+
+/* ms891439: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_OpenStore(HANDLE hDisk, LPDWORD pdwStoreId);
+
+/* ms891441: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_RenamePartition(DWORD dwStoreId, LPCTSTR szOldName, LPCTSTR szNewName);
+
+/* ms891442: page-printed prototype (Windows CE .NET 4.0 and later.). */
+DWORD PD_SetPartitionAttrs(DWORD dwStoreId, LPCTSTR szPartName, DWORD dwAttr);
 
 #endif /* AKARI_PARTDRV_H */

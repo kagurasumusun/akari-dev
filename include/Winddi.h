@@ -298,4 +298,14 @@ AKARI_CE_IMPORT ULONG XLATEOBJ_cGetPalette(XLATEOBJ* pxlo, ULONG iPal, ULONG cPa
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms898301: page-printed prototype (Windows CE .NET 4.0 and later.; ddi_ati_lib.lib, ddi_flat_lib.lib, ddi_gx_lib.lib, ddi_mq200_lib.lib, ddi_nop_lib.lib, ddi_rflat_lib.lib, ddi_rgx_lib.lib, or ddi_tvia5_lib.lib). */
+BOOL APIENTRY DisplayInit(LPCTSTR pszInstance, DWORD dwNumMonitors);
+
+/* aa447762: page-printed prototype (Windows CE 1.0 and later.; ddi_ati_lib.lib, ddi_flat_lib.lib, ddi_gx_lib.lib, ddi_mq200_lib.lib, ddi_nop_lib.lib, ddi_rflat_lib.lib, ddi_rgx_lib.lib, or ddi_tvia5_lib.lib). */
+ULONG APIENTRY DrvUnrealizeColor(USHORT iSrcType, ULONG cEntries, ULONG* pPalette, ULONG iRealizedColor);
+
 #endif /* AKARI_WINDDI_H */

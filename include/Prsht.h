@@ -295,4 +295,11 @@ BOOL     CALLBACK AddPropSheetPageProc(HPROPSHEETPAGE hpage,
 /* ms938706 Property Sheets Messages */
 /* ms938707 Property Sheets Notifications */
 /* ms938709 Property Sheets Structures */
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa453574: page-printed prototype (Windows CE 1.0 and later.). */
+VOID PropSheet_SetWizButtons(HWND hPropSheetDlg, DWORD dwFlags);
+
 #endif /* AKARI_PRSHT_H */

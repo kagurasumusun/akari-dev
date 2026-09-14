@@ -7682,3 +7682,121 @@ Gates: make check GREEN (hostcheck 0x420/0x500/0x600 + defcheck);
 make crosscheck GREEN on all six arm/i386-pc-wince{4.2,5.0,6.0}
 targets with the LLVM-WinCE artifact 10305951879 (Actions run
 34718349600).
+
+## M104 -- remediation pass: printed signatures declared, coredll def rebuilt
+
+This pass corrects the insufficiency flagged against the repo: items
+whose official pages print a signature must be DECLARED (and, where
+the evidence says Coredll.lib or the verified surface carries them,
+put in the def) -- "type not fully determined" is not grounds for
+keeping a printed prototype comment-only, and the surface must carry
+both the CE 4/5 legacy kernel APIs and the CE 6 replacements.
+
+### coredll def rebuilt (def/coredll-doc.def: 783 -> 2377)
+
+Two evidence tiers (docs/clean-room.md section 3):
+
+1. DOC-DERIVED -- 783 original doc-derived entries kept + 33 M104
+   additions of names documented as Coredll.lib, declared live in
+   include/, and present on the export surface (e.g.
+   CeClearReplChangeBitsEx, CeGetCallerTrust, CeRegisterReplNotification,
+   CheckPassword, DeleteAndRenameFile, GetCapture, the
+   Ce*ReplChangeBits/Mask/OtherBits families) + RasDevConfigDialogEdit
+   (ms897088).
+2. EXPORT-SURFACE-VERIFIED -- 1560 additions observed on the
+   device-dump-audited coredll import surfaces (corpus coredll/*.def),
+   including the CRT exports coredll.dll provides (75 C++ mangled
+   names).  This tier closes the documentation/surface gap instead of
+   leaving surface-only names unlinked.
+
+Verified buildable with llvm-dlltool (artifact 10305951879):
+`-m arm-pc-wince` and `-m i386-pc-wince --no-leading-underscore` both
+produce import libraries from def/coredll-doc.def.  (Note: the
+artifact no longer accepts `-m armwince`; the target triples are the
+supported spelling.)
+
+### Ras.h / Winnt.h closures (this pass)
+
+* RASCNTL_SERVERLINE / RASCNTL_SERVERUSERCREDENTIALS /
+  RASCNTL_SERVERCONNECTION promoted from record-only to live in
+  Ras.h; RasCntlEnum values remain held (no official page prints
+  them).
+* TEXT macro added to Winnt.h: `#define TEXT(quote) L##quote`
+  (official print, _wcesdk_TEXT; CE is Unicode-only, so the macro
+  always widens).
+
+### D1 auto-declaration (tools/decl-d1.py): 149 printed prototypes declared
+
+For every harvested page printing a function prototype, if the
+function was not yet declared live and every type in the print
+resolves against the types already defined in include/, the prototype
+is declared in the header named by the page's Header row, citing the
+page.  Glued print tokens ("HDChdc") are re-spaced by greedy matching
+against the defined type universe; a function is skipped outright when
+any type is unresolved (nothing invented).  Decoration follows the
+evidence: AKARI_CE_IMPORT when the page's Link Library row names
+Coredll.lib or the name is on the verified coredll surface; plain
+prototype otherwise.
+
+Guard rules (found and fixed in dry-run review): all-caps names are
+macro prints; names ending Proc/CallbackFunc and DllMain/WinMain are
+callback/entry-point docs; all-caps parameter tokens are glue
+artifacts; glue remainders must start lower-case (except after _PTR
+types, where the page keeps a CamelCase name, e.g. ULONG_PTRCancelId);
+ret tokens carrying CALLBACK are callback prototypes.
+
+Applied (+N per header): Commctrl.h +32, Pkfuncs.h +28, Ndis.h +25,
+Partdrv.h +16, Fsdmgr.h +7, Pwinuser.h +6, Ras.h +5, Raseapif.h +4,
+Urlmon.h +3, Externs.h +3, Winbase.h +3 (incl. Kfuncs.h-alias pages
+GetCurrentProcess/GetCurrentThread/CeGetCallerTrust), Winddi.h +2,
+and one each in Acmdrv.h, Cardsv2.h, Devload.h, Devmgmt.h, Hidpi.h,
+Httpfilt.h, Mshtmhst.h, Notify.h, Objbase.h (Cesync.h-alias page),
+Prsht.h, Rapi.h, Wavemdd.h, Windbase.h, Winnls.h, Winuser.h.
+Winnls.h note: the ms919323 generic-name GetStringType page is aliased
+`#define GetStringType GetStringTypeW` (same export as ms905272;
+GetStringTypeEx precedent).
+
+Supporting header fixes: Ndis.h includes Ntddndis.h (PNDIS_MEDIUM,
+aa448032 home); Externs.h includes Ndis.h; Partdrv.h includes
+Windef.h; VARSTRING is carried identically in Tapi.h (ms898569) and
+Ras.h under a shared AKARI_VARSTRING_DEFINED guard.
+
+Alias headers keep their redirect semantics: Kfuncs.h -> Winbase.h and
+Cesync.h -> Objbase.h pages are declared in the base header.
+
+### Audit delta (tools/surface-audit.py, docs/surface-audit.md)
+
+Before -> after this pass: declared 5517 -> 5689; comment-only
+2453 -> 2323; D1 (printed signature, comment-only) 1181 -> 1054;
+D2 (documented Coredll.lib, absent from def) 46 -> 30; D3 (surface
+name absent from def) 358 -> 0; D4 (surface-only, no doc page)
+1127 -> 1097.
+
+### Remaining backlog (explicit, not silently dropped)
+
+* D1 remainder 1054 rows: the dominant blocker is unresolved types
+  (1387 candidate prints reference structs/typedefs include/ does not
+  yet define -- closing each needs its official structure page worked
+  in), plus ~316 rows whose Header row names a CE SDK header the tree
+  does not carry yet (Kernel.h, Mwinreg.h, Pwindbas.h, Pwinbase.h,
+  Windev.h, Nkintr.h, Netui.h, Kitl.h, Kitltran.h, Halether.h,
+  Ethdbg.h, Dsound.h, Htmlctrl.h, httpext.h, Blcommon.h, Bt_ddi.h,
+  Startui.h, Calibrui.h, Notifext.hxx, Mipsintr.h, shintr.h,
+  Armintr.h, Cmnintrin.h).  These headers must be created as
+  page-grounded units; their function rows are listed in
+  docs/surface-audit.tsv (decl=absent/comment-only rows).
+* The audit row set contains harvest noise (property pages, macro
+  pages, sample-code identifiers such as AUTHOR/Balance/Blt); triage
+  of D1 by row class is ongoing and the counts above include that
+  noise.
+* Still value-less (unchanged): six RASEO_Prohibit*/DialAsLocalCall
+  flags, RasCntlEnum values, dwCeLogFlushTimeout/nCeLogThreadPrio
+  types, REPL_CHANGE_WILDCLEAR, DB_PEGOID_*.
+* GetCurrentProcess/GetCurrentThread: CE 5.0 pages say Coredll.lib
+  but none of the four verified coredll dumps export them (CE 3.0
+  pages say Nk.lib); declared as plain prototypes, intentionally not
+  in the def.
+
+Gates: make hostcheck GREEN (headers compile warning-free for
+_WIN32_WCE 0x420/0x500/0x600); make defcheck GREEN (2377 exports, no
+duplicates); llvm-dlltool import-lib builds GREEN for both triples.

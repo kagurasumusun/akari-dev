@@ -4656,4 +4656,11 @@ struct IViewObject2 { const IViewObject2Vtbl *lpVtbl; };
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcesdk_ReportStatus: page-printed prototype (Windows CE OS). */
+BOOL ReportStatus(LPWSTR lpszObjType, UINT uCode, UINT uParam);
+
 #endif /* AKARI_OBJBASE_H */

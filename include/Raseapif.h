@@ -183,4 +183,20 @@ typedef struct _PPP_EAP_INFO {
                     PPP_EAP_INPUT *pEapInput);
 } PPP_EAP_INFO, *PPPP_EAP_INFO;     /* pointer spelling as printed (4 P) */
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms899211: page-printed prototype (Windows CE .NET 4.0 and later.; this function is called by the eap module, not by the application. therefore, no link library is exposed. for more information, see eap implementation details). */
+DWORD RasEapFreeMemory(BYTE* pMemory);
+
+/* ms899212: page-printed prototype (Windows CE .NET 4.0 and later.; this function is called by the eap module, not by the application. therefore, no link library is exposed. for more information, see eap implementation details). */
+DWORD RasEapGetIdentity(DWORD dwEapTypeId, HWND hwndParent, DWORD dwFlags, const WCHAR* pwszPhonebook, const WCHAR* pwszEntry, BYTE* pConnectionDataIn, DWORD dwSizeOfConnectionDataIn, BYTE* pUserDataIn, DWORD dwSizeOfUserDataIn, BYTE** ppUserDataOut, DWORD* pdwSizeOfUserDataOut, WCHAR** ppwszIdentity);
+
+/* ms899215: page-printed prototype (Windows CE .NET 4.0 and later.; this function is called by the eap module, not by the application. therefore, no link library is exposed. for more information, see eap implementation details). */
+DWORD RasEapInvokeConfigUI(DWORD dwEapTypeId, HINSTANCE hInstance, HWND hwndParent, DWORD dwFlags, BYTE* pConnectionDataIn, DWORD dwSizeOfConnectionDataIn, BYTE** ppConnectionDataOut, DWORD* pdwSizeOfConnectionDataOut);
+
+/* ms899216: page-printed prototype (Windows CE .NET 4.0 and later.; this function is called by the eap module, not by the application. therefore, no link library is exposed. for more information, see eap implementation details). */
+DWORD RasEapInvokeInteractiveUI(DWORD dwEapTypeId, HINSTANCE hInstance, HWND hwndParent, BYTE* pUIContextData, DWORD dwSizeofUIContextData, BYTE** ppDataFromInteractiveUI, DWORD* pdwSizeOfDataFromInteractiveUI);
+
 #endif /* AKARI_RASEAPIF_H */

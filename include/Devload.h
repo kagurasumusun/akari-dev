@@ -52,4 +52,11 @@ AKARI_CE_IMPORT HKEY OpenDeviceKey(LPCTSTR ActiveKey)
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa447791: page-printed prototype (Windows CE 1.0 and later.; coredll.lib). */
+AKARI_CE_IMPORT DWORD EnumDevices(LPTSTR lpszDevList, LPDWORD lpBuflen) AKARI_CE_NAME(EnumDevices);
+
 #endif /* AKARI_DEVLOAD_H */

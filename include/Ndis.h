@@ -30,6 +30,7 @@
 
 #include "Windef.h"    /* PVOID, ULONG, UINT, BOOLEAN, UCHAR, ... */
 #include "Winnt.h"     /* LARGE_INTEGER, ULONGLONG, ULONG_PTR */
+#include "Ntddndis.h"  /* NDIS_MEDIUM / PNDIS_MEDIUM (aa448032) */
 #include "CEDDK.h"     /* INTERFACE_TYPE (ms901367) grounds the
                         * NDIS_INTERFACE_TYPE value names */
 
@@ -2062,4 +2063,83 @@ AKARI_CE_IMPORT VOID NdisZeroMemory(PVOID Destination, ULONG Length)
 /* ms895449 Remote NDIS Structures */
 /* ms895461 Task Offload Object Identifiers */
 /* ms895466 Token Ring Object Identifiers */
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcesdk_MiniportCheckForHang: page-printed prototype (Windows CE OS; ndislib.lib). */
+BOOLEAN MiniportCheckForHang(IN NDIS_HANDLE MiniportAdapterContext);
+
+/* _wcesdk_MiniportDisableInterrupt: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID MiniportDisableInterrupt(IN NDIS_HANDLE MiniportAdapterContext);
+
+/* _wcesdk_MiniportEnableInterrupt: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID MiniportEnableInterrupt(IN NDIS_HANDLE MiniportAdapterContext);
+
+/* _wcesdk_MiniportHalt: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID MiniportHalt(IN NDIS_HANDLE MiniportAdapterContext);
+
+/* _wcesdk_MiniportISR: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID MiniportISR(OUT PBOOLEAN InterruptRecognized, OUT PBOOLEAN QueueMiniportHandleInterrupt, IN NDIS_HANDLE MiniportAdapterContext);
+
+/* _wcesdk_MiniportInitialize: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportInitialize(OUT PNDIS_STATUS OpenErrorStatus, OUT PUINT SelectedMediumIndex, IN PNDIS_MEDIUM MediumArray, IN UINT MediumArraySize, IN NDIS_HANDLE MiniportAdapterHandle, IN NDIS_HANDLE WrapperConfigurationContext);
+
+/* _wcesdk_MiniportQueryInformation: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportQueryInformation(IN NDIS_HANDLE MiniportAdapterContext, IN NDIS_OID Oid, IN PVOID InformationBuffer, IN ULONG InformationBufferLength, OUT PULONG BytesWritten, OUT PULONG BytesNeeded);
+
+/* _wcesdk_MiniportReconfigure: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportReconfigure(OUT PNDIS_STATUS OpenErrorStatus, IN NDIS_HANDLE MiniportAdapterContext, IN NDIS_HANDLE WrapperConfigurationContext);
+
+/* _wcesdk_MiniportReset: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportReset(OUT PBOOLEAN AddressingReset, IN NDIS_HANDLE MiniportAdapterContext);
+
+/* _wcesdk_MiniportReturnPacket: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID MiniportReturnPacket(IN NDIS_HANDLE MiniportAdapterContext, IN PNDIS_PACKET Packet);
+
+/* _wcesdk_MiniportSend: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportSend(IN NDIS_HANDLE MiniportAdapterContext, IN PNDIS_PACKET Packet, IN UINT Flags);
+
+/* _wcesdk_MiniportSetInformation: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportSetInformation(IN NDIS_HANDLE MiniportAdapterContext, IN NDIS_OID Oid, IN PVOID InformationBuffer, IN ULONG InformationBufferLength, OUT PULONG BytesRead, OUT PULONG BytesNeeded);
+
+/* _wcesdk_MiniportTransferData: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS MiniportTransferData(OUT PNDIS_PACKET Packet, OUT PUINT BytesTransferred, IN NDIS_HANDLE MiniportAdapterContext, IN NDIS_HANDLE MiniportReceiveContext, IN UINT ByteOffset, IN UINT BytesToTransfer);
+
+/* _wcesdk_NdisMAllocateMapRegisters: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS NdisMAllocateMapRegisters(IN NDIS_HANDLE MiniportAdapterHandle, IN UINT DmaChannel, IN BOOLEAN Dma32BitAddresses, IN ULONG PhysicalMapRegistersNeeded, IN ULONG MaximumPhysicalMapping);
+
+/* _wcesdk_NdisQueryMapRegisterCount: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS NdisQueryMapRegisterCount(IN NDIS_INTERFACE_TYPE BusType, OUT PUINT MapRegisterCount);
+
+/* _wcesdk_ProtocolCloseAdapterComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolCloseAdapterComplete(IN NDIS_HANDLE ProtocolBindingContext, IN NDIS_STATUS Status);
+
+/* _wcesdk_ProtocolOpenAdapterComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolOpenAdapterComplete(IN NDIS_HANDLE ProtocolBindingContext, IN NDIS_STATUS Status, IN NDIS_STATUS OpenErrorStatus);
+
+/* _wcesdk_ProtocolReceive: page-printed prototype (Windows CE OS; ndislib.lib). */
+NDIS_STATUS ProtocolReceive(IN NDIS_HANDLE ProtocolBindingContext, IN NDIS_HANDLE MacReceiveContext, IN PVOID HeaderBuffer, IN UINT HeaderBufferSize, IN PVOID LookAheadBuffer, IN UINT LookAheadBufferSize, IN UINT PacketSize);
+
+/* _wcesdk_ProtocolReceiveComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolReceiveComplete(IN NDIS_HANDLE ProtocolBindingContext);
+
+/* _wcesdk_ProtocolRequestComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolRequestComplete(IN NDIS_HANDLE ProtocolBindingContext, IN PNDIS_REQUEST NdisRequest, IN NDIS_STATUS Status);
+
+/* _wcesdk_ProtocolResetComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolResetComplete(IN NDIS_HANDLE ProtocolBindingContext, IN NDIS_STATUS Status);
+
+/* _wcesdk_ProtocolSendComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolSendComplete(IN NDIS_HANDLE ProtocolBindingContext, IN PNDIS_PACKET Packet, IN NDIS_STATUS Status);
+
+/* _wcesdk_ProtocolStatusComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolStatusComplete(IN NDIS_HANDLE ProtocolBindingContext);
+
+/* _wcesdk_ProtocolTransferDataComplete: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolTransferDataComplete(IN NDIS_HANDLE ProtocolBindingContext, IN PNDIS_PACKET Packet, IN NDIS_STATUS Status, IN UINT BytesTransferred);
+
+/* _wcesdk_ProtocolUnbindAdapter: page-printed prototype (Windows CE OS; ndislib.lib). */
+VOID ProtocolUnbindAdapter(OUT PNDIS_STATUS Status, IN NDIS_HANDLE ProtocolBindingContext, IN NDIS_HANDLE UnbindContext);
+
 #endif /* AKARI_NDIS_H */

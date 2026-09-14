@@ -166,4 +166,11 @@ typedef struct _HIDP_UNKNOWN_TOKEN {
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms899792: page-printed prototype (Windows CE .NET 4.2 and later.). */
+BOOLEAN HidP_IsSameUsageAndPage(USAGE u1, USAGE u2);
+
 #endif /* AKARI_HIDPI_H */

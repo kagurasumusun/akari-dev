@@ -56,4 +56,11 @@ typedef enum _NvFocusDirection {
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* aa451975: page-printed prototype (Windows CE 5.0 and later.). */
+HRESULT GetFilename(BOOL fSave, HWND hwnd, DWORD idFilterRes, LPOLESTR lpstrFileName, DWORD cchFile, long lCustData);
+
 #endif /* AKARI_MSHTMHST_H */

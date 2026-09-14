@@ -27,6 +27,13 @@
 extern "C" {
 #endif
 
+/* _wcesdk_TEXT "TEXT" (official Windows CE 3.0 archive):
+ * `#define TEXT(quote) L##quote`.  CE 1.0+; Winnt.h.  CE is
+ * Unicode-only, so the macro always widens the literal. */
+#ifndef TEXT
+#define TEXT(quote) L##quote
+#endif
+
 /* ------------------------------------------------------------------ */
 /* 64-bit integer types (Win32 ABI: 64-bit on all CE targets)         */
 /* ------------------------------------------------------------------ */

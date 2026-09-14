@@ -921,4 +921,11 @@ AKARI_CE_IMPORT BOOL CeStreamWrite(HANDLE hStream, LPBYTE lprgbBuffer,
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcepb_SetPassword: page-printed prototype (Windows CE OS). */
+AKARI_CE_IMPORT BOOL SetPassword(LPWSTR lpszOldPassword, LPWSTR lpszNewPassword) AKARI_CE_NAME(SetPassword);
+
 #endif /* AKARI_WINDBASE_H */

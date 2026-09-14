@@ -388,4 +388,11 @@ AKARI_CE_IMPORT BOOL CeWriteFile(HANDLE hFile, LPCVOID lpBuffer, DWORD nNumberOf
 }
 #endif
 
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* _wcesdk_CeRapiFreeBuffer: page-printed prototype (Windows CE OS). */
+HRESULT CeRapiFreeBuffer(LPVOID Buffer);
+
 #endif /* AKARI_RAPI_H */
