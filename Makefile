@@ -29,6 +29,7 @@ include/Avc_vcr.h \
 include/Avc_vvcr.h \
 include/aygshell.h \
 include/Bt_api.h \
+include/Bt_buffer.h \
 include/bt_ddi.h \
 include/Bt_hcip.h \
 include/Btagnetwork.h \
@@ -104,6 +105,7 @@ include/Iltiming.h \
 include/Imaging.h \
 include/Imjpskin.h \
 include/Imm.h \
+include/Initguid.h \
 include/Interned.h \
 include/Ipexport.h \
 include/Iphlpapi.h \
@@ -141,15 +143,18 @@ include/Ntlmssp.h \
 include/Nuiouser.h \
 include/Oaidl.h \
 include/Obex.h \
+include/Obexserver.h \
 include/Objbase.h \
 include/Objidl.h \
 include/Objsafe.h \
 include/Ocidl.h \
+include/Ole2.h \
 include/Oleauto.h \
 include/Olectl.h \
 include/Oleidl.h \
 include/Oomui.h \
 include/p2p.h \
+include/Pchannel.h \
 include/Pcommctr.h \
 include/Pcommctrl.h \
 include/Pegdser.h \
@@ -168,6 +173,7 @@ include/Pwindbas.h \
 include/Pwingdi.h \
 include/Pwinreg.h \
 include/Pwinuser.h \
+include/Qnetwork.h \
 include/Rapi.h \
 include/Rapitypes.h \
 include/Ras.h \
@@ -185,14 +191,17 @@ include/Schnlsp.h \
 include/Scrollview.hpp \
 include/Sdcard.h \
 include/Sdkddkver.h \
+include/Security.h \
 include/Service.h \
 include/Shellapi.h \
 include/Shellcb.h \
 include/shellsdk.h \
 include/Shelwapi.h \
 include/shintr.h \
+include/Shlguid.h \
 include/Shlobj.h \
 include/Shobjidl.h \
+include/Shobjvidl.h \
 include/Shtypes.h \
 include/sideshow.h \
 include/Sip.h \
@@ -218,6 +227,7 @@ include/Tapi.h \
 include/Tapicomn.h \
 include/Tchar.h \
 include/Tchaud.h \
+include/Tlhelp.h \
 include/Tlhelp32.h \
 include/Toolbarview.hpp \
 include/Trackbarview.hpp \
@@ -240,6 +250,7 @@ include/Voipconfigurationdatastore.h \
 include/Voiperrorcodes.h \
 include/Voiplap.h \
 include/Voipmanager.h \
+include/Wceemul.h \
 include/Webproxy.h \
 include/webvw.h \
 include/Winbase.h \
@@ -263,12 +274,14 @@ include/Winnt.h \
 include/Winreg.h \
 include/Winscard.h \
 include/Winsmcrd.h \
+include/Winsock.h \
 include/Winsock2.h \
 include/Winuser.h \
 include/Winver.h \
 include/Ws2bth.h \
 include/Ws2spi.h \
 include/Ws2tcpip.h \
+include/Wtype.h \
 include/Wtypes.h \
 include/Wzcsapi.h
 

@@ -205,3 +205,59 @@ reclassified):
    open by nature (nothing more is published in the sources).
 5. Graphics 731 remainder, DCOM 896 triage, Core OS DDI books:
    CLOSED by M87-M98 (see inventory.md M98 close-out table).
+
+## M112 -- documented header tokens re-measured over the whole corpus
+
+The M98 figure above (248 tokens / 247 shipped) was an `include/`-only
+pass.  Re-measured over all three record sets (33,473 rows), taking
+every `X.h` / `X.hpp` / `X.hxx` / `X.idl` token that appears in a
+`Header:` row:
+
+| | count |
+|---|---|
+| distinct documented header tokens | 368 |
+| already shipped | 320 |
+| not shipped | 48 (29 `.idl` + 19 `.h`) |
+
+**13 of the 19 `.h` files were created**, one per documented spelling.
+Every declaration the pages attribute to them already ships in this
+tree, so each new header includes the header that carries them and
+lists the page id beside each name -- nothing is re-declared, because a
+second copy of a typedef or prototype is a second thing to keep in step
+with the pages:
+
+| created | pages | declarations ship in |
+|---|---|---|
+| `Ole2.h` | 51 | `Objbase.h` (`OleSetMenuDescriptor` held there) |
+| `Winsock.h` | 36 | `Winsock2.h`, `Windbase.h` (`CEBLOB`), `Iphlpapi.h` (`sockaddr`) |
+| `Security.h` | 15 | `Sspi.h` |
+| `Initguid.h` | 14 | `Dshow.h` |
+| `Qnetwork.h` | 14 | `Dshow.h` |
+| `Obexserver.h` | 4 | `Obex.h` (both structs record-only there) |
+| `Pchannel.h` | 4 | `Cchannel.h` |
+| `Tlhelp.h` | 4 | `Tlhelp32.h` |
+| `Wceemul.h` | 3 | `Imm.h` |
+| `Bt_buffer.h` | 1 | `Bt_hcip.h` |
+| `Shlguid.h` | 1 | `Shlobj.h` |
+| `Shobjvidl.h` | 1 | `Shobjidl.h` |
+| `Wtype.h` | 1 | `Winnt.h` |
+
+All 13 were added to the Makefile's `HDRS`, so `hostcheck` compiles
+each standalone at 0x420/0x500/0x600.
+
+**6 of the 19 were not created, by scope:** `afdfunc.h` (14 rows,
+Ppp.lib -- the RAS/PPP driver side), `mkfuncs.h` (5 rows -- kernel/OEM),
+`efilter.h` (NDIS ethernet filter), `tspi.h` (TAPI *service provider*
+interface), `osaxsflexi.h` (OSAX dump structures), `rterr.h` (no row at
+all -- nothing to ground it in).  These are OEM/BSP or driver layer.
+
+**`.idl` tokens:** 25 of the 29 have their corresponding `.h` shipped,
+and `mstsax.idl`'s interfaces (`IMsRdpClient` and friends) ship in
+`Discodlg.h`.  An `.idl` is not a C header, so no file was invented for
+them.  The three exceptions are a real gap, not a naming one:
+`voipmediamanager.idl`, `voipprov.idl` and `voipstore.idl` name
+`IVoIPMediaMgr`, `IVoIPDirectoryClient`, `IVoIPCallerInfoDB` and
+`IVoIPCallerInfoDBEnum`, **none of which the tree declares** -- 70 rows,
+of which exactly one (`VoIPProgressTone`, already shipped) carries a
+printed signature.  Recovering them needs the 69 pages' own syntax
+blocks; that is the remaining work on this axis.
