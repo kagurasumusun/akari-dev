@@ -66,4 +66,11 @@ AKARI_CE_IMPORT BOOL HIDDeviceNotifications(DWORD dwMsg, WPARAM wParam, PVOID pv
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms899886: page-printed definition (Windows CE .NET 4.2 and later.). */
+typedef struct _HID_FUNCS HID_FUNCS, *PHID_FUNCS, *LPHID_FUNCS;
+
 #endif /* AKARI_HIDDI_H */

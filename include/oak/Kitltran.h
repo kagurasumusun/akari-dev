@@ -28,4 +28,18 @@ BOOL TranDeInitLibrary(void);
 /* ms920064: page-printed prototype (Windows CE .NET 4.0 and later.; not applicable). */
 BOOL TranInitLibrary(LPCWSTR pszRegKeyRoot);
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms919247: page-printed definition (Windows CE .NET 4.0 and later.). */
+typedef BOOL (*PFN_EnumProc)(LPCWSTR pszDevName, LPVOID pData);
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms920056: page-printed prototype (Windows CE .NET 4.0 and later.; not applicable). */
+BOOL TranEnumKnownDevice(PFN_EnumProc pfnCB, LPVOID pUserData);
+
 #endif /* AKARI_KITLTRAN_H_ */

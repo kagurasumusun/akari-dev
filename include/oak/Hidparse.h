@@ -38,4 +38,11 @@ extern "C" {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms899816: page-printed definition (Windows CE .NET 4.2 and later.). */
+typedef struct _HIDP_PREPARSED_DATA HIDP_PREPARSED_DATA;
+
 #endif /* AKARI_HIDPARSE_H */

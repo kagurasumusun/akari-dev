@@ -190,4 +190,11 @@ typedef HKL (*PFN_LAYOUT_MGR_LOAD_KEYBOARD_LAYOUT)(LPCWSTR pwszKLID, UINT Flags)
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms902136: page-printed definition (Windows CE 1.0 and later.). */
+typedef BOOL (*PFN_KEYBD_DRIVER_GET_INFO)(INT iKeybdId, INT iIndex, LPVOID lpOutput);
+
 #endif /* AKARI_KEYBDDR_H */

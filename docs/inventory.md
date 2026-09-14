@@ -8122,3 +8122,95 @@ walks the archive's own link graph (seeded with 2,818 ids from the
 harvested pages) and records what survives; the retired link targets are
 kept in `build/cf-crawl-gone.txt` as the evidence for the negative result.
 No desktop member is added by analogy.
+
+### M108 -- the two-layer measurement fix, the recovered page prints, and the four missing typedef resolvers
+
+Measured state first.  Three tools (`decl-d1.py`, `decl-types.py`,
+`decl-retest.py`) and the audit (`surface-audit.py`) still scanned
+`include/` only, so after the 2026-09-14 OAK split
+(`docs/CHANGELOG-audit-2026-09-14.md` item 4, `include/` ->
+`include/` + `include/oak/`) they could not see the 68 OAK/DDK headers.
+Two consequences, both now fixed:
+
+* `decl-d1.py --dry` planned to **re-create 35 OAK headers inside
+  `include/`** (`Armintr.h`, `Ndis.h`, `Pkfuncs.h`, `Wavemdd.h`,
+  `Winddi.h`, ...) and to declare 296 prototypes that are already
+  declared in `include/oak/`.  All 296 were phantoms: with both layers
+  in the type universe the dry run reports `TOTAL declared: 0`.
+* the audit counted a name declared in `include/oak/` as *absent*, so
+  the "absent" figure was inflated.  Same rows, both layers scanned:
+  absent 2289 -> **629**, declared 5007 -> **6006**.
+
+`surface-audit.py` now reports the two layers separately (a CE compile
+sees both: the Makefile passes `-I include -I include/oak`) and adds
+**D5, the application -dev gap**: rows whose official Header row
+resolves to a file in `include/` but whose name is not declared live in
+`include/` -- i.e. what a user-mode CE program actually misses.  D5 =
+**1267** rows (15 of them declared in the OAK layer only).  OAK-header
+rows are excluded from D5 by construction: OEM/BSP scope is not part of
+the -dev set.  `tools/gap-report.py` (new) classifies D5 by blocker:
+no-print 504, unres-type 404, all-caps-name 258, prototype 40,
+not-a-prototype 33, macro 16, callback 14.
+
+**Recovered prints (`tools/ce-prints.py`, new).**  `ce-fetch.py` records
+a page's code block only when it is *call-shaped* (`NAME(`), so pages
+whose print is a plain typedef, a tagged definition or a `#define`
+reached `rows*.json` with an empty `sig` and their names stayed held.
+`ce-prints.py` re-reads the *preserved* corpus pages (no network) and
+recovers the block that declares the page's own title into
+`build/rows-prints.json` (same record schema + `print_kind`).  Measured
+over the whole corpus: of 3,474 empty-`sig` rows whose page is
+preserved, **80 pages print a declaration of their own title** (78
+tagdef, 2 typedef -- e.g. `addrinfo` aa450282/ms910257, `USB_FUNCS`
+ms923262 + CE 6.0 twin ee486704) and **3,394 pages print none**.  The
+3,394 are the measured confirmation of the existing hold policy: those
+names really are not published as declarations on their pages.
+
+**Four missing resolvers in `decl-types.py`**, each emitting the page's
+own print verbatim (page id cited):
+
+| resolver | page print it accepts | example (official page) |
+|---|---|---|
+| `try_tag_typedef` | `typedef struct TAG [const] NAME[, *P...]` | `typedef struct _USB_FUNCS USB_FUNCS, * PUSB_FUNCS, * LPUSB_FUNCS;` (ms923262 / ee486704) |
+| `try_fptr_typedef` | `typedef RET (*NAME)(PARAMS)` | `typedef int (*HCI_DataPacketUp)(void* pUserContext, ...)` (ms920191) |
+| `try_tagdef` | `struct\|union\|enum NAME { ... };` (no typedef) | `struct TPDC_CALIBRATION_POINT {INT PointNumber; ...}` (aa448208) |
+| `split_stmts` | several statements in one code block | `struct _USB_FUNCS; typedef ...` (ms923262) |
+
+Struct members now normalise through `Ctx.member_norm`, which separates
+the CE 5.0 migration glue (`UCHARbLength` -> `UCHAR bLength`,
+`intcommand` -> `int command`) against the tree's declared type names
+and the C keyword prefixes.  Two anti-invention guards were added after
+the first run emitted wrong code:
+
+* a token that is itself a live identifier is never glue-split
+  (`SOCKADDR_STORAGE` is one type name, not `SOCKADDR` + `_STORAGE`);
+* glue splitting is not applied to a type token of a print that already
+  separates type and member name -- an unresolvable type there is a hard
+  stop, because splitting it would emit a *different* type and a wrong
+  layout.  This is why `RAPI_CONNECTIONINFO` (ms879803, needs
+  `SOCKADDR_STORAGE`) stays held instead of being declared as
+  `SOCKADDR ipaddr; SOCKADDR hostIpaddr;`.
+
+**Compile gate (both declaration tools).**  After writing a header, the
+tool re-compiles it standalone exactly as `make hostcheck` does and
+rolls the insertion back when it fails, so a page print that needs a
+type from a header the target does not include can never break the
+tree.  Two headers were rolled back and stay held with the reason
+recorded: `bt_ddi.h` (4 HCI_DataPacket* typedefs, `BD_BUFFER` lives in
+`Bt_hcip.h`) and `oak/Ddrawi.h` (5 DD* types, `DD_ROP_SPACE`
+undeclared).
+
+Landed from official prints: 10 type definitions (`Usb100.h`
+`USB_CONFIGURATION_DESCRIPTOR` ms923196; `Voipmanager.h`
+`DirectoryClientRegParams` ms909306; `oak/Cardserv.h` `CARD_ISR`
+ms896171; `oak/Hiddi.h`, `oak/Hidparse.h`, `oak/Keybddr.h`,
+`oak/Mmddk.h`, `oak/Pkfuncs.h`) and 3 prototypes unblocked by them
+(`oak/Kitl.h` +2, `oak/Kitltran.h` +1).  Nothing else in this batch is a
+new declaration: the remaining gap rows are the ones with no published
+print, no published value, or a type the archive does not define.
+
+Gates: `make check` OK (hostcheck 3 x CE generations, cxxcheck,
+defcheck), `make crosscheck WINCECLANG=<LLVM-WinCE artifact
+10002884514, clang 22.1.8, sha 29d8b88>` OK on all six
+arm/i386-pc-wince{4.2,5.0,6.0} targets (240 app + 68 oak headers + TU
+each), audit refreshed (`docs/surface-audit.md`).

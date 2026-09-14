@@ -65,10 +65,8 @@ def main():
 
     stats = {"retested": 0, "now-live": 0, "declared": 0,
              "still-blocked": 0}
-    for fn in sorted(os.listdir(incdir)):
-        if not fn.endswith((".h", ".hxx", ".hpp")):
-            continue
-        path = os.path.join(incdir, fn)
+    # both layers: held prints are recorded in include/ and include/oak/
+    for path, fn, _layer in d1.header_files():
         text = open(path, encoding="utf-8").read()
         inserts = []   # (offset_after_comment, decl_lines)
         seen_spans = set()

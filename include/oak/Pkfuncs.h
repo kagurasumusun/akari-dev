@@ -147,4 +147,15 @@ AKARI_CE_IMPORT BOOL SetEventData(HANDLE hEvent, DWORD dwData) AKARI_CE_NAME(Set
 /* ee488184: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT LPVOID VirtualAllocCopyEx(HANDLE hSrcProc, HANDLE hDstProc, LPVOID pAddr, DWORD cbSize, DWORD dwProtect) AKARI_CE_NAME(VirtualAllocCopyEx);
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms919253: page-printed definition (Windows CE 3.0 and later.). */
+typedef struct _PHYSICAL_BASIC_INFORMATION {
+    PVOID lpBaseAddress;
+    DWORD dwRegionSize;
+    DWORD dwType;
+} PHYSICAL_BASIC_INFORMATION;
+
 #endif /* AKARI_PKFUNCS_H */

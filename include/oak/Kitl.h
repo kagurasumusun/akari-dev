@@ -52,4 +52,21 @@ BOOL TransportSend(LPBYTE pbFrame, USHORT cbFrame);
 /* ms897924: page-printed prototype (Windows CE .NET 4.0 and later.; kitl.lib). */
 BOOL TransportSetHostCfg(LPBYTE pbBuffer, PUSHORT pcbBuffer);
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms897921: page-printed definition (Windows CE .NET 4.0 and later.). */
+typedef void (*PFN_KITLTIMERCB)(LPVOID lpParam);
+
+
+/* --- M104 declarations: printed prototypes recovered
+ * from the official pages (tools/decl-d1.py). -------- */
+
+/* ms897912: page-printed prototype (Windows CE .NET 4.0 and later.; kitl.lib). */
+BOOL KitlSetTimerCallback(int nSecs, PFN_KITLTIMERCB pfnCB, LPVOID lpParam);
+
+/* ms897913: page-printed prototype (Windows CE .NET 4.0 and later.; kitl.lib). */
+BOOL KitlStopTimerCallback(PFN_KITLTIMERCB pfnCB, LPVOID lpParam);
+
 #endif /* AKARI_KITL_H_ */

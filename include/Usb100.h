@@ -56,4 +56,20 @@ typedef struct  {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms923196: page-printed definition (Windows CE 2.10 and later.). */
+typedef struct _USB_CONFIGURATION_DESCRIPTOR {
+    UCHAR bLength;
+    UCHAR bDescriptorType;
+    USHORT wTotalLength;
+    UCHAR bNumInterfaces;
+    UCHAR bConfigurationValue;
+    UCHAR iConfiguration;
+    UCHAR bmAttributes;
+    UCHAR MaxPower;
+} USB_CONFIGURATION_DESCRIPTOR;
+
 #endif /* AKARI_USB100_H */

@@ -3,16 +3,29 @@
 Measured state -- replaces all earlier "complete" claims.
 
 * documented API-like rows: 8934
-* declared: 5007
-* comment-only: 1638
-* absent: 2289
+* declared: 6006
+* comment-only: 2299
+* absent: 629
+
+Per layer (both layers compile together; `-I include -I include/oak`):
+
+| measure | include/ (app -dev) | include/oak/ (OAK-DDK) |
+|---|---|---|
+| declared | 5033 | 973 |
+| comment-only | 1610 | 689 |
+| absent (neither layer) | 629 | - |
+
 * coredll doc-def entries: 2361
 * verified coredll surface (unmangled): 2138
 
-## D1 -- printed signature, comment-only in include/ (946)
+## D1 -- printed signature, comment-only in include/ (1406)
 Name printed a full prototype/struct on an official page but
 carried only as a comment record.  These must be declared.
 
+* `_INTRINSIC_IS_HELPER` [ce4] lib: -
+* `_INTRINSIC_IS_INLINE` [ce4] lib: -
+* `_INTRINSIC_IS_SAFE` [ce4] lib: -
+* `_INTRINSIC_IS_SUPPORTED` [ce4] lib: -
 * `AbortProc` [ce5+ce6] lib: Mgprint.lib.
 * `AbortTransfer` [ce5+ce6] lib: -
 * `ABSTRACT` [ce3+ce4] lib: -
@@ -31,7 +44,10 @@ carried only as a comment record.  These must be declared.
 * `AM_SAMPLE_PROPERTY_FLAGS` [ce3+ce5+ce6] lib: -
 * `aPropID` [ce3+ce5+ce6] lib: -
 * `AreEqualVideoTypes` [ce3+ce5+ce6] lib: -
+* `ASSERT` [ce3+ce5+ce6] lib: none
+* `ASSERTMSG` [ce3+ce5+ce6] lib: none
 * `ASX` [ce3+ce4] lib: -
+* `ATTACHLIST` [ce5+ce6] lib: -
 * `AudioStream` [ce3+ce4] lib: -
 * `Authentication` [ce3+ce5+ce6] lib: -
 * `AUTHOR` [ce3+ce4] lib: -
@@ -46,6 +62,7 @@ carried only as a comment record.  These must be declared.
 * `BD_ADDR` [ce4] lib: -
 * `BIT_MASKS_MATCH` [ce3+ce5+ce6] lib: -
 * `BITMASKS` [ce3+ce5+ce6] lib: -
+* `BlockLockInfo` [ce5+ce6] lib: -
 * `Blt` [ce5+ce6] lib: Developer implemented.
 * `BrowseCallbackProc` [ce5+ce6] lib: Ceshell.lib.
 * `Buffering` [ce3+ce4] lib: -
@@ -57,9 +74,50 @@ carried only as a comment record.  These must be declared.
 * `buildDDHALInfo` [ce5+ce6] lib: -
 * `CALL` [ce3+ce4+ce5+ce6] lib: -
 * `Cancel` [ce3+ce4] lib: -
+* `CanCreateVideoPort` [ce5+ce6] lib: Developer implemented.
 * `CanScan` [ce3+ce4] lib: -
 * `CanSeek` [ce3+ce4] lib: -
 * `CanSeekToMarkers` [ce3+ce4] lib: -
+* `CARD_CONFIG_INFO` [ce5+ce6] lib: -
+* `CARD_DATA_PARMS` [ce5+ce6] lib: -
+* `CARD_EVENT_MASK_PARMS` [ce5+ce6] lib: -
+* `CARD_EVENT_PARMS` [ce5+ce6] lib: -
+* `CARD_REGISTER_PARMS` [ce5+ce6] lib: -
+* `CARD_SOCKET_HANDLE` [ce5+ce6] lib: -
+* `CARD_STATUS` [ce5+ce6] lib: -
+* `CARD_TUPLE_PARMS` [ce5+ce6] lib: -
+* `CARD_WINDOW_ADDRESS` [ce5+ce6] lib: -
+* `CARD_WINDOW_PARMS` [ce5+ce6] lib: -
+* `CardAccessConfigurationRegister` [ce5+ce6] lib: Pcc_serv.dll
+* `CardDeregisterClient` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetEventMask` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetFirstTuple` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetNextTuple` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetParsedTuple` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetStatus` [ce5+ce6] lib: Pcc_serv.dll
+* `CardGetTupleData` [ce5+ce6] lib: Pcc_serv.dll
+* `CardMapWindow` [ce5+ce6] lib: Pcc_serv.dll
+* `CardMapWindowPhysical` [ce5+ce6] lib: Pcc_serv.dll
+* `CardModifyConfiguration` [ce5+ce6] lib: Pcc_serv.dll
+* `CardModifyWindow` [ce5+ce6] lib: Pcc_serv.dll
+* `CardPowerOff` [ce5+ce6] lib: Cardserv.lib.
+* `CardPowerOn` [ce5+ce6] lib: Cardserv.lib.
+* `CardRegisterClient` [ce5+ce6] lib: Pcc_serv.dll
+* `CardReleaseConfiguration` [ce5+ce6] lib: Pcc_serv.dll
+* `CardReleaseExclusive` [ce5+ce6] lib: Pcc_serv.dll
+* `CardReleaseIRQ` [ce5+ce6] lib: Pcc_serv.dll
+* `CardReleaseSocketMask` [ce5+ce6] lib: Cardserv.lib.
+* `CardReleaseWindow` [ce5+ce6] lib: Pcc_serv.dll
+* `CardRequestConfigRegisterPhAddr` [ce5+ce6] lib: Pcc_serv.dll
+* `CardRequestConfiguration` [ce5+ce6] lib: Pcc_serv.dll
+* `CardRequestDisable` [ce5+ce6] lib: Pcc_serv.dll
+* `CardRequestExclusive` [ce5+ce6] lib: Pcc_serv.dll
+* `CardRequestIRQ` [ce5+ce6] lib: Cardserv.lib.
+* `CardRequestIRQLine` [ce5+ce6] lib: Pcc_serv.dll
+* `CardRequestSocketMask` [ce5+ce6] lib: Cardserv.lib.
+* `CardRequestWindow` [ce5+ce6] lib: Pcc_serv.dll
+* `CardResetFunction` [ce5+ce6] lib: Pcc_serv.dll
+* `CardSetEventMask` [ce5+ce6] lib: Pcc_serv.dll
 * `CD_SENSE_DATA` [ce5+ce6] lib: -
 * `CDM_SETDEFEXT` [ce3+ce5+ce6] lib: -
 * `CDN_TYPECHANGE` [ce3+ce5+ce6] lib: -
@@ -136,7 +194,6 @@ carried only as a comment record.  These must be declared.
 * `CEL_VIRTUAL_COPY` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_VIRTUAL_FREE` [ce3+ce4+ce5+ce6] lib: -
 * `CEL_WAIT_MULTI` [ce3+ce4+ce5+ce6] lib: -
-* `CeOpenCallerBuffer` [ce5+ce6] lib: coredll.lib
 * `CEProcessorType` [ce3+ce4] lib: -
 * `CeSvcClose` [ce3+ce5+ce6] lib: Coredll.lib.
 * `CeSvcDelete` [ce3+ce5+ce6] lib: Coredll.lib.
@@ -162,6 +219,7 @@ carried only as a comment record.  These must be declared.
 * `ClearOrSetFeature` [ce5+ce6] lib: -
 * `Click` [ce3+ce4] lib: -
 * `ClickToPlay` [ce3+ce4] lib: -
+* `CLIENT_CALLBACK` [ce5+ce6] lib: Cardserv.lib.
 * `CloseThemeData` [ce5+ce6] lib: Ietheme.dll.
 * `CloseTransferHandle` [ce5+ce6] lib: -
 * `COLORS` [ce3+ce5+ce6] lib: -
@@ -171,10 +229,15 @@ carried only as a comment record.  These must be declared.
 * `CommandBar_Destroy` [ce3+ce5+ce6] lib: Commctl.lib
 * `CommandBar_InsertButton` [ce3+ce5+ce6] lib: Commctl.lib
 * `CommandBar_IsVisible` [ce3+ce5+ce6] lib: Commctl.lib
+* `ConfigInit` [ce4+ce5+ce6] lib: Gdcfg.lib.; Gdcfg.lib.
+* `ConfigRsrc` [ce4+ce5+ce6] lib: Gdcfg.lib.; Gdcfg.lib.
+* `ConfigSet` [ce4+ce5+ce6] lib: Gdcfg.lib.; Gdcfg.lib.
+* `ConfigSize` [ce4+ce5+ce6] lib: Gdcfg.lib.; Gdcfg.lib.
 * `CONFINFO` [ce3+ce5+ce6] lib: -
 * `ContactAddress` [ce3+ce4] lib: -
 * `ContactEmail` [ce3+ce4] lib: -
 * `ContactPhone` [ce3+ce4] lib: -
+* `CONTAINING_RECORD` [ce5+ce6] lib: -
 * `ConvertToMilliseconds` [ce3+ce5+ce6] lib: -
 * `COPYRIGHT` [ce3+ce4] lib: -
 * `COutputQueue` [ce5+ce6] lib: -
@@ -229,18 +292,110 @@ carried only as a comment record.  These must be declared.
 * `DbgBreak` [ce3+ce5+ce6] lib: -
 * `DbgLockTrace` [ce3+ce5+ce6] lib: -
 * `DblClick` [ce3+ce4] lib: -
+* `DBLNODE` [ce5+ce6] lib: -
 * `DDALPHABLTFX` [ce3+ce4+ce5+ce6] lib: -
 * `DDCORECAPS` [ce5+ce6] lib: -
 * `DDEnumCallbackEx` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
+* `DDGPEAllocSurfaceData` [ce5+ce6] lib: Ddgpe.lib.
+* `DDGPEBltParams` [ce5+ce6] lib: Ddgpe.lib.
+* `DDGPEDriverData` [ce5+ce6] lib: Ddgpe.lib.
+* `DDGPEStandardHeader` [ce5+ce6] lib: Ddgpe.lib.
+* `DDHAL_ADDATTACHEDSURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_BLTDATA` [ce5+ce6] lib: -
+* `DDHAL_CANCREATESURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_CANCREATEVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_COLORCONTROLDATA` [ce5+ce6] lib: -
+* `DDHAL_CREATEPALETTEDATA` [ce5+ce6] lib: -
+* `DDHAL_CREATESURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_CREATEVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_DDCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDCOLORCONTROLCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDMISCELLANEOUS2CALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDMISCELLANEOUSCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDPALETTECALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDSURFACECALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DDVIDEOPORTCALLBACKS` [ce5+ce6] lib: -
+* `DDHAL_DESTROYDRIVERDATA` [ce5+ce6] lib: -
+* `DDHAL_DESTROYPALETTEDATA` [ce5+ce6] lib: -
+* `DDHAL_DESTROYSURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_DESTROYVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_FLIPDATA` [ce5+ce6] lib: -
+* `DDHAL_FLIPTOGDISURFACEDATA` [ce5+ce6] lib: -
+* `DDHAL_FLIPVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_GETAVAILDRIVERMEMORYDATA` [ce5+ce6] lib: -
+* `DDHAL_GETBLTSTATUSDATA` [ce5+ce6] lib: -
+* `DDHAL_GETDRIVERINFODATA` [ce5+ce6] lib: -
+* `DDHAL_GETFLIPSTATUSDATA` [ce5+ce6] lib: -
+* `DDHAL_GETHEAPALIGNMENTDATA` [ce5+ce6] lib: -
+* `DDHAL_GETSCANLINEDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTBANDWIDTHDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTCONNECTDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTFIELDDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTFLIPSTATUSDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTINPUTFORMATDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTLINEDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTOUTPUTFORMATDATA` [ce5+ce6] lib: -
+* `DDHAL_GETVPORTSIGNALDATA` [ce5+ce6] lib: -
+* `DDHAL_LOCKDATA` [ce5+ce6] lib: -
+* `DDHAL_SETCLIPLISTDATA` [ce5+ce6] lib: -
+* `DDHAL_SETCOLORKEYDATA` [ce5+ce6] lib: -
+* `DDHAL_SETENTRIESDATA` [ce5+ce6] lib: -
+* `DDHAL_SETEXCLUSIVEMODEDATA` [ce5+ce6] lib: -
+* `DDHAL_SETMODEDATA` [ce5+ce6] lib: -
+* `DDHAL_SETOVERLAYPOSITIONDATA` [ce5+ce6] lib: -
+* `DDHAL_SETPALETTEDATA` [ce5+ce6] lib: -
+* `DDHAL_UNLOCKDATA` [ce5+ce6] lib: -
+* `DDHAL_UPDATENONLOCALHEAPDATA` [ce5+ce6] lib: -
+* `DDHAL_UPDATEOVERLAYDATA` [ce5+ce6] lib: -
+* `DDHAL_UPDATEVPORTDATA` [ce5+ce6] lib: -
+* `DDHAL_VPORTCOLORDATA` [ce5+ce6] lib: -
+* `DDHAL_WAITFORVERTICALBLANKDATA` [ce5+ce6] lib: -
+* `DDHAL_WAITFORVPORTSYNCDATA` [ce5+ce6] lib: -
+* `DDHALINFO` [ce5+ce6] lib: -
+* `DDHALMODEINFO` [ce5+ce6] lib: -
+* `DDKISRINFO` [ce5+ce6] lib: -
+* `DDKPCIINFO` [ce5+ce6] lib: -
+* `DDKReg_GetIsrInfo` [ce5+ce6] lib: Coredll.lib.
+* `DDKReg_GetPciInfo` [ce5+ce6] lib: Coredll.lib.
+* `DDKReg_GetWindowInfo` [ce5+ce6] lib: Coredll.lib.
+* `DDKWINDOWINFO` [ce5+ce6] lib: -
+* `DDMORECAPS` [ce5+ce6] lib: -
+* `DDMORESURFACECAPS` [ce5+ce6] lib: -
+* `DDNONLOCALVIDMEMCAPS` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWCLIPPER_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWCLIPPER_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWCLIPPER_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWPALETTE_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWPALETTE_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWPALETTE_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_GBL_MORE` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DDRAWSURFACE_MORE` [ce5+ce6] lib: -
+* `DDRAWI_DDVIDEOPORT_INT` [ce5+ce6] lib: -
+* `DDRAWI_DDVIDEOPORT_LCL` [ce5+ce6] lib: -
+* `DDRAWI_DIRECTDRAW_GBL` [ce5+ce6] lib: -
+* `DDRAWI_DIRECTDRAW_INT` [ce5+ce6] lib: -
+* `DDRAWI_DIRECTDRAW_LCL` [ce5+ce6] lib: -
+* `DEBUGCHK` [ce3+ce5+ce6] lib: none
+* `DEBUGLED` [ce3+ce5+ce6] lib: none
+* `DEBUGMSG` [ce3+ce5+ce6] lib: none
+* `DEBUGREGISTER` [ce3] lib: -
+* `DEBUGZONE` [ce3+ce5+ce6] lib: none
 * `DECLARE_IUNKNOWN` [ce3+ce5+ce6] lib: -
 * `DefaultFrame` [ce3+ce4] lib: -
 * `DELETE_SECTOR_INFO` [ce5+ce6] lib: -
 * `DeleteIPAddress` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
 * `DeleteUrlCacheGroup` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
+* `DestroyPalette` [ce5+ce6] lib: Developer implemented.
+* `DestroySurface` [ce5+ce6] lib: Developer implemented.
+* `DestroyVideoPort` [ce5+ce6] lib: Developer implemented.
+* `DEVICE_LIST` [ce5+ce6] lib: -
+* `DEVICE_LOCATION` [ce4+ce5+ce6] lib: -
 * `DialogProc` [ce3+ce5+ce6] lib: Developer implemented.
 * `DIBSIZE` [ce3+ce5+ce6] lib: -
 * `DirectInputCreate` [ce3+ce4+ce5+ce6] lib: -
-* `DirectoryClientRegParams` [ce5+ce6] lib: -
 * `DirectSoundCaptureEnumerate` [ce3+ce4] lib: Dsound.lib.; dsound.lib
 * `DirectSoundEnumerate` [ce3+ce4] lib: Dsound.lib.; dsound.lib
 * `DisplayBackColor` [ce3+ce4] lib: -
@@ -249,6 +404,7 @@ carried only as a comment record.  These must be declared.
 * `DllMain` [ce3+ce5+ce6] lib: Coredll.lib.; Coredll.lib, Nk.lib
 * `DllRegisterServer` [ce3+ce4+ce5+ce6] lib: Oleaut32.lib.; Oleaut32.lib.
 * `DllUnregisterServer` [ce3+ce4+ce5+ce6] lib: Oleaut32.lib.; Oleaut32.lib.
+* `DMAdvertiseInterface` [ce5+ce6] lib: -
 * `DMSDLINFO` [ce4+ce5+ce6] lib: -
 * `DMSINVPKGID` [ce4+ce5+ce6] lib: -
 * `DMSINVRECORD` [ce4+ce5+ce6] lib: -
@@ -264,155 +420,8 @@ carried only as a comment record.  These must be declared.
 * `DPA_FastGetPtr` [ce4] lib: -
 * `DPA_GetPtr` [ce4] lib: -
 * `DrawThemeBackground` [ce5+ce6] lib: Ietheme.dll.
-* `DumpGraph` [ce3+ce5+ce6] lib: -
-* `DURATION` [ce3+ce4] lib: -
-* `Duration` [ce3+ce4] lib: -
-* `dwCeLogFlushTimeout` [ce3] lib: -
-* `ECHO` [ce3+ce4] lib: -
-* `Enabled` [ce3+ce4] lib: -
-* `EnablePositionControls` [ce3+ce4] lib: -
-* `EnableTracker` [ce3+ce4] lib: -
-* `ENDMARKER` [ce3+ce4] lib: -
-* `ENTRY` [ce3+ce4] lib: -
-* `EntryCount` [ce3+ce4] lib: -
-* `ENTRYREF` [ce3+ce4] lib: -
-* `EnumCalendarInfo` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumCalendarInfoProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumCodePagesProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumDateFormats` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumDateFormatsProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumDevices` [ce5+ce6] lib: Coredll.lib.
-* `EnumFontFamProc` [ce3+ce4+ce5+ce6] lib: -
-* `EnumFontsProc` [ce3+ce4+ce5+ce6] lib: -
-* `EnumLocalesProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumModesCallback2` [ce3+ce4+ce5+ce6] lib: User-defined.; User-defined.; user-defined
-* `EnumRegisterWordProc` [ce3+ce4+ce5+ce6] lib: No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.; No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.
-* `EnumSystemLocales` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumTimeFormats` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
-* `EnumTimeFormatsProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumUILanguagesProc` [ce3+ce4+ce5+ce6] lib: Coreloc.lib.; Coreloc.lib.
-* `EnumWindowsProc` [ce3+ce5+ce6] lib: -
-* `ERASE` [ce3] lib: -
-* `Error` [ce3+ce4] lib: -
-* `ErrorCode` [ce3+ce4] lib: -
-* `ErrorCorrection` [ce3+ce4] lib: -
-* `ErrorDescription` [ce3+ce4] lib: -
-* `Event` [ce5+ce6] lib: -
-* `EVENT` [ce3+ce4] lib: -
-* `EXTENSION_CONTROL_BLOCK` [ce3+ce5+ce6] lib: -
-* `FastForward` [ce3+ce4] lib: -
-* `FastReverse` [ce3+ce4] lib: -
-* `FiberProc` [ce5+ce6] lib: Coredll.lib.
-* `FindFirstUrlCacheEntryEx` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FindFirstUrlCacheGroup` [ce5+ce6] lib: Wininet.lib.
-* `FindNextUrlCacheGroup` [ce5+ce6] lib: Wininet.lib.
-* `FINDOBJINFO` [ce5+ce6] lib: -
-* `FirewallDeleteRule` [ce5+ce6] lib: Fwapi.lib.
-* `FirewallEnableRule` [ce5+ce6] lib: Fwapi.lib.
-* `FirewallGetRules` [ce5+ce6] lib: Fwapi.lib.
-* `Flip` [ce5+ce6] lib: Developer implemented.
-* `FreeMediaType` [ce3+ce5+ce6] lib: -
-* `FtpCommand` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpCreateDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpDeleteFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpFindFirstFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpGetCurrentDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpGetFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpGetFileEx` [ce5+ce6] lib: Wininet.lib.
-* `FtpGetFileSize` [ce5+ce6] lib: Wininet.lib.
-* `FtpOpenFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpPutFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpPutFileEx` [ce5+ce6] lib: Wininet.lib.
-* `FtpRemoveDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpRenameFile` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `FtpSetCurrentDirectory` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `get_VideoWidth` [ce5+ce6] lib: -
-* `GetBestInterface` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
-* `GetBltStatus` [ce5+ce6] lib: Developer implemented.
-* `GetCodecDescription` [ce4] lib: -
-* `GetCodecInstalled` [ce4] lib: -
-* `GetCodecURL` [ce4] lib: -
-* `GetCurrentEntry` [ce3+ce4] lib: -
-* `GetExtensionVersion` [ce3+ce5+ce6] lib: Not applicable.
-* `GetFilterVersion` [ce3+ce5+ce6] lib: Not applicable.
-* `GetFlipStatus` [ce5+ce6] lib: Developer implemented.
-* `GetMarkerName` [ce3+ce4] lib: -
-* `GetMarkerTime` [ce3+ce4] lib: -
-* `GetMediaInfoString` [ce3+ce4] lib: -
-* `GetMediaParameter` [ce3+ce4] lib: -
-* `GetMediaParameterName` [ce3+ce4] lib: -
-* `GetMoreInfoURL` [ce3+ce4] lib: -
-* `GetRTTAndHopCount` [ce3+ce5+ce6] lib: Iphlpapi.lib.; Iphlpapi.lib
-* `GetStatus` [ce5+ce6] lib: -
-* `GetThemeBackgroundExtent` [ce5+ce6] lib: Ietheme.dll.
-* `GetThemeColor` [ce5+ce6] lib: Ietheme.dll.
-* `GetThemeFont` [ce5+ce6] lib: Ietheme.dll.
-* `GetTransferStatus` [ce5+ce6] lib: -
-* `GetUrlCacheGroupAttribute` [ce5+ce6] lib: Wininet.lib.
-* `GetVideoPortConnectInfo` [ce5+ce6] lib: Developer implemented.
-* `GetVideoSignalStatus` [ce5+ce6] lib: Developer implemented.
-* `GOTO` [ce3+ce4] lib: -
-* `HALInit` [ce5+ce6] lib: -
-* `HasError` [ce3+ce4] lib: -
-* `HasMultipleItems` [ce3+ce4] lib: -
-* `HCI_SetCallback` [ce5+ce6] lib: Btd.lib.
-* `HEADER` [ce3+ce5+ce6] lib: -
-* `Header_DeleteItem` [ce3+ce5+ce6] lib: Commctrl.lib
-* `Header_GetItem` [ce3+ce5+ce6] lib: Commctrl.lib
-* `Header_GetItemCount` [ce3+ce5+ce6] lib: Commctrl.lib
-* `Header_InsertItem` [ce3+ce5+ce6] lib: Commctrl.lib
-* `Header_Layout` [ce3+ce5+ce6] lib: Commctrl.lib
-* `Header_SetItem` [ce3+ce5+ce6] lib: Commctrl.lib
-* `HELP` [ce3+ce4+ce5+ce6] lib: -
-* `HitTestThemeBackground` [ce5+ce6] lib: Ietheme.dll.
-* `HREPLFLD` [ce3+ce5+ce6] lib: -
-* `HREPLITEM` [ce3+ce5+ce6] lib: -
-* `HREPLOBJ` [ce3+ce5+ce6] lib: -
-* `HSE_VERSION_INFO` [ce3+ce5+ce6] lib: -
-* `HTTP_FILTER_VERSION` [ce3+ce5+ce6] lib: -
-* `HttpAddRequestHeaders` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `HttpEndRequest` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `HttpExtensionProc` [ce3+ce5+ce6] lib: Not applicable.
-* `HttpFilterProc` [ce3+ce5+ce6] lib: Not applicable.
-* `HttpOpenRequest` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `HttpQueryInfo` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `HttpSendRequest` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `HttpSendRequestEx` [ce3+ce5+ce6] lib: Wininet.lib.; Wininet.lib
-* `HwxALCPriority` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxALCValid` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxCreate` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxDestroy` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxEndInput` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxGetResults` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxInput` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxProcess` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxResultsAvailable` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxSetAbort` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxSetContext` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxSetGuide` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `HwxSetPartial` [ce3+ce4+ce5+ce6] lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
-* `IAS_QUERY` [ce3] lib: -
-* `IAS_SET` [ce3] lib: -
-* `Icmp6SendEcho2` [ce5+ce6] lib: Icmplib.lib.
-* `ICMP_ECHO_REPLY` [ce3+ce5+ce6] lib: -
-* `IcmpSendEcho` [ce3+ce5+ce6] lib: Icmplib.lib.
-* `IcmpSendEcho2` [ce5+ce6] lib: Icmplib.lib.
-* `IDirectSound` [ce3] lib: dsound.lib
-* `IDirectSoundBuffer` [ce3] lib: dsound.lib
-* `IDirectSoundCapture` [ce3] lib: dsound.lib
-* `IDirectSoundCaptureBuffer` [ce3] lib: dsound.lib
-* `IDirectSoundNotify` [ce3] lib: dsound.lib
-* `ImageSourceHeight` [ce3+ce4] lib: -
-* `ImageSourceWidth` [ce3+ce4] lib: -
-* `IMC_GETCONVERSIONMODE` [ce3+ce4+ce5+ce6] lib: -
-* `IMC_GETOPENSTATUS` [ce3+ce4+ce5+ce6] lib: -
-* `IMC_GETSENTENCEMODE` [ce3+ce4+ce5+ce6] lib: -
-* `IMC_SETCONVERSIONMODE` [ce3+ce4+ce5+ce6] lib: -
-* `IMC_SETOPENSTATUS` [ce3+ce4+ce5+ce6] lib: -
-* `IMC_SETSENTENCEMODE` [ce3+ce4+ce5+ce6] lib: -
-* `IMEWRD` [ce4+ce5+ce6] lib: -
-* `IMPLTYPEFLAGS` [ce4+ce5+ce6] lib: -
-* `IMR_CANDIDATEFORM` [ce3+ce4+ce5+ce6] lib: -
+* `DriverEntry` [ce3+ce5+ce6] lib: -
+* `DrvAnyBlt` [ce5+ce6] lib: Ddi_ati_lib.lib, Ddi_flat_lib.lib, Ddi_gx_lib.lib, Ddi_mq200_lib.lib, Ddi_nop_lib.lib, Ddi_rflat_lib.lib, Ddi_rgx_lib.lib, or Ddi_tvia5_lib.lib.
 
 ## D2 -- declared, page says Coredll.lib, missing from coredll-doc.def (14)
 * `AbnormalTermination` [ce3+ce5+ce6]
@@ -434,7 +443,414 @@ carried only as a comment record.  These must be declared.
 Export existence grounded on the device-dump-audited sysroot
 surface (clean-room.md 3.2); prototypes grounded on the pages.
 
-## D4 -- verified coredll surface names not carried anywhere in include/ (1007)
+## D5 -- application -dev gap: page names an include/ header, name not declared there (1267)
+The official page's Header row resolves to a shipped file in
+`include/` (application layer), but the name is not declared
+live in `include/`.  These are the real user-mode -dev gaps;
+OAK/DDK-header rows are excluded (out of the -dev scope).
+
+* `__fmac` [ce4] now: absent/- sig=1 hdr: shintr.h lib: -
+* `_Convolve` [ce4] now: absent/- sig=1 hdr: shintr.h lib: -
+* `_IMAGE_CE_RUNTIME_FUNCTION_ENTRY` [ce4] now: absent/- sig=1 hdr: winnt.h lib: -
+* `_ISpPrivateEngineCall` [ce5+ce6] now: comment-only/app sig=0 hdr: Sapiddk.h lib: Sapilib.lib.
+* `AbortProc` [ce5+ce6] now: comment-only/app sig=1 hdr: Wingdi.h lib: Mgprint.lib.
+* `AbortTransfer` [ce5+ce6] now: comment-only/app sig=1 hdr: Usbclient.h lib: -
+* `ACCESSTIMEOUT` [ce4] now: absent/- sig=1 hdr: Windows.h lib: -
+* `ACMDM_DRIVER_ABOUT` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_DRIVER_DETAILS` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_DRIVER_NOTIFY` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_FILTER_DETAILS` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_FILTERTAG_DETAILS` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_FORMAT_DETAILS` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_FORMAT_SUGGEST` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_FORMATTAG_DETAILS` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_HARDWARE_WAVE_CAPS_INPUT` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_HARDWARE_WAVE_CAPS_OUTPUT` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_CLOSE` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_CONVERT` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_OPEN` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_PREPARE` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_RESET` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_SIZE` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDM_STREAM_UNPREPARE` [ce5+ce6] now: comment-only/app sig=0 hdr: Msacmdrv.h lib: -
+* `ACMDRVOPENDESC` [ce5+ce6] now: comment-only/app sig=1 hdr: Msacmdrv.h lib: -
+* `ACMDRVSTREAMHEADER` [ce5+ce6] now: comment-only/app sig=1 hdr: Msacmdrv.h lib: -
+* `ACMDRVSTREAMINSTANCE` [ce5+ce6] now: comment-only/app sig=1 hdr: Msacmdrv.h lib: -
+* `ADDCONNECT_DLGPARAMS` [ce3+ce4] now: absent/- sig=1 hdr: Netui.h lib: -
+* `AddIPAddress` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Iphlpapi.h lib: Iphlpapi.lib.; Iphlpapi.lib
+* `aPropID` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Mq.h lib: -
+* `aPropVar` [ce3+ce5+ce6] now: comment-only/app sig=0 hdr: Mq.h lib: -
+* `aStatus` [ce3+ce5+ce6] now: comment-only/app sig=0 hdr: Mq.h lib: -
+* `AVC_VCR_CMD_ANALOG_AUDIO_OUTPUT_MODE` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_INPUT_SIGNAL_MODE` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_LOAD_MEDIUM` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_MEDIUM_INFO` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_OUTPUT_SIGNAL_MODE` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_PLAY` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_RECORD` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_RECORDING_DATE` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_RECORDING_SPEED` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_RECORDING_TIME` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_RELATIVE_TIME_COUNTER` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_TIME_CODE` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_TRANSPORT_STATE` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVC_VCR_CMD_WIND` [ce5+ce6] now: comment-only/app sig=0 hdr: Avc_vcr.h lib: -
+* `AVTransportState` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `BASEBAND_CONNECTION_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: bt_ddi.h lib: -
+* `BD_ADDR` [ce4] now: comment-only/app sig=1 hdr: Bt_ddi.h lib: -
+* `BFFM_ENABLEOK` [ce5+ce6] now: comment-only/app sig=0 hdr: Shlobj.h lib: -
+* `BFFM_INITIALIZED` [ce5+ce6] now: comment-only/app sig=0 hdr: Shlobj.h lib: -
+* `BFFM_SELCHANGED` [ce5+ce6] now: comment-only/app sig=0 hdr: Shlobj.h lib: -
+* `BFFM_SETSELECTION` [ce5+ce6] now: comment-only/app sig=0 hdr: Shlobj.h lib: -
+* `BFFM_SETSTATUSTEXT` [ce5+ce6] now: comment-only/app sig=0 hdr: Shlobj.h lib: -
+* `BFFM_VALIDATEFAILED` [ce5+ce6] now: comment-only/app sig=0 hdr: Shlobj.h lib: -
+* `BIT_AV_` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `BrowseCallbackProc` [ce5+ce6] now: comment-only/app sig=1 hdr: Shlobj.h lib: Ceshell.lib.
+* `BTH_HCI_IOCTL_GET_BASEBAND_HANDLES` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_BD_FOR_HANDLE` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_COMMANDSIZE` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_ERRORS` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_FLOW` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_HANDLE_FOR_BD` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_HANDLE_MODE` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_HARDWARE_STATUS` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_INQUIRY` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_LAST_INQUIRY_DATA` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_LOOPBACK` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_NUM_ONDEVICE` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_NUM_PENDING` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_NUM_UNSENT` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_PERIODIC_INQUIRY` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_GET_UNDER_TEST` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_HANDLE_AUTHENTICATED` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_HCI_IOCTL_HANDLE_ENCRYPTED` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTH_STACK_IOCTL_GET_CONNECTED` [ce4] now: absent/- sig=0 hdr: Bt_ddi.h lib: -
+* `BTHHID_IOCTL_HIDConnect` [ce5+ce6] now: comment-only/app sig=0 hdr: Bthid.h lib: -
+* `BTHHID_IOCTL_HIDDisconnect` [ce5+ce6] now: comment-only/app sig=0 hdr: Bthid.h lib: -
+* `BTHINQUIRYRESULT` [ce4] now: absent/- sig=1 hdr: Ws2bth.h lib: -
+* `BUILD_IO_RW_DIRECT_ARG` [ce5+ce6] now: comment-only/app sig=1 hdr: Sdcard.h lib: -
+* `BUILD_IO_RW_EXTENDED_ARG` [ce5+ce6] now: comment-only/app sig=1 hdr: Sdcard.h lib: -
+* `buildDDHALInfo` [ce5+ce6] now: comment-only/app sig=1 hdr: Ddraw.h,Ddrawi.h lib: -
+* `CD_SENSE_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: Cdioctl.h lib: -
+* `CDM_SETDEFEXT` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Winuser.h lib: -
+* `CDN_TYPECHANGE` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commdlg.h lib: -
+* `CDROM_DISCINFO` [ce5+ce6] now: comment-only/app sig=1 hdr: Cdioctl.h lib: -
+* `CDROM_PLAY_AUDIO_MSF` [ce5+ce6] now: comment-only/app sig=1 hdr: Cdioctl.h lib: -
+* `CDROM_READ` [ce5+ce6] now: comment-only/app sig=1 hdr: Cdioctl.h lib: -
+* `CDROM_TESTUNITREADY` [ce5+ce6] now: comment-only/app sig=1 hdr: Cdioctl.h lib: -
+* `CDROM_TOC` [ce5+ce6] now: comment-only/app sig=1 hdr: Cdioctl.h lib: -
+* `CEDB_FIND_DATA` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Rapi.h lib: -
+* `CeGetDeviceId` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Ceutil.lib.
+* `CeGetDevMgmtPackageList` [ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Devmgmt.h lib: -
+* `CeGetSelectedDeviceId` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Ceutil.lib.
+* `CeGetVolumeInfo` [ce5+ce6] now: comment-only/app sig=1 hdr: Storemgr.h lib: Storeapi.lib
+* `CeHeapCreate` [ce5+ce6] now: comment-only/app sig=1 hdr: Winbase.h lib: Coredll.lib.
+* `CEL_CRITSEC_DELETE` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_CRITSEC_ENTER` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_CRITSEC_INIT` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_CRITSEC_LEAVE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_DATA_LOSS` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_DEBUG_MSG` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EVENT_CLOSE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EVENT_CREATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EVENT_DELETE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EVENT_PULSE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EVENT_RESET` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EVENT_SET` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EXTRA_MODULE_INFO` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_EXTRA_PROCESS_INFO` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_HEADER` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_HEAP_ALLOC` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_HEAP_CREATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_HEAP_DESTROY` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_HEAP_FREE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_HEAP_REALLOC` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_INT_DATA` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_INTERRUPTS` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_LOG_MARKER` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MAPFILE_CREATE` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MAPFILE_DESTROY` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MAPFILE_FLUSH` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MAPFILE_VIEW_CLOSE` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MEMTRACK_BASELINE` [ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MODULE_FREE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MODULE_LOAD` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MODULE_REFERENCES` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MUTEX_CLOSE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MUTEX_CREATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MUTEX_DELETE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_MUTEX_RELEASE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_PROCESS_CLOSE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_PROCESS_CREATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_PROCESS_DELETE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_PROCESS_REFCOUNT` [ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_PROCESS_TERMINATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SEM_CLOSE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SEM_CREATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SEM_DELETE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SEM_RELEASE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SLEEP` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SYSTEM_INVERT` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SYSTEM_PAGE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_SYSTEM_TLB` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_CLOSE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_CREATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_DELETE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_MIGRATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_PRIORITY` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_QUANTUM` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_RESUME` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_SUSPEND` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_SWITCH` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_THREAD_TERMINATE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_VIRTUAL_ALLOC` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_VIRTUAL_COPY` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_VIRTUAL_FREE` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEL_WAIT_MULTI` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `CEM_ENABLEUPCASE` [ce5+ce6] now: comment-only/app sig=0 hdr: Commctrl.h lib: Commctrl.lib.
+* `CEM_UPCASEALLWORDS` [ce5+ce6] now: comment-only/app sig=0 hdr: Commctrl.h lib: Commctrl.lib.
+* `CeNotifyPrivate_TranslateOID` [ce3+ce4] now: absent/- sig=1 hdr: Notifext.hxx lib: -
+* `CeNotifyPublic_DisposeOfPacket` [ce3+ce4] now: absent/- sig=1 hdr: Notifext.hxx lib: -
+* `CeNotifyPublic_UIWndProc` [ce3+ce4] now: absent/- sig=1 hdr: Notifext.hxx lib: -
+* `CEProcessorType` [ce3+ce4] now: comment-only/app sig=1 hdr: Nkarm.h lib: -
+* `CeSvcClose` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcDelete` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcDeleteVal` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcEnumProfiles` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcGetBinary` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcGetDword` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcGetString` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcOpen` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcOpenEx` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcSetBinary` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcSetDword` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CeSvcSetString` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Ceutil.h lib: Coredll.lib.
+* `CFF_CONVERTINFO` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Replfilt.h lib: -
+* `CFF_DESTINATIONFILE` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Replfilt.h lib: -
+* `CFF_SOURCEFILE` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Replfilt.h lib: -
+* `CFHookProc` [ce5+ce6] now: comment-only/app sig=0 hdr: Commdlg.h lib: -
+* `CImeCUICandWindow` [ce5+ce6] now: comment-only/app sig=0 hdr: Imjpskin.h lib: -
+* `CImeCUIDefCompWindow` [ce5+ce6] now: comment-only/app sig=0 hdr: Imjpskin.h lib: -
+* `CImeCUIToolBar` [ce5+ce6] now: comment-only/app sig=0 hdr: Imjpskin.h lib: -
+* `ClearOrSetFeature` [ce5+ce6] now: comment-only/app sig=1 hdr: Usbclient.h lib: -
+* `CloseThemeData` [ce5+ce6] now: comment-only/app sig=1 hdr: Uxtheme.h lib: Ietheme.dll.
+* `CloseTransferHandle` [ce5+ce6] now: comment-only/app sig=1 hdr: Usbclient.h lib: -
+* `CoBuildVersion` [ce3+ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Objbase.h lib: Ole32.lib.; Ole232.lib
+* `CommandBands_Height` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctl.lib
+* `CommandBar_AddButtons` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctl.lib
+* `CommandBar_AddToolTips` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctl.lib
+* `CommandBar_Destroy` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctl.lib
+* `CommandBar_InsertButton` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctl.lib
+* `CommandBar_IsVisible` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctl.lib
+* `CONFIG_DATA_` [ce5+ce6] now: comment-only/app sig=0 hdr: Voipconfigurationdatastore.h lib: -
+* `CONFINFO` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cesync.h lib: -
+* `ConnectionDialog` [ce3+ce4] now: absent/- sig=1 hdr: Netui.h lib: Netui.lib.
+* `ConnectionInfo` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `ConnectionManagerState` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `ContentDirectoryState` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `Conversion` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Mlang.h lib: Mlang.dll.; Mlang.dll.
+* `CPL_DBLCLK` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cpl.h lib: -
+* `CPL_EXIT` [ce3+ce5+ce6] now: comment-only/app sig=0 hdr: Cpl.h lib: -
+* `CPL_GETCOUNT` [ce3+ce5+ce6] now: comment-only/app sig=0 hdr: Cpl.h lib: -
+* `CPL_INIT` [ce3+ce5+ce6] now: comment-only/app sig=0 hdr: Cpl.h lib: -
+* `CPL_NEWINQUIRE` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cpl.h lib: -
+* `CPL_STOP` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cpl.h lib: -
+* `CreatePartition` [ce5+ce6] now: comment-only/app sig=1 hdr: Storemgr.h lib: Storeapi.lib
+* `CreatePartitionEx` [ce5+ce6] now: comment-only/app sig=1 hdr: Storemgr.h lib: Storeapi.lib
+* `CreateUrlCacheGroup` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `CRYPTOAPI_BLOB` [ce5+ce6] now: comment-only/app sig=1 hdr: Wincrypt.h lib: -
+* `CS_SocketCallback` [ce5+ce6] now: comment-only/app sig=1 hdr: Socksv2.h lib: Pcc_serv.dll
+* `CTL_CODE` [ce4] now: comment-only/app sig=1 hdr: Windev.h lib: -
+* `D3DM_CreateContext` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_CreateSurface` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_DestroyContext` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_DestroySurface` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_DLL_ENTRY` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: -
+* `D3DM_GetAdapterInfo` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_GetInfo` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_Initialize` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_LockSurface` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_MAKE_D3DMVALUE` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmtypes.h lib: Implemented in D3dmtypes.h.
+* `D3DM_ResourceManager` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_SETLIGHT` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: -
+* `D3DM_SETPALETTE` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: -
+* `D3DM_UnlockSurface` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `D3DM_ValidateDevice` [ce5+ce6] now: comment-only/app sig=1 hdr: D3dmddk.h lib: Developer implemented.
+* `DateTime_GetMonthCal` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_GetMonthCalColor` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_GetMonthCalFont` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_GetRange` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_GetSystemtime` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_SetFormat` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_SetMonthCalColor` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_SetMonthCalFont` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_SetRange` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DateTime_SetSystemtime` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `DB_CEOID_CHANGED` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winbase.h,Windbase.h lib: -
+* `DB_CEOID_CREATED` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Windbase.h lib: -
+* `DB_CEOID_DATABASE_DELETED` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Windbase.h lib: -
+* `DB_CEOID_DIRECTORY_DELETED` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Windbase.h lib: -
+* `DB_CEOID_FILE_DELETED` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Windbase.h lib: -
+* `DB_CEOID_RECORD_DELETED` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Windbase.h lib: -
+* `DB_PEGOID_CHANGED` [ce3] now: comment-only/app sig=1 hdr: Windbase.h lib: -
+* `DB_PEGOID_CREATED` [ce3] now: comment-only/app sig=1 hdr: Windbase.h lib: -
+* `DB_PEGOID_RECORD_DELETED` [ce3] now: comment-only/app sig=1 hdr: Windbase.h lib: -
+* `DCRP_VALID_` [ce5+ce6] now: comment-only/app sig=0 hdr: Voipmanager.h lib: -
+* `DDALPHABLTFX` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Ddraw.h lib: -
+* `DDEnumCallbackEx` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Ddraw.h lib: User-defined.; User-defined.; user-defined
+* `DELETE_SECTOR_INFO` [ce5+ce6] now: comment-only/app sig=1 hdr: Diskio.h lib: -
+* `DeleteIPAddress` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Iphlpapi.h lib: Iphlpapi.lib.; Iphlpapi.lib
+* `DeleteUrlCacheGroup` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `DeviceCapabilities` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `DirectInputCreate` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Dinput.h lib: -
+* `DIRECTION` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `DirectSoundCaptureEnumerate` [ce3+ce4] now: comment-only/app sig=1 hdr: Dsound.h,dsound.h lib: Dsound.lib.; dsound.lib
+* `DirectSoundEnumerate` [ce3+ce4] now: comment-only/app sig=1 hdr: Dsound.h,dsound.h lib: Dsound.lib.; dsound.lib
+* `DllMain` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Winbase.h lib: Coredll.lib.; Coredll.lib, Nk.lib
+* `DllRegisterServer` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Objbase.h,Olectl.h lib: Oleaut32.lib.; Oleaut32.lib.
+* `DllUnregisterServer` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Objbase.h,Olectl.h lib: Oleaut32.lib.; Oleaut32.lib.
+* `DMO_INPUT_DATA_BUFFER_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMO_INPUT_STREAM_INFO_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMO_OUTPUT_DATA_BUFFER_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMO_OUTPUT_STREAM_INFO_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMO_PROCESS_OUTPUT_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMO_SET_TYPE_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMO_VIDEO_OUTPUT_STREAM_FLAGS` [ce4+ce5+ce6] now: comment-only/app sig=0 hdr: Dmo.h lib: -
+* `DMSDLINFO` [ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Devmgmt.h lib: -
+* `DMSINVPKGID` [ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Devmgmt.h lib: -
+* `DMSINVRECORD` [ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Devmgmt.h lib: -
+* `DNS_A_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: -
+* `DNS_AAAA_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: -
+* `DNS_ATMA_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: -
+* `DNS_WINS_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: -
+* `DNS_WKS_DATA` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: -
+* `DnsModifyRecordsInSet_W` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: Dnsapi.lib.
+* `DnsQuery_W` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: Dnsapi.lib.
+* `DnsRecordListFree` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: Dnsapi.lib.
+* `DnsReplaceRecordSetW` [ce5+ce6] now: comment-only/app sig=1 hdr: Windns.h lib: Dnsapi.lib.
+* `DOMDocument` [ce5+ce6] now: comment-only/app sig=0 hdr: Msxml2.h lib: -
+* `DPA_FastGetPtr` [ce4] now: comment-only/app sig=1 hdr: Pcommctr.h lib: -
+* `DPA_GetPtr` [ce4] now: comment-only/app sig=1 hdr: Pcommctr.h lib: -
+* `DrawIconEx_I` [ce4] now: absent/- sig=1 hdr: Gwebypasscoredllthunk.hpp lib: -
+* `DrawThemeBackground` [ce5+ce6] now: comment-only/app sig=1 hdr: Uxtheme.h lib: Ietheme.dll.
+* `DTM_ADDTEXT` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_ADDTEXTW` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_ANCHOR` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_ANCHORW` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_ENABLESHRINK` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_ENDOFSOURCE` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_IMAGEFAIL` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_SELECTALL` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `DTM_SETIMAGE` [ce3] now: absent/- sig=1 hdr: Htmlctrl.h lib: -
+* `dwCeLogFlushTimeout` [ce3] now: comment-only/app sig=1 hdr: Celog.h lib: -
+* `EnumCalendarInfo` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
+* `EnumCalendarInfoProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.
+* `EnumCodePagesProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.
+* `EnumDateFormats` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
+* `EnumDateFormatsProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.
+* `EnumFontFamProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Windows.h,Wingdi.h lib: -
+* `EnumFontsProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Windows.h,Wingdi.h lib: -
+* `EnumLocalesProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.
+* `EnumModesCallback2` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Ddraw.h lib: User-defined.; User-defined.; user-defined
+* `EnumRegisterWordProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Imm.h lib: No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.; No link library required. EnumRegisterWordProc is a placeholder for the application-defined function name that is provided by a caller to the ImmEnumRegisterWord function.
+* `EnumSystemLocales` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
+* `EnumTimeFormats` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.; Coreloc.lib
+* `EnumTimeFormatsProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Winnls.h lib: Coreloc.lib.; Coreloc.lib.
+* `EnumUILanguagesProc` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Windows.h lib: Coreloc.lib.; Coreloc.lib.
+* `EnumWindowsProc` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Winuser.h lib: -
+* `Event` [ce5+ce6] now: declared/oak sig=1 hdr: Interned.h lib: -
+* `ExchangeClientRequestStatus` [ce5+ce6] now: comment-only/app sig=0 hdr: IExchangeClient.h lib: -
+* `ExchangeClientRequestType` [ce5+ce6] now: comment-only/app sig=0 hdr: IExchangeClient.h lib: -
+* `EXTENSION_CONTROL_BLOCK` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpext.h,httpext.h lib: -
+* `FiberProc` [ce5+ce6] now: comment-only/app sig=1 hdr: Windows.h lib: Coredll.lib.
+* `FindFirstUrlCacheEntryEx` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FindFirstUrlCacheGroup` [ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.
+* `FindNextUrlCacheGroup` [ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.
+* `FindObjects` [ce5+ce6] now: comment-only/app sig=0 hdr: Cesync.h lib: None.
+* `FINDOBJINFO` [ce5+ce6] now: comment-only/app sig=1 hdr: Cesync.h lib: -
+* `FirewallDeleteRule` [ce5+ce6] now: comment-only/app sig=1 hdr: Fwapi.h lib: Fwapi.lib.
+* `FirewallEnableRule` [ce5+ce6] now: comment-only/app sig=1 hdr: Fwapi.h lib: Fwapi.lib.
+* `FirewallGetRules` [ce5+ce6] now: comment-only/app sig=1 hdr: Fwapi.h lib: Fwapi.lib.
+* `FtpCommand` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpCreateDirectory` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpDeleteFile` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpFindFirstFile` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpGetCurrentDirectory` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpGetFile` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpGetFileEx` [ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.
+* `FtpGetFileSize` [ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.
+* `FtpOpenFile` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpPutFile` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpPutFileEx` [ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.
+* `FtpRemoveDirectory` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpRenameFile` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `FtpSetCurrentDirectory` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `GetBestInterface` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Iphlpapi.h lib: Iphlpapi.lib.; Iphlpapi.lib
+* `GetDriverName` [ce3+ce4] now: absent/- sig=1 hdr: Netui.h lib: Netui.lib.
+* `GETDRIVERNAMEPARMS` [ce3+ce4] now: absent/- sig=1 hdr: Netui.h lib: -
+* `GetExtensionVersion` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpext.h,httpext.h lib: Not applicable.
+* `GetFilterVersion` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpfilt.h lib: Not applicable.
+* `GetObjTypeInfo` [ce5+ce6] now: comment-only/app sig=0 hdr: Cesync.h lib: None.
+* `GetResourcePassword` [ce3+ce4] now: absent/- sig=1 hdr: Netui.h lib: Netui.lib.
+* `GetRTTAndHopCount` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Iphlpapi.h lib: Iphlpapi.lib.; Iphlpapi.lib
+* `GetStatus` [ce5+ce6] now: comment-only/app sig=1 hdr: Usbclient.h lib: -
+* `GetThemeBackgroundExtent` [ce5+ce6] now: comment-only/app sig=1 hdr: Uxtheme.h lib: Ietheme.dll.
+* `GetThemeColor` [ce5+ce6] now: comment-only/app sig=1 hdr: Uxtheme.h lib: Ietheme.dll.
+* `GetThemeFont` [ce5+ce6] now: comment-only/app sig=1 hdr: Uxtheme.h lib: Ietheme.dll.
+* `GetTransferStatus` [ce5+ce6] now: comment-only/app sig=1 hdr: Usbclient.h lib: -
+* `GetUrlCacheGroupAttribute` [ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.
+* `GetUsernamePassword` [ce3+ce4] now: absent/- sig=1 hdr: Netui.h lib: Netui.lib.
+* `HALInit` [ce5+ce6] now: comment-only/app sig=1 hdr: Ddraw.h,Ddrawi.h lib: -
+* `HCI_DataPacketDown_In` [ce4] now: absent/- sig=1 hdr: Bt_ddi.h lib: Btd.lib.
+* `HCI_DataPacketDown_Out` [ce4] now: absent/- sig=1 hdr: Bt_ddi.h lib: Btd.lib.
+* `HCI_DataPacketUp` [ce4] now: absent/- sig=1 hdr: Bt_ddi.h lib: Btd.lib.
+* `HCI_DataPacketUpAclUnbuffered` [ce4] now: absent/- sig=1 hdr: Bt_ddi.h lib: Btd.lib.
+* `HCI_EstablishDeviceContext` [ce4] now: absent/- sig=1 hdr: Bt_hcip.h lib: Btd.lib.
+* `HCI_EVENT` [ce5+ce6] now: comment-only/app sig=0 hdr: Bt_hcip.h lib: -
+* `HCI_SetCallback` [ce5+ce6] now: comment-only/app sig=1 hdr: Bt_hcip.h lib: Btd.lib.
+* `HCIEventContext` [ce4] now: absent/- sig=1 hdr: Bt_ddi.h lib: -
+* `Header_DeleteItem` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `Header_GetItem` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `Header_GetItemCount` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `Header_InsertItem` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `Header_Layout` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `Header_SetItem` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Commctrl.h lib: Commctrl.lib
+* `HIGHCONTRAST` [ce4] now: absent/- sig=1 hdr: Windows.h lib: -
+* `HitTestThemeBackground` [ce5+ce6] now: comment-only/app sig=1 hdr: Uxtheme.h lib: Ietheme.dll.
+* `HREPLFLD` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cesync.h lib: -
+* `HREPLITEM` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cesync.h lib: -
+* `HREPLOBJ` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Cesync.h lib: -
+* `HRULE` [ce5+ce6] now: comment-only/app sig=0 hdr: Fwapi.h lib: -
+* `HSE_VERSION_INFO` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpext.h,httpext.h lib: -
+* `HTTP_FILTER_VERSION` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpfilt.h lib: -
+* `HttpAddRequestHeaders` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `HttpEndRequest` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `HttpExtensionProc` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpext.h,httpext.h lib: Not applicable.
+* `HttpFilterProc` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Httpfilt.h lib: Not applicable.
+* `HttpOpenRequest` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `HttpQueryInfo` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `HttpSendRequest` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `HttpSendRequestEx` [ce3+ce5+ce6] now: comment-only/app sig=1 hdr: Wininet.h lib: Wininet.lib.; Wininet.lib
+* `HwxALCPriority` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxALCValid` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxCreate` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxDestroy` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxEndInput` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxGetResults` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxInput` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxProcess` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxResultsAvailable` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxSetAbort` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxSetContext` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxSetGuide` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `HwxSetPartial` [ce3+ce4+ce5+ce6] now: comment-only/app sig=1 hdr: Recog.h lib: Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib, Hwxcht.lib, Hwxkor.lib.; Hwxjpn.lib, Hwxusa.lib
+* `IAS_QUERY` [ce3] now: comment-only/app sig=1 hdr: Af_irda.h lib: -
+* `IAS_SET` [ce3] now: comment-only/app sig=1 hdr: Af_irda.h lib: -
+* `IAVTransport` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `IAVTransportImpl` [ce5+ce6] now: comment-only/app sig=0 hdr: Av_upnp.h lib: Av_upnp.lib.
+* `ICeFileFilter` [ce3] now: comment-only/app sig=0 hdr: Replfilt.h lib: -
+
+## D4 -- verified coredll surface names not carried anywhere in include/ (967)
 Candidate surface gaps (may include CRT-provider names).
 * `ADBAddAccountToGroup`
 * `ADBCreateAccount`
@@ -481,15 +897,11 @@ Candidate surface gaps (may include CRT-provider names).
 * `AttachOsAxsT1`
 * `AudioUpdateFromRegistry`
 * `BackupEventLogW`
-* `BatteryDrvrGetLevels`
-* `BatteryDrvrSupportsChangeNotification`
 * `BinaryCompress`
 * `BinaryDecompress`
 * `CacheRangeFlush`
-* `CacheSync`
 * `CallNextHookEx`
 * `CallWindowProcW`
-* `CaptureDumpFileOnDevice`
 * `CaptureDumpFileOnDevice2`
 * `CeAccessCheck`
 * `CeAddSyncPartner`
@@ -499,7 +911,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `CeBeginSyncSession`
 * `CeCallUserProc`
 * `CeCertVerify`
-* `CeCloseCallerBuffer`
 * `CeClosePolicy`
 * `CeConvertSDToStr`
 * `CeConvertStrToSD`
@@ -584,9 +995,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `CreateStaticMapping`
 * `CreateWatchDogTimer`
 * `DBCanonicalize`
-* `DDKReg_GetIsrInfo`
-* `DDKReg_GetPciInfo`
-* `DDKReg_GetWindowInfo`
 * `DPA_Clone`
 * `DPA_Create`
 * `DPA_CreateEx`
@@ -639,17 +1047,14 @@ Candidate surface gaps (may include CRT-provider names).
 * `EnableGestures`
 * `EnumCalendarInfoW`
 * `EnumDateFormatsW`
-* `EnumPnpIds`
 * `EnumSystemLocalesW`
 * `EnumTimeFormatsW`
 * `EventModify`
 * `ExtractResource`
 * `FilterTrackedItem`
 * `FlushViewOfFileMaybe`
-* `ForcePageout`
 * `ForcePixelDoubling`
 * `ForwardDeviceIoControl`
-* `FreeIntChainHandler`
 * `FreePhysMem`
 * `Gesture`
 * `GetAPIAddress`
@@ -660,12 +1065,9 @@ Candidate surface gaps (may include CRT-provider names).
 * `GetCallStackSnapshot`
 * `GetCallerProcess`
 * `GetCallerProcessIndex`
-* `GetCallerVMProcessId`
-* `GetCurrentPermissions`
 * `GetDeviceByIndex`
 * `GetDeviceHandleFromContext`
 * `GetDeviceKeys`
-* `GetDirectCallerProcessId`
 * `GetEventData`
 * `GetFSHeapInfo`
 * `GetFileSecurityW`
@@ -679,7 +1081,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `GetMessageWNoWait`
 * `GetNlsTables`
 * `GetOverlappedResult`
-* `GetOwnerProcess`
 * `GetPasswordStatus`
 * `GetPrivateCallbacks`
 * `GetProcAddrBits`
@@ -730,9 +1131,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `Int_HeapFree`
 * `Int_HeapReAlloc`
 * `Int_HeapSize`
-* `InterruptDisable`
-* `InterruptDone`
-* `InterruptInitialize`
 * `InterruptMask`
 * `IsBadPtr`
 * `IsEncryptionPermitted`
@@ -743,7 +1141,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `IsProcessDying`
 * `IsSystemFile`
 * `KernExtractIcons`
-* `KernelIoControl`
 * `KernelLibIoControl`
 * `KeybdInitStates`
 * `KeybdVKeyToUnicode`
@@ -753,23 +1150,19 @@ Candidate surface gaps (may include CRT-provider names).
 * `LASSGetValue`
 * `LeaveCritSec`
 * `LoadAnimatedCursor`
-* `LoadDriver`
 * `LoadIntChainHandler`
-* `LoadKernelLibrary`
 * `LocalAllocInProcess`
 * `LocalAllocTrace`
 * `LocalFreeInProcess`
 * `LocalSizeInProcess`
 * `LockAPIHandle`
 * `LockEventLog`
-* `LockPages`
 * `MD5Final`
 * `MD5Init`
 * `MD5Update`
 * `MainThreadBaseFunc`
 * `MapCallerPtr`
 * `MapPtrToProcWithSize`
-* `MapPtrToProcess`
 * `MapPtrUnsecure`
 * `MatchesWildcardMask`
 * `MulDiv`
@@ -778,7 +1171,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `NPXNPHandler`
 * `NotSystemParametersInfoI`
 * `NotifyForceCleanboot`
-* `OpenDeviceKey`
 * `OpenEventLogW`
 * `OpenThread`
 * `OpenWatchDogTimer`
@@ -806,15 +1198,11 @@ Candidate surface gaps (may include CRT-provider names).
 * `PegWriteRecordProps`
 * `PerformCallBack4`
 * `PlayEnhMetaFile`
-* `PowerOffSystem`
-* `PowerPolicyNotify`
 * `PrepareThreadExit`
 * `PrintTrackedItem`
 * `ProcessDetachAllDLLs`
 * `ProfileCaptureStatus`
-* `ProfileStart`
 * `ProfileStartEx`
-* `ProfileStop`
 * `ProfileSyscall`
 * `QASetWindowsJournalHook`
 * `QAUnhookWindowsJournalHook`
@@ -829,7 +1217,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `ReadFileScatter`
 * `ReadFileWithSeek`
 * `ReadMsgQueueEx`
-* `ReadRegistryFromOEM`
 * `RectangleAnimation`
 * `RefreshKernelAlarm`
 * `RefreshWatchDogTimer`
@@ -838,7 +1225,6 @@ Candidate surface gaps (may include CRT-provider names).
 * `RegisterAFSName`
 * `RegisterAPISet`
 * `RegisterBluetoothCOMPort`
-* `RegisterDbgZones`
 * `RegisterDefaultGestureHandler`
 * `RegisterDesktop`
 * `RegisterDirectMethods`
@@ -901,11 +1287,9 @@ Candidate surface gaps (may include CRT-provider names).
 * `SetACP`
 * `SetAPIErrorHandler`
 * `SetAssociatedMenu`
-* `SetCleanRebootFlag`
 * `SetCriticalProcess`
 * `SetDbgZone`
 * `SetDialogAutoScrollBar`
-* `SetEventData`
 * `SetExceptionHandler`
 * `SetFileSecurityW`
 * `SetGwesOOMEvent`
@@ -913,13 +1297,10 @@ Candidate surface gaps (may include CRT-provider names).
 * `SetHandleOwner`
 * `SetHandleOwnerWorkaround`
 * `SetHardwareWatch`
-* `SetInterruptEvent`
-* `SetKMode`
 * `SetKernelAlarm`
 * `SetKeyboardTarget`
 * `SetLowestScheduledPriority`
 * `SetOEMCP`
-* `SetOOMEvent`
 * `SetObjectOwner`
 * `SetPasswordStatus`
 * `SetPowerOffHandler`
@@ -1010,22 +1391,17 @@ Candidate surface gaps (may include CRT-provider names).
 * `UnLockEventLog`
 * `UnhookWindowsHookEx`
 * `UnlockAPIHandle`
-* `UnlockPages`
 * `UnregisterFunc1`
 * `UpdateNLSInfo`
 * `UpdateNLSInfoEx`
 * `UserCallWindowProc`
 * `VerifyAPIHandle`
 * `VerifyUserAsync`
-* `VirtualAllocCopyEx`
-* `VirtualCopy`
 * `VirtualCopyEx`
 * `VirtualSetAttributes`
 * `WaitForAPIReady`
-* `WriteDebugLED`
 * `WriteFileGather`
 * `WriteFileWithSeek`
-* `WriteRegistryToOEM`
 * `_CIacos`
 * `_CIasin`
 * `_CIatan`
@@ -1236,3 +1612,43 @@ Candidate surface gaps (may include CRT-provider names).
 * `_strnicmp`
 * `_strnset`
 * `_strnset_s`
+* `_strrev`
+* `_strset`
+* `_strset_s`
+* `_strupr`
+* `_strupr_s`
+* `_swab`
+* `_ultoa`
+* `_ultoa_s`
+* `_ultow`
+* `_ultow_s`
+* `_vsnprintf`
+* `_vsnprintf_s`
+* `_vsnwprintf`
+* `_vsnwprintf_s`
+* `_wcsdup`
+* `_wcslwr`
+* `_wcslwr_s`
+* `_wcsnicmp`
+* `_wcsnset`
+* `_wcsnset_s`
+* `_wcsrev`
+* `_wcsset`
+* `_wcsset_s`
+* `_wcsupr`
+* `_wcsupr_s`
+* `_wfdopen`
+* `_wfopen_s`
+* `_wfreopen`
+* `_wfreopen_s`
+* `_wtol`
+* `_wtoll`
+* `_y0`
+* `_y1`
+* `_yn`
+* `abs`
+* `acmDriverAdd`
+* `acmDriverClose`
+* `acmDriverDetails`
+* `acmDriverEnum`
+* `acmDriverID`

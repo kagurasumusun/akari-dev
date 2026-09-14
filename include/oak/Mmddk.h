@@ -226,4 +226,19 @@ typedef struct  {
 }
 #endif
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms923289: page-printed definition (Windows CE .NET 4.0 and later.). */
+typedef struct tag_WAVEOUTEXTCAPS {
+    DWORD dwMaxHwStreams;
+    DWORD dwFreeHwStreams;
+    DWORD dwSwMixerSampleRate;
+    DWORD dwSwMixerBufferSize;
+    DWORD dwSwMixerBufferCount;
+    DWORD dwMinSampleRate;
+    DWORD dwMaxSampleRate;
+} WAVEOUTEXTCAPS;
+
 #endif /* AKARI_MMDDK_H */

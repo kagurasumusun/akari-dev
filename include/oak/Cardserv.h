@@ -58,4 +58,11 @@ typedef PVOID CARD_CLIENT_HANDLE;
 /* ms896162: page-printed definition (Windows CE 1.0 and later.). */
 typedef UINT32 CARD_EVENT;
 
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms896171: page-printed definition (Windows CE 1.0 and later.). */
+typedef void (*CARD_ISR)(UINT32 uISRContextData);
+
 #endif /* AKARI_CARDSERV_H */

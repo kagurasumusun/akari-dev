@@ -30,6 +30,70 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IDENT = re.compile(r"\b[A-Za-z_][A-Za-z0-9_]*\b")
 
 
+def _load(modname):
+    import importlib.util
+    here = os.path.dirname(os.path.abspath(__file__))
+    spec = importlib.util.spec_from_file_location(
+        modname, os.path.join(here, modname + ".py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+# The tree is physically split in two layers (docs/CHANGELOG-audit-
+# 2026-09-14.md item 4):
+#
+#   include/       the application -dev layer (the headers an
+#                  user-mode CE program includes)
+#   include/oak/   the OAL/DDK/driver layer (OEM/BSP scope; kept in
+#                  the tree, compiled by `make check`, but outside the
+#                  application -dev set)
+#
+# Both layers are one C namespace for a CE build (the Makefile passes
+# -I include -I include/oak), so every scanner must see both: a
+# prototype printed on an official page whose parameter types are
+# declared in the OAK layer is resolvable, and a page whose Header row
+# names a header that lives in include/oak/ must be declared there --
+# never re-created in include/.
+INC = os.path.join(ROOT, "include")
+OAK = os.path.join(ROOT, "include", "oak")
+LAYERS = (INC, OAK)
+
+
+def header_files():
+    """(absolute path, header basename, layer dir) of every shipped
+    header, both layers, basename-sorted."""
+    for d in LAYERS:
+        if not os.path.isdir(d):
+            continue
+        for fn in sorted(os.listdir(d)):
+            if fn.endswith((".h", ".hxx", ".hpp")):
+                yield os.path.join(d, fn), fn, d
+
+
+# Header-row tokens that belong to the OAK/DDK layer (OEM/BSP scope,
+# out of the user-mode -dev set).  A page whose Header row names one
+# of these and for which the tree has no file is recorded as skipped
+# ("oakonly") instead of creating a new header in the application
+# layer.  Empty today: every such token already has a file in
+# include/oak/ (verified by the dry run of this tool).
+OAK_ONLY_HEADERS = set()
+
+
+def resolve_header(name):
+    """case-insensitive basename lookup across both layers; returns
+    (absolute path, layer dir) or (None, None).  include/ wins when a
+    basename exists in both layers (it never does today; asserted by
+    `make defcheck`-time duplicate scan)."""
+    low = name.lower()
+    for d in (INC, OAK):
+        if not os.path.isdir(d):
+            continue
+        for fn in os.listdir(d):
+            if fn.lower() == low:
+                return os.path.join(d, fn), d
+    return None, None
+
+
 C_KEYWORDS = {"void", "const", "unsigned", "signed", "struct", "enum",
               "union", "char", "short", "int", "long", "float", "double"}
 DECOR = {"IN", "OUT", "OPTIONAL", "WINAPI", "CALLBACK", "FAR", "NEAR",
@@ -41,28 +105,26 @@ GENERIC_METHODS = {"Add", "AddRef", "Count", "Event", "Get", "Next",
                    "Skip", "Write", "Lock", "Unlock"}
 
 
-def load_live(incdir):
+def load_live(incdir=None):
+    """identifiers live in code (comments stripped) across BOTH
+    layers; `incdir` is accepted for callers that still pass it and is
+    ignored -- a symbol declared in include/oak/ is as live as one in
+    include/ for a CE compile."""
     live = set()
-    for fn in sorted(os.listdir(incdir)):
-        if not fn.endswith((".h", ".hxx", ".hpp")):
-            continue
-        text = open(os.path.join(incdir, fn), encoding="utf-8",
-                    errors="replace").read()
+    for path, _fn, _d in header_files():
+        text = open(path, encoding="utf-8", errors="replace").read()
         code = re.sub(r"(?s)/\*.*?\*/", " ", text)
         code = re.sub(r"//[^\n]*", " ", code)
         live.update(IDENT.findall(code))
     return live
 
 
-def load_types(incdir):
+def load_types(incdir=None):
     """the real type universe: typedef names and struct/union/enum
-    tags actually defined in the shipped headers."""
+    tags actually defined in the shipped headers, both layers."""
     types = set()
-    for fn in sorted(os.listdir(incdir)):
-        if not fn.endswith((".h", ".hxx", ".hpp")):
-            continue
-        text = open(os.path.join(incdir, fn), encoding="utf-8",
-                    errors="replace").read()
+    for path, _fn, _d in header_files():
+        text = open(path, encoding="utf-8", errors="replace").read()
         code = re.sub(r"(?s)/\*.*?\*/", " ", text)
         code = re.sub(r"//[^\n]*", " ", code)
         for m in re.finditer(r"\btypedef\b", code):
@@ -302,13 +364,23 @@ def main():
         if not hdr or not re.match(r"^[A-Za-z0-9_]+\.(h|hxx|hpp)$", hdr):
             skipped["noheader"] += 1
             continue
-        # case-insensitive resolution against the shipped tree; a
-        # truly missing header is created further down
-        if not os.path.exists(os.path.join(incdir, hdr)):
-            hit = next((fn for fn in os.listdir(incdir)
-                        if fn.lower() == hdr.lower()), None)
-            if hit:
-                hdr = hit
+        # case-insensitive resolution against the shipped tree, BOTH
+        # layers (include/ and include/oak/).  The layer that already
+        # carries the header decides where the declaration lands, so a
+        # page whose Header row names an OAK/DDK header is declared in
+        # include/oak/ and never re-created in the application layer.
+        hit_path, hit_layer = resolve_header(hdr)
+        if hit_path:
+            hdr = os.path.basename(hit_path)
+            layer = hit_layer
+        else:
+            hit_path, layer = None, INC   # new app-layer header
+            if hdr.lower() in OAK_ONLY_HEADERS:
+                # The tree has no file for this Header row and the row
+                # belongs to the OAK/DDK layer, which is out of the
+                # user-mode -dev scope: recorded, not created.
+                skipped["oakonly"] = skipped.get("oakonly", 0) + 1
+                continue
         lib = (r.get("lib") or "").lower()
         coredll = ("coredll" in lib) or (name in surf) or (name + "W" in surf)
         plist = ", ".join((t + ((" " + a) if a else "")) for t, a in params) \
@@ -320,27 +392,33 @@ def main():
             decl = f"{ret} {fname}({plist});"
         osr = r.get("os") or r.get("versions") or ""
         cite = r["id"].split("(")[0]
-        out.setdefault(hdr, []).append((name, cite, osr, lib.strip(" ."), decl))
+        out.setdefault((layer, hdr), []).append(
+            (name, cite, osr, lib.strip(" ."), decl))
         skipped["parsed"] += 1
 
-    # merge case-variant spellings of the same missing header
+    # merge case-variant spellings of the same header inside one layer
     merged = {}
-    for hdr, items in sorted(out.items(), key=lambda kv: kv[0].lower()):
-        key = hdr.lower()
+    for (layer, hdr), items in sorted(
+            out.items(), key=lambda kv: (kv[0][0], kv[0][1].lower())):
+        key = (layer, hdr.lower())
         if key in merged:
             tgt = merged[key][0]
             print(f"(merge {hdr} -> {tgt})")
             merged[key][1].extend(items)
         else:
             merged[key] = [hdr, items]
-    out = {v[0]: v[1] for v in merged.values()}
+    out = {}
+    for (layer, _low), (hdr, items) in merged.items():
+        out[(layer, hdr)] = items
 
     total = 0
-    for hdr, items in sorted(out.items(), key=lambda kv: kv[0].lower()):
+    for (layer, hdr), items in sorted(
+            out.items(), key=lambda kv: (kv[0][0], kv[0][1].lower())):
         total += len(items)
-        path = os.path.join(incdir, hdr)
+        where = os.path.relpath(layer, ROOT)
+        path = os.path.join(layer, hdr)
         if not os.path.exists(path) and not apply:
-            print(f"{hdr}: would CREATE (+{len(items)} planned)")
+            print(f"{where}/{hdr}: would CREATE (+{len(items)} planned)")
             continue
         if not os.path.exists(path):
             guard = "AKARI_" + re.sub(r"[^A-Z0-9]+", "_", hdr.upper()) + "_"
@@ -372,6 +450,7 @@ def main():
         if not apply:
             continue
         text = open(path, encoding="utf-8").read()
+        orig = text
         m = re.search(r"\n#endif /\* [A-Za-z_][A-Za-z0-9_]* \*/\s*$", text)
         if not m:
             print(f"  !! no footer in {hdr}, skipped writing")
@@ -386,6 +465,17 @@ def main():
             block.append("")
         text = text[:m.start()] + "\n" + "\n".join(block) + text[m.start():]
         open(path, "w", encoding="utf-8").write(text)
+        # Gate: the header must still compile standalone (Makefile
+        # hostcheck/crosscheck compile every header on its own).  A
+        # prototype whose types come from a header the target does not
+        # include is rolled back and stays held.
+        ok, err = _load("decl-types").compiles(path)
+        if not ok:
+            open(path, "w", encoding="utf-8").write(orig)
+            total -= len(items)
+            skipped["held-nocompile"] = skipped.get("held-nocompile", 0) + 1
+            print(f"  !! {where}/{hdr}: rolled back "
+                  f"({len(items)} declarations held) -- {err}")
     print(f"TOTAL declared: {total}  "
           f"(skipped: {skipped})")
 

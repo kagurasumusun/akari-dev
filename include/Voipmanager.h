@@ -483,6 +483,21 @@ typedef enum VoIPProgressTone {
 /* ms909239 VoIP Manager Shutdown */
 /* ms909287 VoIP Manager SIP Server Registration */
 /* ms909288 VoIP Media Manager */
+
+/* --- type definitions from official page prints
+ * (tools/decl-types.py). ----------------------------- */
+
+/* ms909306: page-printed definition (Windows CE .NET 4.2.). */
+typedef struct _DirectoryClientRegParams {
+    DWORD dwFlags;
+    DWORD dwMask;
+    BSTR bstrUserName;
+    BSTR bstrPassword;
+    BOOL fIsPasswordSet;
+    BSTR bstrExtraXML;
+    BSTR bstrDomain;
+} DirectoryClientRegParams;
+
 #endif /* AKARI_VOIPMANAGER_H */
 
 
