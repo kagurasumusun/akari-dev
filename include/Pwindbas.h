@@ -26,8 +26,10 @@
 /* --- M104 declarations: printed prototypes recovered
  * from the official pages (tools/decl-d1.py). -------- */
 
-/* _wcepb_GetSystemMemoryDivision: page-printed prototype (Windows CE OS). */
-AKARI_CE_IMPORT BOOL GetSystemMemoryDivision(LPDWORD lpdwStorePages, LPDWORD lpdwRamPages, LPDWORD lpdwPageSize) AKARI_CE_NAME(GetSystemMemoryDivision);
+/* GetSystemMemoryDivision moved to Winbase.h in M134: ms885639 prints
+ * "Header: windows.h" and "Link Library: Coredll.lib", so it is app-layer
+ * surface, not Platform Builder surface.  This header still reaches it
+ * through Windbase.h -> Winbase.h. */
 
 /* _wcepb_SetSystemMemoryDivision: page-printed prototype (Windows CE OS). */
 AKARI_CE_IMPORT DWORD SetSystemMemoryDivision(DWORD dwStorePages) AKARI_CE_NAME(SetSystemMemoryDivision);

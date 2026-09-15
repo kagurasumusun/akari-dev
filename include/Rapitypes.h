@@ -16,6 +16,14 @@
 #define AKARI_RAPITYPES_H
 
 #include <Windows.h>
+#include "Rapi.h"      /* the CE 6.0 pages document CEBLOB/CEDBASEINFO/CEGUID/
+                        * CENOTIFICATION/CENOTIFYREQUEST/CEOIDINFO/CEPROPVAL/
+                        * CERECORDINFO/CEVALUNION/SORTORDERSPEC under rapitypes.h
+                        * (ee496209 and friends) while the CE 5.0 pages print
+                        * Windbase.h, and CEOSVERSIONINFO/CE_FIND_DATA/RAPIINIT
+                        * under rapitypes.h too; this tree declares the first
+                        * group in Windbase.h and the second in Rapi.h, so the
+                        * documented header has to reach both (M134). */
 
 #ifdef __cplusplus
 extern "C" {

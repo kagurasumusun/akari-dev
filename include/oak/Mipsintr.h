@@ -17,13 +17,17 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Cmnintrin.h" /* _ReturnAddress: ms880435 prints "Header: mipsintr.h"
+                        * and ms933599 prints "Header: cmnintrin.h" for the same
+                        * intrinsic, so the one declaration lives in the common
+                        * header and this one reaches it (M134) */
 
 
 /* --- M104 declarations: printed prototypes recovered
  * from the official pages (tools/decl-d1.py). -------- */
 
-/* ms880435: page-printed prototype (Windows CE .NET 4.0 and later.). */
-void _ReturnAddress(void);
+/* _ReturnAddress moved to oak/Cmnintrin.h in M134: ms933599 prints
+ * "Header: cmnintrin.h", and it is a common (not MIPS-specific) intrinsic. */
 
 /* ms864520: page-printed prototype (Windows CE .NET 4.0 and later.). */
 double _add_ob(double Arg1, double Arg2, int Arg3);

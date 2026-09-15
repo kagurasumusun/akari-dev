@@ -188,4 +188,12 @@ AKARI_CE_IMPORT DWORD BthAGNetworkUnholdCall(void) AKARI_CE_NAME(BthAGNetworkUnh
 }
 #endif
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee495860 BthAGNetworkDropSwapCall: print `DWORD BthAGNetworkDropSwapCall(void);`
+ * (Windows Embedded CE 6.0 and later; Link Library: Btagsvc_network.lib) */
+AKARI_CE_IMPORT DWORD BthAGNetworkDropSwapCall(void) AKARI_CE_NAME(BthAGNetworkDropSwapCall);
+
 #endif /* AKARI_BTAGPUB_H */

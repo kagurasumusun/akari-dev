@@ -948,4 +948,14 @@ AKARI_CE_IMPORT BOOL CeStreamWrite(HANDLE hStream, LPBYTE lprgbBuffer,
 /* _wcepb_SetPassword: page-printed prototype (Windows CE OS). */
 AKARI_CE_IMPORT BOOL SetPassword(LPWSTR lpszOldPassword, LPWSTR lpszNewPassword) AKARI_CE_NAME(SetPassword);
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee490379 CeFindNextChangedRecord: print `CEOID CeFindNextChangedRecord(
+HANDLE hChangeEnum
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT CEOID CeFindNextChangedRecord(HANDLE hChangeEnum) AKARI_CE_NAME(CeFindNextChangedRecord);
+
 #endif /* AKARI_WINDBASE_H */

@@ -63,4 +63,25 @@ typedef struct NLED_SUPPORTS_INFO {
 }
 #endif
 
+/* --- The two exported functions of the notification-LED API. ------
+ *
+ * M134: these were declared in Pwinuser.h, which is the header the CE 4.x
+ * pages name (ms905318, ms905321).  The Windows Embedded CE 6.0 pages for
+ * the same two functions (ee482640, ee484693) print "Header: nled.h" --
+ * this file -- so a program following the CE 6.0 pages could not reach
+ * them.  Both generations print "Link Library: coredll.dll" and CE 1.0 and
+ * later; Pwinuser.h now includes this header, so both spellings work. */
+
+/* ms905318 NLedGetDeviceInfo: print
+ * `BOOL WINAPI NLedGetDeviceInfo(UINT nInfoId,void* pOutput);`
+ * (CE 6.0 page ee482640; Link Library: coredll.dll) */
+AKARI_CE_IMPORT BOOL WINAPI NLedGetDeviceInfo(UINT nInfoId, void *pOutput)
+    AKARI_CE_NAME(NLedGetDeviceInfo);
+
+/* ms905321 NLedSetDevice: print
+ * `BOOL WINAPI NLedSetDevice(UINT nDeviceId,void* pInput);`
+ * (CE 6.0 page ee484693; Link Library: coredll.dll) */
+AKARI_CE_IMPORT BOOL WINAPI NLedSetDevice(UINT nDeviceId, void *pInput)
+    AKARI_CE_NAME(NLedSetDevice);
+
 #endif /* AKARI_NLED_H */

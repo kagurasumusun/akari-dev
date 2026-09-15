@@ -25,6 +25,9 @@
 
 #include "Windef.h"
 #include "Winnt.h"
+#include "Excpt.h"    /* PEXCEPTION_POINTERS (VectoredHandler ee488629);
+                       * Excpt.h itself includes only Windef.h and Winnt.h,
+                       * so this cannot close a cycle */
 #include <stdarg.h>   /* va_list (wvsprintfW aa450994) */
 
 #ifdef __cplusplus
@@ -2921,5 +2924,60 @@ AKARI_CE_IMPORT BOOL StopDeviceNotifications(HANDLE h) AKARI_CE_NAME(StopDeviceN
 /* ms919831 RequestDeviceNotifications: print `HANDLE RequestDeviceNotifications(const GUID* devclass,HANDLE hMsgQ,BOOL fAll);`
  * (Windows CE .NET 4.0 and later.; Link Library: Coredll.lib) */
 AKARI_CE_IMPORT HANDLE RequestDeviceNotifications(const GUID *devclass, HANDLE hMsgQ, BOOL fAll) AKARI_CE_NAME(RequestDeviceNotifications);
+
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee488595 RemoveVectoredExceptionHandler: print `ULONG RemoveVectoredExceptionHandler(
+PVOID VectoredHandlerHandle
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT ULONG RemoveVectoredExceptionHandler(PVOID VectoredHandlerHandle) AKARI_CE_NAME(RemoveVectoredExceptionHandler);
+
+/* ee488625 CheckRemoteDebuggerPresent: print `BOOL CheckRemoteDebuggerPresent(
+HANDLE hProcess,
+PBOOL pbDebuggerPresent
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.dll) */
+AKARI_CE_IMPORT BOOL CheckRemoteDebuggerPresent(HANDLE hProcess, PBOOL pbDebuggerPresent) AKARI_CE_NAME(CheckRemoteDebuggerPresent);
+
+/* ee488629 VectoredHandler: print `LONG CALLBACK VectoredHandler(
+PEXCEPTION_POINTERS ExceptionInfo
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+LONG CALLBACK VectoredHandler(PEXCEPTION_POINTERS ExceptionInfo);
+
+/* ee488755 OpenThread: print `HANDLE OpenThread(
+DWORD dwDesiredAccess,
+BOOL bInheritHandle,
+DWORD dwThreadId
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HANDLE OpenThread(DWORD dwDesiredAccess, BOOL bInheritHandle, DWORD dwThreadId) AKARI_CE_NAME(OpenThread);
+
+/* ee488799 IsDebuggerPresent: print `BOOL IsDebuggerPresent (void);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT BOOL IsDebuggerPresent(void) AKARI_CE_NAME(IsDebuggerPresent);
+
+/* ee488909 DebugActiveProcessStop: print `BOOL DebugActiveProcessStop (
+DWORD dwProcessId
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT BOOL DebugActiveProcessStop(DWORD dwProcessId) AKARI_CE_NAME(DebugActiveProcessStop);
+
+/* ee488937 GetSystemTimeAsFileTime: print `void GetSystemTimeAsFileTime(
+LPFILETIME lpSystemTimeAsFileTime
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT void GetSystemTimeAsFileTime(LPFILETIME lpSystemTimeAsFileTime) AKARI_CE_NAME(GetSystemTimeAsFileTime);
+
+/* ms885639 GetSystemMemoryDivision: print
+ * `BOOL GetSystemMemoryDivision(LPDWORD lpdwStorePages, LPDWORD lpdwRamPages,
+ * LPDWORD lpdwPageSize);` (Header: windows.h; Link Library: Coredll.lib).
+ * Declared in Pwindbas.h until M134, which left the documented app-layer
+ * header unable to reach it.  Windows.h includes this header, and
+ * Pwindbas.h reaches it through Windbase.h, so both spellings work. */
+AKARI_CE_IMPORT BOOL GetSystemMemoryDivision(LPDWORD lpdwStorePages, LPDWORD lpdwRamPages, LPDWORD lpdwPageSize) AKARI_CE_NAME(GetSystemMemoryDivision);
 
 #endif /* AKARI_WINBASE_H */

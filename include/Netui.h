@@ -43,4 +43,17 @@ DWORD LineTranslateDialog(HWND hParent, HWND* pDialogWnd);
 /* ms921406: page-printed prototype (Windows CE 2.10 and later.; netui.lib). */
 BOOL NetMsgBox(HWND hParent, DWORD dwFlags, TCHAR* szStr);
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ms913115 RegisterIPClass: print `void RegisterIPClass( HINSTANCE hInst);`
+ * (Windows CE 5.0 and later.; Link Library: Netui.lib) */
+AKARI_CE_IMPORT void RegisterIPClass(HINSTANCE hInst) AKARI_CE_NAME(RegisterIPClass);
+
+/* ms928587 CloseUsernamePasswordDialog: print `BOOL CloseUsernamePasswordDialog(
+HWND hDlg);`
+ * (Windows CE 5.0 and later.; Link Library: Netui.lib) */
+AKARI_CE_IMPORT BOOL CloseUsernamePasswordDialog(HWND hDlg) AKARI_CE_NAME(CloseUsernamePasswordDialog);
+
 #endif /* AKARI_NETUI_H_ */

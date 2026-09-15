@@ -38,6 +38,12 @@
 
 #include "Windows.h"   /* HWND, BOOL, DWORD, HKL */
 #include "oak/Keybd.h"     /* KEY_STATE_FLAGS (GetAsyncShiftFlags return) */
+#include "oak/Nled.h"  /* NLedGetDeviceInfo/NLedSetDevice: the CE 6.0 pages
+                        * (ee482640, ee484693) print "Header: nled.h" while the
+                        * CE 4.x pages (ms905318, ms905321) print Pwinuser.h, so
+                        * the declarations live in oak/Nled.h -- which already
+                        * carried the NLED_*_INFO structures -- and this header,
+                        * the one CE 4.x names, reaches them (M134). */
 
 #ifdef __cplusplus
 extern "C" {
@@ -133,12 +139,6 @@ AKARI_CE_IMPORT void GwesPowerOffSystem(void) AKARI_CE_NAME(GwesPowerOffSystem);
 
 /* ms906006: page-printed prototype (Windows CE .NET 4.2 and later.; linked during platform build). */
 BOOL WINAPI ImmGetConversionStatusForeground(DWORD* pfdwConversion, DWORD* pfdwSentence);
-
-/* ms905318: page-printed prototype (Windows CE 1.0 and later.; coredll.dll). */
-AKARI_CE_IMPORT BOOL WINAPI NLedGetDeviceInfo(UINT nInfoId, void* pOutput) AKARI_CE_NAME(NLedGetDeviceInfo);
-
-/* ms905321: page-printed prototype (Windows CE 1.0 and later.; coredll.dll). */
-AKARI_CE_IMPORT BOOL WINAPI NLedSetDevice(UINT nDeviceId, void* pInput) AKARI_CE_NAME(NLedSetDevice);
 
 /* _wcepb_NotifyWinUserSystem: page-printed prototype (Windows CE OS). */
 AKARI_CE_IMPORT void NotifyWinUserSystem(UINT uEvent) AKARI_CE_NAME(NotifyWinUserSystem);

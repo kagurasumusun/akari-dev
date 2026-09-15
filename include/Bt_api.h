@@ -318,4 +318,61 @@ AKARI_CE_IMPORT int BthWriteScanEnableMask(unsigned char mask) AKARI_CE_NAME(Bth
 }
 #endif
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee495452 BthReadRSSI: print `int BthReadRSSI (
+BT_ADDR* pbt,
+BYTE* pbRSSI
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: Btdrt.lib) */
+AKARI_CE_IMPORT int BthReadRSSI(BT_ADDR *pbt, BYTE *pbRSSI) AKARI_CE_NAME(BthReadRSSI);
+
+/* ee495572 StopBluetoothNotifications: print `BOOL StopBluetoothNotifications(
+HANDLE h
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT BOOL StopBluetoothNotifications(HANDLE h) AKARI_CE_NAME(StopBluetoothNotifications);
+
+/* ee495608 BthSwitchRole: print `int BthSwitchRole (
+BT_ADDR* pbt,
+USHORT usRole
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: Btdrt.lib) */
+AKARI_CE_IMPORT int BthSwitchRole(BT_ADDR *pbt, USHORT usRole) AKARI_CE_NAME(BthSwitchRole);
+
+/* ee495612 RequestBluetoothNotifications: print `HANDLE RequestBluetoothNotifications(
+DWORD dwClass,
+HANDLE hMsgQ
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HANDLE RequestBluetoothNotifications(DWORD dwClass, HANDLE hMsgQ) AKARI_CE_NAME(RequestBluetoothNotifications);
+
+/* ee495854 BthActivatePAN: print `int BthActivatePAN (
+BOOL fActivate
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: Btdrt.lib) */
+AKARI_CE_IMPORT int BthActivatePAN(BOOL fActivate) AKARI_CE_NAME(BthActivatePAN);
+
+/* ee495879 BthSetCODInquiryFilter: print `int BthSetCODInquiryFilter (
+unsigned int cod,
+unsigned int codMask
+);`
+ * (Windows CE .NET 4.2 and later; Link Library: Btdrt.lib) */
+AKARI_CE_IMPORT int BthSetCODInquiryFilter(unsigned int cod, unsigned int codMask) AKARI_CE_NAME(BthSetCODInquiryFilter);
+
+
+/* ee495829 BthGetRole: the archive print is `int BthGetRole BT_ADDR* pbt,
+ * USHORT* pusRole );` -- it has lost the opening parenthesis after the
+ * function name, so tools/decl-from-pages.py cannot match a prototype and
+ * reports the page rather than guessing.  Every token of the signature is
+ * still printed, and the page's own Parameters section names exactly
+ * `pbt` [in] "Pointer to the Bluetooth address as a BT_ADDR type" and
+ * `pusRole` [out] "Pointer to a USHORT type that specifies the current
+ * role of the specified connection", so the parenthesis is the only thing
+ * supplied here and no type is invented.
+ * (Windows Embedded CE 6.0 and later; Link Library: Btdrt.lib) */
+AKARI_CE_IMPORT int BthGetRole(BT_ADDR *pbt, USHORT *pusRole) AKARI_CE_NAME(BthGetRole);
+
 #endif /* AKARI_BT_API_H */

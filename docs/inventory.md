@@ -9486,3 +9486,132 @@ Requirements 欄を読んで分類する。結果：
 分類される。加えて **Requirements 欄を持たない 2,300 頁**と
 **本ツリーが出荷していないヘッダを指す 652 頁**は未分類のままで、
 後者は「ヘッダを新設すべきか」の判断（item 5 のヘッダ分割の要否）に接続する。
+
+---
+
+## M134 — Requirements 解析器の欠陥修正で証拠基盤を 1.86 倍にし、162 名まで絞り込み
+
+### 発見：CE 6.0 の Requirements 欄は 1 行も読めていなかった
+
+M133 の残作業「Requirements 欄を持たない 2,300 頁」を調べたところ、
+**そのうち 1,844 頁には Requirements アンカーが実在した**。理由：
+
+```
+CE .NET / CE 5.0 : <h4 id="requirements"> + <p><strong>Header:</strong> …</p>
+CE 6.0           : <h2 id="requirements"> + <table><tr><td>Header</td><td>…</td></tr>
+```
+
+`tools/placement-audit.py` の `REQ` は `<h4 …>.*?</p>` に限定されており、
+**CE 6.0 の 10,861 頁すべてが「Requirements なし」として捨てられていた**。
+この解析器は `page-requirements.tsv`・配置監査・未宣言監査・網羅監査の
+共通入力なので、欠陥は全監査に伝播していた。
+
+修正後（`REQ` を `<h[2-6] …>` に拡張し、`<tr>` 行を字段として解釈）：
+
+| 指標 | M133 | M134 |
+|---|---|---|
+| Requirements 行 | 16,427 | **30,519** |
+| API 名付き行 | 8,294 | **19,972** |
+| Link Library 付き行 | 8,716 | **15,406** |
+
+証拠が CE 6.0 を含むようになったことで、非 CE 系ツリー（`pagesw` 桌面 Win32、
+`pageswm` Windows Mobile、`pagesnet` .NET CF、`pagesmag`）を既定の `--pages`
+から外した。従来これらは 0 行しか寄与しなかったが、表形式の修正後は
+「Header:」行を証拠として混入させ得るため（CE の形状を桌面から推定しない方針）。
+
+あわせて `tools/ce-corpus.py` の `TREES` が **`pages3`（CE 3.0、8,962 頁）と
+`pagesgap` を欠いていた**のを修正。CE 3.0 コーパスは存在するのに一度も
+`build/` に復元されていなかった。
+
+### 宣言器（decl-from-pages.py）の 3 つの欠陥
+
+| 欠陥 | 症状 | 修正 |
+|---|---|---|
+| `known_types()` が多重宣言子 typedef を 1 つしか拾わない | `} FILETIME, *PFILETIME, *LPFILETIME;` から `LPFILETIME` が見えず `GetSystemTimeAsFileTime` を「型未宣言」で拒否。`typedef ULONGLONG bt_addr, *pbt_addr, BT_ADDR, *PBT_ADDR;` の `BT_ADDR` も同様 | 宣言子リストの各要素の末尾識別子を収集。既知型 10,033 → **11,243** |
+| SAL 注釈を型と誤認 | `LONG CeRegGetInfo(__in HKEY hKey, …)` の型が `__in HKEY` になり拒否 | `strip_sal()` を追加。`__inout_bcount(n)`・`__in_bcount(n) __opt`・`_In_` を除去。`_outp`/`_inp`/`_InterlockedIncrement` は keyword 直後が英字なので無傷 |
+| CE 6.0 の Parameters 欄を読めない | 表形式 `<tr><td><p><em>dwProcessId</em></p></td>` と、`<em>` すら無い `<li>hProcess<br>` 形式で全滅 | 両形式を追加。`DebugActiveProcessStop` 等が宣言可能に |
+
+### 分類器（coverage-audit.py）の再構成
+
+M133 の「ヘッダ未出荷 652」は OEM・CRT・アプリ層が混ざっていた。
+**ヘッダのクラスを先に判定する**順序に変更し、`ril.h`（全頁 `Ril.lib`）、
+`ddrawi.h`（DDraw DDI）、`oal_*.h`、`tux.h`、`exdi2.h`、`kato.h` 等を OEM 集合へ、
+`stdlib.h`/`malloc.h`/`float.h` 等を CRT 集合（item 1）へ分離。
+`.h`↔`.hpp` の別名も登録（CE 頁は `scrollview.h` と書くが本ツリーは
+`Scrollview.hpp` で出荷しており、「未出荷」と誤判定されていた）。
+
+同一の 3,641 頁に対する分類の推移：
+
+| 区分 | M133 | M134 |
+|---|---|---|
+| Requirements 欄なし | 2,300 | **457** |
+| ヘッダ未出荷（アプリ層） | 652 | **1,084** |
+| 宣言済み | 336 | **425** |
+| OEM/BSP（対象外） | 289 | **1,449** |
+| C ランタイム（item 1） | — | **64** |
+| **アプリ層の欠落** | 64 | **162** |
+
+### 宣言した 28 名
+
+`Winbase.h` 7（`OpenThread` `IsDebuggerPresent` `DebugActiveProcessStop`
+`CheckRemoteDebuggerPresent` `GetSystemTimeAsFileTime`
+`RemoveVectoredExceptionHandler` `VectoredHandler`）、
+`Bt_api.h` 7（`RequestBluetoothNotifications` `StopBluetoothNotifications`
+`BthActivatePAN` `BthGetRole` `BthReadRSSI` `BthSetCODInquiryFilter`
+`BthSwitchRole`）、`Winreg.h` 2、`Netui.h` 2、`Pwinbase.h` 2、
+`Wininet.h` 2、`Btagpub.h` `Msgqueue.h` `Psapi.h` `Rapi.h` `Windbase.h`
+`oak/Usbfntypes.h` 各 1。
+
+`BthGetRole` のみ手書き：頁 ee495829 の印刷
+`int BthGetRole BT_ADDR* pbt, USHORT* pusRole );` は**開き括弧を欠く**。
+全トークンは印刷されており、Parameters 欄も `pbt`/`pusRole` を確認できるので、
+補ったのは括弧のみ（型は 1 つも創作していない）。理由をコメントに明記。
+
+`VectoredHandler` が要求する `PEXCEPTION_POINTERS` は `Excpt.h` にあるため、
+`Winbase.h` に `#include "Excpt.h"` を追加（`Excpt.h` は `Windef.h` と
+`Winnt.h` しか含まないので循環しない）。
+
+### 配置監査：未到達 7 グループ → 0
+
+証拠が CE 6.0 を含むようになった結果、未到達が 0 → 7 に増えた。
+すべて「頁が指名するヘッダ」と「宣言のあるヘッダ」の食い違いで、
+**宣言を文档化ヘッダ側へ移し、旧ヘッダからは include で到達させる**方式で解消：
+
+| 文档化ヘッダ | 旧 | 新 | 根拠 |
+|---|---|---|---|
+| `rapitypes.h` | 到達不能 | `Rapitypes.h` が `Rapi.h` を include | CE 6.0 は `rapitypes.h`、CE 5.0 は `Windbase.h` を印刷 |
+| `nled.h` | `Pwinuser.h` | `oak/Nled.h`（既存、`NLED_*_INFO` を保持）へ移動、`Pwinuser.h` が include | ee482640/ee484693 vs ms905318/ms905321 |
+| `winnt.h` | `oak/Cmnintrin.h` | `Winnt.h` へ移動（`oak/Cmnintrin.h` は `Winnt.h` を include 済み） | ms933241/ms933277 vs ms879734/ms879741 |
+| `cmnintrin.h` | `oak/Mipsintr.h` | `oak/Cmnintrin.h` へ移動、`oak/Mipsintr.h` が include | ms933599。共通 intrinsic であり MIPS 固有でない |
+| `windows.h` | `Pwindbas.h` | `Winbase.h` へ移動（`Coredll.lib` のアプリ層 API） | ms885639 |
+| `pwinreg.h` | `Mwinreg.h` | `Pwinreg.h` が `Mwinreg.h` を include | ee490214/ms891903 |
+
+途中で `include/Nled.h` を新設したところ既存の `include/oak/Nled.h` と
+**include ガード `AKARI_NLED_H` が衝突**したため撤回し、既存ヘッダへ統合した。
+
+### 検証
+
+`make check` EXIT=0（C・C++、0x420/0x500/0x600、警告ゼロ）。
+`make e2e` EXIT=0（`arm-pc-wince{4.2,5.0,6.0}`・`i386-pc-wince{4.2,5.0,6.0}`）。
+世代監査 **0 名**、配置監査 **64 グループ / 846 配置 / 未到達 0**。
+未宣言監査：link library 付き・ヘッダ出荷済み・未宣言 **480 名**、
+うち def が輸出する **7 名**が作業リスト（`Ddkreg.h` 3、`Storemgr.h` 2、
+`Winbase.h` 1、`Ras.h` 1）。
+
+### 残作業
+
+`docs/coverage-blocked.tsv` に 162 名と保留理由を記録。内訳は
+**link library を印刷しない型/定数/メッセージ頁 121 名**と
+**型または印刷の欠陥で止まる 41 名**。後者の主因は
+`PNETUI_*`（`RMLEN`/`DRIVER_NAME_LEN` の値がコーパスに無い）、
+`PINTF_ENTRY_EX`/`PEAP_EXTENSION_INFO`（`Wzcsapi.h` に未宣言）、
+`CE_REGISTRY_INFO`（唯一の印刷頁の Header 行が `fsioctl.h`）、
+`PVECTORED_EXCEPTION_HANDLER`（typedef を印刷する頁が無い）、
+`Ol*` 10 名（構文印刷を持たない定数頁）。
+
+**ヘッダ未出荷 1,084 頁**が次の大きな塊で、内訳の上位は
+`xamlruntime.h` 114（Silverlight for Windows Embedded）、`wsdapi.h` 100、
+`d3dmx.h` 95、`extapi.h` 44（`cellcore.lib` の TAPI 拡張）、
+`simmgr.h` 38、`cs.h` 36、`sms.h` 36、`strsafe.h` 30、`connmgr.h` 21、
+`gpsapi.h` 12、`regext.h` 12、`mshtmcid.h` 9。`strsafe.h` の 30 名
+（`StringCch*`/`StringCb*`）が単一ヘッダとしては最大の即戦力。

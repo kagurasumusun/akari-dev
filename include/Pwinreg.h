@@ -18,6 +18,9 @@
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
 #include "Winreg.h"    /* HKEY (RegReplaceKey / RegSaveKey) */
+#include "Mwinreg.h"   /* SetCurrentUser: pwinreg.h (ee490214, ms891903) is the
+                        * documented header, this tree declares it in the
+                        * multiple-user registry header (M134) */
 
 
 /* --- M104 declarations: printed prototypes recovered

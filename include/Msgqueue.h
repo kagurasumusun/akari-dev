@@ -133,4 +133,20 @@ AKARI_CE_IMPORT BOOL WriteMsgQueue(HANDLE hMsgQ, LPVOID lpBuffer, DWORD cbDataSi
 }
 #endif
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee488391 ReadMsgQueueEx: print `BOOL ReadMsgQueueEx(
+HANDLE hMsgQ,
+LPVOID lpBuffer,
+DWORD cbBufferSize,
+LPDWORD lpNumberOfBytesRead,
+DWORD dwTimeout,
+DWORD *pdwFlags,
+PHANDLE phTok
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT BOOL ReadMsgQueueEx(HANDLE hMsgQ, LPVOID lpBuffer, DWORD cbBufferSize, LPDWORD lpNumberOfBytesRead, DWORD dwTimeout, DWORD *pdwFlags, PHANDLE phTok) AKARI_CE_NAME(ReadMsgQueueEx);
+
 #endif /* AKARI_MSGQUEUE_H */

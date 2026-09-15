@@ -212,4 +212,31 @@ AKARI_CE_IMPORT BOOL CeFindCloseRegChange(HANDLE hChangeHandle) AKARI_CE_NAME(Ce
 }
 #endif
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee490197 CeRegGetNotificationInfo: print `LONG CeRegGetNotificationInfo(
+__in HANDLE hChangeHandle,
+__in DWORD dwFlags,
+__inout_bcount(nBufferLength) __opt LPVOID lpBuffer,
+__in DWORD nBufferLength,
+__out LPDWORD lpBytesReturned,
+__out LPDWORD lpBytesAvailable );`
+ * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT LONG CeRegGetNotificationInfo(HANDLE hChangeHandle, DWORD dwFlags, LPVOID lpBuffer, DWORD nBufferLength, LPDWORD lpBytesReturned, LPDWORD lpBytesAvailable) AKARI_CE_NAME(CeRegGetNotificationInfo);
+
+/* ee490635 CeRegTestSetValueW: print `LONG CeRegTestSetValueW(
+__in HKEY hKey,
+__in LPCWSTR lpValueName,
+DWORD dwType,
+__in_bcount(cbOldData) __opt CONST BYTE* lpOldData,
+DWORD cbOldData,
+__in_bcount(cbNewData) __opt CONST BYTE* lpNewData,
+DWORD cbNewData,
+DWORD dwFlags
+);`
+ * (Windows CE 5.0 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT LONG CeRegTestSetValueW(HKEY hKey, LPCWSTR lpValueName, DWORD dwType, const BYTE *lpOldData, DWORD cbOldData, const BYTE *lpNewData, DWORD cbNewData, DWORD dwFlags) AKARI_CE_NAME(CeRegTestSetValueW);
+
 #endif /* AKARI_WINREG_H */

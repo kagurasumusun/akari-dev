@@ -31,4 +31,15 @@ extern "C" {
 }
 #endif
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee482831 UfnGetSystemSerialNumber: print `DWORD UfnGetSystemSerialNumber(
+LPWSTR pszSerialNumber,
+DWORD cchSerialNumber
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: UfnClientLibBase.lib) */
+AKARI_CE_IMPORT DWORD UfnGetSystemSerialNumber(LPWSTR pszSerialNumber, DWORD cchSerialNumber) AKARI_CE_NAME(UfnGetSystemSerialNumber);
+
 #endif /* AKARI_USBFNTYPES_H */

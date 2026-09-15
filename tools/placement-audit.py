@@ -32,7 +32,28 @@ import sys
 ROOT = "include"
 CACHE = "build/page-requirements.tsv"
 
-REQ = re.compile(r'<h4 id="requirements">.*?</p>', re.S | re.I)
+# Two Requirements layouts exist in the archive and BOTH must be read:
+#
+#   CE .NET / CE 5.0 (and CE 6.0's few older pages) print a <h4> plus a
+#   run-in paragraph:
+#       <h4 id="requirements">Requirements</h4>
+#       <p><strong>OS Versions:</strong> ...<br><strong>Header:</strong> ...</p>
+#
+#   Windows Embedded CE 6.0 prints a <h2> plus a table:
+#       <h2 id="requirements">Requirements</h2>
+#       <table><tbody>
+#         <tr><td>Header</td><td>oal_kitl.h</td></tr>
+#         <tr><td>Library</td><td>Developer Implemented</td></tr>
+#         <tr><td>Windows Embedded CE</td><td>Windows CE 5.0 and later</td></tr>
+#
+# M134: the pattern used to match only the <h4> paragraph form, so all
+# 10,861 CE 6.0 pages that carry a Requirements table parsed as "no
+# Requirements block" and dropped out of page-requirements.tsv, the
+# placement audit, the undeclared audit and the coverage audit alike.
+REQ = re.compile(r'<h[2-6] id="requirements">(.*?)(?=<h[1-6][ >]|\Z)',
+                 re.S | re.I)
+TR = re.compile(r"<tr\b.*?</tr>", re.S | re.I)
+CELL = re.compile(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", re.S | re.I)
 FIELD = re.compile(r'<strong>\s*([^<:]{2,24}?)\s*:?\s*</strong>\s*(.*?)(?=<br\s*/?>|<strong>|$)',
                    re.S | re.I)
 TITLE = re.compile(r"<title>(.*?)</title>", re.S | re.I)
@@ -54,9 +75,27 @@ def parse_page(path):
     m = REQ.search(s)
     if not m:
         return None
+    body = m.group(1)
     fields = {}
-    for k, v in FIELD.findall(m.group(0)):
+    for k, v in FIELD.findall(body):
         fields[k.strip().lower().rstrip(":")] = clean(v)
+    # CE 6.0's table form: one <tr> per field, label cell then value cell.
+    for tr in TR.findall(body):
+        cells = [clean(c) for c in CELL.findall(tr)]
+        if len(cells) < 2 or not cells[0]:
+            continue
+        key = cells[0].strip().lower().rstrip(":")
+        if key in ("header", "headers"):
+            key = "header"
+        elif key in ("library", "libraries", "link library"):
+            key = "link library"
+        elif key.startswith(("windows embedded ce", "windows ce", "windows mobile")) \
+                or key in ("os versions", "platform"):
+            key = "os versions"
+        elif key not in ("header", "link library", "os versions"):
+            continue
+        if cells[1] and key not in fields:
+            fields[key] = cells[1]
     hdrs = sorted({h for h in HDR_NAME.findall(fields.get("header", ""))})
     # The archive prints the row as "Link Library:" on most pages and as
     # "Library:" on some (ms890362); a few give a DLL instead of a .lib
@@ -239,10 +278,17 @@ def reach(start, inc):
 
 def main():
     ap = argparse.ArgumentParser()
+    # Only the Windows CE trees are admissible evidence for where a name
+    # belongs.  pagesw (desktop Win32), pageswm (Windows Mobile 6.5),
+    # pagesnet (.NET Compact Framework) and pagesmag (MSDN Magazine) are
+    # kept in the corpus for cross-checks only: a desktop or Mobile
+    # "Header:" line says nothing about CE, and the project's standing
+    # constraint forbids inferring CE shape from a desktop twin.  They
+    # used to be listed here, where they parsed to zero rows; M134's
+    # table-form fix would have started admitting them.
     ap.add_argument("--pages", nargs="*",
-                    default=["build/pages", "build/pages4", "build/pages6",
-                             "build/pagesnet", "build/pagesw", "build/pageswm",
-                             "build/pagesmag"])
+                    default=["build/pages", "build/pages3", "build/pages4",
+                             "build/pages6", "build/pagesgap"])
     ap.add_argument("--refresh-cache", action="store_true")
     ap.add_argument("--out", default="docs/header-placement-audit.md")
     ap.add_argument("--json", default="build/placement-audit.json")

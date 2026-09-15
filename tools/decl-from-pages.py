@@ -49,6 +49,12 @@ PRIMITIVE = {
     "HRESULT", "LCID", "LCTYPE", "CALID", "CALTYPE", "HANDLE", "HWND",
     "HFONT", "HINSTANCE", "HMODULE", "HKEY", "LPARAM", "WPARAM", "LRESULT",
     "SIZE_T", "ULONG_PTR", "DWORD_PTR", "INT_PTR", "UINT_PTR",
+    # M134: the archive prints C's multi-word spellings verbatim on the CE 6.0
+    # pages (BthSetCODInquiryFilter prints "unsigned int cod"), and those are
+    # language types, not header-declared ones.
+    "unsigned int", "unsigned long", "unsigned short", "unsigned char",
+    "signed int", "signed long", "long long", "unsigned long long",
+    "long double", "__int64", "__int32", "__int16", "__int8",
 }
 
 
@@ -97,6 +103,37 @@ def strip_conventions(text, macros):
     toks = [t for t in re.split(r"\s+", text.strip()) if t]
     kept = [t for t in toks if t not in macros]
     return " ".join(kept) if kept else " ".join(toks)
+
+
+# M134: CE 6.0 pages print SAL parameter annotations inside the prototype
+# (`LONG CeRegGetInfo(__in HKEY hKey, __inout PCE_REGISTRY_INFO pInfo)`).
+# SAL is an annotation language, not a type language -- __in/__out/__inout
+# and their _In_/_Out_ spellings carry no type and are not defined by any
+# CE header, so they must be dropped before the type is resolved.  Without
+# this the parser reported the type of hKey as "__in HKEY" and refused the
+# declaration, which is how three winreg.h exports stayed undeclared.
+SAL_BASE = re.compile(r"^_+(?:deref_)?(?:opt_)?(?:in|out|inout|opt|reserved"
+                      r"|success|checkReturn|field_|struct_|callback|post"
+                      r"|pre|format_string)(?![A-Za-z0-9])", re.I)
+
+
+def strip_sal(text):
+    """Drop SAL parameter annotations, which are not types.
+
+    Handled token-wise so the sized forms survive: the archive prints
+    `__inout_bcount(nBufferLength)`, `__in_bcount(cbOldData) __opt` and the
+    `_In_`/`_Out_` spellings alike, and a keyword-prefix regex alone leaves
+    a trailing `out_bcount(nBufferLength)` behind.  The `\b` after the
+    keyword is what keeps real identifiers safe -- `_outp`, `_inp` and
+    `_interlockedincrement` all start with a SAL keyword plus a letter and
+    are left alone.
+    """
+    kept = []
+    for tok in re.split(r"\s+", text.strip()):
+        if tok and SAL_BASE.match(tok.split("(")[0]):
+            continue
+        kept.append(tok)
+    return " ".join(kept)
 
 
 def norm_page(pid):
@@ -170,6 +207,27 @@ def param_names(raw):
     if cut:
         seg = seg[: cut.start() + 20]
     names = re.findall(r"<li>\s*(?:<p>)?\s*<em>(.*?)</em>", seg)
+    if not names:
+        # M134: Windows Embedded CE 6.0 renders Parameters as a two-column
+        # table instead of a list --
+        #   <tr><td><p><em>dwProcessId</em></p></td><td><p>A process ...</p></td></tr>
+        # -- so every CE 6.0 page reported "no Parameters section this parser
+        # recognises".  Take the <em> of the first cell of each body row; the
+        # second cell is prose and must not contribute names.
+        for tr in re.findall(r"<tr\b.*?</tr>", seg, re.S):
+            if re.search(r"<th\b", tr, re.I):
+                continue                      # the "Parameter|Description" head
+            cells = re.findall(r"<td\b[^>]*>(.*?)</td>", tr, re.S)
+            if not cells:
+                continue
+            em = re.search(r"<em>(.*?)</em>", cells[0], re.S)
+            if em:
+                names.append(html.unescape(em.group(1)).strip())
+    if not names:
+        # M134: a third shape omits the <em> too -- CheckRemoteDebuggerPresent
+        # (ee488625) prints `<li>hProcess<br> [in] Handle to the process.</li>`.
+        # The name is the bare identifier before the <br>.
+        names = re.findall(r"<li>\s*([A-Za-z_]\w*)\s*<br", seg)
     return [html.unescape(n).strip() for n in names]
 
 
@@ -184,9 +242,21 @@ def known_types(include_dirs):
                 continue
             s = open(os.path.join(d, f), encoding="utf-8", errors="replace").read()
             s = re.sub(r"(?s)/\*.*?\*/", " ", s)          # comments name types too
+            # M134: a typedef can name several types at once, and the archive
+            # then uses the later names in its prototypes.  Winbase.h:429 is
+            # `} FILETIME, *PFILETIME, *LPFILETIME;` and Bt_api.h:47 is
+            # `typedef ULONGLONG bt_addr, *pbt_addr, BT_ADDR, *PBT_ADDR;`.
+            # The old patterns captured only the first declarator, so
+            # GetSystemTimeAsFileTime was rejected for an "undeclared"
+            # LPFILETIME and BthReadRSSI for BT_ADDR.  Collect them all: in a
+            # declarator list every name is the last identifier of its part.
+            for m in re.finditer(r"(?:typedef\b|\})\s*([^;{}]*);", s):
+                for part in m.group(1).split(","):
+                    ids = re.findall(r"[A-Za-z_]\w*", part)
+                    if ids:
+                        found.add(ids[-1])
             found |= set(re.findall(r"\}\s*(\w+)\s*(?:,[^;]*)?;", s))
             found |= set(re.findall(r"typedef\s+struct\s+(\w+)", s))
-            found |= set(re.findall(r"typedef\s+\w[\w\s\*]*?\b(\w+)\s*;", s))
             found |= set(re.findall(r"^\s*(?:struct|union|enum)\s+(\w+)\b", s, re.M))
             found |= set(re.findall(r"#define\s+(\w+)", s, re.M))
     return found
@@ -231,6 +301,7 @@ def build(job, raw, known, known_conv=frozenset()):
     # 'BOOL WINAPI', 'WINUSERAPI HCURSOR WINAPI', 'int WSAAPI' -- the
     # convention macro is part of the printed head but not of the type.
     head = strip_conventions(head, known_conv)
+    head = strip_sal(head)
     # The archive loses the space between a type and the convention macro
     # that follows it, so IcmpSendEcho's page prints 'DWORDWINAPI'.  When the
     # single token ends with a macro this tree defines empty, split it.
@@ -260,7 +331,7 @@ def build(job, raw, known, known_conv=frozenset()):
 
     toks = [t.strip() for t in body.split(",") if t.strip()]
     # the same macros appear inside the parameter list ('LPVOID WINAPI x')
-    toks = [strip_conventions(t, known_conv) for t in toks]
+    toks = [strip_sal(strip_conventions(t, known_conv)) for t in toks]
     if len(toks) == 1 and toks[0].lower() == "void":
         if callback or re.search(r"Developer\s+implemented", raw, re.I):
             return (f"{ret} {callback}{name}(void)", print_str)

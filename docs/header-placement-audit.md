@@ -14,7 +14,7 @@ documentation still compiles.
 | page says | actually in | names | reachable |
 |---|---|---|---|
 | `oleauto.h` | `include/Objbase.h` | 227 | yes |
-| `windows.h` | `include/Wingdi.h` | 151 | yes |
+| `windows.h` | `include/Wingdi.h` | 154 | yes |
 | `windows.h` | `include/Winuser.h` | 63 | yes |
 | `d3dmtypes.h` | `include/D3dm.h` | 51 | yes |
 | `objidl.h` | `include/Objbase.h` | 50 | yes |
@@ -27,30 +27,38 @@ documentation still compiles.
 | `security.h` | `include/Sspi.h` | 15 | yes |
 | `ohcdddsi.h` | `include/oak/Hcdddsi.h` | 13 | yes |
 | `externs.h` | `include/oak/Ndis.h` | 13 | yes |
+| `rapitypes.h` | `include/Windbase.h` | 10 | yes |
+| `pwindbas.h` | `include/Windbase.h` | 8 | yes |
+| `windows.h` | `include/Winbase.h` | 7 | yes |
 | `wtypes.h` | `include/Objbase.h` | 6 | yes |
 | `commctrl.h` | `include/Winuser.h` | 6 | yes |
-| `windows.h` | `include/Winbase.h` | 5 | yes |
 | `kfuncs.h` | `include/Winbase.h` | 5 | yes |
+| `rapitypes.h` | `include/Rapi.h` | 3 | yes |
 | `pchannel.h` | `include/Cchannel.h` | 2 | yes |
+| `pwinreg.h` | `include/Winbase.h` | 2 | yes |
 | `winuser.h` | `include/Wingdi.h` | 2 | yes |
+| `commctrl.h` | `include/Shlobj.h` | 2 | yes |
 | `tlhelp.h` | `include/Tlhelp32.h` | 2 | yes |
 | `comcat.h` | `include/Objbase.h` | 2 | yes |
 | `dccole.h` | `include/Objbase.h` | 2 | yes |
 | `mqmgmt.h` | `include/Mq.h` | 2 | yes |
+| `pwinuser.h` | `include/oak/Nled.h` | 2 | yes |
 | `cesync.h` | `include/Objbase.h` | 2 | yes |
+| `cmnintrin.h` | `include/Winnt.h` | 2 | yes |
 | `ws2tcpip.h` | `include/Winsock2.h` | 2 | yes |
 | `bt_buffer.h` | `include/Bt_hcip.h` | 1 | yes |
 | `urlmon.h` | `include/Objbase.h` | 1 | yes |
 | `ws2bth.h` | `include/Bt_api.h` | 1 | yes |
 | `winbase.h` | `include/Winnt.h` | 1 | yes |
-| `pwinreg.h` | `include/Winbase.h` | 1 | yes |
+| `kfuncs.h` | `include/Windbase.h` | 1 | yes |
+| `pkfuncs.h` | `include/Winbase.h` | 1 | yes |
 | `commctrl.h` | `include/Commdlg.h` | 1 | yes |
 | `d3dmcaps.h` | `include/D3dm.h` | 1 | yes |
 | `dmoreg.h` | `include/Dmo.h` | 1 | yes |
 | `winddi.h` | `include/oak/Gpe.h` | 1 | yes |
 | `ddvdata.h` | `include/Dvdata.h` | 1 | yes |
 | `ddraw.h` | `include/Dvp.h` | 1 | yes |
-| `commctrl.h` | `include/Shlobj.h` | 1 | yes |
+| `shlobj.h` | `include/Extfile.h` | 1 | yes |
 | `prsht.h` | `include/Shlobj.h` | 1 | yes |
 | `shlguid.h` | `include/Shlobj.h` | 1 | yes |
 | `iaccess.h` | `include/Objbase.h` | 1 | yes |
@@ -61,13 +69,16 @@ documentation still compiles.
 | `newmenu.h` | `include/aygshell.h` | 1 | yes |
 | `unimodem.h` | `include/Tapi.h` | 1 | yes |
 | `rndis.h` | `include/oak/Rndismini.h` | 1 | yes |
+| `shellsdk.h` | `include/aygshell.h` | 1 | yes |
 | `windows.h` | `include/Windef.h` | 1 | yes |
 | `windows.h` | `include/Winnt.h` | 1 | yes |
+| `pwinreg.h` | `include/Mwinreg.h` | 1 | yes |
 | `windows.h` | `include/Commctrl.h` | 1 | yes |
 | `winuser.h` | `include/Winbase.h` | 1 | yes |
 | `usbtypes.h` | `include/Usb100.h` | 1 | yes |
+| `mipsintr.h` | `include/oak/Cmnintrin.h` | 1 | yes |
 
-Totals: 53 groups, 808 name-placements, 0 groups unreachable.
+Totals: 64 groups, 846 name-placements, 0 groups unreachable.
 
 ## Per-name lists
 

@@ -238,4 +238,20 @@ typedef CONTEXT *PCONTEXT;
  * the Windows ABI. */
 typedef CONTEXT *LPCONTEXT;
 
+/* --- Compiler intrinsics the CE 5.0 pages document in winnt.h. ----
+ *
+ * M134: _disable and _enable were declared in oak/Cmnintrin.h.  The
+ * CE .NET pages (ms879734, ms879741) print "Header: cmnintrin.h" and the
+ * CE 5.0 pages (ms933241, ms933277) print "Header: winnt.h" for the same
+ * two functions.  oak/Cmnintrin.h includes this header, so declaring them
+ * here satisfies both pages with one declaration site. */
+
+/* ms933241 _disable (ms879734): print `void _disable(void);`
+ * (Windows CE .NET 4.0 and later) */
+void _disable(void);
+
+/* ms933277 _enable (ms879741): print `void _enable(void);`
+ * (Windows CE .NET 4.0 and later) */
+void _enable(void);
+
 #endif /* AKARI_WINNT_H */

@@ -1091,4 +1091,22 @@ AKARI_CE_IMPORT BOOL UnlockUrlCacheEntryStream(HANDLE hUrlCacheStream, DWORD dwR
 /* ms905668 XML Data Islands Migration */
 /* ms918879 XML Data Islands OS Design Development */
 /* ms905669 XML Data Islands Samples */
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee492602 InternetClearAllPerSiteCookieDecisions: print `BOOL InternetClearAllPerSiteCookieDecisions(void);`
+ * (Windows CE 5.0 and later; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetClearAllPerSiteCookieDecisions(void) AKARI_CE_NAME(InternetClearAllPerSiteCookieDecisions);
+
+/* ee492807 PrivacyGetZonePreferenceW: print `DWORD PrivacyGetZonePreferenceW (
+DWORD dwZone,
+DWORD dwType,
+LPDWORD pdwTemplate,
+LPWSTR pszBuffer,
+LPDWORD pdwBufferLength
+);`
+ * (Windows CE 5.0 and later; Link Library: wininet.lib) */
+AKARI_CE_IMPORT DWORD PrivacyGetZonePreferenceW(DWORD dwZone, DWORD dwType, LPDWORD pdwTemplate, LPWSTR pszBuffer, LPDWORD pdwBufferLength) AKARI_CE_NAME(PrivacyGetZonePreferenceW);
+
 #endif /* AKARI_WININET_H */

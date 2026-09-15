@@ -71,6 +71,32 @@ OEM = {
     "sdmem.h", "serdev.h", "shintr.h", "streams.h", "tchddi.h", "tchddsi.h",
     "tchmdd.h", "usbd.h", "waveapi.h", "waveddsi.h", "wavemdd.h", "wdm.h",
     "nclient.h", "oomui.h", "nkarm.h", "pegdserr.h",
+    # M134: the set above was too small, so driver/toolkit headers landed in
+    # "header not shipped here" and inflated the app-layer-looking residue.
+    # Each entry below was classified by reading its own pages:
+    "ril.h",              # Radio Interface Layer; every page prints Ril.lib
+    "ddrawi.h",           # DirectDraw driver interface (DDHAL), not ddraw.h
+    "oal_args.h", "oal_cache.h", "oal_ilt.h", "oal_intr.h", "oal_ioctl.h",
+    "oal_io.h", "oal_kitl.h", "oal_log.h", "oal_memory.h", "oal_pci.h",
+    "oal_timer.h", "oaldma.h", "dmamif.h",
+    "tux.h", "stressutils.h",          # TUX test framework, OEM test code
+    "exdi2.h", "wdbgexts_ce.h", "kato.h", "kitlclnt.h", "bootpart.h",
+    "msr.h", "kwin32.h", "mem_arm.h",  # kernel/OAL internals
+    "flashpdd.h", "flashmdd.h", "sdhcd.h", "fsioctl.h",
+    "lfapi.h", "lfplugin.h", "wap.h", "csmedia.h", "ccdatastore.h",
+    "trans.h", "osaccess.h", "nclientview.h", "gdi.h",
+}
+
+# C runtime headers.  These are work item 1 (llvm-libc adapted for CE), not
+# app-layer surface of this tree, so they are reported in their own bucket
+# instead of being mixed into either the gap list or the OEM list.
+CRT = {
+    "assert.h", "conio.h", "crtdbg.h", "ctype.h", "direct.h", "errno.h",
+    "fcntl.h", "float.h", "io.h", "limits.h", "locale.h", "malloc.h",
+    "math.h", "mbstring.h", "memory.h", "process.h", "search.h", "setjmp.h",
+    "share.h", "signal.h", "stdarg.h", "stddef.h", "stdio.h", "stdlib.h",
+    "string.h", "sys/stat.h", "sys/types.h", "sys/timeb.h", "sys/utime.h",
+    "time.h", "wchar.h",
 }
 
 
@@ -87,7 +113,18 @@ def shipped_headers():
     for dp, _, fs in os.walk(os.path.join(ROOT, "include")):
         for f in fs:
             if f.endswith((".h", ".hxx", ".hpp")):
-                out.setdefault(f.lower(), os.path.normpath(os.path.join(dp, f)))
+                p = os.path.normpath(os.path.join(dp, f))
+                low = f.lower()
+                out.setdefault(low, p)
+                # M134: the CE pages name the MFC-style shell headers with a
+                # .h suffix ("Header: scrollview.h", "gwebypasscoredllthunk.h")
+                # while this tree ships them as .hpp.  Windows header names are
+                # case- and extension-insensitive in practice, so register both
+                # spellings or a shipped header reads as a missing one.
+                for alt in (re.sub(r"\.hpp?$", ".h", low),
+                            re.sub(r"\.h$", ".hpp", low)):
+                    if alt != low:
+                        out.setdefault(alt, p)
     return out
 
 
@@ -139,7 +176,7 @@ def main():
     st["missing"] = len(missing)
     st["reference_like"] = len(refl)
 
-    gaps, oem, not_shipped, no_req = [], [], [], []
+    gaps, oem, not_shipped, no_req, crt = [], [], [], [], []
     fetched = 0
     for k, v in sorted(refl.items()):
         p = os.path.join(ROOT, a.gap_pages, v["raw"] + ".html")
@@ -157,19 +194,28 @@ def main():
                "os": osv, "header": sh[0] if sh else "",
                "all_headers": sh, "lib": ",".join(libs),
                "catalog": v["catalog"]}
-        if not sh:
+        # M134: classify by class first, not by whether the header happens to
+        # be shipped.  The old order put every unshipped header -- driver,
+        # toolkit, CRT alike -- into "header not shipped here", which is how
+        # 436 ril.h driver pages ended up looking like app-layer surface.
+        h0 = (sh[0] if sh else (hdrs[0] if hdrs else "")).lower()
+        if api in declared:
+            st["already_declared"] += 1
+        elif h0 in OEM or not hdrs and re.match(
+                r"(?:pfn|p?OEM|NK|KLib|SH4|TLB)", api):
+            oem.append(rec)
+        elif h0 in CRT:
+            crt.append(rec)
+        elif not sh:
             rec["header"] = (hdrs[0] if hdrs else "")
             not_shipped.append(rec)
-        elif api in declared:
-            st["already_declared"] += 1
-        elif sh[0].lower() in OEM:
-            oem.append(rec)
         else:
             gaps.append(rec)
     st["fetched_for_classification"] = fetched
     st["no_requirements_block"] = len(no_req)
     st["header_not_shipped"] = len(not_shipped)
     st["oem_or_bsp"] = len(oem)
+    st["crt_headers"] = len(crt)
     st["app_layer_gaps"] = len(gaps)
 
     print("official TOC pages (CE .NET + 5.0 + 6.0): %d" % st["toc"])
@@ -181,6 +227,7 @@ def main():
     print("        header not shipped here:         %d" % st["header_not_shipped"])
     print("        already declared:                %d" % st["already_declared"])
     print("        OEM/BSP (out of scope):          %d" % st["oem_or_bsp"])
+    print("        C runtime header (item 1):       %d" % st["crt_headers"])
     print("        APP-LAYER GAPS:                  %d" % st["app_layer_gaps"])
 
     byh = collections.Counter(g["header"] for g in gaps)
@@ -191,7 +238,7 @@ def main():
     os.makedirs(os.path.dirname(a.json) or ".", exist_ok=True)
     json.dump({"stats": dict(st), "app_layer_gaps": gaps,
                "oem_or_bsp": oem, "header_not_shipped": not_shipped,
-               "no_requirements_block": no_req},
+               "no_requirements_block": no_req, "crt_header": crt},
               open(a.json, "w", encoding="utf-8"), indent=1)
     with open(a.tsv, "w", encoding="utf-8") as fh:
         fh.write("name\tpage\tos_versions\theader\tlink_library\tcatalog\n")

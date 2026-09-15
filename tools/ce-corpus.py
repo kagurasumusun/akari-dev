@@ -51,6 +51,14 @@ TREES = [
     ("pages", "pages5"),      # CE 5.0 archive, (v=msdn.10)
     ("pages6", "pages6"),     # Windows Embedded CE 6.0 archive
     ("pages4", "pages4"),     # Windows CE .NET archive (v=msdn.10)
+    ("pages3", "pages3"),     # Windows CE 3.0 archive (v=msdn.10).  The
+                              # whole 8,962-page CE 3.0 tree; M134 fixed
+                              # its omission from TREES, which had left
+                              # every build/pages* audit blind to CE 3.0.
+    ("pagesgap", "pagesgap"), # the 3,641 reference-like pages that M133's
+                              # TOC-coverage audit found unharvested; they
+                              # live in the corpus so the audit can be
+                              # re-run after a wipe without re-fetching
     ("pagesw", "pagesw"),     # desktop Win32 reference pages (learn.
                               # microsoft.com/windows/win32/api) read
                               # for M52 fixed-ABI value derivations

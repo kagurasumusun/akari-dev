@@ -401,4 +401,14 @@ AKARI_CE_IMPORT BOOL CeWriteFile(HANDLE hFile, LPCVOID lpBuffer, DWORD nNumberOf
 /* _wcesdk_CeRapiFreeBuffer: page-printed prototype (Windows CE OS). */
 HRESULT CeRapiFreeBuffer(LPVOID Buffer);
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee497258 CeSyncStart: print `HRESULT CeSyncStart(
+LPCWSTR szCommand
+);`
+ * (Windows CE 3.0 and later; Link Library: rapi.lib) */
+AKARI_CE_IMPORT HRESULT CeSyncStart(LPCWSTR szCommand) AKARI_CE_NAME(CeSyncStart);
+
 #endif /* AKARI_RAPI_H */

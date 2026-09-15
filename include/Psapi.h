@@ -40,4 +40,15 @@ AKARI_CE_IMPORT BOOL GetModuleInformation(HANDLE hProcess, HMODULE hModule,
 }
 #endif
 
+
+/* M134: declared from the official Windows CE page cited on
+ *  each prototype (tools/coverage-audit.py app-layer gap list). */
+
+/* ee488003 CeSetProcessVersion: print `BOOL CeSetProcessVersion(
+HANDLE hProcess,
+DWORD dwVersion
+);`
+ * (Windows CE .NET 4.2 and later; Link Library: coredll.lib) */
+AKARI_CE_IMPORT BOOL CeSetProcessVersion(HANDLE hProcess, DWORD dwVersion) AKARI_CE_NAME(CeSetProcessVersion);
+
 #endif /* AKARI_PSAPI_H */
