@@ -58,9 +58,14 @@ def parse_page(path):
     for k, v in FIELD.findall(m.group(0)):
         fields[k.strip().lower().rstrip(":")] = clean(v)
     hdrs = sorted({h for h in HDR_NAME.findall(fields.get("header", ""))})
-    libs = sorted({h for h in re.findall(r"[A-Za-z_][A-Za-z0-9_]*\.lib",
-                                         fields.get("library", "") + " " +
-                                         fields.get("libraries", ""), re.I)})
+    # The archive prints the row as "Link Library:" on most pages and as
+    # "Library:" on some (ms890362); a few give a DLL instead of a .lib
+    # (aa447629 "Link Library: Pcc_serv.dll").  Record whichever is printed
+    # so "has a link library" is not silently false for 99% of rows.
+    libtext = " ".join(fields.get(k, "") for k in
+                       ("link library", "library", "libraries"))
+    libs = sorted({h for h in re.findall(r"[A-Za-z_][A-Za-z0-9_]*\.(?:lib|dll)",
+                                         libtext, re.I)})
     api = None
     t = TITLE.search(s)
     if t:

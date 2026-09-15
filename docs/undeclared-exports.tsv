@@ -1,0 +1,8 @@
+name	page	os_versions	header	link_library	exported_by
+DDKReg_GetIsrInfo	ms897699	Windows CE .NET 4.0 and later.	Ddkreg.h	Coredll.lib	coredll-doc.def
+DDKReg_GetPciInfo	ms897705	Windows CE .NET 4.0 and later.	Ddkreg.h	Coredll.lib	coredll-doc.def
+DDKReg_GetWindowInfo	ms897707	Windows CE .NET 4.0 and later.	Ddkreg.h	Coredll.lib	coredll-doc.def
+RasIOControl	aa450852	Windows CE .NET 4.0 and later.	Ras.h	Coredll.lib	coredll-doc.def
+CreatePartition	aa517334	Windows CE .NET 4.0 and later.	Storemgr.h	Storeapi.lib	coredll-doc.def
+CreatePartitionEx	aa517335	Windows CE .NET 4.0 and later.	Storemgr.h	Storeapi.lib	coredll-doc.def
+CeHeapCreate	aa450797	Windows CE 5.0 and later.	Winbase.h	Coredll.lib	coredll-doc.def

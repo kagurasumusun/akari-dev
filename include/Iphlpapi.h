@@ -174,4 +174,11 @@ AKARI_CE_IMPORT DWORD SetTcpEntry(PMIB_TCPROW pTcpRow) AKARI_CE_NAME(SetTcpEntry
  * Book surface: netgen (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms887920 DeleteIPAddress: print `DWORD DeleteIPAddress(ULONGNTEContext);` -- recorded verbatim (no compiled prototype) */
+
+/* M132: documented app-layer names this tree did not declare (page-cited). */
+
+/* ms887920 DeleteIPAddress: print `DWORD DeleteIPAddress(ULONGNTEContext);`
+ * (Windows CE 3.0 and later.; Link Library: Iphlpapi.lib) */
+AKARI_CE_IMPORT DWORD DeleteIPAddress(ULONG NTEContext) AKARI_CE_NAME(DeleteIPAddress);
+
 #endif /* AKARI_IPHLPAPI_H */

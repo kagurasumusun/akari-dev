@@ -9278,3 +9278,101 @@ M130 で struct 定義は `D3dmtypes.h` に移したが、
 item 5（構造的配置欠陥の監査と修正）のうち「宣言が誤ったヘッダにある」
 分類は一次資料に照らして閉じた。残るは「分割すべきでないヘッダの分割」と
 `.def` の誤所属、および各 `def`/`h`/`hxx` の世代注記の照合。
+
+## M132：item 4（未宣言の文書化 API）— 母集団を一次資料で再定義し、宣言できる分を出し尽くした
+
+### 重大な解析バグ：`Link Library:` を一度も読んでいなかった
+
+`tools/placement-audit.py` の Requirements 解析は `Library:` /
+`Libraries:` しか引かず、**アーカイブが実際に印刷する `Link Library:` を
+取りこぼしていた**。結果 `lib` 列は 16,427 行中 **151 行しか埋まらず**、
+「リンクライブラリがある＝アプリ層の export」という判定が 99% の行で
+偽になっていた。修正後は **8,716 行**が埋まる。
+
+このため過去の item 4 の測定（1,277 / 746 / 132、いずれも 357 を再現せず）は
+母集団の定義自体が壊れていた。
+
+### 新ツール `tools/undeclared-audit.py`
+
+母集団を**独立した 2 つの一次資料の積**で定義した：
+
+1. 頁の Requirements — `Header:` が本ツリーの出荷ヘッダで、
+   `Link Library:` がある（ライブラリのない名は型・定数・開発者実装
+   コールバックで、ツリーが import を負うものではない）
+2. `def/*-doc.def` — CE イメージが実際に export する名の一覧
+
+結果：**487 名**（宣言後 **469 名**）。うち def にも載るのは 7 名。
+残りは def 生成パイプラインも取りこぼしていたことになる。
+
+アプリ層／OEM・BSP の内訳：**アプリ層 293 名、OEM/BSP・ドライバ層 194 名**
+（`Winddi`/`Ddgpe`/`Keybddr`/`Fsdmgr`/`Cardsv2`/`Hidpi`/`Ndis`/`Sdcardddk` 他。
+後者はプロジェクトの常設制約によりスコープ外）。
+
+導出索引 `docs/page-requirements.tsv`（16,427 行）を**コミット**した。
+`build/` はスナップショット対象外で毎回消えるため、1.8 GB のコーパス clone
+無しに解析を再現できるようにした。
+
+### `tools/decl-from-pages.py` の修正（解決 8 → 19 → 最終 8）
+
+| 修正 | 根拠 |
+|---|---|
+| 呼び出し規約・注釈マクロの除去（26 個） | ツリー自身が空展開と定義しているものだけを動的収集。`WINAPI`/`WINAPIV`/`CALLBACK`/`VCAPITYPE`/`WINGDIAPI`/`WINUSERAPI`/`WSAAPI`/`APIENTRY`/`FAR`/`NEAR`/`IN`/`OUT`/`OPTIONAL`/`STDAPI` 他。`.hpp` のみで定義される `WINUSERAPI`/`WINGDIAPI` を含む |
+| 粘着した規約マクロの分離 | アーカイブは型と名の空白を失うので `IcmpSendEcho` の頁は `DWORDWINAPI` と印刷する。ツリーが空定義するマクロで終わる単一トークンを分割 |
+| `Link Library: Developer implemented.` の頁は素の原型 | `ms902159`（`Lock`）等。import を主張するのは誤り |
+| ガードの無い別名スタブへの書き込み | `include/Sphelper.h` に `#endif` が無く `max()` が空で落ちていた |
+
+### 追加した 7 宣言（すべて頁の印刷どおり、頁 ID 引用付き）
+
+| 名 | ヘッダ | 形 |
+|---|---|---|
+| `DeleteIPAddress` | `Iphlpapi.h` | import |
+| `waveInProc` / `waveOutProc` | `Mmsystem.h` | `CALLBACK`（アプリ実装） |
+| `BrowseCallbackProc` | `Shlobj.h` | `CALLBACK` |
+| `LoadAnimatedCursor` | `Windows.h` | import |
+| `FiberProc` | `Windows.h` | `CALLBACK` |
+| `EnumUILanguagesProc` | `Windows.h` | `CALLBACK` |
+
+### 宣言しなかった 2 分類（理由を記録）
+
+**`DllMain`** — 頁 `ms885202` は「Link Library: Coredll.lib.」と印刷するが、
+`DllMain` は **DLL 自身が実装するエントリポイント**である。
+`__declspec(dllimport)` で宣言すると、この SDK でビルドする**すべての DLL が
+壊れる**（`tests/e2e/e2e_module.c` が自前の `DllMain` を定義し、clang が
+`-Winconsistent-dllimport` で拒否）。頁の Link Library 行はローダが
+シンボルを解決する先を述べるもので、ヘッダが利用者に負う宣言とは別物。
+`include/Winbase.h` に理由を注釈して残した。
+
+**`Sphelper.h` の inline ヘルパ 11 名**（`SpClearEvent`、`SpEnumTokens`、
+`SpFindBestToken`、`SpInitEvent`、`SpBindToFile` 他）— 頁は
+`inline HRESULT Sp…(...)` と印刷するが**本体を一切印刷せず**、
+その名の export もどの def にも無い（頁の `Link Library: Sapilib.lib` は
+ヘルパが呼び込む先の名で、この名のシンボルではない）。原型だけ出せば
+実体のないシンボルを約束することになり、`inline` 原型を本体なしで置けば
+それ自体が `-Werror` になる。宣言せず記録した。
+
+### 阻害 148 名を `docs/undeclared-blocked.tsv` に記録
+
+**136 名は前提型が公式資料に存在しない**ため。コーパスに**その型を定義する
+頁が 1 件も無い**ことを確認済み（全文検索でも typedef の印刷は 0 件、
+`SECTORNUM` のみ 2 件あるが `PD_PARTINFO`/`PD_STOREINFO` の**成員型として
+現れるだけ**で定義頁は無い）。
+
+| 欠落型 | 阻害される名 |
+|---|---|
+| `HINTERNET` | 33 |
+| `HRC` | 13 |
+| `HCESVC` | 10 |
+| `GROUPID` | 8 |
+| `IPAddr` | 5 |
+| `HTHEME` | 5 |
+| `DNS_STATUS` | 3 |
+| `SECTORNUM` | 2 |
+| 他 46 種 | 各 1–2 |
+
+これは**公式資料で確認できない**分類であり、推測での宣言は行わない。
+
+### 検証
+
+`make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
+世代監査 0 名、配置監査 未到達 0 グループを維持。
+母集団 487 → **469 名**。

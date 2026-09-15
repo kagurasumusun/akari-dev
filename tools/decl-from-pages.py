@@ -52,6 +52,53 @@ PRIMITIVE = {
 }
 
 
+CONV_CHAIN = {"WINAPI", "WINAPIV", "CALLBACK", "__cdecl", "__stdcall"}
+# Shape filter: only linkage/calling-convention and parameter-annotation
+# macros are stripped.  Every one of these is defined empty (or as WINAPI)
+# in this tree, and none carries type information on Windows CE.
+CONV_SHAPE = re.compile(r"^(?:.*(?:API|ENTRY|CALLTYPE)$"
+                        r"|WINAPI|WINAPIV|CALLBACK|VCAPITYPE|FAR|NEAR"
+                        r"|IN|OUT|OPTIONAL|UNALIGNED|__cdecl|__stdcall)$")
+
+
+def convention_macros(include_dirs):
+    """Names this tree defines as an empty (or convention-only) macro.
+
+    The archive prints prototypes with the linkage/calling-convention macro
+    still attached -- ms911790 prints 'int MapWindowPoints(' but the
+    CreatePartition page prints 'BOOL WINAPI CreatePartition('.  On Windows
+    CE these carry no type: windef.h defines WINAPI empty, and CALLBACK,
+    WINAPIV, VCAPITYPE, WINGDIAPI, WINUSERAPI and WSAAPI all reduce to it.
+    Collecting the list from the tree rather than hardcoding it keeps the
+    strip grounded in what this SDK actually defines.
+    """
+    empty = set()
+    pat = re.compile(r"^\s*#\s*define\s+([A-Za-z_]\w*)\s*(.*)$")
+    for d in include_dirs:
+        for dirpath, _, files in os.walk(d):
+            for f in files:
+                if not f.endswith((".h", ".hxx", ".hpp")):
+                    continue      # WINGDIAPI/WINUSERAPI live in the .hpp set
+                for line in open(os.path.join(dirpath, f),
+                                 encoding="utf-8", errors="replace"):
+                    m = pat.match(line)
+                    if not m:
+                        continue
+                    name, val = m.group(1), m.group(2)
+                    val = re.sub(r"/\*.*?\*/", " ", val)
+                    val = re.sub(r"//.*$", "", val).strip()
+                    if (val == "" or val in CONV_CHAIN) and CONV_SHAPE.match(name):
+                        empty.add(name)
+    return empty
+
+
+def strip_conventions(text, macros):
+    """Drop linkage/calling-convention macros from a type expression."""
+    toks = [t for t in re.split(r"\s+", text.strip()) if t]
+    kept = [t for t in toks if t not in macros]
+    return " ".join(kept) if kept else " ".join(toks)
+
+
 def norm_page(pid):
     """`ms904713` and `ms904713(v=msdn.10)` both name one archive page."""
     m = re.match(r"^([A-Za-z0-9_]+)(\(v=[^)]+\))?$", pid.strip())
@@ -159,7 +206,7 @@ def split_type(tok, known):
     return const, t, stars
 
 
-def build(job, raw, known):
+def build(job, raw, known, known_conv=frozenset()):
     """Return (declaration, note) or (None, reason)."""
     name = job["name"]
     cands = prints(raw)
@@ -181,14 +228,44 @@ def build(job, raw, known):
     callback = ""
     if head.endswith("CALLBACK"):
         head, callback = head[:-8].strip(), "CALLBACK "
+    # 'BOOL WINAPI', 'WINUSERAPI HCURSOR WINAPI', 'int WSAAPI' -- the
+    # convention macro is part of the printed head but not of the type.
+    head = strip_conventions(head, known_conv)
+    # The archive loses the space between a type and the convention macro
+    # that follows it, so IcmpSendEcho's page prints 'DWORDWINAPI'.  When the
+    # single token ends with a macro this tree defines empty, split it.
+    if head in known_conv:
+        return None, 'prototype prints only a convention macro: "%s"' % head
+    if " " not in head:
+        for cm in sorted(known_conv, key=len, reverse=True):
+            if len(head) > len(cm) and head.endswith(cm):
+                head = head[:-len(cm)]
+                break
+    # 'inline HRESULT SpBindToFile(...)' -- Sphelper.h publishes these as
+    # header-inline helpers, so the declaration is a bare prototype and must
+    # not be marked AKARI_CE_IMPORT: there is nothing to import.
+    # 'inline HRESULT SpClearEvent(...)' -- Sphelper.h publishes these as
+    # header-inline helpers.  The archive prints the signature but never the
+    # body, and no def exports the name (the page's "Link Library:
+    # Sapilib.lib" names the library the helper calls into, not a symbol of
+    # this name).  Emitting a bare prototype would promise a symbol nothing
+    # provides, and an 'inline' prototype with no body is itself a -Werror
+    # failure, so these are reported as blocked rather than declared.
+    if re.match(r"^inline\s", head):
+        return None, ('page prints an inline helper whose body the archive '
+                      'does not publish; nothing to declare')
     ret = head
     if ret not in known:
         return None, 'return type "%s" is not a type this tree declares' % ret
 
     toks = [t.strip() for t in body.split(",") if t.strip()]
+    # the same macros appear inside the parameter list ('LPVOID WINAPI x')
+    toks = [strip_conventions(t, known_conv) for t in toks]
     if len(toks) == 1 and toks[0].lower() == "void":
-        return (f"{ret} {callback}{name}(void)", print_str) if callback else \
-               (f"AKARI_CE_IMPORT {ret} {name}(void) AKARI_CE_NAME({name});", print_str)
+        if callback or re.search(r"Developer\s+implemented", raw, re.I):
+            return (f"{ret} {callback}{name}(void)", print_str)
+        return (f"AKARI_CE_IMPORT {ret} {name}(void) AKARI_CE_NAME({name});",
+                print_str)
 
     names = param_names(raw)
     if not names:
@@ -208,7 +285,15 @@ def build(job, raw, known):
         args.append((const, base, stars, pn))
         rendered.append(f"{const}{base} {'*' * len(stars)}{pn}".replace("* ", "*"))
     sig = f"{ret} {callback}{name}({', '.join(rendered)})"
-    if callback:                       # an app-implemented callback, not an import
+    # The page's own Requirements row is the authority on whether the name is
+    # something this image imports or something the developer implements.
+    # ms883928 (DllMain) prints "Link Library: Developer implemented."; so
+    # does ms902159 (Lock).  Asserting dllimport for those is wrong, and the
+    # e2e DLL, which defines its own DllMain, fails to compile on it.
+    devimpl = re.search(r"Developer\s+implemented", raw, re.I) is not None
+    if callback or devimpl:
+        # an app-implemented callback or a header-inline helper: the page
+        # prints no import, so none is asserted here
         return sig + ";", print_str
     return (f"AKARI_CE_IMPORT {ret} {name}({', '.join(rendered)}) "
             f"AKARI_CE_NAME({name});"), print_str
@@ -226,6 +311,9 @@ def main():
 
     jobs = json.load(open(a.list, encoding="utf-8"))
     known = known_types(a.include)
+    known_conv = frozenset(convention_macros(a.include))
+    print("convention macros stripped (defined empty in this tree): %s"
+          % " ".join(sorted(known_conv)))
     ok, bad, skipped = [], [], []
     for job in jobs:
         page = norm_page(job["page"])
@@ -237,7 +325,7 @@ def main():
         except Exception as e:                                    # noqa: BLE001
             skipped.append((job["name"], "fetch failed: %s" % e))
             continue
-        decl, why = build(job, raw, known)
+        decl, why = build(job, raw, known, known_conv)
         if decl is None:
             bad.append((job["name"], page, why))
         else:
@@ -256,7 +344,13 @@ def main():
         if not a.header:
             sys.exit("--write needs --header")
         L = open(a.header, encoding="utf-8").read().split("\n")
-        ei = max(i for i, l in enumerate(L) if l.startswith("#endif"))
+        ends = [i2 for i2, l in enumerate(L) if l.startswith("#endif")]
+        if ends:
+            ei = max(ends)
+        else:
+            # An alias stub (include/Sphelper.h) carries no include guard,
+            # so there is no #endif to insert before; append at end of file.
+            ei = len(L) - 1
         blk = [""]
         if a.banner:
             lines = a.banner.rstrip("\n").split("\n")
@@ -265,10 +359,10 @@ def main():
                 blk.append(" * " + l)
             blk[-1] += " */"
             blk.append("")
-        for n, p, pr, d, t, lib, osv in ok:
-            blk.append("/* %s %s: print `%s`" % (p.split("(")[0], n, pr))
-            blk.append(" * (%s; Link Library: %s) */" % (osv or "generation not stated",
-                                                          lib or "not stated"))
+        for n, pg, pr, d, t, lib, osv in ok:
+            blk.append("/* %s %s: print `%s`" % (pg.split("(")[0], n, pr))
+            blk.append(" * (%s; Link Library: %s) */"
+                       % (osv or "generation not stated", lib or "not stated"))
             blk.append(d)
             blk.append("")
         L[ei:ei] = blk

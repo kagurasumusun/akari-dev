@@ -314,4 +314,24 @@ AKARI_CE_IMPORT BOOL GetCharABCWidthsI(HDC hdc, UINT giFirst, UINT cgi,
  * Book surface: graphics-book (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms932214 Multiple Screens Structures/MONITORINFOEX (Header: Windows.h.) */
+
+/* M132: documented app-layer names this tree did not declare (page-cited). */
+
+/* ms924841 LoadAnimatedCursor: print `WINUSERAPI HCURSOR WINAPI LoadAnimatedCursor(
+HINSTANCE hInstance,
+DWORD ResourceId,
+int cFrames,
+int FrameTimeInterval
+);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Cursor.lib) */
+AKARI_CE_IMPORT HCURSOR LoadAnimatedCursor(HINSTANCE hInstance, DWORD ResourceId, int cFrames, int FrameTimeInterval) AKARI_CE_NAME(LoadAnimatedCursor);
+
+/* ms885221 FiberProc: print `VOID CALLBACK FiberProc( PVOID lpParameter);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coredll.lib) */
+VOID CALLBACK FiberProc(PVOID lpParameter);
+
+/* ms905116 EnumUILanguagesProc: print `BOOL CALLBACK EnumUILanguagesProc(LPTSTR lpUILanguageString);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib) */
+BOOL CALLBACK EnumUILanguagesProc(LPTSTR lpUILanguageString);
+
 #endif /* AKARI_WINDOWS_H */

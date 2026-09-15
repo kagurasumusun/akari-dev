@@ -223,4 +223,11 @@ AKARI_CE_IMPORT BOOL SHGetDocumentsFolder(LPCTSTR pszVolume,
 }
 #endif
 
+
+/* M132: documented app-layer names this tree did not declare (page-cited). */
+
+/* aa452900 BrowseCallbackProc: print `int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg,LPARAM lParam,LPARAM lpData);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Ceshell.lib) */
+int CALLBACK BrowseCallbackProc(HWND hwnd, UINT uMsg, LPARAM lParam, LPARAM lpData);
+
 #endif /* AKARI_SHLOBJ_H */

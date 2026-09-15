@@ -769,4 +769,15 @@ AKARI_CE_IMPORT MMRESULT timeSetEvent(UINT uDelay, UINT uResolution,
 /* ms925133 Waveform Audio Security */
 /* ms925321 Waveform Audio Structures */
 /* ms925265 Window Callback Services */
+
+/* M132: documented app-layer names this tree did not declare (page-cited). */
+
+/* aa452435 waveInProc: print `void CALLBACK waveInProc(HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD dwParam1,DWORD dwParam2);`
+ * (Windows CE 2.0 and later.; Link Library: Coredll.lib) */
+void CALLBACK waveInProc(HWAVEIN hwi, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
+
+/* aa452458 waveOutProc: print `void CALLBACK waveOutProc(HWAVEOUT hwo,UINT uMsg,DWORD dwInstance,DWORD dwParam1,DWORD dwParam2);`
+ * (Windows CE 2.0 and later.; Link Library: Coredll.lib) */
+void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
+
 #endif /* AKARI_MMSYSTEM_H */

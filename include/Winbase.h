@@ -2898,4 +2898,17 @@ AKARI_CE_IMPORT BOOL VirtualProtectEx(HANDLE hProcess, LPVOID lpAddress, DWORD d
 AKARI_CE_IMPORT DWORD VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress, PMEMORY_BASIC_INFORMATION lpBuffer, DWORD dwLength) AKARI_CE_NAME(VirtualQueryEx);
 #endif /* _WIN32_WCE >= 0x0600 */
 
+
+/* M132: documented app-layer names this tree did not declare (page-cited). */
+
+/* ms885202 DllMain: print `BOOL WINAPI DllMain(HANDLEhinstDLL, DWORDdwReason,
+ * LPVOIDlpvReserved);` (Windows CE 1.0 and later.; Link Library:
+ * Coredll.lib).  NOT DECLARED, deliberately.  DllMain is the entry point the
+ * DLL itself implements, so declaring it __declspec(dllimport) makes every
+ * DLL built against this SDK fail: tests/e2e/e2e_module.c defines its own
+ * DllMain and clang rejects the redeclaration with
+ * -Winconsistent-dllimport.  The page's Link Library row names where the
+ * loader resolves the symbol, which is not the same as the declaration this
+ * header owes a consumer (M132). */
+
 #endif /* AKARI_WINBASE_H */
