@@ -2229,4 +2229,20 @@ AKARI_CE_IMPORT DWORD WSAWaitForMultipleEvents(DWORD cEvents,
 /* aa450942 sockaddr (Header: Winsock2.h.) */
 /* aa450946 sockaddr_in (Header: Winsock2.h.) */
 /* aa450970 timeval (Header: Winsock2.h.) */
+
+/* aa450950 "SOCKADDR_IRDA" (Winsock2.h; Windows CE .NET 4.0 and later):
+ * the page prints
+ *   typedef struct _SOCKADDR_IRDA{u_short irdaAddressFamily;
+ *     u_char irdaDeviceID[4]; char irdaServiceName[25];} SOCKADDR_IRDA,
+ *     *PSOCKADDR_IRDA, FAR* LPSOCKADDR_IRDA;
+ * (the archive glues the member types to their names; split here).
+ * Recovered by the M133 coverage audit. */
+#if _WIN32_WCE >= 0x0400   /* aa450950: Windows CE .NET 4.0 and later */
+typedef struct _SOCKADDR_IRDA {
+    u_short irdaAddressFamily;
+    u_char  irdaDeviceID[4];
+    char    irdaServiceName[25];
+} SOCKADDR_IRDA, *PSOCKADDR_IRDA, FAR *LPSOCKADDR_IRDA;
+#endif /* _WIN32_WCE >= 0x0400 */
+
 #endif  /* _WINSOCK2_H */

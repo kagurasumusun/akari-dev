@@ -2911,4 +2911,15 @@ AKARI_CE_IMPORT DWORD VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress, PMEMORY
  * loader resolves the symbol, which is not the same as the declaration this
  * header owes a consumer (M132). */
 
+
+/* M133: Notifications API the harvested corpus did not contain (page-cited). */
+
+/* aa448147 StopDeviceNotifications: print `BOOL StopDeviceNotifications(HANDLE h);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL StopDeviceNotifications(HANDLE h) AKARI_CE_NAME(StopDeviceNotifications);
+
+/* ms919831 RequestDeviceNotifications: print `HANDLE RequestDeviceNotifications(const GUID* devclass,HANDLE hMsgQ,BOOL fAll);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coredll.lib) */
+AKARI_CE_IMPORT HANDLE RequestDeviceNotifications(const GUID *devclass, HANDLE hMsgQ, BOOL fAll) AKARI_CE_NAME(RequestDeviceNotifications);
+
 #endif /* AKARI_WINBASE_H */

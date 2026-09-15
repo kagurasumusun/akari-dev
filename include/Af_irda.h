@@ -118,4 +118,19 @@ extern "C" {
 }
 #endif
 
+
+/* aa450461 "IRDA_DEVICE_INFO" (af_irda.h; Windows CE 1.0 and later): the
+ * page prints
+ *   typedef struct IRDA_DEVICE_INFO {u_char irdaDeviceID[4];
+ *     char irdaDeviceName[22]; u_char Reserved[2];} _IRDA_DEVICE_INFO;
+ * Shipped exactly as printed: the tag is IRDA_DEVICE_INFO and the typedef
+ * name the page gives is _IRDA_DEVICE_INFO.  Recovered by the M133
+ * table-of-contents coverage audit -- this page was never in the harvested
+ * corpus, so no earlier audit could see the gap. */
+typedef struct IRDA_DEVICE_INFO {
+    u_char irdaDeviceID[4];
+    char   irdaDeviceName[22];
+    u_char Reserved[2];
+} _IRDA_DEVICE_INFO;
+
 #endif /* AKARI_AF_IRDA_H */

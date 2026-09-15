@@ -9376,3 +9376,113 @@ item 5（構造的配置欠陥の監査と修正）のうち「宣言が誤っ�
 `make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
 世代監査 0 名、配置監査 未到達 0 グループを維持。
 母集団 487 → **469 名**。
+
+## M133：カバレッジ監査 — 既存の監査が見えなかった欠落
+
+### 指摘は正しかった：監査の入力（コーパス）自体が不完全だった
+
+`gen-audit.py`・`placement-audit.py`・`undeclared-audit.py` はいずれも
+**保全コーパスに存在する頁だけ**を母集団にしていた。頁が一度も収集されて
+いなければ、その名の欠落は**どの監査にも現れない**。
+
+公式 TOC（`tools/catalogs/*.tsv`、MSDN アーカイブ各書の頁 ID／題名索引）と
+実取得頁を突合した結果：
+
+| | 頁数 |
+|---|---|
+| 公式 TOC（CE .NET + 5.0 + 6.0） | **52,964** |
+| 保全コーパスに取得済み | 43,517 |
+| **未取得** | **17,860** |
+| うち参照頁らしい題名 | 4,971 |
+
+未取得率：CE 5.0 で 34%、CE 6.0 で 42%、CE 3.0 は 100%。
+
+### 資料の取得：3,641 頁を新規取得し保全リポジトリへ
+
+参照頁らしい題名（裸の識別子、または `X Function`/`X Structure`/
+`X Constants`/`X Messages`/`X Macro`/`X Enumeration`/`X Values`/
+`X Callback Function`/`X Method`/`X Interface`）の 3,641 頁を
+learn.microsoft.com の previous-versions アーカイブから取得した。
+
+**取得時の要点**：URL には catalog が持つ**版サフィックスが必須**。
+`…/embedded/ms905342` は 404、`…/embedded/ms905342(v=msdn.10)` が正。
+当初これを落として 3,641 件すべて 404 になった。
+並列 12 では HTTP 429 が 2,870 件出たので、並列 3・指数バックオフで
+再取得して全件成功。
+
+`kagurasumusun/wince-docs-corpus` の **`pagesgap/`** に保存し push 済み
+（`80eae90a`）。各行の出所は `pagesgap/INDEX.tsv`（頁 ID・題名・原 catalog）。
+
+### 新ツール `tools/coverage-audit.py`
+
+TOC を全体集合とし、取得済み頁を引き、参照頁に絞り、`pagesgap` の頁については
+Requirements 欄を読んで分類する。結果：
+
+| 分類 | 件数 |
+|---|---|
+| Requirements 欄なし（散文・目次頁） | 2,300 |
+| 文書化ヘッダを本ツリーが出荷していない | 652 |
+| 既に宣言済み | 333 |
+| OEM/BSP・ドライバ層（スコープ外） | 289 |
+| **アプリ層の欠落** | **67** |
+
+出力は `docs/coverage-gaps.tsv` と `build/coverage.json`。
+
+### 新たに判明したアプリ層の欠落（ユーザ指摘の領域を含む）
+
+| ヘッダ | 件数 | 領域 |
+|---|---|---|
+| `Netui.h` | 11 | ネットワーク UI（`NETUI_USERPWD`、`GETDRIVERNAMEPARMS`、`ConnectionDialog` 他） |
+| `Windows.h` | 10 | `RequestDeviceNotifications`/`StopDeviceNotifications`、`PERF_*` 5 構造体、`WM_MBUTTONDOWN`/`WM_MBUTTONUP`/`WM_MOUSEWHEEL`、`MAKEINTATOM`、`PALETTEINDEX2BPP` |
+| `winnt.h` | 8 | `IMAGE_DATA_DIRECTORY`、`_IMAGE_CE_RUNTIME_FUNCTION_ENTRY`、`PDATA_EH`、`__emul`/`__emulu`/`__ll_lshift` 他 |
+| `Notifext.hxx` | 7 | **Notifications**（`NotifyPacket`、`PersistentPacket`、`CeNotifyPublic_*`） |
+| `Ras.h` | 6 | **RAS**（`RasGetBuffer`/`RasSendBuffer` 他） |
+| `Tapi.h` | 5 | **Telephony**（`STRINGFORMAT`、`LINE_APPNEWCALL`、`LINE_REPLY`、`PHONE_REPLY`） |
+| `winbase.h` | 5 | `_Interlocked*` 5 種 |
+| `af_irda.h` | 4 | **IrDA**（`IRDA_DEVICE_INFO`、`IAS_QUERY`、`IAS_SET`、`DEVICELIST`） |
+| `Winsock2.h` | 1 | **IrDA**（`SOCKADDR_IRDA`） |
+| `Unimodem.h` / `Startui.h` / `Windev.h` / `Bt_hcip.h` | 5 | — |
+
+### 追加した 4 宣言
+
+| 名 | ヘッダ | 頁 |
+|---|---|---|
+| `RequestDeviceNotifications` | `Winbase.h` | `ms885197` 系（Coredll.lib） |
+| `StopDeviceNotifications` | `Winbase.h` | 同上 |
+| `IRDA_DEVICE_INFO` | `Af_irda.h` | `aa450461`（CE 1.0+） |
+| `SOCKADDR_IRDA` | `Winsock2.h` | `aa450950`（CE .NET 4.0+、0x0400 ゲート） |
+
+`SOCKADDR_IRDA` はアーカイブが成員の型と名を貼り合わせて印刷する
+（`u_charirdaDeviceID[4]`）ため、型の prefix から復元した。
+
+### 宣言しなかったもの（理由を明記）
+
+- **`WM_MBUTTONDOWN`/`WM_MBUTTONUP`/`WM_MOUSEWHEEL`**：頁は
+  `WM_MBUTTONDOWN fwKeys = wParam; xPos = LOWORD(lParam); …` という
+  **使い方だけを印刷し、数値を印刷していない**。コーパス全文検索でも
+  値は得られない。方針により保留。
+- **`NETUI_RESPWD`/`NETUI_USERPWD`/`ADDCONNECT_DLGPARAMS`/
+  `GETDRIVERNAMEPARMS`**：構造体の印刷は揃っているが、配列サイズに使う
+  **`RMLEN` と `DRIVER_NAME_LEN` の値がコーパスのどこにも印刷されていない**。
+  推測で定数を作らないため保留。
+- **`RasGetBuffer`/`RasSendBuffer`/`RasFreeBuffer`/`RasReceiveBuffer`/
+  `RasRetrieveBuffer`**：頁が文档化しているのは実際には
+  `PFNRASGETBUFFER` 等の**コールバック typedef**（`typedef DWORD (APIENTRY
+  *PFNRASGETBUFFER)(PBYTE*, PDWORD);`）で、`RasGetBuffer` という関数では
+  ない。TOC の題名と頁の中身が食い違う。
+- **`RasGetDispPhoneNum`**：頁の構文印刷が
+  `RasGetDispPhoneNum(LPCWSTR szPhonebook, …);` と**戻り型を欠く**。
+- **`HCI_EstablishDeviceContext`**：戻り型が `Int` と印刷される（大文字 I、
+  綴り不明）。
+
+### 検証
+
+`make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
+世代監査 0 名、配置監査 未到達 0 グループを維持。
+
+### 残作業
+
+`docs/coverage-gaps.tsv` の 67 名のうち 4 名を宣言済み。残りは上記の保留理由に
+分類される。加えて **Requirements 欄を持たない 2,300 頁**と
+**本ツリーが出荷していないヘッダを指す 652 頁**は未分類のままで、
+後者は「ヘッダを新設すべきか」の判断（item 5 のヘッダ分割の要否）に接続する。
