@@ -17,6 +17,14 @@
 
 #include <Windows.h>
 
+/* --- Handle types no CE page typedefs. ------------------------------
+ * HCESVC: 33 corpus pages mention it and none prints a typedef, but
+ * aa513819 "CeSvcClose" prints `HRESULT CeSvcClose( HCESVC hSvc);`
+ * (Header: Ceutil.h, Link Library: Coredll.lib, Windows CE 3.0 and
+ * later), paired with the CeSvcOpen page that fills it.  See Windef.h:236
+ * for the in-tree precedent for a handle no page typedefs. */
+typedef HANDLE HCESVC;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -76,5 +84,76 @@ AKARI_CE_IMPORT HRESULT CeSvcRemove(LPTSTR pszSvcName, LPTSTR pszSvcClass, DWORD
 #ifdef __cplusplus
 }
 #endif
+
+
+/* ee483497 CeSvcGetDword: print `HRESULT CeSvcGetDword(
+HCESVC hSvc,
+LPCTSTR pszValName,
+LPDWORD pdwVal
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcGetDword(HCESVC hSvc, LPCTSTR pszValName, LPDWORD pdwVal) AKARI_CE_NAME(CeSvcGetDword);
+
+/* ee483915 CeSvcGetString: print `HRESULT CeSvcGetString(
+HCESVC hSvc,
+LPCTSTR pszValName,
+LPTSTR pszVal,
+DWORD cbVal
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcGetString(HCESVC hSvc, LPCTSTR pszValName, LPTSTR pszVal, DWORD cbVal) AKARI_CE_NAME(CeSvcGetString);
+
+/* ee484174 CeSvcSetDword: print `HRESULT CeSvcSetDword(
+HCESVC hSvc,
+LPCTSTR pszValName,
+DWORD dwVal
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcSetDword(HCESVC hSvc, LPCTSTR pszValName, DWORD dwVal) AKARI_CE_NAME(CeSvcSetDword);
+
+/* ee484373 CeSvcDeleteVal: print `HRESULT CeSvcDeleteVal(
+HCESVC hSvc,
+LPCTSTR pszValName
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcDeleteVal(HCESVC hSvc, LPCTSTR pszValName) AKARI_CE_NAME(CeSvcDeleteVal);
+
+/* ee484759 CeSvcClose: print `HRESULT CeSvcClose(
+HCESVC hSvc
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcClose(HCESVC hSvc) AKARI_CE_NAME(CeSvcClose);
+
+/* ee484787 CeSvcDelete: print `HRESULT CeSvcDelete(
+HCESVC hSvc
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcDelete(HCESVC hSvc) AKARI_CE_NAME(CeSvcDelete);
+
+/* ee484957 CeSvcGetBinary: print `HRESULT CeSvcGetBinary(
+HCESVC hSvc,
+LPCTSTR pszValName,
+LPBYTE pszVal,
+LPDWORD pcbVal
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcGetBinary(HCESVC hSvc, LPCTSTR pszValName, LPBYTE pszVal, LPDWORD pcbVal) AKARI_CE_NAME(CeSvcGetBinary);
+
+/* ee486216 CeSvcSetString: print `HRESULT CeSvcSetString(
+HCESVC hSvc,
+LPCTSTR pszValName,
+LPCTSTR pszVal
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcSetString(HCESVC hSvc, LPCTSTR pszValName, LPCTSTR pszVal) AKARI_CE_NAME(CeSvcSetString);
+
+/* ee486614 CeSvcSetBinary: print `HRESULT CeSvcSetBinary(
+HCESVC hSvc,
+LPCTSTR pszValName,
+LPBYTE pszVal,
+DWORD cbVal
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcSetBinary(HCESVC hSvc, LPCTSTR pszValName, LPBYTE pszVal, DWORD cbVal) AKARI_CE_NAME(CeSvcSetBinary);
 
 #endif /* AKARI_CEUTIL_H */

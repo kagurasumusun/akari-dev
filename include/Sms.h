@@ -29,6 +29,18 @@
 
 #include "Winbase.h"   /* SYSTEMTIME */
 
+/* --- Handle types no CE page typedefs. ------------------------------
+ * SMS_HANDLE: 6 corpus pages mention it and none prints a typedef, but
+ * ee498029 "SmsOpen" prints
+ *   `HRESULT SmsOpen ( const LPCTSTR ptsMessageProtocol,
+ *      const DWORD dwMessageModes, const SMS_HANDLE* psmshHandle,
+ *      const HANDLE* phMessageAvailableEvent);`
+ * and ee497862 "SmsClose" prints `HRESULT SmsClose ( const SMS_HANDLE
+ * smshHandle );` (both Header: sms.h, Link Library: sms.lib, Windows
+ * Embedded CE 6.0).  A pointer the open call fills and the close call
+ * consumes is a handle; see Windef.h:236 for the in-tree precedent. */
+typedef HANDLE SMS_HANDLE;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -190,6 +202,21 @@ const LPCTSTR tszProtocolName
 );`
  * (Windows Embedded CE 6.0 and later; Link Library: sms.lib) */
 AKARI_CE_IMPORT HRESULT SmsClearMessageNotification(const LPCTSTR tszProtocolName) AKARI_CE_NAME(SmsClearMessageNotification);
+
+
+/* ee497862 SmsClose: print `HRESULT SmsClose (
+const SMS_HANDLE smshHandle
+);`
+ * (generation not stated; Link Library: sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsClose(const SMS_HANDLE smshHandle) AKARI_CE_NAME(SmsClose);
+
+/* ee498029 SmsOpen: print `HRESULT SmsOpen (
+const LPCTSTR ptsMessageProtocol,
+const DWORD dwMessageModes,
+const SMS_HANDLE* psmshHandle,
+const HANDLE* phMessageAvailableEvent);`
+ * (generation not stated; Link Library: sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsOpen(const LPCTSTR ptsMessageProtocol, const DWORD dwMessageModes, const SMS_HANDLE *psmshHandle, const HANDLE *phMessageAvailableEvent) AKARI_CE_NAME(SmsOpen);
 
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_SMS_H */

@@ -27,6 +27,18 @@
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, GUID */
 
+/* --- Handle types no CE page typedefs. ------------------------------
+ * HSIM: 24 corpus pages mention it and none prints a typedef, but
+ * ee498206 "SimDeinitialize" prints
+ *   `HRESULT SimDeinitialize ( HSIM hSim );`
+ * (Header: simmgr.h, Link Library: cellcore.lib, Windows Embedded CE 6.0)
+ * and the SIM API opens it in SimInitialize, so it is a handle closed by
+ * the documented deinitializer -- the same evidence shape that decides
+ * HINTERNET (Wininet.h) and the in-tree precedent for it, Windef.h:236
+ * `typedef HANDLE HRSRC;`.  Its size is not published; a wrong one would
+ * fix a wrong ABI, so HANDLE is the only spelling the pages support. */
+typedef HANDLE HSIM;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -95,6 +107,130 @@ typedef struct simrecordinfo_tag {
     DWORD dwItemCount;
     DWORD dwSize;
 } SIMRECORDINFO, FAR *LPSIMRECORDINFO;
+
+
+/* ee496869 SimReadRecord: print `HRESULT SimReadRecord (
+HSIM hSim,
+DWORD dwAddress,
+DWORD dwRecordType,
+DWORD dwIndex,
+LPBYTE lpData,
+DWORD dwBufferSize,
+LPDWORD lpdwBytesRead
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimReadRecord(HSIM hSim, DWORD dwAddress, DWORD dwRecordType, DWORD dwIndex, LPBYTE lpData, DWORD dwBufferSize, LPDWORD lpdwBytesRead) AKARI_CE_NAME(SimReadRecord);
+
+/* ee496922 SimGetPhoneLockedState: print `HRESULT SimGetPhoneLockedState (
+HSIM hSim,
+LPDWORD lpdwLockedState
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimGetPhoneLockedState(HSIM hSim, LPDWORD lpdwLockedState) AKARI_CE_NAME(SimGetPhoneLockedState);
+
+/* ee497120 SimChangeLockingPassword: print `HRESULT SimChangeLockingPassword (
+HSIM hSim,
+DWORD dwLockingFacility,
+LPTSTR lpszOldPassword,
+LPTSTR lpszNewPassword
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimChangeLockingPassword(HSIM hSim, DWORD dwLockingFacility, LPTSTR lpszOldPassword, LPTSTR lpszNewPassword) AKARI_CE_NAME(SimChangeLockingPassword);
+
+/* ee497261 SimGetPhonebookStatus: print `HRESULT SimGetPhonebookStatus (
+HSIM hSim,
+DWORD dwLocation,
+LPDWORD lpdwUsed,
+LPDWORD lpdwTotal
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimGetPhonebookStatus(HSIM hSim, DWORD dwLocation, LPDWORD lpdwUsed, LPDWORD lpdwTotal) AKARI_CE_NAME(SimGetPhonebookStatus);
+
+/* ee497384 SimWriteRecord: print `HRESULT SimWriteRecord (
+HSIM hSim,
+DWORD dwAddress,
+DWORD dwRecordType,
+DWORD dwIndex,
+LPBYTE lpData,
+DWORD dwByteCount
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimWriteRecord(HSIM hSim, DWORD dwAddress, DWORD dwRecordType, DWORD dwIndex, LPBYTE lpData, DWORD dwByteCount) AKARI_CE_NAME(SimWriteRecord);
+
+/* ee497408 SimDeletePhonebookEntry: print `HRESULT SimDeletePhonebookEntry (
+HSIM hSim,
+DWORD dwLocation,
+DWORD dwIndex
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimDeletePhonebookEntry(HSIM hSim, DWORD dwLocation, DWORD dwIndex) AKARI_CE_NAME(SimDeletePhonebookEntry);
+
+/* ee497538 SimGetSmsStorageStatus: print `HRESULT SimGetSmsStorageStatus (
+HSIM hSim,
+DWORD dwStorage,
+LPDWORD lpdwUsed,
+LPDWORD lpdwTotal
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimGetSmsStorageStatus(HSIM hSim, DWORD dwStorage, LPDWORD lpdwUsed, LPDWORD lpdwTotal) AKARI_CE_NAME(SimGetSmsStorageStatus);
+
+/* ee497657 SimDeleteMessage: print `HRESULT SimDeleteMessage (
+HSIM hSim,
+DWORD dwStorage,
+DWORD dwIndex
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimDeleteMessage(HSIM hSim, DWORD dwStorage, DWORD dwIndex) AKARI_CE_NAME(SimDeleteMessage);
+
+/* ee497684 SimGetLockingStatus: print `HRESULT SimGetLockingStatus (
+HSIM hSim,
+DWORD dwLockingFacility,
+LPTSTR lpszPassword,
+BOOL* pfEnabled
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimGetLockingStatus(HSIM hSim, DWORD dwLockingFacility, LPTSTR lpszPassword, BOOL *pfEnabled) AKARI_CE_NAME(SimGetLockingStatus);
+
+/* ee498041 SimReadPhonebookTag: print `HRESULT SimReadPhonebookTag(
+HSIM hSim,
+DWORD dwTag,
+DWORD dwIndex,
+__out_ecount(cchNameSize) LPTSTR szName,
+DWORD cchNameSize
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimReadPhonebookTag(HSIM hSim, DWORD dwTag, DWORD dwIndex, LPTSTR szName, DWORD cchNameSize) AKARI_CE_NAME(SimReadPhonebookTag);
+
+/* ee498206 SimDeinitialize: print `HRESULT SimDeinitialize (
+HSIM hSim
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimDeinitialize(HSIM hSim) AKARI_CE_NAME(SimDeinitialize);
+
+/* ee498240 SimSetLockingStatus: print `HRESULT SimSetLockingStatus (
+HSIM hSim,
+DWORD dwLockingFacility,
+LPTSTR lpszPassword,
+BOOL fEnabled
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimSetLockingStatus(HSIM hSim, DWORD dwLockingFacility, LPTSTR lpszPassword, BOOL fEnabled) AKARI_CE_NAME(SimSetLockingStatus);
+
+/* ee498242 SimUnlockPhone: print `HRESULT SimUnlockPhone (
+HSIM hSim,
+LPTSTR lpszPassword,
+LPTSTR lpszNewPin
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimUnlockPhone(HSIM hSim, LPTSTR lpszPassword, LPTSTR lpszNewPin) AKARI_CE_NAME(SimUnlockPhone);
+
+/* ee498259 SimGetRecordInfo: print `HRESULT SimGetRecordInfo (
+HSIM hSim,
+DWORD dwAddress,
+LPSIMRECORDINFO lpSimRecordInfo
+);`
+ * (generation not stated; Link Library: cellcore.lib) */
+AKARI_CE_IMPORT HRESULT SimGetRecordInfo(HSIM hSim, DWORD dwAddress, LPSIMRECORDINFO lpSimRecordInfo) AKARI_CE_NAME(SimGetRecordInfo);
 
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_SIMMGR_H */

@@ -29,6 +29,16 @@
 
 #include "Winreg.h"   /* HKEY */
 
+/* --- Handle types no CE page typedefs. ------------------------------
+ * HREGNOTIFY: 7 corpus pages mention it and none prints a typedef, but
+ * ee488922 "RegistryCloseNotification" prints
+ *   `HRESULT WINAPI RegistryCloseNotification( HREGNOTIFY hNotify );`
+ * (Header: regext.h, Link Library: aygshell.lib, Windows Embedded CE 6.0),
+ * and the notification callbacks take it as `HREGNOTIFY hNotify`.  A value
+ * the registry hands out and the documented closer consumes is a handle;
+ * see Windef.h:236 for the in-tree precedent. */
+typedef HANDLE HREGNOTIFY;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -136,6 +146,49 @@ NOTIFICATIONCONDITION* pCondition
 );`
  * (generation not stated; Link Library: aygshell.lib) */
 AKARI_CE_IMPORT HRESULT RegistryNotifyApp(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, LPCTSTR pszName, LPCTSTR pszApp, LPCTSTR pszClass, LPCTSTR pszWindow, UINT msg, DWORD dwFlags, NOTIFICATIONCONDITION *pCondition) AKARI_CE_NAME(RegistryNotifyApp);
+
+
+/* ee488220 NOTIFYMSGQUEUEPACKET: page print
+ * typedef struct tagNOTIFYMSGQUEUEPACKET { HREGNOTIFY hNotify; DWORD dwUserData; UINT cbData; BYTE rgData[1]; } NOTIFYMSGQUEUEPACKET;
+ * (generation not stated) */
+typedef struct tagNOTIFYMSGQUEUEPACKET {
+    HREGNOTIFY hNotify;
+    DWORD dwUserData;
+    UINT cbData;
+    BYTE rgData[1];
+} NOTIFYMSGQUEUEPACKET;
+
+
+/* ee488231 RegistryNotifyWindow: print `HRESULT WINAPI RegistryNotifyWindow(
+HKEY hKey,
+LPCTSTR pszSubKey,
+LPCTSTR pszValueName,
+HWND hWnd,
+UINT msg,
+DWORD dwUserData,
+NOTIFICATIONCONDITION* pCondition,
+HREGNOTIFY* phNotify
+);`
+ * (generation not stated; Link Library: aygshell.lib) */
+AKARI_CE_IMPORT HRESULT RegistryNotifyWindow(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, HWND hWnd, UINT msg, DWORD dwUserData, NOTIFICATIONCONDITION *pCondition, HREGNOTIFY *phNotify) AKARI_CE_NAME(RegistryNotifyWindow);
+
+/* ee488614 RegistryNotifyMsgQueue: print `HRESULT WINAPI RegistryNotifyMsgQueue(
+HKEY hKey,
+LPCTSTR pszSubKey,
+LPCTSTR pszValueName,
+LPCTSTR pszMsgQueue,
+DWORD dwUserData,
+NOTIFICATIONCONDITION* pCondition,
+HREGNOTIFY* phNotify
+);`
+ * (generation not stated; Link Library: aygshell.lib) */
+AKARI_CE_IMPORT HRESULT RegistryNotifyMsgQueue(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, LPCTSTR pszMsgQueue, DWORD dwUserData, NOTIFICATIONCONDITION *pCondition, HREGNOTIFY *phNotify) AKARI_CE_NAME(RegistryNotifyMsgQueue);
+
+/* ee488922 RegistryCloseNotification: print `HRESULT WINAPI RegistryCloseNotification(
+HREGNOTIFY hNotify
+);`
+ * (generation not stated; Link Library: aygshell.lib) */
+AKARI_CE_IMPORT HRESULT RegistryCloseNotification(HREGNOTIFY hNotify) AKARI_CE_NAME(RegistryCloseNotification);
 
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_REGEXT_H */
