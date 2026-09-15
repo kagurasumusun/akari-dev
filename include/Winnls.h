@@ -341,4 +341,44 @@ AKARI_CE_IMPORT BOOL EnumSystemCodePagesW(CODEPAGE_ENUMPROC lpCodePageEnumProc,
  * GetStringTypeEx precedent. */
 #define GetStringType GetStringTypeW
 
+
+/* --- M120: the winnls.h app-layer surface the corpus had as
+ * undeclared.  The archive prints these prototypes with the space
+ * between each parameter type and its name lost -- the page source
+ * carries `intCompareString(LCIDLocale, DWORDdwCmpFlags, ...)` as one
+ * text node, so no markup recovers it.  The verbatim print is kept in
+ * each comment; the declaration below restores the spacing by taking
+ * each parameter name from the page's own Parameters section (which
+ * prints them intact) and the type as the remaining prefix, which must
+ * be a type this tree already defines.  Anything that did not resolve
+ * that way is recorded rather than guessed.  Every page here says
+ * "Windows CE 1.0" or "Windows CE .NET 4.0 and later", both at or below
+ * this tree's lowest target, so none needs a generation guard.
+ * Link library per the pages: Coreloc.lib. --- */
+
+/* ms904713 CompareString: print `intCompareString(LCIDLocale, DWORDdwCmpFlags, LPCTSTRlpString1, intcchCount1, LPCTSTRlpString2, intcchCount2 );` */
+AKARI_CE_IMPORT int CompareString(LCID Locale, DWORD dwCmpFlags, LPCTSTR lpString1, int cchCount1, LPCTSTR lpString2, int cchCount2) AKARI_CE_NAME(CompareString);
+
+/* ms905243 GetLocaleInfo: print `intGetLocaleInfo(LCIDLocale, LCTYPELCType, LPTSTRlpLCData, intcchData );` */
+AKARI_CE_IMPORT int GetLocaleInfo(LCID Locale, LCTYPE LCType, LPTSTR lpLCData, int cchData) AKARI_CE_NAME(GetLocaleInfo);
+
+/* ms905283 GetStringTypeEx: print `BOOL GetStringTypeEx(LCIDLocale, DWORDdwInfoType, LPCTSTRlpSrcStr, intcchSrc, LPWORDlpCharType );` */
+AKARI_CE_IMPORT BOOL GetStringTypeEx(LCID Locale, DWORD dwInfoType, LPCTSTR lpSrcStr, int cchSrc, LPWORD lpCharType) AKARI_CE_NAME(GetStringTypeEx);
+
+/* ms906221 LCMapString: print `int LCMapString(LCIDLocale, DWORDdwMapFlags, LPCTSTRlpSrcStr, intcchSrc, LPTSTRlpDestStr, intcchDest );` */
+AKARI_CE_IMPORT int LCMapString(LCID Locale, DWORD dwMapFlags, LPCTSTR lpSrcStr, int cchSrc, LPTSTR lpDestStr, int cchDest) AKARI_CE_NAME(LCMapString);
+
+
+/* ms905229 GetCurrencyFormat: print `intGetCurrencyFormat(LCIDLocale, DWORDdwFlags, LPCTSTRlpValue, constCURRENCYFMT* lpFormat, LPTSTRlpCurrencyStr, intcchCurrency );` (spacing restored as above) */
+AKARI_CE_IMPORT int GetCurrencyFormat(LCID Locale, DWORD dwFlags, LPCTSTR lpValue, const CURRENCYFMT *lpFormat, LPTSTR lpCurrencyStr, int cchCurrency) AKARI_CE_NAME(GetCurrencyFormat);
+
+/* ms905235 GetDateFormat: print `intGetDateFormat(LCIDLocale, DWORDdwFlags, CONSTSYSTEMTIME* lpDate, LPCTSTRlpFormat, LPTSTRlpDateStr, intcchDate );` (spacing restored as above) */
+AKARI_CE_IMPORT int GetDateFormat(LCID Locale, DWORD dwFlags, const SYSTEMTIME *lpDate, LPCTSTR lpFormat, LPTSTR lpDateStr, int cchDate) AKARI_CE_NAME(GetDateFormat);
+
+/* ms905250 GetNumberFormat: print `intGetNumberFormat(LCIDLocale, DWORDdwFlags, LPCTSTRlpValue, constNUMBERFMT* lpFormat, LPTSTRlpNumberStr, intcchNumber );` (spacing restored as above) */
+AKARI_CE_IMPORT int GetNumberFormat(LCID Locale, DWORD dwFlags, LPCTSTR lpValue, const NUMBERFMT *lpFormat, LPTSTR lpNumberStr, int cchNumber) AKARI_CE_NAME(GetNumberFormat);
+
+/* ms905310 GetTimeFormat: print `intGetTimeFormat(LCIDLocale, DWORDdwFlags, constSYSTEMTIME* lpTime, LPCTSTRlpFormat, LPTSTRlpTimeStr, intcchTime );` (spacing restored as above) */
+AKARI_CE_IMPORT int GetTimeFormat(LCID Locale, DWORD dwFlags, const SYSTEMTIME *lpTime, LPCTSTR lpFormat, LPTSTR lpTimeStr, int cchTime) AKARI_CE_NAME(GetTimeFormat);
+
 #endif /* AKARI_WINNLS_H */

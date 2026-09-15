@@ -8580,3 +8580,52 @@ Gates: `make e2e WINCECLANG=<artifact clang>` EXIT=0, all 6 targets
 `docs/app-surface.md` reproduced `-m armce` and now says
 `-m arm-pc-wince5.0`; the `-m armce` mentions left in older
 `docs/inventory.md` entries are period records of what was run then.
+
+### M120 -- winnls.h: eight of the 357 declared from the official pages
+
+The corpus could not support declaring the 357 undeclared names: of the
+357, only 10 had a `sig` field that parsed at all, and inspecting those
+10 showed none usable -- `CharLowerBuff`'s is the page's *example call*
+(`CharLowerBuff("Acme of Operating Systems", 10)`), `DeleteUrlCacheGroup`'s
+has the parameter glued to its type (`GROUPIDGroupId`), and the eight
+`Header_*` are `SNDMSG` macros, which are not exports.  322 have a page
+but an incomplete `sig`; 25 have no page in the corpus at all.  So the
+pages have to be read again.
+
+Measured why: the archive page itself carries the prototype as a single
+text node with the space between each type and its name lost --
+`ms904713`'s source is literally
+
+    <pre><code>intCompareString(LCIDLocale, DWORDdwCmpFlags, LPCTSTRlpString1, ...
+
+with no markup between the tokens, so no parser recovers the spacing.
+The page's **Parameters** section, however, prints each parameter name
+intact (`Locale`, `dwCmpFlags`, `lpString1`, `cchCount1`, `lpString2`,
+`cchCount2`).  Taking the name from there and the type as the remaining
+prefix -- which must be a type this tree already defines -- restores the
+prototype deterministically.  The verbatim print is kept in each
+comment, the way `Ceutil.h` already records prints.
+
+Declared in `include/Winnls.h`, all from `Coreloc.lib` pages, all
+documented at CE 1.0 or CE .NET 4.0 and therefore needing no generation
+guard (both are at or below this tree's lowest target, per M117):
+
+    int  CompareString(LCID, DWORD, LPCTSTR, int, LPCTSTR, int)
+    int  GetLocaleInfo(LCID, LCTYPE, LPTSTR, int)
+    BOOL GetStringTypeEx(LCID, DWORD, LPCTSTR, int, LPWORD)
+    int  LCMapString(LCID, DWORD, LPCTSTR, int, LPTSTR, int)
+    int  GetCurrencyFormat(LCID, DWORD, LPCTSTR, const CURRENCYFMT *, LPTSTR, int)
+    int  GetDateFormat(LCID, DWORD, const SYSTEMTIME *, LPCTSTR, LPTSTR, int)
+    int  GetNumberFormat(LCID, DWORD, LPCTSTR, const NUMBERFMT *, LPTSTR, int)
+    int  GetTimeFormat(LCID, DWORD, const SYSTEMTIME *, LPCTSTR, LPTSTR, int)
+
+Twelve of the group stay undeclared, and the reason is the extractor
+rather than the corpus: those pages (`FoldString`, `EnumCalendarInfo`,
+`EnumDateFormats`, `EnumSystemCodePages`, `EnumSystemLocales`,
+`EnumTimeFormats`, `SetLocaleInfo` and the five `*Proc` callbacks)
+render their Parameters section in a form this pass's pattern does not
+match, so no parameter name was recovered and nothing was guessed.
+`GetStringType` is left too -- its page is the `_wcesdk_win32_GetStringTypeW`
+one and its library row names two libraries (`Coreloc.lib, Locusa.lib`).
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).
