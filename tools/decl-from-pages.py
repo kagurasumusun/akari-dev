@@ -321,6 +321,17 @@ def declared_in_tree(include_dirs=("include", "include/oak")):
                 for m in re.finditer(r"\(\s*(?:APIENTRY|WINAPI|CALLBACK|STDMETHODCALLTYPE)?"
                                      r"\s*\*\s*([A-Za-z_]\w*)\s*\)\s*\(", t):
                     names.add(m.group(1))
+                # M136: plain prototypes.  Not every declaration in this tree
+                # carries AKARI_CE_NAME -- include/Notifext.hxx:55 is a bare
+                # `int CeNotifyPublic_Initialize(HINSTANCE hInst, HWND hwndUI);`
+                # from an earlier milestone, and because this index only read
+                # AKARI_CE_NAME(...) the gap pass added a second
+                # CeNotifyPublic_Initialize with the CE 6.0 page's `void`
+                # parameter list, which make check reported as conflicting
+                # types.  The identifier immediately before `(` is the name.
+                for m in re.finditer(r"^\s*(?:AKARI_CE_IMPORT\s+)?"
+                                     r"(?:[A-Za-z_]\w*\s+)+?([A-Za-z_]\w*)\s*\(", t, re.M):
+                    names.add(m.group(1))
                 for n in names:
                     _DECLARED.setdefault(n, rel)
     return _DECLARED
