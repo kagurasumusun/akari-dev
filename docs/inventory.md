@@ -9662,3 +9662,50 @@ Parameters 欄に 5 項目しか無く、このため `StringCch…Ex`/`…N` �
 保留 163 名の内訳は `docs/coverage-blocked.tsv` に
 （link library を印刷しない型/定数頁 121、型または印刷の欠陥 33、
 明示的保留 9）。
+
+### M134 追記 — 文書化されているのに def が無いライブラリ（「各種 def」）
+
+`docs/page-requirements.tsv`（修正後の解析器で再生成）の Link Library 欄を
+`def/*-doc.def` と突き合わせた結果：
+
+    文書化されている .lib トークン 170 種 / def ファイル 109 / def 無し 66 種
+
+うち **アプリ層で、かつ本ツリーが宣言を持つ 8 ライブラリ**の def を新設した
+（123 輸出）。いずれも「宣言はしたが import library が無い」状態で、
+リンクできなかった名前である：
+
+| def | 輸出 | 本ツリー宣言済み | 文書化ヘッダ |
+|---|---|---|---|
+| `netui-doc.def` | 17 | 9 | `netui.h` |
+| `sapilib-doc.def` | 49 | 47 | `sapi.h`, `sapiddk.h` |
+| `pimstore-doc.def` | 24 | 14 | `pimstore.h` |
+| `splusa-doc.def` | 14 | 14 | `splapi.h` |
+| `mstsax-doc.def` | 9 | 9 | `discodlg.h` |
+| `dsound-doc.def` | 5 | 3 | `dsound.h` |
+| `schedlog-doc.def` | 3 | 3 | `schedlog.h` |
+| `ufnclientlibbase-doc.def` | 2 | 1 | `usbfntypes.h` |
+
+除外したもの：
+
+- **OEM/カーネル/ドライバ系**（`nk.lib` `nkstub.lib` `nkmain.lib` `hal.lib`
+  `kitl.lib` `blcommon.lib` `ndislib.lib` `cursor.lib` `mcursor.lib`
+  `iconcurs.lib` `coremain.lib` `device.lib` `oemmain*.lib` `nkprof.lib`
+  `ddvdids.lib` `ril.lib` 他 25 種）— OEM/BSP 層は対象外という制約による。
+- **GUID のみのライブラリ**（`uuid.lib` `dmoguid.lib` `d3dmguid.lib`
+  `voipguid.lib`）— 輸出されるのは IID/CLSID という**データ**であり、
+  名前だけの `EXPORTS` 行は関数輸入を主張することになるため作らない。
+- **`Sphelper.h` のヘッダ内 inline ヘルパ** — 頁の
+  `Link Library: Sapilib.lib` は「ヘルパが呼び込むライブラリ」を指し、
+  その名前のシンボルを意味しない。`sapilib-doc.def` からは除外した
+  （73 → 49 名）。
+
+`make check` の defcheck が 8 ファイルすべてを非空として受理し、
+プロジェクト自身の `llvm-dlltool -d … -m arm` で 8 本すべてが
+import library（1,792〜10,928 バイト）を生成することを確認した。
+
+### M134 の最終状態
+
+`make check` EXIT=0、`make e2e` EXIT=0（6 ターゲット）、
+世代監査 0 名、配置監査 64 グループ / 846 配置 / 未到達 0。
+網羅監査：ヘッダ未出荷 **1,054**、宣言済み **454**、
+アプリ層の欠落 **163**（保留理由付きで `docs/coverage-blocked.tsv`）。
