@@ -1,0 +1,24 @@
+name	pages_mentioning_it	page_printing_a_define	value	note
+RMLEN	15			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+PWLEN	20			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+DNLEN	21			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+UNLEN	28			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+NETUI_LCD_DIAL_MOD_LEN	4			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+IAS_MAX_CLASSNAME_LEN	0			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+IAS_MAX_ATTRIBNAME_LEN	0			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+IAS_MAX_OCTET_STRING_LEN	0			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+IAS_MAX_USER_STRING_LEN	0			no official page prints a #define for this name; array sizes and #define values that use it cannot be transcribed (held)
+LINE_USSD	2	ee496905(v=winembedded.60).html		value published
+LINE_REGISTERSTATE	1	ee497679(v=winembedded.60).html		value published
+LINE_RADIOPRESENCE	1	ee497323(v=winembedded.60).html		value published
+LINE_GPRSREGISTERSTATE	1	ee498289(v=winembedded.60).html		value published
+LINE_GPRSCLASS	1	ee496892(v=winembedded.60).html		value published
+LINE_USSD	2	ee496905		"extapi.h line event; the page's <pre> prints ""#define LINE_USSD dwParam1 = LINE_USSD; dwParam2; dwParam3;"" -- that is the callback-parameter documentation format, not a macro, and no numeric value is published"
+LINE_REGISTERSTATE	1	ee497679		as LINE_USSD: line-event parameter documentation, no value published
+LINE_RADIOPRESENCE	1	ee497323		as LINE_USSD
+LINE_GPRSREGISTERSTATE	1	ee498289		as LINE_USSD
+LINE_GPRSCLASS	1	ee496892		as LINE_USSD
+IAS_MAX_CLASSNAME_LEN	0			name appears only in this tree's Af_irda.h comment; no page in the corpus mentions it
+IAS_MAX_ATTRIBNAME_LEN	0			as IAS_MAX_CLASSNAME_LEN
+IAS_MAX_OCTET_STRING_LEN	0			as IAS_MAX_CLASSNAME_LEN
+IAS_MAX_USER_STRING_LEN	0			as IAS_MAX_CLASSNAME_LEN
