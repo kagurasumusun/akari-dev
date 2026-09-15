@@ -8842,3 +8842,48 @@ for its neighbours.
 
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600) and
 `make e2e WINCECLANG=<artifact clang>` EXIT=0, all 6 targets.
+
+### M125 -- Shobjidl.h's selectors gated; why M123 could not do it
+
+The 22 names `Shobjidl.h` contributes to the violation count are all
+selector constants -- `SVSI_DESELECT`..`SVSI_CHECK` (ms909891) and
+`SVGIO_BACKGROUND`..`SVGIO_FLAG_VIEWORDER` (ms909887) -- and the only
+things that consume them, `IShellView::SelectItem` and
+`IShellFolder::GetUIObjectOf`, are themselves CE 5.0 interfaces.  No
+declaration documented at or before CE 4.2 references any of them, so
+gating them costs a 4.2 build nothing.
+
+M123 tried and failed on this header, and the reason was the tool, not
+the header: it merged contiguous records into one condition and swept
+the surrounding interface declarations in with the constants, which is
+what produced `unknown type name 'IDropTarget' / 'IPersistFolder' /
+'IShellFolder' / 'IShellView'` at 0x420.  Guarding the constant block
+alone compiles at all three generations.
+
+`tools/gen-audit.py` after the change: **55 names in 11 headers**, from
+71 at M124 (235 at M122, 212 at M123).
+
+The consumer TU needed the same treatment: two `_Static_assert`s in
+`tests/host/tu_compile.c` check the `SVSI_*` and `SVGIO_*` values
+unconditionally and are now inside `#if _WIN32_WCE >= 0x0500`.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600, which
+compiles the consumer TU at every generation -- the gate that decides a
+constant guard).  `make e2e` was not re-run this round: the downloaded
+artifact toolchain is wiped between turns and was absent.
+
+### Measurement note: the 357-name list is not reproducible from the repo
+
+The corpus rows that produced the 357 are gone, and `docs/generation-map.tsv`
+cannot stand in for them: it has no `Library:` row, which is what made the
+population "documented app-layer exports" rather than "everything the pages
+name".  Reconstructing the list from the repo alone lands on a different
+population each time -- 1,277 when only functions and macros are counted
+(every `typedef` missed), 746 once typedef names are included (struct *tags*
+such as `_tagCY` and `tagMSG` counted as missing although the tree declares
+the typedef), and 132 once tags are included too, of which almost all are
+named literally `struct` or `enum` -- corpus parse artifacts where the
+return type was captured as the name.  None of those is the 357.  Declaring
+more of the 357 therefore needs the pages fetched again, and the remaining
+`wininet.h` (45), `winbase.h` (37) and `winuser.h` (29) groups are where the
+next pass should start.

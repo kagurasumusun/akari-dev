@@ -115,6 +115,14 @@ typedef ULONG SFGAOF;
 /* in docs/inventory.md M53.                                           */
 /* ------------------------------------------------------------------ */
 
+#if _WIN32_WCE >= 0x0500
+/* The SVSI_* (ms909891) and SVGIO_* (ms909887) selector constants are
+ * documented from Windows CE 5.0 and later, and the only things that
+ * consume them -- IShellView::SelectItem and IShellFolder::GetUIObjectOf
+ * -- are themselves 5.0 interfaces, so no CE 4.2 declaration loses a
+ * constant it is entitled to (docs/generation-audit.md, M125).  M123
+ * could not guard these because it merged contiguous records and swept
+ * the surrounding interface declarations into the same condition. */
 /* ms909891 (SelectItem uFlags) / desktop _SVSIF page: */
 #define SVSI_DESELECT       0x00000000
 #define SVSI_SELECT         0x00000001
@@ -136,7 +144,7 @@ typedef ULONG SFGAOF;
 #define SVGIO_CHECKED         0x00000003
 #define SVGIO_TYPE_MASK       0x0000000F
 #define SVGIO_FLAG_VIEWORDER  0x80000000
-
+#endif /* _WIN32_WCE >= 0x0500 */
 /* SVUIA_* (ms909893, UIActivate uState) -- names only:
  *   SVUIA_ACTIVATE_FOCUS, SVUIA_ACTIVATE_NOFOCUS,
  *   SVUIA_DEACTIVATE, SVUIA_IN_PLACEACTIVATE

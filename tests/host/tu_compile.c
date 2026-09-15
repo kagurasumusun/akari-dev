@@ -4686,10 +4686,12 @@ _Static_assert(SHGFI_ICON == 0x100 && SHGFI_SYSICONINDEX == 0x4000 &&
                SHGFI_SELECTED == 0x10000, "SHGFI_* (derived)");
 _Static_assert(BIF_STATUSTEXT == 0x4 && BIF_EDITBOX == 0x10 &&
                BIF_VALIDATE == 0x20, "BIF_* (derived)");
+#if _WIN32_WCE >= 0x0500   /* the SVSI and SVGIO selectors are gated from CE 5.0 (M125) */
 _Static_assert(SVSI_SELECT == 0x1 && SVSI_CHECK == 0x100,
                "SVSI_* (derived)");
 _Static_assert(SVGIO_SELECTION == 0x1 && SVGIO_TYPE_MASK == 0xF,
                "SVGIO_* (derived)");
+#endif /* _WIN32_WCE >= 0x0500 */
 _Static_assert(WM_KEYFIRST == 0x0100, "WM_KEYFIRST (derived)");
 _Static_assert(WM_CHOOSEFONT_GETLOGFONT == (WM_USER + 1),
                "WM_CHOOSEFONT_GETLOGFONT (derived formula)");
