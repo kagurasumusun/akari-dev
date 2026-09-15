@@ -8629,3 +8629,67 @@ match, so no parameter name was recovered and nothing was guessed.
 one and its library row names two libraries (`Coreloc.lib, Locusa.lib`).
 
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).
+
+### M121 -- M120 retracted as duplicates; five callbacks declared; page parser added
+
+**M120 was wrong and is reverted.**  All eight declarations it added to
+`Winnls.h` duplicated declarations that were already there under the
+`W` spelling plus a generic macro -- `3531a70:include/Winnls.h:158`
+already had
+
+    AKARI_CE_IMPORT int CompareStringW(LCID Locale, DWORD dwCmpFlags, ...)
+    #define CompareString CompareStringW
+
+and the same shape for `GetDateFormatW`, `GetLocaleInfoW` and the rest.
+They compiled only because `LPCTSTR`/`LPTSTR` are `const WCHAR *`/`WCHAR *`
+in this tree (`Windef.h:207-208`), so each duplicate was a compatible
+redeclaration of the `W` function.  `make check` passing was not evidence
+that the declarations were wanted.
+
+**The 357 figure is inflated for the same reason.**  Re-measuring the
+list against the tree as it stands, 144 of the 357 are already provided
+-- mostly as `<Name>W` plus `#define <Name> <Name>W`, which a search for
+the literal documented spelling misses.  **213 are genuinely
+undeclared.**  The list of record is now `/tmp/miss_recount.json`'s
+`truly` set, and any future pass over the 357 has to test the `W`
+spelling and the macro before calling a name missing.
+
+**`tools/decl-from-pages.py` is new.**  It exists because the corpus
+`sig` field cannot be transcribed from (measured: of the 357, 10 had a
+`sig` that parsed and none was usable) and because the archive serves the
+prototype as one text node with the space between each type and its
+parameter name lost, so no parser recovers the spacing.  The page's
+Parameters section still prints every name intact, so the tool takes the
+name from there and the type as the remaining prefix, which must be a
+type this tree already declares; anything that does not resolve that way
+is reported with the reason and never guessed.  Three parser defects
+found while building it are worth recording, because each silently lost
+declarations:
+
+  - the Parameters list renders as `<li><em>n</em><br>` on most pages and
+    `<li><p><em>n</em>` on some; matching only the latter recovered no
+    names at all for `FoldString`, the `Enum*` family and `SetLocaleInfo`;
+  - the prototype glues the return type to the function name
+    (`BOOLEnumCalendarInfo(`), so a `\b` before the name never matches;
+  - a parameter type can be `const X *` printed as `constCURRENCYFMT*`,
+    which needs the `const` and the stars split off before the type name
+    is looked up.
+
+Declared in `include/Winnls.h`: the five application-defined callbacks
+`EnumCalendarInfoProc`, `EnumCodePagesProc`, `EnumDateFormatsProc`,
+`EnumLocalesProc`, `EnumTimeFormatsProc`.  They carry no
+`AKARI_CE_IMPORT` because the application implements them.  They were
+not declared before; the tree only mentioned them in comments -- the
+`CODEPAGE_ENUMPROC` note at ms904723 and the core-nls-reference value
+records, which hold those names for want of a published *value*, a
+different axis from a prototype.
+
+Still undeclared in the group, each with the reason: `EnumCalendarInfo`,
+`EnumDateFormats`, `EnumSystemCodePages`, `EnumSystemLocales` and
+`EnumTimeFormats` take a `*_ENUMPROC` typedef this tree declares none of;
+`SetLocaleInfo`'s page prints the type of `lpLCData` as `LPWTSTR`, which
+is not a type; `GetStringType`'s page id `_wcesdk_win32_GetStringTypeW`
+does not resolve under the archive path used here (HTTP 404) and its
+library row names two libraries.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).

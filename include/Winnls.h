@@ -342,43 +342,34 @@ AKARI_CE_IMPORT BOOL EnumSystemCodePagesW(CODEPAGE_ENUMPROC lpCodePageEnumProc,
 #define GetStringType GetStringTypeW
 
 
-/* --- M120: the winnls.h app-layer surface the corpus had as
- * undeclared.  The archive prints these prototypes with the space
- * between each parameter type and its name lost -- the page source
- * carries `intCompareString(LCIDLocale, DWORDdwCmpFlags, ...)` as one
- * text node, so no markup recovers it.  The verbatim print is kept in
- * each comment; the declaration below restores the spacing by taking
- * each parameter name from the page's own Parameters section (which
- * prints them intact) and the type as the remaining prefix, which must
- * be a type this tree already defines.  Anything that did not resolve
- * that way is recorded rather than guessed.  Every page here says
- * "Windows CE 1.0" or "Windows CE .NET 4.0 and later", both at or below
- * this tree's lowest target, so none needs a generation guard.
- * Link library per the pages: Coreloc.lib. --- */
+/* M121: the five winnls.h application-defined callbacks, declared with
+ *  tools/decl-from-pages.py from their own pages.  They were not declared
+ *  before -- the tree only mentioned them in comments (the CODEPAGE_ENUMPROC
+ *  note at ms904723 and the core-nls-reference value records, which hold
+ *  those names for want of a published *value*, a different axis from a
+ *  prototype).  Being application-implemented, they carry no
+ *  AKARI_CE_IMPORT.  The five Enum* functions that take them stay
+ *  undeclared because this tree declares none of CALINFO_ENUMPROC,
+ *  DATEFMT_ENUMPROC, CODEPAGE_ENUMPROC, LOCALE_ENUMPROC or TIMEFMT_ENUMPROC. */
 
-/* ms904713 CompareString: print `intCompareString(LCIDLocale, DWORDdwCmpFlags, LPCTSTRlpString1, intcchCount1, LPCTSTRlpString2, intcchCount2 );` */
-AKARI_CE_IMPORT int CompareString(LCID Locale, DWORD dwCmpFlags, LPCTSTR lpString1, int cchCount1, LPCTSTR lpString2, int cchCount2) AKARI_CE_NAME(CompareString);
+/* ms904722 EnumCalendarInfoProc: print `BOOLCALLBACKEnumCalendarInfoProc(LPWSTRlpCalendarInfoString);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib.) */
+BOOL CALLBACK EnumCalendarInfoProc(LPWSTR lpCalendarInfoString);
 
-/* ms905243 GetLocaleInfo: print `intGetLocaleInfo(LCIDLocale, LCTYPELCType, LPTSTRlpLCData, intcchData );` */
-AKARI_CE_IMPORT int GetLocaleInfo(LCID Locale, LCTYPE LCType, LPTSTR lpLCData, int cchData) AKARI_CE_NAME(GetLocaleInfo);
+/* ms904723 EnumCodePagesProc: print `BOOLCALLBACKEnumCodePagesProc(LPTSTRlpCodePageString);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib.) */
+BOOL CALLBACK EnumCodePagesProc(LPTSTR lpCodePageString);
 
-/* ms905283 GetStringTypeEx: print `BOOL GetStringTypeEx(LCIDLocale, DWORDdwInfoType, LPCTSTRlpSrcStr, intcchSrc, LPWORDlpCharType );` */
-AKARI_CE_IMPORT BOOL GetStringTypeEx(LCID Locale, DWORD dwInfoType, LPCTSTR lpSrcStr, int cchSrc, LPWORD lpCharType) AKARI_CE_NAME(GetStringTypeEx);
+/* ms904740 EnumDateFormatsProc: print `BOOLCALLBACKEnumDateFormatsProc(LPWSTRlpDateFormatString);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib.) */
+BOOL CALLBACK EnumDateFormatsProc(LPWSTR lpDateFormatString);
 
-/* ms906221 LCMapString: print `int LCMapString(LCIDLocale, DWORDdwMapFlags, LPCTSTRlpSrcStr, intcchSrc, LPTSTRlpDestStr, intcchDest );` */
-AKARI_CE_IMPORT int LCMapString(LCID Locale, DWORD dwMapFlags, LPCTSTR lpSrcStr, int cchSrc, LPTSTR lpDestStr, int cchDest) AKARI_CE_NAME(LCMapString);
+/* ms904848 EnumLocalesProc: print `BOOLCALLBACKEnumLocalesProc(LPWSTRlpLocaleString);`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib.) */
+BOOL CALLBACK EnumLocalesProc(LPWSTR lpLocaleString);
 
-
-/* ms905229 GetCurrencyFormat: print `intGetCurrencyFormat(LCIDLocale, DWORDdwFlags, LPCTSTRlpValue, constCURRENCYFMT* lpFormat, LPTSTRlpCurrencyStr, intcchCurrency );` (spacing restored as above) */
-AKARI_CE_IMPORT int GetCurrencyFormat(LCID Locale, DWORD dwFlags, LPCTSTR lpValue, const CURRENCYFMT *lpFormat, LPTSTR lpCurrencyStr, int cchCurrency) AKARI_CE_NAME(GetCurrencyFormat);
-
-/* ms905235 GetDateFormat: print `intGetDateFormat(LCIDLocale, DWORDdwFlags, CONSTSYSTEMTIME* lpDate, LPCTSTRlpFormat, LPTSTRlpDateStr, intcchDate );` (spacing restored as above) */
-AKARI_CE_IMPORT int GetDateFormat(LCID Locale, DWORD dwFlags, const SYSTEMTIME *lpDate, LPCTSTR lpFormat, LPTSTR lpDateStr, int cchDate) AKARI_CE_NAME(GetDateFormat);
-
-/* ms905250 GetNumberFormat: print `intGetNumberFormat(LCIDLocale, DWORDdwFlags, LPCTSTRlpValue, constNUMBERFMT* lpFormat, LPTSTRlpNumberStr, intcchNumber );` (spacing restored as above) */
-AKARI_CE_IMPORT int GetNumberFormat(LCID Locale, DWORD dwFlags, LPCTSTR lpValue, const NUMBERFMT *lpFormat, LPTSTR lpNumberStr, int cchNumber) AKARI_CE_NAME(GetNumberFormat);
-
-/* ms905310 GetTimeFormat: print `intGetTimeFormat(LCIDLocale, DWORDdwFlags, constSYSTEMTIME* lpTime, LPCTSTRlpFormat, LPTSTRlpTimeStr, intcchTime );` (spacing restored as above) */
-AKARI_CE_IMPORT int GetTimeFormat(LCID Locale, DWORD dwFlags, const SYSTEMTIME *lpTime, LPCTSTR lpFormat, LPTSTR lpTimeStr, int cchTime) AKARI_CE_NAME(GetTimeFormat);
+/* ms905083 EnumTimeFormatsProc: print `BOOLCALLBACKEnumTimeFormatsProc(LPWSTRlpTimeFormatString );`
+ * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib.) */
+BOOL CALLBACK EnumTimeFormatsProc(LPWSTR lpTimeFormatString);
 
 #endif /* AKARI_WINNLS_H */
