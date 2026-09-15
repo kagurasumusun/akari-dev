@@ -266,6 +266,54 @@ def known_types(include_dirs):
     return found
 
 
+_DECLARED = None
+
+
+def declared_in_tree(include_dirs=("include", "include/oak")):
+    """name -> the header that already declares it, so a rerun is idempotent.
+
+    Running the transcribers twice over the same job list writes every
+    declaration once per pass: the second run of the M135 gap pass added a
+    second IMAGE_DATA_DIRECTORY to Winnt.h and a second COMPOSITIONSTRING to
+    Imm.h, and `make check` reported both as redefinitions.  A pass has to
+    subtract what the tree already declares, not only what it emitted in
+    this run.
+    """
+    global _DECLARED
+    if _DECLARED is None:
+        _DECLARED = {}
+        for d in include_dirs:
+            if not os.path.isdir(d):
+                continue
+            for f in sorted(os.listdir(d)):
+                if not f.endswith((".h", ".hpp", ".hxx")):
+                    continue
+                rel = os.path.join(d, f)
+                t = open(rel, encoding="utf-8", errors="replace").read()
+                t = re.sub(r"(?s)/\*.*?\*/", " ", t)
+                names = set(re.findall(r"^\s*#\s*define\s+([A-Za-z_]\w*)", t, re.M))
+                names |= set(re.findall(r"^\s*(?:struct|union|enum)\s+([A-Za-z_]\w*)\s*[\{;]", t, re.M))
+                names |= set(re.findall(r"AKARI_CE_NAME\(([A-Za-z_]\w*)\)", t))
+                for m in re.finditer(r"\}\s*([^;{}()#]*);", t):
+                    for part in m.group(1).split(","):
+                        if "(" in part:
+                            continue
+                        ids = re.findall(r"[A-Za-z_]\w*", part)
+                        if ids:
+                            names.add(ids[-1])
+                for m in re.finditer(r"^\s*typedef\s+([^;{\n(]*);", t, re.M):
+                    for part in m.group(1).split(","):
+                        ids = re.findall(r"[A-Za-z_]\w*", part)
+                        if ids:
+                            names.add(ids[-1])
+                for m in re.finditer(r"\(\s*(?:APIENTRY|WINAPI|CALLBACK|STDMETHODCALLTYPE)?"
+                                     r"\s*\*\s*([A-Za-z_]\w*)\s*\)\s*\(", t):
+                    names.add(m.group(1))
+                for n in names:
+                    _DECLARED.setdefault(n, rel)
+    return _DECLARED
+
+
 def split_type(tok, known):
     """`constCURRENCYFMT*` -> ('const ', 'CURRENCYFMT', '*')."""
     t = tok.strip()
@@ -404,6 +452,15 @@ def build(job, raw, known, known_conv=frozenset()):
     # does ms902159 (Lock).  Asserting dllimport for those is wrong, and the
     # e2e DLL, which defines its own DllMain, fails to compile on it.
     devimpl = re.search(r"Developer\s+implemented", raw, re.I) is not None
+    # M135: some pages print "Link Library: none." -- not a missing row, an
+    # explicit none (ms860404, StringCbGetsEx, whose 29 siblings all print
+    # strsafe.lib).  There is no library to import the name from, so marking
+    # it AKARI_CE_IMPORT would promise a symbol nothing provides and no
+    # def/*-doc.def may export it either.  Report, do not declare.
+    if re.search(r"Link\s+Library\s*:?\s*(?:</\w+>\s*)?none\b",
+                 re.sub(r"<[^>]+>", " ", raw), re.I):
+        return None, ('page prints "Link Library: none." -- nothing exports '
+                      'this name, so no import declaration is admissible')
     if callback or devimpl:
         # an app-implemented callback or a header-inline helper: the page
         # prints no import, so none is asserted here
@@ -428,7 +485,14 @@ def main():
     print("convention macros stripped (defined empty in this tree): %s"
           % " ".join(sorted(known_conv)))
     ok, bad, skipped = [], [], []
+    declared = declared_in_tree(a.include)
     for job in jobs:
+        # Idempotency: a name the tree already declares is a no-op, whether
+        # an earlier pass of this tool wrote it or it was hand-written.
+        if job["name"] in declared:
+            skipped.append((job["name"], norm_page(job["page"]) or job["page"],
+                            "already declared in " + declared[job["name"]]))
+            continue
         page = norm_page(job["page"])
         if not page:
             skipped.append((job["name"], "unparseable page id " + job["page"]))
@@ -458,8 +522,15 @@ def main():
             sys.exit("--write needs --header")
         L = open(a.header, encoding="utf-8").read().split("\n")
         ends = [i2 for i2, l in enumerate(L) if l.startswith("#endif")]
+        # M135: prefer the generation gate's #endif over the include guard's
+        # -- see the same note in tools/decl-types-from-pages.py.
+        gated = [i2 for i2 in ends if "_WIN32_WCE" in L[i2]]
+        cxx = [i2 for i2 in ends if "__cplusplus" in L[i2]]
         if ends:
-            ei = max(ends)
+            # Same precedence as tools/decl-types-from-pages.py's
+            # insertion_point(): the generation gate first, then the
+            # __cplusplus region, then the include guard.
+            ei = max(gated or cxx or ends)
         else:
             # An alias stub (include/Sphelper.h) carries no include guard,
             # so there is no #endif to insert before; append at end of file.

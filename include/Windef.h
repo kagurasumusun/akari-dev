@@ -206,6 +206,13 @@ typedef INT   *LPINT;   /* INT pointer (GetCharWidth32 ms901131 / */
 typedef WCHAR           TCHAR;
 typedef WCHAR          *LPTSTR;
 typedef const WCHAR    *LPCTSTR;
+/* PCTSTR: the same const-pointer form the pages spell without the L, as
+ * PTCHAR and PWCHAR below are.  LoadIconW_I (aa453412) prints
+ * "HICON WINAPI LoadIconW_I(HINSTANCE hinst,PCTSTR pszIcon);" and no CE page
+ * prints a separate typedef for it, so it is an alias of the LPCTSTR this
+ * header already declares -- not a new type.  Tchar.h's _UNICODE branch
+ * carries the same spelling (typedef const wchar_t *PCTSTR, *LPCTSTR;). */
+typedef const WCHAR    *PCTSTR;
 typedef BOOL           *LPBOOL;  /* BOOL pointer (WideCharToMultiByte aa450989) */
 
 /* PTCHAR / PWCHAR / PCHAR: pointer forms printed verbatim by the CE

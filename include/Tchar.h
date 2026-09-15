@@ -34,6 +34,15 @@
 #include <wchar.h>
 #include <string.h>
 
+/* Windef.h is this tree's Unicode-only base: it declares TCHAR, PTCHAR,
+ * PCTSTR, LPCTSTR, PTSTR and LPTSTR because the CE pages print those names in
+ * prototypes.  Including it here rather than redeclaring the same names is
+ * what makes this header usable next to it -- the two orderings otherwise
+ * disagree, because the narrow branch below runs whenever _UNICODE is
+ * undefined and then says `typedef char TCHAR` where Windef.h says
+ * `typedef WCHAR TCHAR`. */
+#include "Windef.h"
+
 #if defined(_MBCS)
 #error "Tchar.h: _MBCS is not a supported mode on Windows CE (Unicode-only OS layer)"
 #endif
@@ -44,10 +53,8 @@ extern "C" {
 
 #if defined(_UNICODE)
 
-typedef wchar_t TCHAR, *PTCHAR;
+/* TCHAR / PTCHAR / PCTSTR / LPCTSTR / PTSTR / LPTSTR come from Windef.h. */
 typedef unsigned short _TUCHAR, *_PTUCHAR;
-typedef const wchar_t *PCTSTR, *LPCTSTR;
-typedef wchar_t *PTSTR, *LPTSTR;
 
 #define _T(x)       L##x
 #define _TEXT(x)    L##x
@@ -74,10 +81,11 @@ typedef wchar_t *PTSTR, *LPTSTR;
 
 #else /* narrow, source-portability-only mode; see file header note */
 
-typedef char TCHAR, *PTCHAR;
+/* TCHAR and friends stay the Windef.h Unicode-only spellings: Windows CE's
+ * OS layer takes wide strings only, so a narrow TCHAR would not be passable
+ * to it.  The _tcs* macros below still map to the narrow CRT entry points
+ * for source portability with shared desktop code. */
 typedef unsigned char _TUCHAR, *_PTUCHAR;
-typedef const char *PCTSTR, *LPCTSTR;
-typedef char *PTSTR, *LPTSTR;
 
 #define _T(x)       x
 #define _TEXT(x)    x
