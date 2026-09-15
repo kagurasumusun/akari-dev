@@ -54,4 +54,12 @@ AKARI_CE_IMPORT int StopProfile(int nLevel, DWORD dwID) AKARI_CE_NAME(StopProfil
  * (Windows CE .NET 4.0 and later.; Link Library: Cecap.lib) */
 AKARI_CE_IMPORT int SuspendProfile(int nLevel, DWORD dwID) AKARI_CE_NAME(SuspendProfile);
 
+
+/* ee480465 CommentMarkProfile: print `int CommentMarkProfile(
+long lMarkID,
+char* pszText
+);`
+ * (generation not stated; Link Library: cecap.lib) */
+AKARI_CE_IMPORT int CommentMarkProfile(long lMarkID, char *pszText) AKARI_CE_NAME(CommentMarkProfile);
+
 #endif /* AKARI_CECAP_H */

@@ -99,16 +99,60 @@ def split_glued(tok, known):
     return best, tok[len(best):]
 
 
-def render_members(body, known):
-    """Transcribe a struct/union body.  Returns (text, [unknown types])."""
+def split_top(body):
+    """Split a struct body on the semicolons that are not inside braces."""
+    parts, depth, cur = [], 0, ""
+    for ch in body:
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+        if ch == ";" and depth == 0:
+            parts.append(cur)
+            cur = ""
+        else:
+            cur += ch
+    if cur.strip():
+        parts.append(cur)
+    return parts
+
+
+def render_members(body, known, indent="    "):
+    """Transcribe a struct/union body.  Returns (text, [unknown types]).
+
+    M136: brace-aware.  The old body.split(";") cut through nested
+    definitions and then rejected any fragment holding a brace, so every page
+    that prints an anonymous inner struct or union was held as "nested
+    definition" -- IAS_QUERY (ee495955) and NOTIFICATIONCONDITION among them.
+    Nothing is invented here: the inner definition is the page's own text,
+    re-indented.
+    """
     out, unknown = [], []
-    for raw in body.split(";"):
+    for raw in split_top(body):
         raw = raw.strip()
         if not raw:
             continue
-        # a nested anonymous struct/enum is not something this tool invents
-        if "{" in raw or "}" in raw:
-            return None, ["nested definition"]
+        if "{" in raw:
+            m = re.match(r"^(struct|union|enum)\s*(?:[A-Za-z_]\w*)?\s*\{(.*)\}"
+                         r"\s*([^{}]*?)\s*$", raw, re.S)
+            if not m:
+                return None, ["unparseable nested definition"]
+            kind, inner, decl = m.group(1), m.group(2), m.group(3).strip()
+            text2, unk2 = render_members(inner, known, indent + "    ")
+            if text2 is None:
+                return None, unk2
+            unknown += unk2
+            dm = DECLARATOR.match(decl) if decl else None
+            tail = ""
+            if decl:
+                if not dm:
+                    return None, ["nested declarator " + decl]
+                tail = "%s%s" % (dm.group(1), dm.group(3) or "")
+            block = ["%s%s {" % (indent, kind)]
+            block += text2.split("\n")
+            block.append("%s}%s;" % (indent, tail))
+            out.append("\n".join(block))
+            continue
         parts = split_glued(raw, known)
         if parts is None:
             unknown.append(raw)
@@ -142,7 +186,7 @@ def render_members(body, known):
                 continue
         line = "%s%s %s%s%s%s" % (const, base, tstars + stars, name, arr,
                                   (":" + bits) if bits else "")
-        out.append("    " + re.sub(r"\s+", " ", line).strip() + ";")
+        out.append(indent + re.sub(r"\s+", " ", line).strip() + ";")
     if unknown or not out:
         return None, unknown
     return "\n".join(out), []
@@ -258,17 +302,24 @@ def build(job, raw, known):
 
     # typedef struct/union [tag] { ... } NAME [, *PNAME]...;
     for t in cands:
+        # M136: the documented name may be the struct TAG rather than one of
+        # the typedef declarators.  ee495409 prints
+        # `typedef struct IRDA_DEVICE_INFO { ... } _IRDA_DEVICE_INFO;` -- the
+        # typedef is named _IRDA_DEVICE_INFO, and IRDA_DEVICE_INFO is reachable
+        # only as `struct IRDA_DEVICE_INFO`, which is still a declaration of
+        # the documented name.  Requiring the name inside the declarator list
+        # (as this pattern did) rejected the whole af_irda.h family.
         m = re.match(r"^typedef\s+(struct|union)\s+([A-Za-z_]\w*)?\s*\{(.*?)\}\s*"
-                     r"([^;]*\b" + esc + r"\b[^;]*);$", t, re.S)
+                     r"([^;]*);$", t, re.S)
         if not m:
             continue
         kind, tag, body, names = m.group(1), m.group(2), m.group(3), m.group(4)
+        if name != tag and name not in [x.strip().lstrip("*") for x in names.split(",")]:
+            continue
         text, unk = render_members(body, known)
         if text is None:
             return None, "member type not declared here: %s" % ", ".join(sorted(set(unk))[:4])
         tail = ", ".join(n.strip() for n in names.split(","))
-        if name not in [x.strip().lstrip("*") for x in names.split(",")]:
-            continue
         # `typedef` is part of the definition: the print is
         # `typedef struct { ... } DEVDETAIL, *PDEVDETAIL;` and without the
         # keyword the emitted text declares two *variables* called DEVDETAIL
@@ -322,16 +373,25 @@ def build(job, raw, known):
             continue
         return ("typedef %s %s;" % (head, ", ".join(rendered)), t)
 
-    # #define NAME value
+    # #define NAME value, and #define NAME(args) value.
+    # M136: the second form was invisible here, because the pattern demanded
+    # whitespace after the name and CTL_CODE's page (ee478525) prints
+    # "#define CTL_CODE( DeviceType, Function, Method, Access) ( ... )".
+    # The macro's own parameter names are not types this tree declares, so
+    # they have to be excluded from the value's identifier check.
     for t in cands:
-        m = re.match(r"^#define\s+" + esc + r"\s+(.*)$", t)
+        m = re.match(r"^#define\s+" + esc + r"(\([^)]*\))?\s*(.*)$", t)
         if not m:
             continue
-        val = m.group(1).strip()
+        params, val = m.group(1) or "", m.group(2).strip()
+        pnames = set(re.findall(r"[A-Za-z_]\w*", params))
         for tok in identifiers(val):
+            if tok in pnames:
+                continue
             if tok not in known and tok not in PRIMITIVE:
                 return None, 'value uses "%s", which this tree does not declare' % tok
-        return ("#define %s %s" % (name, val), t)
+        return ("#define %s%s %s" % (name, params, val) if params
+                else "#define %s %s" % (name, val)), t
 
     # struct/union/enum NAME { ... };   (bare tag definition)
     for t in cands:

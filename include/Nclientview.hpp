@@ -41,6 +41,12 @@ enum WidgetId {
     widHelp
 };
 
+
+/* ee506259 NcHitTestCode: page print
+ * typedef int NcHitTestCode;
+ * (generation not stated) */
+typedef int NcHitTestCode;
+
 #endif /* __cplusplus */
 
 #endif /* AKARI_NCLIENTVIEW_HPP */

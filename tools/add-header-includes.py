@@ -88,6 +88,8 @@ def names_in(path):
                             errors="replace").read())
     names = set(re.findall(r"^\s*#\s*define\s+([A-Za-z_]\w*)", s, re.M))
     names |= set(re.findall(r"^\s*(?:struct|union|enum)\s+([A-Za-z_]\w*)\s*[\{;]", s, re.M))
+    # the tag of `typedef struct TAG { ... } NAME;` is a declared name too
+    names |= set(re.findall(r"^\s*typedef\s+(?:struct|union|enum)\s+([A-Za-z_]\w*)\s*\{", s, re.M))
     names |= set(re.findall(r"AKARI_CE_NAME\(([A-Za-z_]\w*)\)", s))
     # `} NAME, *PNAME;` declarator lists.  Reject a capture holding `(` so a
     # function-pointer typedef's parameter list is never read as names, and

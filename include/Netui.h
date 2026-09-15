@@ -56,4 +56,54 @@ HWND hDlg);`
  * (Windows CE 5.0 and later.; Link Library: Netui.lib) */
 AKARI_CE_IMPORT BOOL CloseUsernamePasswordDialog(HWND hDlg) AKARI_CE_NAME(CloseUsernamePasswordDialog);
 
+
+/* ee493082 GetNetString: print `int GetNetString(
+UINT uID,
+LPTSTR lpBuffer,
+int cchBufferMax
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT int GetNetString(UINT uID, LPTSTR lpBuffer, int cchBufferMax) AKARI_CE_NAME(GetNetString);
+
+/* ee493233 NetMsgBox: print `BOOL NetMsgBox(
+HWND hParent,
+DWORD dwFlags,
+TCHAR* szStr
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT BOOL NetMsgBox(HWND hParent, DWORD dwFlags, TCHAR *szStr) AKARI_CE_NAME(NetMsgBox);
+
+/* ee493629 CreateScanDevice: print `int CreateScanDevice(
+HINSTANCE hInstance,
+HWND hWnd
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT int CreateScanDevice(HINSTANCE hInstance, HWND hWnd) AKARI_CE_NAME(CreateScanDevice);
+
+/* ee493662 UnregisterIPClass: print `void UnregisterIPClass(
+HINSTANCE hInst
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT void UnregisterIPClass(HINSTANCE hInst) AKARI_CE_NAME(UnregisterIPClass);
+
+/* ee493832 DisconnectDialog: print `BOOL DisconnectDialog(
+HWND hParent,
+DWORD dwType
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT BOOL DisconnectDialog(HWND hParent, DWORD dwType) AKARI_CE_NAME(DisconnectDialog);
+
+/* ee493896 GetIPAddress: print `DWORD GetIPAddress(
+HWND hParent
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT DWORD GetIPAddress(HWND hParent) AKARI_CE_NAME(GetIPAddress);
+
+/* ee494642 AdapterIPProperties: print `BOOL AdapterIPProperties(
+HWND hWndOwner,
+LPTSTR szAdapterName
+);`
+ * (generation not stated; Link Library: netui.lib) */
+AKARI_CE_IMPORT BOOL AdapterIPProperties(HWND hWndOwner, LPTSTR szAdapterName) AKARI_CE_NAME(AdapterIPProperties);
+
 #endif /* AKARI_NETUI_H_ */

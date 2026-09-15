@@ -43,4 +43,24 @@ DWORD SC_GetTickCount(void);
 /* ms903211: page-printed prototype (Windows CE 2.10 and later.; nk.lib). */
 BOOL KLocalFileTimeToFileTime(const FILETIME* lpft, LPFILETIME lpst);
 
+
+/* ee478340 FlushDCache: print `void FlushDCache(void);`
+ * (generation not stated; Link Library: nk.lib) */
+AKARI_CE_IMPORT void FlushDCache(void) AKARI_CE_NAME(FlushDCache);
+
+/* ee478614 SC_GetTickCount: print `DWORD SC_GetTickCount(void);`
+ * (generation not stated; Link Library: nkstub.lib) */
+AKARI_CE_IMPORT DWORD SC_GetTickCount(void) AKARI_CE_NAME(SC_GetTickCount);
+
+/* ee479199 FlushICache: print `void FlushICache(void);`
+ * (generation not stated; Link Library: nk.lib) */
+AKARI_CE_IMPORT void FlushICache(void) AKARI_CE_NAME(FlushICache);
+
+/* ee479202 KLocalFileTimeToFileTime: print `BOOL KLocalFileTimeToFileTime(
+const FILETIME* lpft,
+LPFILETIME lpst
+);`
+ * (generation not stated; Link Library: nk.lib) */
+AKARI_CE_IMPORT BOOL KLocalFileTimeToFileTime(const FILETIME *lpft, LPFILETIME lpst) AKARI_CE_NAME(KLocalFileTimeToFileTime);
+
 #endif /* AKARI_KERNEL_H_ */

@@ -39,4 +39,13 @@ BOOL Startup_WantStartupScreen(void);
  * (Windows CE 2.10 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT BOOL Startup_DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(Startup_DlgProc);
 
+
+/* ee501481 Startup_WantStartupScreen: print `BOOL Startup_WantStartupScreen(void);`
+ * (generation not stated; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL Startup_WantStartupScreen(void) AKARI_CE_NAME(Startup_WantStartupScreen);
+
+/* ee503134 Startup_DestroyDialogCallback: print `void Startup_DestroyDialogCallback(void);`
+ * (generation not stated; Link Library: not stated) */
+AKARI_CE_IMPORT void Startup_DestroyDialogCallback(void) AKARI_CE_NAME(Startup_DestroyDialogCallback);
+
 #endif /* AKARI_STARTUI_H_ */

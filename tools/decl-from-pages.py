@@ -55,6 +55,9 @@ PRIMITIVE = {
     "unsigned int", "unsigned long", "unsigned short", "unsigned char",
     "signed int", "signed long", "long long", "unsigned long long",
     "long double", "__int64", "__int32", "__int16", "__int8",
+    # M136: ee479349 prints "unsigned __int64 __cdecl __emulu( int int1, int
+    # int2 );" -- the signed/unsigned qualifier in front of the MSVC spelling.
+    "unsigned __int64", "signed __int64",
     # Freestanding types the compiler's own <stddef.h> provides; Windef.h
     # already includes it for NULL and size_t, so a prototype using one of
     # these compiles even though no header in include/ declares the name.
@@ -293,6 +296,15 @@ def declared_in_tree(include_dirs=("include", "include/oak")):
                 t = re.sub(r"(?s)/\*.*?\*/", " ", t)
                 names = set(re.findall(r"^\s*#\s*define\s+([A-Za-z_]\w*)", t, re.M))
                 names |= set(re.findall(r"^\s*(?:struct|union|enum)\s+([A-Za-z_]\w*)\s*[\{;]", t, re.M))
+                # M136: `typedef struct TAG { ... } NAME;` -- the tag is a
+                # declared name too (reachable as `struct TAG`), and this
+                # pattern set missed it because the line starts with
+                # `typedef` and the closing-declarator scan only sees NAME.
+                # include/Af_irda.h:130 already carried
+                # `typedef struct IRDA_DEVICE_INFO { ... } _IRDA_DEVICE_INFO;`
+                # and the gap pass wrote a second identical copy of it.
+                names |= set(re.findall(r"^\s*typedef\s+(?:struct|union|enum)\s+"
+                                        r"([A-Za-z_]\w*)\s*\{", t, re.M))
                 names |= set(re.findall(r"AKARI_CE_NAME\(([A-Za-z_]\w*)\)", t))
                 for m in re.finditer(r"\}\s*([^;{}()#]*);", t):
                     for part in m.group(1).split(","):
@@ -397,6 +409,15 @@ def build(job, raw, known, known_conv=frozenset()):
     if re.match(r"^inline\s", head):
         return None, ('page prints an inline helper whose body the archive '
                       'does not publish; nothing to declare')
+    # M136: __cdecl and __stdcall are compiler keywords, not #defines in
+    # include/, so convention_macros() never puts them in known_conv and
+    # strip_conventions() leaves them attached.  __ll_lshift's page (ee479245)
+    # prints "__int64 __cdecl __ll_lshift( int64 Mask, int nBit );" and the
+    # head arrived here as the single token "__int64 __cdecl".  Drop the
+    # calling-convention tokens, then judge what is left.
+    kept = [t for t in head.split() if t not in CONV_CHAIN]
+    if kept:
+        head = " ".join(kept)
     ret = head
     if ret not in known:
         return None, 'return type "%s" is not a type this tree declares' % ret
@@ -461,6 +482,20 @@ def build(job, raw, known, known_conv=frozenset()):
                  re.sub(r"<[^>]+>", " ", raw), re.I):
         return None, ('page prints "Link Library: none." -- nothing exports '
                       'this name, so no import declaration is admissible')
+    # M136: a page with no Link Library row at all is in the same position as
+    # one that prints an explicit none -- there is no module to import the
+    # name from.  ee479764 (__emul) and ee479349 (__emulu) print
+    # "Architecture: MIPS 32, MIPS IV, ... / Header: winnt.h / Routine: __emul"
+    # and no Library row: they are compiler helper routines for 64-bit
+    # multiplication on a 32-bit target, not coredll exports, and their
+    # prototypes are spelled in __int64, which the host compiler make check
+    # runs does not even have.  Marking them AKARI_CE_IMPORT promised symbols
+    # nothing provides.
+    plain = re.sub(r"<[^>]+>", " ", raw)
+    reqm = re.search(r"id=[\"']requirements[\"'](.*?)(?:</table>|</p>)", raw, re.S)
+    if reqm and not re.search(r"\bLibrary\b", re.sub(r"<[^>]+>", " ", reqm.group(1)), re.I):
+        return None, ("page prints no Link Library row -- no module exports "
+                      "this name, so no import declaration is admissible")
     if callback or devimpl:
         # an app-implemented callback or a header-inline helper: the page
         # prints no import, so none is asserted here

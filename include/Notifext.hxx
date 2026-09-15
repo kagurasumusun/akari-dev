@@ -106,4 +106,43 @@ AKARI_CE_IMPORT int CeNotifyPublic_InitializeUI(HINSTANCE hInst, HWND hwndUI) AK
  * (Windows CE 5.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT void CeNotifyPublic_Uninitialize(void) AKARI_CE_NAME(CeNotifyPublic_Uninitialize);
 
+
+/* ee504204 PersistentPacket: page print
+ * union PersistentPacket { struct { DWORD dwActionFlags; DWORD dwPacketFlags; FILETIME ftStart; FILETIME ftStop; union { unsigned int uiAppNameOffset; W
+ * (generation not stated) */
+union PersistentPacket {
+    struct {
+        DWORD dwActionFlags;
+        DWORD dwPacketFlags;
+        FILETIME ftStart;
+        FILETIME ftStop;
+        union {
+            unsigned int uiAppNameOffset;
+            WCHAR *lpszAppName;
+        };
+        union {
+            unsigned int uiCmdLineOffset;
+            WCHAR *lpszCmdLine;
+        };
+        union {
+            unsigned int uiDialogTitleOffset;
+            WCHAR *lpszDialogTitle;
+        };
+        union {
+            unsigned int uiDialogTextOffset;
+            WCHAR *lpszDialogText;
+        };
+        union {
+            unsigned int uiSoundOffset;
+            WCHAR *lpszSound;
+        };
+        union {
+            unsigned int uiExpansionOffset;
+            void *pvExpansionData;
+        };
+        unsigned char header_end[1];
+    };
+    unsigned char packet_start[1];
+};
+
 #endif /* AKARI_NOTIFEXT_HXX_ */

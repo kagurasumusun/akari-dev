@@ -264,6 +264,37 @@ typedef struct _PERF_OBJECT_TYPE {
     LARGE_INTEGER PerfFreq;
 } PERF_OBJECT_TYPE;
 
+
+/* ee480082 PERF_DATA_BLOCK: page print
+ * typedef struct _PERF_DATA_BLOCK { WCHAR Signature[4]; DWORD LittleEndian; DWORD Version; DWORD Revision; DWORD TotalByteLength; DWORD HeaderLength; DW
+ * (generation not stated) */
+typedef struct _PERF_DATA_BLOCK {
+    WCHAR Signature[4];
+    DWORD LittleEndian;
+    DWORD Version;
+    DWORD Revision;
+    DWORD TotalByteLength;
+    DWORD HeaderLength;
+    DWORD NumObjectTypes;
+    DWORD DefaultObject;
+    SYSTEMTIME SystemTime;
+    LARGE_INTEGER PerfTime;
+    LARGE_INTEGER PerfFreq;
+    LARGE_INTEGER PerfTime100nSec;
+    DWORD SystemNameLength;
+    DWORD SystemNameOffset;
+} PERF_DATA_BLOCK;
+
+/* ee500463 MAKEINTATOM: page print
+ * #define MAKEINTATOM(i) (LPTSTR)((DWORD)((WORD)(i)))
+ * (generation not stated) */
+#define MAKEINTATOM(i) (LPTSTR)((DWORD)((WORD)(i)))
+
+/* ee505299 PALETTEINDEX2BPP: page print
+ * #define PALETTEINDEX2BPP (i) \ (((i)==0)?0x00000000: \ (((i)==1)?0x00808080: \ (((i)==2)?0x00C0C0C0:0x00FFFFFF)))
+ * (generation not stated) */
+#define PALETTEINDEX2BPP (i) \ (((i)==0)?0x00000000: \ (((i)==1)?0x00808080: \ (((i)==2)?0x00C0C0C0:0x00FFFFFF)))
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------
