@@ -162,18 +162,36 @@ def tree_index():
                     if mdef:
                         idx[mdef.group(1)].append((p, ln))
                     continue
+                has_typedef = "typedef" in line
+                tag_kw = re.match(r"\s*(struct|union|enum)\s+([A-Za-z_]\w*)", line)
                 for m in IDENT.finditer(line):
                     w = m.group(0)
                     if w in KEYWORDS:
                         continue
-                    # A declaration site puts the name where a declarator
-                    # belongs: immediately before ';', ',', '(', '=', '{',
-                    # '[' or end of line.  Parameter names inside a prototype
-                    # are followed by ',' too, which is harmless noise; uses
-                    # such as 'p->field', 'a.b' or 'f(x)' are not recorded.
-                    rest = line[m.end():]
-                    nxt = rest.lstrip(" \t")
-                    if not nxt or nxt[0] in ";,([{=":
+                    pre = line[:m.start()].rstrip()
+                    nxt = line[m.end():].lstrip(" \t")
+                    after = nxt[0] if nxt else ""
+                    # Declaration forms only.  A corpus page for an interface
+                    # method (aa452134 'HRESULT Count(long *pCount);',
+                    # aa452193 'HRESULT Event(...)', ms902159 'DWORD Lock(...)'
+                    # whose Link Library is 'Developer implemented') matches a
+                    # struct field or a parameter name in this tree, and those
+                    # are not declarations of the documented name:
+                    #   'UINT Count;'                 -> field
+                    #   'NdisFreeEvent(PNDIS_EVENT Event)' -> parameter
+                    #   'AcquireRemoveLock(PREMOVE_LOCK Lock, ...)' -> parameter
+                    decl = False
+                    if after == "(":
+                        decl = True                       # prototype / function
+                    elif pre.endswith("}"):
+                        decl = True                       # } TAG, *PTAG;
+                    elif pre.endswith("*") and after in ";,":
+                        decl = True                       # pointer typedef name
+                    elif has_typedef and after in ";,":
+                        decl = True                       # typedef ... NAME;
+                    elif tag_kw and tag_kw.group(2) == w:
+                        decl = True                       # struct TAG {
+                    if decl:
                         idx[w].append((p, ln))
     return idx
 

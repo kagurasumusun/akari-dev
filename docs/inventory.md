@@ -9233,3 +9233,48 @@ CE 1.0+ なので世代ゲートは不要。
 `make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
 配置：**未到達 22 → 5 グループ**（残り 5 のうち 4 は `Count`/`Event`/`Lock`
 という頁題由来の非 API 名、1 は上記 `Prsht.h`）。世代監査は 0 名を維持。
+
+## M131：配置監査 未到達 0 グループ
+
+### 残っていた 5 グループの内訳は「ツールの判定が広すぎた」ため
+
+| 名 | 頁 | 樹内の実体 | 判定 |
+|---|---|---|---|
+| `Count` | `aa452134`「HRESULT Count(long \*pCount);」 | `Imaging.h:174` の `UINT Count;`（**構造体フィールド**） | 非欠陥 |
+| `Event` | `aa452193`「HRESULT Event( int index, DWORD \*pdispidEvt);」 | `oak/Ndis.h:713` の `NdisFreeEvent(PNDIS_EVENT Event)`（**引数名**） | 非欠陥 |
+| `Lock` | `ms902159`「DWORD Lock(LPDDHAL_LOCKDATApld);」`Link Library: Developer implemented.` | `Usbclient.h` 等の `PREMOVE_LOCK Lock`（**引数名**） | 非欠陥 |
+
+3 件とも **vtable のメソッド／開発者実装コールバックのページ**で、
+樹内では構造体成員や引数名として現れるだけ。宣言ではない。
+
+### 宣言箇所の判定を「宣言形」に限定
+
+これまでは「識別子の直後が `;` `,` `(` `=` `{` `[`」を宣言とみなしていたため、
+フィールドと引数名を宣言と誤認していた。次だけを宣言形として数えるよう変更：
+
+- 直後が `(` … 原型／関数
+- 直前が `}` … `} TAG, *PTAG;`
+- 直前が `*` かつ直後が `;` `,` … ポインタ typedef 名
+- 行に `typedef` があり直後が `;` `,` … `typedef ... NAME;`
+- 行頭が `struct|union|enum TAG` … タグ定義
+- `#define NAME`
+
+これでグループ 58 → 53、**未到達 0**。
+
+### `D3DMADAPTER_IDENTIFIER` の typedef 名が残っていた
+
+M130 で struct 定義は `D3dmtypes.h` に移したが、
+`typedef struct _D3DMADAPTER_IDENTIFIER D3DMADAPTER_IDENTIFIER;` の行が
+`D3dmddk.h:352` に残っていた。typedef も移し、`D3dmddk.h` に
+`#include "D3dmtypes.h"` を追加した。
+
+### 検証
+
+`make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
+
+- **配置監査：53 グループ／808 配置、未到達 0 グループ／0 名**
+- **世代監査：未ゲート違反 0 名**
+
+item 5（構造的配置欠陥の監査と修正）のうち「宣言が誤ったヘッダにある」
+分類は一次資料に照らして閉じた。残るは「分割すべきでないヘッダの分割」と
+`.def` の誤所属、および各 `def`/`h`/`hxx` の世代注記の照合。

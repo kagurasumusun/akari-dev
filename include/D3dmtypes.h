@@ -49,6 +49,7 @@
  * "Header: D3dmtypes.h." (Windows CE 5.0 and later); it previously sat in
  * D3dmddk.h, so <D3dmtypes.h> did not provide it (M130). */
 #if _WIN32_WCE >= 0x0500   /* ms939133: Windows CE 5.0 and later (M130) */
+typedef struct _D3DMADAPTER_IDENTIFIER D3DMADAPTER_IDENTIFIER;
 struct _D3DMADAPTER_IDENTIFIER{
     TCHAR Driver[MAX_DEVICE_IDENTIFIER_STRING];
     TCHAR Description[MAX_DEVICE_IDENTIFIER_STRING];

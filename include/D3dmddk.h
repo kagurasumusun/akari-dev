@@ -25,6 +25,7 @@
 #include "D3dm.h"      /* D3DMFORMAT and the D3DM value types the DDK
                         * structures reference */
 
+#include "D3dmtypes.h"   /* D3DMADAPTER_IDENTIFIER lives there per ms939133 (M130) */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -349,7 +350,6 @@ typedef struct _D3DM_CREATESURFACE_DATA D3DM_CREATESURFACE_DATA;   /* forward (f
 typedef struct _D3DM_GETADAPTERINFO_DATA D3DM_GETADAPTERINFO_DATA;   /* forward (full definition below) */
 typedef struct _D3DM_INITIALIZE_DATA D3DM_INITIALIZE_DATA;   /* forward (full definition below) */
 typedef struct _D3DM_RESOURCEMANAGER_DATA D3DM_RESOURCEMANAGER_DATA;   /* forward (full definition below) */
-typedef struct _D3DMADAPTER_IDENTIFIER D3DMADAPTER_IDENTIFIER;   /* forward (full definition below) */
 typedef struct _D3DMDEVICEFORMAT D3DMDEVICEFORMAT;   /* forward (full definition below) */
 
 /* M99 chained definitions (needed before the derived declarations). */

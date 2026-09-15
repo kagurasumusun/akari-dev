@@ -31,7 +31,6 @@ documentation still compiles.
 | `commctrl.h` | `include/Winuser.h` | 6 | yes |
 | `windows.h` | `include/Winbase.h` | 5 | yes |
 | `kfuncs.h` | `include/Winbase.h` | 5 | yes |
-| `ws2tcpip.h` | `include/Winsock2.h` | 3 | yes |
 | `pchannel.h` | `include/Cchannel.h` | 2 | yes |
 | `winuser.h` | `include/Wingdi.h` | 2 | yes |
 | `tlhelp.h` | `include/Tlhelp32.h` | 2 | yes |
@@ -39,20 +38,18 @@ documentation still compiles.
 | `dccole.h` | `include/Objbase.h` | 2 | yes |
 | `mqmgmt.h` | `include/Mq.h` | 2 | yes |
 | `cesync.h` | `include/Objbase.h` | 2 | yes |
+| `ws2tcpip.h` | `include/Winsock2.h` | 2 | yes |
 | `bt_buffer.h` | `include/Bt_hcip.h` | 1 | yes |
 | `urlmon.h` | `include/Objbase.h` | 1 | yes |
 | `ws2bth.h` | `include/Bt_api.h` | 1 | yes |
 | `winbase.h` | `include/Winnt.h` | 1 | yes |
 | `pwinreg.h` | `include/Winbase.h` | 1 | yes |
 | `commctrl.h` | `include/Commdlg.h` | 1 | yes |
-| `interned.h` | `include/Imaging.h` | 1 | **no** |
-| `d3dmtypes.h` | `include/D3dmddk.h` | 1 | **no** |
 | `d3dmcaps.h` | `include/D3dm.h` | 1 | yes |
 | `dmoreg.h` | `include/Dmo.h` | 1 | yes |
 | `winddi.h` | `include/oak/Gpe.h` | 1 | yes |
 | `ddvdata.h` | `include/Dvdata.h` | 1 | yes |
 | `ddraw.h` | `include/Dvp.h` | 1 | yes |
-| `interned.h` | `include/oak/Ndis.h` | 1 | **no** |
 | `commctrl.h` | `include/Shlobj.h` | 1 | yes |
 | `prsht.h` | `include/Shlobj.h` | 1 | yes |
 | `shlguid.h` | `include/Shlobj.h` | 1 | yes |
@@ -60,8 +57,6 @@ documentation still compiles.
 | `docobj.h` | `include/Objbase.h` | 1 | yes |
 | `objsafe.h` | `include/Objbase.h` | 1 | yes |
 | `unknwn.h` | `include/Objbase.h` | 1 | yes |
-| `ddrawi.h` | `include/Usbclient.h` | 1 | **no** |
-| `ddrawi.h` | `include/oak/Ndis.h` | 1 | **no** |
 | `ndis.h` | `include/oak/Ntddndis.h` | 1 | yes |
 | `newmenu.h` | `include/aygshell.h` | 1 | yes |
 | `unimodem.h` | `include/Tapi.h` | 1 | yes |
@@ -72,40 +67,10 @@ documentation still compiles.
 | `winuser.h` | `include/Winbase.h` | 1 | yes |
 | `usbtypes.h` | `include/Usb100.h` | 1 | yes |
 
-Totals: 58 groups, 814 name-placements, 5 groups unreachable.
+Totals: 53 groups, 808 name-placements, 0 groups unreachable.
 
 ## Per-name lists
 
 Only the unreachable groups are itemised; those are the work
 list.  `name (page id, ...)`.
-
-### `interned.h` -> `include/Imaging.h` (1)
-
-```
-  Count (aa452134.html)  
-```
-
-### `d3dmtypes.h` -> `include/D3dmddk.h` (1)
-
-```
-  D3DMADAPTER_IDENTIFIER (ms939133.html)  
-```
-
-### `interned.h` -> `include/oak/Ndis.h` (1)
-
-```
-  Event (aa452193.html)  
-```
-
-### `ddrawi.h` -> `include/Usbclient.h` (1)
-
-```
-  Lock (ms902159.html)  
-```
-
-### `ddrawi.h` -> `include/oak/Ndis.h` (1)
-
-```
-  Lock (ms902159.html)  
-```
 
