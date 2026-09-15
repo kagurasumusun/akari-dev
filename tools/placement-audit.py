@@ -140,7 +140,11 @@ def build_cache(dirs, force=False):
     with open(CACHE, "w", encoding="utf-8") as fh:
         for api, osv, pid, hdrs, libs in rows:
             fh.write("\t".join([api, osv, pid, ";".join(hdrs), ";".join(libs)]) + "\n")
-    return rows
+    # Count what the cache-read path will return: it drops rows with no API
+    # name, so printing len(rows) here reported 35,879 on the run that built
+    # the cache and 21,200 on the next one, which looks like the corpus
+    # shrank.
+    return [r for r in rows if r[0]]
 
 
 # ---------------------------------------------------------------- tree side
@@ -286,9 +290,24 @@ def main():
     # constraint forbids inferring CE shape from a desktop twin.  They
     # used to be listed here, where they parsed to zero rows; M134's
     # table-form fix would have started admitting them.
-    ap.add_argument("--pages", nargs="*",
-                    default=["build/pages", "build/pages3", "build/pages4",
-                             "build/pages6", "build/pagesgap"])
+    # M136: the default used to be build/pages{,3,4,6} + build/pagesgap -- the
+    # layout tools/ce-corpus.py import produces.  Two problems: build/ is not
+    # in the snapshot, so after a restore this tool parsed zero files and
+    # printed "unreachable_groups=0", which reads exactly like a clean result;
+    # and build/pages5 was never in the list at all, so the 16,742 harvested
+    # CE 5.0 pages took no part in the audit.  Default to the corpus itself
+    # when it is present, and cover every page directory in it.
+    _corpus = os.environ.get("WINCE_CORPUS", "/home/user/wince-docs-corpus")
+    _default = ["build/pages", "build/pages3", "build/pages4", "build/pages5",
+                "build/pages6", "build/pagesgap"]
+    if os.path.isdir(_corpus):
+        _default = [os.path.join(_corpus, d)
+                    for d in sorted(os.listdir(_corpus))
+                    if os.path.isdir(os.path.join(_corpus, d))
+                    and d not in ("catalogs", ".git")]
+        _default += [d for d in ("build/pagesgap2", "build/pagesmember")
+                     if os.path.isdir(d)]
+    ap.add_argument("--pages", nargs="*", default=_default)
     ap.add_argument("--refresh-cache", action="store_true")
     ap.add_argument("--out", default="docs/header-placement-audit.md")
     ap.add_argument("--json", default="build/placement-audit.json")
@@ -296,6 +315,14 @@ def main():
 
     rows = build_cache(a.pages, a.refresh_cache)
     print("corpus rows with a Requirements block: %d" % len(rows), file=sys.stderr)
+    if not rows:
+        # A tool that prints "unreachable_groups=0" after parsing nothing is
+        # indistinguishable from a clean result.  That is what happened after a
+        # snapshot restore emptied build/: the audit reported zero defects
+        # because it had read zero pages.
+        sys.exit("placement-audit: parsed no page with a Requirements block -- "
+                 "check --pages (default reads $WINCE_CORPUS, "
+                 "/home/user/wince-docs-corpus)")
 
     # documented header per API name (a name may appear on several pages)
     doc = collections.defaultdict(lambda: collections.defaultdict(set))

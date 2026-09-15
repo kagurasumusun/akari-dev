@@ -58,6 +58,7 @@ documentation still compiles.
 | `dmoreg.h` | `include/Dmo.h` | 1 | yes |
 | `winddi.h` | `include/oak/Gpe.h` | 1 | yes |
 | `ddvdata.h` | `include/Dvdata.h` | 1 | yes |
+| `pwinuser.h` | `include/Winuser.h` | 1 | yes |
 | `ddraw.h` | `include/Dvp.h` | 1 | yes |
 | `shlobj.h` | `include/Extfile.h` | 1 | yes |
 | `prsht.h` | `include/Shlobj.h` | 1 | yes |
@@ -79,7 +80,7 @@ documentation still compiles.
 | `usbtypes.h` | `include/Usb100.h` | 1 | yes |
 | `mipsintr.h` | `include/oak/Cmnintrin.h` | 1 | yes |
 
-Totals: 65 groups, 848 name-placements, 0 groups unreachable.
+Totals: 66 groups, 849 name-placements, 0 groups unreachable.
 
 ## Per-name lists
 
