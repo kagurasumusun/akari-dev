@@ -78,8 +78,10 @@ Three names that *were* genuine gaps are exported as of M116:
 (`oleaut32-doc.def`, `_wcesdk_oa96_OleCreatePropertyFrame`) and
 `WSCDeinstallProvider` (`ws2-doc.def`, ms898778).  Each is declared with
 `AKARI_CE_IMPORT`, each file stayed alphabetically sorted, and
-`llvm-dlltool -m armce` was run over the three with `llvm-readobj`
-confirming the symbol lands in the import library.
+`llvm-dlltool -m arm-pc-wince5.0` was run over the three with
+`llvm-readobj` confirming the symbol lands in the import library.
+(Earlier entries in `docs/inventory.md` say `-m armce`; that invented
+machine name is gone -- a CE machine is named by its target triple.)
 
 So the **declared-but-not-linkable axis is closed**: no documented
 app-layer export that this tree declares is missing from every import

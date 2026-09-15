@@ -8542,3 +8542,41 @@ fail with `unknown type name 'PPVOID'` and
 now say so.
 
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).
+
+### M118 -- `make e2e` was passing a machine name that no longer exists
+
+`make e2e` built its import libraries with `-m armce`.  That name went
+away in llvm-project `b2851a3d` ("Name a CE machine by its target, not
+an invented machine"), which made a CE machine reachable only as a
+target triple, and the Makefile's own comment block was updated to say
+so while the `case` line below it kept the old spelling.  Against a
+current llvm-dlltool the call fails:
+
+    $ llvm-dlltool -m armce -d t.def -l o.lib
+    unknown target                      (exit 1)
+
+`getEmulation("armce")` misses the machine-name table and the fallback
+`getMachine(Triple("armce"))` has no architecture to work with, so the
+tool reports an unknown target and `make e2e` stops on the first def.
+
+Measured with artifact `10368635457` (commit `07ed9fb`, which carries
+the triple fallback):
+
+    -m armce                                 FAIL  unknown target
+    -m arm-pc-wince4.2                       OK    IMAGE_FILE_MACHINE_ARM   (0x1C0)
+    -m arm-pc-wince5.0 / 6.0                 OK    IMAGE_FILE_MACHINE_ARM   (0x1C0)
+    -m i386-pc-wince4.2 --no-leading-underscore  OK  IMAGE_FILE_MACHINE_I386 (0x14C)
+    -m arm                                   OK    IMAGE_FILE_MACHINE_ARMNT (0x1C4)
+
+Fixed by passing the triple the loop already has: `-m $$t` for ARM and
+`-m $$t --no-leading-underscore` for x86, so one rule covers both --
+the CE target triple names the machine, and `--no-leading-underscore`
+stays where the export surface is undecorated.  `mchk` still asserts
+`IMAGE_FILE_MACHINE_ARM` / `_I386` on the linked images.
+
+Gates: `make e2e WINCECLANG=<artifact clang>` EXIT=0, all 6 targets
+(machine/subsystem/imports asserted per target).
+
+`docs/app-surface.md` reproduced `-m armce` and now says
+`-m arm-pc-wince5.0`; the `-m armce` mentions left in older
+`docs/inventory.md` entries are period records of what was run then.

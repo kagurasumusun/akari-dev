@@ -586,8 +586,8 @@ e2e:
 	bin=$$(dirname "$(WINCECLANG)"); \
 	tmp=$$(mktemp -d); trap 'rm -rf "$$tmp"' EXIT; \
 	for t in $(CE_TRIPLES); do \
-	  case $$t in arm*) dtf="-m armce"; march="-march=armv5tej"; mchk="IMAGE_FILE_MACHINE_ARM";; \
-	             *)    dtf="-m i386 --no-leading-underscore"; march=""; mchk="IMAGE_FILE_MACHINE_I386";; \
+	  case $$t in arm*) dtf="-m $$t"; march="-march=armv5tej"; mchk="IMAGE_FILE_MACHINE_ARM";; \
+	             *)    dtf="-m $$t --no-leading-underscore"; march=""; mchk="IMAGE_FILE_MACHINE_I386";; \
 	  esac; \
 	  case $$t in *4.2) wv=42;; *5.0) wv=50;; *) wv=60;; esac; \
 	  d=build/e2e/$$t; mkdir -p $$d; \

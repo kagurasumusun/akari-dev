@@ -4,9 +4,11 @@
  * Copyright (c) 2026 Akari API contributors
  * SPDX-License-Identifier: MIT
  *
- * Linked by `make e2e` with the Akari CRT (wince-crt) startup objects
- * and the doc-derived import libraries (the def directory, doc def
- * files, via llvm-dlltool -m armce) into a Windows CE PE executable; it
+ * Linked by `make e2e` with the in-tree Akari CRT (crt/) startup
+ * objects and the doc-derived import libraries (the def directory, doc
+ * def files, via `llvm-dlltool -m <CE target triple>` -- a CE machine is
+ * named by its target, since no dlltool machine name denotes the plain
+ * ARM machine type a CE image carries) into a Windows CE PE executable; it
  * exercises the coredll import surface the headers declare
  * (GetTickCount, GetSystemInfo, the local heap, GetModuleHandleW,
  * GetLastError, and the CE 5.0+ CopyFileExW export, M38).  It must
