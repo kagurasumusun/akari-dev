@@ -17,6 +17,10 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+#include "Windbase.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Pwindbas.h" are carried there, so including it
+                    * makes <Pwindbas.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 
 /* --- M104 declarations: printed prototypes recovered

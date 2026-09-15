@@ -16,7 +16,7 @@
 #define AKARI_TCHDDSI_H
 
 #include <Windows.h>
-#include "Tchddi.h"    /* TOUCH_PANEL_SAMPLE_FLAGS (aa448205) */
+#include "oak/Tchddi.h"    /* TOUCH_PANEL_SAMPLE_FLAGS (aa448205) */
 
 #ifdef __cplusplus
 extern "C" {

@@ -20,6 +20,10 @@
 
 #include "Windef.h"    /* BOOL, DWORD, HANDLE, BYTE, LPCTSTR */
 #include "Winbase.h"   /* FILETIME, WINAPI */
+#include "Objbase.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Storemgr.h" are carried there, so including it
+                    * makes <Storemgr.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 /* --- Held structures (unpublished size constants; prints recorded). */
 /* ms892022 "STORAGEDEVICEINFO": print `typedef struct

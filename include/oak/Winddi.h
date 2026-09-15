@@ -17,6 +17,10 @@
 
 #include <Windows.h>
 #include "Wingdi.h"    /* DEVMODEW (the display book compiled it there) */
+#include "oak/Gpe.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Winddi.h" are carried there, so including it
+                    * makes <Winddi.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

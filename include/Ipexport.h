@@ -9,6 +9,10 @@
 #define AKARI_IPEXPORT_H
 
 #include "Windef.h"    /* ULONG, LONG, WCHAR */
+#include "Icmpapi.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Ipexport.h" are carried there, so including it
+                    * makes <Ipexport.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 /* ms891169 "IP_ADAPTER_INDEX_MAP": print `typedef struct
  * _IP_ADAPTER_INDEX_MAP{ULONGIndex; WCHARName[MAX_ADAPTER_NAME];}

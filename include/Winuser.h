@@ -41,6 +41,14 @@
 
 #include "Windef.h"
 #include "oak/Keybd.h"    /* KEY_STATE_FLAGS (PostKeybdMessage parameter, M52) */
+#include "Wingdi.h"   /* 11 declaration(s) whose official pages print
+                    * "Header: Winuser.h" are carried there, so including it
+                    * makes <Winuser.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
+#include "Winbase.h"   /* 2 declaration(s) whose official pages print
+                    * "Header: Winuser.h" are carried there, so including it
+                    * makes <Winuser.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

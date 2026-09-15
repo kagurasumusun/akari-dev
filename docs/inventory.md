@@ -8693,3 +8693,55 @@ does not resolve under the archive path used here (HTTP 404) and its
 library row names two libraries.
 
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).
+
+### M122 -- 70 of the 89 placement defects closed by making the documented header reach its declarations
+
+M119 established that the test which decides a placement defect is
+**reachability**: does the header the page names transitively include the
+file that holds the declaration.  23 groups / 89 names failed it.  With a
+correct include graph, 13 of those groups (70 names) fail only because
+the documented header never includes the holder, and no include cycle
+stands in the way -- so the fix is one `#include` each, and the
+declaration text does not move at all:
+
+    Rapi.h      += Windbase.h   (44)     Winuser.h += Wingdi.h  (11)
+    Wincrypt.h  += Winsock2.h   (3)      Winuser.h += Winbase.h (2)
+    Commctrl.h  += Commdlg.h    (2)      Winddi.h  += Gpe.h     (1)
+    Pwindbas.h  += Windbase.h   (1)      Storemgr.h += Objbase.h (1)
+    Usbtypes.h  += Usb100.h     (1)      Pkfuncs.h += Windbase.h (1)
+    Kfuncs.h    += Pkfuncs.h    (1)      Ipexport.h += Icmpapi.h (1)
+    Snmp.h      += Snmpapi.h    (1)
+
+Reachability re-measured after the change: **51 groups / 1,310 names
+reachable, 10 groups / 19 names still unreachable** -- against the M119
+baseline of 38 / 1,240 and 23 / 89.  `Rapi.h` alone accounts for 44: it
+includes `<Windows.h>`, which reaches `Winbase.h` but not `Windbase.h`,
+so the whole CEDB surface its pages document was invisible to anyone who
+included `<Rapi.h>`.
+
+The remaining 10 groups (19 names) are mutual cycles, not missing edges:
+`Winbase.h` <-> `Windbase.h`, `Winuser.h` <-> `Objbase.h`/`Windows.h`,
+`Wingdi.h` <-> `Windows.h`/`Objbase.h`, `Ndis.h` <-> `Externs.h`,
+`Ddraw.h` <-> `Dvp.h`, and `Winbase.h` -> `Objbase.h`/`Sspi.h`/`Kfuncs.h`.
+Adding an edge to any of them makes the pair include each other, and
+under include guards that yields incomplete types rather than an error --
+measured as `unknown type name 'FILETIME'` in `Windbase.h` when
+`Winbase.h` pulled it in early.  Those 19 need a type relocated, not an
+edge added, and are left open rather than half-done.
+
+Two tooling defects found on the way, both of which silently produced
+wrong answers rather than failing:
+
+  - a comment stripper that also blanks string literals destroys the
+    target of every `#include "X.h"`, which empties the include graph and
+    made an earlier pass report "no cycles" for ten pairs that do cycle.
+    `tools`-side stripping has to keep strings intact.
+  - inserting an `#include` after "the last include line" lands inside a
+    multi-line comment when that line opens one; the insertion point has
+    to advance to the comment's close.
+
+`oak/` headers are reached as `oak/<name>.h`; six includes that named an
+`oak/` header bare were corrected while fixing the new ones.
+
+Gates: `make check` OK and `make e2e WINCECLANG=<artifact clang>` EXIT=0,
+all 6 targets (machine/subsystem/imports asserted per target).

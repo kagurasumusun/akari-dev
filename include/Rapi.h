@@ -16,6 +16,10 @@
 #define AKARI_RAPI_H
 
 #include <Windows.h>
+#include "Windbase.h"   /* 44 declaration(s) whose official pages print
+                    * "Header: Rapi.h" are carried there, so including it
+                    * makes <Rapi.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

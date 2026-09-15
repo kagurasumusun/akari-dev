@@ -11,7 +11,7 @@
 #ifndef AKARI_LOCKMGRHELP_H
 #define AKARI_LOCKMGRHELP_H
 
-#include "Fsdmgr.h"     /* PFILELOCKSTATE */
+#include "oak/Fsdmgr.h"     /* PFILELOCKSTATE */
 
 /* "FSDMGR_OpenFileLockState": print
  * `void FSDMGR_OpenFileLockState ( PFILELOCKSTATE pFileLockState );`. */

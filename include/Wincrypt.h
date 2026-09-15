@@ -48,6 +48,10 @@
 #define _WINCRYPT_H
 
 #include <Windows.h>
+#include "Winsock2.h"   /* 3 declaration(s) whose official pages print
+                    * "Header: Wincrypt.h" are carried there, so including it
+                    * makes <Wincrypt.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

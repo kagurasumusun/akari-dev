@@ -16,6 +16,10 @@
 #define AKARI_USBTYPES_H
 
 #include <Windows.h>
+#include "Usb100.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Usbtypes.h" are carried there, so including it
+                    * makes <Usbtypes.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

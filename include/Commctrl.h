@@ -42,6 +42,10 @@
 #include "Wingdi.h"   /* COLORREF, RECT via windef; HDC/HBITMAP/HICON */
 #include "Winuser.h"  /* NMHDR (ms931479), HMENU, WM_NOTIFY, WINDOWPOS */
 #include "Winbase.h"  /* SYSTEMTIME (aa450923; M56 DTPicker/MonthCal) */
+#include "Commdlg.h"   /* 2 declaration(s) whose official pages print
+                    * "Header: Commctrl.h" are carried there, so including it
+                    * makes <Commctrl.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

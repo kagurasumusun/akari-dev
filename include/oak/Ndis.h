@@ -30,7 +30,7 @@
 
 #include "Windef.h"    /* PVOID, ULONG, UINT, BOOLEAN, UCHAR, ... */
 #include "Winnt.h"     /* LARGE_INTEGER, ULONGLONG, ULONG_PTR */
-#include "Ntddndis.h"  /* NDIS_MEDIUM / PNDIS_MEDIUM (aa448032) */
+#include "oak/Ntddndis.h"  /* NDIS_MEDIUM / PNDIS_MEDIUM (aa448032) */
 #include "CEDDK.h"     /* INTERFACE_TYPE (ms901367) grounds the
                         * NDIS_INTERFACE_TYPE value names */
 

@@ -15,6 +15,10 @@
 #include "Winbase.h"/* ------------------------------------------------------------------
  * Book surface: core-process-and-thread-reference (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
+#include "oak/Pkfuncs.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Kfuncs.h" are carried there, so including it
+                    * makes <Kfuncs.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 /* aa450792 CeGetCallerTrust: print `DWORD CeGetCallerTrust (void);` */
 AKARI_CE_IMPORT DWORD CeGetCallerTrust(void)
     AKARI_CE_NAME(CeGetCallerTrust);

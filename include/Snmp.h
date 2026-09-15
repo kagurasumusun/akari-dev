@@ -40,6 +40,10 @@
 #define AKARI_SNMP_H
 
 #include "Windef.h"
+#include "Snmpapi.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Snmp.h" are carried there, so including it
+                    * makes <Snmp.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
 extern "C" {

@@ -10,7 +10,7 @@
 #ifndef AKARI_LOCKMGRTYPES_H
 #define AKARI_LOCKMGRTYPES_H
 
-#include "Fsdmgr.h"     /* PFILELOCKSTATE */
+#include "oak/Fsdmgr.h"     /* PFILELOCKSTATE */
 
 /* aa517930 "PACQUIREFILELOCKSTATE": print `typedef VOID
  * (*PACQUIREFILELOCKSTATE)( DWORD dwFile, PFILELOCKSTATE*

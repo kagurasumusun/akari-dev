@@ -19,6 +19,10 @@
 #define AKARI_PKFUNCS_H
 
 #include "Windef.h"    /* BOOL, DWORD, LPCWSTR */
+#include "Windbase.h"   /* 1 declaration(s) whose official pages print
+                    * "Header: Pkfuncs.h" are carried there, so including it
+                    * makes <Pkfuncs.h> provide them as those pages promise
+                    * (docs/header-placement-audit.md). */
 
 /* ms939622 "CaptureDumpFileOnDevice": print
  * `BOOL CaptureDumpFileOnDevice(DWORDdwProcessId,DWORDdwThreadId,
