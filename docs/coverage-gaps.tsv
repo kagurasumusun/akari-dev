@@ -130,6 +130,7 @@ RTCFF_	ee499617(v=winembedded.60)	Windows Embedded CE 6.0 and later	rtccore.h		c
 RTCSP_	ee499854(v=winembedded.60)	Windows Embedded CE 6.0 and later	rtccore.h		catalog-windows-embedded-ce-60.tsv
 RTCSP_PRIVACY_	ee499848(v=winembedded.60)	Windows Embedded CE 6.0 and later	rtccore.h		catalog-windows-embedded-ce-60.tsv
 SecPkgContext_MasterKeyInfo	ee498323(v=winembedded.60)	Windows Embedded CE 6.0 and later	schnlsp.h		catalog-windows-embedded-ce-60.tsv
+StringCbGetsEx	ms860404(v=msdn.10)	Windows CE 5.0 and later.	strsafe.h		catalog-windows-ce-50.tsv
 CoInternetCreateSecurityManager	ee491853(v=winembedded.60)	Windows CE 5.0 and later	urlmon.h	urlmon.lib	catalog-windows-embedded-ce-60.tsv
 CoInternetCreateZoneManager	ee492417(v=winembedded.60)	Windows CE 5.0 and later	urlmon.h	urlmon.lib	catalog-windows-embedded-ce-60.tsv
 AddVectoredExceptionHandler	ee488606(v=winembedded.60)	Windows Embedded CE 6.0 and later	winbase.h	coredll.lib	catalog-windows-embedded-ce-60.tsv

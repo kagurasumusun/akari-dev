@@ -17,6 +17,14 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, ... */
+/* M134: this header had never been compiled -- Makefile's HDRS is an
+ * explicit list and Notifext.hxx was missing from it, so `make check`
+ * passed over a file that does not build.  The declarations below use
+ * CEOID (Windbase.h, which also brings FILETIME through Winbase.h) and
+ * CE_USER_NOTIFICATION (Notify.h); nothing includes this header, so
+ * neither include can close a cycle. */
+#include "Windbase.h"  /* CEOID, FILETIME */
+#include "Notify.h"    /* CE_USER_NOTIFICATION */
 
 
 /* --- M104 declarations: printed prototypes recovered

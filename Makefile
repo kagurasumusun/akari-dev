@@ -138,6 +138,7 @@ include/Nclientview.hpp \
 include/Netui.h \
 include/newmenu.h \
 include/Nkarm.h \
+include/Notifext.hxx \
 include/Notify.h \
 include/Ntlmssp.h \
 include/Nuiouser.h \
@@ -222,6 +223,7 @@ include/Statctlview.hpp \
 include/Storemgr.h \
 include/Streams.h \
 include/strmif.h \
+include/Strsafe.h \
 include/Tabview.hpp \
 include/Tapi.h \
 include/Tapicomn.h \

@@ -55,6 +55,10 @@ PRIMITIVE = {
     "unsigned int", "unsigned long", "unsigned short", "unsigned char",
     "signed int", "signed long", "long long", "unsigned long long",
     "long double", "__int64", "__int32", "__int16", "__int8",
+    # Freestanding types the compiler's own <stddef.h> provides; Windef.h
+    # already includes it for NULL and size_t, so a prototype using one of
+    # these compiles even though no header in include/ declares the name.
+    "size_t", "ptrdiff_t", "wchar_t", "intptr_t", "uintptr_t", "va_list",
 }
 
 
@@ -276,6 +280,26 @@ def split_type(tok, known):
     return const, t, stars
 
 
+def params_from_print(toks):
+    """[(type_prefix, name)] taken from the prototype print itself, or None.
+
+    None means at least one token is not `<type> <name>` -- the archive's
+    glued form (`DWORDdwCmpFlags`) or a bare `void` -- so the caller must
+    fall back to the Parameters section.  `...` is passed through.
+    """
+    out = []
+    for tok in toks:
+        t = tok.strip()
+        if t == "...":
+            out.append((None, "..."))
+            continue
+        m = re.match(r"^(.*?)\s+(\**\s*)?([A-Za-z_]\w*)$", t)
+        if not m or not m.group(1).strip():
+            return None
+        out.append((m.group(1).strip() + " " + (m.group(2) or ""), m.group(3)))
+    return out or None
+
+
 def build(job, raw, known, known_conv=frozenset()):
     """Return (declaration, note) or (None, reason)."""
     name = job["name"]
@@ -338,18 +362,36 @@ def build(job, raw, known, known_conv=frozenset()):
         return (f"AKARI_CE_IMPORT {ret} {name}(void) AKARI_CE_NAME({name});",
                 print_str)
 
-    names = param_names(raw)
-    if not names:
-        return None, "page prints no Parameters section this parser recognises"
-    if len(names) != len(toks):
-        return None, "%d prototype tokens vs %d documented parameters" % (
-            len(toks), len(names))
+    # M134: the prototype print is itself a complete parameter list whenever
+    # every comma-separated token reads as `<type> <name>` with the type and
+    # the name separated by a space.  Plenty of CE pages document fewer
+    # parameters in their Parameters section than the prototype has --
+    # StringCbCopyNEx (ms860408) prints seven tokens against five documented
+    # parameters -- and refusing those lost the whole StringCch*/StringCb*
+    # "Ex"/"N" family.  Reading the names off the print is not a guess: they
+    # are the page's own prototype.  The glued case the Parameters-section
+    # reconstruction exists for (`DWORDdwCmpFlags`, no space to split on)
+    # still returns None here and falls through unchanged.
+    pairs = params_from_print(toks)
+    if pairs is None:
+        names = param_names(raw)
+        if not names:
+            return None, "page prints no Parameters section this parser recognises"
+        if len(names) != len(toks):
+            return None, "%d prototype tokens vs %d documented parameters" % (
+                len(toks), len(names))
+        pairs = []
+        for tok, pn in zip(toks, names):
+            if not (tok.endswith(pn) and len(tok) > len(pn)):
+                return None, 'parameter "%s" does not end token "%s"' % (pn, tok)
+            pairs.append((tok[: -len(pn)], pn))
 
     args, rendered = [], []
-    for tok, pn in zip(toks, names):
-        if not (tok.endswith(pn) and len(tok) > len(pn)):
-            return None, 'parameter "%s" does not end token "%s"' % (pn, tok)
-        const, base, stars = split_type(tok[: -len(pn)], known)
+    for prefix, pn in pairs:
+        if pn == "...":
+            rendered.append("...")
+            continue
+        const, base, stars = split_type(prefix, known)
         if base not in known:
             return None, 'type "%s" (before parameter "%s") is not declared by this tree' % (
                 base, pn)

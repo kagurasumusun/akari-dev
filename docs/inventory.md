@@ -9615,3 +9615,50 @@ M133 の「ヘッダ未出荷 652」は OEM・CRT・アプリ層が混ざって�
 `simmgr.h` 38、`cs.h` 36、`sms.h` 36、`strsafe.h` 30、`connmgr.h` 21、
 `gpsapi.h` 12、`regext.h` 12、`mshtmcid.h` 9。`strsafe.h` の 30 名
 （`StringCch*`/`StringCb*`）が単一ヘッダとしては最大の即戦力。
+
+### M134 追記 — `strsafe.h` を新設し、`make check` の見落としを 2 件修正
+
+**`include/Strsafe.h` を新設、29 名を宣言。** 網羅監査の「ヘッダ未出荷」
+最大の単一ヘッダだった 30 名のうち、29 名はすべて
+`Header: strsafe.h` / `Link Library: strsafe.lib` / `Windows CE 5.0 and later`
+を印刷する。`StringCbGetsEx`（ms860404）のみ頁が
+**`Link Library: none.`**（欄の欠落ではなく明示的な none）と印刷するため、
+`AKARI_CE_IMPORT` を付けず宣言せず、`def/strsafe-doc.def` からも意図的に
+外した（輸出しない名前を import library が主張してはならない）。
+
+**`def/strsafe-doc.def` を追加**（29 輸出、頁 ID を各行に注記）。
+
+宣言器に 4 番目の欠陥が見つかった：**Parameters 欄が原型より少ない頁を
+全拒否していた**。`StringCbCopyNEx`（ms860408）は原型に 7 トークン、
+Parameters 欄に 5 項目しか無く、このため `StringCch…Ex`/`…N` 系が全滅
+していた。原型の印刷自体が `<型> <名前>` の形（空白で分離）である限り
+そこから名前を読む `params_from_print()` を追加。Parameters 欄方式が
+存在する理由である「`DWORDdwCmpFlags` のように空白が無い貼り付き形」は
+従来どおり `None` を返してフォールバックするので、推測は増えていない。
+結果：strsafe 29 名すべてが宣言可能に（18 → 29）。
+
+**`make check` が 2 つのヘッダを一度もコンパイルしていなかった。**
+`Makefile` の `HDRS` は明示リストで、`include/Notifext.hxx` が
+登録されていなかった。実際にゲージへ入れてみると**コンパイル不能**だった
+（`CEOID` `FILETIME` `CE_USER_NOTIFICATION` が未宣言。`Windef.h` と
+`Winnt.h` しか include していなかった）。`Windbase.h` と `Notify.h` を
+追加して解消（このヘッダを include するものは無いので循環しない）。
+
+新設した `Strsafe.h` も同様にゲージ外だったため登録。登録直後に
+2 件の誤りが検出された：コメント内の `StringCch*/StringCb*` の
+**`*/` が C コメントを終端**していたこと、`va_list` に
+`<stdarg.h>` が必要だったこと。
+
+### M134 追記後の検証
+
+`make check` EXIT=0（C・C++、0x420/0x500/0x600、警告ゼロ。
+`Strsafe.h` 3 回・`Notifext.hxx` 6 回のコンパイルをログで確認）。
+`make e2e` EXIT=0（6 ターゲット）。世代監査 0 名、
+配置監査 64 グループ / 846 配置 / 未到達 0。
+
+網羅監査の推移：ヘッダ未出荷 1,084 → **1,054**、宣言済み 425 → **454**、
+アプリ層の欠落 162 → **163**（`strsafe.h` が出荷されたことで
+`StringCbGetsEx` が「未出荷」から本物の欠落へ移動したため +1）。
+保留 163 名の内訳は `docs/coverage-blocked.tsv` に
+（link library を印刷しない型/定数頁 121、型または印刷の欠陥 33、
+明示的保留 9）。
