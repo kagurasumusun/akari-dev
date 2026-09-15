@@ -14,6 +14,7 @@
 
 #ifndef AKARI_IACCESS_H
 #define AKARI_IACCESS_H
+#include "Objbase.h"   /* IAccessControl is documented in iaccess.h (M129) */
 
 #include <Windows.h>
 

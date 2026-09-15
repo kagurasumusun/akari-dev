@@ -14,6 +14,7 @@
 
 #ifndef AKARI_OHCDDDSI_H
 #define AKARI_OHCDDDSI_H
+#include "Hcdddsi.h"   /* the HcdMdd and HcdPdd entry points are documented in ohcdddsi.h (M129) */
 
 #include <Windows.h>
 

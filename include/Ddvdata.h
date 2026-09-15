@@ -14,6 +14,7 @@
 
 #ifndef AKARI_DDVDATA_H
 #define AKARI_DDVDATA_H
+#include "Dvdata.h"   /* DVD_AUDIO_MU_ATTR is documented in ddvdata.h (M129) */
 
 #include <Windows.h>
 

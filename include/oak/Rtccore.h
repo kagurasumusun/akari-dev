@@ -39,6 +39,7 @@
 
 #include "Windef.h"
 #include "Objbase.h"    /* BSTR, VARIANT, VARIANT_BOOL, IDispatch carriers */
+#include "../Dshow.h"   /* OAHWND is documented in rtccore.h (M129) */
 
 #ifdef __cplusplus
 extern "C" {

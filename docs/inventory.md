@@ -9084,3 +9084,70 @@ vtable ブロック（`IDropTargetVtbl` … `IShellView_GetItemObject`）を
 （`arm`/`i386` × `4.2/5.0/6.0` の 6 ターゲット、machine/subsystem/imports）。
 世代監査 **235 → 212 → 71 → 55 → 45 → 17 → 0**。
 過度ゲート 5 名は不変（`docs/generation-held.tsv`）。
+
+## M129：配置監査を一次資料から再生成し、未到達 22 → 12 グループ
+
+### 旧 `docs/header-placement-audit.md` には偽陽性があった
+
+旧監査は `winbase.h -> windbase.h (6)` を欠陥として挙げていた
+（`CEDIRINFO`/`CEFILEINFO`/`CEPROPVAL`/`CERECORDINFO`/`CEVALUNION`/
+`CheckPassword`）。**誤りである。** 保全コーパス
+`kagurasumusun/wince-docs-corpus` を `tools/ce-corpus.py import` で復元し、
+該当 5 ページの Requirements 欄を直接読むと、いずれも
+**`Header: Windbase.h`** と印刷されている。
+
+| page | 題 | Requirements の Header |
+|---|---|---|
+| `aa517227` | CEPROPVAL | `Windbase.h` |
+| `aa517283` | CEVALUNION | `Windbase.h` |
+| `aa517237` | CERECORDINFO | `Windbase.h` |
+| `aa517101` | CEFILEINFO (Windows CE 5.0) | `Windbase.h` |
+| `aa517001` | CEDIRINFO (Windows CE 5.0) | `Windbase.h` |
+
+樹内の配置が正しく、監査文書が間違っていた。型を移動していれば
+一次資料に反する改悪になるところだった。
+
+### 新ツール `tools/placement-audit.py`
+
+保全コーパス（`build/pages*`、39,887 ファイル）を走査し、
+`<h4 id="requirements">` 直後の `<strong>Header:</strong>` から
+**文書化されたヘッダ**を取り、樹内でその名を**宣言している**ヘッダと
+突き合わせる。宣言箇所は「識別子の直後が `;` `,` `(` `=` `{` `[`
+または行末」かつ `#define NAME` として判定し、`p->field` や `f(x)` の
+ような使用は数えない。到達性は include グラフの推移閉包で判定する。
+
+- 中間結果を `build/page-requirements.tsv` にキャッシュ
+  （Requirements 欄あり 16,427 ページ、うち API 名が取れる 10,187）
+- 出力：`docs/header-placement-audit.md` + `build/placement-audit.json`
+- 結果：**65 グループ／823 配置**（旧監査は根拠不明の 65 グループ）
+
+### `#include` 追加で解決した 10 グループ（57 名）
+
+各候補を実際に挿入して 3 世代で単体コンパイルし、通ったものだけ採用した。
+
+| 追加元 | 追加先 | 名 |
+|---|---|---|
+| `oak/Ndistapi.h` | `oak/Ntddndis.h` | 35（`NDIS_TAPI_*` 要求コード） |
+| `oak/Ohcdddsi.h` | `oak/Hcdddsi.h` | 13（`HcdMdd`/`HcdPdd` エントリポイント） |
+| `Comcat.h` | `Objbase.h` | 2（`ICatInformation`/`ICatRegister`） |
+| `Ddvdata.h` | `Dvdata.h` | 1（`DVD_AUDIO_MU_ATTR`） |
+| `IAccess.h` | `Objbase.h` | 1（`IAccessControl`） |
+| `newmenu.h` | `aygshell.h` | 1（`NMN_INVOKECOMMAND`） |
+| `oak/Rtccore.h` | `Dshow.h` | 1（`OAHWND`） |
+| `oak/Rndis.h` | `oak/Rndismini.h` | 1（`RNDIS_PDD_CHARACTERISTICS`） |
+| `Windows.h` | `Commctrl.h` | 1（`TTM_GETTIPTEXTCOLOR`） |
+| `Tapi.h` | `Ras.h` | 1（`VARSTRING`） |
+
+**未到達 22 → 12 グループ（69 → 12 名）。**
+
+### また踏んだ罠
+
+`#include` 行の尾に付けた説明コメントに `HcdMdd_*/HcdPdd_*` と書いたら、
+`_*/` の `*/` がコメントを終端させ
+`extra tokens at end of #include directive` になった。
+**コメント内に `*` の直後へ `/` を書いてはならない**（既知の罠の再発）。
+
+### 検証
+
+`make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
+世代監査は 0 名を維持。

@@ -43,6 +43,7 @@
 #include "Notify.h"
 #include "Shellapi.h"
 #include "winerror.h"
+#include "Commctrl.h"   /* TTM_GETTIPTEXTCOLOR is documented in windows.h (M129) */
 
 #ifdef __cplusplus
 extern "C" {

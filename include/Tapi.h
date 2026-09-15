@@ -52,6 +52,7 @@
                         DWORD_PTR, CALLBACK */
 #include "Winbase.h"  /* SYSTEMTIME (LINECALLSTATUS.tStateEntryTime) */
 #include "Winreg.h"   /* HKEY (TSPI provider functions) */
+#include "Ras.h"   /* VARSTRING is documented in tapi.h (M129) */
 
 /* The CE TAPI/TSPI prototypes print the TAPIAPI / TSPIAPI calling
  * conventions; Windows CE has one undecorated calling convention, so

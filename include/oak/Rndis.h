@@ -19,6 +19,7 @@
 #define AKARI_RNDIS_H
 
 #include "Windef.h"    /* UINT32 (Windef.h KEY_STATE_FLAGS print) */
+#include "Rndismini.h"   /* RNDIS_PDD_CHARACTERISTICS is documented in rndis.h (M129) */
 
 /* ms919868 "RNDIS_CLASS_ID": `typedef UINT32 RNDIS_CLASS_ID;` */
 typedef UINT32 RNDIS_CLASS_ID;

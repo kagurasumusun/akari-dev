@@ -27,6 +27,7 @@
 #include "Windef.h"
 #include "Winuser.h"    /* NMHDR (hdr member), HMENU */
 #include "Objbase.h"    /* CLSID, IPropertyBag (pppropbag member) */
+#include "aygshell.h"   /* NMN_INVOKECOMMAND is documented in newmenu.h (M129) */
 
 #ifdef __cplusplus
 extern "C" {

@@ -15,6 +15,7 @@
 
 #ifndef AKARI_NDISTAPI_H
 #define AKARI_NDISTAPI_H
+#include "Ntddndis.h"   /* the NDIS_TAPI_* request codes are documented in ndistapi.h (M129) */
 
 /* ms904995 "NDIS_TAPI_EVENT": print `typedef struct _NDIS_TAPI_EVENT
  * {HTAPI_LINEhtLine,HTAPI_CALLhtCall,ULONGulMsg,ULONGulParam1,

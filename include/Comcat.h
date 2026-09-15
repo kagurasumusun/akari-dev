@@ -14,6 +14,7 @@
 
 #ifndef AKARI_COMCAT_H
 #define AKARI_COMCAT_H
+#include "Objbase.h"   /* ICatInformation/ICatRegister are documented in comcat.h (M129) */
 
 #include <Windows.h>
 
