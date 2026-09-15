@@ -8887,3 +8887,53 @@ return type was captured as the name.  None of those is the 357.  Declaring
 more of the 357 therefore needs the pages fetched again, and the remaining
 `wininet.h` (45), `winbase.h` (37) and `winuser.h` (29) groups are where the
 next pass should start.
+
+### M126 -- ten more generation violations closed; five of the rest are corpus artifacts
+
+Guarding each declaration *individually* rather than merging contiguous
+records -- the lesson M125 forced -- let three more headers through:
+
+  - `oak/Pkfuncs.h`, 7: `CaptureDumpFileOnDevice` at 5.0 and
+    `CeCloseCallerBuffer`, `CeOpenCallerBuffer`, `GetCallerVMProcessId`,
+    `GetDirectCallerProcessId`, `SetEventData`, `VirtualAllocCopyEx` at
+    **6.0**, the only 6.0-guarded names in the tree so far.
+  - `oak/Sdcardddk.h`, 2: `_SD_RESPONSE_TYPE`, `_SDCARD_DEVICE_TYPE`.
+  - `ErrorRep.h`, 1: `EFaultRepRetVal`.
+
+`tools/gen-audit.py`: **45 names in 9 headers**, from 55 at M125 (235 at
+M122, 212 at M123, 71 at M124).
+
+**Five of the remaining 45 are not violations at all.**  Their "name" in
+`docs/generation-map.tsv` is literally `enum` or `struct` -- a corpus
+parse artifact where an anonymous type's keyword was captured as the
+name (`Winbase.h` 1, `oak/Sdcardddk.h` 3, `oak/Ddhal.h` 1).  There is no
+declaration to guard; the audit should exclude them, which takes the
+real figure to 40.
+
+Seven headers still fail, and the failures split into two kinds:
+
+*The consumer TU, not the header* -- `Wingdi.h` (14: `_BLENDFUNCTION`,
+`AlphaBlend`, `GetLayout`, `Get/SetStretchBltMode`, the six
+`Get*ExtEx`/`*OrgEx` viewport and window functions, `tagPANOSE`,
+`_OUTLINETEXTMETRICW`, `GetOutlineTextMetricsW`), `Winbase.h` (12:
+`COPY_FILE_*` + `CopyFileExW`, `LOCKFILE_*` + `LockFileEx`/`UnlockFileEx`,
+`HeapCompact`, `GetDllVersion`, `CeGetCanonicalPathNameW`,
+`_DevmgrDeviceInformation_tag`) and `oak/Ndis.h` (2).  The guards
+compile; `tests/host/tu_compile.c` then fails because it exercises those
+names unconditionally at every generation.  Fixing it is TU work and it
+is not mechanical: some references are single lines in an address table
+(`(const void *) &CopyFileExW,`) but others span lines -- an `if`
+statement, a multi-line `_Static_assert`, multi-line calls -- so
+wrapping line by line would break syntax.  Both headers were reverted
+rather than left half-guarded.
+
+*Genuine dependency* -- `Shobjidl.h` (6: the `IDropTarget`,
+`IPersistFolder`, `IShellFolder`, `IShellView`, `ITaskbarList`,
+`ITaskbarList2` forward typedefs) fails with `unknown type name
+'REFIID'`; `oak/Fsdmgr.h` (3) with `PFILELOCKSTATE`; `Commctrl.h` (2)
+with `LVBKIMAGE`; `Cchannel.h` (1) with `PCHANNEL_ENTRY_POINTS_EX`.  In
+each case the guarded struct's pointer typedef sits beside it and is
+used by a declaration documented earlier, so the closure has to be
+worked out per type.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).

@@ -24,6 +24,7 @@
                     * makes <Pkfuncs.h> provide them as those pages promise
                     * (docs/header-placement-audit.md). */
 
+#if _WIN32_WCE >= 0x0500   /* CaptureDumpFileOnDevice: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms939622 "CaptureDumpFileOnDevice": print
  * `BOOL CaptureDumpFileOnDevice(DWORDdwProcessId,DWORDdwThreadId,
  * LPCWSTRpwzExtraFilesPath);` (glued tokens split).  Generates an
@@ -32,6 +33,7 @@ AKARI_CE_IMPORT BOOL CaptureDumpFileOnDevice(DWORD dwProcessId,
                     DWORD dwThreadId, LPCWSTR pwzExtraFilesPath)
                     AKARI_CE_NAME(CaptureDumpFileOnDevice);
 
+#endif /* _WIN32_WCE >= 0x0500 (CaptureDumpFileOnDevice) */
 /* ------------------------------------------------------------------
  * Book surface: drivers-pci (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
@@ -129,9 +131,12 @@ AKARI_CE_IMPORT BOOL WriteRegistryToOEM(DWORD dwFlags, LPBYTE lpData, DWORD cbDa
 /* --- M104 declarations: printed prototypes recovered
  * from the official pages (tools/decl-d1.py). -------- */
 
+#if _WIN32_WCE >= 0x0600   /* CeCloseCallerBuffer: documented from CE 6.0 (docs/generation-audit.md) */
 /* ee488934: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT HRESULT CeCloseCallerBuffer(PVOID pDestMarshalled, PVOID pSrcUnmarshalled, DWORD cbSrc, DWORD ArgumentDescriptor) AKARI_CE_NAME(CeCloseCallerBuffer);
 
+#endif /* _WIN32_WCE >= 0x0600 (CeCloseCallerBuffer) */
+#if _WIN32_WCE >= 0x0600   /* CeOpenCallerBuffer: documented from CE 6.0 (docs/generation-audit.md) */
 /* ee488382 CeOpenCallerBuffer (Windows Embedded CE 6.0; coredll.lib):
  * the page prints the five parameters exactly as below but drops the
  * comma between ArgumentDescriptor and ForceDuplicate (print:
@@ -139,19 +144,28 @@ AKARI_CE_IMPORT HRESULT CeCloseCallerBuffer(PVOID pDestMarshalled, PVOID pSrcUnm
  * The comma is restored; nothing else is changed. */
 AKARI_CE_IMPORT HRESULT CeOpenCallerBuffer(PVOID* ppDestMarshalled, PVOID pSrcUnmarshalled, DWORD cbSrc, DWORD ArgumentDescriptor, BOOL ForceDuplicate) AKARI_CE_NAME(CeOpenCallerBuffer);
 
+#endif /* _WIN32_WCE >= 0x0600 (CeOpenCallerBuffer) */
+#if _WIN32_WCE >= 0x0600   /* GetCallerVMProcessId: documented from CE 6.0 (docs/generation-audit.md) */
 /* ee482772: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT DWORD GetCallerVMProcessId(void) AKARI_CE_NAME(GetCallerVMProcessId);
 
+#endif /* _WIN32_WCE >= 0x0600 (GetCallerVMProcessId) */
+#if _WIN32_WCE >= 0x0600   /* GetDirectCallerProcessId: documented from CE 6.0 (docs/generation-audit.md) */
 /* ee482980: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT DWORD GetDirectCallerProcessId(void) AKARI_CE_NAME(GetDirectCallerProcessId);
 
+#endif /* _WIN32_WCE >= 0x0600 (GetDirectCallerProcessId) */
+#if _WIN32_WCE >= 0x0600   /* SetEventData: documented from CE 6.0 (docs/generation-audit.md) */
 /* ee482792: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT BOOL SetEventData(HANDLE hEvent, DWORD dwData) AKARI_CE_NAME(SetEventData);
 
+#endif /* _WIN32_WCE >= 0x0600 (SetEventData) */
+#if _WIN32_WCE >= 0x0600   /* VirtualAllocCopyEx: documented from CE 6.0 (docs/generation-audit.md) */
 /* ee488184: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT LPVOID VirtualAllocCopyEx(HANDLE hSrcProc, HANDLE hDstProc, LPVOID pAddr, DWORD cbSize, DWORD dwProtect) AKARI_CE_NAME(VirtualAllocCopyEx);
 
 
+#endif /* _WIN32_WCE >= 0x0600 (VirtualAllocCopyEx) */
 /* --- type definitions from official page prints
  * (tools/decl-types.py). ----------------------------- */
 

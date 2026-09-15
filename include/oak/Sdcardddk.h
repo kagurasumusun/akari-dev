@@ -36,6 +36,7 @@ typedef enum  {
     SD_INTERFACE_SD_MMC_1BIT,
     SD_INTERFACE_SD_4BIT
 } SD_INTERFACE_MODE;
+#if _WIN32_WCE >= 0x0500   /* _SD_RESPONSE_TYPE: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms920454 SD_RESPONSE_TYPE (page print, compiled) */
 typedef enum _SD_RESPONSE_TYPE {
     NoResponse,
@@ -54,12 +55,14 @@ typedef enum _SD_RESPONSE_TYPE {
                                         * at ResponseR6 -- M99 cross-
                                         * generation adoption. */
 } SD_RESPONSE_TYPE, *PSD_RESPONSE_TYPE;
+#endif /* _WIN32_WCE >= 0x0500 (_SD_RESPONSE_TYPE) */
 /* ms920459 SD_TRANSFER_CLASS (page print, compiled) */
 typedef enum  {
     SD_READ,
     SD_WRITE,
     SD_COMMAND
 } SD_TRANSFER_CLASS;
+#if _WIN32_WCE >= 0x0500   /* _SDCARD_DEVICE_TYPE: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms920321 SDCARD_DEVICE_TYPE (page print, compiled) */
 typedef enum _SDCARD_DEVICE_TYPE {
     Device_Unknown,
@@ -68,6 +71,7 @@ typedef enum _SDCARD_DEVICE_TYPE {
     Device_SD_IO,
     Device_SD_Combo
 } SDCARD_DEVICE_TYPE, *PSDCARD_DEVICE_TYPE;
+#endif /* _WIN32_WCE >= 0x0500 (_SDCARD_DEVICE_TYPE) */
 /* ms920414 SD_BUS_REQUEST -- HELD (page print; member types unpublished):
  *   typedef struct _SD_BUS_REQUEST { ... } SD_BUS_REQUEST, *PSD_BUS_REQUEST; */
 /* ms920424 SD_CARD_INTERFACE -- HELD (page print; member types unpublished):

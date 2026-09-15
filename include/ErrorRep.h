@@ -27,12 +27,14 @@
 extern "C" {
 #endif
 
+#if _WIN32_WCE >= 0x0500   /* EFaultRepRetVal: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms886799 names two return values -- frrvErrNoDW ("no error report
  * generated") and frrvOk ("the function succeeded") -- without numeric
  * values; a successful return does not mean the fault was reported. */
 typedef int EFaultRepRetVal;
 
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 or later. (ms886799) */
+#endif /* _WIN32_WCE >= 0x0500 (EFaultRepRetVal) */
 /* ms886799 "ReportFault (Windows CE 5.0)":
  * EFaultRepRetVal ReportFault(LPEXCEPTION_POINTERS pep, DWORD dwOpt).
  * CE 5.0+; ErrorRep.h; Coredll.lib.  Lets an application that does its
