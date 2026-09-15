@@ -372,9 +372,10 @@ static const void *const api_symbols[] = {
     (const void *) &MoveFile,
     (const void *) &CopyFileW,
     (const void *) &CopyFile,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &CopyFileExW,
     (const void *) &CopyFileEx,
-    (const void *) &CreateDirectoryW,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &CreateDirectory,
     (const void *) &RemoveDirectoryW,
     (const void *) &RemoveDirectory,
@@ -426,8 +427,9 @@ static const void *const api_symbols[] = {
     (const void *) &HeapReAlloc,
     (const void *) &HeapSize,
     (const void *) &HeapValidate,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &HeapCompact,
-    (const void *) &LocalReAlloc,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &LocalSize,
     (const void *) &GlobalMemoryStatus,
     (const void *) &IsBadCodePtr,
@@ -455,8 +457,9 @@ static const void *const api_symbols[] = {
     (const void *) &VirtualQuery,
     (const void *) &FlushInstructionCache,
     (const void *) &GetProcessVersion,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &GetDllVersion,
-    (const void *) &GetThreadTimes,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GetTimeZoneInformation,
     (const void *) &SetTimeZoneInformation,
     /* M13: code-page / NLS (winnls.h). */
@@ -488,8 +491,9 @@ static const void *const api_symbols[] = {
     /* M21: store info + Ce* file helpers (winbase.h). */
     (const void *) &GetStoreInformation,
     (const void *) &CeGenRandom,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &CeGetCanonicalPathName,
-    (const void *) &CeGetFileNotificationInfo,
+#endif /* _WIN32_WCE >= 0x0500 */
     /* M20/M20b: file mapping + DLL entry helpers (winbase.h/psapi.h). */
     (const void *) &CreateFileForMappingW, (const void *) &CreateFileForMapping,
     (const void *) &CreateFileMappingW, (const void *) &CreateFileMapping,
@@ -536,9 +540,10 @@ static const void *const api_symbols[] = {
     (const void *) &GetFileInformationByHandle,
     (const void *) &GetTempPath,
     (const void *) &GetTempFileName,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &LockFileEx,
     (const void *) &UnlockFileEx,
-    (const void *) &DeleteAndRenameFile,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GetFileVersionInfoSize,
     (const void *) &GetFileVersionInfo,
     /* M15: registry (winreg.h). */
@@ -561,8 +566,9 @@ static const void *const api_symbols[] = {
      * Functions declared as exports + 3 GDI color macros
      * (GetRValue/GetGValue/GetBValue) that the official
      * pages define as macros (no Link Library row). */
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &AlphaBlend,
-    (const void *) &BeginPaint,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &BitBlt,
     (const void *) &ChangeDisplaySettingsEx,
     (const void *) &ClientToScreen,
@@ -607,29 +613,34 @@ static const void *const api_symbols[] = {
     (const void *) &GetDCEx,
     (const void *) &GetDeviceCaps,
     (const void *) &GetDIBColorTable,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &GetLayout,
-    (const void *) &GetNearestColor,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GetNearestPaletteIndex,
     (const void *) &GetObject,
     (const void *) &GetObjectType,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &GetOutlineTextMetrics,
-    (const void *) &GetPaletteEntries,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GetPixel,
     (const void *) &GetRegionData,
     (const void *) &GetRgnBox,
     (const void *) &GetROP2,
     (const void *) &GetStockObject,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &GetStretchBltMode,
-    (const void *) &GetSysColorBrush,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GetSystemPaletteEntries,
     (const void *) &GetUpdateRect,
     (const void *) &GetUpdateRgn,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &GetViewportExtEx,
     (const void *) &GetViewportOrgEx,
-    (const void *) &GetWindowDC,
+#endif /* _WIN32_WCE >= 0x0500 */
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &GetWindowExtEx,
     (const void *) &GetWindowOrgEx,
-    (const void *) &GetWindowRgn,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &GradientFill,
     (const void *) &InflateRect,
     (const void *) &IntersectClipRect,
@@ -645,8 +656,9 @@ static const void *const api_symbols[] = {
     (const void *) &MoveToEx,
     (const void *) &OffsetRect,
     (const void *) &OffsetRgn,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &OffsetViewportOrgEx,
-    (const void *) &PatBlt,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &Polygon,
     (const void *) &Polyline,
     (const void *) &PtInRect,
@@ -679,10 +691,12 @@ static const void *const api_symbols[] = {
     (const void *) &SetRectEmpty,
     (const void *) &SetRectRgn,
     (const void *) &SetROP2,
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &SetStretchBltMode,
-    (const void *) &SetViewportOrgEx,
+#endif /* _WIN32_WCE >= 0x0500 */
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (const void *) &SetWindowOrgEx,
-    (const void *) &SetWindowRgn,
+#endif /* _WIN32_WCE >= 0x0500 */
     (const void *) &StretchBlt,
     (const void *) &StretchDIBits,
     (const void *) &SubtractRect,
@@ -857,9 +871,12 @@ static DWORD tu_progress_stub(LARGE_INTEGER TotalFileSize,
 }
 typedef char assert_progress_vals[
     (PROGRESS_CONTINUE == 0 && PROGRESS_CANCEL == 1 &&
-     PROGRESS_STOP == 2 &&
-     COPY_FILE_FAIL_IF_EXISTS == 0x1u && COPY_FILE_RESTARTABLE == 0x2u &&
+     PROGRESS_STOP == 2) ? 1 : -1];
+#if _WIN32_WCE >= 0x0500   /* the COPY_FILE_* flags are declared from CE 5.0 (M127) */
+typedef char assert_copyfile_vals[
+    (COPY_FILE_FAIL_IF_EXISTS == 0x1u && COPY_FILE_RESTARTABLE == 0x2u &&
      COPY_FILE_ALLOW_DECRYPTED_DESTINATION == 0x8u) ? 1 : -1];
+#endif /* _WIN32_WCE >= 0x0500 */
 static LPPROGRESS_ROUTINE tu_progress_assign = tu_progress_stub;
 
 /* File-pointer constants (winbase.h, ms891933 + Win32 ABI values). */
@@ -1239,8 +1256,9 @@ static int m10_shaped_usage(void)
         return (int) GetLastError();
     ok = HeapSize(hheap, 0, blk) >= 32u && ok;
     ok = HeapFree(hheap, 0, blk) && ok;
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (void) HeapCompact(hheap, 0);
-    ok = HeapDestroy(hheap) && ok;
+#endif /* _WIN32_WCE >= 0x0500 */
 
     hloc = LocalReAlloc((HLOCAL) 0, 16u, LMEM_MOVEABLE);
     if (hloc != NULL)
@@ -1316,9 +1334,10 @@ static int m12_shaped_usage(void)
         return (int) GetLastError();
     if (GetProcessVersion(0) == 0)
         return (int) GetLastError();
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     if (GetDllVersion((HMODULE) 0) == 0)
         return (int) GetLastError();
-    if (!FlushInstructionCache(INVALID_HANDLE_VALUE, p, 0))
+#endif /* _WIN32_WCE >= 0x0500 */
         return (int) GetLastError();
     if (!GetThreadTimes(INVALID_HANDLE_VALUE, &ft1, &ft2, &ft3, &ft4))
         return (int) GetLastError();
@@ -1374,9 +1393,12 @@ typedef char assert_m17_vals[
      FILE_NOTIFY_CHANGE_DIR_NAME == 2u &&
      FILE_NOTIFY_CHANGE_SIZE == 8u &&
      FILE_NOTIFY_CHANGE_LAST_WRITE == 0x10u &&
-     LOCKFILE_FAIL_IMMEDIATELY == 1u &&
+     1) ? 1 : -1];
+#if _WIN32_WCE >= 0x0500   /* the LOCKFILE_* flags are declared from CE 5.0 (M127) */
+typedef char assert_lockfile_vals[
+    (LOCKFILE_FAIL_IMMEDIATELY == 1u &&
      LOCKFILE_EXCLUSIVE_LOCK == 2u) ? 1 : -1];
-
+#endif /* _WIN32_WCE >= 0x0500 */
 /* M15 registry constants (winreg.h; values per fixed Win32 ABI). */
 #if _WIN32_WCE >= 0x0500   /* REG_NOTIFY_CHANGE_LAST_SET, REG_NOTIFY_CHANGE_NAME */
 typedef char assert_reg_vals[
@@ -1512,10 +1534,11 @@ static int m17_shaped_usage(void)
     (void) GetDiskFreeSpaceEx(v_dir, &freeavail, &total, &freebytes);
     (void) GetFileInformationByHandle(INVALID_HANDLE_VALUE, &bhi);
     (void) DeleteAndRenameFile(wbuf, v_dir);
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     (void) LockFileEx(INVALID_HANDLE_VALUE, LOCKFILE_EXCLUSIVE_LOCK,
                       0, 0, 0, NULL);
     (void) UnlockFileEx(INVALID_HANDLE_VALUE, 0, 0, 0, NULL);
-    (void) GetFileVersionInfoSize(wbuf, NULL);
+#endif /* _WIN32_WCE >= 0x0500 */
     (void) GetFileVersionInfo(wbuf, 0, 0u, wbuf);
     return 0;
 }
@@ -1655,17 +1678,21 @@ static int m20b_shaped_usage(void)
 /* M21 usage shape (compile-only). */
 static int m21_shaped_usage(void)
 {
-    static const WCHAR c_path[] = { 't', 'm', 'p', 0 };
     STORE_INFORMATION si;
-    WCHAR canon[MAX_PATH];
     BYTE rnd[8];
+#if _WIN32_WCE >= 0x0500   /* used only by the CE 5.0 calls below (M127) */
+    static const WCHAR c_path[] = { 't', 'm', 'p', 0 };
+    WCHAR canon[MAX_PATH];
     DWORD cbret = 0, cbavail = 0;
+#endif /* _WIN32_WCE >= 0x0500 */
 
     (void) GetStoreInformation(&si);
     (void) CeGenRandom(sizeof(rnd), rnd);
+#if _WIN32_WCE >= 0x0500   /* both are declared from CE 5.0 (M127) */
     (void) CeGetCanonicalPathName(c_path, canon, MAX_PATH, 0);
     (void) CeGetFileNotificationInfo((HANDLE) 0, 0, NULL, 0,
                                      &cbret, &cbavail);
+#endif /* _WIN32_WCE >= 0x0500 */
     return (FILE_ACTION_ADDED == 1 && FILE_ACTION_RENAMED_NEW_NAME == 5
             && si.dwStoreSize == 0) ? 0 : 1;
 }
@@ -6978,8 +7005,9 @@ static int m78a_shaped_usage(void)
     pmi = NULL; pmt = NULL; pv = NULL; u = 0u; b = 0;
     ns = NdisGetVersion();
     no = 0u; (void)no;
+#if _WIN32_WCE >= 0x0500   /* exercised only where declared (M127) */
     ns = NdisReadPcmciaAttributeMemory(nh, u, pv, u);
-    NdisCancelTimer(ptm, &b);
+#endif /* _WIN32_WCE >= 0x0500 */
     NdisInitializeEvent(pev);
     NdisAcquireReadWriteLock(prwl, b, pls);
     NdisMInitializeTimer(pmt, nh, NULL, pv);

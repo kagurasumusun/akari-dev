@@ -702,6 +702,9 @@ typedef DWORD (WINAPI *LPPROGRESS_ROUTINE)(LARGE_INTEGER TotalFileSize,
 #define PROGRESS_CANCEL   1
 #define PROGRESS_STOP     2
 
+#if _WIN32_WCE >= 0x0500   /* COPY_FILE_ALLOW_DECRYPTED_DESTINATION: documented from CE 5.0 (docs/generation-audit.md) */
+#if _WIN32_WCE >= 0x0500   /* COPY_FILE_FAIL_IF_EXISTS: documented from CE 5.0 (docs/generation-audit.md) */
+#if _WIN32_WCE >= 0x0500   /* COPY_FILE_RESTARTABLE: documented from CE 5.0 (docs/generation-audit.md) */
 /* CopyFileEx dwCopyFlags: the CE page (aa517311) names the three
  * flags without values; the values are the fixed Win32 ABI from
  * Microsoft's official CopyFileExW reference (the desktop-only
@@ -710,8 +713,12 @@ typedef DWORD (WINAPI *LPPROGRESS_ROUTINE)(LARGE_INTEGER TotalFileSize,
  * recorded-not-defined -- not named on the CE pages). */
 #define COPY_FILE_FAIL_IF_EXISTS              0x00000001
 #define COPY_FILE_RESTARTABLE                 0x00000002
+#endif /* _WIN32_WCE >= 0x0500 (COPY_FILE_ALLOW_DECRYPTED_DESTINATION) */
 #define COPY_FILE_ALLOW_DECRYPTED_DESTINATION 0x00000008
+#endif /* _WIN32_WCE >= 0x0500 (COPY_FILE_FAIL_IF_EXISTS) */
 
+#endif /* _WIN32_WCE >= 0x0500 (COPY_FILE_RESTARTABLE) */
+#if _WIN32_WCE >= 0x0500   /* CopyFileExW: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517311 "CopyFileEx (Windows CE 5.0)" (CE 6.0 twin ee490791):
  * BOOL CopyFileEx(LPCTSTR, LPCTSTR, LPPROGRESS_ROUTINE, LPVOID,
  * LPBOOL, DWORD).  CE 5.0 and later; Winbase.h; Coredll.lib.
@@ -726,6 +733,7 @@ AKARI_CE_IMPORT BOOL CopyFileExW(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileNa
                  LPBOOL pbCancel, DWORD dwCopyFlags) AKARI_CE_NAME(CopyFileExW);
 #define CopyFileEx CopyFileExW
 
+#endif /* _WIN32_WCE >= 0x0500 (CopyFileExW) */
 /* aa517316 "CreateDirectory (Windows CE 5.0)":
  * BOOL CreateDirectory(LPCTSTR, LPSECURITY_ATTRIBUTES).  CE 1.0+;
  * Winbase.h; Coredll.lib.  Creates a new directory.  Only the final
@@ -1103,12 +1111,14 @@ AKARI_CE_IMPORT DWORD HeapSize(HANDLE hHeap, DWORD dwFlags, LPCVOID lpMem) AKARI
  * when lpMem is NULL, otherwise the single block). */
 AKARI_CE_IMPORT BOOL HeapValidate(HANDLE hHeap, DWORD dwFlags, LPCVOID lpMem) AKARI_CE_NAME(HeapValidate);
 
+#if _WIN32_WCE >= 0x0500   /* HeapCompact: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms885655 "HeapCompact (Windows CE 5.0)":
  * UINT HeapCompact(HANDLE, DWORD).  CE 5.0 and later; Winbase.h;
  * Coredll.lib.  Coalesces adjacent free blocks and decommits large
  * free blocks; returns the largest committed free block size. */
 AKARI_CE_IMPORT UINT HeapCompact(HANDLE hHeap, DWORD dwFlags) AKARI_CE_NAME(HeapCompact);
 
+#endif /* _WIN32_WCE >= 0x0500 (HeapCompact) */
 /* Local-heap completion (CE: local heap = process heap). */
 
 /* ms886742 "LocalReAlloc (Windows CE 5.0)":
@@ -1458,12 +1468,14 @@ AKARI_CE_IMPORT BOOL FlushInstructionCache(HANDLE hProcess, LPCVOID lpBaseAddres
  * major, low word minor; 0 + GetLastError on failure. */
 AKARI_CE_IMPORT DWORD GetProcessVersion(DWORD ProcessId) AKARI_CE_NAME(GetProcessVersion);
 
+#if _WIN32_WCE >= 0x0500   /* GetDllVersion: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms885617 "GetDllVersion (Windows CE 5.0)":
  * DWORD GetDllVersion(HMODULE).  CE 5.0 and later; Winbase.h;
  * Coredll.lib.  Version of the system the DLL expects to run on
  * (high word major, low word minor); 0 + GetLastError on failure. */
 AKARI_CE_IMPORT DWORD GetDllVersion(HMODULE hMod) AKARI_CE_NAME(GetDllVersion);
 
+#endif /* _WIN32_WCE >= 0x0500 (GetDllVersion) */
 /* ms885644 "GetThreadTimes (Windows CE 5.0)":
  * BOOL GetThreadTimes(HANDLE, LPFILETIME, LPFILETIME, LPFILETIME,
  * LPFILETIME).  CE 2.10+; Winbase.h; Coredll.lib.  Creation, exit,
@@ -1689,11 +1701,16 @@ AKARI_CE_IMPORT UINT GetTempFileNameW(LPCTSTR lpPathName, LPCTSTR lpPrefixString
                        UINT uUnique, LPTSTR lpTempFileName) AKARI_CE_NAME(GetTempFileNameW);
 #define GetTempFileName GetTempFileNameW
 
+#if _WIN32_WCE >= 0x0500   /* LOCKFILE_EXCLUSIVE_LOCK: documented from CE 5.0 (docs/generation-audit.md) */
+#if _WIN32_WCE >= 0x0500   /* LOCKFILE_FAIL_IMMEDIATELY: documented from CE 5.0 (docs/generation-audit.md) */
 /* Region-lock flags (LockFileEx ms891385 names LOCKFILE_EXCLUSIVE_LOCK
  * and LOCKFILE_FAIL_IMMEDIATELY; values fixed Win32 ABI). */
 #define LOCKFILE_FAIL_IMMEDIATELY 0x00000001u
 #define LOCKFILE_EXCLUSIVE_LOCK   0x00000002u
+#endif /* _WIN32_WCE >= 0x0500 (LOCKFILE_EXCLUSIVE_LOCK) */
 
+#endif /* _WIN32_WCE >= 0x0500 (LOCKFILE_FAIL_IMMEDIATELY) */
+#if _WIN32_WCE >= 0x0500   /* LockFileEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms891385 "LockFileEx (Windows CE 5.0)":
  * BOOL LockFileEx(HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED).
  * CE 5.0+; Winbase.h; Coredll.lib.  Locks a byte range (the LPOVERLAPPED
@@ -1703,6 +1720,8 @@ AKARI_CE_IMPORT BOOL LockFileEx(HANDLE hFile, DWORD dwFlags, DWORD dwReserved,
                 DWORD nNumberOfBytesToLockHigh,
                 LPOVERLAPPED lpOverlapped) AKARI_CE_NAME(LockFileEx);
 
+#endif /* _WIN32_WCE >= 0x0500 (LockFileEx) */
+#if _WIN32_WCE >= 0x0500   /* UnlockFileEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms892364 "UnlockFileEx (Windows CE 5.0)":
  * BOOL UnlockFileEx(HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED).
  * CE 5.0+; Winbase.h; Coredll.lib. */
@@ -1711,6 +1730,7 @@ AKARI_CE_IMPORT BOOL UnlockFileEx(HANDLE hFile, DWORD dwReserved,
                   DWORD nNumberOfBytesToLockHigh,
                   LPOVERLAPPED lpOverlapped) AKARI_CE_NAME(UnlockFileEx);
 
+#endif /* _WIN32_WCE >= 0x0500 (UnlockFileEx) */
 /* ms887981 "DeleteAndRenameFile (Windows CE 5.0)":
  * BOOL DeleteAndRenameFile(LPCWSTR, LPCWSTR).  CE 1.01+; Winbase.h;
  * Coredll.lib.  CE-only: copies the source file over the destination
@@ -1759,6 +1779,7 @@ AKARI_CE_IMPORT BOOL GetStoreInformation(LPSTORE_INFORMATION lpsi) AKARI_CE_NAME
  * seed by pre-filling the buffer. */
 AKARI_CE_IMPORT BOOL CeGenRandom(DWORD dwLen, BYTE *pbBuffer) AKARI_CE_NAME(CeGenRandom);
 
+#if _WIN32_WCE >= 0x0500   /* CeGetCanonicalPathNameW: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517144 "CeGetCanonicalPathName (Windows CE 5.0)":
  * DWORD CeGetCanonicalPathName(LPCWSTR, LPWSTR, DWORD, DWORD).
  * CE 5.0+; Winbase.h; Coredll.lib.  Returns the length of the
@@ -1774,6 +1795,7 @@ AKARI_CE_IMPORT DWORD CeGetCanonicalPathNameW(LPCWSTR lpPathName,
  * Unicode-only). */
 #define CeGetCanonicalPathName CeGetCanonicalPathNameW
 
+#endif /* _WIN32_WCE >= 0x0500 (CeGetCanonicalPathNameW, and its generic alias) */
 /* aa517158 "CeGetFileNotificationInfo (Windows CE 5.0)":
  * BOOL CeGetFileNotificationInfo(HANDLE, DWORD, LPVOID, DWORD,
  * LPDWORD, LPDWORD).  CE .NET 4.2+; Winbase.h; Coredll.lib.
@@ -2587,6 +2609,7 @@ AKARI_CE_IMPORT BOOLEAN GetUserNameExW(EXTENDED_NAME_FORMAT NameFormat,
                        LPWSTR lpNameBuffer, PULONG nSize) AKARI_CE_NAME(GetUserNameExW);
 #define GetUserNameEx GetUserNameExW
 
+#if _WIN32_WCE >= 0x0500   /* _DevmgrDeviceInformation_tag: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms898294 "DEVMGR_DEVICE_INFORMATION (Windows CE 5.0)":
  * "typedef struct _DevmgrDeviceInformation_tag { DWORD dwSize;
  *  HANDLE hDevice; HANDLE hParentDevice; WCHAR szLegacyName[6];
@@ -2606,6 +2629,7 @@ typedef struct _DevmgrDeviceInformation_tag {
     WCHAR  szBusName[MAX_PATH];
 } DEVMGR_DEVICE_INFORMATION, *PDEVMGR_DEVICE_INFORMATION;
 
+#endif /* _WIN32_WCE >= 0x0500 (_DevmgrDeviceInformation_tag) */
 /* ------------------------------------------------------------------
  * Book surface: devmgr (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */

@@ -8937,3 +8937,67 @@ used by a declaration documented earlier, so the closure has to be
 worked out per type.
 
 Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600).
+## 世代監査：`Wingdi.h`/`Winbase.h`/`oak/Ndis.h` の名単位ゲート（28 名）
+
+### 結果：監査 45 → 17 名／7 ヘッダ。4.2 と 6.0 は完全クリーン
+
+| ヘッダ | ゲートした名 |
+|---|---|
+| `include/Wingdi.h` | 14：`_BLENDFUNCTION`、`AlphaBlend`、`GetLayout`、`GetStretchBltMode`、`GetTextExtentExPointW`、`GetViewportExtEx`、`GetViewportOrgEx`、`GetWindowExtEx`、`GetWindowOrgEx`、`SetStretchBltMode`、`SetViewportExtEx`、`SetWindowExtEx`、`tagPANOSE`、`_OUTLINETEXTMETRICW`、`GetOutlineTextMetricsW` |
+| `include/Winbase.h` | 12：`COPY_FILE_ALLOW_DECRYPTED_DESTINATION`、`COPY_FILE_FAIL_IF_EXISTS`、`COPY_FILE_RESTARTABLE`、`CopyFileExW`、`LOCKFILE_EXCLUSIVE_LOCK`、`LOCKFILE_FAIL_IMMEDIATELY`、`LockFileEx`、`UnlockFileEx`、`HeapCompact`、`GetDllVersion`、`CeGetCanonicalPathNameW`、`_DevmgrDeviceInformation_tag` |
+| `include/oak/Ndis.h` | 2：`NDIS_802_3_LENGTH_GROUP`、`_NDIS_802_3_HEADER` |
+
+### 途中で見つかった 2 つの実害（ヘッダ側の欠陥）
+
+名単位ゲートの途中で、ヘッダ自体が壊れた。原因はいずれも**汎用別名が
+原型の外に置かれていた**こと。原型をゲートすると別名が宣言のない名を指す。
+
+```
+include/Winbase.h:  #define CeGetCanonicalPathName CeGetCanonicalPathNameW
+include/Wingdi.h:   #define GetOutlineTextMetrics  GetOutlineTextMetricsW
+```
+
+両方を原型と同じ `#if` の内側へ移した。ゲート対象でない世代でも
+`CeGetCanonicalPathName` が使えていたのは、実体のない名に展開されていた
+だけで、リンクは通らなかったはずである。
+
+### 消費側 TU の修正（7 箇所）
+
+`Wingdi.h` 14 名と `Winbase.h` 12 名は TU が参照していたので、TU 側も
+ゲートした。うち 3 箇所は機械的な囲みでは壊れるため手で直した：
+
+1. **`typedef char assert_m17_vals[...]` の中にガードが入ると、4.2 で
+   typedef が未終端になる。** 4.2 のマクロが展開されないため式が途中で
+   切れ、`expected expression before 'typedef'` になる。
+   `LOCKFILE_*` を `assert_lockfile_vals`、`COPY_FILE_*` を
+   `assert_copyfile_vals` として独立の typedef に切り出した。
+2. **複数行に跨る呼び出しの途中にガードを挿入した。**
+   `CeGetFileNotificationInfo((HANDLE) 0, 0, NULL, 0,` と引数の続きが
+   分断され、先頭行が消えて末尾 `&cbret, &cbavail);` だけが残った。
+   両文をまとめて 1 つのガードに入れ直した。
+3. **ゲート後に未使用になった局所変数。** `c_path`/`canon`/`cbret`/`cbavail`
+   は使用者がすべて 5.0 になったので、宣言も同じガードへ移した。
+
+### 残る 17 名の内訳
+
+- **`enum`/`struct` を名として持つコーパス由来のアーティファクト 5 名**
+  （`Winbase.h` 1、`oak/Sdcardddk.h` 3、`oak/Ddhal.h` 1）— ゲートする宣言が
+  存在しない。`gen-audit.py` が除外すべき対象。
+- **前置宣言だけが 5.0 の 12 名**：`Shobjidl.h` 6（`IDropTarget`、
+  `IPersistFolder`、`IShellFolder`、`IShellView`、`ITaskbarList`、
+  `ITaskbarList2`）は `REFIID`、`oak/Fsdmgr.h` 3 は `PFILELOCKSTATE`、
+  `Commctrl.h` 2（`tagLVBKIMAGE`、`tagNMLVGETINFOTIP`）は `LVBKIMAGE`、
+  `Cchannel.h` 1（`PCHANNEL_ENTRY_POINTS_EX`）は同名型に依存し、
+  前置宣言だけ囲むと型が未知になる。型ごと再配置する必要がある。
+
+### 検証
+
+`make check` EXIT=0（C・C++ 両方、4.2/5.0/6.0 全 3 世代）。
+監査 **45 → 17 名／7 ヘッダ**。`make e2e` はツールチェーン
+`10368635457` を取得して 6 ターゲットすべて緑。
+
+### 累計
+
+`tools/gen-audit.py` の未ゲート違反は **235 → 212（M123）→ 71（M124）→
+55（M125）→ 45（M126）→ 17**。うち実質的な残りは 12 名で、いずれも
+型の再配置を伴う。過度ゲート 5 名は不変。

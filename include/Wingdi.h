@@ -194,6 +194,7 @@ typedef struct tagLOGPEN {
     COLORREF lopnColor;
 } LOGPEN;
 
+#if _WIN32_WCE >= 0x0500   /* _BLENDFUNCTION: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa452889 "BLENDFUNCTION": alpha-blend control for AlphaBlend. */
 typedef struct _BLENDFUNCTION {
     BYTE BlendOp;
@@ -202,6 +203,7 @@ typedef struct _BLENDFUNCTION {
     BYTE AlphaFormat;
 } BLENDFUNCTION, *PBLENDFUNCTION, *LPBLENDFUNCTION;
 
+#endif /* _WIN32_WCE >= 0x0500 (_BLENDFUNCTION) */
 /* ------------------------------------------------------------------ */
 /* Gradient, display and device-mode structures                       */
 /* ------------------------------------------------------------------ */
@@ -309,6 +311,7 @@ typedef struct _XFORM {
     FLOAT eDy;
 } XFORM;
 
+#if _WIN32_WCE >= 0x0500   /* tagPANOSE: documented from CE 5.0 (docs/generation-audit.md) */
 /* PANOSE: font-classification numbers embedded in OUTLINETEXTMETRICW
  * (ms934025 names the member otmPanoseNumber PANOSE).  The CE archive
  * has no PANOSE page; the fixed Win32 ABI body (ten BYTEs) is
@@ -326,6 +329,7 @@ typedef struct tagPANOSE {
     BYTE bXHeight;
 } PANOSE;
 
+#endif /* _WIN32_WCE >= 0x0500 (tagPANOSE) */
 /* TEXTMETRIC: physical-font metrics.  Official pages ms901146
  * (CE 5.0, Header Wingdi.h) / ms900735 (CE .NET) / ee489884 (CE 6.0);
  * the pages type the glyph members tmFirstChar..tmBreakChar as char. */
@@ -353,6 +357,7 @@ typedef struct tagTEXTMETRIC {
 } TEXTMETRIC;
 typedef TEXTMETRIC *LPTEXTMETRIC;  /* GetTextMetrics ms901139 lptm */
 
+#if _WIN32_WCE >= 0x0500   /* _OUTLINETEXTMETRICW: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms934025 "OUTLINETEXTMETRICW": outline-font metrics (CE 5.0+;
  * Header Windows.h).  Text pointers are PSTR/char* on the page. */
 typedef struct _OUTLINETEXTMETRICW {
@@ -390,6 +395,7 @@ typedef struct _OUTLINETEXTMETRICW {
     PSTR  otmpFullName;
 } OUTLINETEXTMETRICW, *POUTLINETEXTMETRICW, *LPOUTLINETEXTMETRICW;
 
+#endif /* _WIN32_WCE >= 0x0500 (_OUTLINETEXTMETRICW) */
 /* ------------------------------------------------------------------ */
 /* GDI Functions                                                      */
 /*                                                                     */
@@ -397,11 +403,13 @@ typedef struct _OUTLINETEXTMETRICW {
 /* row is "Header: Windows.h.  Link Library: Coredll.lib."             */
 /* ------------------------------------------------------------------ */
 
+#if _WIN32_WCE >= 0x0500   /* AlphaBlend: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa452850 "AlphaBlend" */
 AKARI_CE_IMPORT BOOL AlphaBlend(HDC hdcDest, int nXOriginDest, int nYOriginDest,
     int nWidthDest, int nHeightDest, HDC hdcSrc, int nXOriginSrc,
     int nYOriginSrc, int nWidthSrc, int nHeightSrc,
     BLENDFUNCTION blendFunction) AKARI_CE_NAME(AlphaBlend);
+#endif /* _WIN32_WCE >= 0x0500 (AlphaBlend) */
 /* aa452879 "BitBlt" */
 AKARI_CE_IMPORT BOOL BitBlt(HDC hdcDest, int nXDest, int nYDest, int nWidth, int nHeight,
     HDC hdcSrc, int nXSrc, int nYSrc, DWORD dwRop) AKARI_CE_NAME(BitBlt);
@@ -437,8 +445,10 @@ AKARI_CE_IMPORT int ExtEscape(HDC hdc, int nEscape, int cbInput, LPCSTR lpszInDa
 AKARI_CE_IMPORT int FillRect(HDC hDC, CONST RECT* lprc, HBRUSH hbr) AKARI_CE_NAME(FillRect);
 /* aa453068 "FillRgn" */
 AKARI_CE_IMPORT BOOL FillRgn(HDC hdc, HRGN hrgn, HBRUSH hbr) AKARI_CE_NAME(FillRgn);
+#if _WIN32_WCE >= 0x0500   /* GetLayout: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453133 "GetLayout" */
 AKARI_CE_IMPORT DWORD GetLayout(HDC hdc) AKARI_CE_NAME(GetLayout);
+#endif /* _WIN32_WCE >= 0x0500 (GetLayout) */
 /* aa453140 "GetNearestColor" */
 AKARI_CE_IMPORT COLORREF GetNearestColor(HDC hdc, COLORREF crColor) AKARI_CE_NAME(GetNearestColor);
 /* aa453141 "GetNearestPaletteIndex" */
@@ -464,8 +474,10 @@ AKARI_CE_IMPORT int GetRgnBox(HRGN hrgn, LPRECT lprc) AKARI_CE_NAME(GetRgnBox);
 AKARI_CE_IMPORT int GetROP2(HDC hdc) AKARI_CE_NAME(GetROP2);
 /* aa453164 "GetStockObject" */
 AKARI_CE_IMPORT HGDIOBJ GetStockObject(int fnObject) AKARI_CE_NAME(GetStockObject);
+#if _WIN32_WCE >= 0x0500   /* GetStretchBltMode: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453165 "GetStretchBltMode" */
 AKARI_CE_IMPORT int GetStretchBltMode(HDC hdc) AKARI_CE_NAME(GetStretchBltMode);
+#endif /* _WIN32_WCE >= 0x0500 (GetStretchBltMode) */
 /* aa453168 "GetSysColorBrush" */
 AKARI_CE_IMPORT HBRUSH GetSysColorBrush(int nIndex) AKARI_CE_NAME(GetSysColorBrush);
 /* aa453656 "SetSysColors": its prototype takes CONST COLORREF*, so it is
@@ -494,8 +506,10 @@ AKARI_CE_IMPORT BOOL SetRectRgn(HRGN hrgn, int nLeftRect, int nTopRect, int nRig
     int nBottomRect) AKARI_CE_NAME(SetRectRgn);
 /* aa453651 "SetROP2" */
 AKARI_CE_IMPORT int SetROP2(HDC hdc, int fnDrawMode) AKARI_CE_NAME(SetROP2);
+#if _WIN32_WCE >= 0x0500   /* SetStretchBltMode: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453655 "SetStretchBltMode" */
 AKARI_CE_IMPORT int SetStretchBltMode(HDC hdc, int iStretchMode) AKARI_CE_NAME(SetStretchBltMode);
+#endif /* _WIN32_WCE >= 0x0500 (SetStretchBltMode) */
 /* aa453660 "SetViewportOrgEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL SetViewportOrgEx(HDC hdc, int X, int Y, LPPOINT lpPoint) AKARI_CE_NAME(SetViewportOrgEx);
 /* aa453778 "TransparentBlt" (CE5/CE6 pages print the 8th parameter as "int hHeightDest" (sic); parameter is nHeightDest) */
@@ -506,19 +520,31 @@ AKARI_CE_IMPORT BOOL TransparentBlt(HDC hdcDest, int nXOriginDest, int nYOriginD
 AKARI_CE_IMPORT BOOL TransparentImage(HDC hdcDest, LONG DstX, LONG DstY, LONG DstCx,
     LONG DstCy, HANDLE hSrc, LONG SrcX, LONG SrcY, LONG SrcCx, LONG SrcCy,
     COLORREF TransparentColor) AKARI_CE_NAME(TransparentImage);
+#if _WIN32_WCE >= 0x0500   /* GetViewportExtEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453949 "GetViewportExtEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL GetViewportExtEx(HDC hdc, LPSIZE lpSize) AKARI_CE_NAME(GetViewportExtEx);
+#endif /* _WIN32_WCE >= 0x0500 (GetViewportExtEx) */
+#if _WIN32_WCE >= 0x0500   /* GetViewportOrgEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453950 "GetViewportOrgEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL GetViewportOrgEx(HDC hdc, LPPOINT lpPoint) AKARI_CE_NAME(GetViewportOrgEx);
+#endif /* _WIN32_WCE >= 0x0500 (GetViewportOrgEx) */
+#if _WIN32_WCE >= 0x0500   /* GetWindowExtEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453951 "GetWindowExtEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL GetWindowExtEx(HDC hdc, LPSIZE lpSize) AKARI_CE_NAME(GetWindowExtEx);
+#endif /* _WIN32_WCE >= 0x0500 (GetWindowExtEx) */
+#if _WIN32_WCE >= 0x0500   /* GetWindowOrgEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453952 "GetWindowOrgEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL GetWindowOrgEx(HDC hdc, LPPOINT lpPoint) AKARI_CE_NAME(GetWindowOrgEx);
+#endif /* _WIN32_WCE >= 0x0500 (GetWindowOrgEx) */
+#if _WIN32_WCE >= 0x0500   /* OffsetViewportOrgEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453953 "OffsetViewportOrgEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL OffsetViewportOrgEx(HDC hdc, int nXOffset, int nYOffset,
     LPPOINT lpPoint) AKARI_CE_NAME(OffsetViewportOrgEx);
+#endif /* _WIN32_WCE >= 0x0500 (OffsetViewportOrgEx) */
+#if _WIN32_WCE >= 0x0500   /* SetWindowOrgEx: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453954 "SetWindowOrgEx" (official page omits the return type in the prototype; Return Values "nonzero success / zero failure" => BOOL) */
 AKARI_CE_IMPORT BOOL SetWindowOrgEx(HDC hdc, int X, int Y, LPPOINT lpPoint) AKARI_CE_NAME(SetWindowOrgEx);
+#endif /* _WIN32_WCE >= 0x0500 (SetWindowOrgEx) */
 /* ms908108 "ChangeDisplaySettingsEx" */
 AKARI_CE_IMPORT LONG ChangeDisplaySettingsEx(LPCTSTR lpszDeviceName, LPDEVMODE lpDevMode,
     HWND hwnd, DWORD dwflags, LPVOID lParam) AKARI_CE_NAME(ChangeDisplaySettingsEx);
@@ -616,6 +642,7 @@ AKARI_CE_IMPORT int SelectClipRgn(HDC hdc, HRGN hrgn) AKARI_CE_NAME(SelectClipRg
 AKARI_CE_IMPORT HGDIOBJ SelectObject(HDC hdc, HGDIOBJ hgdiobj) AKARI_CE_NAME(SelectObject);
 /* ms932716 "SelectPalette" */
 AKARI_CE_IMPORT HPALETTE SelectPalette(HDC hdc, HPALETTE hpal, BOOL bForceBackground) AKARI_CE_NAME(SelectPalette);
+#if _WIN32_WCE >= 0x0500   /* GetOutlineTextMetricsW: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms933897 "GetOutlineTextMetrics" */
 AKARI_CE_IMPORT UINT GetOutlineTextMetricsW(HDC hdc, UINT cbData, LPOUTLINETEXTMETRICW lpOTM) AKARI_CE_NAME(GetOutlineTextMetricsW);
 /* the verified coredll surface exports only the W form;
@@ -623,6 +650,7 @@ AKARI_CE_IMPORT UINT GetOutlineTextMetricsW(HDC hdc, UINT cbData, LPOUTLINETEXTM
  * Unicode-only). */
 #define GetOutlineTextMetrics GetOutlineTextMetricsW
 /* ms939800 "RestoreDC" */
+#endif /* _WIN32_WCE >= 0x0500 (GetOutlineTextMetricsW, and its generic alias) */
 AKARI_CE_IMPORT BOOL RestoreDC(HDC hdc, int nSavedDC) AKARI_CE_NAME(RestoreDC);
 /* ms939867 "RoundRect" */
 AKARI_CE_IMPORT BOOL RoundRect(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,

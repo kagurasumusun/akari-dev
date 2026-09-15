@@ -1237,10 +1237,12 @@ AKARI_CE_IMPORT VOID NdisReadNetworkAddress(PNDIS_STATUS Status, PVOID*NetworkAd
 AKARI_CE_IMPORT ULONG  NdisReadPciSlotInformation(NDIS_HANDLE NdisAdapterHandle, ULONG SlotNumber, ULONG Offset, PVOID Buffer, ULONG Length)
                     AKARI_CE_NAME(NdisReadPciSlotInformation);
 
+#if _WIN32_WCE >= 0x0500   /* NdisReadPcmciaAttributeMemory: documented from CE 5.0 (docs/generation-audit.md) */
 /* "NdisReadPcmciaAttributeMemory" (ms904123): print `ULONG NdisReadPcmciaAttributeMemory(NDIS_HANDLENdisAdapterHandle,ULONG Offset,PVOID Buffer,ULONG Length)` */
 AKARI_CE_IMPORT ULONG  NdisReadPcmciaAttributeMemory(NDIS_HANDLE NdisAdapterHandle, ULONG Offset, PVOID Buffer, ULONG Length)
                     AKARI_CE_NAME(NdisReadPcmciaAttributeMemory);
 
+#endif /* _WIN32_WCE >= 0x0500 (NdisReadPcmciaAttributeMemory) */
 /* "NdisReadPortUchar" (ms904124): print `VOID NdisReadPortUchar(NDIS_HANDLENdisAdapterHandle,ULONG Port,PUCHARData)` */
 AKARI_CE_IMPORT VOID  NdisReadPortUchar(NDIS_HANDLE NdisAdapterHandle, ULONG Port, PUCHAR Data)
                     AKARI_CE_NAME(NdisReadPortUchar);
@@ -1413,10 +1415,12 @@ AKARI_CE_IMPORT VOID NdisWriteErrorLogEntry(NDIS_HANDLE NdisAdapterHandle, NDIS_
 AKARI_CE_IMPORT ULONG  NdisWritePciSlotInformation(NDIS_HANDLE NdisAdapterHandle, ULONG SlotNumber, ULONG Offset, PVOID Buffer, ULONG Length)
                     AKARI_CE_NAME(NdisWritePciSlotInformation);
 
+#if _WIN32_WCE >= 0x0500   /* NdisWritePcmciaAttributeMemory: documented from CE 5.0 (docs/generation-audit.md) */
 /* "NdisWritePcmciaAttributeMemory" (ms905058): print `ULONG NdisWritePcmciaAttributeMemory(NDIS_HANDLENdisAdapterHandle,ULONG Offset,PVOID Buffer,ULONG Length)` */
 AKARI_CE_IMPORT ULONG  NdisWritePcmciaAttributeMemory(NDIS_HANDLE NdisAdapterHandle, ULONG Offset, PVOID Buffer, ULONG Length)
                     AKARI_CE_NAME(NdisWritePcmciaAttributeMemory);
 
+#endif /* _WIN32_WCE >= 0x0500 (NdisWritePcmciaAttributeMemory) */
 /* "NdisWritePortUchar" (ms905254): print `VOID NdisWritePortUchar(NDIS_HANDLE NdisAdapterHandle,ULONGPort,UCHARData)` */
 AKARI_CE_IMPORT VOID  NdisWritePortUchar(NDIS_HANDLE NdisAdapterHandle, ULONG Port, UCHAR Data)
                     AKARI_CE_NAME(NdisWritePortUchar);
