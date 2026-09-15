@@ -337,7 +337,16 @@ def declared_in_tree(include_dirs=("include", "include/oak")):
                         ids = re.findall(r"[A-Za-z_]\w*", part)
                         if ids:
                             names.add(ids[-1])
-                for m in re.finditer(r"^\s*typedef\s+([^;{\n(]*);", t, re.M):
+                # M137: the scan above was single-line (`[^;{\n(]*`), so a
+                # typedef wrapped across two lines was invisible and got
+                # written a second time.  include/Wzcsapi.h:77 carries
+                # `typedef struct _WZC_802_11_CONFIG_LIST WZC_802_11_CONFIG_LIST,\n
+                #     *PWZC_802_11_CONFIG_LIST;` and the corpus pass emitted a
+                # second definition of the same names, which is a duplicate
+                # member set because WZC_WLAN_CONFIG is held opaque.  Newlines
+                # are allowed now; `(` still excludes the function-pointer
+                # typedefs the next scan owns.
+                for m in re.finditer(r"^\s*typedef\s+([^;{()]*);", t, re.M):
                     for part in m.group(1).split(","):
                         ids = re.findall(r"[A-Za-z_]\w*", part)
                         if ids:
@@ -359,6 +368,50 @@ def declared_in_tree(include_dirs=("include", "include/oak")):
                 for n in names:
                     _DECLARED.setdefault(n, rel)
     return _DECLARED
+
+
+_HELD = None
+
+
+def held_in_tree(include_dirs=("include", "include/oak")):
+    """name -> the header that deliberately holds it, so a rerun is a no-op.
+
+    declared_in_tree() strips every comment before it scans, which is right
+    for finding declarations and wrong for finding records: a name whose
+    only appearance in the tree is a recorded hold ("HELD --", "record-only",
+    "recorded verbatim") then reads as undeclared, and the next pass writes a
+    real definition over the record.  M137 hit this seven times and every one
+    of them broke `make check` -- WZC_802_11_CONFIG_LIST (embeds the held
+    WZC_WLAN_CONFIG), QUERYCLIENTCERT (PSecPkgContext_IssuerListInfoEx has no
+    CE page), SD_DEBUG_INSTANTIATE_ZONES (a duplicate of the ms920430
+    record), DDGPEStandardHeader (a `#define` whose body is a struct),
+    DEFINE_CSPROPERTY_SET (continuations inside the parameter list),
+    CEDB_FIND_DATA (embeds CEDBASEINFO by value) and
+    _MINIDUMP_MEMORY_DESCRIPTOR (embeds the held location descriptor).
+
+    Only comments carrying an explicit hold marker count, and only names the
+    tree does not actually declare are consulted, so this cannot hide a real
+    declaration -- it can only keep a documented hold documented.
+    """
+    global _HELD
+    if _HELD is None:
+        _HELD = {}
+        marker = re.compile(r"HELD\b|record-only|recorded verbatim|\bheld\b")
+        for d in include_dirs:
+            if not os.path.isdir(d):
+                continue
+            for f in sorted(os.listdir(d)):
+                if not f.endswith((".h", ".hpp", ".hxx")):
+                    continue
+                rel = os.path.join(d, f)
+                t = open(rel, encoding="utf-8", errors="replace").read()
+                for c in re.findall(r"(?s)/\*.*?\*/", t):
+                    if not marker.search(c):
+                        continue
+                    for n in re.findall(r"[A-Za-z_][A-Za-z0-9_]{2,}", c):
+                        _HELD.setdefault(n, rel)
+    return _HELD
+
 
 
 def split_type(tok, known):
@@ -556,6 +609,7 @@ def main():
           % " ".join(sorted(known_conv)))
     ok, bad, skipped = [], [], []
     declared = declared_in_tree(a.include)
+    held = held_in_tree(a.include)
     for job in jobs:
         # Idempotency: a name the tree already declares is a no-op, whether
         # an earlier pass of this tool wrote it or it was hand-written.
@@ -569,6 +623,13 @@ def main():
             # crashed having declared everything and written nothing.
             bad.append((job["name"], norm_page(job["page"]) or job["page"],
                         "already declared in " + declared[job["name"]]))
+            continue
+        # M137: a name the tree *holds* on purpose reads as undeclared
+        # above because the record lives in a comment, and a pass that
+        # cannot see it writes a definition over the record.
+        if job["name"] in held:
+            bad.append((job["name"], norm_page(job["page"]) or job["page"],
+                        "deliberately held in " + held[job["name"]]))
             continue
         page = norm_page(job["page"])
         if not page:
@@ -608,6 +669,21 @@ def main():
             # insertion_point(): the generation gate first, then the
             # __cplusplus region, then the include guard.
             ei = max(gated or cxx or ends)
+            # M137: an `#ifdef __cplusplus` / `}` / `#endif` region is the
+            # extern "C" *closer*, so inserting before its #endif lands the
+            # new block after the closing brace and outside extern "C".  If
+            # the only thing above that #endif is the brace, go before the
+            # #ifdef.  Mirrors insertion_point() in the types transcriber.
+            j = ei - 1
+            while j >= 0:
+                t2 = L[j].strip()
+                if not t2 or t2.startswith(("/*", "*", "//")) or t2 == "}":
+                    j -= 1
+                    continue
+                if t2.startswith("#ifdef __cplusplus") or \
+                        t2.startswith("#if defined(__cplusplus)"):
+                    ei = j
+                break
         else:
             # An alias stub (include/Sphelper.h) carries no include guard,
             # so there is no #endif to insert before; append at end of file.

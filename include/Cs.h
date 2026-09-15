@@ -235,5 +235,15 @@ typedef union {
     };
 } CSPROPERTY_BOUNDS_LONG, *PCSPROPERTY_BOUNDS_LONG;
 
+
+/* ee481471 CSPROPERTY_STEPPING_LONG: page print
+ * typedef struct { ULONG SteppingDelta; ULONG Reserved; CSPROPERTY_BOUNDS_LONG Bounds; } CSPROPERTY_STEPPING_LONG, *PCSPROPERTY_STEPPING_LONG;
+ * (generation not stated) */
+typedef struct {
+    ULONG SteppingDelta;
+    ULONG Reserved;
+    CSPROPERTY_BOUNDS_LONG Bounds;
+} CSPROPERTY_STEPPING_LONG, *PCSPROPERTY_STEPPING_LONG;
+
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_CS_H */

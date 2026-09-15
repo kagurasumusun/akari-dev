@@ -207,10 +207,26 @@ def insertion_point(L, ends):
     if not ends:
         return len(L) - 1
     gated = [i for i in ends if "_WIN32_WCE" in L[i]]
-    if gated:
-        return max(gated)
-    cxx = [i for i in ends if "__cplusplus" in L[i]]
-    return max(cxx or ends)
+    ei = max(gated) if gated else max(
+        [i for i in ends if "__cplusplus" in L[i]] or ends)
+    # M137: `#ifdef __cplusplus` / `}` / `#endif` is the extern "C"
+    # *closer*, not a region that carries declarations.  Inserting before
+    # that #endif put the new block after the closing brace, so
+    # Sdcard.h, Smclib.h, Ddgpe.h, DwCeDump.h and Wzcsapi.h all took
+    # their new definitions outside extern "C".  When the only thing
+    # between the #ifdef and its #endif is the closing brace, go before
+    # the #ifdef instead.
+    j = ei - 1
+    while j >= 0:
+        t = L[j].strip()
+        if not t or t.startswith(("/*", "*", "//")) or t == "}":
+            j -= 1
+            continue
+        if t.startswith("#ifdef __cplusplus") or \
+                t.startswith("#if defined(__cplusplus)"):
+            return j
+        break
+    return ei
 
 
 _MACROS = None
@@ -384,6 +400,25 @@ def build(job, raw, known):
         if not m:
             continue
         params, val = m.group(1) or "", m.group(2).strip()
+        # M137: three page prints are `#define`s that no compiler accepts,
+        # and emitting them broke `make check`:
+        #   ee486277 DDGPEStandardHeader( DWORD dwSize; DWORD ...) ;
+        #            -- the body is a struct definition, not a macro
+        #   ee483580 DEFINE_CSPROPERTY_SET(Set,\ PropertiesCount,\ ...)
+        #            -- continuations sit inside the parameter list
+        #   ee485649 SD_DEBUG_INSTANTIATE_ZONES( TCHAR ModuleName, ...)
+        #            -- parameters carry their types
+        # Record such a print instead of inventing a spelling.
+        inner = params[1:-1] if len(params) > 1 else ""
+        if "\\" in params or ";" in params:
+            return None, ("macro parameter list is not compilable as "
+                          "printed (continuations or a struct body)")
+        if any(w.strip() != w or " " in w.strip()
+               for w in inner.split(",")) and inner.strip():
+            return None, ("macro parameters carry their types; no CE page "
+                          "prints a compilable parameter list")
+        if not val or val == ";" or re.search(r"\\\s", val):
+            return None, "macro body is empty or carries line continuations"
         pnames = set(re.findall(r"[A-Za-z_]\w*", params))
         for tok in identifiers(val):
             if tok in pnames:
@@ -448,6 +483,7 @@ def main():
     jobs = json.load(open(a.list, encoding="utf-8"))
     known = dfp.known_types(a.include)
     declared = dfp.declared_in_tree(a.include)
+    held = dfp.held_in_tree(a.include)
     emitted = set()
     ok, bad, err = [], [], []
     for job in jobs:
@@ -463,6 +499,13 @@ def main():
         if job["name"] in emitted:
             bad.append((job["name"], norm_page(job["page"]) or job["page"],
                         "already emitted by another page's print of the same typedef"))
+            continue
+        # M137: see decl_from_pages.held_in_tree -- a recorded hold is a
+        # comment, so declared_in_tree() cannot see it and the pass
+        # re-emitted seven of them (WZC_802_11_CONFIG_LIST among them).
+        if job["name"] in held:
+            bad.append((job["name"], norm_page(job["page"]) or job["page"],
+                        "deliberately held in " + held[job["name"]]))
             continue
         page = norm_page(job["page"])
         if not page:
