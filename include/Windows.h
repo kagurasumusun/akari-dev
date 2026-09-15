@@ -295,6 +295,16 @@ typedef struct _PERF_DATA_BLOCK {
  * (generation not stated) */
 #define PALETTEINDEX2BPP (i) \ (((i)==0)?0x00000000: \ (((i)==1)?0x00808080: \ (((i)==2)?0x00C0C0C0:0x00FFFFFF)))
 
+
+/* ee490724 MonitorEnumProc: print `BOOL CALLBACK MonitorEnumProc(
+HMONITOR hMonitor,
+HDC hdcMonitor,
+LPRECT lprcMonitor,
+LPARAM dwData
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC hdcMonitor, LPRECT lprcMonitor, LPARAM dwData);
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------

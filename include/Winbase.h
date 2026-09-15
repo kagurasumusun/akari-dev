@@ -2899,6 +2899,15 @@ AKARI_CE_IMPORT BOOL VirtualProtectEx(HANDLE hProcess, LPVOID lpAddress, DWORD d
 
 /* ee488556: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT DWORD VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress, PMEMORY_BASIC_INFORMATION lpBuffer, DWORD dwLength) AKARI_CE_NAME(VirtualQueryEx);
+
+/* ee488450 DllMain: print `BOOL WINAPI DllMain(
+HANDLE hinstDLL,
+DWORD dwReason,
+LPVOID lpvReserved
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT BOOL DllMain(HANDLE hinstDLL, DWORD dwReason, LPVOID lpvReserved) AKARI_CE_NAME(DllMain);
+
 #endif /* _WIN32_WCE >= 0x0600 */
 
 

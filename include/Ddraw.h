@@ -794,4 +794,14 @@ typedef struct _DDGAMMARAMP {
     WORD blue[256];
 } DDGAMMARAMP, *LPDDGAMMARAMP;
 
+
+/* ee490481 DDALPHABLTFX: page print
+ * typedef union _DDALPHABLTFX { DWORD dwSize; DDARGB ddargbScaleFactors; DWORD dwFillValue; } DDALPHABLTFX, FAR * LPDDALPHABLTFX;
+ * (generation not stated) */
+typedef union _DDALPHABLTFX {
+    DWORD dwSize;
+    DDARGB ddargbScaleFactors;
+    DWORD dwFillValue;
+} DDALPHABLTFX, FAR * LPDDALPHABLTFX;
+
 #endif /* AKARI_DDRAW_H */

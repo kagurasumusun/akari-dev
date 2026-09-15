@@ -518,6 +518,22 @@ AKARI_CE_IMPORT BOOL SHSetAppKeyWndAssoc(BYTE bVk, HWND hwnd) AKARI_CE_NAME(SHSe
 /* aa453735 (CE 5.0+): not implemented; a stub for application
  * compatibility -- always returns ERROR_CALL_NOT_IMPLEMENTED. */
 AKARI_CE_IMPORT void SHSetBack(int eOp, HWND hwnd) AKARI_CE_NAME(SHSetBack);
+
+/* ee504533 SHSetSubMenu: page print
+ * #define SHSetSubMenu(hWndMB,ID_MENU) (HMENU)SendMessage((hWndMB), \ SHCMBM_SETSUBMENU, (WPARAM)0, (LPARAM)ID_MENU);
+ * (generation not stated) */
+#define SHSetSubMenu(hWndMB,ID_MENU) (HMENU)SendMessage((hWndMB), \ SHCMBM_SETSUBMENU, (WPARAM)0, (LPARAM)ID_MENU);
+
+/* ee505261 SHGetMenu: page print
+ * #define SHGetMenu(hWndMB) (HMENU)SendMessage((hWndMB), \ SHCMBM_GETMENU, (WPARAM)0, (LPARAM)0);
+ * (generation not stated) */
+#define SHGetMenu(hWndMB) (HMENU)SendMessage((hWndMB), \ SHCMBM_GETMENU, (WPARAM)0, (LPARAM)0);
+
+/* ee506250 SHGetSubMenu: page print
+ * #define SHGetSubMenu(hWndMB,ID_MENU) (HMENU)SendMessage((hWndMB), \ SHCMBM_GETSUBMENU, (WPARAM)0, (LPARAM)ID_MENU);
+ * (generation not stated) */
+#define SHGetSubMenu(hWndMB,ID_MENU) (HMENU)SendMessage((hWndMB), \ SHCMBM_GETSUBMENU, (WPARAM)0, (LPARAM)ID_MENU);
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453736 (CE .NET 4.0+): changes an input-window context feature;

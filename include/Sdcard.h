@@ -35,4 +35,5 @@ extern "C" {
 }
 #endif
 
+
 #endif /* AKARI_SDCARD_H */

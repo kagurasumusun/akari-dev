@@ -667,4 +667,6 @@ AKARI_CE_IMPORT ULONG    ldap_sasl_bind_s(LDAP *ExternalHandle, const PTCHAR Dis
 }
 #endif
 
+
+
 #endif /* AKARI_WINLDAP_H */

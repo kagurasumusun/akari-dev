@@ -120,4 +120,51 @@ extern "C" {
 }
 #endif
 
+
+/* ee483387 CDROM_TESTUNITREADY: page print
+ * typedef struct CDROM_TESTUNITREADY { ULONG Reserved; BOOL bUnitReady; } CDROM_TESTUNITREADY, *PCDROM_TESTUNITREADY;
+ * (generation not stated) */
+typedef struct CDROM_TESTUNITREADY {
+    ULONG Reserved;
+    BOOL bUnitReady;
+} CDROM_TESTUNITREADY, *PCDROM_TESTUNITREADY;
+
+/* ee483463 CD_SENSE_DATA: page print
+ * typedef struct _CD_SENSE_DATA { BYTE sd_ErrCode; BYTE sd_SegNum; BYTE sd_ILI_Key; BYTE sd_Info[4]; BYTE sd_Length; BYTE sd_CmdInfo[4]; BYTE sd_SenseCo
+ * (generation not stated) */
+typedef struct _CD_SENSE_DATA {
+    BYTE sd_ErrCode;
+    BYTE sd_SegNum;
+    BYTE sd_ILI_Key;
+    BYTE sd_Info[4];
+    BYTE sd_Length;
+    BYTE sd_CmdInfo[4];
+    BYTE sd_SenseCode;
+    BYTE sd_Qualifier;
+    BYTE sd_UnitCode;
+    BYTE sd_Key1;
+    BYTE sd_Key2;
+    BYTE sd_Key3;
+} CD_SENSE_DATA, *PCD_SENSE_DATA;
+
+/* ee483643 CDROM_PLAY_AUDIO_MSF: page print
+ * typedef struct _CDROM_PLAY_AUDIO_MSF { UCHAR StartingM; UCHAR StartingS; UCHAR StartingF; UCHAR EndingM; UCHAR EndingS; UCHAR EndingF; } CDROM_PLAY_AU
+ * (generation not stated) */
+typedef struct _CDROM_PLAY_AUDIO_MSF {
+    UCHAR StartingM;
+    UCHAR StartingS;
+    UCHAR StartingF;
+    UCHAR EndingM;
+    UCHAR EndingS;
+    UCHAR EndingF;
+} CDROM_PLAY_AUDIO_MSF, *PCDROM_PLAY_AUDIO_MSF;
+
+/* ee484034 SGX_BUF: page print
+ * typedef struct _SGX_BUF { PUCHAR sb_buf; DWORD sb_len; } SGX_BUF, *PSGX_BUF;
+ * (generation not stated) */
+typedef struct _SGX_BUF {
+    PUCHAR sb_buf;
+    DWORD sb_len;
+} SGX_BUF, *PSGX_BUF;
+
 #endif /* AKARI_CDIOCTL_H */

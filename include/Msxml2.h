@@ -1672,4 +1672,63 @@ typedef struct IMXWriter                IMXWriter;
 }
 #endif
 
+
+/* ee502402 setLocalName: print `HRESULT setLocalName(
+int nIndex,
+BSTR strLocalName
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT setLocalName(int nIndex, BSTR strLocalName) AKARI_CE_NAME(setLocalName);
+
+/* ee502641 setAttributes: print `HRESULT setAttributes(
+IMXAttributes* varAtts
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT setAttributes(IMXAttributes *varAtts) AKARI_CE_NAME(setAttributes);
+
+/* ee503036 setURI: print `HRESULT setURI(
+int nIndex,
+BSTR strURI
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT setURI(int nIndex, BSTR strURI) AKARI_CE_NAME(setURI);
+
+/* ee503067 addAttributeFromIndex: print `HRESULT addAttributeFromIndex(
+VARIANT varAtts,
+int nIndex
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT addAttributeFromIndex(VARIANT varAtts, int nIndex) AKARI_CE_NAME(addAttributeFromIndex);
+
+/* ee503113 setType: print `HRESULT setType(
+int nIndex,
+BSTR strType
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT setType(int nIndex, BSTR strType) AKARI_CE_NAME(setType);
+
+/* ee503119 setQName: print `HRESULT setQName(
+int nIndex,
+BSTR strQName
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT setQName(int nIndex, BSTR strQName) AKARI_CE_NAME(setQName);
+
+/* ee503150 addAttribute: print `HRESULT addAttribute(
+BSTR strURI,
+BSTR strLocalName,
+BSTR strQName,
+BSTR strType,
+BSTR strValue
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT addAttribute(BSTR strURI, BSTR strLocalName, BSTR strQName, BSTR strType, BSTR strValue) AKARI_CE_NAME(addAttribute);
+
+/* ee503456 setValue: print `HRESULT setValue(
+int nIndex,
+BSTR strValue
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT setValue(int nIndex, BSTR strValue) AKARI_CE_NAME(setValue);
+
 #endif /* AKARI_MSXML2_H */

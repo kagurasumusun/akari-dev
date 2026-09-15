@@ -150,5 +150,46 @@ struct SS_SOCKETSTATE{
 };
 #endif /* _WIN32_WCE >= 0x0500 */
 
+
+/* ee484411 SS_WINDOW_STATE: page print
+ * typedef struct SS_WINDOW_STATE{ HANDLE hSocket; UINT16 fState; UINT8 fSpeed; UINT8 Reserved; UINT32 uSize; UINT32 uBase; UINT32 uOffset; } SS_WINDOW_S
+ * (generation not stated) */
+typedef struct SS_WINDOW_STATE {
+    HANDLE hSocket;
+    UINT16 fState;
+    UINT8 fSpeed;
+    UINT8 Reserved;
+    UINT32 uSize;
+    UINT32 uBase;
+    UINT32 uOffset;
+} SS_WINDOW_STATE, *PSS_WINDOW_STATE;
+
+/* ee485884 SS_WINDOW_INFO: page print
+ * typedef struct SS_WINDOW_INFO{ HANDLE hSocket; UINT16 fWindowCaps; UINT16 fMemoryCaps; UINT16 fIOCaps; UINT16 Reserved; UINT32 uMemFirstByte; UINT32 u
+ * (generation not stated) */
+typedef struct SS_WINDOW_INFO {
+    HANDLE hSocket;
+    UINT16 fWindowCaps;
+    UINT16 fMemoryCaps;
+    UINT16 fIOCaps;
+    UINT16 Reserved;
+    UINT32 uMemFirstByte;
+    UINT32 uMemLastByte;
+    UINT32 uMemMinSize;
+    UINT32 uMemMaxSize;
+    UINT32 uMemGranularity;
+    UINT32 uMemBase;
+    UINT32 uMemOffset;
+    UINT32 uIOFirstByte;
+    UINT32 uIOLastByte;
+    UINT32 uIOMinSize;
+    UINT32 uIOMaxSize;
+    UINT32 uIOGranularity;
+    UINT8 uAddressLines;
+    UINT8 fSlowest;
+    UINT8 fFastest;
+    UINT8 Reserved2;
+} SS_WINDOW_INFO, *PSS_WINDOW_INFO;
+
 #endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_SOCKSV2_H */

@@ -536,5 +536,27 @@ struct _D3DMDEVICEFORMAT{
 #define D3DMTSS_TEXTURE 0
 #endif /* _WIN32_WCE >= 0x0500 */
 
+
+/* ee482647 D3DM_SETLIGHT: page print
+ * typedef struct _D3DM_SETLIGHT { DWORD Index; D3DM_SETLIGHT_DATATYPE DataType; } D3DM_SETLIGHT, * LPD3DM_SETLIGHT;
+ * (generation not stated) */
+typedef struct _D3DM_SETLIGHT {
+    DWORD Index;
+    D3DM_SETLIGHT_DATATYPE DataType;
+} D3DM_SETLIGHT, * LPD3DM_SETLIGHT;
+
+/* ee485488 D3DM_SETPALETTE: page print
+ * typedef struct _D3DM_SETPALETTE { DWORD Index; D3DM_SETPALETTE_DATATYPE DataType; } D3DM_SETPALETTE, *LPD3DM_SETPALETTE;
+ * (generation not stated) */
+typedef struct _D3DM_SETPALETTE {
+    DWORD Index;
+    D3DM_SETPALETTE_DATATYPE DataType;
+} D3DM_SETPALETTE, *LPD3DM_SETPALETTE;
+
+/* ee485667 D3DM_DLL_ENTRY: page print
+ * #define D3DM_DLL_ENTRY TEXT("D3DM_Initialize")
+ * (generation not stated) */
+#define D3DM_DLL_ENTRY TEXT("D3DM_Initialize")
+
 #endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_D3DMDDK_H */

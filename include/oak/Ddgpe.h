@@ -205,4 +205,12 @@ extern "C" {
 }
 #endif
 
+
+/* HELD -- ee486277 "DDGPEStandardHeader": the page prints this as a
+ * `#define` whose body is a struct definition
+ * (`DWORD dwSize; DWORD dwDriverSignature; DWORD dwVersion; DWORD
+ * dwReserved0..3`).  A macro parameter list cannot hold that text, so no
+ * CE page publishes a compilable spelling; recorded verbatim per the
+ * dangling-type policy rather than invented. */
+
 #endif /* AKARI_DDGPE_H */

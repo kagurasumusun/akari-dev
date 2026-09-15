@@ -179,3 +179,24 @@ hwndParent
  * (Windows Embedded CE 6.0 and later; Link Library: not stated) */
 AKARI_CE_IMPORT HRESULT OnSSPEnable(HWND hwndParent) AKARI_CE_NAME(OnSSPEnable);
 
+
+/* ee483764 ReplDialogs: page print
+ * enum ReplDialogs { OPTIONS_DIALOG };
+ * (generation not stated) */
+typedef enum ReplDialogs {
+    OPTIONS_DIALOG
+} ReplDialogs;
+
+/* ee487010 OBJUIDATA: page print
+ * typedef struct tagObjUIData { UINT cbStruct; HICON hIconLarge; HICON hIconSmall; char szName[MAX_PATH]; char szSyncText[MAX_PATH]; char szTypeText[80]
+ * (generation not stated) */
+typedef struct tagObjUIData {
+    UINT cbStruct;
+    HICON hIconLarge;
+    HICON hIconSmall;
+    char szName[MAX_PATH];
+    char szSyncText[MAX_PATH];
+    char szTypeText[80];
+    char szPlTypeText[80];
+} OBJUIDATA, *POBJUIDATA;
+

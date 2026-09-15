@@ -1409,4 +1409,13 @@
 /* ms886629 WSALookupServiceNext Parameter Values for Enumerating Clouds */
 /* ms886630 WSALookupServiceNext Parameter Values for Resolving Peer Names */
 /* ms899588 wstring class (UPnP AV) */
+
+/* ee501152 DIRECTION: page print
+ * enum DIRECTION { OUTPUT, INPUT };
+ * (generation not stated; Link Library: Av_upnp.lib) */
+typedef enum DIRECTION {
+    OUTPUT,
+    INPUT
+} DIRECTION;
+
 #endif /* AKARI_AV_UPNP_H */

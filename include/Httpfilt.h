@@ -214,4 +214,13 @@ typedef struct _HTTP_FILTER_URL_MAP {
 /* aa450967: page-printed prototype (Windows CE 3.0 and later.; not applicable). */
 BOOL WINAPI TerminateFilter(DWORD dwFlags);
 
+
+/* ee498667 HttpFilterProc: print `DWORD WINAPI HttpFilterProc(
+PHTTP_FILTER_CONTEXT pfc,
+DWORD NotificationType,
+VOID* pvNotification
+);`
+ * (generation not stated; Link Library: Developer) */
+DWORD HttpFilterProc(PHTTP_FILTER_CONTEXT pfc, DWORD NotificationType, VOID *pvNotification);
+
 #endif /* AKARI_HTTPFILT_H */

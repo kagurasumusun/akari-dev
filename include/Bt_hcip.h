@@ -111,4 +111,14 @@ AKARI_CE_IMPORT int HCI_WritePacket(HCI_TYPE eType, BD_BUFFER* pOutBuffer)
 }
 #endif
 
+
+/* ee486889 HCI_EVENT: page print
+ * enum HCI_EVENT { DEVICE_UP, DEVICE_DOWN, DEVICE_ERROR };
+ * (generation not stated) */
+typedef enum HCI_EVENT {
+    DEVICE_UP,
+    DEVICE_DOWN,
+    DEVICE_ERROR
+} HCI_EVENT;
+
 #endif /* AKARI_BT_HCIP_H */

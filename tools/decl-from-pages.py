@@ -155,10 +155,34 @@ def cache_path(cache, page):
     return os.path.join(cache, re.sub(r"[^A-Za-z0-9_]", "_", page) + ".html")
 
 
-def fetch(page, cache, sleep=0.4):
+def find_cached(cache, page):
+    """The cached file for a page id, whatever spelling the corpus used.
+
+    M137: cache_path() rewrites every character outside [A-Za-z0-9_] to `_`,
+    so `ee491797(v=winembedded.60)` was looked up as
+    `ee491797_v_winembedded_60_.html` while the corpus stores
+    `ee491797(v=winembedded.60).html` -- and pages6/ stores the bare
+    `ee491797.html`.  Neither matched, so every run silently fell through to
+    the network and drew HTTP 429s instead of reading the 52,461 pages that
+    were sitting in the cache.  Try the real spellings first.
+    """
+    base = re.sub(r"\(v=[^)]*\)$", "", page).strip()
+    for cand in (page + ".html", base + ".html"):
+        p = os.path.join(cache, cand)
+        if os.path.exists(p):
+            return p
+    for f in os.listdir(cache) if os.path.isdir(cache) else ():
+        if f.startswith(base + "(v=") and f.endswith(".html"):
+            return os.path.join(cache, f)
     p = cache_path(cache, page)
-    if os.path.exists(p):
+    return p if os.path.exists(p) else None
+
+
+def fetch(page, cache, sleep=0.4):
+    p = find_cached(cache, page)
+    if p:
         return open(p, encoding="utf-8", errors="replace").read()
+    p = cache_path(cache, page)
     req = urllib.request.Request(BASE + page, headers={"User-Agent": UA})
     raw = urllib.request.urlopen(req, timeout=45).read().decode("utf-8", "replace")
     os.makedirs(cache, exist_ok=True)
@@ -536,8 +560,15 @@ def main():
         # Idempotency: a name the tree already declares is a no-op, whether
         # an earlier pass of this tool wrote it or it was hand-written.
         if job["name"] in declared:
-            skipped.append((job["name"], norm_page(job["page"]) or job["page"],
-                            "already declared in " + declared[job["name"]]))
+            # `bad` is the skip list (3-tuples, reported as SKIP); `skipped`
+            # is the error list (2-tuples, reported as ERROR).  M136 put this
+            # 3-tuple in `skipped`, so the report loop's
+            # `for n, why in skipped` raised ValueError -- and because that
+            # happens after the transcribing loop but before the write, every
+            # --write run over a list containing an already-declared name
+            # crashed having declared everything and written nothing.
+            bad.append((job["name"], norm_page(job["page"]) or job["page"],
+                        "already declared in " + declared[job["name"]]))
             continue
         page = norm_page(job["page"])
         if not page:

@@ -116,8 +116,36 @@ NTSTATUS SmartcardDeleteLink(LPCWSTR pszFriendlyName);
 /* ms894029 Smart Card Driver Registry Settings */
 /* ms894031 Smart Card Driver Samples */
 
+/* ee483182 SCARD_READER_CAPABILITIES: page print
+ * typedef struct _SCARD_READER_CAPABILITIES { struct { ULONG Async; ULONG Sync; } SupportedProtocols; ULONG ReaderType; ULONG MechProperties; ULONG Curr
+ * (generation not stated) */
+typedef struct _SCARD_READER_CAPABILITIES {
+    struct {
+        ULONG Async;
+        ULONG Sync;
+    } SupportedProtocols;
+    ULONG ReaderType;
+    ULONG MechProperties;
+    ULONG CurrentState;
+    ULONG Channel;
+    struct {
+        ULONG Default;
+        ULONG Max;
+    } CLKFrequency;
+    struct {
+        ULONG Default;
+        ULONG Max;
+    } DataRate;
+    ULONG MaxIFSD;
+    ULONG PowerMgmtSupport;
+    ULONG Reserved[25];
+} SCARD_READER_CAPABILITIES, *PSCARD_READER_CAPABILITIES;
+
 #ifdef __cplusplus
 }
 #endif
+
+
+
 
 #endif /* AKARI_SMCLIB_H */

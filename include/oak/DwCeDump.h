@@ -198,5 +198,13 @@ typedef enum _MINIDUMP_STREAM_TYPE {
 /* ms939659 Reserving Memory for Error Reporting Dumps */
 /* aa526066 Types of Crash Dump Files */
 /* aa526069 Windows Mobile Error Reporting Reference */
+
+/* HELD -- ee482007 "_MINIDUMP_MEMORY_DESCRIPTOR": `typedef struct
+ * _MINIDUMP_MEMORY_DESCRIPTOR {ULONG64 StartOfMemoryRange;
+ * MINIDUMP_LOCATION_DESCRIPTOR Memory;} MINIDUMP_MEMORY_DESCRIPTOR,
+ * *PMINIDUMP_MEMORY_DESCRIPTOR;` -- embeds MINIDUMP_LOCATION_DESCRIPTOR
+ * by value, held above (its print embeds the unpublished RVARva);
+ * recorded verbatim. */
+
 #endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_DWCEDUMP_H */

@@ -41,6 +41,34 @@
 extern "C" {
 #endif
 
+/* HINTERNET: the WinInet handle.  No CE page prints a typedef for it -- a
+ * full-corpus search finds 145 pages that mention it and 0 that define one --
+ * but its behaviour as a handle is printed repeatedly and unambiguously:
+ *
+ *   ms918368 InternetOpen          "HINTERNET WINAPI InternetOpen(...)"
+ *   ms918348 InternetCloseHandle   "BOOL WINAPI InternetCloseHandle(HINTERNET hInternet)"
+ *   ms918375 InternetReadFile      "... InternetReadFile(HINTERNET hFile, ...)"
+ *   ms918351 InternetConnect       "HINTERNET WINAPI InternetConnect(HINTERNET hInternet, ...)"
+ *
+ * It is returned by an open, passed by value, and closed by a CloseHandle.
+ * That is the same evidence on which Windef.h:236 declares HRSRC
+ * (`typedef HANDLE HRSRC;` -- "desktop Win32 also types HRSRC as HANDLE"),
+ * so it is declared the same way here.  Only the representation is taken
+ * from the tree's own HANDLE; the name, the by-value passing and the
+ * open/close pair are the pages'.
+ *
+ * M137: this one type was holding the whole area.  The M92 hold policy
+ * recorded 47 Wininet.lib functions instead of declaring them, so the tree
+ * shipped 38 cache/cookie helpers and none of InternetOpen, InternetReadFile,
+ * HttpSendRequest or FtpOpenFile -- 0 of the 11 basic WinInet functions.
+ *
+ * GROUPID (aa452433 CreateUrlCacheGroup returns it, aa452486
+ * FindFirstUrlCacheGroup writes it through GROUPID*) and INTERNET_PORT
+ * (ms918351 nServerPort, ms918864 URL_COMPONENTS.nPort) stay held: no page
+ * prints their size, and guessing one would fix a wrong struct ABI, which is
+ * worse than declaring nothing. */
+typedef HANDLE HINTERNET;
+
 /* ------------------------------------------------------------------ */
 /* Structures (full prints, compiled verbatim).                        */
 /* ------------------------------------------------------------------ */
@@ -544,6 +572,298 @@ AKARI_CE_IMPORT BOOL InternetSetPerSiteCookieDecisionA(LPCSTR pchHostName, DWORD
  *. */
 AKARI_CE_IMPORT BOOL InternetSetPerSiteCookieDecisionW(LPCSTR pchHostName, DWORD dwDecision)
                         AKARI_CE_NAME(InternetSetPerSiteCookieDecisionW);
+
+/* ee491828 FtpGetFileEx: print `BOOL WINAPI FtpGetFileEx(
+HINTERNET hFtpSession,
+LPCTSTR lpszRemoteFile,
+LPCTSTR lpszNewFile,
+BOOL fFailIfExists,
+DWORD dwFlagsAndAttributes,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpGetFileEx(HINTERNET hFtpSession, LPCTSTR lpszRemoteFile, LPCTSTR lpszNewFile, BOOL fFailIfExists, DWORD dwFlagsAndAttributes, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(FtpGetFileEx);
+
+/* ee491851 HttpOpenRequest: print `HINTERNET WINAPI HttpOpenRequest(
+HINTERNET hConnect,
+LPCTSTR lpszVerb,
+LPCTSTR lpszObjectName,
+LPCTSTR lpszVersion,
+LPCTSTR lpszReferrer,
+LPCTSTR* lplpszAcceptTypes,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT HINTERNET HttpOpenRequest(HINTERNET hConnect, LPCTSTR lpszVerb, LPCTSTR lpszObjectName, LPCTSTR lpszVersion, LPCTSTR lpszReferrer, LPCTSTR *lplpszAcceptTypes, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(HttpOpenRequest);
+
+/* ee491861 InternetReadFile: print `BOOL WINAPI InternetReadFile(
+HINTERNET hFile,
+LPVOID lpBuffer,
+DWORD dwNumberOfBytesToRead,
+LPDWORD lpdwNumberOfBytesRead
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetReadFile(HINTERNET hFile, LPVOID lpBuffer, DWORD dwNumberOfBytesToRead, LPDWORD lpdwNumberOfBytesRead) AKARI_CE_NAME(InternetReadFile);
+
+/* ee491998 InternetQueryDataAvailable: print `BOOL WINAPI InternetQueryDataAvailable(
+HINTERNET hFile,
+LPDWORD lpdwNumberOfBytesAvailable,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetQueryDataAvailable(HINTERNET hFile, LPDWORD lpdwNumberOfBytesAvailable, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(InternetQueryDataAvailable);
+
+/* ee492003 InternetFindNextFile: print `BOOL WINAPI InternetFindNextFile(
+HINTERNET hFind,
+LPVOID lpvFindData
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetFindNextFile(HINTERNET hFind, LPVOID lpvFindData) AKARI_CE_NAME(InternetFindNextFile);
+
+/* ee492006 FtpRenameFile: print `BOOL WINAPI FtpRenameFile(
+HINTERNET hConnect,
+LPCTSTR lpszExisting,
+LPCTSTR lpszNew
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpRenameFile(HINTERNET hConnect, LPCTSTR lpszExisting, LPCTSTR lpszNew) AKARI_CE_NAME(FtpRenameFile);
+
+/* ee492088 InternetOpen: print `HINTERNET WINAPI InternetOpen(
+LPCTSTR lpszAgent,
+DWORD dwAccessType,
+LPCTSTR lpszProxy,
+LPCTSTR lpszProxyBypass,
+DWORD dwFlags
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT HINTERNET InternetOpen(LPCTSTR lpszAgent, DWORD dwAccessType, LPCTSTR lpszProxy, LPCTSTR lpszProxyBypass, DWORD dwFlags) AKARI_CE_NAME(InternetOpen);
+
+/* ee492089 InternetOpenUrl: print `HINTERNET InternetOpenUrl(
+HINTERNET hInternetSession,
+LPCTSTR lpszUrl,
+LPCTSTR lpszHeaders,
+DWORD dwHeadersLength,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT HINTERNET InternetOpenUrl(HINTERNET hInternetSession, LPCTSTR lpszUrl, LPCTSTR lpszHeaders, DWORD dwHeadersLength, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(InternetOpenUrl);
+
+/* ee492164 InternetReadFileEx: print `BOOL InternetReadFileEx(
+HINTERNET hFile,
+LPINTERNET_BUFFERS lpBuffersOut,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetReadFileEx(HINTERNET hFile, LPINTERNET_BUFFERS lpBuffersOut, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(InternetReadFileEx);
+
+/* ee492193 HttpSendRequestEx: print `BOOL HttpSendRequestEx(
+HINTERNET hRequest,
+LPINTERNET_BUFFERS lpBuffersIn,
+LPINTERNET_BUFFERS lpBuffersOut,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL HttpSendRequestEx(HINTERNET hRequest, LPINTERNET_BUFFERS lpBuffersIn, LPINTERNET_BUFFERS lpBuffersOut, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(HttpSendRequestEx);
+
+/* ee492208 InternetLockRequestFile: print `BOOL InternetLockRequestFile(
+HINTERNET hInternet,
+HANDLE* lphLockRequestInfo
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetLockRequestFile(HINTERNET hInternet, HANDLE *lphLockRequestInfo) AKARI_CE_NAME(InternetLockRequestFile);
+
+/* ee492251 InternetCloseHandle: print `BOOL WINAPI InternetCloseHandle(
+HINTERNET hInternet
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetCloseHandle(HINTERNET hInternet) AKARI_CE_NAME(InternetCloseHandle);
+
+/* ee492362 HttpSendRequest: print `BOOL WINAPI HttpSendRequest(
+HINTERNET hRequest,
+LPCTSTR lpszHeaders,
+DWORD dwHeadersLength,
+LPVOID lpOptional,
+DWORD dwOptionalLength
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL HttpSendRequest(HINTERNET hRequest, LPCTSTR lpszHeaders, DWORD dwHeadersLength, LPVOID lpOptional, DWORD dwOptionalLength) AKARI_CE_NAME(HttpSendRequest);
+
+/* ee492396 FtpGetFile: print `BOOL WINAPI FtpGetFile(
+HINTERNET hConnect,
+LPCTSTR lpszRemoteFile,
+LPCTSTR lpszNewFile,
+BOOL fFailIfExists,
+DWORD dwFlagsAndAttributes,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpGetFile(HINTERNET hConnect, LPCTSTR lpszRemoteFile, LPCTSTR lpszNewFile, BOOL fFailIfExists, DWORD dwFlagsAndAttributes, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(FtpGetFile);
+
+/* ee492397 FtpFindFirstFile: print `HINTERNET FtpFindFirstFile(
+HINTERNET hConnect,
+LPCTSTR lpszSearchFile,
+LPWIN32_FIND_DATA lpFindFileData,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT HINTERNET FtpFindFirstFile(HINTERNET hConnect, LPCTSTR lpszSearchFile, LPWIN32_FIND_DATA lpFindFileData, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(FtpFindFirstFile);
+
+/* ee492407 HttpEndRequest: print `BOOL HttpEndRequest(
+HINTERNET hRequest,
+LPINTERNET_BUFFERS lpBuffersOut,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL HttpEndRequest(HINTERNET hRequest, LPINTERNET_BUFFERS lpBuffersOut, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(HttpEndRequest);
+
+/* ee492415 InternetQueryOption: print `BOOL WINAPI InternetQueryOption(
+HINTERNET hInternet,
+DWORD dwOption,
+LPVOID lpBuffer OPTIONAL,
+LPDWORD lpdwBufferLength
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetQueryOption(HINTERNET hInternet, DWORD dwOption, LPVOID lpBuffer, LPDWORD lpdwBufferLength) AKARI_CE_NAME(InternetQueryOption);
+
+/* ee492463 InternetWriteFile: print `BOOL InternetWriteFile(
+HINTERNET hFile,
+LPCVOID lpBuffer,
+DWORD dwNumberOfBytesToWrite,
+LPDWORD lpdwNumberOfBytesWritten
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetWriteFile(HINTERNET hFile, LPCVOID lpBuffer, DWORD dwNumberOfBytesToWrite, LPDWORD lpdwNumberOfBytesWritten) AKARI_CE_NAME(InternetWriteFile);
+
+/* ee492470 FtpCreateDirectory: print `BOOL WINAPI FtpCreateDirectory(
+HINTERNET hConnect,
+LPCTSTR lpszDirectory
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpCreateDirectory(HINTERNET hConnect, LPCTSTR lpszDirectory) AKARI_CE_NAME(FtpCreateDirectory);
+
+/* ee492589 FtpRemoveDirectory: print `BOOL WINAPI FtpRemoveDirectory(
+HINTERNET hConnect,
+LPCTSTR lpszDirectory
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpRemoveDirectory(HINTERNET hConnect, LPCTSTR lpszDirectory) AKARI_CE_NAME(FtpRemoveDirectory);
+
+/* ee492614 FtpGetFileSize: print `DWORD FtpGetFileSize(
+HINTERNET hFile,
+LPDWORD lpdwFileSizeHigh
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT DWORD FtpGetFileSize(HINTERNET hFile, LPDWORD lpdwFileSizeHigh) AKARI_CE_NAME(FtpGetFileSize);
+
+/* ee492630 FtpCommand: print `BOOL WINAPI FtpCommand(
+HINTERNET hConnect,
+BOOL fExpectResponse,
+DWORD dwFlags,
+LPCTSTR lpszCommand,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpCommand(HINTERNET hConnect, BOOL fExpectResponse, DWORD dwFlags, LPCTSTR lpszCommand, DWORD dwContext) AKARI_CE_NAME(FtpCommand);
+
+/* ee492663 FtpOpenFile: print `HINTERNET FtpOpenFile(
+HINTERNET hConnect,
+LPCTSTR lpszFileName,
+DWORD dwAccess,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT HINTERNET FtpOpenFile(HINTERNET hConnect, LPCTSTR lpszFileName, DWORD dwAccess, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(FtpOpenFile);
+
+/* ee492802 FtpGetCurrentDirectory: print `BOOL WINAPI FtpGetCurrentDirectory(
+HINTERNET hConnect,
+LPCTSTR lpszCurrentDirectory,
+LPDWORD lpdwCurrentDirectory
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpGetCurrentDirectory(HINTERNET hConnect, LPCTSTR lpszCurrentDirectory, LPDWORD lpdwCurrentDirectory) AKARI_CE_NAME(FtpGetCurrentDirectory);
+
+/* ee492811 InternetSetOption: print `BOOL WINAPI InternetSetOption(
+HINTERNET hInternet,
+DWORD dwOption,
+LPVOID lpBuffer,
+DWORD dwBufferLength
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL InternetSetOption(HINTERNET hInternet, DWORD dwOption, LPVOID lpBuffer, DWORD dwBufferLength) AKARI_CE_NAME(InternetSetOption);
+
+/* ee492815 FtpDeleteFile: print `BOOL WINAPI FtpDeleteFile(
+HINTERNET hConnect,
+LPCTSTR lpszFileName
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpDeleteFile(HINTERNET hConnect, LPCTSTR lpszFileName) AKARI_CE_NAME(FtpDeleteFile);
+
+/* ee492818 HttpAddRequestHeaders: print `BOOL WINAPI HttpAddRequestHeaders(
+HINTERNET hHttpRequest,
+LPCTSTR lpszHeaders,
+DWORD dwHeadersLength,
+DWORD dwModifiers
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL HttpAddRequestHeaders(HINTERNET hHttpRequest, LPCTSTR lpszHeaders, DWORD dwHeadersLength, DWORD dwModifiers) AKARI_CE_NAME(HttpAddRequestHeaders);
+
+/* ee492829 FtpSetCurrentDirectory: print `BOOL WINAPI FtpSetCurrentDirectory(
+HINTERNET hConnect,
+LPCTSTR lpszDirectory
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpSetCurrentDirectory(HINTERNET hConnect, LPCTSTR lpszDirectory) AKARI_CE_NAME(FtpSetCurrentDirectory);
+
+/* ee492833 FtpPutFile: print `BOOL WINAPI FtpPutFile(
+HINTERNET hConnect,
+LPCTSTR lpszLocalFile,
+LPCTSTR lpszNewRemoteFile,
+DWORD dwFlags,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL FtpPutFile(HINTERNET hConnect, LPCTSTR lpszLocalFile, LPCTSTR lpszNewRemoteFile, DWORD dwFlags, DWORD dwContext) AKARI_CE_NAME(FtpPutFile);
+
+/* ee492848 HttpQueryInfo: print `BOOL WINAPI HttpQueryInfo(
+HINTERNET hRequest,
+DWORD dwInfoLevel,
+LPVOID lpBuffer,
+LPDWORD lpdwBufferLength,
+LPDWORD lpdwIndex
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT BOOL HttpQueryInfo(HINTERNET hRequest, DWORD dwInfoLevel, LPVOID lpBuffer, LPDWORD lpdwBufferLength, LPDWORD lpdwIndex) AKARI_CE_NAME(HttpQueryInfo);
+
+/* ee492858 InternetSetFilePointer: print `DWORD InternetSetFilePointer(
+HINTERNET hFile,
+LONG lDistanceToMove,
+PVOID pReserved,
+DWORD dwMoveMethod,
+DWORD dwContext
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT DWORD InternetSetFilePointer(HINTERNET hFile, LONG lDistanceToMove, PVOID pReserved, DWORD dwMoveMethod, DWORD dwContext) AKARI_CE_NAME(InternetSetFilePointer);
+
+/* ee492869 InternetErrorDlg: print `DWORD InternetErrorDlg(
+HWND hWnd,
+HINTERNET hRequest,
+DWORD dwError,
+DWORD dwFlags,
+LPVOID* lppvData
+);`
+ * (generation not stated; Link Library: wininet.lib) */
+AKARI_CE_IMPORT DWORD InternetErrorDlg(HWND hWnd, HINTERNET hRequest, DWORD dwError, DWORD dwFlags, LPVOID *lppvData) AKARI_CE_NAME(InternetErrorDlg);
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms918387 "InternetTimeFromSystemTime": print `BOOL WINAPI InternetTimeFromSystemTime(CONST SYSTEMTIME* pst, DWORD dwRFC, LPTSTR lpszTime, DWORD cbTime);`

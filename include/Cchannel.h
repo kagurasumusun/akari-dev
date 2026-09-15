@@ -272,6 +272,22 @@ BOOL VCAPITYPE VirtualChannelEntry(PCHANNEL_ENTRY_POINTS pEntryPoints);
  * PVOID pInitHandle);". */
 typedef BOOL VCAPITYPE VIRTUALCHANNELENTRYEX(
     PCHANNEL_ENTRY_POINTS_EX pEntryPointsEx, PVOID pInitHandle);
+
+/* ee485115 VirtualChannelWrite: print `UINT VCAPITYPE VirtualChannelWrite(
+DWORD openHandle,
+LPVOID pData,
+ULONG dataLength,
+LPVOID pUserData
+);`
+ * (generation not stated; Link Library: Developer) */
+UINT VirtualChannelWrite(DWORD openHandle, LPVOID pData, ULONG dataLength, LPVOID pUserData);
+
+/* ee486571 VirtualChannelClose: print `UINT VCAPITYPE VirtualChannelClose(
+DWORD openHandle
+);`
+ * (generation not stated; Link Library: Developer) */
+UINT VirtualChannelClose(DWORD openHandle);
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms879628 "VirtualChannelInitEvent": event callback prototype (see

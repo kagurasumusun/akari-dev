@@ -196,9 +196,11 @@ typedef STYLEBUF *LPSTYLEBUF;   /* ImmGetRegisterWordStyle */
 typedef struct INPUTCONTEXT *PINPUTCONTEXT;
 typedef struct INPUTCONTEXT *NPINPUTCONTEXT;
 typedef struct INPUTCONTEXT *LPINPUTCONTEXT;     /* ImmLockIMC */
-typedef struct IMEMENUITEMINFO *PIMEMENUITEMINFO;
-typedef struct IMEMENUITEMINFO *NPIMEMENUITEMINFO;
-typedef struct IMEMENUITEMINFO *LPIMEMENUITEMINFO; /* ImmGetImeMenuItems */
+typedef struct tagIMEMENUITEMINFO *PIMEMENUITEMINFO;
+typedef struct tagIMEMENUITEMINFO *NPIMEMENUITEMINFO;
+typedef struct tagIMEMENUITEMINFO *LPIMEMENUITEMINFO; /* ImmGetImeMenuItems;
+                                                     * full definition below
+                                                     * (ee491368) */
 typedef struct IMECHARPOSITION *PIMECHARPOSITION;  /* IMR_QUERYCHARPOSITION */
 
 /* ------------------------------------------------------------------ */
@@ -1052,5 +1054,31 @@ typedef struct tagCOMPOSITIONSTRING {
     DWORD dwPrivateSize;
     DWORD dwPrivateOffset;
 } COMPOSITIONSTRING;
+
+
+/* ee491368 IMEMENUITEMINFO: page print
+ * typedef struct tagIMEMENUITEMINFO { UINT cbSize; UINT fType; UINT fState; UINT wID; HBITMAP hbmpChecked; HBITMAP hbmpUnchecked; DWORD dwItemData; WCHA
+ * (generation not stated) */
+typedef struct tagIMEMENUITEMINFO {
+    UINT cbSize;
+    UINT fType;
+    UINT fState;
+    UINT wID;
+    HBITMAP hbmpChecked;
+    HBITMAP hbmpUnchecked;
+    DWORD dwItemData;
+    WCHAR szString[IMEMENUITEM_STRING_SIZE];
+    HBITMAP hbmpItem;
+} IMEMENUITEMINFO, *PIMEMENUITEMINFO, NEAR *NPIMEMENUITEMINFO, FAR *LPIMEMENUITEMINFO;
+
+
+/* ee491719 EnumRegisterWordProc: print `UINT CALLBACK EnumRegisterWordProc(
+LPCTSTR lpszReading,
+DWORD dwStyle,
+LPCTSTR lpszString,
+LPVOID lpData
+);`
+ * (generation not stated; Link Library: not stated) */
+UINT CALLBACK EnumRegisterWordProc(LPCTSTR lpszReading, DWORD dwStyle, LPCTSTR lpszString, LPVOID lpData);
 
 #endif /* _IMM_H */

@@ -143,6 +143,35 @@ typedef struct GALSearchCriteria {
     WCHAR* wszFirstName;
     WCHAR* wszLastName;
 } GALSearchCriteria;
+
+/* ee484913 ExchangeClientRequestStatus: page print
+ * enum ExchangeClientRequestStatus { e_ecrsPending = 0, e_ecrsInProgress, e_ecrsSending, e_ecrsBypassingOWAPage, e_ecrsSucceeded, e_ecrsOutOfMemory, e_e
+ * (generation not stated) */
+typedef enum ExchangeClientRequestStatus {
+    e_ecrsPending = 0,
+    e_ecrsInProgress,
+    e_ecrsSending,
+    e_ecrsBypassingOWAPage,
+    e_ecrsSucceeded,
+    e_ecrsOutOfMemory,
+    e_ecrsParseFailed,
+    e_ecrsHttpFailure,
+    e_ecrsFailedToSend,
+    e_ecrsFailedToBypassAuthPage,
+    e_ecrsCancelled,
+    e_ecrsNoCredentials
+} ExchangeClientRequestStatus;
+
+/* ee487270 ExchangeClientRequestType: page print
+ * enum ExchangeClientRequestType { e_ecrtInvalid = 0, e_ecrtContacts, e_ecrtGALSearch, e_ecrtFreeBusy };
+ * (generation not stated) */
+typedef enum ExchangeClientRequestType {
+    e_ecrtInvalid = 0,
+    e_ecrtContacts,
+    e_ecrtGALSearch,
+    e_ecrtFreeBusy
+} ExchangeClientRequestType;
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa513745 OWAEC_E_: documented name-only (no value published; held) */

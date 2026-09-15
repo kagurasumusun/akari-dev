@@ -72,4 +72,20 @@ AKARI_CE_IMPORT void WriteDebugLED(WORD wIndex, DWORD dwPattern) AKARI_CE_NAME(W
 }
 #endif
 
+
+/* ee488166 ASSERT: page print
+ * #define ASSERT(exp)
+ * (generation not stated) */
+#define ASSERT(exp) 
+
+/* ee488563 ERRORMSG: page print
+ * #define ERRORMSG( cond, printf_exp )
+ * (generation not stated) */
+#define ERRORMSG( cond, printf_exp ) 
+
+/* ee488600 ASSERTMSG: page print
+ * #define ASSERTMSG( message, Condition )
+ * (generation not stated) */
+#define ASSERTMSG( message, Condition ) 
+
 #endif /* AKARI_DBGAPI_H */

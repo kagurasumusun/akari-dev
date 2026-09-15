@@ -51,6 +51,13 @@ typedef enum  {
     RAPI_DEVICE_DISCONNECTED = 0,
     RAPI_DEVICE_CONNECTED = 1
 } RAPI_DEVICESTATUS;
+
+/* HELD -- ee496610 "CEDB_FIND_DATA": `typedef struct _CEDB_FIND_DATA
+ * {CEOID OidDb; CEDBASEINFO DbInfo;} CEDB_FIND_DATA, *LPCEDB_FIND_DATA;`
+ * -- embeds CEDBASEINFO by value, which Windbase.h:228 holds opaque
+ * (its print is not published with a compilable size), so the embedding
+ * struct cannot be completed; recorded verbatim. */
+
 #endif /* _WIN32_WCE >= 0x0500 */
 /* ms879802 RAPISTREAMFLAG (RAPI) (page print, compiled) */
 typedef enum tagRAPISTREAMFLAG {

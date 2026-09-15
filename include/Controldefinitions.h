@@ -117,5 +117,56 @@ PH_FONT Id
  * (Windows Embedded CE 6.0 and later; Link Library: PhCommon.dll) */
 AKARI_CE_IMPORT HFONT PHGetFont(PH_FONT Id) AKARI_CE_NAME(PHGetFont);
 
+
+/* ee501290 PH_MENU_SCREEN_PARAMETERS: page print
+ * typedef struct _PH_MENU_SCREEN_PARAMETERS { DWORD StructSize; DWORD Flags; HWND Owner; UINT Id; HINSTANCE Instance; const WCHAR* pTitle; PHMS_ITEM* pM
+ * (generation not stated; Link Library: PhCommon.dll) */
+typedef struct _PH_MENU_SCREEN_PARAMETERS {
+    DWORD StructSize;
+    DWORD Flags;
+    HWND Owner;
+    UINT Id;
+    HINSTANCE Instance;
+    const WCHAR *pTitle;
+    PHMS_ITEM *pMenuScreenItems;
+    int ItemCount;
+    UINT NotificationMsg;
+    union {
+        UINT SelectedId;
+        HWND Dialog;
+    };
+} PH_MENU_SCREEN_PARAMETERS;
+
+/* ee501318 PH_MESSAGE_BOX_PARAMETERS: page print
+ * typedef struct _PH_MESSAGE_BOX_PARAMETERS { DWORD StructSize; DWORD Flags; HWND Owner; HINSTANCE Instance; const WCHAR* pTitle; const WCHAR* pText; UI
+ * (generation not stated; Link Library: PhCommon.dll) */
+typedef struct _PH_MESSAGE_BOX_PARAMETERS {
+    DWORD StructSize;
+    DWORD Flags;
+    HWND Owner;
+    HINSTANCE Instance;
+    const WCHAR *pTitle;
+    const WCHAR *pText;
+    UINT IconId;
+    UINT MenuId;
+    union {
+        UINT SelectedId;
+        HWND Dialog;
+    };
+} PH_MESSAGE_BOX_PARAMETERS;
+
+
+/* ee499282 PHMessageBox: print `BOOL PHMessageBox(
+PH_MESSAGE_BOX_PARAMETERS* pParameters
+);`
+ * (generation not stated; Link Library: PhCommon.dll) */
+AKARI_CE_IMPORT BOOL PHMessageBox(PH_MESSAGE_BOX_PARAMETERS *pParameters) AKARI_CE_NAME(PHMessageBox);
+
+/* ee501712 PHMenuScreen: print `BOOL PHMenuScreen(
+PH_MENU_SCREEN_PARAMETERS* pParameters
+);`
+ * (generation not stated; Link Library: PhCommon.dll) */
+AKARI_CE_IMPORT BOOL PHMenuScreen(PH_MENU_SCREEN_PARAMETERS *pParameters) AKARI_CE_NAME(PHMenuScreen);
+
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_CONTROLDEFINITIONS_H */

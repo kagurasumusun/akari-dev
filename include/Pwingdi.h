@@ -48,4 +48,14 @@ typedef struct ContrastCmdInputParm {
 }
 #endif
 
+
+/* ee483223 VIDEO_POWER_MANAGEMENT: page print
+ * typedef struct VIDEOPOWER_MANAGEMENT { ULONG Length; ULONG DPMSVersion; ULONG PowerState; } VIDEO_POWER_MANAGEMENT,* PVIDEO_POWER_MANAGEMENT;
+ * (generation not stated) */
+typedef struct VIDEOPOWER_MANAGEMENT {
+    ULONG Length;
+    ULONG DPMSVersion;
+    ULONG PowerState;
+} VIDEO_POWER_MANAGEMENT, * PVIDEO_POWER_MANAGEMENT;
+
 #endif /* AKARI_PWINGDI_H */

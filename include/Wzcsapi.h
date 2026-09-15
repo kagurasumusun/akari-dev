@@ -125,4 +125,5 @@ AKARI_CE_IMPORT DWORD WZCSetInterface(LPWSTR pSrvAddr,
                     DWORD dwInFlags, PINTF_ENTRY pIntf,
                     LPDWORD pdwOutFlags) AKARI_CE_NAME(WZCSetInterface);
 
+
 #endif /* AKARI_WZCSAPI_H */

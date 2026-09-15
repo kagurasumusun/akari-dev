@@ -108,5 +108,34 @@ UINT cchData
  * (Windows Embedded CE 6.0 and later; Link Library: aygshell.lib) */
 AKARI_CE_IMPORT HRESULT RegistryGetString(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, LPTSTR pszData, UINT cchData) AKARI_CE_NAME(RegistryGetString);
 
+
+/* ee488645 NOTIFICATIONCONDITION: page print
+ * typedef struct tagNOTIFICATIONCONDITION { REG_COMPARISONTYPE ctComparisonType; DWORD dwMask; union TargetValue { LPCTSTR psz; DWORD dw; }; } NOTIFICAT
+ * (generation not stated) */
+typedef struct tagNOTIFICATIONCONDITION {
+    REG_COMPARISONTYPE ctComparisonType;
+    DWORD dwMask;
+    union {
+        LPCTSTR psz;
+        DWORD dw;
+    };
+} NOTIFICATIONCONDITION;
+
+
+/* ee488776 RegistryNotifyApp: print `HRESULT WINAPI RegistryNotifyApp(
+HKEY hKey,
+LPCTSTR pszSubKey,
+LPCTSTR pszValueName,
+LPCTSTR pszName,
+LPCTSTR pszApp,
+LPCTSTR pszClass,
+LPCTSTR pszWindow,
+UINT msg,
+DWORD dwFlags,
+NOTIFICATIONCONDITION* pCondition
+);`
+ * (generation not stated; Link Library: aygshell.lib) */
+AKARI_CE_IMPORT HRESULT RegistryNotifyApp(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, LPCTSTR pszName, LPCTSTR pszApp, LPCTSTR pszClass, LPCTSTR pszWindow, UINT msg, DWORD dwFlags, NOTIFICATIONCONDITION *pCondition) AKARI_CE_NAME(RegistryNotifyApp);
+
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_REGEXT_H */

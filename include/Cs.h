@@ -166,5 +166,74 @@ typedef struct {
     ULONG OptionsFlags;
 } CSSTREAM_HEADER, *PCSSTREAM_HEADER;
 
+
+/* HELD -- ee483580 "DEFINE_CSPROPERTY_SET": the page's print puts the
+ * line continuations inside the macro parameter list
+ * (`#define DEFINE_CSPROPERTY_SET(Set,\ PropertiesCount,\ ...)`), which is
+ * not a compilable macro definition; recorded verbatim. */
+
+/* ee485206 CSIDENTIFIER: page print
+ * typedef struct { union { struct _IDENTIFIER { GUID Set; ULONG Id; ULONG Flags; }; LONGLONG Alignment; }; } CSIDENTIFIER, *PCSIDENTIFIER;
+ * (generation not stated) */
+typedef struct {
+    union {
+        struct {
+            GUID Set;
+            ULONG Id;
+            ULONG Flags;
+        };
+        LONGLONG Alignment;
+    };
+} CSIDENTIFIER, *PCSIDENTIFIER;
+
+/* ee485283 CSPROPERTY_DESCRIPTION: page print
+ * typedef struct { ULONG AccessFlags; ULONG DescriptionSize; CSIDENTIFIER PropTypeSet; ULONG MembersListCount; ULONG Reserved; } CSPROPERTY_DESCRIPTION,
+ * (generation not stated) */
+typedef struct {
+    ULONG AccessFlags;
+    ULONG DescriptionSize;
+    CSIDENTIFIER PropTypeSet;
+    ULONG MembersListCount;
+    ULONG Reserved;
+} CSPROPERTY_DESCRIPTION, *PCSPROPERTY_DESCRIPTION;
+
+/* ee485481 CSALLOCATOR_FRAMING: page print
+ * typedef struct { union { ULONG OptionsFlags; ULONG RequirementsFlags; }; ULONG PoolType; ULONG Frames; ULONG FrameSize; ULONG FileAlignment; ULONG Res
+ * (generation not stated) */
+typedef struct {
+    union {
+        ULONG OptionsFlags;
+        ULONG RequirementsFlags;
+    };
+    ULONG PoolType;
+    ULONG Frames;
+    ULONG FrameSize;
+    ULONG FileAlignment;
+    ULONG Reserved;
+} CSALLOCATOR_FRAMING, *PCSALLOCATOR_FRAMING;
+
+/* ee485664 CSPROPERTY_VALUES: page print
+ * typedef struct { CSIDENTIFIER PropTypeSet; ULONG MembersListCount; const CSPROPERTY_MEMBERSLIST* MembersList; } CSPROPERTY_VALUES, *PCSPROPERTY_VALUES
+ * (generation not stated) */
+typedef struct {
+    CSIDENTIFIER PropTypeSet;
+    ULONG MembersListCount;
+    const CSPROPERTY_MEMBERSLIST *MembersList;
+} CSPROPERTY_VALUES, *PCSPROPERTY_VALUES;
+
+/* ee485917 CSPROPERTY_BOUNDS_LONG: page print
+ * typedef union { struct _SIGNED { LONG SignedMinimum; LONG SignedMaximum; }; struct _UNSIGNED { ULONG UnsignedMinimum; ULONG UnsignedMaximum; }; } CSPR
+ * (generation not stated) */
+typedef union {
+    struct {
+        LONG SignedMinimum;
+        LONG SignedMaximum;
+    };
+    struct {
+        ULONG UnsignedMinimum;
+        ULONG UnsignedMaximum;
+    };
+} CSPROPERTY_BOUNDS_LONG, *PCSPROPERTY_BOUNDS_LONG;
+
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_CS_H */

@@ -16,6 +16,10 @@
 #define AKARI_MSSOAP_H
 
 #include <Windows.h>
+#include <Msxml2.h>    /* IXMLDOMNode -- addSchema's page (ms888017) prints
+                        * `IXMLDOMNode* pSchemaNode`, and Msxml2.h:94 owns
+                        * that typedef, so including it makes <Mssoap.h>
+                        * self-contained as the page's prototype requires. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -456,5 +460,116 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
+
+/* ee483361 willWriteHeaders: print `HRESULT willWriteHeaders(
+VARIANT_BOOL* pbWillWriteHeaders
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT willWriteHeaders(VARIANT_BOOL *pbWillWriteHeaders) AKARI_CE_NAME(willWriteHeaders);
+
+/* ee483495 addElement: print `HRESULT addElement(
+BSTR bstrElementName,
+BSTR bstrElementNamespace,
+BSTR bstrProgID
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT addElement(BSTR bstrElementName, BSTR bstrElementNamespace, BSTR bstrProgID) AKARI_CE_NAME(addElement);
+
+/* ee483684 varType: print `HRESULT varType(
+long* pvtType
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT varType(long *pvtType) AKARI_CE_NAME(varType);
+
+/* ee483772 EndMessage: print `HRESULT EndMessage(void);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT EndMessage(void) AKARI_CE_NAME(EndMessage);
+
+/* ee483908 BeginMessage: print `HRESULT BeginMessage(void);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT BeginMessage(void) AKARI_CE_NAME(BeginMessage);
+
+/* ee484101 SoapDefaultNamespace: print `HRESULT SoapDefaultNamespace(
+BSTR ns_uri
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT SoapDefaultNamespace(BSTR ns_uri) AKARI_CE_NAME(SoapDefaultNamespace);
+
+/* ee484130 SoapInvoke: print `HRESULT SoapInvoke(
+VARIANT varInput,
+IUnknown* pOutputStream,
+BSTR bstrSoapAction
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT SoapInvoke(VARIANT varInput, IUnknown *pOutputStream, BSTR bstrSoapAction) AKARI_CE_NAME(SoapInvoke);
+
+/* ee484553 writeString: print `HRESULT writeString(
+BSTR string
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT writeString(BSTR string) AKARI_CE_NAME(writeString);
+
+/* ee484724 getPrefixForNamespace: print `BSTR getPrefixForNamespace(
+BSTR ns_string
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT BSTR getPrefixForNamespace(BSTR ns_string) AKARI_CE_NAME(getPrefixForNamespace);
+
+/* ee484920 writeBuffer: print `HRESULT writeBuffer(
+long len,
+char* buffer
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT writeBuffer(long len, char *buffer) AKARI_CE_NAME(writeBuffer);
+
+/* ee485400 SoapAttribute: print `HRESULT SoapAttribute(
+BSTR name,
+BSTR ns_uri,
+BSTR value,
+BSTR prefix
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT SoapAttribute(BSTR name, BSTR ns_uri, BSTR value, BSTR prefix) AKARI_CE_NAME(SoapAttribute);
+
+/* ee486152 addType: print `HRESULT addType(
+BSTR bstrTypeName,
+BSTR bstrTypeNamespace,
+BSTR bstrProgID
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT addType(BSTR bstrTypeName, BSTR bstrTypeNamespace, BSTR bstrProgID) AKARI_CE_NAME(addType);
+
+/* ee486342 writeXML: print `void writeXML(
+BSTR string
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT void writeXML(BSTR string) AKARI_CE_NAME(writeXML);
+
+/* ee486404 SoapNamespace: print `HRESULT SoapNamespace(
+BSTR prefix,
+BSTR ns_uri
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT SoapNamespace(BSTR prefix, BSTR ns_uri) AKARI_CE_NAME(SoapNamespace);
+
+/* ee487040 reset: print `HRESULT reset(void);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT reset(void) AKARI_CE_NAME(reset);
+
+/* ee487174 addSchema: print `HRESULT addSchema(
+IXMLDOMNode* pSchemaNode
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT addSchema(IXMLDOMNode *pSchemaNode) AKARI_CE_NAME(addSchema);
+
+/* ee487268 mssoapinit: print `HRESULT mssoapinit(
+BSTR bstrWSDLFile,
+BSTR bstrServiceName,
+BSTR bstrPort,
+BSTR bstrWSMLFile
+);`
+ * (generation not stated; Link Library: uuid.lib) */
+AKARI_CE_IMPORT HRESULT mssoapinit(BSTR bstrWSDLFile, BSTR bstrServiceName, BSTR bstrPort, BSTR bstrWSMLFile) AKARI_CE_NAME(mssoapinit);
 
 #endif /* AKARI_MSSOAP_H */
