@@ -80,9 +80,12 @@ int main(void)
     if (mod == NULL)
         ok = FALSE;
     /* M38: CopyFileExW (CE 5.0+, aa517311) -- linked, not run: the
-     * image must export it per the doc-derived def. */
+     * image must export it per the doc-derived def.  Declared from CE 5.0
+     * onward, so exercised only for 5.0+ targets (M127). */
+#if _WIN32_WCE >= 0x0500
     (void) CopyFileExW(L"a", L"b", NULL, NULL, NULL,
                        COPY_FILE_FAIL_IF_EXISTS);
+#endif
     /* M39: Winsock (Ws2.lib) import surface -- linked, not run: the
      * image must import the Ws2.lib-documented names from ws2.dll
      * per the doc-derived def. */

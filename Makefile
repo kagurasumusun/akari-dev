@@ -625,8 +625,9 @@ e2e:
 	    | grep -q "IMAGE_SUBSYSTEM_WINDOWS_CE_GUI" || exit 1; \
 	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
 	    | grep -q "Name: coredll.dll" || exit 1; \
-	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
-	  | grep -q "Symbol: CopyFileExW" || exit 1; \
+	case "$$t" in *wince4.2) ;; *) \
+	  "$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
+	    | grep -q "Symbol: CopyFileExW" || exit 1;; esac; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \
 	  | grep -q "Name: ws2.dll" || exit 1; \
 	"$$bin/llvm-readobj" --coff-imports $$d/e2e_console.exe \

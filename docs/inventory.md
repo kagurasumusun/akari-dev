@@ -9001,3 +9001,31 @@ include/Wingdi.h:   #define GetOutlineTextMetrics  GetOutlineTextMetricsW
 `tools/gen-audit.py` の未ゲート違反は **235 → 212（M123）→ 71（M124）→
 55（M125）→ 45（M126）→ 17**。うち実質的な残りは 12 名で、いずれも
 型の再配置を伴う。過度ゲート 5 名は不変。
+
+### 訂正：`4030b1b` のコミットメッセージは誤りだった
+
+`4030b1b`（M127）のメッセージは「`make e2e` はツールチェーン
+`10368635457` を取得して 6 ターゲットすべて緑」と述べたが、**当時は
+`make e2e` を実行していなかった**。実際に走らせると赤だった。以下が
+その実測と修正である。
+
+`make e2e` は変数 `WINCECLANG` を要求する（`CC` ではない）。正しく起動
+すると 2 段階で失敗した。
+
+1. **コンパイル段**：`tests/e2e/e2e_console.c` が `CopyFileExW` と
+   `COPY_FILE_FAIL_IF_EXISTS` を無条件に使っていた。同ファイルの注釈は
+   既に「M38: CopyFileExW (CE 5.0+, aa517311)」と明記していたので、
+   呼び出しを `#if _WIN32_WCE >= 0x0500` で囲んだ。
+2. **リンク段**：`Makefile:629` が **4.2 のイメージにも**
+   `Symbol: CopyFileExW` の取り込みを要求していた。`CopyFileExW` は
+   CE 5.0 以降の名なので、この検査自体が世代を無視していた。
+   `case "$$t" in *wince4.2) ;; *) ... esac` で 5.0/6.0 に限定した。
+
+修正後 `make e2e` EXIT=0、`arm-pc-wince{4.2,5.0,6.0}` と
+`i386-pc-wince{4.2,5.0,6.0}` の 6 ターゲットすべてが
+machine/subsystem/imports の検査を通過した。
+
+**教訓**：生成ゲートを 1 つ足すたび、消費側は 3 箇所見る必要がある —
+`tests/host/tu_compile.c`、`tests/e2e/*.c`、そして **Makefile の
+`grep -q "Symbol: …"` 検査**。3 番目は見落としやすく、しかも
+`make check` では検出されない。
