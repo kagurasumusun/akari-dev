@@ -7170,6 +7170,9 @@ static int m80_shaped_usage(void)
 }
 #endif /* _WIN32_WCE >= 0x0500 */
 
+#if _WIN32_WCE >= 0x0500
+/* DwCeDump.h is gated as a whole from CE 5.0 (M124): every name its
+ * pages document is 5.0 or later, so its types do not exist at 0x420. */
 static int m82_shaped_usage(void)
 {
     MINIDUMP_STREAM_TYPE mst = ceStreamSystemInfo;
@@ -7193,6 +7196,7 @@ static int m82_shaped_usage(void)
     u = SideShowMgr_GetGadgetCount();
     return (int)mst + (int)u + b + (pmh || pmd || pce || pms ? 1 : 0);
 }
+#endif /* _WIN32_WCE >= 0x0500 */
 #if _WIN32_WCE >= 0x0500   /* fn m83_shaped_usage, GetCharABCWidthsI, GetPinyinType, SetPinyinType */
 
 static int m83_shaped_usage(void)
@@ -7631,9 +7635,9 @@ int host_tu_entry(void)
         return 1;
     if (m80_shaped_usage() != 0)
         return 1;
-#endif /* _WIN32_WCE >= 0x0500 */
     if (m82_shaped_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
 #if _WIN32_WCE >= 0x0500   /* dispatch m83_shaped_usage */
     if (m83_shaped_usage() != 0)
         return 1;

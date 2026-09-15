@@ -14,6 +14,12 @@
 
 #ifndef AKARI_D3DMDDK_H
 #define AKARI_D3DMDDK_H
+#if _WIN32_WCE >= 0x0500
+/* Every declaration in this header is documented from Windows CE 5.0
+ * onward, so the component is gated as a whole rather than one
+ * condition per declaration: 218 of its names carry an OS Versions row
+ * of "Windows CE 5.0 and later" and none is documented at or before
+ * CE 4.2, this tree's lowest target (docs/generation-audit.md, M124). */
 
 #include <Windows.h>
 #include "D3dm.h"      /* D3DMFORMAT and the D3DM value types the DDK
@@ -539,4 +545,5 @@ struct _D3DMDEVICEFORMAT{
 #define D3DMTSS_TEXTURE 0
 #endif /* _WIN32_WCE >= 0x0500 */
 
+#endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_D3DMDDK_H */

@@ -17,6 +17,12 @@
 
 #ifndef AKARI_DWCEDUMP_H
 #define AKARI_DWCEDUMP_H
+#if _WIN32_WCE >= 0x0500
+/* Every declaration in this header is documented from Windows CE 5.0
+ * onward, so the component is gated as a whole rather than one
+ * condition per declaration: 16 of its names carry an OS Versions row
+ * of "Windows CE 5.0 and later" and none is documented at or before
+ * CE 4.2, this tree's lowest target (docs/generation-audit.md, M124). */
 
 #include "Windef.h"    /* USHORT, ULONG, WCHAR */
 #include "Winnt.h"     /* EXCEPTION_MAXIMUM_PARAMETERS (ms885... print */
@@ -192,4 +198,5 @@ typedef enum _MINIDUMP_STREAM_TYPE {
 /* ms939659 Reserving Memory for Error Reporting Dumps */
 /* aa526066 Types of Crash Dump Files */
 /* aa526069 Windows Mobile Error Reporting Reference */
+#endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_DWCEDUMP_H */

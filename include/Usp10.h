@@ -15,6 +15,12 @@
 
 #ifndef AKARI_USP10_H
 #define AKARI_USP10_H
+#if _WIN32_WCE >= 0x0500
+/* Every declaration in this header is documented from Windows CE 5.0
+ * onward, so the component is gated as a whole rather than one
+ * condition per declaration: 119 of its names carry an OS Versions row
+ * of "Windows CE 5.0 and later" and none is documented at or before
+ * CE 4.2, this tree's lowest target (docs/generation-audit.md, M124). */
 
 #include "Windef.h"    /* WORD, DWORD, BYTE, BOOL, UINT, WCHAR, LCID,
  * HDC, RECT, SIZE, LONG */
@@ -298,4 +304,5 @@ AKARI_CE_IMPORT HRESULT WINAPI ScriptXtoCP(int iX, int cChars, int cGlyphs, WORD
                     AKARI_CE_NAME(ScriptXtoCP);
 #endif /* _WIN32_WCE >= 0x0500 */
 
+#endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_USP10_H */

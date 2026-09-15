@@ -27,6 +27,12 @@
 
 #ifndef AKARI_D3DM_H
 #define AKARI_D3DM_H
+#if _WIN32_WCE >= 0x0500
+/* Every declaration in this header is documented from Windows CE 5.0
+ * onward, so the component is gated as a whole rather than one
+ * condition per declaration: 170 of its names carry an OS Versions row
+ * of "Windows CE 5.0 and later" and none is documented at or before
+ * CE 4.2, this tree's lowest target (docs/generation-audit.md, M124). */
 
 #include "Windef.h"
 #include "Winnt.h"     /* GUID, LARGE_INTEGER, TCHAR via windef */
@@ -1624,4 +1630,5 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
 #define D3DMCURRENT_DISPLAY_MODE 0x00EFFFFF
 #endif /* _WIN32_WCE >= 0x0500 */
 
+#endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */
 #endif /* AKARI_D3DM_H */

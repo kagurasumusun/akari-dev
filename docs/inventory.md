@@ -8798,3 +8798,47 @@ that does not exist at 4.2 (M117).
 
 Gates: `make check` OK and `make e2e WINCECLANG=<artifact clang>` EXIT=0,
 all 6 targets.
+
+### M124 -- whole-component generation gates: 212 down to 71
+
+M123's per-declaration guards stalled at 23 of 235 because guarding a
+CE 5.0 type broke declarations that use it and are documented earlier.
+The way past that is to stop guarding declarations and gate the
+*component*, which the generation map can decide objectively: a header
+whose every attributed name is documented from CE 5.0 onward, with none
+at or before CE 4.2, has no 4.2 surface to break.
+
+Measured over `docs/generation-map.tsv`, nine headers qualify, and five
+of them were still ungated:
+
+| header | names attributed | at or before 4.2 | from 5.0 |
+|---|---|---|---|
+| `D3dmddk.h` | 53 | 0 | 53 |
+| `Usp10.h` | 42 | 0 | 42 |
+| `D3dm.h` | 52 | 0 | 52 |
+| `oak/DwCeDump.h` | 16 | 0 | 16 |
+| `Socksv2.h` | 2 | 0 | 2 |
+
+Each is now wrapped in one `#if _WIN32_WCE >= 0x0500` inside its include
+guard, with the reason at the gate.  Direct3D Mobile (83 of the 235) and
+Uniscribe (40) are the bulk of it; the remaining three qualified
+headers -- `oak/Sdcardddk.h`, `oak/Sdmem.h`, `ErrorRep.h`, `oak/Ddhal.h`
+-- M123 had already handled declaration by declaration.
+
+`tools/gen-audit.py` after the change: **71 names in 11 headers**, from
+235 at M122 and 212 at M123.  Everything left is a *mixed* header, where
+names documented at or before 4.2 sit beside 5.0 ones in the same file,
+so a whole-file gate would hide surface a 4.2 build is entitled to:
+`Shobjidl.h` 22 (30 of its 52 names are 4.2 or earlier), `Wingdi.h` 14
+(174 of 193), `Winbase.h` 13 (364 of 390), `oak/Pkfuncs.h` 7, and seven
+more of three names or fewer.  Those need the dependency closure worked
+out per type, not a gate.
+
+One consumer needed the same treatment: `tests/host/tu_compile.c`'s
+`m82_shaped_usage` exercises the `DwCeDump.h` shapes unconditionally, so
+both the function and its call site are now inside
+`#if _WIN32_WCE >= 0x0500`, matching the guards the file already carries
+for its neighbours.
+
+Gates: `make check` OK (hostcheck + cxxcheck at 0x420/0x500/0x600) and
+`make e2e WINCECLANG=<artifact clang>` EXIT=0, all 6 targets.
