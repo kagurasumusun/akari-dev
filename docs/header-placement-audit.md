@@ -43,6 +43,7 @@ documentation still compiles.
 | `dccole.h` | `include/Objbase.h` | 2 | yes |
 | `mqmgmt.h` | `include/Mq.h` | 2 | yes |
 | `pwinuser.h` | `include/oak/Nled.h` | 2 | yes |
+| `rapitypes2.h` | `include/Rapitypes.h` | 2 | yes |
 | `cesync.h` | `include/Objbase.h` | 2 | yes |
 | `cmnintrin.h` | `include/Winnt.h` | 2 | yes |
 | `ws2tcpip.h` | `include/Winsock2.h` | 2 | yes |
@@ -78,7 +79,7 @@ documentation still compiles.
 | `usbtypes.h` | `include/Usb100.h` | 1 | yes |
 | `mipsintr.h` | `include/oak/Cmnintrin.h` | 1 | yes |
 
-Totals: 64 groups, 846 name-placements, 0 groups unreachable.
+Totals: 65 groups, 848 name-placements, 0 groups unreachable.
 
 ## Per-name lists
 

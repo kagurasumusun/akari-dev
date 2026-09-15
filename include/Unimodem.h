@@ -27,4 +27,14 @@ typedef struct _UNIMDM_CHG_DEVCFG {
     DWORD dwValue;
 } UNIMDM_CHG_DEVCFG;
 
+
+/* aa451136 UNIMODEM_INFO: page print
+ * typedef struct UNIMODEM_INFO_tag {WORDwDeviceType;WORDwActive;DWORDdwPPPMTU;} UNIMODEM_INFO, * PUNIMODEM_INFO;
+ * (Windows CE .NET 4.0 and later.) */
+typedef struct UNIMODEM_INFO_tag {
+    WORD wDeviceType;
+    WORD wActive;
+    DWORD dwPPPMTU;
+} UNIMODEM_INFO, * PUNIMODEM_INFO;
+
 #endif /* AKARI_UNIMODEM_H_ */

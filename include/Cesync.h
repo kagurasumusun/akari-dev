@@ -158,3 +158,24 @@ typedef struct tagDevInfo {
 /* aa514407 IReplStore::ReportStatus (Header: Cesync.h.) */
 /* aa514409 IReplStore::UpdateItem (Header: Cesync.h.) */
 
+
+/* ee484753 OnSSPDisable: print `HRESULT
+WINAPI
+OnSSPDisable
+(
+HWND
+hwndParent
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: not stated) */
+AKARI_CE_IMPORT HRESULT OnSSPDisable(HWND hwndParent) AKARI_CE_NAME(OnSSPDisable);
+
+/* ee485570 OnSSPEnable: print `HRESULT
+WINAPI
+OnSSPEnable
+(
+HWND
+hwndParent
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: not stated) */
+AKARI_CE_IMPORT HRESULT OnSSPEnable(HWND hwndParent) AKARI_CE_NAME(OnSSPEnable);
+

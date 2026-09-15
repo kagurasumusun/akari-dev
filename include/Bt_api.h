@@ -201,6 +201,66 @@ AKARI_CE_IMPORT INT BthNsSetService(LPWSAQUERYSET lpqsRegInfo,
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms887871) */
 AKARI_CE_IMPORT int BthPairRequest(BT_ADDR *pba, int cPinLength,
                                    unsigned char *ppin) AKARI_CE_NAME(BthPairRequest);
+
+/* ee495780 BT_LINK_KEY_EVENT: page print
+ * typedef struct { DWORD dwSize; BT_ADDR bta; UCHAR link_key[16]; UCHAR key_type; } BT_LINK_KEY_EVENT, *PBT_LINK_KEY_EVENT;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct {
+    DWORD dwSize;
+    BT_ADDR bta;
+    UCHAR link_key[16];
+    UCHAR key_type;
+} BT_LINK_KEY_EVENT, *PBT_LINK_KEY_EVENT;
+
+/* ee495839 BT_DISCONNECT_EVENT: page print
+ * typedef struct { DWORD dwSize; USHORT hConnection; UCHAR ucReason; } BT_DISCONNECT_EVENT, *PBT_DISCONNECT_EVENT;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct {
+    DWORD dwSize;
+    USHORT hConnection;
+    UCHAR ucReason;
+} BT_DISCONNECT_EVENT, *PBT_DISCONNECT_EVENT;
+
+/* ee495863 BT_SERVICE_REQUEST: page print
+ * typedef struct { DWORD dwSize; BT_ADDR btAddr; GUID uuidService; } BT_SERVICE_REQUEST, *PBT_SERVICE_REQUEST;
+ * (Windows CE 5.0 and later) */
+typedef struct {
+    DWORD dwSize;
+    BT_ADDR btAddr;
+    GUID uuidService;
+} BT_SERVICE_REQUEST, *PBT_SERVICE_REQUEST;
+
+/* ee495911 BT_MODE_CHANGE_EVENT: page print
+ * typedef struct { DWORD dwSize; USHORT hConnection; BT_ADDR bta; BYTE bMode; USHORT usInterval; } BT_MODE_CHANGE_EVENT, *PBT_MODE_CHANGE_EVENT;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct {
+    DWORD dwSize;
+    USHORT hConnection;
+    BT_ADDR bta;
+    BYTE bMode;
+    USHORT usInterval;
+} BT_MODE_CHANGE_EVENT, *PBT_MODE_CHANGE_EVENT;
+
+/* ee495996 BT_CONNECT_EVENT: page print
+ * typedef struct { DWORD dwSize; USHORT hConnection; BT_ADDR bta; UCHAR ucLinkType; UCHAR ucEncryptMode; } BT_CONNECT_EVENT, *PBT_CONNECT_EVENT;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct {
+    DWORD dwSize;
+    USHORT hConnection;
+    BT_ADDR bta;
+    UCHAR ucLinkType;
+    UCHAR ucEncryptMode;
+} BT_CONNECT_EVENT, *PBT_CONNECT_EVENT;
+
+/* ee496010 BTEVENT: page print
+ * typedef struct _BTEVENT { DWORD dwEventId; DWORD dwReserved; BYTE baEventData[64]; } BTEVENT, *PBTEVENT;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct _BTEVENT {
+    DWORD dwEventId;
+    DWORD dwReserved;
+    BYTE baEventData[64];
+} BTEVENT, *PBTEVENT;
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms887872 "BthPerformInquiry". */

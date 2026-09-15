@@ -742,4 +742,13 @@ typedef struct ITimeZone              ITimeZone;
 }
 #endif
 
+
+/* ee483770 OlCurrentCity: page print
+ * enum OlCurrentCity { olHomeCity = 0, olVisitingCity = 1 };
+ * (Windows CE 3.0 and later; Link Library: Pimstore.lib) */
+typedef enum OlCurrentCity {
+    olHomeCity = 0,
+    olVisitingCity = 1
+} OlCurrentCity;
+
 #endif /* AKARI_PIMSTORE_H */

@@ -34,7 +34,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Names that are not declarations of another header: the generation macro and
 # this tree's own include guards.
-IGNORE = re.compile(r"^(?:_WIN32_WCE|AKARI_[A-Z0-9_]+|__cplusplus)$")
+IGNORE = re.compile(r"^(?:_WIN32_WCE|AKARI_[A-Z0-9_]+|__cplusplus"
+                    r"|APIENTRY|CALLBACK|FAR|NEAR|STDMETHODCALLTYPE|STDAPI"
+                    r"|WINAPI|WINAPIV|WSAAPI"
+                    r"|const|struct|enum|union|unsigned|signed|void)$")
 
 
 # Placement relations the compiler cannot see.  tools/placement-audit.py
@@ -62,8 +65,15 @@ def strip_comments(s):
 # prototype's `pCaps`, a Winnt.h one's `pv` -- and each of those is also a
 # typedef somewhere else in the tree, so Winnt.h grew an #include of
 # Shellcb.h and the build deadlocked on an include cycle.
-USE = re.compile(r"(?<![A-Za-z0-9_])((?:const\s+)?[A-Za-z_]\w*)\s+\**\s*"
+# `const` sits outside the capture group: with it inside, `const SYSTEMTIME
+# *ptsCurrentTime,` in Sms.h yielded the single token "const SYSTEMTIME",
+# which no header declares, so Sms.h never got its Winbase.h include.
+USE = re.compile(r"(?<![A-Za-z0-9_])(?:const\s+)?([A-Za-z_]\w*)\s+\**\s*"
                  r"[A-Za-z_]\w*\s*(?:\[[^\]]*\]\s*)*[;,)=]")
+# ...and in return position, which USE cannot see: the declarator of
+# `AKARI_CE_IMPORT COLORREF PHGetColor(PH_COLOR Id)` is terminated by `(`, so
+# Controldefinitions.h never learned it needed Wingdi.h for COLORREF.
+RET = re.compile(r"(?<![A-Za-z0-9_])([A-Za-z_]\w*)\s+\**\s*[A-Za-z_]\w*\s*\(")
 
 
 def names_in(path):
@@ -165,7 +175,9 @@ def main():
     idx = index()
     for path in args:
         s = open(os.path.join(ROOT, path), encoding="utf-8").read()
-        used = {t for t in USE.findall(strip_comments(s)) if not IGNORE.match(t)}
+        code = strip_comments(s)
+        used = {t for t in USE.findall(code) if not IGNORE.match(t)}
+        used |= {t for t in RET.findall(code) if not IGNORE.match(t)}
         already, base_names = closure([path])
         need = {}
         for u in sorted(used):

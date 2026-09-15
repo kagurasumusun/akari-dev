@@ -290,6 +290,20 @@ def short_title(title):
 
 
 def main():
+    global DEFDIR
+    # This tool deletes def files it cannot reproduce, and it does not
+    # reproduce every committed one (the ddi_* and conshid_lib defs come from
+    # rows its parser no longer keeps).  Running it unguarded therefore
+    # destroys committed work -- invoking it with `--help` did exactly that,
+    # deleting 9 defs.  So it is dry-run unless --write is given, and --outdir
+    # lets a run be compared against def/ without touching it.
+    if "--write" not in sys.argv:
+        print("dry run: no file written or removed (pass --write to apply)")
+    if "--outdir" in sys.argv:
+        DEFDIR = sys.argv[sys.argv.index("--outdir") + 1]
+        os.makedirs(DEFDIR, exist_ok=True)
+        print("output directory:", DEFDIR)
+    write = "--write" in sys.argv
     if not os.path.exists(DB):
         sys.exit("build/rows.json missing - run tools/ce-fetch.py first")
     rows = json.load(open(DB, encoding="utf-8"))
@@ -350,13 +364,16 @@ def main():
             # with no page documenting a sole-link export: no def file
             # is written for it (remove a stale one if present).
             stale = os.path.join(DEFDIR, f"{token.replace('.lib', '')}-doc.def")
-            if os.path.exists(stale):
+            if write and os.path.exists(stale):
                 os.remove(stale)
             print(f"{stale}: no sole-link exports documented "
                   f"({len(skipped)} co-listed pages skipped); no def written")
             continue
         stem = token.replace(".lib", "").replace(".", "-")
         out = os.path.join(DEFDIR, f"{stem}-doc.def")
+        if not write:
+            print(f"{out}: would write {len(entries)} exports from {token}")
+            continue
         with open(out, "w", encoding="utf-8") as fh:
             # ';' comment style: GNU/LLVM dlltool rejects '#' lines.
             fh.write(f"; {os.path.basename(out)} -- {token} export surface "

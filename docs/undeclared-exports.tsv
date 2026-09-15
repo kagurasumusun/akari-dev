@@ -2,7 +2,100 @@ name	page	os_versions	header	link_library	exported_by
 DDKReg_GetIsrInfo	ms897699	Windows CE .NET 4.0 and later.	Ddkreg.h	Coredll.lib	coredll-doc.def
 DDKReg_GetPciInfo	ms897705	Windows CE .NET 4.0 and later.	Ddkreg.h	Coredll.lib	coredll-doc.def
 DDKReg_GetWindowInfo	ms897707	Windows CE .NET 4.0 and later.	Ddkreg.h	Coredll.lib	coredll-doc.def
+DirectSoundCaptureEnumerate	ms897746	Windows CE 2.12 and later. Version 2.12 requires DXPAK 1.0 or later.	Dsound.h	Dsound.lib	dsound-doc.def
+DirectSoundEnumerate	ms897753	Windows CE 2.12 and later. Version 2.12 requires DXPAK 1.0 or later.	Dsound.h	Dsound.lib	dsound-doc.def
+ConnectionDialog	ms921394	Windows CE 2.10 and later.	Netui.h	Netui.lib	netui-doc.def
+GetDriverName	ms921396	Windows CE 2.10 and later.	Netui.h	Netui.lib	netui-doc.def
+GetNewPassword	aa453143(v=msdn.10)	Windows CE 5.0 and later.	Netui.h	Netui.lib	netui-doc.def
+GetNewPasswordEx	aa453144(v=msdn.10)	Windows CE 5.0 and later.	Netui.h	Netui.lib	netui-doc.def
+GetResourcePassword	ms921400	Windows CE 2.10 and later.	Netui.h	Netui.lib	netui-doc.def
+GetUsernamePassword	ms921401	Windows CE 2.10 and later.	Netui.h	Netui.lib	netui-doc.def
+GetUsernamePasswordEx	aa453177(v=msdn.10)	Windows CE 5.0.	Netui.h	Netui.lib	netui-doc.def
+LineConfigEdit	ms921404	Windows CE 2.10 and later.	Netui.h	Netui.lib	netui-doc.def
+CeSetPowerOnEvent	ms885153(v=msdn.10)	Windows CE .NET 4.1 and later.	Nkintr.h	Coredll.lib	coredll-doc.def
+AllocPhysMem	aa450785(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+CacheRangeFlush	aa450787(v=msdn.10)	Windows CE .NET 4.2 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+CeVirtualSharedAlloc	ms885157(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+CreateStaticMapping	ms885185(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+CreateWatchDogTimer	ms885190(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+FreePhysMem	ms885603(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+GetCallerProcess	ms885604(v=msdn.10)	Windows CE 2.10 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+GetEventData	ms885619(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+GetStdioPathW	ms885637(v=msdn.10)	Windows CE .NET 4.2 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+GetThreadCallStack	ms885641(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+InterruptMask	ms885678(v=msdn.10)	Windows CE .NET 4.2 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+IsNamedEventSignaled	ms886725(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+KernelLibIoControl	ms886730(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+LoadIntChainHandler	ms904854(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+MapCallerPtr	ms886749(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+OpenWatchDogTimer	ms886767(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+PageOutModule	ms886771(v=msdn.10)	Windows CE .NET 4.2 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+RefreshWatchDogTimer	ms886795(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+SetDbgZone	ms886809(v=msdn.10)	Windows CE 2.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+SetStdioPathW	ms886820(v=msdn.10)	Windows CE .NET 4.2 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+SleepTillTick	aa450901(v=msdn.10)	Windows CE .NET 4.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+StartWatchDogTimer	aa450903(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+StopWatchDogTimer	aa450905(v=msdn.10)	Windows CE 5.0 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+VirtualSetAttributes	aa450982(v=msdn.10)	Windows CE .NET 4.1 and later.	Pkfuncs.h	Coredll.lib	coredll-doc.def
+ProfileCaptureStatus	ms886776(v=msdn.10)	Windows CE 5.0 and later.	Profiler.h	Coredll.lib	coredll-doc.def
+ProfileStartEx	ms886782(v=msdn.10)	Windows CE 5.0 and later.	Profiler.h	Coredll.lib	coredll-doc.def
 RasIOControl	aa450852	Windows CE .NET 4.0 and later.	Ras.h	Coredll.lib	coredll-doc.def
+_ISpPrivateEngineCall	ms897368	Windows CE .NET 4.1 and later.	Sapiddk.h	Sapilib.lib	sapilib-doc.def
 CreatePartition	aa517334	Windows CE .NET 4.0 and later.	Storemgr.h	Storeapi.lib	coredll-doc.def
 CreatePartitionEx	aa517335	Windows CE .NET 4.0 and later.	Storemgr.h	Storeapi.lib	coredll-doc.def
+UfnGetRegistryInfo	aa448328	Windows CE 5.0 and later.	Usbfntypes.h	UfnClientLibBase.lib	ufnclientlibbase-doc.def
 CeHeapCreate	aa450797	Windows CE 5.0 and later.	Winbase.h	Coredll.lib	coredll-doc.def
+WaitForAPIReady	ee482994(v=winembedded.60)	Windows Embedded CE 6.0 and later	kfuncs.h	coredll.dll	coredll-doc.def
+OlBusyStatus	ee485973(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlDaysOfWeek	ee483731(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlDefaultFolders	ee483737(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlImportance	ee485920(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlItemType	ee484512(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlMeetingStatus	ee487259(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlRecurrenceType	ee486745(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlReminderOptions	ee483891(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+OlSensitivity	ee483685(v=winembedded.60)	Windows CE 3.0 and later	pimstore.h	Pimstore.lib	pimstore-doc.def
+CeAllocAsynchronousBuffer	ee488604(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeAllocDuplicateBuffer	ee488789(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeCallUserProc	ee482964(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeFlushAsynchronousBuffer	ee488374(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeFreeAsynchronousBuffer	ee488607(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeFreeDuplicateBuffer	ee488644(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeGetRawTime	ee488174(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeGetRawTimeOffset	ee488363(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeImpersonateCurrentProcess	ee482962(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.dll	coredll-doc.def
+CeRemoteHeapCreate	ee487990(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CeRemoteHeapTranslatePointer	ee487998(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CreateAPIHandle	ee483024(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+CreateAPISet	ee482963(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+DeleteStaticMapping	ee482746(v=winembedded.60)	Windows CE .NET 4.0 and later	pkfuncs.h	Nkstub.lib	coredll-doc.def
+ForwardDeviceIoControl	ee482824(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+RegisterAPISet	ee482984(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+SetAPIErrorHandler	ee482869(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+VirtualCopyEx	ee488448(v=winembedded.60)	Windows Embedded CE 6.0 and later	pkfuncs.h	coredll.lib	coredll-doc.def
+ReplChangeSyncSettings	ee490410	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+ReplCheckpoint	ee490241	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+ReplCloseSync	ee489965	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+ReplFindNextChange	ee489932	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+ReplGetOidStatus	ee489769	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+ReplGetSyncState	ee489551	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+ReplOpenSync	ee490609	Windows CE .NET 4.0 and later	pwindbas.h	coredll.lib	coredll-doc.def
+GetUserDirectory	ee489784	Windows CE .NET 4.0 and later	pwinreg.h	coredll.lib	coredll-doc.def
+CloseGestureInfoHandle	ee504292(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+DisableGestures	ee504053(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+EnableGestures	ee499762(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+Gesture	ee502547(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+GetGestureExtraArguments	ee505235(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+GetGestureInfo	ee503217(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+QueryGestures	ee503597(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+RegisterGesture	ee505707(v=winembedded.60)		pwinuser.h	TouchGesture.lib	coredll-doc.def
+RegistryBatchNotification	ee488009(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+RegistryCloseNotification	ee488922(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+RegistryDeleteValue	ee488640(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+RegistryNotifyApp	ee488776(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+RegistryNotifyCallback	ee487978(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+RegistryNotifyMsgQueue	ee488614(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+RegistryNotifyWindow	ee488231(v=winembedded.60)	Windows Embedded CE 6.0 and later	regext.h	aygshell.lib	coredll-doc.def
+IEnumSpObjectTokens	aa515639	Windows CE .NET 4.1 and later.	sapi.h	Sapilib.lib	sapilib-doc.def
+AddVectoredExceptionHandler	ee488606(v=winembedded.60)	Windows Embedded CE 6.0 and later	winbase.h	coredll.lib	coredll-doc.def
+CeRegGetInfo	ee490230(v=winembedded.60)	Windows Embedded CE 6.0 and later	winreg.h	coredll.lib	coredll-doc.def

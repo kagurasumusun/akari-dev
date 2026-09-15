@@ -64,6 +64,20 @@ public:
 
 /* ms919566 ScrollBarInfoInternal (Header: Scrollview.hpp.): no class-member
  * print on the page (record only) */
+
+/* ms932603 ScrollBarInfoInternal: page print
+ * struct ScrollBarInfoInternal {SCROLLINFO si;BOOL bInSetSBInfo;int nThumbPos;SCROLL_STATEdwState;UINT nTrackStart;UINT fnBar;UINT idTimer;};
+ * (Windows CE .NET 4.0 and later.) */
+struct ScrollBarInfoInternal {
+    SCROLLINFO si;
+    BOOL bInSetSBInfo;
+    int nThumbPos;
+    SCROLL_STATE dwState;
+    UINT nTrackStart;
+    UINT fnBar;
+    UINT idTimer;
+};
+
 #endif /* __cplusplus */
 
 #endif /* AKARI_SCROLLVIEW_HPP */

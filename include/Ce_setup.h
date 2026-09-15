@@ -43,4 +43,36 @@ extern "C" {
 }
 #endif
 
+
+/* ee483720 codeINSTALL_INIT: page print
+ * typedef enum { codeINSTALL_INIT_CONTINUE = 0, codeINSTALL_INIT_CANCEL } codeINSTALL_INIT;
+ * (generation not stated) */
+typedef enum {
+    codeINSTALL_INIT_CONTINUE = 0,
+    codeINSTALL_INIT_CANCEL
+} codeINSTALL_INIT;
+
+/* ee484783 codeINSTALL_EXIT: page print
+ * typedef enum { codeINSTALL_EXIT_DONE = 0, codeINSTALL_EXIT_UNINSTALL } codeINSTALL_EXIT;
+ * (generation not stated) */
+typedef enum {
+    codeINSTALL_EXIT_DONE = 0,
+    codeINSTALL_EXIT_UNINSTALL
+} codeINSTALL_EXIT;
+
+/* ee485190 codeUNINSTALL_INIT: page print
+ * typedef enum { codeUNINSTALL_INIT_CONTINUE = 0, codeUNINSTALL_INIT_CANCEL } codeUNINSTALL_INIT;
+ * (generation not stated) */
+typedef enum {
+    codeUNINSTALL_INIT_CONTINUE = 0,
+    codeUNINSTALL_INIT_CANCEL
+} codeUNINSTALL_INIT;
+
+/* ee486781 codeUNINSTALL_EXIT: page print
+ * typedef enum { codeUNINSTALL_EXIT_DONE = 0 } codeUNINSTALL_EXIT;
+ * (generation not stated) */
+typedef enum {
+    codeUNINSTALL_EXIT_DONE = 0
+} codeUNINSTALL_EXIT;
+
 #endif /* AKARI_CE_SETUP_H */

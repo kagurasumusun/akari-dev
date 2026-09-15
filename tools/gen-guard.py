@@ -126,6 +126,17 @@ OS_VERSIONS = {
     "Windows CE .NET 5.0 and later.": (V["5.0"], None, False),
     "Windows Embedded CE 6.0": (V["6.0"], None, False),
     "Windows Embedded CE 6.0 and later": (V["6.0"], None, False),
+    # M135: CE 6.0 R2 and R3 are product releases *within* Windows Embedded
+    # CE 6.0; the `_WIN32_WCE` encoding has one value for 6.0 (0x0600) and no
+    # R2/R3 field, so a page that says "CE 6.0 R2" states the same minimum
+    # `_WIN32_WCE` as one that says "CE 6.0 and later".  Mapping them to
+    # 0x0600 is the smallest claim the row supports; the guard cannot, and
+    # does not try to, distinguish a release update from the base 6.0.  These
+    # rows first appeared when the M135 headers were generated from the
+    # Silverlight (xamlruntime.h) and Web Services on Devices (wsdapi.h)
+    # books, which are R2/R3-only features.
+    "Windows Embedded CE 6.0 R2": (V["6.0"], None, False),
+    "Windows Embedded CE 6.0 R3": (V["6.0"], None, False),
     # rows that do not state a generation range
     "Windows CE OS": (None, None, False),
     "Windows CE OS 2.10 and later": (V["2.10"], None, False),

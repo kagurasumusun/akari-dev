@@ -200,6 +200,17 @@ AKARI_CE_IMPORT BOOL CeFindNextRegChange(HANDLE hChangeHandle) AKARI_CE_NAME(CeF
  * BOOL CeFindCloseRegChange(HANDLE).  Stops change monitoring; the
  * handle must not be used afterwards. */
 AKARI_CE_IMPORT BOOL CeFindCloseRegChange(HANDLE hChangeHandle) AKARI_CE_NAME(CeFindCloseRegChange);
+
+/* ee489649 REG_NOTIFY_INFORMATION: page print
+ * typedef struct _REG_NOTIFY_INFORMATION { DWORD NextEntryOffset; DWORD Action; DWORD RegNameLength; WCHAR RegName[1]; } REG_NOTIFY_INFORMATION, *PREG_N
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct _REG_NOTIFY_INFORMATION {
+    DWORD NextEntryOffset;
+    DWORD Action;
+    DWORD RegNameLength;
+    WCHAR RegName[1];
+} REG_NOTIFY_INFORMATION, *PREG_NOTIFY_INFORMATION;
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------

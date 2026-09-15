@@ -1,0 +1,195 @@
+/*
+ * Sms.h -- Windows CE book-surface header of record (Akari API)
+ *
+ * Copyright (c) 2026 Akari API contributors
+ * SPDX-License-Identifier: MIT
+ *
+ * Written from scratch.  Every declaration below is annotated with the
+ * official Microsoft Windows CE documentation page it is taken from
+ * (learn.microsoft.com previous-versions archive; page ids cited per
+ * record).  The pages in this book print "Header: sms.h".
+ *
+ * Created in M135: tools/coverage-audit.py had been reporting this header
+ * in its "header not shipped here" bucket -- the pages name it, include/
+ * did not contain it, and no audit downstream could act on a gap with no
+ * file to put the declarations in.
+ */
+
+#ifndef AKARI_SMS_H
+#define AKARI_SMS_H
+
+#if _WIN32_WCE >= 0x0600   /* every declaration below is documented
+ * from this generation or later (each block's
+ * citation comment carries the page's own
+ * OS Versions row; tools/gen-guard.py's
+ * mapping) */
+
+#include "Windef.h"    /* base Win32 types */
+#include "Winnt.h"     /* HRESULT, LARGE_INTEGER, GUID */
+
+#include "Winbase.h"   /* SYSTEMTIME */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+
+/* ee496874 BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE: page print
+ * enum BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE { BPSGS_UNKNOWN = 0, BPSGS_CELL_DISPLAY_IMMEDIATE, BPSGS_CELL, BPSGS_PLMN, BPSGS_LOCATION_AREA, };
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE {
+    BPSGS_UNKNOWN = 0,
+    BPSGS_CELL_DISPLAY_IMMEDIATE,
+    BPSGS_CELL,
+    BPSGS_PLMN,
+    BPSGS_LOCATION_AREA
+} BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE;
+
+/* ee497250 SMS_ADDRESS_TYPE: page print
+ * enum SMS_ADDRESS_TYPE { SMSAT_UNKNOWN=0, SMSAT_INTERNATIONAL, SMSAT_NATIONAL, SMSAT_NETWORKSPECIFIC, SMSAT_SUBSCRIBER, SMSAT_ALPHANUMERIC, SMSAT_ABBRE
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum SMS_ADDRESS_TYPE {
+    SMSAT_UNKNOWN = 0,
+    SMSAT_INTERNATIONAL,
+    SMSAT_NATIONAL,
+    SMSAT_NETWORKSPECIFIC,
+    SMSAT_SUBSCRIBER,
+    SMSAT_ALPHANUMERIC,
+    SMSAT_ABBREVIATED
+} SMS_ADDRESS_TYPE;
+
+/* ee497352 PROVIDER_SPECIFIC_REPLACE_OPTION: page print
+ * enum PROVIDER_SPECIFIC_REPLACE_OPTION { PSRO_NONE = 0, PSRO_REPLACE_TYPE1, PSRO_REPLACE_TYPE2, PSRO_REPLACE_TYPE3, PSRO_REPLACE_TYPE4, PSRO_REPLACE_TY
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum PROVIDER_SPECIFIC_REPLACE_OPTION {
+    PSRO_NONE = 0,
+    PSRO_REPLACE_TYPE1,
+    PSRO_REPLACE_TYPE2,
+    PSRO_REPLACE_TYPE3,
+    PSRO_REPLACE_TYPE4,
+    PSRO_REPLACE_TYPE5,
+    PSRO_REPLACE_TYPE6,
+    PSRO_REPLACE_TYPE7,
+    PSRO_RETURN_CALL,
+    PSRO_DEPERSONALIZATION
+} PROVIDER_SPECIFIC_REPLACE_OPTION;
+
+/* ee497441 SMS_RANGE: page print
+ * typedef struct sms_range_tag { DWORD dwMinimum; DWORD dwMaximum; } SMS_RANGE, *LPSMS_RANGE;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct sms_range_tag {
+    DWORD dwMinimum;
+    DWORD dwMaximum;
+} SMS_RANGE, *LPSMS_RANGE;
+
+/* ee497445 SMS_DATA_ENCODING: page print
+ * enum SMS_DATA_ENCODING { SMSDE_OPTIMAL=0, SMSDE_GSM, SMSDE_UCS2, };
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum SMS_DATA_ENCODING {
+    SMSDE_OPTIMAL = 0,
+    SMSDE_GSM,
+    SMSDE_UCS2
+} SMS_DATA_ENCODING;
+
+/* ee497655 WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING: page print
+ * enum WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING { WDPPSPA_8_BIT_PORT_NUMBERS = 0, WDPPSPA_16_BIT_PORT_NUMBERS, };
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING {
+    WDPPSPA_8_BIT_PORT_NUMBERS = 0,
+    WDPPSPA_16_BIT_PORT_NUMBERS
+} WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING;
+
+/* ee497683 PROVIDER_SPECIFIC_MESSAGE_CLASS: page print
+ * enum PROVIDER_SPECIFIC_MESSAGE_CLASS { PS_MESSAGE_CLASS0 = 0, PS_MESSAGE_CLASS1, PS_MESSAGE_CLASS2, PS_MESSAGE_CLASS3, PS_MESSAGE_CLASSUNSPECIFIED, };
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum PROVIDER_SPECIFIC_MESSAGE_CLASS {
+    PS_MESSAGE_CLASS0 = 0,
+    PS_MESSAGE_CLASS1,
+    PS_MESSAGE_CLASS2,
+    PS_MESSAGE_CLASS3,
+    PS_MESSAGE_CLASSUNSPECIFIED
+} PROVIDER_SPECIFIC_MESSAGE_CLASS;
+
+/* ee498007 BROADCAST_PROVIDER_SPECIFIC_DATA: page print
+ * typedef struct broadcast_provider_specific_data_tag { WORD wMessageID; WORD wMessageCode; BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE bpsgsGeograph
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct broadcast_provider_specific_data_tag {
+    WORD wMessageID;
+    WORD wMessageCode;
+    BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE bpsgsGeographicalScope;
+    WORD wUpdateNumber;
+} BROADCAST_PROVIDER_SPECIFIC_DATA;
+
+/* ee498093 NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE: page print
+ * enum NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE { NOTIFICATIONPSIT_NONE = 0, NOTIFICATIONPSIT_LINE1 = 1, NOTIFICATIONPSIT_LINE2 = 2, };
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE {
+    NOTIFICATIONPSIT_NONE = 0,
+    NOTIFICATIONPSIT_LINE1 = 1,
+    NOTIFICATIONPSIT_LINE2 = 2
+} NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE;
+
+/* ee498229 WCMP_PROVIDER_SPECIFIC_MESSAGE_TYPE: page print
+ * enum WCMP_PROVIDER_SPECIFIC_MESSAGE_TYPE { WCMPPSMT_UNSUPPORTED = 0, WCMPPSMT_PORT_UNREACHABLE, WCMPPSMT_MESSAGE_TOO_BIG, WCMPPSMT_ECHO_REQUEST, WCMPP
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum WCMP_PROVIDER_SPECIFIC_MESSAGE_TYPE {
+    WCMPPSMT_UNSUPPORTED = 0,
+    WCMPPSMT_PORT_UNREACHABLE,
+    WCMPPSMT_MESSAGE_TOO_BIG,
+    WCMPPSMT_ECHO_REQUEST,
+    WCMPPSMT_ECHO_REPLY
+} WCMP_PROVIDER_SPECIFIC_MESSAGE_TYPE;
+
+/* ee498285 NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE: page print
+ * enum NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE { NOTIFICATIONPSMWT_NONE = 0, NOTIFICATIONPSMWT_GENERIC, NOTIFICATIONPSMWT_VOICEMAIL, NOTIFICATIO
+ * (Windows Embedded CE 6.0 and later) */
+typedef enum NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE {
+    NOTIFICATIONPSMWT_NONE = 0,
+    NOTIFICATIONPSMWT_GENERIC,
+    NOTIFICATIONPSMWT_VOICEMAIL,
+    NOTIFICATIONPSMWT_FAX,
+    NOTIFICATIONPSMWT_EMAIL,
+    NOTIFICATIONPSMWT_OTHER
+} NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE;
+
+
+/* ee497478 WDP_PROVIDER_SPECIFIC_DATA: page print
+ * typedef struct wdp_provider_specific_data_tag { WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING wdppsPortAddressing; WORD wDestinationPort; WORD wOriginatorPort
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct wdp_provider_specific_data_tag {
+    WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING wdppsPortAddressing;
+    WORD wDestinationPort;
+    WORD wOriginatorPort;
+} WDP_PROVIDER_SPECIFIC_DATA;
+
+/* ee497886 NOTIFICATION_PROVIDER_SPECIFIC_DATA: page print
+ * typedef struct notification_provider_specific_data_tag { DWORD dwMessageOptions; PROVIDER_SPECIFIC_MESSAGE_CLASS psMessageClass; PROVIDER_SPECIFIC_REP
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct notification_provider_specific_data_tag {
+    DWORD dwMessageOptions;
+    PROVIDER_SPECIFIC_MESSAGE_CLASS psMessageClass;
+    PROVIDER_SPECIFIC_REPLACE_OPTION psReplaceOption;
+    NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE npsMsgWaitingType;
+    int iNumberOfMessagesWaiting;
+    NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE npsIndicatorType;
+} NOTIFICATION_PROVIDER_SPECIFIC_DATA;
+
+
+/* ee497060 SmsGetTime: print `HRESULT SmsGetTime (
+const SYSTEMTIME* ptsCurrentTime,
+const DWORD* pdwErrorMargin);`
+ * (Windows Embedded CE 6.0 and later; Link Library: sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsGetTime(const SYSTEMTIME *ptsCurrentTime, const DWORD *pdwErrorMargin) AKARI_CE_NAME(SmsGetTime);
+
+/* ee497339 SmsClearMessageNotification: print `HRESULT SmsClearMessageNotification (
+const LPCTSTR tszProtocolName
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsClearMessageNotification(const LPCTSTR tszProtocolName) AKARI_CE_NAME(SmsClearMessageNotification);
+
+#endif /* _WIN32_WCE >= 0x0600 */
+#endif /* AKARI_SMS_H */

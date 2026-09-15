@@ -254,4 +254,21 @@ void _disable(void);
  * (Windows CE .NET 4.0 and later) */
 void _enable(void);
 
+
+/* ms904424 IMAGE_DATA_DIRECTORY: page print
+ * typedef struct _IMAGE_DATA_DIRECTORY {DWORD VirtualAddress;DWORD Size;} IMAGE_DATA_DIRECTORY, *PIMAGE_DATA_DIRECTORY;
+ * (Windows CE 2.10 and later.) */
+typedef struct _IMAGE_DATA_DIRECTORY {
+    DWORD VirtualAddress;
+    DWORD Size;
+} IMAGE_DATA_DIRECTORY, *PIMAGE_DATA_DIRECTORY;
+
+/* ms940765 PDATA_EH: page print
+ * struct PDATA_EH { unsigned int* pHandler; unsigned int* pHandlerData;};
+ * (Windows CE .NET 4.0 and later.) */
+struct PDATA_EH {
+    unsigned int *pHandler;
+    unsigned int *pHandlerData;
+};
+
 #endif /* AKARI_WINNT_H */

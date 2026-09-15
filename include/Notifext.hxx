@@ -93,4 +93,17 @@ typedef struct tagSettingsDialogData {
     BOOL SaveData;
 } SettingsDialogData;
 
+
+/* ms908098 CeNotifyPublic_UIWndProc: print `LRESULT CALLBACK CeNotifyPublic_UIWndProc(HWNDhWnd,UINTmessage,WPARAMwParam,LPARAMlParam);`
+ * (Windows CE 2.10 and later.; Link Library: not stated) */
+LRESULT CALLBACK CeNotifyPublic_UIWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
+/* ms908100 CeNotifyPublic_InitializeUI: print `int CeNotifyPublic_InitializeUI(HINSTANCE hInst,HWNDhwndUI);`
+ * (Windows CE 5.0 and later.; Link Library: not stated) */
+AKARI_CE_IMPORT int CeNotifyPublic_InitializeUI(HINSTANCE hInst, HWND hwndUI) AKARI_CE_NAME(CeNotifyPublic_InitializeUI);
+
+/* ms908101 CeNotifyPublic_Uninitialize: print `void CeNotifyPublic_Uninitialize(void);`
+ * (Windows CE 5.0 and later.; Link Library: not stated) */
+AKARI_CE_IMPORT void CeNotifyPublic_Uninitialize(void) AKARI_CE_NAME(CeNotifyPublic_Uninitialize);
+
 #endif /* AKARI_NOTIFEXT_HXX_ */

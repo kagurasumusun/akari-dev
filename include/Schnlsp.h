@@ -131,4 +131,18 @@ typedef struct _SecPkgCred_SupportedProtocols {
 #define SP_PROT_TLS1_SERVER                          0x0040
 #define SP_PROT_TLS1_CLIENT                          0x0080
 
+
+/* ee498323 SecPkgContext_MasterKeyInfo: page print
+ * typedef struct _SecPkgContext_MasterKeyInfo { DWORD dwVersion; DWORD cbMasterKey; BYTE rgbMasterKey[512]; DWORD cbClientRandom; BYTE rgbClientRandom[5
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct _SecPkgContext_MasterKeyInfo {
+    DWORD dwVersion;
+    DWORD cbMasterKey;
+    BYTE rgbMasterKey[512];
+    DWORD cbClientRandom;
+    BYTE rgbClientRandom[512];
+    DWORD cbServerRandom;
+    BYTE rgbServerRandom[512];
+} SecPkgContext_MasterKeyInfo, *PSecPkgContext_MasterKeyInfo;
+
 #endif /* AKARI_SCHNLSP_H */

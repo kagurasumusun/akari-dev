@@ -2229,4 +2229,11 @@ typedef struct tagTOGGLEKEYS {
 #define TKF_HOTKEYACTIVE    0x00000004
 #define TKF_HOTKEYSOUND     0x00000010
 
+
+/* ee501942 AllKeys: print `BOOL AllKeys(
+BOOL bAllKeys
+);`
+ * (Windows CE 2.0 and later; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL AllKeys(BOOL bAllKeys) AKARI_CE_NAME(AllKeys);
+
 #endif /* AKARI_WINUSER_H */

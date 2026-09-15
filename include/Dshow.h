@@ -1835,6 +1835,17 @@ struct IDirectDrawVideo { const IDirectDrawVideoVtbl *lpVtbl; };
 #define IDirectDrawVideo_WillUseFullScreen(T,a) ((T)->lpVtbl->WillUseFullScreen(T,a))
 
 /* ---- IEnumMediaTypes: 4 documented method pages; order R1 ---- */
+
+/* ee496526 StructEncoderParameter: page print
+ * typedef struct { GUID Guid; ULONG NumberOfValues; ULONG Type; void* Value; } StructEncoderParameter;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct {
+    GUID Guid;
+    ULONG NumberOfValues;
+    ULONG Type;
+    void *Value;
+} StructEncoderParameter;
+
 #endif /* _WIN32_WCE >= 0x0500 */
 typedef struct IEnumMediaTypesVtbl {
     /* IUnknown */

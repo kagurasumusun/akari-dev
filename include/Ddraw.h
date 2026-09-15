@@ -774,4 +774,24 @@ HRESULT WINAPI EnumSurfacesCallback(LPDIRECTDRAWSURFACE lpDDSurface, LPDDSURFACE
 HRESULT WINAPI EnumSurfacesCallback2(LPDIRECTDRAWSURFACE4 lpDDSurface, LPDDSURFACEDESC2 lpDDSurfaceDesc, LPVOID lpContext);
 
 
+
+/* ee491302 DDARGB: page print
+ * typedef struct _DDARGB{ BYTE blue; BYTE green; BYTE red; BYTE alpha; } DDARGB, *LPDDARGB;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct _DDARGB {
+    BYTE blue;
+    BYTE green;
+    BYTE red;
+    BYTE alpha;
+} DDARGB, *LPDDARGB;
+
+/* ee491315 DDGAMMARAMP: page print
+ * typedef struct _DDGAMMARAMP { WORD red[256]; WORD green[256]; WORD blue[256]; }DDGAMMARAMP, *LPDDGAMMARAMP;
+ * (Windows Embedded CE 6.0 and later) */
+typedef struct _DDGAMMARAMP {
+    WORD red[256];
+    WORD green[256];
+    WORD blue[256];
+} DDGAMMARAMP, *LPDDGAMMARAMP;
+
 #endif /* AKARI_DDRAW_H */

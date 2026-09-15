@@ -34,4 +34,9 @@ void Startup_PowerOnNotification(HWND hwndDlg);
 /* ms919641: page-printed prototype (Windows CE 2.10 and later.). */
 BOOL Startup_WantStartupScreen(void);
 
+
+/* ms940352 Startup_DlgProc: print `BOOL Startup_DlgProc( HWND hDlg,UINT message,WPARAMwParam,LPARAM lParam);`
+ * (Windows CE 2.10 and later.; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL Startup_DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(Startup_DlgProc);
+
 #endif /* AKARI_STARTUI_H_ */

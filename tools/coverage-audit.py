@@ -85,6 +85,18 @@ OEM = {
     "flashpdd.h", "flashmdd.h", "sdhcd.h", "fsioctl.h",
     "lfapi.h", "lfplugin.h", "wap.h", "csmedia.h", "ccdatastore.h",
     "trans.h", "osaccess.h", "nclientview.h", "gdi.h",
+    # M135: the device/driver/kernel headers among the "header not shipped"
+    # residue.  Every one of these was checked against its own pages before
+    # being listed: the font driver, the flash-media driver common layer, the
+    # GWES display driver interface, the FAT utilities, the GPS device driver
+    # and the OEM settings header are all implemented by the OEM, and the
+    # DumpWriter (dw*) headers, the kernel globals headers and the RIL NDIS
+    # OEM shim are kernel/driver internals.  None of their pages prints an
+    # app-linkable library.
+    "fontdrv.h", "flashcommon.h", "winddif.h", "fatutil.h", "gpsdev.h",
+    "oem_settings.h", "oemglobal.h", "nkglobal.h", "mkfuncs.h",
+    "dwdmptxt.h", "dwdumptxt.h", "dwui.h", "dwconn.h", "rilndisoem1.h",
+    "condio.h", "flexipmtinfo.h",
 }
 
 # C runtime headers.  These are work item 1 (llvm-libc adapted for CE), not

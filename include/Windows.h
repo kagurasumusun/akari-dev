@@ -208,6 +208,62 @@ AKARI_CE_IMPORT BOOL EnableEUDC(BOOL fEnableEUDC)
 AKARI_CE_IMPORT BOOL GetCharABCWidthsI(HDC hdc, UINT giFirst, UINT cgi,
                     LPWORD pgi, LPABC lpabc)
                     AKARI_CE_NAME(GetCharABCWidthsI);
+
+/* ms894451 PERF_COUNTER_BLOCK: page print
+ * typedef struct _PERF_COUNTER_BLOCK{DWORDByteLength; }PERF_COUNTER_BLOCK;
+ * (Windows CE .NET 4.0 and later.) */
+typedef struct _PERF_COUNTER_BLOCK {
+    DWORD ByteLength;
+} PERF_COUNTER_BLOCK;
+
+/* ms894453 PERF_COUNTER_DEFINITION: page print
+ * typedef struct _PERF_COUNTER_DEFINITION{DWORDByteLength; DWORDCounterNameTitleIndex; LPWSTRCounterNameTitle; DWORDCounterHelpTitleIndex; LPWSTRCounter
+ * (Windows CE .NET 4.0 and later.) */
+typedef struct _PERF_COUNTER_DEFINITION {
+    DWORD ByteLength;
+    DWORD CounterNameTitleIndex;
+    LPWSTR CounterNameTitle;
+    DWORD CounterHelpTitleIndex;
+    LPWSTR CounterHelpTitle;
+    DWORD DefaultScale;
+    DWORD DetailLevel;
+    DWORD CounterType;
+    DWORD CounterSize;
+    DWORD CounterOffset;
+} PERF_COUNTER_DEFINITION;
+
+/* ms894456 PERF_INSTANCE_DEFINITION: page print
+ * typedef struct _PERF_INSTANCE_DEFINITION{DWORDByteLength;DWORDParentObjectTitleIndex;DWORDParentObjectInstance;DWORDUniqueID;DWORDNameOffset;DWORDName
+ * (Windows CE .NET 4.0 and later.) */
+typedef struct _PERF_INSTANCE_DEFINITION {
+    DWORD ByteLength;
+    DWORD ParentObjectTitleIndex;
+    DWORD ParentObjectInstance;
+    DWORD UniqueID;
+    DWORD NameOffset;
+    DWORD NameLength;
+} PERF_INSTANCE_DEFINITION;
+
+/* ms894458 PERF_OBJECT_TYPE: page print
+ * typedef struct _PERF_OBJECT_TYPE{DWORDTotalByteLength;DWORDDefinitionLength;DWORDHeaderLength;DWORDObjectNameTitleIndex;LPWSTR ObjectNameTitle;DWORDOb
+ * (Windows CE .NET 4.0 and later.) */
+typedef struct _PERF_OBJECT_TYPE {
+    DWORD TotalByteLength;
+    DWORD DefinitionLength;
+    DWORD HeaderLength;
+    DWORD ObjectNameTitleIndex;
+    LPWSTR ObjectNameTitle;
+    DWORD ObjectHelpTitleIndex;
+    LPWSTR ObjectHelpTitle;
+    DWORD DetailLevel;
+    DWORD NumCounters;
+    DWORD DefaultCounter;
+    DWORD NumInstances;
+    DWORD CodePage;
+    LARGE_INTEGER PerfTime;
+    LARGE_INTEGER PerfFreq;
+} PERF_OBJECT_TYPE;
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------

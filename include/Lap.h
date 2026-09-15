@@ -86,6 +86,37 @@ VOID VerifyUserToTop(void);
 
 /* ms938427 "DeinitLAP". */
 VOID DeinitLAP(void);
+
+/* ee498158 LAPDisplayPreWipe: print `BOOL LAPDisplayPreWipe(
+HWND hwndParent
+);`
+ * (generation not stated; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL LAPDisplayPreWipe(HWND hwndParent) AKARI_CE_NAME(LAPDisplayPreWipe);
+
+/* ee498295 LAPDisplayCodeword: print `BOOL LAPDisplayCodeword(
+HWND hwndParent,
+LPCWSTR pwszCodeword
+);`
+ * (generation not stated; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL LAPDisplayCodeword(HWND hwndParent, LPCWSTR pwszCodeword) AKARI_CE_NAME(LAPDisplayCodeword);
+
+/* ee498374 LAPLockoutUser: print `BOOL LAPLockoutUser(
+HWND hwnd,
+LPCWSTR pwszAEDisplayText,
+DWORD cSecondsToLockout
+);`
+ * (generation not stated; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL LAPLockoutUser(HWND hwnd, LPCWSTR pwszAEDisplayText, DWORD cSecondsToLockout) AKARI_CE_NAME(LAPLockoutUser);
+
+/* ee498753 LASSGetValue: print `BOOL LASSGetValue(
+DWORD ValueId,
+PVOID pOutBuffer,
+DWORD cbOutBuffer,
+DWORD* pcbReturned
+);`
+ * (generation not stated; Link Library: not stated) */
+AKARI_CE_IMPORT BOOL LASSGetValue(DWORD ValueId, PVOID pOutBuffer, DWORD cbOutBuffer, DWORD *pcbReturned) AKARI_CE_NAME(LASSGetValue);
+
 #endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus

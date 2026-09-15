@@ -1021,4 +1021,36 @@ AKARI_CE_IMPORT BOOL ImmSIPanelState(UINT dwCmd, LPVOID pValue)
 /* ms904392 Working with the IME Status Window */
 /* ms904393 Working with the Input Method Editor */
 /* ms904394 Working With Unicode Surrogates */
+
+/* ee491699 COMPOSITIONSTRING: page print
+ * typedef struct tagCOMPOSITIONSTRING { DWORD dwSize; DWORD dwCompReadAttrLen; DWORD dwCompReadAttrOffset; DWORD dwCompReadClauseLen; DWORD dwCompReadCl
+ * (Windows CE .NET 4.0 and later) */
+typedef struct tagCOMPOSITIONSTRING {
+    DWORD dwSize;
+    DWORD dwCompReadAttrLen;
+    DWORD dwCompReadAttrOffset;
+    DWORD dwCompReadClauseLen;
+    DWORD dwCompReadClauseOffset;
+    DWORD dwCompReadStrLen;
+    DWORD dwCompReadStrOffset;
+    DWORD dwCompAttrLen;
+    DWORD dwCompAttrOffset;
+    DWORD dwCompClauseLen;
+    DWORD dwCompClauseOffset;
+    DWORD dwCompStrLen;
+    DWORD dwCompStrOffset;
+    DWORD dwCursorPos;
+    DWORD dwDeltaStart;
+    DWORD dwResultReadClauseLen;
+    DWORD dwResultReadClauseOffset;
+    DWORD dwResultReadStrLen;
+    DWORD dwResultReadStrOffset;
+    DWORD dwResultClauseLen;
+    DWORD dwResultClauseOffset;
+    DWORD dwResultStrLen;
+    DWORD dwResultStrOffset;
+    DWORD dwPrivateSize;
+    DWORD dwPrivateOffset;
+} COMPOSITIONSTRING;
+
 #endif /* _IMM_H */
