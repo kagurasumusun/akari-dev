@@ -48,6 +48,7 @@
                     * (docs/header-placement-audit.md). */
 
 #ifdef __cplusplus
+#include "Shlobj.h"   /* FILECHANGENOTIFY is documented in commctrl.h (M130) */
 extern "C" {
 #endif
 

@@ -434,6 +434,17 @@ AKARI_CE_IMPORT BOOL PeekMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,   
 
 /* aa452956 "DispatchMessage": dispatches to the window procedure.  The
  * page prints LONG as the return type. */
+/* ms911790 "MapWindowPoints" (Winuser.h; Windows CE 1.0 and later;
+ * Coredll.lib, Winmgr.lib): the page prints
+ *   int MapWindowPoints( HWND hWndFrom, HWND hWndTo, LPPOINT lpPoints,
+ *                        UINT cPoints);
+ * Parameter names are the page's Parameters section; the archive syntax
+ * print loses the type/name space.  def/coredll-doc.def and
+ * def/winmgr-doc.def both export it, but no header declared it, so
+ * <Winuser.h> did not provide the name its own page documents (M130). */
+AKARI_CE_IMPORT int MapWindowPoints(HWND hWndFrom, HWND hWndTo,
+                                    LPPOINT lpPoints, UINT cPoints)
+                    AKARI_CE_NAME(MapWindowPoints);
 AKARI_CE_IMPORT LONG DispatchMessageW(const MSG *lpmsg) AKARI_CE_NAME(DispatchMessageW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is

@@ -61,6 +61,7 @@
 #include "Objbase.h"   /* HRESULT, IUnknown, REFGUID (referenced by method records) */
 
 #ifdef __cplusplus
+#include "Dvp.h"   /* EnumVideoCallback is documented in ddraw.h (M130) */
 extern "C" {
 #endif
 

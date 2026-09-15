@@ -9151,3 +9151,85 @@ vtable ブロック（`IDropTargetVtbl` … `IShellView_GetItemObject`）を
 
 `make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
 世代監査は 0 名を維持。
+
+## M130：配置の残りを解消 — 未到達 22 → 5 グループ、重複定義 1 件と未宣言 1 件を実修正
+
+### ツールの判定バグ（偽陽性 6 件）
+
+`placement-audit.py` は「文書化ヘッダ**以外**にも宣言がある」だけで
+欠陥として報告していた。文書化ヘッダ自身に宣言があれば、頁どおりに
+include した利用者は問題なく通る。**文書化ヘッダが宣言元の集合に
+含まれていればスキップ**するよう修正し、6 件の偽陽性を除去
+（グループ 65 → 58）。
+
+典型例が `WM_NOTIFY`：`Winuser.h:1389` に `#define WM_NOTIFY 0x004E`
+として**既に正しく宣言されている**。`Commctrl.h` 側は注釈と
+`FORWARD_WM_NOTIFY` マクロで言及しているだけだった。
+
+### 実欠陥 1：`VS_FIXEDFILEINFO` の二重定義
+
+`struct tagVS_FIXEDFILEINFO` が **`Winbase.h:2546` と `Winver.h:33` の
+両方に定義**されていた。コーパス `aa450983` は
+「Windows CE 3.0 and later. **Header: Winbase.h.**」と印刷する。
+`Winver.h` 側の定義を削除し、`#include "Winbase.h"` で受けるようにした。
+両方を include すると即 `redefinition` になる状態で出荷されていた。
+
+### 実欠陥 2：`MapWindowPoints` が未宣言
+
+`def/coredll-doc.def:1132` と `def/winmgr-doc.def:27` が export しているのに、
+**どのヘッダにも宣言がなかった**。`Windowsx.h` は
+`MapWindowPoints` を**マクロ内で使うだけ**で、宣言元ではなかった。
+ページ `ms911790` は「Windows CE 1.0 and later. Header: Winuser.h.
+Link Library: Coredll.lib, Winmgr.lib.」で、構文は
+
+    int MapWindowPoints( HWND hWndFrom, HWND hWndTo, LPPOINT lpPoints, UINT cPoints);
+
+を印刷する（アーカイブの構文印刷は型と名の間の空白を失うため、
+名前は Parameters 節から復元）。`Winuser.h` に `AKARI_CE_IMPORT` 形で宣言した。
+CE 1.0+ なので世代ゲートは不要。
+
+### 宣言の移動 2 件（ページが印刷するヘッダへ）
+
+| 名 | 移動 | 根拠 |
+|---|---|---|
+| `D3DMADAPTER_IDENTIFIER` | `D3dmddk.h` → `D3dmtypes.h` | `ms939133`「Header: D3dmtypes.h.」CE 5.0+ |
+| `DISPID` | `Dshow.h` のみ → `Oaidl.h` に追加 | `ms864423`/`ms886967`「Header: Oaidl.h.」CE 2.0+、頁は `Typedef LONG DISPID;` を印刷 |
+
+`D3dmtypes.h` へ移した struct は **0x0500 ゲートが必要**だった。
+`D3dmtypes.h` は `D3dm.h` を include するが、`D3dm.h` は M124 で
+ファイル全体が 5.0 ゲートされており、4.2 では
+`MAX_DEVICE_IDENTIFIER_STRING`（`D3dm.h:1289`）が未定義になるため。
+
+### `#include` 追加 7 件
+
+`Ddraw.h += Dvp.h`（`EnumVideoCallback`）、`Commctrl.h += Shlobj.h`
+（`FILECHANGENOTIFY`）、`Ddvdata.h += Dvdata.h`、`IAccess.h += Objbase.h`、
+`newmenu.h += aygshell.h`、`oak/Rtccore.h += Dshow.h`、
+`oak/Rndis.h += oak/Rndismini.h`。
+
+### 却下した 2 件（サイクルになる）
+
+- **`Winuser.h += Windowsx.h`**（`MapWindowPoints`）：
+  `Winuser.h → Windowsx.h → Windows.h → Shellapi.h → Shlobj.h →
+  Shobjidl.h → Winuser.h`（部分状態）となり、C++ で
+  `Objbase.h:4217: 'LPMSG' has not been declared` を大量発生。
+  include 追加ではなく上記の**宣言追加**で解決した。
+- **`Prsht.h += Shlobj.h`**（`FILECHANGENOTIFY`）：
+  `Shobjidl.h:364` が `LPFNADDPROPSHEETPAGE` を要求し、それは
+  `Prsht.h` 自身が提供する。`aa453066` は
+  「Header: Commctrl.h;Prsht.h;Shlguid.h」と 3 ヘッダを挙げるので、
+  `Commctrl.h` 経由で 1 つは満たした。`Prsht.h` 側は型の再配置が必要。
+
+### 挿入位置のバグ（3 回踏んだ）
+
+`#include "X.h"` の**同じ行で開いた複数行コメント**の途中に挿入すると
+ファイルが壊れる。`D3dmtypes.h` / `Oaidl.h` / `Winuser.h` で発生し、
+`expected identifier or '(' before string constant` や
+`"/*" within comment` になった。挿入位置は
+**コメント状態を追跡して閉じた後**でなければならない。
+
+### 検証
+
+`make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0（6 ターゲット）。
+配置：**未到達 22 → 5 グループ**（残り 5 のうち 4 は `Count`/`Event`/`Lock`
+という頁題由来の非 API 名、1 は上記 `Prsht.h`）。世代監査は 0 名を維持。

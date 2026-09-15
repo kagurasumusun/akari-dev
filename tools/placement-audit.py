@@ -252,6 +252,12 @@ def main():
             dpath = bylow.get(dh)
             if dpath is None:
                 continue                      # header not shipped in this tree
+            if dpath in declared:
+                continue        # the documented header declares it, so a
+                                # consumer following the page compiles; a
+                                # second declaration elsewhere is a separate
+                                # (duplicate-declaration) question, not a
+                                # placement one
             wrong = sorted(declared - {dpath})
             if not wrong:
                 continue                      # declared where documented

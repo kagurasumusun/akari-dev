@@ -18,7 +18,7 @@ documentation still compiles.
 | `windows.h` | `include/Winuser.h` | 63 | yes |
 | `d3dmtypes.h` | `include/D3dm.h` | 51 | yes |
 | `objidl.h` | `include/Objbase.h` | 50 | yes |
-| `oaidl.h` | `include/Objbase.h` | 45 | yes |
+| `oaidl.h` | `include/Objbase.h` | 44 | yes |
 | `ndistapi.h` | `include/oak/Ntddndis.h` | 35 | yes |
 | `sapiddk.h` | `include/Sapi.h` | 24 | yes |
 | `ocidl.h` | `include/Objbase.h` | 22 | yes |
@@ -28,8 +28,8 @@ documentation still compiles.
 | `ohcdddsi.h` | `include/oak/Hcdddsi.h` | 13 | yes |
 | `externs.h` | `include/oak/Ndis.h` | 13 | yes |
 | `wtypes.h` | `include/Objbase.h` | 6 | yes |
-| `windows.h` | `include/Winbase.h` | 6 | yes |
 | `commctrl.h` | `include/Winuser.h` | 6 | yes |
+| `windows.h` | `include/Winbase.h` | 5 | yes |
 | `kfuncs.h` | `include/Winbase.h` | 5 | yes |
 | `ws2tcpip.h` | `include/Winsock2.h` | 3 | yes |
 | `pchannel.h` | `include/Cchannel.h` | 2 | yes |
@@ -48,26 +48,22 @@ documentation still compiles.
 | `interned.h` | `include/Imaging.h` | 1 | **no** |
 | `d3dmtypes.h` | `include/D3dmddk.h` | 1 | **no** |
 | `d3dmcaps.h` | `include/D3dm.h` | 1 | yes |
-| `oaidl.h` | `include/Dshow.h` | 1 | **no** |
 | `dmoreg.h` | `include/Dmo.h` | 1 | yes |
 | `winddi.h` | `include/oak/Gpe.h` | 1 | yes |
 | `ddvdata.h` | `include/Dvdata.h` | 1 | yes |
-| `ddraw.h` | `include/Dvp.h` | 1 | **no** |
+| `ddraw.h` | `include/Dvp.h` | 1 | yes |
 | `interned.h` | `include/oak/Ndis.h` | 1 | **no** |
-| `commctrl.h` | `include/Shlobj.h` | 1 | **no** |
-| `prsht.h` | `include/Shlobj.h` | 1 | **no** |
+| `commctrl.h` | `include/Shlobj.h` | 1 | yes |
+| `prsht.h` | `include/Shlobj.h` | 1 | yes |
 | `shlguid.h` | `include/Shlobj.h` | 1 | yes |
 | `iaccess.h` | `include/Objbase.h` | 1 | yes |
 | `docobj.h` | `include/Objbase.h` | 1 | yes |
 | `objsafe.h` | `include/Objbase.h` | 1 | yes |
-| `shlobj.h` | `include/Shobjidl.h` | 1 | yes |
 | `unknwn.h` | `include/Objbase.h` | 1 | yes |
 | `ddrawi.h` | `include/Usbclient.h` | 1 | **no** |
 | `ddrawi.h` | `include/oak/Ndis.h` | 1 | **no** |
-| `winuser.h` | `include/Windowsx.h` | 1 | **no** |
 | `ndis.h` | `include/oak/Ntddndis.h` | 1 | yes |
 | `newmenu.h` | `include/aygshell.h` | 1 | yes |
-| `rtccore.h` | `include/Dshow.h` | 1 | yes |
 | `unimodem.h` | `include/Tapi.h` | 1 | yes |
 | `rndis.h` | `include/oak/Rndismini.h` | 1 | yes |
 | `windows.h` | `include/Windef.h` | 1 | yes |
@@ -75,11 +71,8 @@ documentation still compiles.
 | `windows.h` | `include/Commctrl.h` | 1 | yes |
 | `winuser.h` | `include/Winbase.h` | 1 | yes |
 | `usbtypes.h` | `include/Usb100.h` | 1 | yes |
-| `tapi.h` | `include/Ras.h` | 1 | yes |
-| `winbase.h` | `include/Winver.h` | 1 | **no** |
-| `winuser.h` | `include/Commctrl.h` | 1 | **no** |
 
-Totals: 65 groups, 823 name-placements, 12 groups unreachable.
+Totals: 58 groups, 814 name-placements, 5 groups unreachable.
 
 ## Per-name lists
 
@@ -98,34 +91,10 @@ list.  `name (page id, ...)`.
   D3DMADAPTER_IDENTIFIER (ms939133.html)  
 ```
 
-### `oaidl.h` -> `include/Dshow.h` (1)
-
-```
-  DISPID (ms864423.html, ms886967.html)  
-```
-
-### `ddraw.h` -> `include/Dvp.h` (1)
-
-```
-  EnumVideoCallback (aa451694.html, ms893908.html)  
-```
-
 ### `interned.h` -> `include/oak/Ndis.h` (1)
 
 ```
   Event (aa452193.html)  
-```
-
-### `commctrl.h` -> `include/Shlobj.h` (1)
-
-```
-  FILECHANGENOTIFY (aa453066.html)  
-```
-
-### `prsht.h` -> `include/Shlobj.h` (1)
-
-```
-  FILECHANGENOTIFY (aa453066.html)  
 ```
 
 ### `ddrawi.h` -> `include/Usbclient.h` (1)
@@ -138,23 +107,5 @@ list.  `name (page id, ...)`.
 
 ```
   Lock (ms902159.html)  
-```
-
-### `winuser.h` -> `include/Windowsx.h` (1)
-
-```
-  MapWindowPoints (ms911790.html)  
-```
-
-### `winbase.h` -> `include/Winver.h` (1)
-
-```
-  VS_FIXEDFILEINFO (aa450983.html)  
-```
-
-### `winuser.h` -> `include/Commctrl.h` (1)
-
-```
-  WM_NOTIFY (aa453890.html)  
 ```
 

@@ -30,6 +30,7 @@
 #include "Winuser.h"  /* NMHDR, DLGPROC, LPCDLGTEMPLATE */
 
 #ifdef __cplusplus
+#include "Shlobj.h"   /* FILECHANGENOTIFY is documented in prsht.h (M130) */
 extern "C" {
 #endif
 

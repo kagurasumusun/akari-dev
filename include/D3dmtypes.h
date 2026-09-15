@@ -44,4 +44,20 @@
 /* ms907754 D3DMTSS_TCI Values (Header: D3dmtypes.h.) */
 /* ms907755 D3DMUSAGE Values (Header: D3dmtypes.h.) */
 /* ms907761 D3DMWRAPCOORD Values (Header: D3dmtypes.h.) */
+/* ms939133 D3DMADAPTER_IDENTIFIER: structure print on the page; derived at
+ * the M99 sweep.  Declared here because the page prints
+ * "Header: D3dmtypes.h." (Windows CE 5.0 and later); it previously sat in
+ * D3dmddk.h, so <D3dmtypes.h> did not provide it (M130). */
+#if _WIN32_WCE >= 0x0500   /* ms939133: Windows CE 5.0 and later (M130) */
+struct _D3DMADAPTER_IDENTIFIER{
+    TCHAR Driver[MAX_DEVICE_IDENTIFIER_STRING];
+    TCHAR Description[MAX_DEVICE_IDENTIFIER_STRING];
+    LARGE_INTEGER DriverVersion;
+    ULONG VendorId;
+    ULONG DeviceId;
+    ULONG SubSysId;
+    ULONG Revision;
+    GUID DeviceIdentifier;
+};
+#endif /* _WIN32_WCE >= 0x0500 */
 

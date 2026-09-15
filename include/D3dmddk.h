@@ -518,17 +518,8 @@ struct _D3DM_RESOURCEMANAGER_DATA{
     HRESULT rval;
 };
 
-/* ms939133 D3DMADAPTER_IDENTIFIER: structure print on the page; derived at the M99 sweep (forward-declared above). */
-struct _D3DMADAPTER_IDENTIFIER{
-    TCHAR Driver[MAX_DEVICE_IDENTIFIER_STRING];
-    TCHAR Description[MAX_DEVICE_IDENTIFIER_STRING];
-    LARGE_INTEGER DriverVersion;
-    ULONG VendorId;
-    ULONG DeviceId;
-    ULONG SubSysId;
-    ULONG Revision;
-    GUID DeviceIdentifier;
-};
+/* ms939133 D3DMADAPTER_IDENTIFIER: the definition moved to D3dmtypes.h,
+ * which is the header the page prints (M130). */
 
 /* aa447699(v=msdn.10) D3DMDEVICEFORMAT: structure print on the page; derived at the M99 sweep (forward-declared above). */
 struct _D3DMDEVICEFORMAT{

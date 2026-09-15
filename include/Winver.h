@@ -25,26 +25,16 @@
 #define AKARI_WINVER_H
 
 #include "Windef.h"
+#include "Winbase.h"   /* VS_FIXEDFILEINFO (aa450983: Header: Winbase.h.) */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef struct tagVS_FIXEDFILEINFO {
-    DWORD dwSignature;        /* 0xFEEF04BD */
-    DWORD dwStrucVersion;
-    DWORD dwFileVersionMS;
-    DWORD dwFileVersionLS;
-    DWORD dwProductVersionMS;
-    DWORD dwProductVersionLS;
-    DWORD dwFileFlagsMask;
-    DWORD dwFileFlags;
-    DWORD dwFileOS;
-    DWORD dwFileType;
-    DWORD dwFileSubtype;
-    DWORD dwFileDateMS;
-    DWORD dwFileDateLS;
-} VS_FIXEDFILEINFO;
+/* VS_FIXEDFILEINFO is documented in Winbase.h (aa450983, "Windows CE 3.0
+ * and later", "Header: Winbase.h."), so it is declared there and this
+ * header takes it from that include instead of defining a second copy
+ * (M130: the duplicate was a real redefinition defect). */
 
 /* dwSignature */
 #define VS_FFI_SIGNATURE        0xFEEF04BDL

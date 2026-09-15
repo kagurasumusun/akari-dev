@@ -8,6 +8,11 @@
  * Book surface: dcom-aut (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* ms880205 ICreateErrorInfo::SetDescription (Header: Oaidl.h, Oaidl.idl.) */
+
+/* ms864423 / ms886967 "DISPID" (Oaidl.h; Windows CE 2.0 and later): the
+ * page prints "Typedef LONG DISPID;".  Only Dshow.h carried it before,
+ * so <Oaidl.h> did not provide the name its own page documents (M130). */
+typedef LONG DISPID;
 /* ms880208 ICreateErrorInfo::SetGUID (Header: Oaidl.h, Oaidl.idl.) */
 /* ms880214 ICreateErrorInfo::SetHelpContext (Header: Oaidl.h, Oaidl.idl.) */
 /* ms880219 ICreateErrorInfo::SetHelpFile (Header: Oaidl.h, Oaidl.idl.) */
