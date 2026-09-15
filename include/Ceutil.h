@@ -23,7 +23,9 @@
  * (Header: Ceutil.h, Link Library: Coredll.lib, Windows CE 3.0 and
  * later), paired with the CeSvcOpen page that fills it.  See Windef.h:236
  * for the in-tree precedent for a handle no page typedefs. */
-typedef HANDLE HCESVC;
+typedef HANDLE HCESVC, *PHCESVC;  /* aa513836 CeSvcOpenEx and
+                                    * ee484797 CeSvcOpen both take
+                                    * PHCESVC phSvc */
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,35 +41,12 @@ extern "C" {
 /* aa513818 CeSvcAdd: print `HRESULT CeSvcAdd( LPTSTR pszSvcName,LPTSTR pszSvcClass,LPVOID pSvcInfo);` */
 AKARI_CE_IMPORT HRESULT CeSvcAdd(LPTSTR pszSvcName, LPTSTR pszSvcClass, LPVOID pSvcInfo)
     AKARI_CE_NAME(CeSvcAdd);
-/* aa513819 CeSvcClose: print `HRESULT CeSvcClose( HCESVC hSvc);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513820 CeSvcDelete: print `HRESULT CeSvcDelete( HCESVC hSvc);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513823 CeSvcDeleteVal: print `HRESULT CeSvcDeleteVal( HCESVC hSvc,LPCTSTR pszValName);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513824 CeSvcEnumProfiles: print `HRESULT CeSvcEnumProfiles( PHCESVC phSvc,DWORD lProfileIndex,PDWORD plProfile);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513826 CeSvcGetBinary: print `HRESULT CeSvcGetBinary( HCESVC hSvc,LPCTSTR pszValName,LPBYTE pszVal,LPDWORD pcbVal);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513828 CeSvcGetDword: print `HRESULT CeSvcGetDword( HCESVC hSvc,LPCTSTR pszValName,LPDWORD pdwVal);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513830 CeSvcGetString: print `HRESULT CeSvcGetString( HCESVC hSvc,LPCTSTR pszValName,LPTSTR pszVal,DWORD cbVal);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513833 CeSvcOpen: print `` -- recorded verbatim (no compiled prototype) */
-/* aa513836 CeSvcOpenEx: print `HRESULT CeSvcOpenEx( HCESVC hSvcRoot,LPTSTR pszPath,BOOL fCreate,PHCESVC phSvc);` */
-/* (record-only: parameter or return type unpublished) */
 /* aa513837 CeSvcQueryInfo: print `HRESULT CeSvcQueryInfo( LPTSTR pszSvcName,LPTSTR pszSvcClass,LPVOID pszSvcInfo,DWORD cbBuffer);` */
 AKARI_CE_IMPORT HRESULT CeSvcQueryInfo(LPTSTR pszSvcName, LPTSTR pszSvcClass, LPVOID pszSvcInfo, DWORD cbBuffer)
     AKARI_CE_NAME(CeSvcQueryInfo);
 /* aa513840 CeSvcRemove: print `HRESULT CeSvcRemove( LPTSTR pszSvcName,LPTSTR pszSvcClass,DWORD dwSvcFlags);` */
 AKARI_CE_IMPORT HRESULT CeSvcRemove(LPTSTR pszSvcName, LPTSTR pszSvcClass, DWORD dwSvcFlags)
     AKARI_CE_NAME(CeSvcRemove);
-/* aa513842 CeSvcSetBinary: print `HRESULT CeSvcSetBinary( HCESVC hSvc,LPCTSTR pszValName,LPBYTE pszVal,DWORD cbVal);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513844 CeSvcSetDword: print `HRESULT CeSvcSetDword( HCESVC hSvc,LPCTSTR pszValName,DWORD dwVal);` */
-/* (record-only: parameter or return type unpublished) */
-/* aa513845 CeSvcSetString: print `HRESULT CeSvcSetString( HCESVC hSvc,LPCTSTR pszValName,LPCTSTR pszVal);` */
-/* (record-only: parameter or return type unpublished) */
 /* ms860950 CeSvcOpen Constant Enumeration (Header: Ceutil.h.) */
 
 /* ------------------------------------------------------------------
@@ -155,5 +134,32 @@ DWORD cbVal
 );`
  * (generation not stated; Link Library: coredll.lib) */
 AKARI_CE_IMPORT HRESULT CeSvcSetBinary(HCESVC hSvc, LPCTSTR pszValName, LPBYTE pszVal, DWORD cbVal) AKARI_CE_NAME(CeSvcSetBinary);
+
+
+/* ee483537 CeSvcOpenEx: print `HRESULT CeSvcOpenEx(
+HCESVC hSvcRoot,
+LPTSTR pszPath,
+BOOL fCreate,
+PHCESVC phSvc
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcOpenEx(HCESVC hSvcRoot, LPTSTR pszPath, BOOL fCreate, PHCESVC phSvc) AKARI_CE_NAME(CeSvcOpenEx);
+
+/* ee484797 CeSvcOpen: print `HRESULT CeSvcOpen(
+UINT uSvc,
+LPTSTR pszPath,
+BOOL fCreate,
+PHCESVC phSvc
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcOpen(UINT uSvc, LPTSTR pszPath, BOOL fCreate, PHCESVC phSvc) AKARI_CE_NAME(CeSvcOpen);
+
+/* ee486329 CeSvcEnumProfiles: print `HRESULT CeSvcEnumProfiles(
+PHCESVC phSvc,
+DWORD lProfileIndex,
+PDWORD plProfile
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT HRESULT CeSvcEnumProfiles(PHCESVC phSvc, DWORD lProfileIndex, PDWORD plProfile) AKARI_CE_NAME(CeSvcEnumProfiles);
 
 #endif /* AKARI_CEUTIL_H */
