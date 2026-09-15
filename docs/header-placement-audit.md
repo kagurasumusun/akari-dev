@@ -826,3 +826,79 @@ each corpus row with a shipped `Header:` token compare the header that
 token names against the header(s) that actually declare the title
 identifier.  Rows whose title contains `::` are COM methods and are
 excluded.
+
+## M119 correction: 1,240 of the 1,334 are not defects
+
+The count above compared each page's `Header:` row with the file the
+declaration text sits in.  That is the wrong test for this tree, because
+`Objbase.h` is a deliberate umbrella and the other COM-family headers are
+documented-case aliases that `#include` it -- `Wtypes.h` is six lines
+long and consists of `#include "Objbase.h"`, and `Objbase.h`'s own banner
+says the CE SDK's `<Objbase.h>` includes `Objidl.h`/`Oaidl.h`/`Wtypes.h`/
+`Unknwn.h` and that this single umbrella covers those plus `Oleauto.h`
+and `Ocidl.h`.  An app that writes `#include <Wtypes.h>` does get
+`CLSCTX`.  So the question that decides whether a group is a defect is
+**reachability**: does the documented header transitively include the
+file that holds the name?
+
+Measured over the shipped `include/` and `include/oak/` graph:
+
+| | groups | names |
+|---|---|---|
+| documented header reaches the holder -- **not a defect** | 38 | 1,240 |
+| documented header cannot reach the holder -- **real defect** | 23 | 89 |
+| group key lists several holders at once -- unresolved here | 4 | 5 |
+
+The 38 include the whole `Objbase.h` family (`oleauto.h` 676, `oaidl.h`
+83, `objidl.h` 54, `ole2.h` 48, `ocidl.h` 29, `oleidl.h` 24, `wtypes.h`
+15, `cesync.h` 6, `dccole.h` 4, `unknwn.h`/`docobj.h`/`iaccess.h` 1 each),
+plus `windows.h`->`wingdi.h` 145, `d3dmtypes.h`->`d3dm.h` 47,
+`winsock.h`->`winsock2.h` 31, `externs.h`->`ndis.h` 13, `kfuncs.h`->
+`winbase.h` 11 and 23 more.
+
+**The 23 real defects, 89 names:**
+
+| documented | holder | names |
+|---|---|---|
+| `rapi.h` | `windbase.h` | 44 |
+| `winuser.h` | `wingdi.h` | 11 |
+| `winbase.h` | `windbase.h` | 6 |
+| `wincrypt.h` | `winsock2.h` | 3 |
+| `winuser.h` | `winbase.h` | 2 |
+| `ddraw.h` | `dvp.h` | 2 |
+| `commctrl.h` | `commdlg.h` | 2 |
+| `winuser.h` | `objbase.h` | 2 |
+| `ndis.h` | `externs.h` | 2 |
+| `winuser.h` | `windows.h` | 2 |
+| `winddi.h` `pwindbas.h` `storemgr.h` `usbtypes.h` `pkfuncs.h` `wingdi.h` `kfuncs.h` `winbase.h` `winbase.h` `winbase.h` `ipexport.h` `snmp.h` | `gpe.h` `windbase.h` `objbase.h` `usb100.h` `windbase.h` `windows.h` `pkfuncs.h` `objbase.h` `sspi.h` `kfuncs.h` `icmpapi.h` `snmpapi.h` | 1 each |
+
+## Why the 89 were not moved this pass
+
+Both mechanical remedies were tried and both fail, for measured reasons.
+
+**Moving the declarations** into the documented header (71 of the 89
+records were relocatable; 18 are note-only records with no declaration
+to move) breaks the 0x420 pass, because the receiving header does not
+have the parameter types:
+
+    Winbase.h:2878: unknown type name 'CEBLOB'      (from Windbase.h)
+    Winbase.h:2884: unknown type name 'CEPROPID'
+    Winbase.h:2891: unknown type name 'CEOID'
+    Winbase.h:2922: unknown type name 'IErrorInfo'  (from Objbase.h)
+    Winbase.h:2931: unknown type name 'SECURITY_STATUS' (from Sspi.h)
+    Wingdi.h:1125:  unknown type name 'LPMONITORINFO'
+
+**Adding the include** to the documented header instead (all 23 groups,
+no include cycle among them) also breaks it, because these headers are
+order-sensitive -- they were written to be reached through the umbrella
+in a particular sequence:
+
+    Windbase.h:145: unknown type name 'FILETIME'   (Winbase.h defines it later)
+    Windbase.h:177: unknown type name 'FILETIME'
+
+So the 89 need the include order restructured, not a per-name edit: a
+small set of type-bearing headers has to become includable on their own
+before any declaration can move or any edge can be added.  That is a
+design change and it is recorded here as open rather than half-applied.
+`make check` is green at the reverted state (hostcheck + cxxcheck,
+0x420/0x500/0x600).
