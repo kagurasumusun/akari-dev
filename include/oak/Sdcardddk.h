@@ -177,7 +177,10 @@ typedef enum _SDCARD_DEVICE_TYPE {
 /* --- type definitions from official page prints
  * (tools/decl-types.py). ----------------------------- */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* ms920440: page-printed definition (Windows CE 5.0 and later.). */
 typedef enum sd_io_transfer_type_tag { SD_IO_READ, SD_IO_WRITE } SD_IO_TRANSFER_TYPE;
 
 #endif /* AKARI_SDCARDDDK_H */
+
+#endif /* _WIN32_WCE >= 0x0500 */

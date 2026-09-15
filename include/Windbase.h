@@ -634,6 +634,7 @@ BOOL SetPasswordActive(BOOL bActive, LPWSTR lpszPassword);
 /* ================= EDB (Windows CE 5.0 and later) ================= */
 #if !defined(_WIN32_WCE) || (_WIN32_WCE) >= 0x500
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* CEDBISOLATIONLEVEL: referenced by value by CeBeginTransaction
  * (aa516980) but no CE page prints the enum or its values.  Closure
  * `int` (the C enum carrier on the 32-bit CE ABI); the documented
@@ -652,6 +653,7 @@ typedef struct CEPROPSPEC {
     DWORD    cchPropName;
 } CEPROPSPEC;
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* ms892010 "SORTORDERSPECEX (EDB) (Windows CE 5.0)": CE 5.0+.  The
  * EDB print names the type CESORTORDERSPECEX (distinct from the
  * CEDB SORTORDERSPECEX) and prints `DWROD rgdwFlags[...]` -- the
@@ -666,6 +668,7 @@ typedef struct CEPROPSPEC {
  */
 typedef struct CESORTORDERSPECEX CESORTORDERSPECEX;
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa516924 "CEVOLUMEOPTIONS (EDB) (Windows CE 5.0)": CE 5.0+.  Held
  * (CCH_MAX_PASSWORD unpublished); verbatim print:
  *   typedef struct CEVOLUMEOPTIONS { WORD wVersion;
@@ -676,8 +679,10 @@ typedef struct CESORTORDERSPECEX CESORTORDERSPECEX;
  */
 typedef struct CEVOLUMEOPTIONS CEVOLUMEOPTIONS;
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* --- EDB functions (Coredll.lib on every page; CE 5.0+). ------------ */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa516979 "CeAddDatabaseProps (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT BOOL CeAddDatabaseProps(PCEGUID pGuid, CEOID oidDb,
                     DWORD cProps,
@@ -687,12 +692,14 @@ AKARI_CE_IMPORT BOOL CeAddDatabaseProps(PCEGUID pGuid, CEOID oidDb,
 AKARI_CE_IMPORT BOOL CeBeginTransaction(HANDLE hSession,
                     CEDBISOLATIONLEVEL isoLevel) AKARI_CE_NAME(CeBeginTransaction);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa516983 "CeChangeDatabaseLCID (EDB) (Windows CE 5.0)": same-name
  * EDB twin of the CEDB declaration above (identical shape). */
 
 /* aa516988 "CeCreateDatabaseEx2 (EDB) (Windows CE 5.0)": same-name
  * EDB twin of the CEDB declaration above (identical shape). */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa516989 "CeCreateDatabaseWithProps (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT CEOID CeCreateDatabaseWithProps(PCEGUID pGuid,
                     CEDBASEINFOEX *pInfo, DWORD cProps,
@@ -701,16 +708,19 @@ AKARI_CE_IMPORT CEOID CeCreateDatabaseWithProps(PCEGUID pGuid,
 /* aa516990 "CeCreateSession (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT HANDLE CeCreateSession(CEGUID *pGuid) AKARI_CE_NAME(CeCreateSession);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa516995 "CeDeleteDatabase (EDB) (Windows CE 5.0)": same-name EDB
  * twin (shape identical, parameter printed `oid`). */
 
 /* aa516998 "CeDeleteRecord (EDB) (Windows CE 5.0)": same-name EDB
  * twin (identical shape). */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517002 "CeEndTransaction (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT BOOL CeEndTransaction(HANDLE hSession,
                     BOOL fCommit) AKARI_CE_NAME(CeEndTransaction);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa517004 "CeEnumDBVolumes (EDB) (Windows CE 5.0)": same-name EDB
  * twin (parameters printed pwszName/cchMaxName). */
 
@@ -726,6 +736,7 @@ AKARI_CE_IMPORT BOOL CeEndTransaction(HANDLE hSession,
  * EDB twin (pointer parameters printed as CENOTIFYREQUEST and
  * CENOTIFICATION pointers). */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517146 "CeGetDatabaseProps (EDB) (Windows CE 5.0)".  (The print
  * carries a stray space in `CeGetDatabaseProps (`; normalized.) */
 AKARI_CE_IMPORT BOOL CeGetDatabaseProps(HANDLE hDatabase, LPWORD lpcPropID,
@@ -735,19 +746,23 @@ AKARI_CE_IMPORT BOOL CeGetDatabaseProps(HANDLE hDatabase, LPWORD lpcPropID,
 /* aa517147 "CeGetDatabaseSession (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT HANDLE CeGetDatabaseSession(HANDLE hDatabase) AKARI_CE_NAME(CeGetDatabaseSession);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa517155 "CeGetDBInformationByHandle (EDB) (Windows CE 5.0)":
  * same-name EDB twin (pointer form printed BY_HANDLE_DB_INFORMATION*). */
 
 /* aa517180 "CeMountDBVol (EDB) (Windows CE 5.0)": same-name EDB twin. */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517182 "CeMountDBVolEx (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT BOOL CeMountDBVolEx(PCEGUID pGuid, LPWSTR lpwszDBVol,
                     CEVOLUMEOPTIONS *pOptions,
                     DWORD dwFlags) AKARI_CE_NAME(CeMountDBVolEx);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa517204 "CeOidGetInfoEx2 (EDB) (Windows CE 5.0)": same-name EDB
  * twin; see the TWIN CONFLICT note on the CEDB declaration above. */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517220 "CeOpenDatabaseInSession (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT HANDLE CeOpenDatabaseInSession(HANDLE hSession, PCEGUID pGuid,
                     PCEOID poid, LPWSTR lpwszName, SORTORDERSPECEX *pSort,
@@ -758,17 +773,20 @@ AKARI_CE_IMPORT HANDLE CeOpenDatabaseInSession(HANDLE hSession, PCEGUID pGuid,
 AKARI_CE_IMPORT HANDLE CeOpenStream(HANDLE hDatabase, CEPROPID propid,
                     DWORD dwMode) AKARI_CE_NAME(CeOpenStream);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa517232 "CeReadRecordProps (EDB) (Windows CE 5.0)": same-name EDB
  * twin (identical shape). */
 
 /* aa517236 "CeReadRecordPropsEx (EDB) (Windows CE 5.0)": same-name
  * EDB twin (identical shape). */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517242 "CeRemoveDatabaseProps (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT BOOL CeRemoveDatabaseProps(PCEGUID pGuid, CEOID oidDb,
                     DWORD cProps,
                     CEPROPID *prgProps) AKARI_CE_NAME(CeRemoveDatabaseProps);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa517250 "CeSeekDatabase (EDB) (Windows CE 5.0)": same-name EDB
  * twin (parameter printed hDatabase). */
 
@@ -779,6 +797,7 @@ AKARI_CE_IMPORT BOOL CeRemoveDatabaseProps(PCEGUID pGuid, CEOID oidDb,
 /* aa517256 "CeSetDatabaseInfo (EDB) (Windows CE 5.0)": same-name EDB
  * twin (identical shape). */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* aa517268 "CeSetSessionOption (EDB) (Windows CE 5.0)". */
 AKARI_CE_IMPORT BOOL CeSetSessionOption(HANDLE hSession, ULONG ulOptionId,
                     DWORD dwValue) AKARI_CE_NAME(CeSetSessionOption);
@@ -804,6 +823,7 @@ AKARI_CE_IMPORT BOOL CeStreamWrite(HANDLE hStream, LPBYTE lprgbBuffer,
                     DWORD cbWrite,
                     LPDWORD lpcbWritten) AKARI_CE_NAME(CeStreamWrite);
 
+#endif /* _WIN32_WCE >= 0x0500 */
 /* aa517282 "CeUnmountDBVol (EDB) (Windows CE 5.0)": same-name EDB twin. */
 
 /* aa517288 "CeWriteRecordProps (EDB) (Windows CE 5.0)": same-name

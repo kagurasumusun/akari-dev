@@ -24,6 +24,7 @@ extern "C" {
 /* ------------------------------------------------------------------
  * Book surface: drivers-sd (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (docs/generation-audit.md) */
 /* ms920339 SDDeinitializeCardLib: print `BOOL SDDeinitializeCardLib();` */
 AKARI_CE_IMPORT BOOL SDDeinitializeCardLib(void)
     AKARI_CE_NAME(SDDeinitializeCardLib);
@@ -36,3 +37,5 @@ AKARI_CE_IMPORT BOOL SDInitializeCardLib(void)
 #endif
 
 #endif /* AKARI_SDMEM_H */
+
+#endif /* _WIN32_WCE >= 0x0500 */

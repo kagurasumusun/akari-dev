@@ -8745,3 +8745,56 @@ wrong answers rather than failing:
 
 Gates: `make check` OK and `make e2e WINCECLANG=<artifact clang>` EXIT=0,
 all 6 targets (machine/subsystem/imports asserted per target).
+
+### M123 -- generation guards: 23 of the 235 closed, 212 blocked by dependents
+
+`tools/gen-audit.py` is new.  It computes each declaration's *effective*
+minimum generation from the `#if _WIN32_WCE` nesting actually in the
+shipped header and compares it with the page's `OS Versions:` row, in
+both directions, judged against CE 4.2 as the lowest target built.  Its
+comment stripper keeps string literals intact -- blanking them destroys
+the target of every `#include "X.h"` and silently empties any include
+graph built from the result, which is the defect that made an earlier
+pass report "no cycles" for ten header pairs that do cycle.
+
+Measured: **235 names in 18 headers** are documented as arriving after
+CE 4.2 and carry no condition, so a 4.2 build sees them.  Each was
+wrapped in `#if _WIN32_WCE >= 0x0500` (or `>= 0x0600`) one header at a
+time, with `make check` run after each so the three generation passes
+decide rather than a guess:
+
+  - **7 headers pass: `Windbase.h` (10 blocks), `oak/Sdcardddk.h`,
+    `oak/Sdmem.h`, `Cchannel.h`, `Commctrl.h`, `ErrorRep.h`,
+    `oak/Ddhal.h`** -- 23 names now correctly hidden from a 4.2 build.
+    The audit figure falls 235 -> **212**.
+  - **11 headers fail and were left unguarded**: `D3dm.h`, `D3dmddk.h`,
+    `Shobjidl.h`, `Socksv2.h`, `Usp10.h`, `Winbase.h`, `Wingdi.h`,
+    `oak/DwCeDump.h`, `oak/Fsdmgr.h`, `oak/Ndis.h`, `oak/Pkfuncs.h`.
+
+The failures are all one shape, and it is not a defect in the guard:
+guarding a CE 5.0 type breaks the declarations that use it and are
+*documented earlier*, so a 4.2 build loses a type it is entitled to.
+Measured examples:
+
+    D3dm.h:      unknown type name 'D3DMVALUE' / 'IDirect3DMobile'
+    Shobjidl.h:  unknown type name 'IDropTarget' / 'IPersistFolder' /
+                 'IShellFolder' / 'IShellView'   (and Shlobj.h then fails
+                 on IShellFolder too)
+    Usp10.h:     unknown type name 'SCRIPT_STRING_ANALYSIS'
+    Winbase.h:   'CeGetCanonicalPathNameW' undeclared here
+
+Propagating the guard to those dependents would hide names their own
+pages document from CE 4.2 or earlier, i.e. trade one generation
+violation for another.  So the 212 need the *set* of generations
+reconciled per component rather than per declaration, and are recorded
+here as open.  `D3dm.h`/`D3dmddk.h` (83 of the 235) are the clearest
+case: Direct3D Mobile is a CE 5.0-only component, so the useful fix is
+to gate the component as a whole, not 83 individual declarations.
+
+The over-guarded direction is unchanged at 5 names -- `CEDDK.h`'s
+`TransBusAddrToVirtual`/`TransBusAddrToStatic` and `Cred.h`'s
+`CredRead`/`CredUpdate`/`CredWrite`, all held at 5.0 by a parameter type
+that does not exist at 4.2 (M117).
+
+Gates: `make check` OK and `make e2e WINCECLANG=<artifact clang>` EXIT=0,
+all 6 targets.
