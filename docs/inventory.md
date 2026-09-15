@@ -9029,3 +9029,58 @@ machine/subsystem/imports の検査を通過した。
 `tests/host/tu_compile.c`、`tests/e2e/*.c`、そして **Makefile の
 `grep -q "Symbol: …"` 検査**。3 番目は見落としやすく、しかも
 `make check` では検出されない。
+
+## M128：世代監査を 0 違反に
+
+### 結果：未ゲート違反 17 → 0 名
+
+| 対象 | 内容 |
+|---|---|
+| `include/Cchannel.h` | `tagCHANNEL_ENTRY_POINTS_EX` と、それを使う `VIRTUALCHANNELENTRYEX` typedef |
+| `include/Commctrl.h` | `tagLVBKIMAGE`、`tagNMLVGETINFOTIP` |
+| `include/oak/Fsdmgr.h` | `_FILELOCKSTATE`、`FSDMGR_EmptyLockContainer`、`MyFSD_LockFileEx` |
+| `include/Shobjidl.h` | 6  интерфейスの **vtable ブロック**（前方 typedef ではない） |
+| `include/oak/Lockmgrtypes.h` | `PACQUIREFILELOCKSTATE` |
+| `include/oak/Lockmgrhelp.h` | `FSDMGR_OpenFileLockState`、`FSDMGR_CloseFileLockState` |
+
+### 過去 2 マイルストーンの診断は誤りだった
+
+`Shobjidl.h` の 6 名（`IDropTarget`/`IPersistFolder`/`IShellFolder`/
+`IShellView`/`ITaskbarList`/`ITaskbarList2`）は「`REFIID` に阻まれて
+ゲートできない」と記録されていた。**誤りである。**
+
+- その 6 行は `typedef struct IDropTarget IDropTarget;` 形式の**単純な
+  前方 typedef で、`REFIID` を一切含まない**。`REFIID` エラーは M123 の
+  連続結合ツールが隣接する interface 宣言を巻き込んだ副作用だった。
+- 実際に前方 typedef をゲートすると `Shlobj.h:164` の
+  `SHGetDesktopFolder` が壊れる。**その page（aa453697）は
+  「Windows CE .NET 4.2 and later」と明記**しており、引数が
+  `IShellFolder **` である。つまり 4.2 で名前が使える必要がある。
+
+正しい切り分けは「前方 typedef は 4.2 可視／**vtable が 5.0**」。
+vtable ブロック（`IDropTargetVtbl` … `IShellView_GetItemObject`）を
+0x0500 でゲートした。
+
+### 監査ツールに 2 つの機構を追加（`tools/gen-audit.py`）
+
+1. **アーティファクトの除外**：名が literally `enum`/`struct`/`union` の行
+   はコーパス解析の取り違えで、ゲートすべき宣言が存在しない。
+   違反から分離して別掲（**149 行／43 ヘッダ**）。
+2. **根拠付き例外 `docs/generation-exceptions.tsv`**：
+   `header<TAB>name<TAB>reason`。4.2 の API が正当に必要とする名を、
+   理由とともに記録して違反から外す。上記 6 名を登録。
+
+### 消費側 TU（`tests/host/tu_compile.c`）8 箇所
+
+`cepx`/`lvbk` の `(void)` 抑制行が**他の変数と同一行に束ねられていた**
+ため、行単位で囲むと `cpdu`/`nmtvcd`/`lvi`/`lvc` が
+`-Werror=unused-but-set-variable` になった。束を分割し、`cepx`/`lvbk`
+だけをゲートした。`m91_fsd_usage` は関数全体とその dispatch の両方を
+ゲート（末尾 `}` を `#endif` の外に出すこと）。
+
+### 検証
+
+`make check` EXIT=0（C・C++、4.2/5.0/6.0）。`make e2e` EXIT=0
+（`arm`/`i386` × `4.2/5.0/6.0` の 6 ターゲット、machine/subsystem/imports）。
+世代監査 **235 → 212 → 71 → 55 → 45 → 17 → 0**。
+過度ゲート 5 名は不変（`docs/generation-held.tsv`）。

@@ -30,6 +30,7 @@ typedef struct _FSD_VOLUME VOLUME, *PVOLUME;
 typedef struct _FSD_FILE FILE, *PFILE;
 typedef struct _FSD_SEARCH SEARCH, *PSEARCH;
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* aa517917 "FILELOCKSTATE": print `typedef struct _FILELOCKSTATE
  * { DWORD dwPosLow; DWORD dwPosHigh; DWORD dwAccess;
  * LPCRITICAL_SECTION lpcs; BOOL fTerminal; HANDLE hevUnlock; DWORD
@@ -46,6 +47,7 @@ typedef struct _FILELOCKSTATE {
     DWORD             cQueue;
     PVOID             pvLockContainer;
 } FILELOCKSTATE, *PFILELOCKSTATE;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms890852 "FSD_SCATTER_GATHER_RESULTS": print (glued tokens split). */
 typedef struct _FSD_SCATTER_GATHER_RESULTS {
@@ -128,6 +130,7 @@ AKARI_CE_IMPORT BOOL FSD_UnhookVolume(PVOLUME pvol)
  * recovery M91, the M79 note "no signature" was a rows-sig
  * extraction gap). */
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* aa517921 "FSDMGR_EmptyLockContainer" (Fsdmgr.lib row): print
  * `BOOL MyFSD_EmptyLockContainer( PFILELOCKSTATE pFileLockState );`
  * (the prototype line misprints the callee as MyFSD_ -- the page
@@ -136,6 +139,7 @@ AKARI_CE_IMPORT BOOL FSD_UnhookVolume(PVOLUME pvol)
  * HDSK/HVOL-by-value set this one is declared. */
 AKARI_CE_IMPORT BOOL FSDMGR_EmptyLockContainer(PFILELOCKSTATE pFileLockState)
                     AKARI_CE_NAME(FSDMGR_EmptyLockContainer);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* --- Recorded FSD-supplied entry points (MyFSD_*). -------------- */
 /* MyFSD_* are implemented by the file system driver and called by
@@ -222,8 +226,10 @@ BOOL MyFSD_DeviceIoControl(PFILE pFile, DWORD dwIoControlCode, PVOID pInBuf, DWO
 /* ms891399: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
 BOOL MyFSD_FlushFileBuffers(PFILE pFile);
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* aa517926: page-printed prototype (Windows CE 5.0 and later.; fsdmgr.lib). */
 BOOL MyFSD_LockFileEx(PFILE pFile, DWORD dwFlags, DWORD dwReserved, DWORD nNumberOfBytesToLockLow, DWORD nNumberOfBytesToLockHigh, LPOVERLAPPED lpOverlapped);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms891407: page-printed prototype (Windows CE 2.10 and later.; fsdmgr.lib). */
 void MyFSD_Notify(PVOLUME pVolume, DWORD dwFlags);

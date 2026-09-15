@@ -13,15 +13,19 @@
 
 #include "oak/Fsdmgr.h"     /* PFILELOCKSTATE */
 
+#if _WIN32_WCE >= 0x0500   /* FILELOCKSTATE is CE 5.0 (M128) */
 /* "FSDMGR_OpenFileLockState": print
  * `void FSDMGR_OpenFileLockState ( PFILELOCKSTATE pFileLockState );`. */
 AKARI_CE_IMPORT void FSDMGR_OpenFileLockState(PFILELOCKSTATE pFileLockState)
                     AKARI_CE_NAME(FSDMGR_OpenFileLockState);
+#endif /* _WIN32_WCE >= 0x0500 */
 
+#if _WIN32_WCE >= 0x0500   /* FILELOCKSTATE is CE 5.0 (M128) */
 /* "FSDMGR_CloseFileLockState": print
  * `void FSDMGR_CloseFileLockState ( PFILELOCKSTATE pFileLockState );`. */
 AKARI_CE_IMPORT void FSDMGR_CloseFileLockState(PFILELOCKSTATE pFileLockState)
                     AKARI_CE_NAME(FSDMGR_CloseFileLockState);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* "FSDMGR_RemoveFileLock" (aa517923, Fsdmgr.lib row): page-text
  * recovery (M91) of the prototype line: `BOOL MyFSD_UnlockFileEx(

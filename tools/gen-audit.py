@@ -93,9 +93,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--map", default="docs/generation-map.tsv")
     ap.add_argument("--json")
+    ap.add_argument("--exceptions", default="docs/generation-exceptions.tsv",
+                    help="header<TAB>name<TAB>reason rows that a documented "
+                         "4.2 API legitimately needs, so the name stays visible")
     a = ap.parse_args()
 
+    # Rows the corpus parser mis-recorded: the "name" is the keyword that
+    # introduced the construct, not a declared identifier.  There is no
+    # declaration to gate, so they are counted apart from real violations.
+    ARTIFACTS = {"enum", "struct", "union"}
+    exc = set()
+    if os.path.exists(a.exceptions):
+        for r in csv.DictReader(open(a.exceptions, encoding="utf-8"), delimiter="\t"):
+            if r.get("header") and r.get("name"):
+                exc.add((r["header"], r["name"]))
+
     cache = {}
+    artifacts, held = [], []
     early, late = [], []
     rows = list(csv.DictReader(open(a.map, encoding="utf-8"), delimiter="\t"))
     for r in rows:
@@ -105,6 +119,9 @@ def main():
         try:
             dmin = int(mn, 0)
         except ValueError:
+            continue
+        if name in ARTIFACTS:
+            artifacts.append((h, name, r.get("page", "")))
             continue
         if h not in cache:
             cache[h] = effective_min(h)
@@ -119,7 +136,10 @@ def main():
         # A guard is only needed when the documented generation is above the
         # lowest target built; below it every supported build has the name.
         if dmin > LOWEST and e < dmin:
-            early.append(rec)
+            if (h, name) in exc:
+                held.append(rec)
+            else:
+                early.append(rec)
         elif e > max(dmin, LOWEST):
             late.append(rec)
 
@@ -130,11 +150,23 @@ def main():
         gens = sorted({x[2] for x in early if x[0] == h})
         print("   %-28s %4d   documented from %s"
               % (h, c, ", ".join("0x%04X" % g for g in gens)))
+    if artifacts:
+        ah = collections.Counter(x[0] for x in artifacts)
+        print("\ncorpus artifacts skipped (name is literally enum/struct/union): "
+              "%d rows in %d headers" % (len(artifacts), len(ah)))
+        for h, c in ah.most_common(10):
+            print("   %-28s %4d" % (h, c))
+    if held:
+        print("\ndeliberately visible at 4.2 (docs/generation-exceptions.tsv): "
+              "%d names" % len(held))
+        for h, n, d, e, p, ln in held:
+            print("   %s:%d %s doc>=0x%04X (%s)" % (h, ln, n, d, p))
     print("\nvisible later than documented (over-guarded): %d names" % len(late))
     for h, n, d, e, p, ln in late:
         print("   %s:%d %s doc>=0x%04X effective=0x%04X (%s)" % (h, ln, n, d, e, p))
     if a.json:
-        json.dump({"early": early, "late": late}, open(a.json, "w"), indent=1)
+        json.dump({"early": early, "late": late,
+                   "artifacts": artifacts, "held": held}, open(a.json, "w"), indent=1)
         print("\nwrote", a.json)
 
 

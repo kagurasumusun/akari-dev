@@ -1133,6 +1133,7 @@ typedef struct _LVCOLUMN {
     int      iImage;
 } LVCOLUMN, FAR *LPLVCOLUMN;
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* aa453422 "LVBKIMAGE": "typedef struct tagLVBKIMAGE { ULONG
  * ulFlags; HBITMAP hbm; LPTSTR pszImage; UINT cchImageMax; int
  * xOffsetPercent; int yOffsetPercent;} LVBKIMAGE, *LPLVBKIMAGE;".
@@ -1146,6 +1147,7 @@ typedef struct tagLVBKIMAGE {
     int      xOffsetPercent;
     int      yOffsetPercent;
 } LVBKIMAGE, *LPLVBKIMAGE;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* aa453425 "LVFINDINFO": "typedef struct tagLVFINDINFO {UINT flags;
  * LPCTSTR psz; LPARAM lParam; POINT pt; UINT vkDirection;} LVFINDINFO,
@@ -1227,6 +1229,7 @@ typedef struct _NMLVFINDITEM {
     LVFINDINFO  lvfi;
 } NMLVFINDITEM, *PNMLVFINDITEM;
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* ms931639 "NMLVGETINFOTIP": "typedef struct tagNMLVGETINFOTIP {
  * NMHDR hdr; DWORD dwFlags; LPTSTR pszText; int cchTextMax; int
  * iItem; int iSubItem; LPARAM lParam;} NMLVGETINFOTIP,
@@ -1240,6 +1243,7 @@ typedef struct tagNMLVGETINFOTIP {
     int      iSubItem;
     LPARAM   lParam;
 } NMLVGETINFOTIP, *LPNMLVGETINFOTIP;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms931645 "NMLVKEYDOWN": "typedef struct tagLVKEYDOWN {NMHDR hdr;
  * WORD wVKey; UINT flags;} NMLVKEYDOWN, FAR* LPNMLVKEYDOWN;".

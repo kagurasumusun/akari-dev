@@ -12,10 +12,12 @@
 
 #include "oak/Fsdmgr.h"     /* PFILELOCKSTATE */
 
+#if _WIN32_WCE >= 0x0500   /* FILELOCKSTATE is CE 5.0 (M128) */
 /* aa517930 "PACQUIREFILELOCKSTATE": print `typedef VOID
  * (*PACQUIREFILELOCKSTATE)( DWORD dwFile, PFILELOCKSTATE*
  * ppFileLockState );` (FILELOCKSTATE home is Fsdmgr.h, aa517917). */
 typedef VOID (*PACQUIREFILELOCKSTATE)(DWORD dwFile,
                                    PFILELOCKSTATE *ppFileLockState);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* AKARI_LOCKMGRTYPES_H */

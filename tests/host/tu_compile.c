@@ -4879,7 +4879,9 @@ static int m54_shaped_usage(void)
     CHANNEL_DEF            cdef;
     CHANNEL_PDU_HEADER     cpdu;
     CHANNEL_ENTRY_POINTS   cep;
+#if _WIN32_WCE >= 0x0500   /* CHANNEL_ENTRY_POINTS_EX is CE 5.0 (M128) */
     CHANNEL_ENTRY_POINTS_EX cepx;
+#endif /* _WIN32_WCE >= 0x0500 */
     REBARBANDINFO          rbbi;
     COMMANDBANDSRESTOREINFO cbri;
     TBBUTTON               tbb;
@@ -4923,7 +4925,9 @@ static int m54_shaped_usage(void)
     cdef.options = CHANNEL_OPTION_SHOW_PROTOCOL;
     cpdu.flags   = CHANNEL_FLAG_FIRST | CHANNEL_FLAG_LAST;
     cep.cbSize   = sizeof(cep);
+#if _WIN32_WCE >= 0x0500   /* CHANNEL_ENTRY_POINTS_EX member use (M128) */
     cepx.cbSize  = sizeof(cepx);
+#endif /* _WIN32_WCE >= 0x0500 */
     rbbi.cbSize  = sizeof(REBARBANDINFO);
     cbri.cbSize  = sizeof(COMMANDBANDSRESTOREINFO);
     tbb.idCommand = 0;
@@ -5036,7 +5040,10 @@ static int m54_shaped_usage(void)
 
     (void) himl; (void) bvp; (void) sk; (void) ttht; (void) nmcd;
     (void) nttdi; (void) nmtb; (void) tbab; (void) tbbi; (void) tbb;
-    (void) cbri; (void) rbbi; (void) cepx; (void) cep; (void) cpdu;
+    (void) cbri; (void) rbbi; (void) cep; (void) cpdu;
+#if _WIN32_WCE >= 0x0500   /* CHANNEL_ENTRY_POINTS_EX is CE 5.0 (M128) */
+    (void) cepx;
+#endif /* _WIN32_WCE >= 0x0500 */
     (void) cdef; (void) rcb; (void) bv; (void) lm; (void) lc; (void) exd;
     (void) id; (void) fn; (void) fn4; (void) nmh; (void) tti; (void) uda; (void) nmud;
     (void) pbr; (void) be; (void) ld; (void) pd; (void) psd; (void) ofn;
@@ -5276,7 +5283,9 @@ static int m56_shaped_usage(void)
     NMTVCUSTOMDRAW     nmtvcd;
     LVITEM             lvi;
     LVCOLUMN           lvc;
+#if _WIN32_WCE >= 0x0500   /* LVBKIMAGE is CE 5.0 (M128) */
     LVBKIMAGE          lvbk;
+#endif /* _WIN32_WCE >= 0x0500 */
     LVFINDINFO         lvfi;
     LVHITTESTINFO      lvhti;
     NMLISTVIEW         nmlv;
@@ -5301,7 +5310,9 @@ static int m56_shaped_usage(void)
     nmtvcd.clrText = 0;
     lvi.iItem     = 0;
     lvc.cx        = 0;
+#if _WIN32_WCE >= 0x0500   /* LVBKIMAGE member use (M128) */
     lvbk.hbm      = (HBITMAP)0;
+#endif /* _WIN32_WCE >= 0x0500 */
     lvfi.psz      = (LPCTSTR)0;
     lvhti.iItem   = 0;
     nmlv.iItem    = 0;
@@ -5324,7 +5335,10 @@ static int m56_shaped_usage(void)
     (void) ri; (void) nmrba; (void) hdi; (void) hdl; (void) nmhd;
     (void) tci; (void) tchti; (void) nmdtc; (void) mchti; (void) nmsc;
     (void) nmds; (void) tvi; (void) tvis; (void) tvscb; (void) nmtv;
-    (void) nmtvcd; (void) lvi; (void) lvc; (void) lvbk; (void) lvfi;
+    (void) nmtvcd; (void) lvi; (void) lvc; (void) lvfi;
+#if _WIN32_WCE >= 0x0500   /* LVBKIMAGE is CE 5.0 (M128) */
+    (void) lvbk;
+#endif /* _WIN32_WCE >= 0x0500 */
     (void) lvhti; (void) nmlv; (void) nmlvcd; (void) lvdi;
     return 0;
 }
@@ -7390,6 +7404,7 @@ static int m89_shaped_usage(void)
     return (int)miex.cbSize + (int)miex.dwFlags + (int)miex.szDevice[0];
 }
 
+#if _WIN32_WCE >= 0x0500   /* FILELOCKSTATE and the FSDMGR_* lock helpers are CE 5.0 (M128) */
 static int m91_fsd_usage(void)
 {
     FILELOCKSTATE fls;
@@ -7401,6 +7416,7 @@ static int m91_fsd_usage(void)
            + (FSDMGR_CloseFileLockState(&fls), 0);
 }
 #if _WIN32_WCE >= 0x0500   /* fn m92_wininet_usage, COOKIE_STATE_ACCEPT, InternetCookieState +5 more */
+#endif /* _WIN32_WCE >= 0x0500 */
 
 static int m92_wininet_usage(void)
 {
@@ -7682,8 +7698,10 @@ int host_tu_entry(void)
         return 1;
     if (m89_shaped_usage() != 0)
         return 1;
+#if _WIN32_WCE >= 0x0500   /* m91_fsd_usage dispatch (M128) */
     if (m91_fsd_usage() != 0)
         return 1;
+#endif /* _WIN32_WCE >= 0x0500 */
 #if _WIN32_WCE >= 0x0500   /* dispatch m92_wininet_usage, dispatch m93_webview_usage, dispatch m94_commctrl_usage */
     if (m92_wininet_usage() != 0)
         return 1;

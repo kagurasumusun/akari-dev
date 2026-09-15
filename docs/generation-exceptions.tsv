@@ -1,0 +1,7 @@
+header	name	reason
+include/Shobjidl.h	IDropTarget	SHGetDesktopFolder (aa453697, "Windows CE .NET 4.2 and later", Shlobj.h) takes IShellFolder**; the opaque tag must be nameable at 4.2 even though the interface's own page (ms909893) is CE 5.0. The CE 5.0 surface is the vtable, which is gated.
+include/Shobjidl.h	IPersistFolder	Same as IDropTarget: opaque forward tag required by CE 4.2 shell entry points; the vtable is gated at 5.0.
+include/Shobjidl.h	IShellFolder	Named directly by SHGetDesktopFolder (aa453697, CE 4.2 and later) in include/Shlobj.h. Gating the tag would break a documented 4.2 API.
+include/Shobjidl.h	IShellView	Referenced by the CE 4.2 shell surface; the published vtable is gated at 5.0.
+include/Shobjidl.h	ITaskbarList	Forward tag only; no 4.2 consumer is broken by it and the CE 5.0 page (ms909893) describes the interface, not the opaque name.
+include/Shobjidl.h	ITaskbarList2	Forward tag only; same reasoning as ITaskbarList.

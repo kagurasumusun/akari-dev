@@ -240,6 +240,7 @@ typedef struct tagCHANNEL_ENTRY_POINTS {
     PVIRTUALCHANNELWRITE  pVirtualChannelWrite;
 } CHANNEL_ENTRY_POINTS, *PCHANNEL_ENTRY_POINTS;
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* aa513861 "CHANNEL_ENTRY_POINTS_EX" (Cchannel.h): "typedef struct
  * tagCHANNEL_ENTRY_POINTS_EX { DWORD cbSize; DWORD protocolVersion;
  * PVIRTUALCHANNELINITEX pVirtualChannelInitEx; PVIRTUALCHANNELOPENEX
@@ -255,6 +256,7 @@ typedef struct tagCHANNEL_ENTRY_POINTS_EX {
     PVIRTUALCHANNELCLOSEEX  pVirtualChannelCloseEx;
     PVIRTUALCHANNELWRITEEX  pVirtualChannelWriteEx;
 } CHANNEL_ENTRY_POINTS_EX, *PCHANNEL_ENTRY_POINTS_EX;
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ------------------------------------------------------------------ */
 /* The add-in's exported entry points (developer implemented).         */
@@ -264,11 +266,13 @@ typedef struct tagCHANNEL_ENTRY_POINTS_EX {
  * PCHANNEL_ENTRY_POINTS pEntryPoints);". */
 BOOL VCAPITYPE VirtualChannelEntry(PCHANNEL_ENTRY_POINTS pEntryPoints);
 
+#if _WIN32_WCE >= 0x0500   /* documented from CE 5.0 (M128) */
 /* ms879610 "VirtualChannelEntryEx": "typedef BOOL VCAPITYPE
  * VIRTUALCHANNELENTRYEX(PCHANNEL_ENTRY_POINTS_EX pEntryPointsEx,
  * PVOID pInitHandle);". */
 typedef BOOL VCAPITYPE VIRTUALCHANNELENTRYEX(
     PCHANNEL_ENTRY_POINTS_EX pEntryPointsEx, PVOID pInitHandle);
+#endif /* _WIN32_WCE >= 0x0500 */
 
 /* ms879628 "VirtualChannelInitEvent": event callback prototype (see
  * the PCHANNEL_INIT_EVENT_FN note above). */

@@ -271,6 +271,7 @@ typedef struct FOLDERSETTINGS   FOLDERSETTINGS,   *LPFOLDERSETTINGS,
  * empty here: CE-wide cdecl; R1's __stdcall NOT adopted). */
 /* ================================================================== */
 
+#if _WIN32_WCE >= 0x0500   /* the published shell vtables are CE 5.0 (M128) */
 /* ---- IDropTarget: 4 documented method pages; order R1 ---- */
 typedef struct IDropTargetVtbl {
     /* IUnknown */
@@ -382,6 +383,7 @@ struct IShellView { const IShellViewVtbl *lpVtbl; };
 #define IShellView_SaveViewState(T) ((T)->lpVtbl->SaveViewState(T))
 #define IShellView_SelectItem(T,a,b) ((T)->lpVtbl->SelectItem(T,a,b))
 #define IShellView_GetItemObject(T,a,b,c) ((T)->lpVtbl->GetItemObject(T,a,b,c))
+#endif /* _WIN32_WCE >= 0x0500 */
 
 #ifdef __cplusplus
 }
