@@ -421,6 +421,15 @@ def split_type(tok, known):
     m = re.match(r"^(?:const|CONST)\s*(.*)$", t)
     if m:
         const, t = "const ", m.group(1).strip()
+    # M138: FAR and NEAR are the Win16/CE pointer modifiers that expand to
+    # nothing (Windef.h defines both empty), so `RECT FAR *` is `RECT *`.
+    # The pages print them in the Commctrl.h list-view and tree-view
+    # prototypes -- `RECT FAR`, `LVITEM FAR`, `TCITEM FAR`, `LV_COLUMN FAR`,
+    # `POINT FAR` -- and reading the token verbatim reported each as a type
+    # this tree does not declare, holding 13 User/Window Manager exports.
+    # Strip them as whole words only, so nothing inside an identifier moves.
+    t = re.sub(r"(?<![A-Za-z0-9_])(?:FAR|NEAR|PASCAL)(?![A-Za-z0-9_])", " ", t)
+    t = re.sub(r"\s{2,}", " ", t).strip()
     stars = ""
     while t.endswith("*"):
         stars += "*"
@@ -507,8 +516,17 @@ def build(job, raw, known, known_conv=frozenset()):
     if kept:
         head = " ".join(kept)
     ret = head
-    if ret not in known:
+    # M138: judge a return type the way a parameter type is judged -- the
+    # pointer stars belong to the declarator, not to the type name.  Checking
+    # the verbatim token held every D3DMX function that returns a structure
+    # pointer (D3DMXMATRIX*, D3DMXMATRIXFXD*, D3DMXVECTOR3/4* and their FXD
+    # twins -- 49 of the 102 d3dmx.h names) even though include/D3dmx.h
+    # declares all six structures, and the same shape recurs wherever a page
+    # prints `STRUCT*` as the return type.
+    rconst, rbase, rstars = split_type(ret, known)
+    if rbase not in known:
         return None, 'return type "%s" is not a type this tree declares' % ret
+    ret = (rconst + rbase + rstars).strip()
 
     toks = [t.strip() for t in body.split(",") if t.strip()]
     # the same macros appear inside the parameter list ('LPVOID WINAPI x')
@@ -539,7 +557,17 @@ def build(job, raw, known, known_conv=frozenset()):
                 len(toks), len(names))
         pairs = []
         for tok, pn in zip(toks, names):
-            if not (tok.endswith(pn) and len(tok) > len(pn)):
+            # M138: a macro-style prototype prints untyped parameters --
+            # aa453787 "TreeView_GetChild" prints
+            # `HTREEITEMTreeView_GetChild(hwnd,hitem );` -- so the token IS the
+            # parameter name and the old `len(tok) > len(pn)` guard rejected
+            # all 38 Commctrl.h tree-view macros.  An exact match is the
+            # strongest agreement possible; when the token is longer, the
+            # character before the name must not be an identifier character.
+            if tok == pn:
+                continue
+            if not (tok.endswith(pn)
+                    and not re.match(r"[A-Za-z0-9_]", tok[-len(pn) - 1])):
                 return None, 'parameter "%s" does not end token "%s"' % (pn, tok)
             pairs.append((tok[: -len(pn)], pn))
 

@@ -804,4 +804,15 @@ typedef union _DDALPHABLTFX {
     DWORD dwFillValue;
 } DDALPHABLTFX, FAR * LPDDALPHABLTFX;
 
+
+/* ee491229 DDEnumCallbackEx: print `BOOL WINAPI DDEnumCallbackEx(
+GUID FAR* lpGUID,
+LPWSTR lpDriverDescription,
+LPWSTR lpDriverName,
+LPVOID lpContext,
+HMONITOR hm
+);`
+ * (generation not stated; Link Library: Developer) */
+BOOL DDEnumCallbackEx(GUID *lpGUID, LPWSTR lpDriverDescription, LPWSTR lpDriverName, LPVOID lpContext, HMONITOR hm);
+
 #endif /* AKARI_DDRAW_H */
