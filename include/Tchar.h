@@ -31,8 +31,28 @@
 #ifndef AKARI_TCHAR_H
 #define AKARI_TCHAR_H
 
-#include <wchar.h>
-#include <string.h>
+/*
+ * Deliberately no #include of <wchar.h>/<string.h> here.
+ *
+ * Audit 2026-09-16: this header originally included both, which made
+ * it unusable in this tree -- cellvm-sdk ships the documented Windows
+ * CE API surface, not a C runtime (see README Scope), so on a bare
+ * cross-compile with no libc in the sysroot `#include <tchar.h>`
+ * failed outright with "'wchar.h' file not found", taking any real CE
+ * application source that includes tchar.h down with it.  Caught by
+ * compiling a lowercase-spelled eVC-style test app against the tree.
+ *
+ * It is also unnecessary: every _tcsXXX name below is an object-like
+ * macro, i.e. pure token substitution at the point of use.  A
+ * translation unit that never calls _tcslen needs no declaration of
+ * wcslen, and one that does is expected to include the libc header
+ * providing wcslen itself -- exactly as on desktop, where <tchar.h>
+ * maps names that <string.h>/<wchar.h> are responsible for declaring.
+ * Keeping the includes out preserves the TCHAR/_T()/_TEXT() half of
+ * this header (pure Win32, needs no runtime at all) as usable on its
+ * own, which is what the majority of CE application source actually
+ * takes from tchar.h.
+ */
 
 /* Windef.h is this tree's Unicode-only base: it declares TCHAR, PTCHAR,
  * PCTSTR, LPCTSTR, PTSTR and LPTSTR because the CE pages print those names in

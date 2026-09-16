@@ -21,29 +21,31 @@
 
 
 /* --- M104 declarations: printed prototypes recovered
- * from the official pages (tools/decl-d1.py). -------- */
+ * from the official pages (tools/decl-d1.py). --------
+ *
+ * Audit 2026-09-16 (crosscheck, real WinCE clang): this block
+ * originally re-declared DestroyIcon_I, GetForegroundWindow_I,
+ * SendMessageW_I, SetForegroundWindow_I and CreateIconIndirect_I as
+ * plain `RET WINAPI name(...)` prototypes.  Every one of those five
+ * is declared again below by the later pass in the tree's canonical
+ * form (AKARI_CE_IMPORT + AKARI_CE_NAME), from a different page id
+ * for the same function -- the two passes harvested the same
+ * function from the ms9xxxxx and aa4xxxxx page families and neither
+ * de-duplicated against the other.  Clang rejects the pair outright
+ * (-Wdll-attribute-on-redeclaration: a redeclaration may not add
+ * dllimport), so `make crosscheck` failed on this header for all six
+ * CE targets.  The duplicate plain prototypes are removed here
+ * rather than the import-attributed ones: the latter carry the
+ * AKARI_CE_NAME import spelling every other header in this tree
+ * uses, and dropping them would silently change how the name is
+ * resolved against coredll at link time.  No declaration is lost --
+ * the page ids the removed prints came from (ms905519, ms906086,
+ * ms919599, ms919607, ms905514) are recorded alongside their
+ * surviving twins below. ---------------------------- */
 
-/* ms905519: page-printed prototype (Windows CE .NET 4.0 and later.). */
-BOOL WINAPI DestroyIcon_I(HICON hicon);
-
-/* ms906086: page-printed prototype (Windows CE .NET 4.0 and later.). */
-HWND WINAPI GetForegroundWindow_I(void);
-
-/* ms919599: page-printed prototype (Windows CE .NET 4.0 and later.). */
-LRESULT WINAPI SendMessageW_I(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
-/* ms919607: page-printed prototype (Windows CE .NET 4.0 and later.). */
-BOOL WINAPI SetForegroundWindow_I(HWND hwnd);
-
-
-/* --- M104 declarations: printed prototypes recovered
- * from the official pages (tools/decl-d1.py). -------- */
-
-/* ms905514: page-printed prototype (Windows CE .NET 4.0 and later.). */
-HICON WINAPI CreateIconIndirect_I(PICONINFO pii);
-
-
-/* aa452939 DestroyIcon_I: print `BOOL WINAPI DestroyIcon_I(HICON hicon);`
+/* aa452939 DestroyIcon_I (duplicate print of the same function also harvested as
+ * ms905519 by the M104 pass; that duplicate removed 2026-09-16, see
+ * block comment above): print `BOOL WINAPI DestroyIcon_I(HICON hicon);`
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT BOOL DestroyIcon_I(HICON hicon) AKARI_CE_NAME(DestroyIcon_I);
 
@@ -59,19 +61,27 @@ AKARI_CE_IMPORT BOOL KillTimer_I(HWND hwnd, UINT uIDEvent) AKARI_CE_NAME(KillTim
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT HICON LoadIconW_I(HINSTANCE hinst, PCTSTR pszIcon) AKARI_CE_NAME(LoadIconW_I);
 
-/* ms908176 CreateIconIndirect_I: print `HICON WINAPI CreateIconIndirect_I(PICONINFO pii);`
+/* ms908176 CreateIconIndirect_I (duplicate print of the same function also harvested as
+ * ms905514 by the M104 pass; that duplicate removed 2026-09-16, see
+ * block comment above): print `HICON WINAPI CreateIconIndirect_I(PICONINFO pii);`
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT HICON CreateIconIndirect_I(PICONINFO pii) AKARI_CE_NAME(CreateIconIndirect_I);
 
-/* ms929245 GetForegroundWindow_I: print `HWND WINAPI GetForegroundWindow_I(void);`
+/* ms929245 GetForegroundWindow_I (duplicate print of the same function also harvested as
+ * ms906086 by the M104 pass; that duplicate removed 2026-09-16, see
+ * block comment above): print `HWND WINAPI GetForegroundWindow_I(void);`
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT HWND GetForegroundWindow_I(void) AKARI_CE_NAME(GetForegroundWindow_I);
 
-/* ms939982 SendMessageW_I: print `LRESULT WINAPI SendMessageW_I(HWND hWnd,UINT uMsg,WPARAMwParam,LPARAM lParam);`
+/* ms939982 SendMessageW_I (duplicate print of the same function also harvested as
+ * ms919599 by the M104 pass; that duplicate removed 2026-09-16, see
+ * block comment above): print `LRESULT WINAPI SendMessageW_I(HWND hWnd,UINT uMsg,WPARAMwParam,LPARAM lParam);`
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT LRESULT SendMessageW_I(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendMessageW_I);
 
-/* ms940025 SetForegroundWindow_I: print `BOOL WINAPI SetForegroundWindow_I( HWND hwnd);`
+/* ms940025 SetForegroundWindow_I (duplicate print of the same function also harvested as
+ * ms919607 by the M104 pass; that duplicate removed 2026-09-16, see
+ * block comment above): print `BOOL WINAPI SetForegroundWindow_I( HWND hwnd);`
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 AKARI_CE_IMPORT BOOL SetForegroundWindow_I(HWND hwnd) AKARI_CE_NAME(SetForegroundWindow_I);
 

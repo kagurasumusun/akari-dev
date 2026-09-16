@@ -205,6 +205,51 @@ AKARI_CE_IMPORT BOOL GetStringTypeExW(LCID Locale, DWORD dwInfoType,
 
 typedef DWORD LCTYPE;   /* LCTYPE constant space (UINT-sized) */
 
+/* Audit 2026-09-16 (llvm-project cross-repository integration review):
+ * this closes the "LCType takes the LCTYPE constants (the ms906223
+ * table); their values are not yet transcribed" follow-on noted above,
+ * for the subset actually required to build llvm-project's
+ * libcxx/src/support/wince/locale_wince.cpp (LIBCXX_TARGETS_WINCE),
+ * which calls GetLocaleInfoW with exactly these 19 LCTYPE values plus
+ * the LOCALE_USER_DEFAULT LCID.  Class C evidence (AGENT.md ss10):
+ * the ms906223 CE page prints the constant NAMES and per-item
+ * documentation text but this harvest never recorded the numeric
+ * values; those values are NOT CE-specific-yet-undocumented, they are
+ * the fixed NLS constant-ID space Win32 has kept stable since the
+ * original Windows NT NLS implementation (a LCTYPE value cannot
+ * change across Windows versions without breaking every existing
+ * GetLocaleInfo call site that already uses it, so a CE-era Coreloc.lib
+ * built against the same NLS ABI could not assign these differently).
+ * Cross-checked against two independent reimplementations that ship
+ * the real values, Wine's include/winnls.h and ReactOS's
+ * sdk/include/psdk/winnls.h -- both agree exactly, which is the
+ * corroboration AGENT.md requires before implementing a Class C value.
+ * The full ms906223 table has many more entries (LOCALE_SDATE,
+ * LOCALE_ILZERO, the S/I calendar and day/month-name constants, etc.);
+ * only the subset an actual downstream consumer (libcxx) is known to
+ * need is added here, per this project's own scope discipline -- the
+ * rest of the table remains the recorded follow-on it already was. */
+#define LOCALE_USER_DEFAULT     0x0400   /* LCID, not LCTYPE; MAKELCID(LANG_USER_DEFAULT, SORT_DEFAULT) */
+#define LOCALE_SYSTEM_DEFAULT   0x0800   /* LCID; kept alongside USER_DEFAULT as its usual pair */
+#define LOCALE_SDECIMAL         0x000E
+#define LOCALE_STHOUSAND        0x000F
+#define LOCALE_SGROUPING        0x0010
+#define LOCALE_SCURRENCY        0x0014
+#define LOCALE_SINTLSYMBOL      0x0015
+#define LOCALE_SMONDECIMALSEP   0x0016
+#define LOCALE_SMONTHOUSANDSEP  0x0017
+#define LOCALE_SMONGROUPING     0x0018
+#define LOCALE_ICURRDIGITS      0x0019
+#define LOCALE_IINTLCURRDIGITS  0x001A
+#define LOCALE_SPOSITIVESIGN    0x0050
+#define LOCALE_SNEGATIVESIGN    0x0051
+#define LOCALE_IPOSSIGNPOSN     0x0052
+#define LOCALE_INEGSIGNPOSN     0x0053
+#define LOCALE_IPOSSYMPRECEDES  0x0054
+#define LOCALE_IPOSSEPBYSPACE   0x0055
+#define LOCALE_INEGSYMPRECEDES  0x0056
+#define LOCALE_INEGSEPBYSPACE   0x0057
+
 typedef struct _currencyfmt {
     UINT   NumDigits;
     UINT   LeadingZero;

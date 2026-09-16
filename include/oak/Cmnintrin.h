@@ -30,7 +30,20 @@
 /* ms933599 _ReturnAddress: print `void _ReturnAddress(void);`
  * (Windows CE .NET 4.0 and later; Header: cmnintrin.h).  Declared in
  * oak/Mipsintr.h until M134, which contradicted the only page that
- * prints a header for it; it is a common intrinsic, not a MIPS one. */
+ * prints a header for it; it is a common intrinsic, not a MIPS one.
+ *
+ * Audit 2026-09-14 (crosscheck-lc regression sweep, real WinCE clang):
+ * discovered that `make crosscheck` already failed on this header on
+ * both arm-pc-wince* and i386-pc-wince* targets, independent of any
+ * case-aliasing work -- Clang/GCC provide `_ReturnAddress` as a
+ * builtin returning `void *`, which conflicts with the page's `void`
+ * return type. Guarding the redeclaration under those compilers (the
+ * page's own printed type is still the one declared for any other
+ * compiler) is the standard fix for an intrinsic that became a
+ * compiler builtin after the CE-era page was written; it does not
+ * change what is recorded as documented on the page. */
+#if !defined(__GNUC__) && !defined(__clang__)
 void _ReturnAddress(void);
+#endif
 
 #endif /* AKARI_CMNINTRIN_H_ */

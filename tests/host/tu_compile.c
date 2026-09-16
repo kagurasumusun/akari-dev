@@ -4769,8 +4769,10 @@ _Static_assert(sizeof(LDAP_REFERRAL_CALLBACK) == 16,
                "LDAP_REFERRAL_CALLBACK 32-bit size");
 _Static_assert(sizeof(CHANNEL_ENTRY_POINTS) == 24,
                "CHANNEL_ENTRY_POINTS 32-bit size");
+#if _WIN32_WCE >= 0x0500   /* CHANNEL_ENTRY_POINTS_EX is CE 5.0 (audit 2026-09-16) */
 _Static_assert(sizeof(CHANNEL_ENTRY_POINTS_EX) == 24,
                "CHANNEL_ENTRY_POINTS_EX 32-bit size");
+#endif
 _Static_assert(sizeof(NMKEY) == 20, "NMKEY 32-bit size");
 _Static_assert(sizeof(NMMOUSE) == 28, "NMMOUSE 32-bit size");
 _Static_assert(sizeof(NMCUSTOMDRAW) == 48, "NMCUSTOMDRAW 32-bit size");
@@ -5127,7 +5129,9 @@ _Static_assert(sizeof(NMTVCUSTOMDRAW) == 56, "NMTVCUSTOMDRAW 32-bit size");
 _Static_assert(sizeof(NMTVKEYDOWN) == 20, "NMTVKEYDOWN 32-bit size");
 _Static_assert(sizeof(LVITEM) == 40, "LVITEM 32-bit size");
 _Static_assert(sizeof(LVCOLUMN) == 32, "LVCOLUMN 32-bit size");
+#if _WIN32_WCE >= 0x0500   /* LVBKIMAGE is CE 5.0 (audit 2026-09-16) */
 _Static_assert(sizeof(LVBKIMAGE) == 24, "LVBKIMAGE 32-bit size");
+#endif
 _Static_assert(sizeof(LVFINDINFO) == 24, "LVFINDINFO 32-bit size");
 _Static_assert(sizeof(LVHITTESTINFO) == 20, "LVHITTESTINFO 32-bit size");
 _Static_assert(sizeof(NMLISTVIEW) == 44, "NMLISTVIEW 32-bit size");
@@ -5135,8 +5139,10 @@ _Static_assert(sizeof(NMLVCACHEHINT) == 20, "NMLVCACHEHINT 32-bit size");
 _Static_assert(sizeof(NMLVCUSTOMDRAW) == 80,
                "NMLVCUSTOMDRAW 32-bit size");
 _Static_assert(sizeof(NMLVFINDITEM) == 40, "NMLVFINDITEM 32-bit size");
+#if _WIN32_WCE >= 0x0500   /* NMLVGETINFOTIP is CE 5.0 (audit 2026-09-16) */
 _Static_assert(sizeof(NMLVGETINFOTIP) == 36,
                "NMLVGETINFOTIP 32-bit size");
+#endif
 _Static_assert(sizeof(NMLVKEYDOWN) == 20, "NMLVKEYDOWN 32-bit size");
 _Static_assert(sizeof(NMLVODSTATECHANGE) == 28,
                "NMLVODSTATECHANGE 32-bit size");
@@ -5199,8 +5205,10 @@ _Static_assert(sizeof(DMA_ADAPTER_OBJECT) == 12,
 _Static_assert(sizeof(NetworkCallFailedInfo) == 8,
                "NetworkCallFailedInfo 32-bit size");
 #endif /* _WIN32_WCE >= 0x0500 */
+#if _WIN32_WCE >= 0x0500   /* DEVMGR_DEVICE_INFORMATION is CE 5.0 (audit 2026-09-16) */
 _Static_assert(sizeof(DEVMGR_DEVICE_INFORMATION) == 1584,
                "DEVMGR_DEVICE_INFORMATION 32-bit size");
+#endif
 _Static_assert(SDP_TYPE_NIL == 0x00 && SDP_TYPE_CONTAINER == 0x20,
                "SDP_TYPE values (aa450880)");
 _Static_assert(SDP_ST_NONE == 0x0000 && SDP_ST_UINT128 == 0x0410 &&
@@ -5384,7 +5392,9 @@ static int m57_shaped_usage(void)
     CEDEVICE_POWER_STATE  dps = D0;
     PHYSICAL_ADDRESS      pa;
     DMA_ADAPTER_OBJECT    dao;
+#if _WIN32_WCE >= 0x0500   /* DEVMGR_DEVICE_INFORMATION is CE 5.0 (audit 2026-09-16) */
     DEVMGR_DEVICE_INFORMATION ddi;
+#endif
     BUS_DATA_TYPE         bdt = PCIConfiguration;
     INTERFACE_TYPE        ift = PCIBus;
 
@@ -5411,7 +5421,9 @@ static int m57_shaped_usage(void)
     svbl.len = 0;
     pa.QuadPart = 0;
     dao.ObjectSize = 0;
+#if _WIN32_WCE >= 0x0500
     ddi.dwSize = 0;
+#endif
     tfx = SnmpTfxOpen(1, pmv);
     (void) SnmpTfxQuery(tfx, 0, (RFC1157VarBindList *)0,
                         (AsnInteger *)0, (AsnInteger *)0);
@@ -5435,7 +5447,9 @@ static int m57_shaped_usage(void)
                                   (PPHYSICAL_ADDRESS)0);
     (void) READ_PORT_ULONG((PULONG)0);
     (void) GetDevicePowerState((HANDLE)0, &dps, (PVOID)0);
+#if _WIN32_WCE >= 0x0500
     (void) GetParentDeviceInfo((HANDLE)0, &ddi);
+#endif
     (void) StallExecution(1);
     (void) CalibrateStallCounter();
 
@@ -5445,7 +5459,11 @@ static int m57_shaped_usage(void)
     (void) brn; (void) bsec; (void) bsm; (void) inq; (void) squ;
     (void) squu; (void) rbl; (void) ibl; (void) sbl; (void) ncfi;
     (void) aa; (void) aoi; (void) aos; (void) ac64; (void) svb;
-    (void) svbl; (void) pa; (void) dao; (void) ddi; (void) tfx;
+    (void) svbl; (void) pa; (void) dao;
+#if _WIN32_WCE >= 0x0500
+    (void) ddi;
+#endif
+    (void) tfx;
     return 0;
 }
 #endif /* _WIN32_WCE >= 0x0500 */
@@ -6220,6 +6238,7 @@ static int m66_shaped_usage(void)
 }
 
 #if __SIZEOF_POINTER__ == 4
+#if _WIN32_WCE >= 0x0500   /* whole D3dm.h is a CE 5.0+ gate (M67 audit 2026-09-16) */
 /* M67: D3DM sizes (verbatim CE 5.0 prints; D3DMVALUE = signed int). */
 _Static_assert(sizeof(D3DMDISPLAYMODE) == 16, "ms907703");
 _Static_assert(sizeof(D3DMCOLORVALUE) == 16, "ms939143");
@@ -6232,14 +6251,13 @@ _Static_assert(sizeof(D3DMVIEWPORT) == 24, "ms907759");
 _Static_assert(D3DMPOOL_MANAGED == 2, "ms907725");
 _Static_assert(D3DMFMT_D24S8 == 23 && D3DMFMT_INDEX32 == 28, "ms907707");
 _Static_assert(D3DMBLEND_SRCALPHASAT == 11, "ms939135");
-#if _WIN32_WCE >= 0x0500   /* D3DMRENDERSTATE_WRAPBIAS, D3DMPV_VALID, D3DMPV_DONOTCOPYDATA */
 _Static_assert(D3DMRENDERSTATE_WRAPBIAS == 32, "ms907738");
 _Static_assert(D3DMPV_VALID == D3DMPV_DONOTCOPYDATA, "ms907762 print");
-#endif /* _WIN32_WCE >= 0x0500 */
 _Static_assert(D3DMERR_DEVICELOST == MAKE_D3DMHRESULT(2152), "aa451582");
 _Static_assert(D3DMERR_ALREADYLOCKED == MAKE_D3DMHRESULT(2158), "aa451582");
 _Static_assert(MAKE_D3DMHRESULT(0) ==
                MAKE_HRESULT(1, 0x877, 0), "ms932027");
+#endif /* _WIN32_WCE >= 0x0500 */
 #endif
 #if _WIN32_WCE >= 0x0500   /* fn m67_shaped_usage, D3DMCOLOR_ARGB, D3DMCOLOR_XRGB */
 

@@ -413,7 +413,7 @@ include/oak/Wavemdd.h \
 include/oak/Wdm.h \
 include/oak/Winddi.h
 
-.PHONY: check hostcheck cxxcheck defcheck defdoc crt e2e clean
+.PHONY: check hostcheck cxxcheck defcheck defdoc crt e2e clean case-vfs crosscheck-lc
 
 check: hostcheck cxxcheck defcheck
 
@@ -502,6 +502,48 @@ crosscheck: $(HDRS) $(OAK_HDRS)
 	    tests/host/tu_compile.c || exit 1; \
 	done; \
 	echo "[crosscheck] OK -- $(words $(CE_TRIPLES)) WinCE targets"
+
+# --- Lowercase-spelling compatibility (docs/inventory.md M76a) ------
+#
+# Real Windows CE / eVC application source was written and only ever
+# compiled on case-insensitive filesystems (Windows), so it freely
+# writes #include <windows.h>, <winuser.h>, etc. in lowercase. This
+# tree ships exactly one physical file per header, spelled the way
+# Microsoft's documentation prints it (M76a: shipping a second,
+# lower-cased physical file per header broke every case-INSENSITIVE
+# checkout of this repo on Windows/macOS). tools/gen-case-vfs.py
+# bridges the gap without reopening that problem: it emits a Clang
+# VFS overlay (a single generated file under build/, never committed,
+# see .gitignore) mapping each lowercase spelling to the one real,
+# documented-case file. `make case-vfs` generates it; `make
+# crosscheck-lc` re-runs the crosscheck header/TU matrix through it,
+# using lowercase #include spellings, as a standing regression check
+# that real-world lowercase-spelled CE application source resolves
+# correctly against this tree from a case-sensitive Linux build host.
+CASE_OVERLAY = build/case-overlay.yaml
+
+case-vfs:
+	python3 tools/gen-case-vfs.py --dir include --dir include/oak -o $(CASE_OVERLAY)
+
+crosscheck-lc: case-vfs
+	@if [ -z "$(WINCECLANG)" ]; then \
+	  echo "[crosscheck-lc] set WINCECLANG to the WinCE clang binary" >&2; \
+	  exit 2; \
+	fi; \
+	tmp=$$(mktemp -d); trap 'rm -rf "$$tmp"' EXIT; \
+	for t in $(CE_TRIPLES); do \
+	  for h in $(CROSSCHECK_HDRS) $(CROSSCHECK_OAK); do \
+	    lh=$$(basename "$$h" | tr 'A-Z' 'a-z'); \
+	    echo "[crosscheck-lc] $$t standalone (lowercase): $$lh -> $$h"; \
+	    "$(WINCECLANG)" -target $$t -std=c11 -ffreestanding \
+	      --sysroot=$$tmp -Wno-wince-sysroot-missing \
+	      -ivfsoverlay $(CASE_OVERLAY) -Wno-nonportable-include-path \
+	      $(CFLAGS) -Werror -I include -I include/oak -include $$lh \
+	      -fsyntax-only -x c /dev/null || exit 1; \
+	  done; \
+	done; \
+	echo "[crosscheck-lc] OK -- lowercase spellings resolve for $(words $(CE_TRIPLES)) WinCE targets"
+
 
 # The .hpp cluster is C++-only (classes, enums, static members), so the
 # C hostcheck cannot see it.  cxxcheck compiles every .hpp and the .hxx
