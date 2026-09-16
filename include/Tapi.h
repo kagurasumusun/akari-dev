@@ -1910,4 +1910,27 @@ AKARI_CE_IMPORT LONG phoneDevSpecific(HPHONE hPhone,
 /* ms895920 PHONE_DEVSPECIFIC: documented name-only (no value published; held) */
 /* ms895947 PHONE_REMOVE: documented name-only (no value published; held) */
 /* ms896240 PHONE_STATE: documented name-only (no value published; held) */
+
+/* ee496217 phoneCallbackFunc: print `VOID FAR PASCAL phoneCallbackFunc(
+HANDLE hDevice,
+DWORD dwMsg,
+DWORD dwCallbackInstance,
+DWORD dwParam1,
+DWORD dwParam2,
+DWORD dwParam3
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT VOID phoneCallbackFunc(HANDLE hDevice, DWORD dwMsg, DWORD dwCallbackInstance, DWORD dwParam1, DWORD dwParam2, DWORD dwParam3) AKARI_CE_NAME(phoneCallbackFunc);
+
+/* ee497464 lineCallbackFunc: print `VOID FAR PASCAL lineCallbackFunc(
+DWORD hDevice,
+DWORD dwMsg,
+DWORD dwCallbackInstance,
+DWORD dwParam1,
+DWORD dwParam2,
+DWORD dwParam3
+);`
+ * (generation not stated; Link Library: coredll.lib) */
+AKARI_CE_IMPORT VOID lineCallbackFunc(DWORD hDevice, DWORD dwMsg, DWORD dwCallbackInstance, DWORD dwParam1, DWORD dwParam2, DWORD dwParam3) AKARI_CE_NAME(lineCallbackFunc);
+
 #endif /* _TAPI_H */

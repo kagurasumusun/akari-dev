@@ -195,5 +195,13 @@ DWORD cbOutBuffer
  * (Windows Embedded CE 6.0 R2; Link Library: wsdapi.lib) */
 AKARI_CE_IMPORT HRESULT WSDGetConfigurationOption(DWORD dwOption, LPVOID pVoid, DWORD cbOutBuffer) AKARI_CE_NAME(WSDGetConfigurationOption);
 
+
+/* ee501098 WSDAllocateLinkedMemory: print `void* WSDAllocateLinkedMemory(
+void* pParent,
+size_t cbSize
+);`
+ * (generation not stated; Link Library: wsdapi.lib) */
+AKARI_CE_IMPORT void* WSDAllocateLinkedMemory(void *pParent, size_t cbSize) AKARI_CE_NAME(WSDAllocateLinkedMemory);
+
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_WSDAPI_H */
