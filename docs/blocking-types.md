@@ -16,60 +16,43 @@ type block?* The `recorded in` column names the header that already holds the
 type verbatim. `-- NOT RECORDED --` means the tree does not even acknowledge
 it, which is the case this report exists to catch.
 
-Undeclared documented names with a shipped header: **1554**
+Undeclared documented names with a shipped header: **1483**
 
 ## Skip reasons
 
 | reason | count |
 | --- | --- |
-| `no printed definition of this name on the page` | 676 |
+| `no printed definition of this name on the page` | 604 |
 | `page has no prototype block` | 565 |
-| `page has no <pre> block` | 305 |
-| `type "X" (before parameter "X") is not declared by this tree` | 242 |
-| `return type "X" is not a type this tree declares` | 107 |
-| `page prints no Link Library row -- no module exports this name, so no ` | 89 |
+| `page has no <pre> block` | 306 |
+| `type "X" (before parameter "X") is not declared by this tree` | 196 |
+| `page prints no Link Library row -- no module exports this name, so no ` | 160 |
+| `no prototype block names this function` | 100 |
 | `deliberately held in include/oak/Usbdi.h` | 88 |
 | `deliberately held in include/Mq.h` | 84 |
-| `no prototype block names this function` | 80 |
 | `deliberately held in include/oak/Ntddndis.h` | 68 |
 | `deliberately held in include/Sapi.h` | 58 |
-| `parameter "X" does not end token "X"` | 57 |
+| `return type "X" is not a type this tree declares` | 45 |
+| `deliberately held in include/Msacmdrv.h` | 40 |
 
 ## Types blocking the most documented names
 
 | type | blocks | recorded in | examples |
 | --- | --- | --- | --- |
-| `HSIM` | 22 | **-- NOT RECORDED --** | `SimChangeLockingPassword`, `SimDeinitialize`, `SimDeleteMessage`, `SimDeletePhonebookEntry`, `SimGetDevCaps`, `SimGetLockingStatus`, ... |
-| `D3DMXMATRIX*` | 15 | **-- NOT RECORDED --** | `D3DMXMatrixIdentity`, `D3DMXMatrixInverse`, `D3DMXMatrixLookAtLH`, `D3DMXMatrixMultiply`, `D3DMXMatrixOrthoOffCenterLH`, `D3DMXMatrixPerspectiveFovLH`, ... |
-| `D3DMXMATRIXFXD*` | 15 | **-- NOT RECORDED --** | `D3DMXMatrixIdentityFxd`, `D3DMXMatrixInverseFxd`, `D3DMXMatrixLookAtLHFxd`, `D3DMXMatrixMultiplyFxd`, `D3DMXMatrixOrthoOffCenterLHFxd`, `D3DMXMatrixPerspectiveFovLHFxd`, ... |
-| `HRC` | 13 | **-- NOT RECORDED --** | `HwxALCPriority`, `HwxALCValid`, `HwxCreate`, `HwxDestroy`, `HwxEndInput`, `HwxGetResults`, ... |
 | `#define` | 11 | **-- NOT RECORDED --** | `D3DMXDivFxd`, `D3DMXMulFxd`, `D3DMXToDegree`, `D3DMXToDegreeFxd`, `D3DMXToFixed`, `D3DMXToFloat`, ... |
 | `PSMARTCARD_EXTENSION` | 11 | **-- NOT RECORDED --** | `SmartcardDeviceControl`, `SmartcardInitialize`, `SmartcardLockDevice`, `SmartcardRawReply`, `SmartcardRawRequest`, `SmartcardT0Reply`, ... |
-| `HCESVC` | 10 | **-- NOT RECORDED --** | `CeSvcClose`, `CeSvcDelete`, `CeSvcDeleteVal`, `CeSvcGetBinary`, `CeSvcGetDword`, `CeSvcGetString`, ... |
 | `LPCUSB_FUNCS` | 9 | **-- NOT RECORDED --** | `AbortTransfer`, `ClearOrSetFeature`, `CloseTransferHandle`, `GetTransferStatus`, `IssueInterruptTransfer`, `IssueVendorTransfer`, ... |
+| `DHPDEV` | 9 | **-- NOT RECORDED --** | `DrvCreateDeviceBitmap`, `DrvDisablePDEV`, `DrvDisableSurface`, `DrvEnablePDEV`, `DrvEnableSurface`, `DrvEscape`, ... |
 | `IWSDXMLContext` | 8 | **-- NOT RECORDED --** | `WSDCreateDeviceHost`, `WSDCreateDeviceHostAdvanced`, `WSDCreateDeviceProxy`, `WSDCreateDiscoveryProvider`, `WSDCreateDiscoveryPublisher`, `WSDGenerateFault`, ... |
-| `DHPDEV` | 8 | **-- NOT RECORDED --** | `DrvCreateDeviceBitmap`, `DrvDisablePDEV`, `DrvDisableSurface`, `DrvEnablePDEV`, `DrvEnableSurface`, `DrvEscape`, ... |
-| `D3DMXVECTOR4FXD*` | 7 | **-- NOT RECORDED --** | `D3DMXVec3TransformFxd`, `D3DMXVec4AddFxd`, `D3DMXVec4CrossFxd`, `D3DMXVec4NormalizeFxd`, `D3DMXVec4ScaleFxd`, `D3DMXVec4SubtractFxd`, ... |
-| `FIXED` | 7 | **-- NOT RECORDED --** | `D3DMXMatrixfDeterminantFxd`, `D3DMXVec3DotFxd`, `D3DMXVec3LengthFxd`, `D3DMXVec3LengthSqFxd`, `D3DMXVec4DotFxd`, `D3DMXVec4LengthFxd`, ... |
-| `D3DMXVECTOR4*` | 7 | **-- NOT RECORDED --** | `D3DMXVec3Transform`, `D3DMXVec4Add`, `D3DMXVec4Cross`, `D3DMXVec4Normalize`, `D3DMXVec4Scale`, `D3DMXVec4Subtract`, ... |
-| `SMS_HANDLE` | 6 | **-- NOT RECORDED --** | `SmsClose`, `SmsGetMessageSize`, `SmsGetMessageStatus`, `SmsOpen`, `SmsReadMessage`, `SmsSendMessage` |
 | `GROUPID` | 6 | `include/Wininet.h` | `DeleteUrlCacheGroup`, `FindFirstUrlCacheEntryEx`, `FindNextUrlCacheGroup`, `GetUrlCacheGroupAttribute`, `SetUrlCacheEntryGroup`, `SetUrlCacheGroupAttribute` |
-| `D3DMXVECTOR3*` | 5 | **-- NOT RECORDED --** | `D3DMXVec3Add`, `D3DMXVec3Cross`, `D3DMXVec3Normalize`, `D3DMXVec3Scale`, `D3DMXVec3Subtract` |
-| `D3DMXVECTOR3FXD*` | 5 | **-- NOT RECORDED --** | `D3DMXVec3AddFxd`, `D3DMXVec3CrossFxd`, `D3DMXVec3NormalizeFxd`, `D3DMXVec3ScaleFxd`, `D3DMXVec3SubtractFxd` |
 | `IPAddr` | 5 | `include/Ipexport.h` | `AddIPAddress`, `GetBestInterface`, `GetRTTAndHopCount`, `IcmpSendEcho`, `SendARP` |
-| `RECT FAR` | 4 | **-- NOT RECORDED --** | `ListView_GetItemRect`, `ListView_GetViewRect`, `TabCtrl_AdjustRect`, `TabCtrl_GetItemRect` |
 | `ISoapTypeMapper` | 4 | **-- NOT RECORDED --** | `getElementMapper`, `getElementMapperbyName`, `getTypeMapper`, `getTypeMapperbyName` |
+| `SMS_ADDRESS` | 4 | **-- NOT RECORDED --** | `SmsGetPhoneNumber`, `SmsGetSMSC`, `SmsSendMessage`, `SmsSetSMSC` |
 | `WSDXML_ELEMENT` | 4 | **-- NOT RECORDED --** | `WSDXMLAddChild`, `WSDXMLAddSibling`, `WSDXMLCleanupElement`, `WSDXMLGetValueFromAny` |
 | `PINTF_ENTRY_EX` | 4 | **-- NOT RECORDED --** | `WZCDeleteIntfObjEx`, `WZCQueryInterfaceEx`, `WZCRefreshInterfaceEx`, `WZCSetInterfaceEx` |
 | `PACQUIREFILELOCKSTATE` | 4 | **-- NOT RECORDED --** | `FSDMGR_InstallFileLock`, `FSDMGR_RemoveFileLockEx`, `FSDMGR_TestFileLock`, `FSDMGR_TestFileLockEx` |
-| `LVITEM FAR` | 3 | **-- NOT RECORDED --** | `ListView_GetItem`, `ListView_InsertItem`, `ListView_SetItem` |
-| `TCITEM FAR` | 3 | **-- NOT RECORDED --** | `TabCtrl_GetItem`, `TabCtrl_InsertItem`, `TabCtrl_SetItem` |
-| `LV_COLUMN FAR` | 3 | **-- NOT RECORDED --** | `ListView_GetColumn`, `ListView_InsertColumn`, `ListView_SetColumn` |
-| `D3DMXVECTOR4` | 3 | **-- NOT RECORDED --** | `D3DMXVec4Dot`, `D3DMXVec4Length`, `D3DMXVec4LengthSq` |
-| `D3DMXVECTOR3` | 3 | **-- NOT RECORDED --** | `D3DMXVec3Dot`, `D3DMXVec3Length`, `D3DMXVec3LengthSq` |
+| `LV_COLUMN` | 3 | **-- NOT RECORDED --** | `ListView_GetColumn`, `ListView_InsertColumn`, `ListView_SetColumn` |
 | `LASSHandle` | 3 | **-- NOT RECORDED --** | `LASSClose`, `LASSGetResult`, `VerifyUserAsync` |
-| `HREGNOTIFY` | 3 | **-- NOT RECORDED --** | `RegistryCloseNotification`, `RegistryNotifyMsgQueue`, `RegistryNotifyWindow` |
-| `SMS_ADDRESS` | 3 | **-- NOT RECORDED --** | `SmsGetPhoneNumber`, `SmsGetSMSC`, `SmsSetSMSC` |
 | `DNS_STATUS` | 3 | `include/Windns.h` | `DnsModifyRecordsInSet_W`, `DnsQuery_W`, `DnsReplaceRecordSetW` |
 | `WSDXML_NAME` | 3 | **-- NOT RECORDED --** | `WSDGenerateFaultEx`, `WSDXMLBuildAnyForSingleElement`, `WSDXMLGetNameFromBuiltinNamespace` |
 | `FLONG` | 3 | **-- NOT RECORDED --** | `DrvEndDoc`, `DrvSetPointerShape`, `EngCreatePalette` |
@@ -84,18 +67,35 @@ Undeclared documented names with a shipped header: **1554**
 | `IWSDLPort` | 2 | **-- NOT RECORDED --** | `ConnectWSDL`, `CreatePortConnector` |
 | `ISoapSerializer` | 2 | **-- NOT RECORDED --** | `write`, `writeHeaders` |
 | `ISoapReader` | 2 | **-- NOT RECORDED --** | `ExecuteOperation`, `ParseRequest` |
+| `PNETUI_NEWPWD` | 2 | **-- NOT RECORDED --** | `GetNewPassword`, `GetNewPasswordEx` |
+| `PNETUI_USERPWD` | 2 | **-- NOT RECORDED --** | `GetUsernamePassword`, `GetUsernamePasswordEx` |
+| `ALC` | 2 | **-- NOT RECORDED --** | `HwxALCPriority`, `HwxALCValid` |
+| `LPSIMPHONEBOOKENTRYEX` | 2 | **-- NOT RECORDED --** | `SimReadPhonebookEntries`, `SimWritePhonebookEntryEx` |
+| `LPSIMPHONEBOOKENTRY` | 2 | **-- NOT RECORDED --** | `SimReadPhonebookEntry`, `SimWritePhonebookEntry` |
+| `LPSIMMESSAGE` | 2 | **-- NOT RECORDED --** | `SimReadMessage`, `SimWriteMessage` |
 | `SMS_BROADCAST_RANGES` | 2 | **-- NOT RECORDED --** | `SmsGetBroadcastMsgRanges`, `SmsSetBroadcastMsgRanges` |
-| `VOID PASCAL` | 2 | **-- NOT RECORDED --** | `lineCallbackFunc`, `phoneCallbackFunc` |
 | `HTHEME` | 2 | `include/Uxtheme.h` | `CloseThemeData`, `DrawThemeBackground` |
 | `LPURL_COMPONENTS` | 2 | **-- NOT RECORDED --** | `InternetCrackUrl`, `InternetCreateUrl` |
+| `int64` | 2 | **-- NOT RECORDED --** | `__ll_lshift`, `__ll_rshift` |
 | `ROP4` | 2 | **-- NOT RECORDED --** | `DrvAnyBlt`, `DrvBitBlt` |
+| `Int` | 1 | **-- NOT RECORDED --** | `HCI_EstablishDeviceContext` |
 | `PCHANNEL_OPEN_EVENT_FN` | 1 | **-- NOT RECORDED --** | `VirtualChannelOpen` |
+| `_int64` | 1 | **-- NOT RECORDED --** | `CommentMarkAtProfile` |
 | `IReplNotify` | 1 | **-- NOT RECORDED --** | `DoOptionsDialog` |
-| `PHCESVC` | 1 | **-- NOT RECORDED --** | `CeSvcEnumProfiles` |
 | `HPROCESS` | 1 | `include/Gdi.hpp` | `PHLaunchProcess` |
 | `PFNLVGROUPCOMPARE` | 1 | `include/Commctrl.h` | `ListView_SortGroups` |
 | `WND` | 1 | **-- NOT RECORDED --** | `TabCtrl_SetExtendedStyle` |
-| `LV_HITTESTINFO FAR` | 1 | **-- NOT RECORDED --** | `ListView_HitTest` |
+| `LV_HITTESTINFO` | 1 | **-- NOT RECORDED --** | `ListView_HitTest` |
 | `LPMONTHDAYSTATE` | 1 | **-- NOT RECORDED --** | `MonthCal_SetDayState` |
 | `PFNLVCOMPARE` | 1 | **-- NOT RECORDED --** | `ListView_SortItems` |
-| `LV_FINDINFO FAR` | 1 | **-- NOT RECORDED --** | `ListView_FindItem` |
+| `TC_HITTESTINFO` | 1 | **-- NOT RECORDED --** | `TabCtrl_HitTest` |
+| `CONNMGR_DESTINATION_INFO` | 1 | **-- NOT RECORDED --** | `ConnMgrEnumDestinations` |
+| `SCHEDULEDCONNECTIONINFO` | 1 | **-- NOT RECORDED --** | `ConnMgrRegisterScheduledConnection` |
+| `CONNMGR_CONNECTION_DETAILED_STATUS` | 1 | **-- NOT RECORDED --** | `ConnMgrQueryDetailedStatus` |
+| `PH_DIALOG_SCREEN_PARAMETERS` | 1 | **-- NOT RECORDED --** | `PHDialogScreen` |
+| `IVoIPDisplayItem` | 1 | **-- NOT RECORDED --** | `PHCreateTextDisplayItem` |
+| `_ALREADYLOCKED` | 1 | **-- NOT RECORDED --** | `D3DMERR` |
+| `_SURFACE` | 1 | **-- NOT RECORDED --** | `D3DMRTYPEFLAG` |
+| `_DONOTCOPYDATA` | 1 | **-- NOT RECORDED --** | `D3DMPV` |
+| `_NONE` | 1 | **-- NOT RECORDED --** | `D3DMX_FILTER` |
+| `PI` | 1 | **-- NOT RECORDED --** | `D3DMX_` |

@@ -261,6 +261,57 @@ def main():
             continue
         lines.append("| %s | %d | %d | %d |"
                      % (area, b["documented"], b["declared"], len(b["undeclared"])))
+    lines += ["", "## What the undeclared names actually are", ""]
+    lines += [
+        "A count of undeclared names cannot be acted on, because most of them",
+        "are not declarable from official material at all and the reason differs",
+        "by kind.  The largest class is COM/C++ interface *methods*",
+        "(`Class::Member`): a CE reference page documents each method",
+        "separately, but no catalog contains an `IXR* Interface` page, so the",
+        "vtable order those methods would have to be declared in is",
+        "unpublished -- inventing it would invent an ABI.  ALL-CAPS names are",
+        "constants, window messages and macros that need a printed value;",
+        "plain names are the actionable remainder, and docs/blocking-types.md",
+        "says which type blocks each one.  Titles that are not identifiers are",
+        "overview or prose pages the TOC lists but that name no API.",
+        "",
+        "| kind | count | share | what it means |",
+        "| --- | --- | --- | --- |",
+    ]
+    kinds = collections.OrderedDict([
+        ("COM interface method (`Class::Member`)",
+         "vtable order unpublished; no `I*Interface` page in any catalog"),
+        ("ALL-CAPS name", "constant, window message or macro; needs a printed value"),
+        ("plain name", "the actionable remainder -- see docs/blocking-types.md"),
+        ("title is not an identifier", "overview or prose page, not an API name"),
+    ])
+    cnt = collections.Counter()
+    ifs = collections.Counter()
+    seen_kind = set()
+    for area, b in per.items():
+        for u in b["undeclared"]:
+            key = (area, u["name"])
+            if key in seen_kind:
+                continue
+            seen_kind.add(key)
+            n = u["name"]
+            if "::" in n:
+                cnt["COM interface method (`Class::Member`)"] += 1
+                ifs[n.split("::")[0]] += 1
+            elif not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", n):
+                cnt["title is not an identifier"] += 1
+            elif re.match(r"^[A-Z][A-Z0-9_]*$", n):
+                cnt["ALL-CAPS name"] += 1
+            else:
+                cnt["plain name"] += 1
+    total = sum(cnt.values()) or 1
+    for k, meaning in kinds.items():
+        lines.append("| %s | %d | %.0f%% | %s |"
+                     % (k, cnt[k], 100.0 * cnt[k] / total, meaning))
+    lines += ["",
+              "Distinct interfaces involved: **%d** (largest: %s)." % (
+                  len(ifs), ", ".join("`%s` %d" % i for i in ifs.most_common(6))),
+              ""]
     lines += ["", "## Undeclared names by area", ""]
     for area in AREAS:
         b = per.get(area)
