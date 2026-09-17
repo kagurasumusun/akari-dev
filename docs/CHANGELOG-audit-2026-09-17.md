@@ -235,3 +235,138 @@ corpus の rows.json で `gen-doc-def.py` を再生成すると、committed def 
    MSVC 私有定数、mbsnrtowcs/wcsnrtombs の nullptr 差分 UB、
    __locale_t 所有権、frac_digits=-1、__strtold 精度)修正 → ビルド検証。
    19 値の再採用要否は A の独立公式ソース調査(別タスク)の結論待ち。
+
+## B-1. clean-room.md 証拠ポリシー改訂(commit 0a3a904)
+
+- §3 冒頭に 2026-09-17 改訂バナー: 宣言・数値・型・vtable 順・レイアウト・
+  エクスポート名の根拠は公式 CE 資料のみ。第三者ツリー(R1 w32api/mingw/
+  Wine/ReactOS 等)は数値・vtable・存在スコープの根拠にも「裏付け」にも
+  ならない。許容されるのは汚染チェックと、数値と名目のみを記録する parity
+  計測(ツリーに何も持ち込まない)。device dump 等のバイナリ観測は公式文書
+  ではない。公式ページが値を印字しない定数は hold(「公式資料で確認できない」)。
+- §3.2 device-dump 源を strikethrough で撤去(既存 tier-2 def エントリは
+  §7 処分対象の legacy)。toolchain の compiler/ABI 挙動(自社検証
+  toolchain の事実)は維持。
+- §4 の 2026-09-10 R1 ABI-fact 採用許可を R2 先例と同じ書式で REMOVED 化。
+  歴史的文章は可視のまま保持。
+- §5.2: *adopted* 経路を新規に対して閉鎖。既存注記は処分まで残す
+  (値より先に来歴記録を消すとトレーサビリティが切れるため)。
+- 新 §7: legacy 採用の棚卸し表と処分原則 4 項目。
+- **B step 2(家族ごとの実処分: M96 1,381 defines、M97 vtables、M99 混合、
+  R1 注記 870 行/26 ヘッダ、tier-2 def、Winuser.h 21 値)は未着手。**
+
+## D. locale_wince.cpp 修正と下流パイプライン検証(llvm-project cc5c872a8)
+
+成果物: Actions artifact 10471324818(`wince-llvm-0b129e08…`、363,236,621
+bytes、1 回目は 45 秒 max-time で truncation → 再取得して完全一致を確認)を
+展開した clang 22.1.8 + lld(bin/+lib/clang のみ、target runtime 無し)。
+kagurasumusun/cellvm-build(sysroot/runtimes 組立スクリプト、llvm-project
+LLVM-WinCE と cellvm-sdk を submodule 消費)を発見し、実パイプラインで検証。
+
+修正内容(llvm-project LLVM-WinCE、commit cc5c872a8、2 files +116/−107):
+
+1. **__localeconv の NLS クエリ全削除**: GetLocaleInfoW + 19 個の撤回済み
+   LOCALE_* 値 + LOCALE_USER_DEFAULT + CP_ACP への依存を除去。wince.h 自身の
+   契約(「CE には C ロケールのみ」)通り、C99 7.11.2.1 規定の C ロケール
+   lconv(decimal_point="."、他文字列 ""、数値系 CHAR_MAX、llvm-libc の
+   MSVC 互換メンバ順に対し名前指定代入、int_p_sign_posn/int_n_sign_posn 含む
+   全 14 数値メンバ)を返す。旧コードのバグ 1(C ロケールでデバイス値)・
+   バグ 2(lc_c ゼロ初期化 → nullptr/0)・バグ 6(frac_digits=-1)を同時解消。
+   TU からの <windows.h>/<winnls.h> 依存も消滅(sysroot は M100 方針で
+   Windows.h のみ格納 → 旧 include はどのみち解決不能だった)。
+2. **_UPPER 系 MSVC CRT 私有マスク 9 個 → 標準 isw*() 関数**(バグ 3)。
+   llvm-libc は _UPPER 等を定義しない。
+3. **__strtold → ::strtold、__strtof → ::strtof**(バグ 7)。llvm-libc に
+   両実装の存在を確認(libc/src/stdlib/strtold.cpp、strtof.cpp)。
+4. **__mbsnrtowcs/__wcsnrtombs の nullptr ポインタ差分 UB 修正**(バグ 4):
+   開始ポインタをローカル変数 base に保持(*src は終端変換時に nullptr 化
+   されるため、以降の p - *src は UB)。
+5. **__locale_t::operator= の lconv ストレージリーク修正**(バグ 5)。
+
+検証(全て実ツールチェーン + 実 sysroot):
+
+- build-wince-sysroot.sh EXIT=0: Akari CRT startup + **117 個の doc 由来
+  import library**(libcoredll{,4,6}.a 472KB、libcoreloc.a 9.2KB 含む)が
+  cellvm-sdk 99bf610 状態から生成成功。pthread/gmon/posix は C 庫ゲートで
+  スキップ(設計通り)。
+- build-wince-runtimes.sh EXIT=0: compiler-rt builtins 140/140 ビルド成功、
+  libclang_rt.builtins-arm.a インストール。libunwind/libcxxabi/libcxx は
+  C 庫マーカー(<sysroot>/include/stdlib.h、llvm-libc 待ち)でゲートスキップ
+  — 設計通り。**このゲートのため libcxx は CI で一度もビルドされておらず、
+  下記の TU 検証が初の実ビルド検証。**
+- C 庫ヘッダは検証専用スタブ(C99/llvm-libc 準拠、.cache/c-stubs、非 commit・
+  非インストール)で代替し、runtimes cmake configure(実スクリプトと同じ
+  フラグ + CMAKE_POSITION_INDEPENDENT_CODE=OFF)→ compile_commands.json の
+  cxx_static コマンドをそのまま実行。
+- 修正前ベースライン: fatal 'windows.h' file not found(M100 sysroot は
+  Windows.h のみ)→ include 綴り修正版で 33 errors/28 undeclared
+  identifiers = 19 LOCALE_* + 9 _UPPER 系マスク(CP_ACP は Winnls.h に
+  値が残存していたため解決 — 下記 E-3 参照)。
+- 修正後: locale_wince.cpp **EXIT=0、無警告**、IMAGE_FILE_MACHINE_ARM
+  (0x1C0) の .o 生成(8,547 bytes、期待 mangling 確認)。主要な消費者
+  src/locale.cpp も EXIT=0(4.6s、無診断)→ wince.h 変更の非破壊確認。
+
+## E. 下流検証で発見・修正した cellvm-sdk 側の欠陥(e2e ゲート復活)
+
+1. **Winbase.h DllMain 宣言の M137 回帰**(commit e874b51 で修正):
+   M137(8159ce0、corpus 全域スキャン)が ee488450 引用で DllMain を
+   AKARI_CE_IMPORT(dllimport)+ AKARI_CE_NAME 付きで >= 0x0600 ブロックに
+   宣言し、直下の M132 hold(ms885202「意図的に未宣言」)を上書きしていた。
+   x86 では自前 DllMain を定義する全 DLL が -Winconsistent-dllimport で
+   コンパイル不能(実測: make e2e i386-pc-wince6.0/e2e_module)。ARM では
+   マクロが空のため無症状。公式ページは全世代(CE 3.0 archive
+   wcesdkrDllMain「Runs On: Windows CE OS 1.0 and later; Defined in
+   Winbase.h」、CE 5.0 ms885202、CE 6.0 ee488450)で本文が「DLL への
+   optional な入口」「システムから呼ばれる」「library-defined 関数名の
+   placeholder」と明記 → アプリ定義エントリポイントであり coredll import
+   ではない(gen-doc-def.py NOT_EXPORTS の Enum*Proc と同原則)。DllMain は
+   どの def にも存在しないことを確認済み。宣言を撤去記録に置換し、M132
+   注記を全世代カバレッジに拡張。
+2. **e2e ゲート配線**(commit 99bf610): (a) e8dad10 が crt/ → startup/ に
+   リネームした際、Makefile(CRTDIR=$(CURDIR)/crt)と cellvm-build
+   (WINCECRT_SRC=wince-api/crt)が消費する crt symlink が未 commit だった
+   → commit(create mode 120000)。(b) 051ee54 が OLE Automation 245 関数を
+   Objbase.h → Oleauto.h に移動した際、tests/e2e/e2e_console.c の include が
+   未更新で 13 errors(M73a/M73b/M136 の SysAllocString/IsEqualGUID/OleRun/
+   CoFreeUnusedLibrariesEx/VariantInit/VariantClear/SafeArrayDestroy/
+   LoadTypeLib 等)→ <Oleauto.h> 追加(M100 方針: 使用者が公式綴りを
+   明示する)。
+3. **新発見(未処理): Winnls.h の Win32-ABI 推定値家族**(Winnls.h:25-50,
+   84-103)。「values are the fixed Win32 ABI values」等注記付きの 21 define:
+   CP_ACP 0、CP_OEMCP 1、CP_MACCP 2、CP_THREAD_ACP 3、CP_SYMBOL 42、
+   CP_UTF7 65000、CP_UTF8 65001、MB_* 4 個、WC_* 4 個、CT_CTYPE1/2/3 1/2/4、
+   LCID_INSTALLED/SUPPORTED 1/2、MAX_DEFAULTCHAR 2。これはルール 4(Win32
+   定義の CE への推定禁止)に抵触する家族で、§2-2 監査で「名前のみ公式・
+   値は非公式」と分類済みだったが A の撤去対象(20 個)には含まれていない。
+   処分時に再確認: CSTR_LESS_THAN/CSTR_GREATER_THAN 1/3(ページ印字が確認
+   済みなのは CSTR_EQUAL 2 のみ、ms904713)。ページ印字済みで対象外:
+   CSTR_EQUAL 2、MAX_LEADBYTES 12(ms904717)。clean-room.md §7 に新行として
+   登録、処分は B step 2 待ち。
+4. **cellvm-build 側の発見(報告のみ、未修正)**: build-wince-runtimes.sh の
+   LIBUNWIND/LIBCXXABI/LIBCXX_ENABLE_PIC=OFF は LLVM 22 で unused(cmake
+   警告)、-fPIC は CMAKE_POSITION_INDEPENDENT_CODE 由来で arm-pc-wince では
+   unsupported option となり static 構築が不能 → runtimes 段の cmake に
+   -DCMAKE_POSITION_INDEPENDENT_CODE=OFF が必要(今回の検証ではその形で
+   configure した)。[2/2] がゲートで一度も実行されていなかったため未発見
+   だった。cellvm-build への修正 push はユーザー判断待ち。
+
+## 検証(追補 2026-09-17 深夜)
+
+- `make check` EXIT=0(e874b51/99bf610 後)。
+- `make e2e WINCECLANG=<artifact clang>` EXIT=0 — 6 triples 全通過
+  (arm/i386 × CE 4.2/5.0/6.0、compile + lld-link -wince PE 生成 +
+  machine/subsystem/import assertions)。**e2e ゲートは初緑。**
+- llvm-project: locale_wince.cpp / locale.cpp の cxx_static TU 検証 EXIT=0
+  (上記 D 参照)。
+
+## 残タスク(優先順)
+
+1. **B step 2**: §7 棚卸しの家族別実処分(M96 1,381 defines、M97 vtables、
+   M99 混合、R1 注記 870 行/26 ヘッダ、coredll-doc.def tier-2、
+   Winuser.h 21 値 = A-2、Winnls.h CP/MB/WC = E-3)と rows.json 再統一。
+2. **cellvm-build 修正**(E-4: -DCMAKE_POSITION_INDEPENDENT_CODE=OFF 追加)—
+   ユーザー承認待ち。
+3. **19 値の再採用要否調査**(A の独立公式ソース調査、別タスク)は
+   不必要性が確定: D の修正で locale_wince.cpp は NLS 定数を一切消費し
+   なくなった。他の消費者も無い(grep 確認済み)。再採用調査の動機は
+   消滅した(必要になれば別途)。

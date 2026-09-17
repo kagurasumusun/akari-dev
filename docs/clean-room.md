@@ -241,6 +241,7 @@ Measured scope (grep/inventory counts, 2026-09-17):
 |---|---|---|---|
 | `Winnls.h` 20 LOCALE_* values | Wine/ReactOS cross-check + Win32-ABI inference (commit 051ee54) | 20 defines | **DONE -- withdrawn 2026-09-17 (d830cab)** |
 | `Winuser.h` accessibility flags + WM_MOUSEMOVE | Wine/ReactOS cross-check (2026-09-14 audit) | 21 defines | listed in `docs/CHANGELOG-audit-2026-09-17.md` §A-2; disposition pending |
+| `Winnls.h` Win32-ABI-inferred values | Win32-ABI inference ("values are the fixed Win32 ABI values" comments; Winnls.h:25-50, 84-103) | 21 defines: CP_ACP 0, CP_OEMCP 1, CP_MACCP 2, CP_THREAD_ACP 3, CP_SYMBOL 42, CP_UTF7 65000, CP_UTF8 65001; MB_* x4; WC_* x4; CT_CTYPE1/2/3 1/2/4; LCID_INSTALLED/SUPPORTED 1/2; MAX_DEFAULTCHAR 2.  Recheck during disposition: CSTR_LESS_THAN/CSTR_GREATER_THAN 1/3 (only CSTR_EQUAL 2 is page-printed, ms904713).  Page-printed, stays out of scope: CSTR_EQUAL 2, MAX_LEADBYTES 12 (ms904717) | found 2026-09-17 during task D (CHANGELOG-audit-2026-09-17.md §E-3); pending |
 | M96 value adoptions | R1 (CeGCC-lineage w32api) | 1,381 defines across 10 headers (inventory M96 totals) | pending |
 | M97 vtable adoptions | R1 | COM interfaces made callable from C (Objbase 58, Dshow 15, ...) | pending |
 | M99 three-generation sweep adoptions | mixed: official page prints (keep) + R1 values (pending) | per-constant annotations in headers | pending split |
