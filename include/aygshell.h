@@ -595,15 +595,15 @@ AKARI_CE_IMPORT BOOL SHSipPreference(HWND hwnd, SIPSTATE st) AKARI_CE_NAME(SHSip
 
 /* ================================================================== */
 /* ================================================================== */
-/* M96 value adoption -- values adopted from the CeGCC-lineage w32api
- * reference (R1, public domain; docs/clean-room.md par.4
- * revision 2026-09-10).  Every name below is documented by
- * the official CE pages WITHOUT a value (see the record
- * comments and the held ledger in this header); the value
- * is a CE-era ABI fact carried by the CE lineage itself.
- * Desktop mingw-w64 was considered and EXCLUDED as a source
- * (desktop-era values; policy note in clean-room.md).  R1's
- * license-exception files (winsock*, gl*) are unused.
+/* M96 value confirmation -- values confirmed against the
+ * CeGCC-lineage w32api reference (R1; docs/clean-room.md v3
+ * section 4, 2026-09-18 -- the value-check-only exception).
+ * Every name below is documented by the official CE pages
+ * WITHOUT a value (see the record comments and the held
+ * ledger in this header); the value is a CE-era ABI fact
+ * carried by the CE lineage itself.  Excluded trees are
+ * never consulted (v3 section 3).  R1's license-exception
+ * files (winsock*, gl*) are unused.
  * ================================================================== */
 
 /* ---- GN_ family (1 names; R1) ---- */

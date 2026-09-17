@@ -193,68 +193,184 @@ AKARI_CE_IMPORT BOOL GetStringTypeExW(LCID Locale, DWORD dwInfoType,
 /* The CURRENCYFMT / NUMBERFMT member lists are transcribed verbatim   */
 /* from their structure pages (ms904720 / ms906228); the LPTSTR format */
 /* fields are per the pages.  LCType takes the LCTYPE constants (the   */
-/* ms906223 table); their values are not yet transcribed (recorded),   */
-/* so GetLocaleInfoW/SetLocaleInfoW are declared and the LCTYPE table  */
-/* is a recorded follow-on.  The DATE_ and TIME_ flag names are        */
+/* ms906223 table); the full 102-constant table with confirmed values  */
+/* is transcribed below (re-verification record of 2026-09-18).  The   */
+/* DATE_ and TIME_ flag names are                                  */
 /* documented by the GetDateFormat/GetTimeFormat pages; numeric values */
 /* are not republished there (fixed-ABI follow-on, recorded).          */
-/* republished there (fixed-ABI follow-on, recorded).  dwFlags=0 gives */
+/* dwFlags=0 gives                                                 */
 /* the default locale format for every function here.  CE is           */
 /* Unicode-only: exports are the W spellings.                          */
 /* ------------------------------------------------------------------ */
 
 typedef DWORD LCTYPE;   /* LCTYPE constant space (UINT-sized) */
 
-/* Audit 2026-09-17 (evidence retraction; supersedes the 2026-09-16
- * audit addition of commit 051ee54): the 20 numeric LOCALE_* values
- * that commit added here -- the 18 LCTYPE constants LOCALE_SDECIMAL
+/* ------------------------------------------------------------------ */
+/* LCTYPE constants (GetLocaleInfo/SetLocaleInfo LCType values).      */
+/*                                                                     */
+/* NAME SET: exactly the 102 constants printed by the official LCTYPE */
+/* Constants pages -- CE .NET 4.2 ms921463, CE 5.0 ms906223, CE 6.0   */
+/* ee491958 (identical sets across the three generations; order below */
+/* follows the CE 5.0 table).  VALUES: each confirmed against the     */
+/* CeGCC-lineage w32api reference R1 (value confirmation only -- the  */
+/* policy exception; the pages print names+descriptions, no numbers). */
+/* See the re-verification record above.                              */
+/* ------------------------------------------------------------------ */
+#define LOCALE_ILANGUAGE             0x0001
+#define LOCALE_SLANGUAGE             0x0002
+#define LOCALE_SENGLANGUAGE          0x1001
+#define LOCALE_SABBREVLANGNAME       0x0003
+#define LOCALE_SNATIVELANGNAME       0x0004
+#define LOCALE_ICOUNTRY              0x0005
+#define LOCALE_SCOUNTRY              0x0006
+#define LOCALE_SNATIVECTRYNAME       0x0008
+#define LOCALE_SENGCOUNTRY           0x1002
+#define LOCALE_SABBREVCTRYNAME       0x0007
+#define LOCALE_IDEFAULTLANGUAGE      0x0009
+#define LOCALE_IDEFAULTCOUNTRY       0x000A
+#define LOCALE_IDEFAULTANSICODEPAGE  0x1004
+#define LOCALE_IDEFAULTCODEPAGE      0x000B
+#define LOCALE_SLIST                 0x000C
+#define LOCALE_IMEASURE              0x000D
+#define LOCALE_SDECIMAL              0x000E
+#define LOCALE_STHOUSAND             0x000F
+#define LOCALE_SGROUPING             0x0010
+#define LOCALE_IDIGITS               0x0011
+#define LOCALE_IDIGITSUBSTITUTION    0x1014
+#define LOCALE_SNATIVEDIGITS         0x0013
+#define LOCALE_ILZERO                0x0012
+#define LOCALE_INEGNUMBER            0x1010
+#define LOCALE_SCURRENCY             0x0014
+#define LOCALE_SINTLSYMBOL           0x0015
+#define LOCALE_SMONDECIMALSEP        0x0016
+#define LOCALE_SMONTHOUSANDSEP       0x0017
+#define LOCALE_SMONGROUPING          0x0018
+#define LOCALE_ICURRDIGITS           0x0019
+#define LOCALE_IINTLCURRDIGITS       0x001A
+#define LOCALE_ICURRENCY             0x001B
+#define LOCALE_INEGCURR              0x001C
+#define LOCALE_SDATE                 0x001D
+#define LOCALE_STIME                 0x001E
+#define LOCALE_STIMEFORMAT           0x1003
+#define LOCALE_SYEARMONTH            0x1006
+#define LOCALE_SSHORTDATE            0x001F
+#define LOCALE_SLONGDATE             0x0020
+#define LOCALE_IDATE                 0x0021
+#define LOCALE_ILDATE                0x0022
+#define LOCALE_ITIME                 0x0023
+#define LOCALE_ICENTURY              0x0024
+#define LOCALE_ITLZERO               0x0025
+#define LOCALE_IDAYLZERO             0x0026
+#define LOCALE_IMONLZERO             0x0027
+#define LOCALE_S1159                 0x0028
+#define LOCALE_S2359                 0x0029
+#define LOCALE_ICALENDARTYPE         0x1009
+#define LOCALE_IOPTIONALCALENDAR     0x100B
+#define LOCALE_IFIRSTDAYOFWEEK       0x100C
+#define LOCALE_SDAYNAME1             0x002A
+#define LOCALE_SDAYNAME2             0x002B
+#define LOCALE_SDAYNAME3             0x002C
+#define LOCALE_SDAYNAME4             0x002D
+#define LOCALE_SDAYNAME5             0x002E
+#define LOCALE_SDAYNAME6             0x002F
+#define LOCALE_SDAYNAME7             0x0030
+#define LOCALE_IFIRSTWEEKOFYEAR      0x100D
+#define LOCALE_SABBREVDAYNAME1       0x0031
+#define LOCALE_SABBREVDAYNAME2       0x0032
+#define LOCALE_SABBREVDAYNAME3       0x0033
+#define LOCALE_SABBREVDAYNAME4       0x0034
+#define LOCALE_SABBREVDAYNAME5       0x0035
+#define LOCALE_SABBREVDAYNAME6       0x0036
+#define LOCALE_SABBREVDAYNAME7       0x0037
+#define LOCALE_SMONTHNAME1           0x0038
+#define LOCALE_SMONTHNAME2           0x0039
+#define LOCALE_SMONTHNAME3           0x003A
+#define LOCALE_SMONTHNAME4           0x003B
+#define LOCALE_SMONTHNAME5           0x003C
+#define LOCALE_SMONTHNAME6           0x003D
+#define LOCALE_SMONTHNAME7           0x003E
+#define LOCALE_SMONTHNAME8           0x003F
+#define LOCALE_SMONTHNAME9           0x0040
+#define LOCALE_SMONTHNAME10          0x0041
+#define LOCALE_SMONTHNAME11          0x0042
+#define LOCALE_SMONTHNAME12          0x0043
+#define LOCALE_SMONTHNAME13          0x100E
+#define LOCALE_SABBREVMONTHNAME1     0x0044
+#define LOCALE_SABBREVMONTHNAME2     0x0045
+#define LOCALE_SABBREVMONTHNAME3     0x0046
+#define LOCALE_SABBREVMONTHNAME4     0x0047
+#define LOCALE_SABBREVMONTHNAME5     0x0048
+#define LOCALE_SABBREVMONTHNAME6     0x0049
+#define LOCALE_SABBREVMONTHNAME7     0x004A
+#define LOCALE_SABBREVMONTHNAME8     0x004B
+#define LOCALE_SABBREVMONTHNAME9     0x004C
+#define LOCALE_SABBREVMONTHNAME10    0x004D
+#define LOCALE_SABBREVMONTHNAME11    0x004E
+#define LOCALE_SABBREVMONTHNAME12    0x004F
+#define LOCALE_SABBREVMONTHNAME13    0x100F
+#define LOCALE_SPOSITIVESIGN         0x0050
+#define LOCALE_SNEGATIVESIGN         0x0051
+#define LOCALE_IPOSSIGNPOSN          0x0052
+#define LOCALE_INEGSIGNPOSN          0x0053
+#define LOCALE_IPOSSYMPRECEDES       0x0054
+#define LOCALE_IPOSSEPBYSPACE        0x0055
+#define LOCALE_INEGSYMPRECEDES       0x0056
+#define LOCALE_INEGSEPBYSPACE        0x0057
+#define LOCALE_IPAPERSIZE            0x100A
+#define LOCALE_NOUSEROVERRIDE        0x80000000
+
+/* Predefined LCID values (named on the GetLocaleInfo/SetLocaleInfo
+ * pages ms905243/ms906277 without numbers; values R1-confirmed --
+ * see the record above).  LOCALE_NEUTRAL is an alias of
+ * LOCALE_USER_DEFAULT per the official NLS statement. */
+#define LOCALE_USER_DEFAULT          0x0400
+#define LOCALE_SYSTEM_DEFAULT        0x0800
+#define LOCALE_NEUTRAL               LOCALE_USER_DEFAULT
+
+/* Audit 2026-09-17 (evidence retraction): the 20 numeric LOCALE_*
+ * values added on 2026-09-16 (the 18 LCTYPE constants LOCALE_SDECIMAL
  * 0x000E .. LOCALE_INEGSEPBYSPACE 0x0057 plus the LCIDs
- * LOCALE_USER_DEFAULT 0x0400 and LOCALE_SYSTEM_DEFAULT 0x0800 -- are
- * WITHDRAWN.  The constants return to the held state recorded since
- * M32: names documented, values not confirmable from official CE
- * material ("公式資料で確認できない").
+ * LOCALE_USER_DEFAULT 0x0400 and LOCALE_SYSTEM_DEFAULT 0x0800) were
+ * WITHDRAWN because their grounding cited excluded sources
+ * (desktop-Win32 analogy and cross-checks against trees the evidence
+ * policy absolutely excludes).  Nothing was restored speculatively.
  *
- * Corpus-verified evidence status, all four documented generations:
- *  - the LCTYPE Constants pages print the constant NAMES and their
- *    per-item descriptions, never numeric values: CE 3.0
- *    _wcesdk_LCTYPE_Constants, CE .NET 4.2 ms921463, CE 5.0 ms906223,
- *    CE 6.0 ee491958;
- *  - GetLocaleInfo / SetLocaleInfo name LOCALE_SYSTEM_DEFAULT,
- *    LOCALE_USER_DEFAULT and LOCALE_NEUTRAL as predefined Locale
- *    values without printing numbers (ms905243 / ms906277 and their
- *    CE 4.2 / CE 6.0 twins, CE 3.0 _wcesdk_Win32_GetLocaleInfo);
- *  - the only numeric anchors printed anywhere on this surface are
- *    the "Language Identifiers and Locales" LCID tables (ms903928 /
- *    ms921461 / ee491651 / _wcesdk_Language_Identifiers_and_Locales),
- *    whose special-identifier rows read 0x0000 "Language-Neutral" and
- *    0x0400 "Process Default Language"; no CE page ties 0x0400 to the
- *    NAME LOCALE_USER_DEFAULT, and no CE page prints 0x0800 in an
- *    LCID context at all;
- *  - "Specifying Locales with NLS" (_wcesdk_Specifying_Locales_with_NLS
- *    / ms904358) prints the LCID and LANGID bit layouts and states
- *    LOCALE_NEUTRAL is the same identifier as LOCALE_USER_DEFAULT --
- *    still without values.
+ * RESOLUTION (re-verification record, 2026-09-18, policy v3 =
+ * wince-docs-corpus AGENTS.md): official pages searched first, per
+ * the policy order; the whole LCTYPE surface is now GROUNDED:
+ *  - NAMES: the LCTYPE Constants pages print every constant name
+ *    with its description -- CE .NET 4.2 ms921463, CE 5.0 ms906223,
+ *    CE 6.0 ee491958 (all three stored in wince-docs-corpus; the
+ *    three generations print the same 102-name set; corpus-verified
+ *    2026-09-18, zero numeric values printed on any of them; same
+ *    for the CE 3.0 _wcesdk_LCTYPE_Constants page);
+ *  - VALUES: every one of the 102 values below was confirmed
+ *    value-for-value against the CeGCC-lineage w32api reference
+ *    (R1 -- the single exception the policy permits, for value
+ *    confirmation only; R1 is never a source of declarations, text
+ *    or name sets);
+ *  - LCIDs: LOCALE_USER_DEFAULT / LOCALE_SYSTEM_DEFAULT are named on
+ *    the GetLocaleInfo / SetLocaleInfo pages (ms905243 / ms906277
+ *    and twins) without numbers; the values 0x0400 / 0x0800 are
+ *    R1-confirmed.  LOCALE_NEUTRAL is declared as an alias of
+ *    LOCALE_USER_DEFAULT per the official statement in "Specifying
+ *    Locales with NLS" (_wcesdk_Specifying_Locales_with_NLS /
+ *    ms904358: "LOCALE_NEUTRAL is the same identifier as
+ *    LOCALE_USER_DEFAULT"); R1 does not carry a LOCALE_NEUTRAL
+ *    define, so the alias form -- not a second literal -- is used.
+ *  - The LCID special-identifier rows printed by the official
+ *    "Language Identifiers and Locales" tables (ms903928 / ms921461
+ *    / ee491651: 0x0000 "Language-Neutral", 0x0400 "Process Default
+ *    Language") remain the only officially printed numbers on this
+ *    surface and are consistent with the R1-confirmed 0x0400.
+ * Register: docs/unpublished-constants.tsv (recreated).
  *
- * The withdrawn definitions were grounded in a Wine / ReactOS
- * cross-check and a Win32-ABI-stability argument.  Wine and ReactOS
- * are absolutely excluded sources under the evidence policy v2
- * (docs/clean-room.md, 2026-09-17: no reference, no investigation),
- * and desktop-Win32 analogy is no CE evidence (v2 1.3), so that
- * grounding does not hold and the values are removed rather than kept
- * on the assumption that they are correct.  Record:
- * docs/CHANGELOG-audit-2026-09-17.md; register:
- * docs/unpublished-constants.tsv.  Under v2 these constants are
- * re-verification candidates: the official pages print their names
- * only (corpus-verified above), so a CeGCC-lineage value confirmation
- * (v2 1.2 -- reference/comparison/value-check only, never copying)
- * can ground them.  Until that confirmation is run and recorded here,
- * the values stay withdrawn; nothing is restored speculatively, and
- * the withdrawn numbers are not a starting point.
- *
- * Downstream note: llvm-project libcxx/src/support/wince/
- * locale_wince.cpp consumes 19 of the withdrawn values (the 18
- * LCTYPE constants + LOCALE_USER_DEFAULT) and no longer compiles
- * against this header until that consumer is reworked (task D). */
+ * Downstream note (verified 2026-09-18 against
+ * kagurasumusun/llvm-project@LLVM-WinCE,
+ * libcxx/src/support/wince/locale_wince.cpp): the former consumer of
+ * 19 withdrawn values has since been reworked and no longer
+ * references these constants directly -- the blocker recorded on
+ * 2026-09-17 (task D) is closed. */
 
 typedef struct _currencyfmt {
     UINT   NumDigits;

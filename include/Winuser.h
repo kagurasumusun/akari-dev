@@ -1811,15 +1811,15 @@ typedef struct tagNMHDR {
 /* ================================================================== */
 /* ================================================================== */
 /* ================================================================== */
-/* M96 value adoption -- values adopted from the CeGCC-lineage w32api
- * reference (R1, public domain; docs/clean-room.md par.4
- * revision 2026-09-10).  Every name below is documented by
- * the official CE pages WITHOUT a value (see the record
- * comments and the held ledger in this header); the value
- * is a CE-era ABI fact carried by the CE lineage itself.
- * Desktop mingw-w64 was considered and EXCLUDED as a source
- * (desktop-era values; policy note in clean-room.md).  R1's
- * license-exception files (winsock*, gl*) are unused.
+/* M96 value confirmation -- values confirmed against the
+ * CeGCC-lineage w32api reference (R1; docs/clean-room.md v3
+ * section 4, 2026-09-18 -- the value-check-only exception).
+ * Every name below is documented by the official CE pages
+ * WITHOUT a value (see the record comments and the held
+ * ledger in this header); the value is a CE-era ABI fact
+ * carried by the CE lineage itself.  Excluded trees are
+ * never consulted (v3 section 3).  R1's license-exception
+ * files (winsock*, gl*) are unused.
  * ================================================================== */
 
 /* ---- BS_ family (4 names; R1) ---- */
@@ -2119,31 +2119,41 @@ AKARI_CE_IMPORT BOOL SetCursorPos(int x, int y) AKARI_CE_NAME(SetCursorPos);
  * e.g. STICKYKEYS/TOGGLEKEYS have no CE-documented
  * SKF_CONFIRMHOTKEY/SKF_INDICATOR counterpart -- only the CE-listed
  * names are declared below). The CE archive's own flag tables print
- * names/meanings but no numeric bit values (re-verified 2026-09-17
- * across CE 4.2/5.0/6.0 twins: zero hex printed).
+ * names/meanings but no numeric bit values (re-verified 2026-09-18
+ * across the CE 5.0 (v=msdn.10) and CE .NET 4.2 twins stored in
+ * wince-docs-corpus: aa452839/ms858519, ms858526/ms929931,
+ * ms940347/ms858538, ms940365/aa931348, ms858550/aa453748 -- zero
+ * hex printed; the tables are name+description only).
  *
- * EVIDENCE STATUS OF THE 21 NUMERIC VALUES BELOW (retraction record,
- * 2026-09-17, policy v2): they were added on a desktop-Win32
- * version-invariance argument cross-checked against Wine's and
- * ReactOS's winuser.h.  Both grounds are inadmissible under
- * docs/clean-room.md v2 (1.3): desktop-Win32 analogy is no CE
- * evidence, and Wine/ReactOS are absolutely excluded -- no reference,
- * no investigation, no cross-check.  The values are therefore
- * UNCONFIRMED and provisionally retained only as re-verification
- * candidates under v2 4 (official pages first; CeGCC-lineage value
- * confirmation, never copying, second).  Ledger with the full value
- * list: docs/CHANGELOG-audit-2026-09-17.md A-2.  Until each value is
- * re-verified and re-annotated, treat it as held, not as grounded.
+ * EVIDENCE STATUS OF THE 21 NUMERIC VALUES BELOW (re-verification
+ * record, 2026-09-18, policy v3 = AGENTS.md of wince-docs-corpus):
+ * the official pages were searched first and print no values; each
+ * value was then CONFIRMED, value-for-value, against the
+ * CeGCC-lineage w32api reference (R1 -- the exception permitted for
+ * value confirmation only, never as a source of declarations or
+ * text): R1 prints ATF_TIMEOUTON 1 / ATF_ONOFFFEEDBACK 2 /
+ * ATF_AVAILABLE 4, WM_MOUSEMOVE 512, HCF_HIGHCONTRASTON 1 /
+ * HCF_AVAILABLE 2 / HCF_HOTKEYACTIVE 4 / HCF_HOTKEYSOUND 16 /
+ * HCF_HOTKEYAVAILABLE 64, SSF_SOUNDSENTRYON 1 / SSF_AVAILABLE 2,
+ * SKF_STICKYKEYSON 1 / SKF_AVAILABLE 2 / SKF_HOTKEYACTIVE 4 /
+ * SKF_HOTKEYSOUND 16 / SKF_AUDIBLEFEEDBACK 64 / SKF_TRISTATE 128,
+ * TKF_TOGGLEKEYSON 1 / TKF_AVAILABLE 2 / TKF_HOTKEYACTIVE 4 /
+ * TKF_HOTKEYSOUND 16.  Names R1 carries that no CE page lists
+ * (HCF_CONFIRMHOTKEY, HCF_INDICATOR, SKF_CONFIRMHOTKEY,
+ * SKF_INDICATOR, SKF_TWOKEYSOFF, TKF_CONFIRMHOTKEY) remain
+ * EXCLUDED -- R1 confirms values; the CE pages govern the name set.
+ * (An earlier desktop-Win32/Wine/ReactOS cross-check for these
+ * values was inadmissible and was retracted on 2026-09-17; the
+ * present record supersedes it -- no excluded source is cited as
+ * evidence anywhere below.)
  * Both the CE 5.0 page (Header: Winuser.h) and the CE .NET 4.2 page
  * (Header: Windows.h) exist for each struct; placed here since the
  * governing SPI_ constants already live in this file. ---- */
 
 /* ms924867/aa453885 "WM_MOUSEMOVE": OS Versions: Windows CE 1.0 and
- * later.; Header: Windows.h.  Value status: UNCONFIRMED -- see the
- * retraction record above (the WM_MOUSEFIRST equivalence chain is a
- * desktop-Win32 argument; the CE pages print no hex for either
- * name).  Provisionally retained as a v2 4 re-verification
- * candidate. */
+ * later.; Header: Windows.h.  Value status: name+meaning documented
+ * (mouse-message tables); numeric value confirmed against R1
+ * (WM_MOUSEMOVE 512 = 0x0200) per the record above. */
 #define WM_MOUSEMOVE                                 0x0200
 
 /* aa452839 "ACCESSTIMEOUT" (also ms858... 4.2 twin, Header: Windows.h):
