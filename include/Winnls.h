@@ -236,15 +236,20 @@ typedef DWORD LCTYPE;   /* LCTYPE constant space (UINT-sized) */
  *    still without values.
  *
  * The withdrawn definitions were grounded in a Wine / ReactOS
- * cross-check and a Win32-ABI-stability argument.  Under the evidence
- * policy fixed 2026-09-17 (official CE documentation only; no
- * third-party implementation and no desktop-Win32 analogy as grounds)
- * that grounding does not hold, so the values are removed rather than
- * kept on the assumption that they are correct.  Record:
+ * cross-check and a Win32-ABI-stability argument.  Wine and ReactOS
+ * are absolutely excluded sources under the evidence policy v2
+ * (docs/clean-room.md, 2026-09-17: no reference, no investigation),
+ * and desktop-Win32 analogy is no CE evidence (v2 1.3), so that
+ * grounding does not hold and the values are removed rather than kept
+ * on the assumption that they are correct.  Record:
  * docs/CHANGELOG-audit-2026-09-17.md; register:
- * docs/unpublished-constants.tsv.  Re-adoption, if still needed, is a
- * separate independent official-source investigation -- it is NOT
- * authorized to start from the withdrawn numbers.
+ * docs/unpublished-constants.tsv.  Under v2 these constants are
+ * re-verification candidates: the official pages print their names
+ * only (corpus-verified above), so a CeGCC-lineage value confirmation
+ * (v2 1.2 -- reference/comparison/value-check only, never copying)
+ * can ground them.  Until that confirmation is run and recorded here,
+ * the values stay withdrawn; nothing is restored speculatively, and
+ * the withdrawn numbers are not a starting point.
  *
  * Downstream note: llvm-project libcxx/src/support/wince/
  * locale_wince.cpp consumes 19 of the withdrawn values (the 18

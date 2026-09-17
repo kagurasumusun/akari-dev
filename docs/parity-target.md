@@ -1,5 +1,12 @@
 # CeGCC w32api parity target
 
+> **Policy pointer update (2026-09-17, v2).**  The method note below
+> cites `clean-room.md` v1 §4, which is withdrawn.  Under v2 §1.2 the
+> CeGCC-lineage w32api (kagurasumusun/w32api) remains an allowed
+> reference, comparison and value-confirmation target — no copying,
+> and parity measurement stays numbers-and-names-only.  The
+> measurements recorded here are unaffected.
+
 wince-api must be able to *replace the role* of the CeGCC-lineage
 w32api in the WinCE sysroot (kagurasumusun/w32api).  This page
 records the measured target scope and the status of each part.

@@ -1,5 +1,13 @@
 # Windows CE is not Windows NT -- official-source readout
 
+> **Policy pointer update (2026-09-17, v2).**  This readout's official
+> quotations stand as recorded.  Its v1-era inference (below, §1: "a
+> clean-room w32api replacement can reuse Win32 names/shapes") is a
+> withdrawn convention: under `clean-room.md` v2 §1.3, desktop
+> Win32/Win64 analogy is not evidence for CE, and CE facts come from
+> CE sources.  Shared API *names* still require their own CE page
+> citations (as `inventory.md` records them).
+
 Question (raised in project review): is Windows CE really a separate
 (non-NT) operating system, and does this repository correctly target
 it?  Everything below is quoted only from official Microsoft public

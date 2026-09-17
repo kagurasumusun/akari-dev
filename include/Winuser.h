@@ -2119,21 +2119,31 @@ AKARI_CE_IMPORT BOOL SetCursorPos(int x, int y) AKARI_CE_NAME(SetCursorPos);
  * e.g. STICKYKEYS/TOGGLEKEYS have no CE-documented
  * SKF_CONFIRMHOTKEY/SKF_INDICATOR counterpart -- only the CE-listed
  * names are declared below). The CE archive's own flag tables print
- * names/meanings but not every numeric bit value; those numbers are
- * the stable, version-invariant Win32 flag values (unchanged from
- * Win95 through current Windows -- a bit flag's value cannot change
- * across versions without breaking every existing binary that already
- * ORs it), cross-checked against ReactOS's and Wine's winuser.h
- * (ATF_/HCF_/TKF_/SSF_) and ReactOS's winuser.h ATF_ pair as a second
- * independent source; not invented. Both the CE 5.0 page (Header:
- * Winuser.h) and the CE .NET 4.2 page (Header: Windows.h) exist for
- * each struct; placed here since the governing SPI_ constants already
- * live in this file. ---- */
+ * names/meanings but no numeric bit values (re-verified 2026-09-17
+ * across CE 4.2/5.0/6.0 twins: zero hex printed).
+ *
+ * EVIDENCE STATUS OF THE 21 NUMERIC VALUES BELOW (retraction record,
+ * 2026-09-17, policy v2): they were added on a desktop-Win32
+ * version-invariance argument cross-checked against Wine's and
+ * ReactOS's winuser.h.  Both grounds are inadmissible under
+ * docs/clean-room.md v2 (1.3): desktop-Win32 analogy is no CE
+ * evidence, and Wine/ReactOS are absolutely excluded -- no reference,
+ * no investigation, no cross-check.  The values are therefore
+ * UNCONFIRMED and provisionally retained only as re-verification
+ * candidates under v2 4 (official pages first; CeGCC-lineage value
+ * confirmation, never copying, second).  Ledger with the full value
+ * list: docs/CHANGELOG-audit-2026-09-17.md A-2.  Until each value is
+ * re-verified and re-annotated, treat it as held, not as grounded.
+ * Both the CE 5.0 page (Header: Winuser.h) and the CE .NET 4.2 page
+ * (Header: Windows.h) exist for each struct; placed here since the
+ * governing SPI_ constants already live in this file. ---- */
 
 /* ms924867/aa453885 "WM_MOUSEMOVE": OS Versions: Windows CE 1.0 and
- * later.; Header: Windows.h. Same numeric value as the already-shipped
- * WM_MOUSEFIRST (WM_MOUSEFIRST is WM_MOUSEMOVE under another name on
- * every documented Windows CE and desktop Win32 page alike). */
+ * later.; Header: Windows.h.  Value status: UNCONFIRMED -- see the
+ * retraction record above (the WM_MOUSEFIRST equivalence chain is a
+ * desktop-Win32 argument; the CE pages print no hex for either
+ * name).  Provisionally retained as a v2 4 re-verification
+ * candidate. */
 #define WM_MOUSEMOVE                                 0x0200
 
 /* aa452839 "ACCESSTIMEOUT" (also ms858... 4.2 twin, Header: Windows.h):

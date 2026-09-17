@@ -370,3 +370,71 @@ LLVM-WinCE と cellvm-sdk を submodule 消費)を発見し、実パイプライ
    不必要性が確定: D の修正で locale_wince.cpp は NLS 定数を一切消費し
    なくなった。他の消費者も無い(grep 確認済み)。再採用調査の動機は
    消滅した(必要になれば別途)。
+
+## F. 証拠ポリシー v2 の確立と旧規約の全面撤回(2026-09-17 ユーザー指示・同日第 2 改訂)
+
+前ターンの B-1(clean-room.md v1→公式のみ改訂)を含む**旧規約・旧方針はすべて
+撤回**され、新ポリシー v2 が docs/clean-room.md に確立された。要点:
+
+1. **公式 MSDN/MS Learn/Archive/公式 Wayback = 最優先調査対象。**
+2. **CeGCC / mingwrt(CeGCC 版)/ w32api(CeGCC 系、kagurasumusun/w32api = R1)**:
+   コピーは一切禁止。ただし**参考・比較・値確認対象として許容**(v1 の B-1 改訂で
+   全面禁止していたのを転換)。公式ページが値を印字しない定数は、CeGCC 系の値確認で
+   根拠付け可能(記録上「value-confirmed」と明示し、公式印字と混同しない)。
+3. **mingw / mingw-w64 / mingw-w32 / Wine / ReactOS / w64api / 非 CeGCC w32api**:
+   参考も調査も一切禁止(値確認・裏付け・相互チェックも含め完全に対象外)。
+4. **Shared Source / Visual Studio 内部・準内部 / Platform Builder**: 一切調査・参考禁止。
+5. **公式ではないが大手の信頼できる合法の公開情報**: 調査対象(二次的、非公式と明示)。
+6. **非公式・流出に類するもの**: 対象外。device dump 等のバイナリ観測も新ポリシーの
+   ソース分類に含まれない(tier-2 def は legacy のまま)。
+7. **WinCE 固有機構優先**: WinCE API が提供する機能は WinCE 提供版を使う
+   (汎用 C 代替ではない)。**例: NLS — WinCE には NLS がある(GetLocaleInfo/
+   SetLocaleInfo/Enum* NLS/CompareString/LCMapString/GetStringType* 等、Coreloc.lib、
+   公式ページで文書化、include/Winnls.h が宣言)ので、libc++ WinCE ロケールバック
+   エンドはそれに接続する。**
+
+### F-1. この改訂が前ターン記録に与える影響
+
+- **「CE には C ロケールのみ」規約は事実誤りとして撤回。** llvm-project の
+  wince.h 冒頭注記とその主張に従った D の localeconv 改作(cc5c872a8)は方針が
+  誤りだった。cc5c872a8 のうち標準 C 契約由来の修正(_UPPER 系 MSVC 私有マスク
+  除去、strtold/strtof、nullptr 差分 UB、operator= リーク)は v2 下でも有効な
+  まま。__localeconv の C ロケール定数実装は**暫定フォールバック**に格下げされ、
+  WinCE NLS(GetLocaleInfoW)接続への再改作が次タスク(D-2)。
+- **A(d830cab)の撤去自体は維持、根拠は読み替え**: Wine/ReactOS 相互チェックに
+  よる根拠付けは v2 でも絶対排除(撤回は正当)。一方「公式のみ」ルール由来の
+  再採用制限は v2 で緩和され、20 値は**再検証候補**(公式優先 → CeGCC 系値確認)
+  となった。再検証が記録されるまで撤去状態のまま(投機的復元はしない)。
+- **A-2(Winuser.h 21 値)と E-3(Winnls.h 21 値)**: 根拠(Wine/ReactOS 相互
+  チェック、Win32-ABI 推定)は v2 でも不成立。両家族は v2 §4 の再検証待ち。
+  Winuser.h の監査ブロック注記は撤回記録に書き換え済み(値は暫定保持)。
+- **M96/M97/M99(R1 採用 870 行/26 ヘッダ、1,381 defines、vtables)**: CeGCC 系の
+  値確認が v2 で許容されたため「違反」ではなくなり、**未再検証の legacy** に
+  位置づけ直し(公式優先で再検証し、記録を value-confirmed 注記に更新する)。
+- **B step 2 の処分原則は v2 §4 の読み替えキーに置き換え**(旧 §7 の処分原則
+  1-4 は撤回)。
+
+### F-2. このターンで実施した文書・コメント更新
+
+- docs/clean-room.md: v2 全面改訂(旧版全文の撤回 + 撤回台帳 §5 付き)。
+- docs/plan-ce-net.md / docs/parity-target.md / docs/ce-not-nt.md: v2 への
+  ポインタ更新バナー。
+- include/Winnls.h: 撤回記録の再採用条項を v2 経路に更新。
+- include/Winuser.h: 2026-09-14 監査ブロックの Wine/ReactOS 引用と Win32
+  不変性論証を撤回(21 値は UNCONFIRMED・暫定保持・再検証候補と明記)。
+  これにより include/ 内の Wine/ReactOS 引用は Winnls.h 撤回記録(歴史記述)
+  のみとなる。
+- llvm-project(LLVM-WinCE): wince.h 冒頭契約注記と locale_wince.cpp 設計
+  注記を v2 §2 の方針(WinCE NLS 接続、現状態は暫定フォールバック)に更新
+  (commit 番号は push 後に追記)。
+
+### F-3. 次タスク(優先順)
+
+1. **D-2**: locale_wince.cpp を WinCE NLS 接続に再改作(GetLocaleInfoW で
+   ロケールデータを取得)。前提として 20 値(LCTYPE 18 + LCID 2)の v2 再検証:
+   公式ページ(名前のみ)→ R1(kagurasumusun/w32api、CeGCC 系)値確認 →
+   記録更新 → Winnls.h への再採用。CP_ACP(WideCharToMultiByte 用)も同様。
+   setlocale が受理する CE ロケール名の公式 CRT ページ調査も含む。
+2. **A-2/E-3 の再検証**(同原則: 公式優先、CeGCC 系値確認)。
+3. **M96/M97/M99/tier-2 の家族別再検証**(v2 §4)。
+4. rows.json 再統一(def 一括再生成の前提)。

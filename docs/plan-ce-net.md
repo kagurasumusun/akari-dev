@@ -1,5 +1,13 @@
 # Plan: exhaustive CE 1–6 collection + CE 4/5/6 .NET (Compact) Framework + full .NET API surface
 
+> **Policy pointer update (2026-09-17, v2).**  The binding evidence
+> policy is `docs/clean-room.md` **v2** (second revision of
+> 2026-09-17).  All v1-era clean-room rules referenced below —
+> including the 2026-09-10 R1 adoption policy and the earlier
+> 2026-09-17 official-only revision — are withdrawn; read every
+> "standing clean-room rules" mention in this plan through v2 §1–§4.
+> The collection scope itself is unaffected.
+
 Status: **plan / policy** (this is the documented plan the user asked for before
 implementation). Milestone M102a is already executed this session; M102b/M102c are
 proposed next. `docs/clean-room.md` remains the binding clean-room definition.

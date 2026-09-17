@@ -9775,3 +9775,41 @@ Unicode version of this function.」明記＋ LPWSTR プロトタイプ印字
 
 `make check` GREEN（hostcheck 380 ヘッダ × CE 0x420/0x500/0x600、cxxcheck、
 defcheck）。再生成 dry-run との coreloc 差分は既存 drift 1 行のみ。
+
+## M140：証拠ポリシー v2 の確立（旧規約の全面撤回）と旧方針コメントの更新
+
+2026-09-17、ユーザー指示（同日第 2 改訂）。詳細は
+`docs/CHANGELOG-audit-2026-09-17.md` §F と `docs/clean-room.md` v2。
+
+### ポリシー
+
+- 旧 clean-room.md（原版 + 2026-09-10 R1/R2 改訂 + 2026-09-17 B-1 改訂）を
+  **全面撤回**し、v2 を確立：公式 MSDN/MS Learn/Archive/公式 Wayback が
+  最優先調査対象。CeGCC/mingwrt(CeGCC 版)/w32api(CeGCC 系) はコピー禁止の
+  上で**参考・比較・値確認対象**。mingw/mingw-w64/mingw-w32/Wine/ReactOS/
+  w64api/非 CeGCC w32api は参考も調査も一切禁止。Shared Source/VS 内部/
+  Platform Builder 禁止。大手の信頼できる合法公開情報は調査対象（非公式と
+  明示）。流出・非公式系は対象外。
+- **WinCE 固有機構優先**：WinCE API が提供するものは WinCE 版を使う。
+  「CE には C ロケールのみ」旧規約は**事実誤りとして撤回**（WinCE には
+  公式文書化された NLS がある：GetLocaleInfo/SetLocaleInfo/Enum* NLS/
+  CompareString/LCMapString/GetStringType* 等、Coreloc.lib）。llvm-project
+  libcxx WinCE ロケールバックエンドは WinCE NLS に接続する方針（D-2）。
+
+### 更新した記録・コメント
+
+- `docs/clean-room.md` v2（撤回台帳 §5 付き全面改訂）。
+- `docs/plan-ce-net.md`/`docs/parity-target.md`/`docs/ce-not-nt.md`：v2
+  ポインタバナー。
+- `include/Winnls.h`：20 値撤回記録の再採用条項を v2 経路（公式優先 →
+  CeGCC 系値確認）に更新。撤去状態は再検証完了まで維持。
+- `include/Winuser.h`：2026-09-14 監査ブロックの Wine/ReactOS 引用・
+  Win32 不変性論証を撤回。21 値は UNCONFIRMED・暫定保持・v2 §4 再検証
+  候補と明記。
+- llvm-project LLVM-WinCE：`__locale_dir/support/wince.h` 冒頭契約注記と
+  `src/support/wince/locale_wince.cpp` 設計注記を v2 方針に更新
+  （C ロケール実装は暫定フォールバック、NLS 接続は D-2）。
+- legacy 注記（M96/M97/M99 の R1 採用 870 行/26 ヘッダ、tier-2 def、
+  A-2/E-3 の 21+21 値）は v2 §4 の読み替えキーで位置づけ直し：違反では
+  なく**未再検証の legacy**（公式優先で再検証し value-confirmed 注記に
+  更新する）。処分完了まで注記は来歴記録として保持。
