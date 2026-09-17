@@ -27,6 +27,7 @@
 #include <Wincrypt.h>
 #include <Winscard.h>
 #include <Objbase.h>
+#include <Oleauto.h>
 #include <aygshell.h>
 #include <shellsdk.h>
 #include <Shlobj.h>
