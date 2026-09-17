@@ -2900,13 +2900,14 @@ AKARI_CE_IMPORT BOOL VirtualProtectEx(HANDLE hProcess, LPVOID lpAddress, DWORD d
 /* ee488556: page-printed prototype (Windows Embedded CE 6.0; coredll.lib). */
 AKARI_CE_IMPORT DWORD VirtualQueryEx(HANDLE hProcess, LPCVOID lpAddress, PMEMORY_BASIC_INFORMATION lpBuffer, DWORD dwLength) AKARI_CE_NAME(VirtualQueryEx);
 
-/* ee488450 DllMain: print `BOOL WINAPI DllMain(
-HANDLE hinstDLL,
-DWORD dwReason,
-LPVOID lpvReserved
-);`
- * (generation not stated; Link Library: coredll.lib) */
-AKARI_CE_IMPORT BOOL DllMain(HANDLE hinstDLL, DWORD dwReason, LPVOID lpvReserved) AKARI_CE_NAME(DllMain);
+/* ee488450 DllMain (Windows Embedded CE 6.0; "Windows CE 1.0 and later";
+ * Header: winbase.h; Library: coredll.lib): NOT DECLARED here -- see the
+ * M132 record below, which this page's CE 5.0 twin (ms885202) already
+ * covered.  An earlier pass (M137) declared it dllimport-pinned inside
+ * this >= 0x0600 block against the M132 hold; that declaration made a
+ * consumer DLL's own entry point uncompilable on x86
+ * (-Winconsistent-dllimport; measured by `make e2e`,
+ * i386-pc-wince6.0/e2e_module) and was removed 2026-09-17. */
 
 #endif /* _WIN32_WCE >= 0x0600 */
 
@@ -2921,7 +2922,16 @@ AKARI_CE_IMPORT BOOL DllMain(HANDLE hinstDLL, DWORD dwReason, LPVOID lpvReserved
  * DllMain and clang rejects the redeclaration with
  * -Winconsistent-dllimport.  The page's Link Library row names where the
  * loader resolves the symbol, which is not the same as the declaration this
- * header owes a consumer (M132). */
+ * header owes a consumer (M132).
+ *
+ * Coverage (2026-09-17): the same page family documents DllMain in every
+ * generation -- CE 3.0 archive wcesdkrDllMain ("Runs On: Windows CE OS
+ * 1.0 and later; Defined in Winbase.h; Link to: Coredll.lib, Nk.lib"),
+ * CE 5.0 ms885202, CE 6.0 ee488450 -- and each page body states it is
+ * "an optional method of entry into a DLL", "called by the system", and
+ * "a placeholder for the library-defined function name".  The hold
+ * therefore applies to all generations, not only to CE 5.0; see also the
+ * removal note in the >= 0x0600 block above (M137 regression). */
 
 
 /* M133: Notifications API the harvested corpus did not contain (page-cited). */
