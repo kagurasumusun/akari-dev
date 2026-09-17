@@ -205,50 +205,51 @@ AKARI_CE_IMPORT BOOL GetStringTypeExW(LCID Locale, DWORD dwInfoType,
 
 typedef DWORD LCTYPE;   /* LCTYPE constant space (UINT-sized) */
 
-/* Audit 2026-09-16 (llvm-project cross-repository integration review):
- * this closes the "LCType takes the LCTYPE constants (the ms906223
- * table); their values are not yet transcribed" follow-on noted above,
- * for the subset actually required to build llvm-project's
- * libcxx/src/support/wince/locale_wince.cpp (LIBCXX_TARGETS_WINCE),
- * which calls GetLocaleInfoW with exactly these 19 LCTYPE values plus
- * the LOCALE_USER_DEFAULT LCID.  Class C evidence (AGENT.md ss10):
- * the ms906223 CE page prints the constant NAMES and per-item
- * documentation text but this harvest never recorded the numeric
- * values; those values are NOT CE-specific-yet-undocumented, they are
- * the fixed NLS constant-ID space Win32 has kept stable since the
- * original Windows NT NLS implementation (a LCTYPE value cannot
- * change across Windows versions without breaking every existing
- * GetLocaleInfo call site that already uses it, so a CE-era Coreloc.lib
- * built against the same NLS ABI could not assign these differently).
- * Cross-checked against two independent reimplementations that ship
- * the real values, Wine's include/winnls.h and ReactOS's
- * sdk/include/psdk/winnls.h -- both agree exactly, which is the
- * corroboration AGENT.md requires before implementing a Class C value.
- * The full ms906223 table has many more entries (LOCALE_SDATE,
- * LOCALE_ILZERO, the S/I calendar and day/month-name constants, etc.);
- * only the subset an actual downstream consumer (libcxx) is known to
- * need is added here, per this project's own scope discipline -- the
- * rest of the table remains the recorded follow-on it already was. */
-#define LOCALE_USER_DEFAULT     0x0400   /* LCID, not LCTYPE; MAKELCID(LANG_USER_DEFAULT, SORT_DEFAULT) */
-#define LOCALE_SYSTEM_DEFAULT   0x0800   /* LCID; kept alongside USER_DEFAULT as its usual pair */
-#define LOCALE_SDECIMAL         0x000E
-#define LOCALE_STHOUSAND        0x000F
-#define LOCALE_SGROUPING        0x0010
-#define LOCALE_SCURRENCY        0x0014
-#define LOCALE_SINTLSYMBOL      0x0015
-#define LOCALE_SMONDECIMALSEP   0x0016
-#define LOCALE_SMONTHOUSANDSEP  0x0017
-#define LOCALE_SMONGROUPING     0x0018
-#define LOCALE_ICURRDIGITS      0x0019
-#define LOCALE_IINTLCURRDIGITS  0x001A
-#define LOCALE_SPOSITIVESIGN    0x0050
-#define LOCALE_SNEGATIVESIGN    0x0051
-#define LOCALE_IPOSSIGNPOSN     0x0052
-#define LOCALE_INEGSIGNPOSN     0x0053
-#define LOCALE_IPOSSYMPRECEDES  0x0054
-#define LOCALE_IPOSSEPBYSPACE   0x0055
-#define LOCALE_INEGSYMPRECEDES  0x0056
-#define LOCALE_INEGSEPBYSPACE   0x0057
+/* Audit 2026-09-17 (evidence retraction; supersedes the 2026-09-16
+ * audit addition of commit 051ee54): the 20 numeric LOCALE_* values
+ * that commit added here -- the 18 LCTYPE constants LOCALE_SDECIMAL
+ * 0x000E .. LOCALE_INEGSEPBYSPACE 0x0057 plus the LCIDs
+ * LOCALE_USER_DEFAULT 0x0400 and LOCALE_SYSTEM_DEFAULT 0x0800 -- are
+ * WITHDRAWN.  The constants return to the held state recorded since
+ * M32: names documented, values not confirmable from official CE
+ * material ("公式資料で確認できない").
+ *
+ * Corpus-verified evidence status, all four documented generations:
+ *  - the LCTYPE Constants pages print the constant NAMES and their
+ *    per-item descriptions, never numeric values: CE 3.0
+ *    _wcesdk_LCTYPE_Constants, CE .NET 4.2 ms921463, CE 5.0 ms906223,
+ *    CE 6.0 ee491958;
+ *  - GetLocaleInfo / SetLocaleInfo name LOCALE_SYSTEM_DEFAULT,
+ *    LOCALE_USER_DEFAULT and LOCALE_NEUTRAL as predefined Locale
+ *    values without printing numbers (ms905243 / ms906277 and their
+ *    CE 4.2 / CE 6.0 twins, CE 3.0 _wcesdk_Win32_GetLocaleInfo);
+ *  - the only numeric anchors printed anywhere on this surface are
+ *    the "Language Identifiers and Locales" LCID tables (ms903928 /
+ *    ms921461 / ee491651 / _wcesdk_Language_Identifiers_and_Locales),
+ *    whose special-identifier rows read 0x0000 "Language-Neutral" and
+ *    0x0400 "Process Default Language"; no CE page ties 0x0400 to the
+ *    NAME LOCALE_USER_DEFAULT, and no CE page prints 0x0800 in an
+ *    LCID context at all;
+ *  - "Specifying Locales with NLS" (_wcesdk_Specifying_Locales_with_NLS
+ *    / ms904358) prints the LCID and LANGID bit layouts and states
+ *    LOCALE_NEUTRAL is the same identifier as LOCALE_USER_DEFAULT --
+ *    still without values.
+ *
+ * The withdrawn definitions were grounded in a Wine / ReactOS
+ * cross-check and a Win32-ABI-stability argument.  Under the evidence
+ * policy fixed 2026-09-17 (official CE documentation only; no
+ * third-party implementation and no desktop-Win32 analogy as grounds)
+ * that grounding does not hold, so the values are removed rather than
+ * kept on the assumption that they are correct.  Record:
+ * docs/CHANGELOG-audit-2026-09-17.md; register:
+ * docs/unpublished-constants.tsv.  Re-adoption, if still needed, is a
+ * separate independent official-source investigation -- it is NOT
+ * authorized to start from the withdrawn numbers.
+ *
+ * Downstream note: llvm-project libcxx/src/support/wince/
+ * locale_wince.cpp consumes 19 of the withdrawn values (the 18
+ * LCTYPE constants + LOCALE_USER_DEFAULT) and no longer compiles
+ * against this header until that consumer is reworked (task D). */
 
 typedef struct _currencyfmt {
     UINT   NumDigits;
@@ -342,13 +343,94 @@ AKARI_CE_IMPORT BOOL EnumSystemCodePagesW(CODEPAGE_ENUMPROC lpCodePageEnumProc,
                           DWORD dwFlags) AKARI_CE_NAME(EnumSystemCodePagesW);
 #define EnumSystemCodePages EnumSystemCodePagesW
 
+/* ------------------------------------------------------------------ */
+/* Locale / date / time enumeration (M139, 2026-09-17).  The four     */
+/* Enum* function pages print full prototypes -- the "print `` (no    */
+/* compiled prototype)" record the intl-book harvest left on them     */
+/* was a ce-fetch.py extraction failure, not a property of the pages  */
+/* (see the corrected Book surface records below).                    */
+/* Page family (CE 5.0): EnumSystemLocales ms905070, EnumDateFormats  */
+/* ms904724, EnumTimeFormats ms905077, EnumCalendarInfo ms904721;     */
+/* CE .NET 4.2 twins ms919238 / ms919196 / ms919245 / ms919176 and    */
+/* CE 6.0 twins ee491192 / ee491363 / ee491332 / ee491359 print the   */
+/* same prototypes; every one of these pages carries the requirement  */
+/* rows Header Winnls.h, Link Library Coreloc.lib, CE .NET 4.0+.      */
+/*                                                                    */
+/* Callback pointer typedefs: each function page prints its           */
+/* *_ENUMPROC parameter type name and describes that parameter as a   */
+/* pointer to the application-defined callback of the sibling         */
+/* Enum*Proc page; the callback pages (EnumLocalesProc ms904848,      */
+/* EnumDateFormatsProc ms904740, EnumTimeFormatsProc ms905083,        */
+/* EnumCalendarInfoProc ms904722) print                               */
+/* "BOOL CALLBACK Enum*Proc(LPWSTR lp*String);" and state "Windows    */
+/* CE supports only the Unicode version of this function."  The       */
+/* typedefs compose exactly those two prints -- the same derivation   */
+/* the CODEPAGE_ENUMPROC typedef above (ms904723 + ms905062) uses.    */
+/* The exports are the W spellings per that Unicode-only statement,   */
+/* matching the sibling NLS exports (GetLocaleInfoW, LCMapStringW,    */
+/* EnumSystemCodePagesW).                                             */
+
+typedef BOOL (CALLBACK *LOCALE_ENUMPROC)(LPWSTR lpLocaleString);
+typedef BOOL (CALLBACK *DATEFMT_ENUMPROC)(LPWSTR lpDateFormatString);
+typedef BOOL (CALLBACK *TIMEFMT_ENUMPROC)(LPWSTR lpTimeFormatString);
+typedef BOOL (CALLBACK *CALINFO_ENUMPROC)(LPWSTR lpCalendarInfoString);
+
+/* ms905070 "EnumSystemLocales (Windows CE 5.0)":
+ * BOOL EnumSystemLocales(LOCALE_ENUMPROC, DWORD).  CE .NET 4.0+;
+ * Winnls.h; Coreloc.lib.  Enumerates the locales installed on (or,
+ * with LCID_SUPPORTED, supported by) the system; dwFlags takes
+ * LCID_INSTALLED or LCID_SUPPORTED (mutually exclusive, page
+ * Remarks). */
+AKARI_CE_IMPORT BOOL EnumSystemLocalesW(LOCALE_ENUMPROC lpLocaleEnumProc,
+                        DWORD dwFlags) AKARI_CE_NAME(EnumSystemLocalesW);
+#define EnumSystemLocales EnumSystemLocalesW
+
+/* ms904724 "EnumDateFormats (Windows CE 5.0)":
+ * BOOL EnumDateFormats(DATEFMT_ENUMPROC, LCID, DWORD).  CE .NET 4.0+;
+ * Winnls.h; Coreloc.lib.  Enumerates the long or short date formats
+ * available for a locale; dwFlags takes DATE_SHORTDATE /
+ * DATE_LONGDATE (names printed by the page; their numeric values are
+ * not published by any CE page -> the two constants stay held). */
+AKARI_CE_IMPORT BOOL EnumDateFormatsW(DATEFMT_ENUMPROC lpDateFmtEnumProc,
+                      LCID Locale, DWORD dwFlags) AKARI_CE_NAME(EnumDateFormatsW);
+#define EnumDateFormats EnumDateFormatsW
+
+/* ms905077 "EnumTimeFormats (Windows CE 5.0)":
+ * BOOL EnumTimeFormats(TIMEFMT_ENUMPROC, LCID, DWORD).  CE .NET 4.0+;
+ * Winnls.h; Coreloc.lib.  Enumerates the time formats available for
+ * a locale; dwFlags is currently unused, set to zero (page). */
+AKARI_CE_IMPORT BOOL EnumTimeFormatsW(TIMEFMT_ENUMPROC lpTimeFmtEnumProc,
+                      LCID Locale, DWORD dwFlags) AKARI_CE_NAME(EnumTimeFormatsW);
+#define EnumTimeFormats EnumTimeFormatsW
+
+/* ms904721 "EnumCalendarInfo (Windows CE 5.0)":
+ * BOOL EnumCalendarInfo(CALINFO_ENUMPROC, LCID, CALID, CALTYPE).
+ * CE .NET 4.0+; Winnls.h; Coreloc.lib.  HELD, not declared: the page
+ * prints the parameter type names CALID and CALTYPE, but no CE page
+ * of any documented generation defines either type (catalog-verified
+ * across CE 3.0/4.x/5.0/6.0; the CAL_* calendar identifiers of the
+ * Calendar table and the CALTYPE constants of the Remarks are also
+ * printed name-only, with no values).  Declaring the function would
+ * require inventing the CALID/CALTYPE definitions from the desktop
+ * Win32 analogy, which the evidence policy forbids.  Recorded in
+ * docs/undeclared-blocked.tsv.  CALINFO_ENUMPROC above IS declared:
+ * both prints it composes exist (ms904721 parameter row + ms904722
+ * prototype); only the CALID/CALTYPE parameters block the function. */
+
 /* ------------------------------------------------------------------
  * Book surface: intl-book (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
-/* ms904721 EnumCalendarInfo: print `` -- recorded verbatim (no compiled prototype) */
-/* ms904724 EnumDateFormats: print `` -- recorded verbatim (no compiled prototype) */
-/* ms905070 EnumSystemLocales: print `` -- recorded verbatim (no compiled prototype) */
-/* ms905077 EnumTimeFormats: print `` -- recorded verbatim (no compiled prototype) */
+/* 2026-09-17 correction (M139): the four records below formerly read
+ * "print `` -- recorded verbatim (no compiled prototype)".  That was
+ * WRONG -- a ce-fetch.py extraction failure, not a page property: all
+ * four pages print full prototypes (verified against the preserved
+ * corpus pages).  EnumSystemLocales / EnumDateFormats / EnumTimeFormats
+ * are declared in the M139 block above; EnumCalendarInfo stays held
+ * on its undocumented CALID / CALTYPE parameter types. */
+/* ms904721 EnumCalendarInfo: prototype printed -- HELD (CALID/CALTYPE undefined; see above) */
+/* ms904724 EnumDateFormats: prototype printed -- declared (M139) */
+/* ms905070 EnumSystemLocales: prototype printed -- declared (M139) */
+/* ms905077 EnumTimeFormats: prototype printed -- declared (M139) */
 
 /* ------------------------------------------------------------------
  * Book surface: core-nls-reference (tools/gen-book.py; page ids per record)
@@ -393,9 +475,16 @@ AKARI_CE_IMPORT BOOL EnumSystemCodePagesW(CODEPAGE_ENUMPROC lpCodePageEnumProc,
  *  note at ms904723 and the core-nls-reference value records, which hold
  *  those names for want of a published *value*, a different axis from a
  *  prototype).  Being application-implemented, they carry no
- *  AKARI_CE_IMPORT.  The five Enum* functions that take them stay
- *  undeclared because this tree declares none of CALINFO_ENUMPROC,
- *  DATEFMT_ENUMPROC, CODEPAGE_ENUMPROC, LOCALE_ENUMPROC or TIMEFMT_ENUMPROC. */
+ *  AKARI_CE_IMPORT.  Status update (M139, 2026-09-17): this block
+ *  formerly recorded the five Enum* functions as undeclared because
+ *  none of the five *_ENUMPROC pointer typedefs existed.  All five
+ *  typedefs are now declared (CODEPAGE_ENUMPROC since the
+ *  EnumSystemCodePages block above; CALINFO_/DATEFMT_/LOCALE_/
+ *  TIMEFMT_ENUMPROC in the M139 block), and four of the five Enum*
+ *  functions are declared (EnumSystemCodePagesW earlier;
+ *  EnumSystemLocalesW, EnumDateFormatsW, EnumTimeFormatsW in M139).
+ *  Only EnumCalendarInfo stays held, on its undocumented CALID /
+ *  CALTYPE parameter types (see the M139 block). */
 
 /* ms904722 EnumCalendarInfoProc: print `BOOLCALLBACKEnumCalendarInfoProc(LPWSTRlpCalendarInfoString);`
  * (Windows CE .NET 4.0 and later.; Link Library: Coreloc.lib.) */

@@ -294,3 +294,23 @@ Wine と ReactOS 両方の `winnls.h`(独立した2つの実装が完全一致)�
 Rule")の実例で、`llvm-project` 側のコードを読んでいなければ気づけな
 かった欠落。詳細は `kagurasumusun/llvm-project` 側の
 `docs/WinCE/audit-2026-09-16.md` を参照。
+
+---
+
+## 8. 撤回記録 (2026-09-17 追記): §7 の 19+1 定数追加は証拠不成立として撤回
+
+§7 で「Wine と ReactOS 両方の winnls.h(独立した2つの実装が完全一致)で値を裏取りし、
+19 個全てを追加」と記録した変更(commit 051ee54)は、2026-09-17 に確定した証拠方針
+(根拠は公式公開 CE 資料のみ。第三者実装 — Wine / ReactOS / CeGCC / w32api / mingw —
+は照合・裏取り目的でも採用根拠にしない。Win32 からの ABI 安定性推論も根拠にしない)
+の下では**採用可能な証拠ではない**ため、追加された 20 個の #define
+(LCTYPE 18個 + LOCALE_USER_DEFAULT + LOCALE_SYSTEM_DEFAULT)は
+**include/Winnls.h から撤去した**。§7 の記述は歴史的記録として残し、
+根拠主張(Wine/ReactOS 一致、Win32 NLS ABI 空間の安定性論)は本節により撤回する。
+
+- 撤去対象・証拠状況・件数の確定: `docs/CHANGELOG-audit-2026-09-17.md` §A
+- 恒久レジスタ: `docs/unpublished-constants.tsv`(20 行追加、held 扱い)
+- 再採用が必要になった場合は、撤去された数値を出発点としない**独立した公式ソース
+  調査を別タスクとして**行う(2026-09-17 ユーザー決定)。
+- 下流影響: llvm-project `libcxx/src/support/wince/locale_wince.cpp` は撤去した
+  19 値を消費するため、再整備(task D)まで当該ヘッダに対してコンパイル不能。

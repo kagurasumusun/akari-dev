@@ -586,7 +586,6 @@ EXPORTS
   EnterCriticalSection
   EnumCalendarInfoW
   EnumClipboardFormats
-  EnumDateFormatsW
   EnumDeviceInterfaces
   EnumDevices
   EnumDisplayDevices
@@ -600,8 +599,6 @@ EXPORTS
   EnumPropsExW
   EnumServices
   EnumSystemCodePagesW
-  EnumSystemLocalesW
-  EnumTimeFormatsW
   EnumUILanguagesW
   EnumWindows
   EqualRect

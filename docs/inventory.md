@@ -9709,3 +9709,69 @@ import library（1,792〜10,928 バイト）を生成することを確認した
 世代監査 0 名、配置監査 64 グループ / 846 配置 / 未到達 0。
 網羅監査：ヘッダ未出荷 **1,054**、宣言済み **454**、
 アプリ層の欠落 **163**（保留理由付きで `docs/coverage-blocked.tsv`）。
+
+## M139：NLS 証拠撤回（LOCALE_* 20 値の撤去）と Enum* NLS 4 関数の宣言補完
+
+2026-09-17。証拠方針の確定（公式 CE 資料のみ／第三者実装は照合目的でも
+採用根拠にしない／Win32 ABI 推論を根拠にしない／確認できない値は held）に
+伴う NLS 面の是正。詳細と全ページ ID：`docs/CHANGELOG-audit-2026-09-17.md`。
+
+### 撤去（held 化）
+
+commit 051ee54 が Wine/ReactOS cross-check と Win32 NLS ABI 安定性推論を
+根拠に追加した 20 #define を撤去し、`docs/unpublished-constants.tsv` に
+held 登録：LCTYPE 18 名（LOCALE_SDECIMAL … LOCALE_INEGSEPBYSPACE）＋
+LOCALE_USER_DEFAULT ＋ LOCALE_SYSTEM_DEFAULT。LCTYPE Constants ページは
+4 世代すべて（`_wcesdk_LCTYPE_Constants` / `ms921463` / `ms906223` /
+`ee491958`）名前＋説明のみで数値を印字せず、公式の数値アンカーは
+「Language Identifiers and Locales」の LCID 表（0x0400 = Process Default
+Language を含む）だけ。0x0400 を LOCALE_USER_DEFAULT の名に結び付ける頁、
+0x0800 を LCID 文脈で印字する頁は corpus に存在しない。
+`docs/CHANGELOG-audit-2026-09-16.md` §7 に §8 撤回記録を追記。
+下流：llvm-project `locale_wince.cpp` は 19 値を消費するため task D まで
+当該ヘッダに対しコンパイル不能（意図済み・記録済み）。
+
+### 宣言（すべて公式ページの印字のみから構成）
+
+| 宣言 | ページ（CE5.0 / CE4.2 / CE6.0） | OS | Header | Lib |
+|---|---|---|---|---|
+| `LOCALE_ENUMPROC` typedef | ms905070 引数行 + ms904848 prototype | — | Winnls.h | — |
+| `DATEFMT_ENUMPROC` typedef | ms904724 + ms904740 | — | Winnls.h | — |
+| `TIMEFMT_ENUMPROC` typedef | ms905077 + ms905083 | — | Winnls.h | — |
+| `CALINFO_ENUMPROC` typedef | ms904721 + ms904722 | — | Winnls.h | — |
+| `EnumSystemLocalesW` | ms905070 / ms919238 / ee491192 | CE .NET 4.0+ | Winnls.h | Coreloc.lib |
+| `EnumDateFormatsW` | ms904724 / ms919196 / ee491363 | CE .NET 4.0+ | Winnls.h | Coreloc.lib |
+| `EnumTimeFormatsW` | ms905077 / ms919245 / ee491332 | CE .NET 4.0+ | Winnls.h | Coreloc.lib |
+
+W 綴りの根拠：コールバック 4 ページの「Windows CE supports only the
+Unicode version of this function.」明記＋ LPWSTR プロトタイプ印字
+（EnumSystemCodePagesW と同じ UNICODE_ONLY 規則）。
+
+### held のまま（理由の訂正付き）
+
+`EnumCalendarInfo`（ms904721 / ms919176 / ee491359）：プロトタイプは
+完全に印字されているが、引数型 **CALID / CALTYPE を定義するページが
+どの世代にも存在しない**（カタログ全検索で確認）。
+`docs/undeclared-blocked.tsv` の blocked 理由を旧「CALINFO_ENUMPROC 未定義」
+（M139 で解消済み）から「CALID, CALTYPE 未定義」に訂正。
+
+### def / パイプライン
+
+- `def/coreloc-doc.def` に 3 W 名を追加（37→40、ページの Coreloc.lib 行に
+  従う tier1 帰属）。`def/coredll-doc.def` から同名の tier2 3 行を削除
+  （M110 のアルファベット順解決で文書化帰属が上書きされるのを防ぐ）。
+  `EnumCalendarInfoW` は held のため tier2 に残置（tier2 全体は task B）。
+- `tools/gen-doc-def.py`：UNICODE_ONLY に 4 名、NOT_EXPORTS に NLS/UI
+  コールバック 6 名（Enum*Proc；M121 のプロトタイプ宣言により
+  アプリ実装コールバックが import def に漏れ出すようになったため、
+  M63 waveInProc 判断と同じ規則で遮断）。
+- intl-book 記録「print `` (no compiled prototype)」4 行は
+  **ce-fetch.py の抽出失敗**と判明（ページは原型を印字）。該当コメントを
+  訂正済み。rows.json 再生成で見つかった今回の範囲外の drift
+  （EnumUILanguages 無印/W、BrowseCallbackProc 漏出、accel/coreimm 等）は
+  未修正・記録のみ（CHANGELOG §C-4）。
+
+### 検証
+
+`make check` GREEN（hostcheck 380 ヘッダ × CE 0x420/0x500/0x600、cxxcheck、
+defcheck）。再生成 dry-run との coreloc 差分は既存 drift 1 行のみ。

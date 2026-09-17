@@ -21,7 +21,10 @@ EXPORTS
   CharUpperBuffW
   CompareStringW
   ConvertDefaultLocale
+  EnumDateFormatsW
   EnumSystemCodePagesW
+  EnumSystemLocalesW
+  EnumTimeFormatsW
   EnumUILanguages
   FoldStringW
   GetACP

@@ -97,6 +97,20 @@ UNICODE_ONLY = {
     "FoldString": "FoldStringW",
     "LCMapString": "LCMapStringW",
     "EnumSystemCodePages": "EnumSystemCodePagesW",
+    # NLS locale/date/time enumeration (Coreloc.lib; M139 2026-09-17):
+    # the callback pages EnumLocalesProc ms904848, EnumDateFormatsProc
+    # ms904740, EnumTimeFormatsProc ms905083 and EnumCalendarInfoProc
+    # ms904722 each state "Windows CE supports only the Unicode
+    # version of this function." and print the LPWSTR callback
+    # prototype, so the enumerated exports are the W spellings (same
+    # rule as EnumSystemCodePages above).  EnumCalendarInfo is mapped
+    # for completeness but stays out of the def while the function is
+    # held on its undocumented CALID/CALTYPE parameter types (the
+    # generator's declared-membership check skips it).
+    "EnumSystemLocales": "EnumSystemLocalesW",
+    "EnumDateFormats": "EnumDateFormatsW",
+    "EnumTimeFormats": "EnumTimeFormatsW",
+    "EnumCalendarInfo": "EnumCalendarInfoW",
     # Directory-service user-name query (Coredll.lib): the CE page
     # aa517595 types the buffer LPTSTR and Windows CE is Unicode-only.
     "GetUserNameEx": "GetUserNameExW",
@@ -203,6 +217,22 @@ _DECL_RE = re.compile(
 # Coredll.dll -- so they must not appear in the export def.
 NOT_EXPORTS = {"GetExceptionCode", "GetExceptionInformation",
                "AbnormalTermination",
+               # Application-defined NLS/UI-language callbacks (M139
+               # 2026-09-17): every page below opens with "This
+               # [application-defined] callback function ..." -- the
+               # APPLICATION implements them and passes their address
+               # to the sibling Enum* function, so the Coreloc.lib row
+               # on their Requirements lines describes the Enum*
+               # function's library, not an export of the callback
+               # name (same decision as the M63 waveInProc/waveOutProc
+               # callbacks).  They became def-eligible only when M121
+               # declared their prototypes in the headers.
+               "EnumCalendarInfoProc",   # ms904722
+               "EnumCodePagesProc",      # ms904723
+               "EnumDateFormatsProc",    # ms904740
+               "EnumLocalesProc",        # ms904848
+               "EnumTimeFormatsProc",    # ms905083
+               "EnumUILanguagesProc",    # ms905116
                # CePimCommand: menu add-in entry point that the add-in
                # DLL must define and expose (ms863874) -- a user-side
                # export, not an import (M63 waveInProc/waveOutProc
