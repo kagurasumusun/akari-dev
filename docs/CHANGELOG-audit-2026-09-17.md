@@ -424,9 +424,20 @@ LLVM-WinCE と cellvm-sdk を submodule 消費)を発見し、実パイプライ
   不変性論証を撤回(21 値は UNCONFIRMED・暫定保持・再検証候補と明記)。
   これにより include/ 内の Wine/ReactOS 引用は Winnls.h 撤回記録(歴史記述)
   のみとなる。
-- llvm-project(LLVM-WinCE): wince.h 冒頭契約注記と locale_wince.cpp 設計
-  注記を v2 §2 の方針(WinCE NLS 接続、現状態は暫定フォールバック)に更新
-  (commit 番号は push 後に追記)。
+- llvm-project(LLVM-WinCE、**commit cd55776d2**): wince.h 冒頭契約注記と
+  locale_wince.cpp 設計注記を v2 §2 の方針(WinCE NLS 接続、現状態は暫定
+  フォールバック)に更新。__setlocale の例外メッセージも撤回済み主張
+  (「only the "C" locale exists on Windows CE」)を避けた文言に更新。
+  random.cpp の NLS 相互参照コメントも現状化。検証: locale_wince.cpp /
+  locale.cpp とも cxx_static TU が EXIT=0(clang 22.1.8、arm-pc-wince、
+  cellvm-sdk 由来 sysroot)。
+- **新発見(F-3 に追加)**: libcxx の WinCE 系 TU は <windows.h> を小文字で
+  include する(random.cpp、atomic.cpp、chrono.cpp、fstream.cpp、
+  filesystem/*)。M100 sysroot は Windows.h(文書化綴り)のみ格納するため、
+  runtimes [2/2] のゲート解放時に一括で file-not-found になる潜在問題。
+  cellvm-build には sysroot/gen-include-aliases.py(消費者側エイリアス生成)
+  が既にあり、D-2/runtimes 有効化ターンで「エイリアス生成をパイプラインに
+  組み込む」か「libcxx 側を文書化綴りにする」かを決定する。
 
 ### F-3. 次タスク(優先順)
 
