@@ -112,16 +112,19 @@ typedef RTL_CRITICAL_SECTION CRITICAL_SECTION;
 typedef PRTL_CRITICAL_SECTION PCRITICAL_SECTION;
 typedef PCRITICAL_SECTION LPCRITICAL_SECTION;
 
-/* SecureZeroMemory: writes zero bytes to a buffer without the
- * compiler being able to remove the store (official SecureZeroMemory
- * page; the function pages list Header: Winnt.h). */
-#define SecureZeroMemory(pv, cb) do {                    \
-    volatile unsigned char *_szm_p =                     \
-        (volatile unsigned char *)(pv);                  \
-    size_t _szm_i;                                       \
-    for (_szm_i = 0; _szm_i < (cb); _szm_i++)            \
-        _szm_p[_szm_i] = 0;                              \
-} while (0)
+#if _WIN32_WCE >= 0x0410   /* SecureZeroMemory: documented from CE .NET 4.1 (docs/generation-audit.md) */
+/* ms886803 "SecureZeroMemory (Windows CE 5.0)": page-printed prototype
+ * `PVOID SecureZeroMemory(PVOID ptr, SIZE_T cnt);` (OS Versions:
+ * Windows CE .NET 4.1 and later.; Header: Winnt.h, Windows.h.; Link
+ * Library: Coredll.lib).  Writes zeros to a buffer so that the store
+ * cannot be optimized away; returns the pointer argument.  CE
+ * documents a real Coredll.dll export -- the volatile-loop macro form
+ * of the desktop headers is NOT the CE surface and was removed on
+ * 2026-09-18 (policy v3 section 3: desktop analogy is no CE
+ * evidence).  SIZE_T per the Windef.h note (pointer-sized). */
+AKARI_CE_IMPORT PVOID SecureZeroMemory(PVOID ptr, SIZE_T cnt) AKARI_CE_NAME(SecureZeroMemory);
+
+#endif /* _WIN32_WCE >= 0x0410 (SecureZeroMemory) */
 
 /* ms889597 "FILE_NOTIFY_INFORMATION (Windows CE 5.0)": record
  * describing one file-system change, returned by

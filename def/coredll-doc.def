@@ -3,204 +3,70 @@
 ; Copyright (c) 2026 Akari API contributors
 ; SPDX-License-Identifier: MIT
 ;
-; Two evidence tiers (docs/clean-room.md section 3):
+; Evidence policy: docs/clean-room.md v3 (2026-09-18).  Every entry is
+; grounded in the official Microsoft Windows CE documentation preserved
+; in kagurasumusun/wince-docs-corpus:
 ;
-; 1. DOC-DERIVED -- each name appears on an official Microsoft CE
-;    documentation page whose Requirements row names Coredll.lib as
-;    the link library (tools/ce-manifest.py + tools/ce-fetch.py +
-;    tools/ce3-collect.py harvests; docs/inventory.md records the
-;    pages).  Entries added in the M104 pass: names documented as
-;    Coredll.lib and declared in include/ that the original
-;    generation missed (33 names).
-; 2. EXPORT-SURFACE-VERIFIED -- names observed on the device-dump-
-;    audited coredll import surfaces of the CE 4/5/6 sysroot
-;    (corpus coredll/coredll4.def, coredll.def, coredll6.def,
-;    coredll6-x86.def; clean-room.md 3.2 observable facts).  This
-;    tier closes the gap between the documentation harvest and the
-;    real coredll surface, including the CRT exports coredll.dll
-;    provides (75 C++ mangled names).
+; 1. DOC-DERIVED -- the name (or, for Unicode-only exports, the generic
+;    name without the W suffix) appears on an official CE documentation
+;    page whose Requirements row / APILocation metadata names
+;    Coredll.lib (Coredll.lib pages scanned across the CE .NET /
+;    CE 5.0 / CE 6.0 books on 2026-09-18; page ids recorded in
+;    docs/def-audit-coredll-2026-09-18.tsv).
+; 2. PENDING-REGROUNDING -- the name is the exact title of a page in the
+;    official per-version TOC catalogs whose Requirements row has not
+;    been harvested yet (page queued in wince-docs-corpus
+;    urls/to-fetch-mslearn.txt); the entry stays until the page is read
+;    and either confirms Coredll.lib or drops the name (ledger:
+;    docs/def-audit-coredll-2026-09-18.tsv).
 ;
-; No shared-source/VS/Platform-Builder source was used.  Ordinals
-; are not published; entries are name-only.
+; The former EXPORT-SURFACE-VERIFIED tier (names taken from
+; device-dump-audited import surfaces) was REMOVED on 2026-09-18:
+; dump-derived information is out of scope under policy v3 section 3
+; (882 entries, ledgered in the audit file).  Ordinals are not
+; published; entries are name-only.
 LIBRARY coredll.dll
 EXPORTS
 
-  ??0exception@std@@QAA@ABV01@@Z
-  ??0exception@std@@QAA@PBD@Z
-  ??0exception@std@@QAA@XZ
-  ??0exception@std@@QAE@ABV01@@Z
-  ??0exception@std@@QAE@PBD@Z
-  ??0exception@std@@QAE@XZ
-  ??0type_info@@AAA@ABV0@@Z
-  ??0type_info@@AAE@ABV0@@Z
-  ??1exception@std@@UAA@XZ
-  ??1exception@std@@UAE@XZ
-  ??1type_info@@UAA@XZ
-  ??1type_info@@UAE@XZ
-  ??2@YAPAXI@Z
-  ??2@YAPAXIABUnothrow_t@std@@@Z
-  ??3@YAXPAX@Z
-  ??3@YAXPAXABUnothrow_t@std@@@Z
-  ??4exception@std@@QAAAAV01@ABV01@@Z
-  ??4exception@std@@QAEAAV01@ABV01@@Z
-  ??4type_info@@AAAAAV0@ABV0@@Z
-  ??4type_info@@AAEAAV0@ABV0@@Z
-  ??8type_info@@QBAHABV0@@Z
-  ??8type_info@@QBEHABV0@@Z
-  ??9type_info@@QBAHABV0@@Z
-  ??9type_info@@QBEHABV0@@Z
-  ??_7exception@std@@6B@
-  ??_7type_info@@6B@
-  ??_L@YAXPAXIHP6AX0@Z1@Z
-  ??_L@YGXPAXIHP6EX0@Z1@Z
-  ??_M@YAXPAXIHP6AX0@Z@Z
-  ??_M@YGXPAXIHP6EX0@Z@Z
-  ??_N@YAXPAXIHP6AX0@Z1@Z
-  ??_N@YGXPAXIHP6EX0@Z1@Z
-  ??_U@YAPAXI@Z
-  ??_U@YAPAXIABUnothrow_t@std@@@Z
-  ??_V@YAXPAX@Z
-  ??_V@YAXPAXABUnothrow_t@std@@@Z
-  ??__C@YAXPAX0IHP6AX00@ZP6AX0@Z@Z
-  ??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
-  ??__D@YAXPAX0IHP6AX00@ZP6AX0@Z@Z
-  ??__D@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
-  ?CloseEnhMetaFile@@YAPAUHENHMETAFILE__@@PAUHDC__@@@Z
-  ?CreateEnhMetaFileW@@YAPAUHDC__@@PAU1@PBGPBUtagRECT@@1@Z
-  ?DefaultImcGet@@YAKXZ
-  ?DefaultImeWndGet@@YAPAUHWND__@@XZ
-  ?DeleteEnhMetaFile@@YAHPAUHENHMETAFILE__@@@Z
-  ?ImmGetUIClassName@@YAPAGXZ
-  ?ImmProcessKey@@YAKPAUHWND__@@IJKI@Z
-  ?ImmSetActiveContext@@YAHPAUHWND__@@KH@Z
-  ?ImmTranslateMessage@@YAHPAUHWND__@@IIJHIIPAH@Z
-  ?PlayEnhMetaFile@@YAHPAUHDC__@@PAUHENHMETAFILE__@@PBUtagRECT@@@Z
-  ?SetObjectOwner@@YAHPAX0@Z
-  ?_Nomemory@std@@YAXXZ
-  ?_Xlen@std@@YAXXZ
-  ?_Xran@std@@YAXXZ
-  ?__set_inconsistency@@YAP6AXXZP6AXXZ@Z
-  ?_inconsistency@@YAXXZ
-  ?_query_new_handler@@YAP6AHI@ZXZ
-  ?_query_new_mode@@YAHXZ
-  ?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z
-  ?_set_new_mode@@YAHH@Z
-  ?before@type_info@@QBAHABV1@@Z
-  ?before@type_info@@QBEHABV1@@Z
-  ?name@type_info@@QBAPBDXZ
-  ?name@type_info@@QBEPBDXZ
-  ?nothrow@std@@3Unothrow_t@1@B
-  ?raw_name@type_info@@QBAPBDXZ
-  ?raw_name@type_info@@QBEPBDXZ
-  ?set_new_handler@@YAP6AXXZP6AXXZ@Z
-  ?set_terminate@std@@YAP6AXXZP6AXXZ@Z
-  ?set_unexpected@std@@YAP6AXXZP6AXXZ@Z
-  ?terminate@std@@YAXXZ
-  ?uncaught_exception@std@@YA_NXZ
-  ?unexpected@std@@YAXXZ
-  ?what@exception@std@@UBAPBDXZ
-  ?what@exception@std@@UBEPBDXZ
-  ADBAddAccountToGroup
-  ADBCreateAccount
-  ADBDeleteAccount
-  ADBEnumAccounts
-  ADBGetAccountProperty
-  ADBGetAccountSecurityInfo
-  ADBRemoveAccountFromGroup
-  ADBSetAccountProperties
-  AFDSelect
-  AFDSocket
-  AFS_CloseAllFileHandles
-  AFS_CreateDirectoryW
-  AFS_CreateFileW
-  AFS_DeleteFileW
-  AFS_FindFirstChangeNotificationW
-  AFS_FindFirstFileW
-  AFS_FsIoControlW
-  AFS_GetDiskFreeSpace
-  AFS_GetFileAttributesW
-  AFS_GetFileSecurityW
-  AFS_MoveFileW
-  AFS_NotifyMountedFS
-  AFS_PrestoChangoFileName
-  AFS_RegisterFileSystemFunction
-  AFS_RemoveDirectoryW
-  AFS_SetFileAttributesW
-  AFS_SetFileSecurityW
-  AFS_Unmount
-  A_SHAFinal
-  A_SHAInit
-  A_SHAUpdate
   AbortDoc
-  AccessibilitySoundSentryEvent
   ActivateDevice
   ActivateDeviceEx
   ActivateKeyboardLayout
   ActivateService
-  AddEventAccess
-  AddFontMemResourceEx
   AddFontResourceW
-  AddTrackedItem
   AddVectoredExceptionHandler
   AdjustWindowRectEx
   AdvertiseInterface
   AllKeys
   AllocPhysMem
   AlphaBlend
-  AnimateRects
   AppendMenuW
-  AttachDebugger
-  AttachHdstub
-  AttachOsAxsT0
-  AttachOsAxsT1
-  AudioUpdateFromRegistry
-  BackupEventLogW
   BatteryDrvrGetLevels
   BatteryDrvrSupportsChangeNotification
   BatteryGetLifeTimeInfo
   BatteryNotifyOfTimeChange
   BeginDeferWindowPos
   BeginPaint
-  BinaryCompress
-  BinaryDecompress
   BitBlt
   BringWindowToTop
   CacheRangeFlush
   CacheSync
-  CallNextHookEx
   CallWindowProcW
   CaptureDumpFileOnDevice
-  CaptureDumpFileOnDevice2
-  CeAccessCheck
-  CeAddDatabaseProps
-  CeAddSyncPartner
   CeAllocAsynchronousBuffer
   CeAllocDuplicateBuffer
-  CeAttachCustomTrackingData
-  CeBeginSyncSession
-  CeBeginTransaction
   CeCallUserProc
-  CeCertVerify
   CeChangeDatabaseLCID
   CeClearReplChangeBitsEx
   CeClearUserNotification
   CeCloseCallerBuffer
-  CeClosePolicy
-  CeConvertSDToStr
-  CeConvertStrToSD
   CeCreateDatabase
   CeCreateDatabaseEx
   CeCreateDatabaseEx2
-  CeCreateDatabaseWithProps
-  CeCreateSession
-  CeCreateToken
   CeCreateTokenFromAccount
   CeDeleteDatabase
   CeDeleteDatabaseEx
   CeDeleteRecord
-  CeDuplicateToken
-  CeEndSyncSession
-  CeEndTransaction
   CeEnumDBVolumes
   CeEventHasOccurred
   CeFindCloseRegChange
@@ -218,28 +84,15 @@ EXPORTS
   CeFreeNotification
   CeFsIoControlW
   CeGenRandom
+  CeGetCacheInfo
   CeGetCallerTrust
   CeGetCanonicalPathNameW
-  CeGetChangedRecordCnt
-  CeGetChangedRecords
   CeGetCurrentTrust
-  CeGetCustomTrackingData
   CeGetDBInformationByHandle
-  CeGetDatabaseProps
-  CeGetDatabaseSession
   CeGetFileNotificationInfo
-  CeGetGroupSID
-  CeGetModuleHeapInfo
-  CeGetModuleInfo
-  CeGetNotificationThreadId
-  CeGetOwnerSID
-  CeGetPolicyInfo
-  CeGetProcessTrust
-  CeGetPropChangeInfo
   CeGetRandomSeed
   CeGetRawTime
   CeGetRawTimeOffset
-  CeGetRecordChangeInfo
   CeGetReplChangeBitsEx
   CeGetReplChangeMask
   CeGetReplOtherBitsEx
@@ -252,7 +105,6 @@ EXPORTS
   CeHandleAppNotifications
   CeHeapCreate
   CeImpersonateCurrentProcess
-  CeImpersonateToken
   CeLogData
   CeLogGetZones
   CeLogInterrupt
@@ -261,11 +113,7 @@ EXPORTS
   CeLogReSync
   CeLogSetZones
   CeLogThreadMigrate
-  CeMapArgumentArray
-  CeMarkRecord
-  CeModuleJit
   CeMountDBVol
-  CeMountDBVolEx
   CeOidGetInfo
   CeOidGetInfoEx
   CeOidGetInfoEx2
@@ -273,62 +121,47 @@ EXPORTS
   CeOpenDatabase
   CeOpenDatabaseEx
   CeOpenDatabaseEx2
-  CeOpenDatabaseInSession
-  CeOpenFileHandle
-  CeOpenModuleByPolicy
-  CeOpenPolicy
-  CeOpenStream
-  CePolicyCheck
-  CePolicyCheckByHandle
-  CePrivilegeCheck
-  CePurgeTrackingData
-  CePurgeTrackingGenerations
   CeReadRecordProps
   CeReadRecordPropsEx
   CeRegGetInfo
   CeRegGetNotificationInfo
   CeRegTestSetValueW
-  CeRegisterFileSystemNotification
   CeRegisterReplNotification
   CeRemoteHeapCreate
   CeRemoteHeapTranslatePointer
-  CeRemoveDatabaseProps
-  CeRemoveDatabaseTracking
-  CeRemoveFontResource
-  CeRemoveSyncPartner
-  CeReportFault
   CeResyncFilesys
-  CeRevertToSelf
   CeRunAppAtEvent
   CeRunAppAtTime
-  CeSafeCopyMemory
   CeSeekDatabase
   CeSeekDatabaseEx
   CeSetDatabaseInfo
   CeSetDatabaseInfoEx
   CeSetDatabaseInfoEx2
-  CeSetDirectCall
-  CeSetExtendedPdata
+  CeSetMemoryAttributes
   CeSetPowerOnEvent
   CeSetProcessVersion
   CeSetReplChangeBitsEx
   CeSetReplChangeMask
   CeSetReplOtherBitsEx
-  CeSetSessionOption
   CeSetThreadPriority
   CeSetThreadQuantum
   CeSetUserNotification
   CeSetUserNotificationEx
-  CeStreamRead
-  CeStreamSaveChanges
-  CeStreamSeek
-  CeStreamSetSize
-  CeStreamWrite
   CeSvcAdd
+  CeSvcClose
+  CeSvcDelete
+  CeSvcDeleteVal
+  CeSvcEnumProfiles
+  CeSvcGetBinary
+  CeSvcGetDword
+  CeSvcGetString
+  CeSvcOpen
+  CeSvcOpenEx
   CeSvcQueryInfo
   CeSvcRemove
-  CeTrackDatabase
-  CeTrackProperty
+  CeSvcSetBinary
+  CeSvcSetDword
+  CeSvcSetString
   CeUnmountDBVol
   CeVirtualSharedAlloc
   CeWriteRecordProps
@@ -349,28 +182,15 @@ EXPORTS
   ChildWindowFromPoint
   ClearCommBreak
   ClearCommError
-  ClearEventLogW
   ClientToScreen
   ClipCursor
-  CloseAllDeviceHandles
-  CloseAllFileHandles
-  CloseAllServiceHandles
   CloseClipboard
-  CloseEnhMetaFile
-  CloseEventLog
   CloseGestureInfoHandle
   CloseHandle
   CloseMsgQueue
-  CloseProcOE
-  ComThreadBaseFunc
   CombineRgn
-  CompactAllHeaps
   CompareFileTime
   CompareStringW
-  ConnectDebugger
-  ConnectHdstub
-  ConnectOsAxsT0
-  ConnectOsAxsT1
   ContinueDebugEvent
   ConvertDefaultLocale
   ConvertThreadToFiber
@@ -382,19 +202,15 @@ EXPORTS
   CreateAPISet
   CreateAcceleratorTableW
   CreateBitmap
-  CreateBitmapFromPointer
   CreateCaret
   CreateCompatibleBitmap
   CreateCompatibleDC
-  CreateCrit
   CreateCursor
   CreateDCW
   CreateDIBPatternBrushPt
   CreateDIBSection
-  CreateDeviceHandle
   CreateDialogIndirectParamW
   CreateDirectoryW
-  CreateEnhMetaFileW
   CreateEnrollmentConfigDialog
   CreateEventW
   CreateFiber
@@ -405,7 +221,6 @@ EXPORTS
   CreateFontIndirectW
   CreateHandler
   CreateIconIndirect
-  CreateLocaleView
   CreateMenu
   CreateMsgQueue
   CreateMutexW
@@ -420,7 +235,6 @@ EXPORTS
   CreateRectRgn
   CreateRectRgnIndirect
   CreateSemaphoreW
-  CreateServiceHandle
   CreateSolidBrush
   CreateStaticMapping
   CreateThread
@@ -474,58 +288,22 @@ EXPORTS
   CryptSignHashW
   CryptUnprotectData
   CryptVerifySignatureW
-  DBCanonicalize
   DDKReg_GetIsrInfo
   DDKReg_GetPciInfo
   DDKReg_GetWindowInfo
-  DPA_Clone
-  DPA_Create
-  DPA_CreateEx
-  DPA_DeleteAllPtrs
-  DPA_DeletePtr
-  DPA_Destroy
-  DPA_DestroyCallback
-  DPA_EnumCallback
   DPA_GetPtr
-  DPA_GetPtrIndex
-  DPA_Grow
-  DPA_InsertPtr
-  DPA_Search
-  DPA_SetPtr
-  DPA_Sort
-  DSA_Clone
-  DSA_Create
-  DSA_DeleteAllItems
-  DSA_DeleteItem
-  DSA_Destroy
-  DSA_DestroyCallback
-  DSA_EnumCallback
-  DSA_GetItem
-  DSA_GetItemPtr
-  DSA_Grow
-  DSA_InsertItem
-  DSA_Search
-  DSA_SetItem
-  DSA_SetRange
-  DSA_Sort
   DataHandler
   DeactivateDevice
   DebugActiveProcess
   DebugActiveProcessStop
   DebugBreak
-  DebugNotify
-  DebugSetProcessKillOnExit
-  DecompressBinaryBlock
   DefDlgProcW
   DefWindowProcW
-  DefaultImcGet
-  DefaultImeWndGet
   DeferWindowPos
   DeinitLAP
   DeleteAndRenameFile
   DeleteCriticalSection
   DeleteDC
-  DeleteEnhMetaFile
   DeleteFiber
   DeleteFileW
   DeleteHandler
@@ -534,12 +312,7 @@ EXPORTS
   DeletePartition
   DeleteStaticMapping
   DeleteTicket
-  DeleteTrackedItem
-  DeregisterAFS
-  DeregisterAFSName
-  DeregisterBluetoothCOMPort
   DeregisterDevice
-  DeregisterEventSource
   DeregisterService
   DestroyAcceleratorTable
   DestroyCaret
@@ -550,29 +323,29 @@ EXPORTS
   DeviceIoControl
   DevicePowerNotify
   DialogBoxIndirectParamW
-  DisableCaretSystemWide
   DisableGestures
-  DisablePixelDoubling
   DisableThreadLibraryCalls
   DisassociateSession
   DismountPartition
   DismountStore
   DispatchMessageW
+  DrWatsonClear
+  DrWatsonFlush
+  DrWatsonGetSize
+  DrWatsonReadData
+  DrWatsonWriteData
   DrawEdge
   DrawFocusRect
   DrawFrameControl
   DrawIconEx
   DrawMenuBar
   DrawTextW
-  DumpFileSystemHeap
-  DumpKCallProfile
   DuplicateHandle
   EditSession
   EditorDeregister
   EditorInitialize
   Ellipse
   EmptyClipboard
-  EnableCaretSystemWide
   EnableEUDC
   EnableGestures
   EnableHardwareKeyboard
@@ -604,7 +377,6 @@ EXPORTS
   EqualRect
   EqualRgn
   EscapeCommFunction
-  EventModify
   ExcludeClipRect
   ExitProcess
   ExitThread
@@ -612,13 +384,11 @@ EXPORTS
   ExtEscape
   ExtTextOutW
   ExtractIconExW
-  ExtractResource
   FileSystemPowerFunction
   FileTimeToLocalFileTime
   FileTimeToSystemTime
   FillRect
   FillRgn
-  FilterTrackedItem
   FindClose
   FindCloseChangeNotification
   FindClosePartition
@@ -640,10 +410,8 @@ EXPORTS
   FlushFileBuffers
   FlushInstructionCache
   FlushViewOfFile
-  FlushViewOfFileMaybe
   FoldStringW
   ForcePageout
-  ForcePixelDoubling
   FormatMessageW
   FormatPartition
   FormatPartitionEx
@@ -655,20 +423,14 @@ EXPORTS
   FreePhysMem
   Gesture
   GetACP
-  GetAPIAddress
   GetActiveWindow
   GetAnimateMessageInfo
-  GetAssociatedMenu
   GetAsyncKeyState
   GetAsyncShiftFlags
   GetBkColor
   GetBkMode
   GetCPInfo
-  GetCRTFlags
-  GetCRTStorageEx
-  GetCallStackSnapshot
   GetCallerProcess
-  GetCallerProcessIndex
   GetCallerVMProcessId
   GetCapture
   GetCaretBlinkTime
@@ -713,12 +475,9 @@ EXPORTS
   GetDIBColorTable
   GetDateFormatW
   GetDesktopWindow
-  GetDeviceByIndex
   GetDeviceCaps
-  GetDeviceHandleFromContext
   GetDeviceInformationByDeviceHandle
   GetDeviceInformationByFileHandle
-  GetDeviceKeys
   GetDevicePower
   GetDeviceUniqueID
   GetDialogBaseUnits
@@ -733,12 +492,10 @@ EXPORTS
   GetEventData
   GetExitCodeProcess
   GetExitCodeThread
-  GetFSHeapInfo
   GetFiberData
   GetFileAttributesExW
   GetFileAttributesW
   GetFileInformationByHandle
-  GetFileSecurityW
   GetFileSize
   GetFileTime
   GetFileVersionInfoSizeW
@@ -751,18 +508,13 @@ EXPORTS
   GetForegroundWindow
   GetGestureExtraArguments
   GetGestureInfo
-  GetGweApiSetTables
-  GetHandleServerId
-  GetHeapSnapshot
   GetIconInfo
   GetIdleTime
-  GetKPhys
   GetKeyState
   GetKeyboardLayout
   GetKeyboardLayoutList
   GetKeyboardLayoutNameW
   GetKeyboardStatus
-  GetKeyboardTarget
   GetKeyboardType
   GetLastError
   GetLayout
@@ -773,7 +525,6 @@ EXPORTS
   GetMessageQueueReadyTimeStamp
   GetMessageSource
   GetMessageW
-  GetMessageWNoWait
   GetModuleFileNameW
   GetModuleHandleW
   GetModuleInformation
@@ -784,7 +535,6 @@ EXPORTS
   GetNearestPaletteIndex
   GetNextDlgGroupItem
   GetNextDlgTabItem
-  GetNlsTables
   GetNumberFormatW
   GetOEMCP
   GetObjectType
@@ -792,7 +542,6 @@ EXPORTS
   GetOpenClipboardWindow
   GetOpenFileNameW
   GetOutlineTextMetricsW
-  GetOverlappedResult
   GetOwnerProcess
   GetPaletteEntries
   GetParent
@@ -801,31 +550,17 @@ EXPORTS
   GetPasswordStatus
   GetPixel
   GetPriorityClipboardFormat
-  GetPrivateCallbacks
-  GetProcAddrBits
-  GetProcAddressA
-  GetProcAddressInProcess
   GetProcAddressW
-  GetProcFromPtr
-  GetProcName
   GetProcessHeap
-  GetProcessIDFromIndex
-  GetProcessId
-  GetProcessIdOfThread
-  GetProcessIndexFromID
   GetProcessVersion
   GetProp
   GetPropW
   GetQueueStatus
   GetROP2
-  GetRealTime
   GetRegionData
   GetRgnBox
-  GetRomFileBytes
-  GetRomFileInfo
   GetSaveFileNameW
   GetScrollInfo
-  GetServiceByIndex
   GetServiceHandle
   GetStdioPathW
   GetStockObject
@@ -861,7 +596,6 @@ EXPORTS
   GetTextMetricsW
   GetThreadCallStack
   GetThreadContext
-  GetThreadId
   GetThreadPriority
   GetThreadTimes
   GetTickCount
@@ -888,20 +622,15 @@ EXPORTS
   GetWindowRgn
   GetWindowTextLengthW
   GetWindowTextW
-  GetWindowTextWDirect
   GetWindowThreadProcessId
-  GiveKPhys
   GlobalAddAtomW
   GlobalDeleteAtom
   GlobalFindAtomW
   GlobalMemoryStatus
   GradientFill
-  GwesPowerDown
   GwesPowerOffSystem
-  GwesPowerUp
   HandleBlob
   HeapAlloc
-  HeapAllocTrace
   HeapCompact
   HeapCreate
   HeapDestroy
@@ -914,7 +643,6 @@ EXPORTS
   ImageList_AddMasked
   ImageList_BeginDrag
   ImageList_Copy
-  ImageList_CopyDitherImage
   ImageList_Create
   ImageList_Destroy
   ImageList_DragEnter
@@ -942,7 +670,6 @@ EXPORTS
   ImageList_SetIconSize
   ImageList_SetImageCount
   ImageList_SetOverlayImage
-  ImmActivateLayout
   ImmAssociateContext
   ImmAssociateContextEx
   ImmConfigureIMEW
@@ -951,7 +678,6 @@ EXPORTS
   ImmDestroyContext
   ImmDestroyIMCC
   ImmDisableIME
-  ImmEnableIME
   ImmEnumRegisterWordW
   ImmEscapeW
   ImmGenerateMessage
@@ -972,59 +698,37 @@ EXPORTS
   ImmGetIMCCSize
   ImmGetIMCLockCount
   ImmGetIMEFileNameW
-  ImmGetImcInfo
   ImmGetImeMenuItemsW
-  ImmGetKeyboardLayout
   ImmGetOpenStatus
   ImmGetProperty
   ImmGetRegisterWordStyleW
   ImmGetStatusWindowPos
-  ImmGetUIClassName
   ImmGetVirtualKey
   ImmIsIME
   ImmIsUIMessageW
   ImmLockIMC
   ImmLockIMCC
   ImmNotifyIME
-  ImmProcessKey
   ImmReSizeIMCC
   ImmRegisterWordW
   ImmReleaseContext
-  ImmRequestMessageW
   ImmSIPanelState
-  ImmSendNotification
-  ImmSetActiveContext
   ImmSetCandidateWindow
   ImmSetCompositionFontW
   ImmSetCompositionStringW
   ImmSetCompositionWindow
   ImmSetConversionStatus
   ImmSetHotKey
-  ImmSetImeWndIMC
   ImmSetOpenStatus
   ImmSetStatusWindowPos
   ImmSimulateHotKey
-  ImmTranslateMessage
   ImmUnlockIMC
   ImmUnlockIMCC
   ImmUnregisterWordW
-  Imm_DllEntry
   InSendMessage
   InflateRect
-  InitLocale
   InitializeCriticalSection
-  InitializeUsrCoredllCallbacks
-  InputDebugCharW
   InsertMenuW
-  IntChainHandlerIoControl
-  Int_CloseHandle
-  Int_CreateEventW
-  Int_HeapAlloc
-  Int_HeapCreate
-  Int_HeapDestroy
-  Int_HeapFree
-  Int_HeapReAlloc
-  Int_HeapSize
   InterlockedCompareExchange
   InterlockedCompareExchangePointer
   InterlockedDecrement
@@ -1044,7 +748,6 @@ EXPORTS
   InvertRect
   IsAPIReady
   IsBadCodePtr
-  IsBadPtr
   IsBadReadPtr
   IsBadWritePtr
   IsChild
@@ -1053,27 +756,17 @@ EXPORTS
   IsDBCSLeadByteEx
   IsDialogMessageW
   IsDlgButtonChecked
-  IsEncryptionPermitted
-  IsExiting
-  IsForcePixelDoubling
   IsNamedEventSignaled
-  IsPrimaryThread
-  IsProcessDying
   IsProcessorFeaturePresent
   IsRectEmpty
-  IsSystemFile
   IsValidCodePage
   IsValidLocale
   IsWindow
   IsWindowEnabled
   IsWindowVisible
-  KernExtractIcons
   KernelIoControl
   KernelLibIoControl
   KeybdGetDeviceInfo
-  KeybdInitStates
-  KeybdVKeyToUnicode
-  KillAllOtherThreads
   KillTimer
   LAPCreateEnrollmentConfigDialog
   LASSClose
@@ -1081,7 +774,6 @@ EXPORTS
   LASSGetValue
   LASSReloadConfig
   LCMapStringW
-  LeaveCritSec
   LeaveCriticalSection
   LineTo
   LoadAcceleratorsW
@@ -1102,35 +794,22 @@ EXPORTS
   LoadResource
   LoadStringW
   LocalAlloc
-  LocalAllocInProcess
-  LocalAllocTrace
   LocalFileTimeToFileTime
   LocalFree
-  LocalFreeInProcess
   LocalReAlloc
   LocalSize
-  LocalSizeInProcess
-  LockAPIHandle
-  LockEventLog
   LockFileEx
   LockPages
   LockResource
-  MD5Final
-  MD5Init
-  MD5Update
-  MainThreadBaseFunc
   MapCallerPtr
   MapDialogRect
-  MapPtrToProcWithSize
   MapPtrToProcess
-  MapPtrUnsecure
   MapViewOfFile
   MapVirtualKeyW
   MapWindowPoints
   MaskBlt
   MatchTarget
   MatchUser
-  MatchesWildcardMask
   MessageBeep
   MessageBoxW
   MonitorFromPoint
@@ -1146,20 +825,14 @@ EXPORTS
   NKCreateStaticMapping
   NKDbgPrintfW
   NKForceCleanBoot
-  NKTerminateThread
-  NKvDbgPrintfW
   NLedGetDeviceInfo
   NLedSetDevice
-  NPXNPHandler
-  NotSystemParametersInfoI
-  NotifyForceCleanboot
   NotifyWinUserSystem
   OffsetRect
   OffsetRgn
   OffsetViewportOrgEx
   OpenClipboard
   OpenDeviceKey
-  OpenEventLogW
   OpenEventW
   OpenMsgQueue
   OpenPartition
@@ -1167,37 +840,14 @@ EXPORTS
   OpenStore
   OpenThread
   OpenWatchDogTimer
-  OtherThreadsRunning
   OutputDebugStringW
-  PPSHRestart
-  PSLNotify
   PageOutModule
   PatBlt
   PeekMessageW
-  PegClearUserNotification
-  PegCreateDatabase
-  PegDeleteDatabase
-  PegDeleteRecord
-  PegFindFirstDatabase
-  PegFindNextDatabase
-  PegGetUserNotificationPreferences
-  PegHandleAppNotifications
-  PegOidGetInfo
-  PegOpenDatabase
-  PegReadRecordProps
-  PegRemoveFontResource
-  PegRunAppAtEvent
-  PegRunAppAtTime
-  PegSeekDatabase
-  PegSetDatabaseInfo
-  PegSetUserNotification
-  PegWriteRecordProps
-  PerformCallBack4
   PlatformManageSystemPower
   PlatformMapPowerStateHint
   PlatformResumeSystem
   PlatformValidatePMRegistry
-  PlayEnhMetaFile
   PlaySoundW
   Polygon
   Polyline
@@ -1207,27 +857,19 @@ EXPORTS
   PostThreadMessageW
   PowerOffSystem
   PowerPolicyNotify
-  PrepareThreadExit
-  PrintTrackedItem
-  ProcessDetachAllDLLs
   ProfileCaptureStatus
   ProfileStart
   ProfileStartEx
   ProfileStop
-  ProfileSyscall
   PtInRect
   PtInRegion
   PulseEvent
   PurgeComm
-  QASetWindowsJournalHook
-  QAUnhookWindowsJournalHook
-  QueryAPISetID
   QueryGestures
   QueryInfoSession
   QueryInstructionSet
   QueryPerformanceCounter
   QueryPerformanceFrequency
-  REL_UDriverProcIoControl
   RaiseException
   Random
   RasDeleteEntry
@@ -1240,25 +882,19 @@ EXPORTS
   RasGetDispPhoneNumW
   RasGetEapConnectionData
   RasGetEapUserData
-  RasGetEntryDevConfig
   RasGetEntryDialParams
   RasGetEntryProperties
   RasGetLinkStatistics
   RasGetProjectionInfoW
   RasHangUp
-  RasHangup
   RasIOControl
   RasRenameEntry
   RasSetEapConnectionData
   RasSetEapUserData
-  RasSetEntryDevConfig
   RasSetEntryDialParams
   RasSetEntryProperties
   RasValidateEntryName
-  ReadEventLogRaw
   ReadFile
-  ReadFileScatter
-  ReadFileWithSeek
   ReadMsgQueue
   ReadMsgQueueEx
   ReadProcessMemory
@@ -1267,9 +903,7 @@ EXPORTS
   RectInRegion
   RectVisible
   Rectangle
-  RectangleAnimation
   RedrawWindow
-  RefreshKernelAlarm
   RefreshWatchDogTimer
   RegCloseKey
   RegCloseKeyW
@@ -1282,34 +916,26 @@ EXPORTS
   RegFlushKey
   RegFlushKeyW
   RegOpenKeyExW
-  RegOpenProcessKey
   RegQueryInfoKeyW
   RegQueryValueExW
   RegReplaceKey
   RegRestoreFile
   RegSaveKey
   RegSetValueExW
-  RegisterAFSEx
-  RegisterAFSName
   RegisterAPISet
-  RegisterBluetoothCOMPort
   RegisterClassW
   RegisterClipboardFormatW
   RegisterDbgZones
-  RegisterDefaultGestureHandler
   RegisterDesktop
   RegisterDevice
   RegisterDirectMethods
   RegisterEditor
-  RegisterEventSourceW
   RegisterGesture
   RegisterHotKey
   RegisterPowerRelationship
-  RegisterSIPanel
   RegisterService
   RegisterTaskBar
   RegisterTaskBarEx
-  RegisterTrackedItem
   RegisterWindowMessageW
   RegistryBatchNotification
   RegistryCloseNotification
@@ -1324,23 +950,13 @@ EXPORTS
   RegistrySetString
   RegistryStopNotification
   RegistryTestExchangeDWORD
-  ReinitLocale
   ReleaseCapture
   ReleaseDC
   ReleaseMutex
   ReleasePowerRelationship
   ReleasePowerRequirement
   ReleaseSemaphore
-  RemoteHeapAlloc
-  RemoteHeapFree
-  RemoteHeapReAlloc
-  RemoteHeapSize
-  RemoteLocalAlloc
-  RemoteLocalFree
-  RemoteLocalReAlloc
-  RemoteLocalSize
   RemoveDirectoryW
-  RemoveFontMemResourceEx
   RemoveFontResourceW
   RemoveMenu
   RemoveProp
@@ -1354,7 +970,6 @@ EXPORTS
   ReplGetOidStatus
   ReplGetSyncState
   ReplOpenSync
-  ReportEventW
   ReportFault
   RequestBluetoothNotifications
   RequestDeviceNotifications
@@ -1369,35 +984,19 @@ EXPORTS
   RestoreDC
   ResumeThread
   RoundRect
-  RtlDispatchException
   SHAddToRecentDocs
-  SHChangeNotifyRegisterI
-  SHCloseAppsI
-  SHCreateExplorerInstance
   SHCreateShortcut
   SHCreateShortcutEx
-  SHDoneButtonI
-  SHFileNotifyFreeI
-  SHFileNotifyRemoveI
-  SHGetAppKeyAssocI
   SHGetFileInfo
   SHGetShortcutTarget
   SHGetSpecialFolderPath
   SHLoadDIBitmap
-  SHLoadIndirectString
-  SHNotificationAddI
-  SHNotificationGetDataI
-  SHNotificationRemoveI
-  SHNotificationUpdateI
-  SHSetAppKeyWndAssocI
-  SHSetNavBarTextI
   SHShowOutOfMemory
-  SHSipPreferenceI
   SaveDC
   ScreenToClient
   ScrollDC
   ScrollWindowEx
-  SecureWipeAllVolumes
+  SecureZeroMemory
   SelectClipRgn
   SelectObject
   SelectPalette
@@ -1410,11 +1009,9 @@ EXPORTS
   ServiceClosePort
   ServiceIoControl
   ServiceUnbindPorts
-  SetACP
   SetAPIErrorHandler
   SetAbortProc
   SetActiveWindow
-  SetAssociatedMenu
   SetBitmapBits
   SetBkColor
   SetBkMode
@@ -1430,7 +1027,6 @@ EXPORTS
   SetCommMask
   SetCommState
   SetCommTimeouts
-  SetCriticalProcess
   SetCurrentUser
   SetCursor
   SetCursorPos
@@ -1439,37 +1035,24 @@ EXPORTS
   SetDaylightTime
   SetDbgZone
   SetDevicePower
-  SetDialogAutoScrollBar
   SetDlgItemInt
   SetDlgItemTextW
   SetEndOfFile
   SetEvent
   SetEventData
-  SetExceptionHandler
   SetFileAttributesW
   SetFilePointer
-  SetFileSecurityW
   SetFileTime
   SetFocus
   SetForegroundWindow
-  SetGwesOOMEvent
-  SetGwesPowerHandler
-  SetHandleOwner
-  SetHandleOwnerWorkaround
-  SetHardwareWatch
   SetInterruptEvent
   SetKMode
-  SetKernelAlarm
-  SetKeyboardTarget
   SetLastError
   SetLayout
   SetLocalTime
   SetLocaleInfoW
-  SetLowestScheduledPriority
   SetMenuItemInfoW
-  SetOEMCP
   SetOOMEvent
-  SetObjectOwner
   SetPaletteEntries
   SetParent
   SetPartitionAttributes
@@ -1477,13 +1060,11 @@ EXPORTS
   SetPasswordActive
   SetPasswordStatus
   SetPixel
-  SetPowerOffHandler
   SetPowerRequirement
   SetProcPermissions
   SetProp
   SetPropW
   SetROP2
-  SetRealTime
   SetRect
   SetRectEmpty
   SetRectRgn
@@ -1493,7 +1074,6 @@ EXPORTS
   SetStdioPathW
   SetStretchBltMode
   SetSysColors
-  SetSystemDefaultLCID
   SetSystemMemoryDivision
   SetSystemPowerState
   SetSystemTime
@@ -1502,29 +1082,23 @@ EXPORTS
   SetTextColor
   SetThreadContext
   SetThreadPriority
-  SetTimeZoneBias
   SetTimeZoneInformation
   SetTimer
   SetUserData
   SetUserDefaultLCID
   SetUserDefaultUILanguage
   SetViewportOrgEx
-  SetWDevicePowerHandler
   SetWindowAutoGesture
   SetWindowLongW
   SetWindowOrgEx
   SetWindowPos
-  SetWindowPosOnRotate
   SetWindowRgn
   SetWindowTextW
-  SetWindowsHookExW
   SetupComm
   ShellExecuteEx
-  ShellModalEnd
   Shell_NotifyIcon
   ShowCaret
   ShowCursor
-  ShowStartupWindow
   ShowWindow
   SignalStarted
   SipEnumIM
@@ -1548,68 +1122,38 @@ EXPORTS
   StopWatchDogTimer
   StretchBlt
   StretchDIBits
-  StringCbCatA
-  StringCbCatExA
   StringCbCatExW
-  StringCbCatNA
-  StringCbCatNExA
   StringCbCatNExW
   StringCbCatNW
   StringCbCatW
-  StringCbCopyA
-  StringCbCopyExA
   StringCbCopyExW
-  StringCbCopyNA
   StringCbCopyNExW
   StringCbCopyNW
   StringCbCopyW
-  StringCbLengthA
   StringCbLengthW
-  StringCbPrintfA
-  StringCbPrintfExA
   StringCbPrintfExW
   StringCbPrintfW
-  StringCbVPrintfA
-  StringCbVPrintfExA
   StringCbVPrintfExW
   StringCbVPrintfW
-  StringCchCatA
-  StringCchCatExA
   StringCchCatExW
-  StringCchCatNA
-  StringCchCatNExA
   StringCchCatNExW
   StringCchCatNW
   StringCchCatW
-  StringCchCopyA
-  StringCchCopyExA
   StringCchCopyExW
-  StringCchCopyNA
   StringCchCopyNExW
   StringCchCopyNW
   StringCchCopyW
-  StringCchLengthA
   StringCchLengthW
-  StringCchPrintfA
-  StringCchPrintfExA
   StringCchPrintfExW
   StringCchPrintfW
-  StringCchVPrintfA
-  StringCchVPrintfExA
   StringCchVPrintfExW
   StringCchVPrintfW
-  StringCompress
-  StringDecompress
   SubtractRect
   SuspendThread
   SwitchToFiber
   SystemIdleTimerReset
-  SystemMemoryLow
   SystemParametersInfoW
-  SystemStarted
   SystemTimeToFileTime
-  THCreateSnapshot
-  THGrow
   TSPI_lineAccept
   TSPI_lineAddToConference
   TSPI_lineAnswer
@@ -1689,16 +1233,10 @@ EXPORTS
   TSPI_providerRemove
   TSPI_providerRemoveDevice
   TSPI_providerShutdown
-  TakeCritSec
   TerminateProcess
   TerminateThread
-  ThreadAttachAllDLLs
-  ThreadBaseFunc
-  ThreadDetachAllDLLs
-  ThreadExceptionExit
   TimeoutSession
   TlsAlloc
-  TlsCall
   TlsFree
   TlsGetValue
   TlsSetValue
@@ -1711,31 +1249,16 @@ EXPORTS
   TransparentBlt
   TransparentImage
   TryEnterCriticalSection
-  TurnOffProfiling
-  TurnOnProfiling
-  U_rclose
-  U_rlseek
-  U_ropen
-  U_rread
-  U_rwrite
-  UnLockEventLog
-  UnhookWindowsHookEx
   UnionRect
-  UnlockAPIHandle
   UnlockFileEx
   UnlockPages
   UnmapViewOfFile
   UnregisterClassW
-  UnregisterFunc1
   UnregisterHotKey
-  UpdateNLSInfo
-  UpdateNLSInfoEx
   UpdateWindow
-  UserCallWindowProc
   ValidateRect
   ValidateRgn
   VerQueryValueW
-  VerifyAPIHandle
   VerifyUser
   VerifyUserAsync
   VerifyUserStart
@@ -1774,27 +1297,9 @@ EXPORTS
   WindowFromPoint
   WriteDebugLED
   WriteFile
-  WriteFileGather
-  WriteFileWithSeek
   WriteMsgQueue
   WriteProcessMemory
   WriteRegistryToOEM
-  _CIacos
-  _CIasin
-  _CIatan
-  _CIatan2
-  _CIcos
-  _CIcosh
-  _CIexp
-  _CIfmod
-  _CIlog
-  _CIlog10
-  _CIpow
-  _CIsin
-  _CIsinh
-  _CIsqrt
-  _CItan
-  _CItanh
   _CountLeadingOnes
   _CountLeadingOnes64
   _CountLeadingSigns
@@ -1803,322 +1308,60 @@ EXPORTS
   _CountLeadingZeros64
   _CountOneBits
   _CountOneBits64
-  _CxxThrowException
-  _EH_prolog
-  _EH_prolog2
-  _HUGE
-  _InitStdioLib
   _MulHigh
   _MulUnsignedHigh
-  _SEH_epilog
-  _SEH_prolog
-  _XcptFilter
-  __C_specific_handler
-  __CxxFrameHandler
-  __CxxFrameHandler3
-  __CxxThrowException
-  __GetUserKData
-  __RTCastToVoid
-  __RTDynamicCast
-  __RTtypeid
-  __abnormal_termination
-  __addd
-  __adds
-  __cmpd
-  __cmps
-  __divd
-  __divs
-  __dtoi
-  __dtoi64
-  __dtos
-  __dtou
-  __dtou64
-  __eqd
-  __eqs
-  __ged
-  __ges
-  __gtd
-  __gts
-  __i64tod
-  __i64tos
-  __itod
-  __itos
-  __led
-  __les
-  __ltd
-  __lts
-  __muld
-  __muls
-  __ned
-  __negd
-  __negs
-  __nes
-  __report_gsfailure
-  __rt_sdiv
-  __rt_sdiv10
-  __rt_sdiv64by64
-  __rt_srem64by64
-  __rt_srsh
-  __rt_udiv
-  __rt_udiv10
-  __rt_udiv64by64
-  __rt_urem64by64
-  __rt_ursh
-  __security_error_handler
-  __security_gen_cookie
-  __security_gen_cookie2
-  __stod
-  __stoi
-  __stoi64
-  __stou
-  __stou64
-  __strgtold12
-  __subd
-  __subs
-  __u64tod
-  __u64tos
-  __utod
-  __utos
-  _abs64
-  _alldiv
-  _alldvrm
-  _allmul
-  _alloca_probe
-  _alloca_probe_16
-  _alloca_probe_8
-  _allrem
-  _allshl
-  _allshr
-  _atodbl
-  _atoflt
-  _atoi64
-  _aulldiv
-  _aulldvrm
-  _aullrem
-  _aullshr
   _byteswap_uint64
   _byteswap_ulong
   _byteswap_ushort
   _cabs
   _chgsign
-  _chkstk
-  _clearfp
-  _controlfp
-  _controlfp_s
   _copysign
   _ecvt
-  _ecvt_s
-  _except_handler3
-  _except_handler4_common
-  _fcloseall
   _fcvt
-  _fcvt_s
   _fileno
   _finite
-  _fload
-  _fltused
   _flushall
   _fpclass
   _fpieee_flt
   _fpreset
-  _frnd
-  _fsqrt
-  _ftol
-  _ftol2
-  _ftol2_sse
-  _ftol2_sse_excpt
   _gcvt
-  _gcvt_s
-  _get_invalid_parameter_handler
-  _getstdfilex
-  _getws
-  _getws_s
   _hypot
-  _inp
-  _inpd
-  _inpw
-  _invalid_parameter
-  _isctype
   _isnan
-  _isnanf
   _isunordered
   _isunorderedf
-  _itoa
-  _itoa_s
-  _itow
-  _itow_s
-  _j0
-  _j1
-  _jn
-  _ld12tod
-  _ld12tof
-  _local_unwind2
-  _local_unwind4
   _logb
-  _lrotl
-  _lrotr
-  _ltoa
-  _ltoa_s
-  _ltow
-  _ltow_s
-  _mbmemset
   _memccpy
   _memicmp
   _msize
   _nextafter
-  _outp
-  _outpd
-  _outpw
-  _purecall
-  _putws
-  _recalloc
-  _rotl
-  _rotl64
-  _rotr
-  _rotr64
   _scalb
-  _set_invalid_parameter_handler
-  _setjmp3
   _setmode
-  _snprintf
-  _snprintf_s
-  _snwprintf
-  _snwprintf_s
   _statusfp
-  _strdup
-  _stricmp
-  _strlwr
-  _strlwr_s
-  _strnicmp
-  _strnset
-  _strnset_s
-  _strrev
-  _strset
-  _strset_s
-  _strupr
-  _strupr_s
   _swab
-  _ultoa
-  _ultoa_s
-  _ultow
-  _ultow_s
-  _vsnprintf
-  _vsnprintf_s
-  _vsnwprintf
-  _vsnwprintf_s
-  _wcsdup
-  _wcsicmp
-  _wcslwr
-  _wcslwr_s
-  _wcsnicmp
-  _wcsnset
-  _wcsnset_s
-  _wcsrev
-  _wcsset
-  _wcsset_s
-  _wcsupr
-  _wcsupr_s
   _wfdopen
-  _wfopen
-  _wfopen_s
-  _wfreopen
-  _wfreopen_s
-  _wtol
-  _wtoll
-  _y0
-  _y1
-  _yn
   abs
-  acmDriverAdd
-  acmDriverClose
-  acmDriverDetails
-  acmDriverEnum
-  acmDriverID
-  acmDriverMessage
-  acmDriverOpen
-  acmDriverPriority
-  acmDriverRemove
-  acmFilterChoose
-  acmFilterDetails
-  acmFilterEnum
-  acmFilterTagDetails
-  acmFilterTagEnum
-  acmFormatChoose
-  acmFormatDetails
-  acmFormatEnum
-  acmFormatSuggest
-  acmFormatTagDetails
-  acmFormatTagEnum
-  acmGetVersion
-  acmMetrics
-  acmStreamClose
-  acmStreamConvert
-  acmStreamMessage
-  acmStreamOpen
-  acmStreamPrepareHeader
-  acmStreamReset
-  acmStreamSize
-  acmStreamUnprepareHeader
   acos
   asin
-  atan
-  atan2
-  atof
   atoi
-  atol
   calloc
   ceil
-  ceilf
   clearerr
-  clearerr_s
-  cos
-  cosh
-  difftime
   div
   exp
   fabs
-  fabsf
-  fclose
   feof
   ferror
   fflush
-  fgetc
   fgetpos
-  fgets
-  fgetwc
-  fgetws
   floor
-  floorf
   fmod
-  fmodf
-  fopen
-  fopen_s
-  fprintf
-  fprintf_s
-  fputc
-  fputs
-  fputwc
-  fputws
   fread
-  fread_s
   free
   frexp
-  fscanf
-  fscanf_s
   fseek
   fsetpos
   ftell
-  fwprintf
-  fwprintf_s
   fwrite
-  fwscanf
-  fwscanf_s
-  g_hProcessHeap
-  getchar
-  gets
-  gets_s
-  getwchar
-  iswctype
   keybd_event
   labs
   ldexp
@@ -2185,27 +1428,14 @@ EXPORTS
   lineSetupConference
   lineSetupTransfer
   lineShutdown
-  lineStartDTMF
-  lineStopDTMF
   lineSwapHold
   lineTranslateAddress
   lineTranslateDialog
   lineUnhold
-  log
-  log10
   longjmp
-  lstrcmpW
-  lstrcmpiW
   malloc
   mbstowcs
-  mbstowcs_s
-  memchr
-  memcmp
-  memcpy
-  memcpy_s
   memmove
-  memmove_s
-  memset
   mixerClose
   mixerGetControlDetails
   mixerGetDevCaps
@@ -2242,77 +1472,16 @@ EXPORTS
   phoneSetVolume
   phoneShutdown
   pow
-  printf
-  printf_s
-  putchar
-  puts
-  putwchar
   qsort
-  qsort_s
   rand
-  rand_s
   realloc
-  scanf
-  scanf_s
   setjmp
   setvbuf
-  sin
-  sinh
   sndPlaySoundW
-  sprintf
-  sprintf_s
   sqrt
-  sqrtf
   srand
-  sscanf
-  sscanf_s
-  strcat
-  strcat_s
-  strchr
-  strcmp
-  strcpy
-  strcpy_s
-  strcspn
-  strlen
-  strncat
-  strncat_s
-  strncmp
-  strncpy
-  strncpy_s
-  strnlen
-  strpbrk
-  strrchr
-  strspn
-  strstr
-  strtod
-  strtok
-  strtok_s
-  strtol
-  strtoul
-  swprintf
-  swprintf_s
-  swscanf
-  swscanf_s
-  tan
-  tanh
-  tolower
-  toupper
   towlower
   towupper
-  ungetc
-  ungetwc
-  vfprintf
-  vfprintf_s
-  vfwprintf
-  vfwprintf_s
-  vprintf
-  vprintf_s
-  vsprintf
-  vsprintf_s
-  vswprintf
-  vswprintf_s
-  vwprintf
-  vwprintf_s
   waveInAddBuffer
   waveInClose
   waveInGetDevCaps
@@ -2352,35 +1521,6 @@ EXPORTS
   waveOutSetVolume
   waveOutUnprepareHeader
   waveOutWrite
-  wcscat
-  wcscat_s
-  wcschr
-  wcscmp
-  wcscpy
-  wcscpy_s
-  wcscspn
-  wcslen
-  wcsncat
-  wcsncat_s
-  wcsncmp
-  wcsncpy
-  wcsncpy_s
-  wcsnlen
-  wcspbrk
-  wcsrchr
-  wcsspn
-  wcsstr
-  wcstod
-  wcstok
-  wcstok_s
-  wcstol
   wcstombs
-  wcstombs_s
-  wcstoul
-  wprintf
-  wprintf_s
-  wscanf
-  wscanf_s
   wsprintfW
   wvsprintfW
-

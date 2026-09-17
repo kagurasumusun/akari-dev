@@ -176,4 +176,66 @@ typedef struct _PHYSICAL_BASIC_INFORMATION {
     DWORD dwType;
 } PHYSICAL_BASIC_INFORMATION;
 
+#if _WIN32_WCE >= 0x0420   /* CacheInfo / CeGetCacheInfo: documented from CE .NET 4.2 (docs/generation-audit.md) */
+/* aa450786 "CacheInfo" (CE 5.0; CE 6.0 twin ee483008): page-printed
+ * definition verbatim (OS Versions: Windows CE .NET 4.2 and later.;
+ * Header: Pkfuncs.h). */
+typedef struct _CacheInfo {
+    DWORD dwL1Flags;
+    DWORD dwL1ICacheSize;
+    DWORD dwL1ICacheLineSize;
+    DWORD dwL1ICacheNumWays;
+    DWORD dwL1DCacheSize;
+    DWORD dwL1DCacheLineSize;
+    DWORD dwL1DCacheNumWays;
+    DWORD dwL2Flags;
+    DWORD dwL2ICacheSize;
+    DWORD dwL2ICacheLineSize;
+    DWORD dwL2ICacheNumWays;
+    DWORD dwL2DCacheSize;
+    DWORD dwL2DCacheLineSize;
+    DWORD dwL2DCacheNumWays;
+} CacheInfo, *PCacheInfo;
+
+/* aa450791 "CeGetCacheInfo (Windows CE 5.0)": page-printed prototype
+ * `BOOL CeGetCacheInfo(DWORD cbSize, PCacheInfo pCacheInfo);` (glued
+ * tokens split).  CE .NET 4.2+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT BOOL CeGetCacheInfo(DWORD cbSize, PCacheInfo pCacheInfo) AKARI_CE_NAME(CeGetCacheInfo);
+
+#endif /* _WIN32_WCE >= 0x0420 (CacheInfo / CeGetCacheInfo) */
+#if _WIN32_WCE >= 0x0500   /* CeSetMemoryAttributes / DrWatson*: documented from CE 5.0 (docs/generation-audit.md) */
+/* ms885152 "CeSetMemoryAttributes (Windows CE 5.0)": page-printed
+ * prototype `BOOL CeSetMemoryAttributes(LPVOID pVirtualAddr, LPVOID
+ * pShiftedPhysAddr, DWORD cbSize, DWORD dwAttributes);` (glued tokens
+ * split).  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT BOOL CeSetMemoryAttributes(LPVOID pVirtualAddr,
+                    LPVOID pShiftedPhysAddr, DWORD cbSize, DWORD dwAttributes)
+                    AKARI_CE_NAME(CeSetMemoryAttributes);
+
+/* ms885203 "DrWatsonClear (Windows CE 5.0)": page-printed prototype
+ * `BOOL DrWatsonClear(void);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT BOOL DrWatsonClear(void) AKARI_CE_NAME(DrWatsonClear);
+
+/* ms885204 "DrWatsonFlush (Windows CE 5.0)": page-printed prototype
+ * `BOOL DrWatsonFlush(void);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT BOOL DrWatsonFlush(void) AKARI_CE_NAME(DrWatsonFlush);
+
+/* ms885205 "DrWatsonGetSize (Windows CE 5.0)": page-printed prototype
+ * `DWORD DrWatsonGetSize(void);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT DWORD DrWatsonGetSize(void) AKARI_CE_NAME(DrWatsonGetSize);
+
+/* ms885206 "DrWatsonReadData (Windows CE 5.0)": page-printed
+ * prototype `DWORD DrWatsonReadData(DWORD dwOffset, LPVOID pData,
+ * DWORD cbSize);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT DWORD DrWatsonReadData(DWORD dwOffset, LPVOID pData,
+                    DWORD cbSize) AKARI_CE_NAME(DrWatsonReadData);
+
+/* ms885207 "DrWatsonWriteData (Windows CE 5.0)": page-printed
+ * prototype `DWORD DrWatsonWriteData(DWORD dwOffset, LPVOID pData,
+ * DWORD cbSize);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT DWORD DrWatsonWriteData(DWORD dwOffset, LPVOID pData,
+                    DWORD cbSize) AKARI_CE_NAME(DrWatsonWriteData);
+
+#endif /* _WIN32_WCE >= 0x0500 (CeSetMemoryAttributes / DrWatson*) */
+
 #endif /* AKARI_PKFUNCS_H */

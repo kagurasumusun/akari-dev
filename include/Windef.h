@@ -258,6 +258,11 @@ typedef uintptr_t       WPARAM;   /* message parameter (UINT_PTR) */
 typedef intptr_t        LPARAM;   /* message parameter (LONG_PTR) */
 typedef LONG_PTR        LRESULT;  /* window-proc return value */
 typedef ULONG_PTR       DWORD_PTR;
+/* SIZE_T -- pointer-sized unsigned count.  The official CE pages print
+ * the spelling in prototypes (SecureZeroMemory ms886803: "PVOID
+ * SecureZeroMemory(PVOID ptr, SIZE_T cnt);") without defining it; on
+ * 32-bit CE it is the width of ULONG_PTR. */
+typedef ULONG_PTR       SIZE_T;
 typedef DWORD_PTR      *PDWORD_PTR;   /* SendMessageTimeout ms939981 */
 typedef DWORD_PTR      *LPDWORD_PTR;
 typedef WORD            ATOM;     /* atom table handle (Global*Atom) */
