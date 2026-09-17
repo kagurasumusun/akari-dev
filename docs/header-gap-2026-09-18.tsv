@@ -1,0 +1,9 @@
+# header	note
+afdfunc.h	AFD (Winsock TDI) driver functions; DDK header named by driver pages -- follow-on
+efilter.h	exception filter (oak); planned by tools/manifests/oak-m107-efilter.manifest -- follow-on
+mkfuncs.h	kernel memory functions; named by OAL/kernel pages -- follow-on
+notifext.h	user-notification extensions; named by notification pages -- follow-on
+ntddk.h	NT DDK compatibility header (oak); planned by oak-m107-ntcompat.manifest -- follow-on
+osaxsflexi.h	OS-axis flex interface (oak); named by OAL pages -- follow-on
+rtcerr.h	RTC error codes; named by RTC pages -- follow-on
+tspi.h	telephony service provider interface; Tsp.h ships a different page's surface -- follow-on

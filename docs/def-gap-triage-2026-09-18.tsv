@@ -1,0 +1,72 @@
+# class	lib	function_pages_seen	example_pages	note
+com-guid	av_upnp	100	IRenderingControl::GetBlueVideoBlackLeve;IRenderingControl::GetBlueVideoGain	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+driver-static	blcommon	16	BootloaderMain;OEMCheckSignature	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	cardserv	6	CardPowerOff;CardPowerOn	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	ceutil	2	CeGetSelectedDeviceId;CeGetDeviceId	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	commctl	22	CommandBands_AddAdornments;CommandBands_AddBands	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	commctrlview	1	CommCtrlView_t::Init	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	coremain	15	DeleteCriticalSection;EnterCriticalSection	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	coresip	10	SipEnumIM;SipEnumIMProc	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	cryptapi	31	CryptAcquireContext;CryptContextAddRef	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+resource-lib	cursor	17	ClipCursor;GetClipCursor	resource archive lib (cursors/icons), not an export surface
+driver-static	ddgpe	31	SurfaceHeap::Alloc;SurfaceHeap Constructor	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	device	6	CeFsIoControl;CeResyncFilesys	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	dnsapi	4	DnsModifyRecordsInSet_W;DnsQuery_W	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+driver-static	ethdbg	5	EdbgDeregisterClient;EdbgRecv	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	fsdbase	26	CHECK_SYSTEMGUID;CREATE_INVALIDGUID	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	fsmain	16	DeleteAndRenameFile;CopyFile	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	fspass	1	CheckPassword	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	fsreg	11	RegCloseKey;RegCreateKeyEx	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	gdcfg	10	ConfigInit;ConfigRsrc	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	getpower	2	GetSystemPowerStatusEx;GetSystemPowerStatusEx2	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+driver-static	gpe_lib	12	GetGPE;GPE::AllocSurface	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	hal	5	CallEdbgDeregisterClient;CallEdbgRecv	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	hidparse_lib	26	HidP_FreeCollectionDescription;HidP_GetButtonCaps	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	httpextn	2	ReadClient;WriteClient	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	httpfilt	8	AddHeader;AllocMem	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+resource-lib	iconcurs	4	CreateCursor;DestroyCursor	resource archive lib (cursors/icons), not an export surface
+com-guid	imaging	54	IImageDecoder::GetFrameCount;IImageDecoder::GetFrameDimensionsCount	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+driver-static	kitl	15	KitlInit;KITLOutputDebugString	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	layoutmanager	16	PFN_KEYBD_DRIVER_GET_INFO;PFN_KEYBD_DRIVER_INITIALIZE	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	loadauth	4	CertifyModule;CertifyModuleFinal	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	locusa	2	CharNext;GetStringType	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+resource-lib	mcursor	17	ClipCursor;GetClipCursor	resource archive lib (cursors/icons), not an export surface
+driver-static	mgbase	14	DeleteObject;GetBkColor	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgbitmap	2	CreateBitmap;CreateCompatibleBitmap	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgblt	1	BitBlt	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgblt2	3	MaskBlt;PatBlt	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgdc	4	CreateDC;ExtEscape	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgdi_c	2	CreateDIBSection;EqualRgn	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgdibsec	1	CreateDIBSection	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgdraw	20	CreateDIBPatternBrushPt;CreatePatternBrush	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgdrwtxt	1	DrawText	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgpal	7	CreatePalette;GetNearestColor	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgrast	6	CreateFontIndirect;GetTextExtentExPoint	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgrast2	3	EnumFontFamilies;GetTextFace	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgrgn	14	CombineRgn;CreateRectRgn	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgtt	8	EnableEUDC;CreateFontIndirect	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	mgwinmgr	1	ScrollDC	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	mixerapi	10	mixerClose;mixerGetControlDetails	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+com-guid	mqoa	60	MSMQEvent.Arrived;MSMQEvent.ArrivedError	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+driver-static	ndislib	184	ProtocolBindAdapter;ProtocolCloseAdapterComplete	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	nk	94	SetThreadContext;WaitForDebugEvent	Platform Builder / OAL static library (driver-internal); no application import surface
+driver-static	nkprof	2	OEMProfileTimerDisable;OEMProfileTimerEnable	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	notify	9	CeClearUserNotification;CeGetUserNotification	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	ole232	82	CreateOleAdviseHolder;OleCreate	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+com-guid	owaexchangeclient	29	IExchangeClientContactInformation::GetDi;IExchangeClientContactInformation::GetEm	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+driver-static	pcireg	4	PCIInitInfo;PCIReg	Platform Builder / OAL static library (driver-internal); no application import surface
+needs-investigation	ppp	20	RasDeleteEntry;RasDial	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	redir	11	WNetCancelConnection2;WNetCloseEnum	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	schannel	14	AcquireCredentialsHandle;CompleteAuthToken	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	shortcut	2	SHCreateShortcut;SHGetShortcutTarget	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+needs-investigation	user32	5	EnumDisplayMonitors;GetMonitorInfo	check the per-generation Requirements rows (harvested pages) before creating a def; may duplicate coredll/commctrl surface
+driver-static	wavelib	37	PlaySound;sndPlaySound	Platform Builder / OAL static library (driver-internal); no application import surface
+com-guid	d3dmguid	87	IDirect3DMobileBaseTexture::SetLOD;IDirect3DMobile::CheckDepthStencilMatch	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	ddvdids	304	IDVDDataSearchInfo/IDVDDataSearchInfo::G;IDVDDataSearchInfo/IDVDDataSearchInfo::G	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	ddvduuid	2	IDVDROM/IDVDROM::Bind;IDVDROM::Bind	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	dmoguid	69	DMO_MEDIA_TYPE;IDMOQualityControl::GetStatus	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	dmoguids	1	IDMOWrapperFilter::Init	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	uuid	1425	IRemoteUIModule::Get;IRemoteUIModule::Init	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	voipguid	100	IVoIPMediaMgr::ConferenceSessions;IVoIPMediaMgr::OnSessionOperationComplet	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+com-guid	wvuuid	62	_DPIEWebBrowserEvents2::BeforeNavigate2;_DPIEWebBrowserEvents2::CommandStateChan	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
+driver-static	dvdmptxt	0		Platform Builder / OAL static library (driver-internal); no application import surface
