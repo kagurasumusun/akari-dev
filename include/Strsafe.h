@@ -47,6 +47,7 @@ extern "C" {
 size_t cbDest,
 LPCTSTR pszSrc);`
  * (Windows CE 5.0 and later.; Link Library: strsafe.lib) */
+/* ee480128: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT StringCbCat(LPTSTR pszDest, size_t cbDest, LPCTSTR pszSrc) AKARI_CE_NAME(StringCbCat);
 
 /* ms860396 StringCbCatEx: print `HRESULT StringCbCatEx( LPTSTR pszDest,

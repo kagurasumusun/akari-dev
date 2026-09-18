@@ -297,6 +297,7 @@ typedef struct IShellNotificationCallback IShellNotificationCallback;
 
 /* aa453670 (CE .NET 4.2+): removes a window from the file notification
  * chain (registered with SHChangeNotifyRegister).  Page prints WINAPI. */
+/* aa453670: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL SHChangeNotifyDeregister(HWND hwnd) AKARI_CE_NAME(SHChangeNotifyDeregister);
 
 /* aa453672 (CE .NET 4.2+): frees the memory allocated for a
@@ -512,6 +513,7 @@ typedef struct tagNMRGINFO {
 /* VK_APP_FIRST = 0xC1, VK_APP_LAST = 0xC6 (WM 6.5 alias spellings,
  * recorded; not defined to avoid the WM-only duplicate set). */
 
+/* aa453734: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL SHSetAppKeyWndAssoc(BYTE bVk, HWND hwnd) AKARI_CE_NAME(SHSetAppKeyWndAssoc);
 
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (aa453735) */
@@ -587,6 +589,7 @@ typedef enum {
     SIP_INPUTDIALOG      /* dialog is an input dialog; SIP_DOWN ignored */
 } SIPSTATE;
 
+/* aa453741: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL SHSipPreference(HWND hwnd, SIPSTATE st) AKARI_CE_NAME(SHSipPreference);
 
 #ifdef __cplusplus

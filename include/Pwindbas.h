@@ -33,6 +33,7 @@
  * through Windbase.h -> Winbase.h. */
 
 /* _wcepb_SetSystemMemoryDivision: page-printed prototype (Windows CE OS). */
+/* ee482768: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD SetSystemMemoryDivision(DWORD dwStorePages) AKARI_CE_NAME(SetSystemMemoryDivision);
 
 

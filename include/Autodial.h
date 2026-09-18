@@ -7,12 +7,16 @@
 #include "Windef.h"    /* DWORD, TCHAR */
 #include "Ras.h"       /* RASCONNSTATUS (AutoDialGetConnectionStatus) */
 
+/* aa450290: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD AutoDialCleanupModule(void)
                     AKARI_CE_NAME(AutoDialCleanupModule);
+/* aa450291: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD AutoDialEndConnection(void)
                     AKARI_CE_NAME(AutoDialEndConnection);
+/* aa450293: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD AutoDialInitializeModule(void)
                     AKARI_CE_NAME(AutoDialInitializeModule);
+/* aa450294: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD AutoDialStartConnection(TCHAR *szUseDialEntry)
                     AKARI_CE_NAME(AutoDialStartConnection);
 

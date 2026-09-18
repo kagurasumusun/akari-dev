@@ -63,7 +63,8 @@ def page_prints(path, name):
             # may be glued to the name ('UINTCALLBACKPageSetupHook(')
             for m in re.finditer(
                     r"([A-Za-z_][\w \t\*]*?)(?:CALLBACK|CALLAPI|"
-                    r"APIENTRY)?\s*" + en + r"\s*\(([^)]*)\)\s*[;{]",
+                    r"APIENTRY)?\s*" + en +
+                    r"\s*\(([^)]*?)(?:\)\s*(?:[;{]|$)|$)",
                     t, re.I):
                 out.append((m.group(1), m.group(2)))
     return out

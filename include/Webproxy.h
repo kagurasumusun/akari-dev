@@ -42,10 +42,13 @@ AKARI_CE_IMPORT DWORD WINAPI ProxyInitializeFilter(
  * ProxyUninitializeFilter (void);`, `DWORD WINAPI
  * ProxyNotifyAddrChange(void);`, `DWORD ProxySignalFilter(
  * DWORD dwSignal);` */
+/* ms896346: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI ProxyUninitializeFilter(void)
                     AKARI_CE_NAME(ProxyUninitializeFilter);
+/* ms896344: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI ProxyNotifyAddrChange(void)
                     AKARI_CE_NAME(ProxyNotifyAddrChange);
+/* ms896345: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD ProxySignalFilter(DWORD dwSignal)
                     AKARI_CE_NAME(ProxySignalFilter);
 

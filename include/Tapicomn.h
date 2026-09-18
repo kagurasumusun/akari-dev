@@ -36,6 +36,7 @@
 /* TSPI line device functions                         */
 /* ------------------------------------------------------------------ */
 
+/* aa451008: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineAccept(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -43,12 +44,14 @@ AKARI_CE_IMPORT LONG TSPI_lineAccept(
     DWORD dwSize)
     AKARI_CE_NAME(TSPI_lineAccept);
 
+/* aa451010: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineAddToConference(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdConfCall,
     HDRVCALL hdConsultCall)
     AKARI_CE_NAME(TSPI_lineAddToConference);
 
+/* aa451012: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineAnswer(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -56,6 +59,7 @@ AKARI_CE_IMPORT LONG TSPI_lineAnswer(
     DWORD dwSize)
     AKARI_CE_NAME(TSPI_lineAnswer);
 
+/* aa451014: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineBlindTransfer(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -63,14 +67,17 @@ AKARI_CE_IMPORT LONG TSPI_lineBlindTransfer(
     DWORD dwCountryCode)
     AKARI_CE_NAME(TSPI_lineBlindTransfer);
 
+/* aa451016: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineClose(
     HDRVLINE hdLine)
     AKARI_CE_NAME(TSPI_lineClose);
 
+/* aa451018: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineCloseCall(
     HDRVCALL hdCall)
     AKARI_CE_NAME(TSPI_lineCloseCall);
 
+/* aa451020: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineCompleteTransfer(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -80,6 +87,7 @@ AKARI_CE_IMPORT LONG TSPI_lineCompleteTransfer(
     DWORD dwTransferMode)
     AKARI_CE_NAME(TSPI_lineCompleteTransfer);
 
+/* aa451024: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineConfigDialogEdit(
     DWORD dwDeviceID,
     HWND hwndOwner,
@@ -89,6 +97,7 @@ AKARI_CE_IMPORT LONG TSPI_lineConfigDialogEdit(
     LPVARSTRING lpDeviceConfigOut)
     AKARI_CE_NAME(TSPI_lineConfigDialogEdit);
 
+/* aa451025: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineDevSpecific(
     DRV_REQUESTID dwRequestID,
     HDRVLINE hdLine,
@@ -98,6 +107,7 @@ AKARI_CE_IMPORT LONG TSPI_lineDevSpecific(
     DWORD dwSize)
     AKARI_CE_NAME(TSPI_lineDevSpecific);
 
+/* aa451028: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineDial(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -105,6 +115,7 @@ AKARI_CE_IMPORT LONG TSPI_lineDial(
     DWORD dwCountryCode)
     AKARI_CE_NAME(TSPI_lineDial);
 
+/* aa451030: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineDrop(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -145,6 +156,7 @@ AKARI_CE_IMPORT LONG TSPI_lineGenerateTone(
     LPLINEGENERATETONE const lpTones)
     AKARI_CE_NAME(TSPI_lineGenerateTone);
 
+/* aa451038: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetAddressCaps(
     DWORD dwDeviceID,
     DWORD dwAddressID,
@@ -153,6 +165,7 @@ AKARI_CE_IMPORT LONG TSPI_lineGetAddressCaps(
     LPLINEADDRESSCAPS lpAddressCaps)
     AKARI_CE_NAME(TSPI_lineGetAddressCaps);
 
+/* aa451040: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetAddressID(
     HDRVLINE hdLine,
     LPDWORD lpdwAddressID,
@@ -161,27 +174,32 @@ AKARI_CE_IMPORT LONG TSPI_lineGetAddressID(
     DWORD dwSize)
     AKARI_CE_NAME(TSPI_lineGetAddressID);
 
+/* aa451042: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetAddressStatus(
     HDRVLINE hdLine,
     DWORD dwAddressID,
     LPLINEADDRESSSTATUS lpAddressStatus)
     AKARI_CE_NAME(TSPI_lineGetAddressStatus);
 
+/* aa451044: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetCallAddressID(
     HDRVCALL hdCall,
     LPDWORD lpdwAddressID)
     AKARI_CE_NAME(TSPI_lineGetCallAddressID);
 
+/* aa451046: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetCallInfo(
     HDRVCALL hdCall,
     LPLINECALLINFO lpCallInfo)
     AKARI_CE_NAME(TSPI_lineGetCallInfo);
 
+/* aa451048: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetCallStatus(
     HDRVCALL hdCall,
     LPLINECALLSTATUS lpCallStatus)
     AKARI_CE_NAME(TSPI_lineGetCallStatus);
 
+/* aa451050: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetDevCaps(
     DWORD dwDeviceID,
     DWORD dwTSPIVersion,
@@ -189,24 +207,28 @@ AKARI_CE_IMPORT LONG TSPI_lineGetDevCaps(
     LPLINEDEVCAPS lpLineDevCaps)
     AKARI_CE_NAME(TSPI_lineGetDevCaps);
 
+/* aa451052: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetDevConfig(
     DWORD dwDeviceID,
     LPVARSTRING lpDeviceConfig,
     LPCWSTR lpszDeviceClass)
     AKARI_CE_NAME(TSPI_lineGetDevConfig);
 
+/* aa451054: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetExtensionID(
     DWORD dwDeviceID,
     DWORD dwTSPIVersion,
     LPLINEEXTENSIONID lpExtensionID)
     AKARI_CE_NAME(TSPI_lineGetExtensionID);
 
+/* aa451056: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetIcon(
     DWORD dwDeviceID,
     LPCWSTR lpszDeviceClass,
     LPHICON lphIcon)
     AKARI_CE_NAME(TSPI_lineGetIcon);
 
+/* aa451057: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetID(
     HDRVLINE hdLine,
     DWORD dwAddressID,
@@ -217,21 +239,25 @@ AKARI_CE_IMPORT LONG TSPI_lineGetID(
     HANDLE hTargetProcess)
     AKARI_CE_NAME(TSPI_lineGetID);
 
+/* aa451059: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetLineDevStatus(
     HDRVLINE hdLine,
     LPLINEDEVSTATUS lpLineDevStatus)
     AKARI_CE_NAME(TSPI_lineGetLineDevStatus);
 
+/* aa451061: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineGetNumAddressIDs(
     HDRVLINE hdLine,
     LPDWORD lpdwNumAddressIDs)
     AKARI_CE_NAME(TSPI_lineGetNumAddressIDs);
 
+/* aa451063: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineHold(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall)
     AKARI_CE_NAME(TSPI_lineHold);
 
+/* aa451066: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineMakeCall(
     DRV_REQUESTID dwRequestID,
     HDRVLINE hdLine,
@@ -242,16 +268,19 @@ AKARI_CE_IMPORT LONG TSPI_lineMakeCall(
     LPLINECALLPARAMS const lpCallParams)
     AKARI_CE_NAME(TSPI_lineMakeCall);
 
+/* aa451068: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineMonitorDigits(
     HDRVCALL hdCall,
     DWORD dwDigitModes)
     AKARI_CE_NAME(TSPI_lineMonitorDigits);
 
+/* aa451069: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineMonitorMedia(
     HDRVCALL hdCall,
     DWORD dwMediaModes)
     AKARI_CE_NAME(TSPI_lineMonitorMedia);
 
+/* aa451071: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineNegotiateExtVersion(
     DWORD dwDeviceID,
     DWORD dwTSPIVersion,
@@ -260,6 +289,7 @@ AKARI_CE_IMPORT LONG TSPI_lineNegotiateExtVersion(
     LPDWORD lpdwExtVersion)
     AKARI_CE_NAME(TSPI_lineNegotiateExtVersion);
 
+/* aa451072: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineNegotiateTSPIVersion(
     DWORD dwDeviceID,
     DWORD dwLowVersion,
@@ -267,6 +297,7 @@ AKARI_CE_IMPORT LONG TSPI_lineNegotiateTSPIVersion(
     LPDWORD lpdwTSPIVersion)
     AKARI_CE_NAME(TSPI_lineNegotiateTSPIVersion);
 
+/* aa451073: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineOpen(
     DWORD dwDeviceID,
     HTAPILINE htLine,
@@ -275,6 +306,7 @@ AKARI_CE_IMPORT LONG TSPI_lineOpen(
     LINEEVENT lpfnEventProc)
     AKARI_CE_NAME(TSPI_lineOpen);
 
+/* aa451074: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_linePickup(
     DRV_REQUESTID dwRequestID,
     HDRVLINE hdLine,
@@ -285,6 +317,7 @@ AKARI_CE_IMPORT LONG TSPI_linePickup(
     LPCWSTR lpszGroupID)
     AKARI_CE_NAME(TSPI_linePickup);
 
+/* aa451075: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_linePrepareAddToConference(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdConfCall,
@@ -293,6 +326,7 @@ AKARI_CE_IMPORT LONG TSPI_linePrepareAddToConference(
     LPLINECALLPARAMS const lpCallParams)
     AKARI_CE_NAME(TSPI_linePrepareAddToConference);
 
+/* aa451076: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineRedirect(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -300,16 +334,19 @@ AKARI_CE_IMPORT LONG TSPI_lineRedirect(
     DWORD dwCountryCode)
     AKARI_CE_NAME(TSPI_lineRedirect);
 
+/* aa451077: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineReleaseUserUserInfo(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall)
     AKARI_CE_NAME(TSPI_lineReleaseUserUserInfo);
 
+/* aa451078: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineRemoveFromConference(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall)
     AKARI_CE_NAME(TSPI_lineRemoveFromConference);
 
+/* aa451080: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSendUserUserInfo(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -317,6 +354,7 @@ AKARI_CE_IMPORT LONG TSPI_lineSendUserUserInfo(
     DWORD dwSize)
     AKARI_CE_NAME(TSPI_lineSendUserUserInfo);
 
+/* aa451082: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetCallParams(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -326,11 +364,13 @@ AKARI_CE_IMPORT LONG TSPI_lineSetCallParams(
     LPLINEDIALPARAMS const lpDialParams)
     AKARI_CE_NAME(TSPI_lineSetCallParams);
 
+/* aa451086: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetDefaultMediaDetection(
     HDRVLINE hdLine,
     DWORD dwMediaModes)
     AKARI_CE_NAME(TSPI_lineSetDefaultMediaDetection);
 
+/* ms928303: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetDevConfig(
     DWORD dwDeviceID,
     LPVOID const lpDeviceConfig,
@@ -338,17 +378,20 @@ AKARI_CE_IMPORT LONG TSPI_lineSetDevConfig(
     LPCWSTR lpszDeviceClass)
     AKARI_CE_NAME(TSPI_lineSetDevConfig);
 
+/* aa451089: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetMediaMode(
     HDRVCALL hdCall,
     DWORD dwMediaMode)
     AKARI_CE_NAME(TSPI_lineSetMediaMode);
 
+/* aa451090: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetStatusMessages(
     HDRVLINE hdLine,
     DWORD dwLineStates,
     DWORD dwAddressStates)
     AKARI_CE_NAME(TSPI_lineSetStatusMessages);
 
+/* aa451091: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetTerminal(
     DRV_REQUESTID dwRequestID,
     HDRVLINE hdLine,
@@ -360,6 +403,7 @@ AKARI_CE_IMPORT LONG TSPI_lineSetTerminal(
     DWORD bEnable)
     AKARI_CE_NAME(TSPI_lineSetTerminal);
 
+/* aa451092: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetupConference(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -372,6 +416,7 @@ AKARI_CE_IMPORT LONG TSPI_lineSetupConference(
     LPLINECALLPARAMS const lpCallParams)
     AKARI_CE_NAME(TSPI_lineSetupConference);
 
+/* aa451093: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSetupTransfer(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall,
@@ -380,12 +425,14 @@ AKARI_CE_IMPORT LONG TSPI_lineSetupTransfer(
     LPLINECALLPARAMS const lpCallParams)
     AKARI_CE_NAME(TSPI_lineSetupTransfer);
 
+/* aa451094: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineSwapHold(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdActiveCall,
     HDRVCALL hdHeldCall)
     AKARI_CE_NAME(TSPI_lineSwapHold);
 
+/* aa451095: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_lineUnhold(
     DRV_REQUESTID dwRequestID,
     HDRVCALL hdCall)
@@ -395,16 +442,19 @@ AKARI_CE_IMPORT LONG TSPI_lineUnhold(
 /* TSPI phone device functions                        */
 /* ------------------------------------------------------------------ */
 
+/* aa451096: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT long TSPI_phoneClose(
     HDRVPHONE hdPhone)
     AKARI_CE_NAME(TSPI_phoneClose);
 
+/* aa451097: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneConfigDialog(
     DWORD dwDeviceID,
     HWND hwndOwner,
     LPCWSTR lpszDeviceClass)
     AKARI_CE_NAME(TSPI_phoneConfigDialog);
 
+/* aa451098: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneDevSpecific(
     DRV_REQUESTID dwRequestID,
     HDRVPHONE hdPhone,
@@ -412,6 +462,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneDevSpecific(
     DWORD dwSize)
     AKARI_CE_NAME(TSPI_phoneDevSpecific);
 
+/* aa451099: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetDevCaps(
     DWORD dwDeviceID,
     DWORD dwTSPIVersion,
@@ -419,29 +470,34 @@ AKARI_CE_IMPORT LONG TSPI_phoneGetDevCaps(
     LPPHONECAPS lpPhoneCaps)
     AKARI_CE_NAME(TSPI_phoneGetDevCaps);
 
+/* aa451100: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetExtensionID(
     DWORD dwDeviceID,
     DWORD dwTSPIVersion,
     LPPHONEEXTENSIONID lpExtensionID)
     AKARI_CE_NAME(TSPI_phoneGetExtensionID);
 
+/* aa451101: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetGain(
     HDRVPHONE hdPhone,
     DWORD dwHookSwitchDev,
     LPDWORD lpdwGain)
     AKARI_CE_NAME(TSPI_phoneGetGain);
 
+/* aa451102: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetHookSwitch(
     HDRVPHONE hdPhone,
     LPDWORD lpdwHookSwitchDevs)
     AKARI_CE_NAME(TSPI_phoneGetHookSwitch);
 
+/* aa451103: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetIcon(
     DWORD dwDeviceID,
     LPCWSTR lpszDeviceClass,
     LPHICON lphIcon)
     AKARI_CE_NAME(TSPI_phoneGetIcon);
 
+/* aa451104: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetID(
     HDRVPHONE hdPhone,
     LPVARSTRING lpDeviceID,
@@ -449,23 +505,27 @@ AKARI_CE_IMPORT LONG TSPI_phoneGetID(
     HANDLE hTargetProcess)
     AKARI_CE_NAME(TSPI_phoneGetID);
 
+/* aa451105: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetRing(
     HDRVPHONE hdPhone,
     LPDWORD lpdwRingMode,
     LPDWORD lpdwVolume)
     AKARI_CE_NAME(TSPI_phoneGetRing);
 
+/* aa451106: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetStatus(
     HDRVPHONE hdPhone,
     LPPHONESTATUS lpPhoneStatus)
     AKARI_CE_NAME(TSPI_phoneGetStatus);
 
+/* aa451107: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneGetVolume(
     HDRVPHONE hdPhone,
     DWORD dwHookSwitchDev,
     LPDWORD lpdwVolume)
     AKARI_CE_NAME(TSPI_phoneGetVolume);
 
+/* aa451108: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneNegotiateExtVersion(
     DWORD dwDeviceID,
     DWORD dwTSPIVersion,
@@ -474,6 +534,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneNegotiateExtVersion(
     LPDWORD lpdwExtVersion)
     AKARI_CE_NAME(TSPI_phoneNegotiateExtVersion);
 
+/* aa451109: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneNegotiateTSPIVersion(
     DWORD dwDeviceID,
     DWORD dwLowVersion,
@@ -481,6 +542,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneNegotiateTSPIVersion(
     LPDWORD lpdwTSPIVersion)
     AKARI_CE_NAME(TSPI_phoneNegotiateTSPIVersion);
 
+/* aa451120: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneOpen(
     DWORD dwDeviceID,
     HTAPIPHONE htPhone,
@@ -489,11 +551,13 @@ AKARI_CE_IMPORT LONG TSPI_phoneOpen(
     PHONEEVENT lpfnEventProc)
     AKARI_CE_NAME(TSPI_phoneOpen);
 
+/* aa451121: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneSelectExtVersion(
     HDRVPHONE hdPhone,
     DWORD dwExtVersion)
     AKARI_CE_NAME(TSPI_phoneSelectExtVersion);
 
+/* aa451122: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneSetGain(
     DRV_REQUESTID dwRequestID,
     HDRVPHONE hdPhone,
@@ -501,6 +565,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneSetGain(
     DWORD dwGain)
     AKARI_CE_NAME(TSPI_phoneSetGain);
 
+/* aa451123: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneSetHookSwitch(
     DRV_REQUESTID dwRequestID,
     HDRVPHONE hdPhone,
@@ -508,6 +573,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneSetHookSwitch(
     DWORD dwHookSwitchMode)
     AKARI_CE_NAME(TSPI_phoneSetHookSwitch);
 
+/* aa451124: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneSetRing(
     DRV_REQUESTID dwRequestID,
     HDRVPHONE hdPhone,
@@ -515,6 +581,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneSetRing(
     DWORD dwVolume)
     AKARI_CE_NAME(TSPI_phoneSetRing);
 
+/* aa451125: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneSetStatusMessages(
     HDRVPHONE hdPhone,
     DWORD dwPhoneStates,
@@ -522,6 +589,7 @@ AKARI_CE_IMPORT LONG TSPI_phoneSetStatusMessages(
     DWORD dwButtonStates)
     AKARI_CE_NAME(TSPI_phoneSetStatusMessages);
 
+/* aa451126: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_phoneSetVolume(
     DRV_REQUESTID dwRequestID,
     HDRVPHONE hdPhone,
@@ -533,18 +601,21 @@ AKARI_CE_IMPORT LONG TSPI_phoneSetVolume(
 /* TSPI service provider functions                    */
 /* ------------------------------------------------------------------ */
 
+/* aa451127: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerCreateLineDevice(
     HKEY hActive,
     LPCWSTR szDevKey,
     LPCWSTR szDevName)
     AKARI_CE_NAME(TSPI_providerCreateLineDevice);
 
+/* aa451128: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerCreatePhoneDevice(
     HKEY hActive,
     LPCWSTR szDevKey,
     LPCWSTR szDevName)
     AKARI_CE_NAME(TSPI_providerCreatePhoneDevice);
 
+/* aa451129: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerEnumDevices(
     DWORD dwPermanentProviderID,
     LPDWORD lpdwNumLines,
@@ -554,6 +625,7 @@ AKARI_CE_IMPORT LONG TSPI_providerEnumDevices(
     PHONEEVENT lpfnPhoneCreateProc)
     AKARI_CE_NAME(TSPI_providerEnumDevices);
 
+/* aa451130: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerInit(
     DWORD dwTSPIVersion,
     DWORD dwPermanentProviderID,
@@ -565,20 +637,24 @@ AKARI_CE_IMPORT LONG TSPI_providerInit(
     LPDWORD lpdwTSPIOptions)
     AKARI_CE_NAME(TSPI_providerInit);
 
+/* aa451131: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerInstall(
     HWND hwndOwner,
     DWORD dwPermanentProviderID)
     AKARI_CE_NAME(TSPI_providerInstall);
 
+/* aa451132: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerRemove(
     HWND hwndOwner,
     DWORD dwPermanentProviderID)
     AKARI_CE_NAME(TSPI_providerRemove);
 
+/* aa451133: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerRemoveDevice(
     LPCWSTR lpszDeviceName)
     AKARI_CE_NAME(TSPI_providerRemoveDevice);
 
+/* aa451134: param-list verified against this page; the print shows the TSPIAPI decoration (TSPIAPI is WINAPI, empty in this tree) (proto-cite) */
 AKARI_CE_IMPORT LONG TSPI_providerShutdown(
     DWORD dwTSPIVersion,
     DWORD dwPermanentProviderID)

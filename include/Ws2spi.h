@@ -264,17 +264,21 @@ AKARI_CE_IMPORT int WSPStringToAddress(LPWSTR AddressString,
 /* Name-space SPI functions (NSP*)                                      */
 /* ------------------------------------------------------------------ */
 
+/* ms895725: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int NSPCleanup(LPGUID lpProviderId)
     AKARI_CE_NAME(NSPCleanup);
+/* ms895733: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int NSPGetServiceClassInfo(LPGUID lpProviderId,
                                            LPDWORD lpdwBufSize,
                                            LPWSASERVICECLASSINFOW
                                                lpServiceClassInfo)
     AKARI_CE_NAME(NSPGetServiceClassInfo);
+/* ms895740: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int NSPInstallServiceClass(LPGUID lpProviderId,
                                            LPWSASERVICECLASSINFOW
                                                lpServiceClassInfo)
     AKARI_CE_NAME(NSPInstallServiceClass);
+/* ms895748: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int NSPLookupServiceBegin(LPGUID lpProviderId,
                                           LPWSAQUERYSETW lpqsRestrictions,
                                           LPWSASERVICECLASSINFOW
@@ -282,6 +286,7 @@ AKARI_CE_IMPORT int NSPLookupServiceBegin(LPGUID lpProviderId,
                                           DWORD dwControlFlags,
                                           LPHANDLE lphLookup)
     AKARI_CE_NAME(NSPLookupServiceBegin);
+/* ms895751: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int NSPLookupServiceEnd(HANDLE hLookup)
     AKARI_CE_NAME(NSPLookupServiceEnd);
 /* NSPLookupServiceNext page (ms895756): the archive prints the
@@ -313,25 +318,30 @@ AKARI_CE_IMPORT int NSPSetService(LPGUID lpProviderId,
 
 /* NSPStartup: print `int NSPStartup(LPGUID lpProviderId,
  * LPNSP_ROUTINE lpnspRoutines);` */
+/* ms895771: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int NSPStartup(LPGUID lpProviderId,
                     LPNSP_ROUTINE lpnspRoutines) AKARI_CE_NAME(NSPStartup);
 
 /* WPUCloseEvent: print `BOOL WPUCloseEvent(WSAEVENT hEvent,
  * LPINT lpErrno);` */
+/* ms898715: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WPUCloseEvent(WSAEVENT hEvent, LPINT lpErrno)
                     AKARI_CE_NAME(WPUCloseEvent);
 
 /* WPUCloseSocketHandle: print `int WPUCloseSocketHandle(SOCKET s,
  * LPINT lpErrno );` */
+/* ms898716: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WPUCloseSocketHandle(SOCKET s, LPINT lpErrno)
                     AKARI_CE_NAME(WPUCloseSocketHandle);
 
 /* WPUCreateEvent: print `WSAEVENT WPUCreateEvent(LPINT lpErrno );` */
+/* ms898717: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT WSAEVENT WPUCreateEvent(LPINT lpErrno)
                     AKARI_CE_NAME(WPUCreateEvent);
 
 /* WPUCreateSocketHandle: print `SOCKET WPUCreateSocketHandle(
  * DWORD dwCatalogEntryId,DWORD_PTR dwContext,LPINT lpErrno);` */
+/* ms898718: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT SOCKET WPUCreateSocketHandle(DWORD dwCatalogEntryId,
                     DWORD_PTR dwContext, LPINT lpErrno)
                     AKARI_CE_NAME(WPUCreateSocketHandle);
@@ -344,6 +354,7 @@ AKARI_CE_IMPORT int WPUFDIsSet(SOCKET s, fd_set *set)
 /* WPUGetProviderPath: print `int WPUGetProviderPath(LPGUID
  * lpProviderId,LPWSTR lpszProviderDllPath,LPINT
  * lpProviderDllPathLen,LPINT lpErrno );` */
+/* ms898720: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WPUGetProviderPath(LPGUID lpProviderId,
                     LPWSTR lpszProviderDllPath,
                     LPINT lpProviderDllPathLen, LPINT lpErrno)
@@ -352,23 +363,27 @@ AKARI_CE_IMPORT int WPUGetProviderPath(LPGUID lpProviderId,
 /* WPUQuerySocketHandleContext: print `int
  * WPUQuerySocketHandleContext(SOCKET s,PDWORD_PTR lpContext,
  * LPINT lpErrno);` */
+/* ms898722: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WPUQuerySocketHandleContext(SOCKET s,
                     PDWORD_PTR lpContext, LPINT lpErrno)
                     AKARI_CE_NAME(WPUQuerySocketHandleContext);
 
 /* WPUResetEvent: print `BOOL WPUResetEvent(WSAEVENT hEvent,
  * LPINT lpErrno);` */
+/* ms898723: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WPUResetEvent(WSAEVENT hEvent, LPINT lpErrno)
                     AKARI_CE_NAME(WPUResetEvent);
 
 /* WPUSetEvent: print `BOOL WPUSetEvent(WSAEVENT hEvent,
  * LPINT lpErrno);` */
+/* ms898724: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WPUSetEvent(WSAEVENT hEvent, LPINT lpErrno)
                     AKARI_CE_NAME(WPUSetEvent);
 
 /* WSCEnumProtocols: print `int WSCEnumProtocols(LPINT lpiProtocols,
  * LPWSAPROTOCOL_INFOW lpProtocolBuffer,LPDWORD lpdwBufferLength,
  * LPINT lpErrno);` */
+/* ms898779: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSCEnumProtocols(LPINT lpiProtocols,
                     LPWSAPROTOCOL_INFOW lpProtocolBuffer,
                     LPDWORD lpdwBufferLength, LPINT lpErrno)
@@ -377,6 +392,7 @@ AKARI_CE_IMPORT int WSCEnumProtocols(LPINT lpiProtocols,
 /* WSCInstallNameSpace: print `int WSCInstallNameSpace(LPWSTR
  * lpszIdentifier,LPWSTR lpszPathName,DWORD dwNameSpace,
  * DWORD dwVersion,LPGUID lpProviderId );` */
+/* ms898780: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSCInstallNameSpace(LPWSTR lpszIdentifier,
                     LPWSTR lpszPathName, DWORD dwNameSpace,
                     DWORD dwVersion, LPGUID lpProviderId)
@@ -386,6 +402,7 @@ AKARI_CE_IMPORT int WSCInstallNameSpace(LPWSTR lpszIdentifier,
  * lpProviderId,const LPWSTR lpszProviderDllPath,
  * const LPWSAPROTOCOL_INFOW lpProtocolInfoList,
  * DWORD dwNumberOfEntries,LPINT lpErrno);` */
+/* ms898781: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSCInstallProvider(const LPGUID lpProviderId,
                     const LPWSTR lpszProviderDllPath,
                     const LPWSAPROTOCOL_INFOW lpProtocolInfoList,

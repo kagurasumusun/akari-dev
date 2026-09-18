@@ -31,9 +31,12 @@ typedef struct {
     DWORD scrIP;
 } IPSEC_API_MODE_INFO, *PIPSEC_API_MODE_INFO;
 
+/* aa450627: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT IsIPSecRunning(void)
                     AKARI_CE_NAME(IsIPSecRunning);
+/* aa450960: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT StartIPSec(void) AKARI_CE_NAME(StartIPSec);
+/* aa450962: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT StopIPSec(void) AKARI_CE_NAME(StopIPSec);
 
 /* ResetIPSecMode: print `HRESULT ResetIPSecMode( DWORD srcIP
@@ -43,11 +46,13 @@ AKARI_CE_IMPORT HRESULT ResetIPSecMode(DWORD srcIP, DWORD flags)
 
 /* SetIPSecConfig: print `HRESULT SetIPSecConfig(
  * IPSEC_API_PARAM param, DWORD flags);` */
+/* aa450926: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT SetIPSecConfig(IPSEC_API_PARAM param,
                     DWORD flags) AKARI_CE_NAME(SetIPSecConfig);
 
 /* SetIPSecMode: print `HRESULT SetIPSecMode(
  * IPSEC_API_MODE_INFO modeInfo, DWORD flags);` */
+/* aa450928: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT SetIPSecMode(IPSEC_API_MODE_INFO modeInfo,
                     DWORD flags) AKARI_CE_NAME(SetIPSecMode);
 

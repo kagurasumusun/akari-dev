@@ -46,42 +46,53 @@ AKARI_CE_IMPORT BOOL CaptureDumpFileOnDevice(DWORD dwProcessId,
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* _wcepb_CacheSync: page-printed prototype (Windows CE OS). */
+/* ee482858: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID CacheSync(int flags) AKARI_CE_NAME(CacheSync);
 
 /* _wcepb_ForcePageout: page-printed prototype (Windows CE OS). */
+/* ee483002: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID ForcePageout(void) AKARI_CE_NAME(ForcePageout);
 
 /* ms905534: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
 AKARI_CE_IMPORT BOOL FreeIntChainHandler(HANDLE hInstance) AKARI_CE_NAME(FreeIntChainHandler);
 
 /* _wcepb_GetCurrentPermissions: page-printed prototype (Windows CE OS). */
+/* ee483152: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD GetCurrentPermissions(void) AKARI_CE_NAME(GetCurrentPermissions);
 
 /* _wcepb_GetOwnerProcess: page-printed prototype (Windows CE OS). */
+/* ee483052: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HANDLE GetOwnerProcess(void) AKARI_CE_NAME(GetOwnerProcess);
 
 /* _wcepb_InterruptDisable: page-printed prototype (Windows CE OS). */
+/* ee482866: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID InterruptDisable(DWORD idInt) AKARI_CE_NAME(InterruptDisable);
 
 /* _wcepb_InterruptDone: page-printed prototype (Windows CE OS). */
+/* ee482745: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID InterruptDone(DWORD idInt) AKARI_CE_NAME(InterruptDone);
 
 /* _wcepb_InterruptInitialize: page-printed prototype (Windows CE OS). */
+/* ee482998: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL InterruptInitialize(DWORD idInt, HANDLE hEvent, LPVOID pvData, DWORD cbData) AKARI_CE_NAME(InterruptInitialize);
 
 /* _wcepb_KernelIoControl: page-printed prototype (Windows CE OS). */
+/* ee488646: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL KernelIoControl(DWORD dwIoControlCode, LPVOID lpInBuf, DWORD nInBufSize, LPVOID lpOutBuf, DWORD nOutBufSize, LPDWORD lpBytesReturned) AKARI_CE_NAME(KernelIoControl);
 
 /* _wcepb_LoadDriver: page-printed prototype (Windows CE OS). */
+/* ee482944: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HINSTANCE LoadDriver(LPCWSTR lpszFileName) AKARI_CE_NAME(LoadDriver);
 
 /* ms903212: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
 AKARI_CE_IMPORT HANDLE LoadKernelLibrary(LPCWSTR lpszFileName) AKARI_CE_NAME(LoadKernelLibrary);
 
 /* _wcepb_LockPages: page-printed prototype (Windows CE OS). */
+/* ee482989: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL LockPages(LPVOID lpvAddress, DWORD cbSize, PDWORD pPFNs, int fOptions) AKARI_CE_NAME(LockPages);
 
 /* _wcepb_MapPtrToProcess: page-printed prototype (Windows CE OS). */
+/* ee482835: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LPVOID MapPtrToProcess(LPVOID lpv, HANDLE hProc) AKARI_CE_NAME(MapPtrToProcess);
 
 /* ms903215: page-printed prototype (Windows CE .NET 4.0 and later.; coredll.lib). */
@@ -103,12 +114,14 @@ AKARI_CE_IMPORT DWORD ReadRegistryFromOEM(DWORD dwFlags, LPBYTE lpData, DWORD cb
 AKARI_CE_IMPORT void SetCleanRebootFlag(void) AKARI_CE_NAME(SetCleanRebootFlag);
 
 /* _wcepb_SetKMode: page-printed prototype (Windows CE OS). */
+/* ee482868: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL SetKMode(BOOL fMode) AKARI_CE_NAME(SetKMode);
 
 /* ms919612: page-printed prototype (Windows CE 3.0 and later.; coredll.lib). */
 AKARI_CE_IMPORT void SetOOMEvent(HANDLE hEvent, DWORD cpLow, DWORD cpCritical, DWORD cpLowBlockSize, DWORD cpCriticalBlockSize) AKARI_CE_NAME(SetOOMEvent);
 
 /* _wcepb_SetProcPermissions: page-printed prototype (Windows CE OS). */
+/* ee482959: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD SetProcPermissions(DWORD newperms) AKARI_CE_NAME(SetProcPermissions);
 
 /* _wcepb_SetStoreQueueBase: page-printed prototype (Windows CE OS). */
@@ -118,9 +131,11 @@ LPVOID SetStoreQueueBase(DWORD dwPhysPage);
 LPVOID UnMapPtr(LPVOID lpv);
 
 /* _wcepb_UnlockPages: page-printed prototype (Windows CE OS). */
+/* ee483160: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL UnlockPages(LPVOID lpvAddress, DWORD cbSize) AKARI_CE_NAME(UnlockPages);
 
 /* _wcepb_VirtualCopy: page-printed prototype (Windows CE OS). */
+/* ee483154: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL VirtualCopy(LPVOID lpvDest, LPVOID lpvSrc, DWORD cbSize, DWORD fdwProtect) AKARI_CE_NAME(VirtualCopy);
 
 /* ms920084: page-printed prototype (Windows CE 3.0 and later.; coredll.lib). */

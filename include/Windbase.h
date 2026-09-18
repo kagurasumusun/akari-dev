@@ -500,6 +500,7 @@ AKARI_CE_IMPORT CEOID CeWriteRecordProps(HANDLE hDbase, CEOID oidRecord,
  * previous registration.  (The page's parameter prose says
  * "CENOTIFICATION structure" while its printed signature takes
  * CENOTIFYREQUEST; the printed signature is followed.) */
+/* aa517239: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeRegisterReplNotification(CENOTIFYREQUEST *pRequest)
                     AKARI_CE_NAME(CeRegisterReplNotification);
 
@@ -507,11 +508,13 @@ AKARI_CE_IMPORT BOOL CeRegisterReplNotification(CENOTIFYREQUEST *pRequest)
  * BOOL CeGetReplChangeMask(LPDWORD).  CE 3.0+; Windbase.h;
  * coredll.lib.  Retrieves the current replication partnership
  * mask. */
+/* aa517168: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeGetReplChangeMask(LPDWORD lpmask) AKARI_CE_NAME(CeGetReplChangeMask);
 
 /* _wcesdk_CeSetReplChangeMask "CeSetReplChangeMask":
  * BOOL CeSetReplChangeMask(DWORD).  CE 3.0+; Windbase.h;
  * coredll.lib.  Sets the current replication partnership mask. */
+/* aa517264: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeSetReplChangeMask(DWORD mask) AKARI_CE_NAME(CeSetReplChangeMask);
 
 /* _wcesdk_CeGetReplChangeBitsEx "CeGetReplChangeBitsEx":
@@ -519,6 +522,7 @@ AKARI_CE_IMPORT BOOL CeSetReplChangeMask(DWORD mask) AKARI_CE_NAME(CeSetReplChan
  * CE 3.0+; Windbase.h; coredll.lib.  Reports which partner has not
  * synchronized a change; dwFlags may be 0 or REPL_CHANGE_WILLCLEAR
  * (value unpublished; see the flag-constant record below). */
+/* aa517163: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeGetReplChangeBitsEx(PCEGUID pguid, CEOID oid, LPDWORD lpbits,
                     DWORD dwFlags) AKARI_CE_NAME(CeGetReplChangeBitsEx);
 
@@ -526,6 +530,7 @@ AKARI_CE_IMPORT BOOL CeGetReplChangeBitsEx(PCEGUID pguid, CEOID oid, LPDWORD lpb
  * BOOL CeSetReplChangeBitsEx(PCEGUID, CEOID, DWORD).  CE 3.0+;
  * Windbase.h; coredll.lib.  Sets the replication bits for the mask
  * bits passed. */
+/* aa517262: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeSetReplChangeBitsEx(PCEGUID pguid, CEOID oid, DWORD mask)
                     AKARI_CE_NAME(CeSetReplChangeBitsEx);
 
@@ -534,6 +539,7 @@ AKARI_CE_IMPORT BOOL CeSetReplChangeBitsEx(PCEGUID pguid, CEOID oid, DWORD mask)
  * Windbase.h; coredll.lib.  Clears the replication bits for the
  * mask bits passed; REPL_CHANGE_WILLCLEAR must have been used with
  * CeGetReplChangeBitsEx first (page remarks). */
+/* aa516984: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeClearReplChangeBitsEx(PCEGUID pguid, CEOID oid, DWORD mask)
                     AKARI_CE_NAME(CeClearReplChangeBitsEx);
 
@@ -541,6 +547,7 @@ AKARI_CE_IMPORT BOOL CeClearReplChangeBitsEx(PCEGUID pguid, CEOID oid, DWORD mas
  * BOOL CeGetReplOtherBitsEx(PCEGUID, CEOID, LPDWORD).  CE 3.0+;
  * Windbase.h; coredll.lib.  Gets the private replication bit; the
  * returned mask is valid for bit zero only (0x0 or 0x1). */
+/* aa517172: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeGetReplOtherBitsEx(PCEGUID pguid, CEOID oid, LPDWORD lpbits)
                     AKARI_CE_NAME(CeGetReplOtherBitsEx);
 
@@ -548,6 +555,7 @@ AKARI_CE_IMPORT BOOL CeGetReplOtherBitsEx(PCEGUID pguid, CEOID oid, LPDWORD lpbi
  * BOOL CeSetReplOtherBitsEx(PCEGUID, CEOID, DWORD).  CE 3.0+;
  * Windbase.h; coredll.lib.  Sets or clears the private replication
  * bit (only bit zero of `bits` is meaningful). */
+/* aa517266: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CeSetReplOtherBitsEx(PCEGUID pguid, CEOID oid, DWORD bits)
                     AKARI_CE_NAME(CeSetReplOtherBitsEx);
 
@@ -946,6 +954,7 @@ AKARI_CE_IMPORT BOOL CeStreamWrite(HANDLE hStream, LPBYTE lprgbBuffer,
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* _wcepb_SetPassword: page-printed prototype (Windows CE OS). */
+/* ms891953: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL SetPassword(LPWSTR lpszOldPassword, LPWSTR lpszNewPassword) AKARI_CE_NAME(SetPassword);
 
 

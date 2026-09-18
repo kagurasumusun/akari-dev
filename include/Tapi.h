@@ -1535,6 +1535,7 @@ typedef VARSTRING *LPVARSTRING;
 
 /* line initialization / shutdown                     */
 
+/* ms928022: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG lineInitialize(LPHLINEAPP lphLineApp,
     HINSTANCE hInstance, LINECALLBACK lpfnCallback,
     LPCWSTR lpszAppName, LPDWORD lpdwNumDevs)
@@ -1572,6 +1573,7 @@ AKARI_CE_IMPORT LONG lineGetProviderList(DWORD dwAPIVersion,
 
 /* line device open / close / capabilities            */
 
+/* ms928032: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG lineOpen(HLINEAPP hLineApp, DWORD dwDeviceID,
     LPHLINE lphLine, DWORD dwAPIVersion, DWORD dwExtVersion,
     DWORD dwCallbackInstance, DWORD dwPrivileges,
@@ -1623,6 +1625,7 @@ AKARI_CE_IMPORT LONG lineSetNumRings(HLINE hLine,
 
 /* call setup / control                               */
 
+/* ms928026: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG lineMakeCall(HLINE hLine, LPHCALL lphCall,
     LPCWSTR lpszDestAddress, DWORD dwCountryCode,
     LPLINECALLPARAMS const lpCallParams)
@@ -1666,6 +1669,7 @@ AKARI_CE_IMPORT LONG lineHandoff(HCALL hCall,
 
 /* call information                                   */
 
+/* ms894162: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG lineGetCallInfo(HCALL hCall,
     LPLINECALLINFO lpCallInfo)
     AKARI_CE_NAME(lineGetCallInfo);                         /* ms894162, CE 1.0+  */
@@ -1714,6 +1718,7 @@ AKARI_CE_IMPORT LONG lineDevSpecific(HLINE hLine,
 
 /* conference and transfer                            */
 
+/* ms893390: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG lineAddToConference(HCALL hConfCall,
     HCALL hConsultCall)
     AKARI_CE_NAME(lineAddToConference);                     /* ms893390, CE 1.0+  */
@@ -1741,6 +1746,7 @@ AKARI_CE_IMPORT LONG lineBlindTransfer(HCALL hCall,
 
 /* device configuration / translation / priority      */
 
+/* ms894177: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG lineGetDevConfig(DWORD dwDeviceID,
     LPVARSTRING lpDeviceConfig, LPCSTR lpszDeviceClass)
     AKARI_CE_NAME(lineGetDevConfig);                        /* ms894177, CE 1.0+  */
@@ -1782,6 +1788,7 @@ AKARI_CE_IMPORT LONG lineSetAppPriority(LPCSTR lpszAppFilename,
 
 /* phone device functions                             */
 
+/* ms895937: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG phoneInitializeEx(LPHPHONEAPP lphPhoneApp,
     HINSTANCE hInstance, PHONECALLBACK lpfnCallback,
     LPCWSTR lpszFriendlyAppName, LPDWORD lpdwNumDevs,

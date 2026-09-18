@@ -56,7 +56,7 @@ include/Commctrl.h	TBBUTTONINFOA	ms931482	no-print-on-page
 include/Commctrl.h	TBADDBITMAP	ms940414	match	
 include/Commctrl.h	TBREPLACEBITMAP	ms913817	no-print-on-page	
 include/Commctrl.h	PBRANGE	ms911863	no-print-on-page	
-include/Commctrl.h	UDACCEL	ms911870	no-print-on-page	
+include/Commctrl.h	UDACCEL	ms911870	match-truncated-print	print block truncated by page
 include/Commctrl.h	COMMANDBANDSRESTOREINFO	aa453639	no-print-on-page	
 include/Commctrl.h	NMRBAUTOSIZE	aa453640	no-print-on-page	
 include/Commctrl.h	NMREBAR	ms911851	no-print-on-page	
@@ -158,7 +158,7 @@ include/D3dmx.h	D3DMXVECTOR4FXD	ee491659	no-print-on-page
 include/D3dmx.h	D3DMXMATRIXFXD	ee490729	cpp-print	
 include/D3dmx.h	D3DMXIMAGE_INFO	ee490107	match	
 include/Databaseapi.h	PH_SPEEDDIAL_ENTRY	ee499852	match	
-include/Ddraw.h	MultiSampleCaps	ms907791	no-print-on-page	
+include/Ddraw.h	MultiSampleCaps	ms907791	match-truncated-print	print block truncated by page
 include/Ddraw.h	DDARGB		skip-fnptr	
 include/Ddraw.h	DDGAMMARAMP	ee491315	match	
 include/Defragdisk.h	DEFRAG_OPTIONS	ms887931	match	
@@ -944,7 +944,7 @@ include/Winuser.h	ICONINFO		no-pageid
 include/Winuser.h	COPYDATASTRUCT		no-pageid	
 include/Winuser.h	NMHDR		no-pageid	
 include/Winuser.h	ACCESSTIMEOUT	aa452839	match	
-include/Winuser.h	MOUSEKEYS	ms858526	no-print-on-page	
+include/Winuser.h	MOUSEKEYS	ms858526	match-truncated-print	print block truncated by page
 include/Winuser.h	SOUNDSENTRY	ms940347	match	
 include/Winuser.h	STICKYKEYS	ms940365	match	
 include/Winuser.h	TOGGLEKEYS	ms858550	match	

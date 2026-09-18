@@ -29,9 +29,11 @@ void OEMProfileTimerDisable(void);
 void OEMProfileTimerEnable(DWORD dwUSecInterval);
 
 /* _wcepb_ProfileStart: page-printed prototype (Windows CE OS). */
+/* ee482995: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID ProfileStart(DWORD dwUSecInterval, DWORD dwOptions) AKARI_CE_NAME(ProfileStart);
 
 /* _wcepb_ProfileStop: page-printed prototype (Windows CE OS). */
+/* ee482806: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID ProfileStop(void) AKARI_CE_NAME(ProfileStop);
 
 

@@ -43,6 +43,7 @@ DWORD LineTranslateDialog(HWND hParent, HWND* pDialogWnd);
 
 /* ms913115 RegisterIPClass: print `void RegisterIPClass( HINSTANCE hInst);`
  * (Windows CE 5.0 and later.; Link Library: Netui.lib) */
+/* ee495072: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void RegisterIPClass(HINSTANCE hInst) AKARI_CE_NAME(RegisterIPClass);
 
 /* ms928587 CloseUsernamePasswordDialog: print `BOOL CloseUsernamePasswordDialog(

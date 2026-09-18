@@ -29,6 +29,7 @@ typedef struct _DOMAIN_CONTROLLER_INFO {
  * LPCTSTR ComputerName, LPCTSTR DomainName, GUID* DomainGuid,
  * LPCTSTR SiteName, ULONG Flags,
  * PDOMAIN_CONTROLLER_INFO* DomainControllerInfo);` */
+/* aa450367: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD DsGetDcName(LPCTSTR ComputerName,
                     LPCTSTR DomainName, GUID *DomainGuid,
                     LPCTSTR SiteName, ULONG Flags,

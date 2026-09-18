@@ -29,6 +29,7 @@ AKARI_CE_IMPORT BOOL SetPinyinType(DWORD dwType)
 #endif /* _WIN32_WCE >= 0x0500 */
 
 /* "ClearEudpContent": print `void ClearEudpContent(void);`. */
+/* ms904712: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void ClearEudpContent(void)
                     AKARI_CE_NAME(ClearEudpContent);
 

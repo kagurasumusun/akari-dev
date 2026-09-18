@@ -30,8 +30,10 @@ AKARI_CE_IMPORT int getaddrinfo(const char *nodename,
                                 const struct addrinfo *hints,
                                 struct addrinfo **res)
     AKARI_CE_NAME(getaddrinfo);
+/* aa450383: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void freeaddrinfo(struct addrinfo *ai)
     AKARI_CE_NAME(freeaddrinfo);
+/* aa450416: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int getnameinfo(const struct sockaddr *sa,
                                 socklen_t salen,
                                 char *host, DWORD hostlen,

@@ -383,6 +383,7 @@ typedef struct _RAS_STATS {
 /* wcesdkrRasDial "RasDial": CE 1.0+; Ras.h, Afdfunc.h.  dialExten
  * sions and phoneBookPath are ignored on CE (NULL); NotifierType
  * 0xFFFFFFFF makes notifier an HWND receiving WM_RASDIALEVENT. */
+/* ee496966: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasDial(LPRASDIALEXTENSIONS dialExtensions,
                     LPTSTR phoneBookPath, LPRASDIALPARAMS rasDialParam,
                     DWORD NotifierType, LPVOID notifier,
@@ -390,6 +391,7 @@ AKARI_CE_IMPORT DWORD RasDial(LPRASDIALEXTENSIONS dialExtensions,
 
 /* wcesdkrRasEnumConnections "RasEnumConnections": CE 1.0+; Ras.h,
  * Afdfunc.h. */
+/* ee496203: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasEnumConnections(LPRASCONN lprasconn, LPDWORD lpcb,
                     LPDWORD lpcConnections) AKARI_CE_NAME(RasEnumConnections);
 
@@ -403,29 +405,34 @@ AKARI_CE_IMPORT DWORD RasEnumDevicesW(LPRASDEVINFOW lpRasDevinfo, LPDWORD lpcb,
 
 /* wcesdkrRasEnumEntries "RasEnumEntries": CE 1.0+; Ras.h,
  * Afdfunc.h.  lpszPhoneBookPath is ignored on CE. */
+/* ee496207: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasEnumEntries(LPWSTR Reserved, LPWSTR lpszPhoneBookPath,
                     LPRASENTRYNAME lprasentryname, LPDWORD lpcb,
                     LPDWORD lpcEntries) AKARI_CE_NAME(RasEnumEntries);
 
 /* wcesdkrRasGetConnectStatus "RasGetConnectStatus": CE 1.0+;
  * Ras.h, Afdfunc.h. */
+/* ee497517: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasGetConnectStatus(HRASCONN rasconn,
                     LPRASCONNSTATUS lprasconnstatus) AKARI_CE_NAME(RasGetConnectStatus);
 
 /* wcesdkrRasGetEntryDialParams "RasGetEntryDialParams": CE 1.0+;
  * Ras.h, Afdfunc.h. */
+/* ee496835: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasGetEntryDialParams(LPWSTR lpszPhoneBook,
                     LPRASDIALPARAMS lpRasDialParams,
                     LPBOOL lpfPassword) AKARI_CE_NAME(RasGetEntryDialParams);
 
 /* wcesdkrRasGetEntryProperties "RasGetEntryProperties": CE 1.0+;
  * Ras.h, Afdfunc.h. */
+/* ee496231: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasGetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry,
                     LPRASENTRY lpbEntry, LPDWORD lpdwEntrySize,
                     LPBYTE lpb, LPDWORD lpdwSize) AKARI_CE_NAME(RasGetEntryProperties);
 
 /* wcesdkrRasGetLinkStatistics "RasGetLinkStatistics": CE 3.0+;
  * Ras.h, Afdfunc.h. */
+/* ee496606: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasGetLinkStatistics(HRASCONN hRasConn, DWORD dwSubEntry,
                     RAS_STATS *lpStatistics) AKARI_CE_NAME(RasGetLinkStatistics);
 
@@ -440,16 +447,19 @@ AKARI_CE_IMPORT DWORD RasGetProjectionInfoW(HRASCONN hrasconn,
 #define RasGetProjectionInfo RasGetProjectionInfoW
 
 /* wcesdkrRasHangUp "RasHangUp": CE 1.0+; Ras.h, Afdfunc.h. */
+/* ee497206: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasHangUp(HRASCONN Session) AKARI_CE_NAME(RasHangUp);
 
 /* wcesdkrRasSetEntryDialParams "RasSetEntryDialParams": CE 1.0+;
  * Ras.h, Afdfunc.h. */
+/* ee496751: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasSetEntryDialParams(LPWSTR lpszPhoneBook,
                     LPRASDIALPARAMS lpRasDialParams,
                     BOOL fRemovePassword) AKARI_CE_NAME(RasSetEntryDialParams);
 
 /* wcesdkrRasSetEntryProperties "RasSetEntryProperties": CE 1.0+;
  * Ras.h, Afdfunc.h. */
+/* ee497296: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasSetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry,
                     LPRASENTRY lpbEntry, DWORD dwEntrySize,
                     LPBYTE lpb, DWORD dwSize) AKARI_CE_NAME(RasSetEntryProperties);
@@ -458,6 +468,7 @@ AKARI_CE_IMPORT DWORD RasSetEntryProperties(LPWSTR lpszPhoneBook, LPWSTR szEntry
  * DWORD RasDeleteEntry(LPWSTR, LPWSTR).  CE 3.0+; Ras.h, Afdfunc.h.
  * Deletes a phone-book entry (lpszPhonebook is ignored on CE --
  * entries live in the registry). */
+/* ee497338: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasDeleteEntry(LPWSTR lpszPhonebook, LPWSTR lpszEntry)
                     AKARI_CE_NAME(RasDeleteEntry);
 
@@ -465,6 +476,7 @@ AKARI_CE_IMPORT DWORD RasDeleteEntry(LPWSTR lpszPhonebook, LPWSTR lpszEntry)
  * DWORD RasRenameEntry(LPWSTR, LPWSTR, LPWSTR).  CE 1.0+; Ras.h,
  * Afdfunc.h.  Renames a phone-book entry; call RasValidateEntryName
  * on the new name first. */
+/* ee497260: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasRenameEntry(LPWSTR lpszPhonebook, LPWSTR lpszOldEntry,
                     LPWSTR lpszNewEntry) AKARI_CE_NAME(RasRenameEntry);
 
@@ -472,6 +484,7 @@ AKARI_CE_IMPORT DWORD RasRenameEntry(LPWSTR lpszPhonebook, LPWSTR lpszOldEntry,
  * DWORD RasValidateEntryName(LPWSTR, LPWSTR).  CE 1.0+; Ras.h,
  * Afdfunc.h.  Validates an entry name (at least one alphanumeric
  * character; no | > < ? * \ / : characters). */
+/* ee496752: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD RasValidateEntryName(LPWSTR lpszPhonebook, LPWSTR lpszEntry)
                     AKARI_CE_NAME(RasValidateEntryName);
 

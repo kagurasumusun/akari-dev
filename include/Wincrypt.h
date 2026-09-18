@@ -812,25 +812,32 @@ AKARI_CE_IMPORT BOOLEAN CryptAcquireContextW(HCRYPTPROV *phProv,
  * Unicode-only). */
 #define CryptAcquireContext CryptAcquireContextW
 
+/* ms937737: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptContextAddRef(HCRYPTPROV hProv, DWORD *pdwReserved,
                                  DWORD dwFlags) AKARI_CE_NAME(CryptContextAddRef);
 
+/* ms937738: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptCreateHash(HCRYPTPROV hProv, ALG_ID Algid,
                               HCRYPTKEY hKey, DWORD dwFlags,
                               HCRYPTHASH *phHash) AKARI_CE_NAME(CryptCreateHash);
 
+/* ms937741: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptDecrypt(HCRYPTKEY hKey, HCRYPTHASH hHash, BOOL Final,
                            DWORD dwFlags, BYTE *pbData,
                            DWORD *pdwDataLen) AKARI_CE_NAME(CryptDecrypt);
 
+/* ms937742: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptDeriveKey(HCRYPTPROV hProv, ALG_ID Algid,
                              HCRYPTHASH hBaseData, DWORD dwFlags,
                              HCRYPTKEY *phKey) AKARI_CE_NAME(CryptDeriveKey);
 
+/* ee497992: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptDestroyHash(HCRYPTHASH hHash) AKARI_CE_NAME(CryptDestroyHash);
 
+/* ms937744: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptDestroyKey(HCRYPTKEY hKey) AKARI_CE_NAME(CryptDestroyKey);
 
+/* ms937745: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptDuplicateHash(HCRYPTHASH hHash, DWORD *pdwReserved,
                                  DWORD dwFlags,
                                  HCRYPTHASH *phHash) AKARI_CE_NAME(CryptDuplicateHash);
@@ -902,18 +909,22 @@ AKARI_CE_IMPORT BOOL WINAPI CryptGetProvParam(HCRYPTPROV hProv, DWORD dwParam,
 AKARI_CE_IMPORT BOOL WINAPI CryptGetUserKey(HCRYPTPROV hProv, DWORD dwKeySpec,
                               HCRYPTKEY *phUserKey) AKARI_CE_NAME(CryptGetUserKey);
 
+/* ms938141: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptHashData(HCRYPTHASH hHash, BYTE *pbData, DWORD dwDataLen,
                             DWORD dwFlags) AKARI_CE_NAME(CryptHashData);
 
+/* ms938156: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptHashSessionKey(HCRYPTHASH hHash, HCRYPTKEY hKey,
                                   DWORD dwFlags) AKARI_CE_NAME(CryptHashSessionKey);
 
+/* ms938178: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptImportKey(HCRYPTPROV hProv, BYTE *pbData, DWORD dwDataLen,
                              HCRYPTKEY hPubKey, DWORD dwFlags,
                              HCRYPTKEY *phKey) AKARI_CE_NAME(CryptImportKey);
 
 /* ---- CryptMsg family (all Windows CE 5.0 and later) --------------- */
 
+/* ms938232: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CryptMsgCalculateEncodedLength(DWORD dwMsgEncodingType,
                                                             DWORD dwFlags,
                                                             DWORD dwMsgType,
@@ -922,18 +933,23 @@ AKARI_CE_IMPORT DWORD WINAPI CryptMsgCalculateEncodedLength(DWORD dwMsgEncodingT
                                                             DWORD cbData) AKARI_CE_NAME(CryptMsgCalculateEncodedLength);
 
 #if _WIN32_WCE >= 0x0500   /*  (None) */
+/* ms938239: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgClose(HCRYPTMSG hCryptMsg) AKARI_CE_NAME(CryptMsgClose);
 
+/* ms938247: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgControl(HCRYPTMSG hCryptMsg, DWORD dwFlags,
                               DWORD dwCtrlType,
                               const void *pvCtrlPara) AKARI_CE_NAME(CryptMsgControl);
 
+/* ms938251: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCRYPTMSG WINAPI CryptMsgDuplicate(HCRYPTMSG hCryptMsg) AKARI_CE_NAME(CryptMsgDuplicate);
 
+/* ms938257: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgGetParam(HCRYPTMSG hCryptMsg, DWORD dwParamType,
                                DWORD dwIndex, void *pvData,
                                DWORD *pcbData) AKARI_CE_NAME(CryptMsgGetParam);
 
+/* ms938264: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCRYPTMSG WINAPI CryptMsgOpenToDecode(DWORD dwMsgEncodingType,
                                                       DWORD dwFlags,
                                                       DWORD dwMsgType,
@@ -941,6 +957,7 @@ AKARI_CE_IMPORT HCRYPTMSG WINAPI CryptMsgOpenToDecode(DWORD dwMsgEncodingType,
                                                       PCERT_INFO pRecipientInfo,
                                                       PCMSG_STREAM_INFO pStreamInfo) AKARI_CE_NAME(CryptMsgOpenToDecode);
 
+/* ms938271: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCRYPTMSG WINAPI CryptMsgOpenToEncode(DWORD dwMsgEncodingType,
                                                       DWORD dwFlags,
                                                       DWORD dwMsgType,
@@ -948,6 +965,7 @@ AKARI_CE_IMPORT HCRYPTMSG WINAPI CryptMsgOpenToEncode(DWORD dwMsgEncodingType,
                                                       LPSTR pszInnerContentObjID,
                                                       PCMSG_STREAM_INFO pStreamInfo) AKARI_CE_NAME(CryptMsgOpenToEncode);
 
+/* ms938279: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptMsgUpdate(HCRYPTMSG hCryptMsg, const BYTE *pbData,
                              DWORD cbData,
                              BOOL fFinal) AKARI_CE_NAME(CryptMsgUpdate);
@@ -969,13 +987,16 @@ AKARI_CE_IMPORT BOOL WINAPI CryptUnprotectData(DATA_BLOB *pDataIn, LPWSTR *ppszD
 
 /* ------------------------------------------------------------------ */
 
+/* ms938317: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptReleaseContext(HCRYPTPROV hProv,
                                   DWORD dwFlags) AKARI_CE_NAME(CryptReleaseContext);
 
+/* ms938326: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSetHashParam(HCRYPTHASH hHash, DWORD dwParam,
                                 BYTE *pbData,
                                 DWORD dwFlags) AKARI_CE_NAME(CryptSetHashParam);
 
+/* ms938335: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSetKeyParam(HCRYPTKEY hKey, DWORD dwParam, BYTE *pbData,
                                DWORD dwFlags) AKARI_CE_NAME(CryptSetKeyParam);
 
@@ -994,6 +1015,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptSetProviderExW(LPCTSTR pszProvName, DWORD dwPro
  * Unicode-only). */
 #define CryptSetProviderEx CryptSetProviderExW
 
+/* ms938358: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSetProvParam(HCRYPTPROV hProv, DWORD dwParam,
                                 BYTE *pbData,
                                 DWORD dwFlags) AKARI_CE_NAME(CryptSetProvParam);
@@ -1020,16 +1042,19 @@ AKARI_CE_IMPORT BOOL WINAPI CryptVerifySignatureW(HCRYPTHASH hHash, BYTE *pbSign
 /* Requirements row Header: Wincrypt.h / Link Library: Crypt32.lib).  */
 /* ------------------------------------------------------------------ */
 
+/* ms937018: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertAddCertificateContextToStore(HCERTSTORE hCertStore,
                                                PCCERT_CONTEXT pCertContext,
                                                DWORD dwAddDisposition,
                                                PCCERT_CONTEXT *ppStoreContext) AKARI_CE_NAME(CertAddCertificateContextToStore);
 
+/* ms937019: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertAddCertificateLinkToStore(HCERTSTORE hCertStore,
                                             PCCERT_CONTEXT pCertContext,
                                             DWORD dwAddDisposition,
                                             PCCERT_CONTEXT *ppStoreContext) AKARI_CE_NAME(CertAddCertificateLinkToStore);
 
+/* ms937020: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertAddEncodedCertificateToStore(HCERTSTORE hCertStore,
                                                DWORD dwCertEncodingType,
                                                const BYTE *pbCertEncoded,
@@ -1037,9 +1062,11 @@ AKARI_CE_IMPORT BOOL WINAPI CertAddEncodedCertificateToStore(HCERTSTORE hCertSto
                                                DWORD dwAddDisposition,
                                                PCCERT_CONTEXT *ppCertContext) AKARI_CE_NAME(CertAddEncodedCertificateToStore);
 
+/* ms937021: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertAddEnhancedKeyUsageIdentifier(PCCERT_CONTEXT pCertContext,
                                                 LPCSTR pszUsageIdentifier) AKARI_CE_NAME(CertAddEnhancedKeyUsageIdentifier);
 
+/* ms937022: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertAddSerializedElementToStore(HCERTSTORE hCertStore,
                                               const BYTE *pbElement,
                                               DWORD cbElement,
@@ -1049,22 +1076,28 @@ AKARI_CE_IMPORT BOOL WINAPI CertAddSerializedElementToStore(HCERTSTORE hCertStor
                                               DWORD *pdwContextType,
                                               const void **ppvContext) AKARI_CE_NAME(CertAddSerializedElementToStore);
 
+/* ms937023: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LPCSTR WINAPI CertAlgIdToOID(DWORD dwAlgId) AKARI_CE_NAME(CertAlgIdToOID);
 
+/* ms937035: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertCloseStore(HCERTSTORE hCertStore,
                              DWORD dwFlags) AKARI_CE_NAME(CertCloseStore);
 
+/* ms937036: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertCompareCertificate(DWORD dwCertEncodingType,
                                      PCERT_INFO pCertId1,
                                      PCERT_INFO pCertId2) AKARI_CE_NAME(CertCompareCertificate);
 
+/* ms937037: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertCompareCertificateName(DWORD dwCertEncodingType,
                                          PCERT_NAME_BLOB pCertName1,
                                          PCERT_NAME_BLOB pCertName2) AKARI_CE_NAME(CertCompareCertificateName);
 
+/* ms937038: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertCompareIntegerBlob(PCRYPT_INTEGER_BLOB pInt1,
                                      PCRYPT_INTEGER_BLOB pInt2) AKARI_CE_NAME(CertCompareIntegerBlob);
 
+/* ms937039: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertComparePublicKeyInfo(DWORD dwCertEncodingType,
                                        PCERT_PUBLIC_KEY_INFO pPublicKey1,
                                        PCERT_PUBLIC_KEY_INFO pPublicKey2) AKARI_CE_NAME(CertComparePublicKeyInfo);
@@ -1073,40 +1106,52 @@ AKARI_CE_IMPORT BOOL WINAPI CertControlStore(HCERTSTORE hCertStore, DWORD dwFlag
                                DWORD dwCtrlType,
                                const void *pvCtrlPara) AKARI_CE_NAME(CertControlStore);
 
+/* ms937043: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertCreateCertificateContext(DWORD dwCertEncodingType,
                                                                    const BYTE *pbCertEncoded,
                                                                    DWORD cbCertEncoded) AKARI_CE_NAME(CertCreateCertificateContext);
 
+/* ms937044: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertDeleteCertificateFromStore(PCCERT_CONTEXT pCertContext) AKARI_CE_NAME(CertDeleteCertificateFromStore);
 
+/* ms937235: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCERT_CHAIN_CONTEXT WINAPI CertDuplicateCertificateChain(PCCERT_CHAIN_CONTEXT pChainContext) AKARI_CE_NAME(CertDuplicateCertificateChain);
 
+/* ms937328: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertDuplicateCertificateContext(PCCERT_CONTEXT pCertContext) AKARI_CE_NAME(CertDuplicateCertificateContext);
 
+/* ms937422: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCERTSTORE WINAPI CertDuplicateStore(HCERTSTORE hCertStore) AKARI_CE_NAME(CertDuplicateStore);
 
+/* ms937534: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CertEnumCertificateContextProperties(PCCERT_CONTEXT pCertContext,
                                                                   DWORD dwPropId) AKARI_CE_NAME(CertEnumCertificateContextProperties);
 
+/* ms937636: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertEnumCertificatesInStore(HCERTSTORE hCertStore,
                                                                   PCCERT_CONTEXT pPrevCertContext) AKARI_CE_NAME(CertEnumCertificatesInStore);
 
+/* aa452564: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertEnumPhysicalStore(const void *pvSystemStore,
                                     DWORD dwFlags, void *pvArg,
                                     PFN_CERT_ENUM_PHYSICAL_STORE pfnEnum) AKARI_CE_NAME(CertEnumPhysicalStore);
 
+/* ms937645: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertEnumSystemStore(DWORD dwFlags,
                                   void *pvSystemStoreLocationPara,
                                   void *pvArg,
                                   PFN_CERT_ENUM_SYSTEM_STORE pfnEnum) AKARI_CE_NAME(CertEnumSystemStore);
 
+/* ms937650: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertEnumSystemStoreLocation(DWORD dwFlags, void *pvArg,
                                           PFN_CERT_ENUM_SYSTEM_STORE_LOCATION pfnEnum) AKARI_CE_NAME(CertEnumSystemStoreLocation);
 
+/* ms937652: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCRYPT_ATTRIBUTE WINAPI CertFindAttribute(LPCSTR pszObjId,
                                                           DWORD cAttr,
                                                           CRYPT_ATTRIBUTE rgAttr[]) AKARI_CE_NAME(CertFindAttribute);
 
+/* ms937653: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertFindCertificateInStore(HCERTSTORE hCertStore,
                                                                  DWORD dwCertEncodingType,
                                                                  DWORD dwFindFlags,
@@ -1114,10 +1159,12 @@ AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertFindCertificateInStore(HCERTSTORE hCer
                                                                  const void *pvFindPara,
                                                                  PCCERT_CONTEXT pPrevCertContext) AKARI_CE_NAME(CertFindCertificateInStore);
 
+/* ms937655: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCERT_EXTENSION WINAPI CertFindExtension(LPCSTR pszObjId,
                                                          DWORD cExtensions,
                                                          CERT_EXTENSION rgExtensions[]) AKARI_CE_NAME(CertFindExtension);
 
+/* ms937657: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCERT_RDN_ATTR WINAPI CertFindRDNAttr(LPCSTR pszObjId,
                                                       PCERT_NAME_INFO pName) AKARI_CE_NAME(CertFindRDNAttr);
 
@@ -1139,27 +1186,32 @@ AKARI_CE_IMPORT BOOL WINAPI CertGetCertificateContextProperty(PCCERT_CONTEXT pCe
                                                 void *pvData,
                                                 DWORD *pcbData) AKARI_CE_NAME(CertGetCertificateContextProperty);
 
+/* ms937662: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertGetEnhancedKeyUsage(PCCERT_CONTEXT pCertContext,
                                       DWORD dwFlags,
                                       PCERT_ENHKEY_USAGE pUsage,
                                       DWORD *pcbUsage) AKARI_CE_NAME(CertGetEnhancedKeyUsage);
 
+/* ms937663: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertGetIntendedKeyUsage(DWORD dwCertEncodingType,
                                       PCERT_INFO pCertInfo,
                                       BYTE *pbKeyUsage,
                                       DWORD cbKeyUsage) AKARI_CE_NAME(CertGetIntendedKeyUsage);
 
+/* ms937664: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertGetIssuerCertificateFromStore(HCERTSTORE hCertStore,
                                                                         PCCERT_CONTEXT pSubjectContext,
                                                                         PCCERT_CONTEXT pPrevIssuerContext,
                                                                         DWORD *pdwFlags) AKARI_CE_NAME(CertGetIssuerCertificateFromStore);
 
+/* ms937665: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CertGetNameString(PCCERT_CONTEXT pCertContext,
                                                DWORD dwType, DWORD dwFlags,
                                                void *pvTypePara,
                                                LPTSTR pszNameString,
                                                DWORD cchNameString) AKARI_CE_NAME(CertGetNameString);
 
+/* ms937667: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CertGetPublicKeyLength(DWORD dwCertEncodingType,
                                                     PCERT_PUBLIC_KEY_INFO pPublicKey) AKARI_CE_NAME(CertGetPublicKeyLength);
 
@@ -1177,49 +1229,60 @@ AKARI_CE_IMPORT BOOL WINAPI CertGetValidUsages(DWORD cCerts, PCCERT_CONTEXT *rgh
                                  int *cNumOIDs, LPSTR *rghOIDs,
                                  DWORD *pcbOIDs) AKARI_CE_NAME(CertGetValidUsages);
 
+/* ms937674: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertIsRDNAttrsInCertificateName(DWORD dwCertEncodingType,
                                               DWORD dwFlags,
                                               PCERT_NAME_BLOB pCertName,
                                               PCERT_RDN pRDN) AKARI_CE_NAME(CertIsRDNAttrsInCertificateName);
 
+/* ms937681: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CertNameToStr(DWORD dwCertEncodingType,
                                            PCERT_NAME_BLOB pName,
                                            DWORD dwStrType, LPTSTR psz,
                                            DWORD csz) AKARI_CE_NAME(CertNameToStr);
 
+/* ms937682: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CertOIDToAlgId(LPCSTR pszObjId) AKARI_CE_NAME(CertOIDToAlgId);
 
+/* ms937683: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCERTSTORE WINAPI CertOpenStore(LPCSTR lpszStoreProvider,
                                                 DWORD dwMsgAndCertEncodingType,
                                                 HCRYPTPROV hCryptProv,
                                                 DWORD dwFlags,
                                                 const void *pvPara) AKARI_CE_NAME(CertOpenStore);
 
+/* ms937684: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCERTSTORE WINAPI CertOpenSystemStore(HCRYPTPROV hProv,
                                                       LPCTSTR szSubsystemProtocol) AKARI_CE_NAME(CertOpenSystemStore);
 
+/* ms937693: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WINAPI CertRDNValueToStr(DWORD dwValueType,
                                                PCERT_RDN_VALUE_BLOB pValue,
                                                LPTSTR psz,
                                                DWORD csz) AKARI_CE_NAME(CertRDNValueToStr);
 
+/* ms937694: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertRemoveEnhancedKeyUsageIdentifier(PCCERT_CONTEXT pCertContext,
                                                    LPCSTR pszUsageIdentifier) AKARI_CE_NAME(CertRemoveEnhancedKeyUsageIdentifier);
 
+/* ms937696: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertSaveStore(HCERTSTORE hCertStore,
                             DWORD dwMsgAndCertEncodingType, DWORD dwSaveAs,
                             DWORD dwSaveTo, void *pvSaveToPara,
                             DWORD dwFlags) AKARI_CE_NAME(CertSaveStore);
 
+/* ms937697: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertSerializeCertificateStoreElement(PCCERT_CONTEXT pCertContext,
                                                    DWORD dwFlags,
                                                    BYTE *pbElement,
                                                    DWORD *pcbElement) AKARI_CE_NAME(CertSerializeCertificateStoreElement);
 
+/* ms937698: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertSetCertificateContextProperty(PCCERT_CONTEXT pCertContext,
                                                 DWORD dwPropId, DWORD dwFlags,
                                                 const void *pvData) AKARI_CE_NAME(CertSetCertificateContextProperty);
 
+/* ms937699: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertSetEnhancedKeyUsage(PCCERT_CONTEXT pCertContext,
                                       PCERT_ENHKEY_USAGE pUsage) AKARI_CE_NAME(CertSetEnhancedKeyUsage);
 
@@ -1240,6 +1303,7 @@ AKARI_CE_IMPORT BOOL WINAPI CertVerifySubjectCertificateContext(PCCERT_CONTEXT p
 AKARI_CE_IMPORT LONG WINAPI CertVerifyTimeValidity(LPFILETIME pTimeToVerify,
                                                    PCERT_INFO pCertInfo) AKARI_CE_NAME(CertVerifyTimeValidity);
 
+/* ms937711: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CertVerifyValidityNesting(PCERT_INFO pSubjectInfo,
                                         PCERT_INFO pIssuerInfo) AKARI_CE_NAME(CertVerifyValidityNesting);
 
@@ -1247,6 +1311,7 @@ AKARI_CE_IMPORT BOOL WINAPI CertVerifyValidityNesting(PCERT_INFO pSubjectInfo,
 /* Certificate encode/decode/OID/PFX functions (M48, Crypt32.lib).     */
 /* ------------------------------------------------------------------ */
 
+/* ms883955: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptAcquireCertificatePrivateKey(PCCERT_CONTEXT pCert,
                                                 DWORD dwFlags,
                                                 void *pvReserved,
@@ -1254,6 +1319,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptAcquireCertificatePrivateKey(PCCERT_CONTEXT pCe
                                                 DWORD *pdwKeySpec,
                                                 BOOL *pfCallerFreeProv) AKARI_CE_NAME(CryptAcquireCertificatePrivateKey);
 
+/* ms937739: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptCreateKeyIdentifierFromCSP(DWORD dwCertEncodingType,
                                               LPCSTR pszPubKeyOID,
                                               const PUBLICKEYSTRUC *pPubKeyStruc,
@@ -1263,6 +1329,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptCreateKeyIdentifierFromCSP(DWORD dwCertEncoding
                                               BYTE *pbHash,
                                               DWORD *pcbHash) AKARI_CE_NAME(CryptCreateKeyIdentifierFromCSP);
 
+/* ms937740: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptDecodeObjectEx(DWORD dwCertEncodingType,
                                   LPCSTR lpszStructType,
                                   const BYTE *pbEncoded, DWORD cbEncoded,
@@ -1271,6 +1338,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptDecodeObjectEx(DWORD dwCertEncodingType,
                                   void *pvStructInfo,
                                   DWORD *pcbStructInfo) AKARI_CE_NAME(CryptDecodeObjectEx);
 
+/* ms937747: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptEncodeObjectEx(DWORD dwCertEncodingType,
                                   LPCSTR lpszStructType,
                                   const void *pvStructInfo, DWORD dwFlags,
@@ -1278,15 +1346,18 @@ AKARI_CE_IMPORT BOOL WINAPI CryptEncodeObjectEx(DWORD dwCertEncodingType,
                                   void *pvEncoded,
                                   DWORD *pcbEncoded) AKARI_CE_NAME(CryptEncodeObjectEx);
 
+/* ms937995: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptEnumKeyIdentifierProperties(const CRYPT_HASH_BLOB *pKeyIdentifier,
                                                DWORD dwPropId, DWORD dwFlags,
                                                LPCWSTR pwszComputerName,
                                                void *pvReserved, void *pvArg,
                                                PFN_CRYPT_ENUM_KEYID_PROP pfnEnum) AKARI_CE_NAME(CryptEnumKeyIdentifierProperties);
 
+/* ms938004: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptEnumOIDInfo(DWORD dwGroupId, DWORD dwFlags, void *pvArg,
                                PFN_CRYPT_ENUM_OID_INFO pfnEnumOIDInfo) AKARI_CE_NAME(CryptEnumOIDInfo);
 
+/* ms938031: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptExportPublicKeyInfoEx(HCRYPTPROV hCryptProv,
                                          DWORD dwKeySpec,
                                          DWORD dwCertEncodingType,
@@ -1295,17 +1366,21 @@ AKARI_CE_IMPORT BOOL WINAPI CryptExportPublicKeyInfoEx(HCRYPTPROV hCryptProv,
                                          PCERT_PUBLIC_KEY_INFO pInfo,
                                          DWORD *pcbInfo) AKARI_CE_NAME(CryptExportPublicKeyInfoEx);
 
+/* ms938040: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptFindCertificateKeyProvInfo(PCCERT_CONTEXT pCert,
                                               DWORD dwFlags,
                                               void *pvReserved) AKARI_CE_NAME(CryptFindCertificateKeyProvInfo);
 
+/* ms938050: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT PCCRYPT_OID_INFO WINAPI CryptFindOIDInfo(DWORD dwKeyType,
                                                          void *pvKey,
                                                          DWORD dwGroupId) AKARI_CE_NAME(CryptFindOIDInfo);
 
+/* ms938057: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptFreeOIDFunctionAddress(HCRYPTOIDFUNCADDR hFuncAddr,
                                           DWORD dwFlags) AKARI_CE_NAME(CryptFreeOIDFunctionAddress);
 
+/* ms938079: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptGetDefaultOIDFunctionAddress(HCRYPTOIDFUNCSET hFuncSet,
                                                 DWORD dwEncodingType,
                                                 LPCWSTR pwszDll,
@@ -1313,34 +1388,40 @@ AKARI_CE_IMPORT BOOL WINAPI CryptGetDefaultOIDFunctionAddress(HCRYPTOIDFUNCSET h
                                                 void **ppvFuncAddr,
                                                 HCRYPTOIDFUNCADDR *phFuncAddr) AKARI_CE_NAME(CryptGetDefaultOIDFunctionAddress);
 
+/* ms938099: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptGetKeyIdentifierProperty(const CRYPT_HASH_BLOB *pKeyIdentifier,
                                             DWORD dwPropId, DWORD dwFlags,
                                             LPCWSTR pwszComputerName,
                                             void *pvReserved, void *pvData,
                                             DWORD *pcbData) AKARI_CE_NAME(CryptGetKeyIdentifierProperty);
 
+/* ms938109: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptGetOIDFunctionAddress(HCRYPTOIDFUNCSET hFuncSet,
                                          DWORD dwEncodingType, LPCSTR pszOID,
                                          DWORD dwFlags, void **ppvFuncAddr,
                                          HCRYPTOIDFUNCADDR *phFuncAddr) AKARI_CE_NAME(CryptGetOIDFunctionAddress);
 
+/* ms938130: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptHashCertificate(HCRYPTPROV hCryptProv, ALG_ID Algid,
                                    DWORD dwFlags, const BYTE *pbEncoded,
                                    DWORD cbEncoded, BYTE *pbComputedHash,
                                    DWORD *pcbComputedHash) AKARI_CE_NAME(CryptHashCertificate);
 
+/* ms938149: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptHashPublicKeyInfo(HCRYPTPROV hCryptProv, ALG_ID Algid,
                                      DWORD dwFlags, DWORD dwCertEncodingType,
                                      PCERT_PUBLIC_KEY_INFO pInfo,
                                      BYTE *pbComputedHash,
                                      DWORD *pcbComputedHash) AKARI_CE_NAME(CryptHashPublicKeyInfo);
 
+/* ms938167: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptHashToBeSigned(HCRYPTPROV hCryptProv,
                                   DWORD dwCertEncodingType,
                                   const BYTE *pbEncoded, DWORD cbEncoded,
                                   BYTE *pbComputedHash,
                                   DWORD *pcbComputedHash) AKARI_CE_NAME(CryptHashToBeSigned);
 
+/* ms938185: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptImportPublicKeyInfoEx(HCRYPTPROV hCryptProv,
                                          DWORD dwCertEncodingType,
                                          PCERT_PUBLIC_KEY_INFO pInfo,
@@ -1348,15 +1429,18 @@ AKARI_CE_IMPORT BOOL WINAPI CryptImportPublicKeyInfoEx(HCRYPTPROV hCryptProv,
                                          void *pvAuxInfo,
                                          HCRYPTKEY *phKey) AKARI_CE_NAME(CryptImportPublicKeyInfoEx);
 
+/* ms938191: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCRYPTOIDFUNCSET WINAPI CryptInitOIDFunctionSet(LPCSTR pszFuncName,
                                                                 DWORD dwFlags) AKARI_CE_NAME(CryptInitOIDFunctionSet);
 
+/* ms938197: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptInstallDefaultContext(HCRYPTPROV hCryptProv,
                                          DWORD dwDefaultType,
                                          const void *pvDefaultPara,
                                          DWORD dwFlags, void *pvReserved,
                                          HCRYPTDEFAULTCONTEXT *phDefaultContext) AKARI_CE_NAME(CryptInstallDefaultContext);
 
+/* ms938204: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptInstallOIDFunctionAddress(HMODULE hModule,
                                              DWORD dwEncodingType,
                                              LPCSTR pszFuncName,
@@ -1364,12 +1448,14 @@ AKARI_CE_IMPORT BOOL WINAPI CryptInstallOIDFunctionAddress(HMODULE hModule,
                                              CRYPT_OID_FUNC_ENTRY rgFuncEntry[],
                                              DWORD dwFlags) AKARI_CE_NAME(CryptInstallOIDFunctionAddress);
 
+/* ms938330: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSetKeyIdentifierProperty(const CRYPT_HASH_BLOB *pKeyIdentifier,
                                             DWORD dwPropId, DWORD dwFlags,
                                             LPCWSTR pwszComputerName,
                                             void *pvReserved,
                                             const void *pvData) AKARI_CE_NAME(CryptSetKeyIdentifierProperty);
 
+/* ms938360: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSignAndEncodeCertificate(HCRYPTPROV hCryptProv,
                                             DWORD dwKeySpec,
                                             DWORD dwCertEncodingType,
@@ -1380,6 +1466,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptSignAndEncodeCertificate(HCRYPTPROV hCryptProv,
                                             PBYTE pbEncoded,
                                             DWORD *pcbEncoded) AKARI_CE_NAME(CryptSignAndEncodeCertificate);
 
+/* ms938364: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSignCertificate(HCRYPTPROV hCryptProv, DWORD dwKeySpec,
                                    DWORD dwCertEncodingType,
                                    const BYTE *pbEncodedToBeSigned,
@@ -1402,17 +1489,21 @@ AKARI_CE_IMPORT BOOL WINAPI CryptUninstallDefaultContext(HCRYPTDEFAULTCONTEXT hD
 
 /* ---- PFX (CE 5.0 and later) --------------------------------------- */
 
+/* ms926224: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI PFXExportCertStoreEx(HCERTSTORE hStore,
                                    CRYPT_DATA_BLOB *pPFX, LPCWSTR szPassword,
                                    void *pvReserved,
                                    DWORD dwFlags) AKARI_CE_NAME(PFXExportCertStoreEx);
 
+/* ms926229: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HCERTSTORE WINAPI PFXImportCertStore(CRYPT_DATA_BLOB *pPFX,
                                                      LPCWSTR szPassword,
                                                      DWORD dwFlags) AKARI_CE_NAME(PFXImportCertStore);
 
+/* ms926234: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI PFXIsPFXBlob(CRYPT_DATA_BLOB *pPFX) AKARI_CE_NAME(PFXIsPFXBlob);
 
+/* ms926241: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI PFXVerifyPassword(CRYPT_DATA_BLOB *pPFX, LPCWSTR szPassword,
                                 DWORD dwFlags) AKARI_CE_NAME(PFXVerifyPassword);
 

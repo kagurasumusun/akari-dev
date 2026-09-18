@@ -2453,6 +2453,7 @@ AKARI_CE_IMPORT BOOL MessageBeep(UINT uType) AKARI_CE_NAME(MessageBeep);
  * kept out of import defs, see docs/inventory.md). */
 AKARI_CE_IMPORT HRSRC  FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lpType) AKARI_CE_NAME(FindResourceW);
 #define FindResource FindResourceW
+/* ee505293: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HGLOBAL LoadResource(HMODULE hModule, HRSRC hResInfo) AKARI_CE_NAME(LoadResource);  /* aa453416 */
 AKARI_CE_IMPORT LPVOID  LockResource(HGLOBAL hResData) AKARI_CE_NAME(LockResource);                  /* aa453417 */
 AKARI_CE_IMPORT DWORD   SizeofResource(HMODULE hModule, HRSRC hResInfo) AKARI_CE_NAME(SizeofResource); /* ms940346 */

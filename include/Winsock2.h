@@ -766,10 +766,12 @@ typedef enum _WSAESETSERVICEOP {
 /* Winsock 1.1 socket functions (CE 1.0 and later unless noted)        */
 /* ------------------------------------------------------------------ */
 
+/* aa450276: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT SOCKET accept(SOCKET s, struct sockaddr *addr,
                               int *addrlen) AKARI_CE_NAME(accept);
 AKARI_CE_IMPORT int bind(SOCKET s, const struct sockaddr *name,
                          int namelen) AKARI_CE_NAME(bind);
+/* ms887908: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int closesocket(SOCKET s) AKARI_CE_NAME(closesocket);
 AKARI_CE_IMPORT int connect(SOCKET s, const struct sockaddr *name,
                             int namelen) AKARI_CE_NAME(connect);
@@ -783,39 +785,56 @@ AKARI_CE_IMPORT int getpeername(SOCKET s, struct sockaddr *name,
                                 int *namelen) AKARI_CE_NAME(getpeername);
 AKARI_CE_IMPORT int getsockname(SOCKET s, struct sockaddr *name,
                                 int *namelen) AKARI_CE_NAME(getsockname);
+/* ms890301: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int getsockopt(SOCKET s, int level, int optname,
                                char *optval, int *optlen)
     AKARI_CE_NAME(getsockopt);
+/* ms890324: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT u_long htonl(u_long hostlong) AKARI_CE_NAME(htonl);
+/* ms890325: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT u_short htons(u_short hostshort) AKARI_CE_NAME(htons);
+/* ms890981: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT unsigned long inet_addr(const char *cp)
     AKARI_CE_NAME(inet_addr);
-AKARI_CE_IMPORT char *inet_ntoa(struct in_addr in)
+/* ms891129: param-list verified against this page (proto-cite) */
+AKARI_CE_IMPORT char * inet_ntoa(struct in_addr in)
     AKARI_CE_NAME(inet_ntoa);
 AKARI_CE_IMPORT int ioctlsocket(SOCKET s, long cmd, u_long *argp)
     AKARI_CE_NAME(ioctlsocket);
+/* ms894564: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int listen(SOCKET s, int backlog) AKARI_CE_NAME(listen);
+/* ms895778: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT u_long ntohl(u_long netlong) AKARI_CE_NAME(ntohl);
+/* ms895783: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT u_short ntohs(u_short netshort) AKARI_CE_NAME(ntohs);
+/* aa450869: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int recv(SOCKET s, char *buf, int len, int flags)
     AKARI_CE_NAME(recv);
+/* aa450870: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int recvfrom(SOCKET s, char *buf, int len, int flags,
                              struct sockaddr *from, int *fromlen)
     AKARI_CE_NAME(recvfrom);
+/* aa450882: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int select(int nfds, fd_set *readfds, fd_set *writefds,
                            fd_set *exceptfds, const struct timeval *timeout)
     AKARI_CE_NAME(select);
+/* aa450883: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int send(SOCKET s, const char *buf, int len, int flags)
     AKARI_CE_NAME(send);
+/* aa450885: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int sendto(SOCKET s, const char *buf, int len, int flags,
                            const struct sockaddr *to, int tolen)
     AKARI_CE_NAME(sendto);
+/* aa450918: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int sethostname(char *pName, int cName)
     AKARI_CE_NAME(sethostname);
+/* aa450933: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int setsockopt(SOCKET s, int level, int optname,
                                const char *optval, int optlen)
     AKARI_CE_NAME(setsockopt);
+/* aa450939: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int shutdown(SOCKET s, int how) AKARI_CE_NAME(shutdown);
+/* aa450956: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT SOCKET socket(int af, int type, int protocol)
     AKARI_CE_NAME(socket);
 
@@ -839,14 +858,17 @@ AKARI_CE_IMPORT INT WSAAddressToString(LPSOCKADDR lpsaAddress,
                                        LPDWORD lpdwAddressStringLength)
     AKARI_CE_NAME(WSAAddressToString);
 AKARI_CE_IMPORT int WSACleanup(void) AKARI_CE_NAME(WSACleanup);
+/* ms898731: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WSACloseEvent(WSAEVENT hEvent)
     AKARI_CE_NAME(WSACloseEvent);
 AKARI_CE_IMPORT int WSAConnect(SOCKET s, const struct sockaddr *name,
                                int namelen, LPWSABUF lpCallerData,
                                LPWSABUF lpCalleeData, LPQOS lpSQOS,
                                LPQOS lpGQOS) AKARI_CE_NAME(WSAConnect);
+/* ms898734: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT WSAEVENT WSACreateEvent(void)
     AKARI_CE_NAME(WSACreateEvent);
+/* ms898738: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSAEnumNetworkEvents(SOCKET s, WSAEVENT hEventObject,
                                          LPWSANETWORKEVENTS lpNetworkEvents)
     AKARI_CE_NAME(WSAEnumNetworkEvents);
@@ -869,10 +891,13 @@ AKARI_CE_IMPORT BOOL WSAGetOverlappedResult(SOCKET s,
                                             LPDWORD lpcbTransfer,
                                             BOOL fWait, LPDWORD lpdwFlags)
     AKARI_CE_NAME(WSAGetOverlappedResult);
+/* ms898743: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSAHtonl(SOCKET s, u_long hostlong, u_long *lpnetlong)
     AKARI_CE_NAME(WSAHtonl);
+/* ms898744: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSAHtons(SOCKET s, u_short hostshort,
                              u_short *lpnetshort) AKARI_CE_NAME(WSAHtons);
+/* ms898745: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSAIoctl(SOCKET s, DWORD dwIoControlCode,
                              LPVOID lpvInBuffer, DWORD cbInBuffer,
                              LPVOID lpvOutBuffer, DWORD cbOutBuffer,
@@ -924,6 +949,7 @@ AKARI_CE_IMPORT int WSARecv(SOCKET s, LPWSABUF lpBuffers,
                             LPWSAOVERLAPPED_COMPLETION_ROUTINE
                                 lpCompletionRoutine)
     AKARI_CE_NAME(WSARecv);
+/* ms898764: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSARecvFrom(SOCKET s, LPWSABUF lpBuffers,
                                 DWORD dwBufferCount,
                                 LPDWORD lpNumberOfBytesRecvd,
@@ -933,8 +959,10 @@ AKARI_CE_IMPORT int WSARecvFrom(SOCKET s, LPWSABUF lpBuffers,
                                 LPWSAOVERLAPPED_COMPLETION_ROUTINE
                                     lpCompletionRoutine)
     AKARI_CE_NAME(WSARecvFrom);
+/* ms898765: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WSAResetEvent(WSAEVENT hEvent)
     AKARI_CE_NAME(WSAResetEvent);
+/* ms898766: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSASend(SOCKET s, LPWSABUF lpBuffers,
                             DWORD dwBufferCount,
                             LPDWORD lpNumberOfBytesSent, DWORD dwFlags,
@@ -942,6 +970,7 @@ AKARI_CE_IMPORT int WSASend(SOCKET s, LPWSABUF lpBuffers,
                             LPWSAOVERLAPPED_COMPLETION_ROUTINE
                                 lpCompletionRoutine)
     AKARI_CE_NAME(WSASend);
+/* ms898767: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int WSASendTo(SOCKET s, LPWSABUF lpBuffers,
                               DWORD dwBufferCount,
                               LPDWORD lpNumberOfBytesSent, DWORD dwFlags,
@@ -950,8 +979,10 @@ AKARI_CE_IMPORT int WSASendTo(SOCKET s, LPWSABUF lpBuffers,
                               LPWSAOVERLAPPED_COMPLETION_ROUTINE
                                   lpCompletionRoutine)
     AKARI_CE_NAME(WSASendTo);
+/* ms911774: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WSASetEvent(WSAEVENT hEvent)
     AKARI_CE_NAME(WSASetEvent);
+/* ms911775: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void WSASetLastError(int iError)
     AKARI_CE_NAME(WSASetLastError);
 /* CE WSASetService page (ms898772, prototype from the documented
@@ -976,6 +1007,7 @@ AKARI_CE_IMPORT INT WSAStringToAddress(LPTSTR AddressString,
                                        LPSOCKADDR lpAddress,
                                        LPINT lpAddressLength)
     AKARI_CE_NAME(WSAStringToAddress);
+/* ms900456: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD WSAWaitForMultipleEvents(DWORD cEvents,
                                                const WSAEVENT *lphEvents,
                                                BOOL fWaitAll,

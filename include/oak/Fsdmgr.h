@@ -81,15 +81,18 @@ typedef struct _FSD_VOLUME_INFO FSD_VOLUME_INFO, *PFSD_VOLUME_INFO;
 /* --- Declared functions (Fsdmgr.lib). -------------------------- */
 /* "FSDMGR_ReadDiskEx": print `DWORD FSDMGR_ReadDiskEx( PFSGIpfsgi,
  * PFSGR pfsgr);` (glued tokens split). */
+/* ms890792: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD FSDMGR_ReadDiskEx(PFSGI pfsgi, PFSGR pfsgr)
                     AKARI_CE_NAME(FSDMGR_ReadDiskEx);
 
 /* "FSDMGR_WriteDiskEx": print `DWORD FSDMGR_WriteDiskEx( PFSGIpfsgi,
  * PFSGR pfsgr);`. */
+/* ms890814: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD FSDMGR_WriteDiskEx(PFSGI pfsgi, PFSGR pfsgr)
                     AKARI_CE_NAME(FSDMGR_WriteDiskEx);
 
 /* "FSD_UnhookVolume": print `BOOL FSD_UnhookVolume(PVOLUME pvol);`. */
+/* ms890860: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL FSD_UnhookVolume(PVOLUME pvol)
                     AKARI_CE_NAME(FSD_UnhookVolume);
 

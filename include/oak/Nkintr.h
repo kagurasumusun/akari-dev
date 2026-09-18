@@ -67,6 +67,7 @@ void OEMWriteDebugLED(WORD wIndex, DWORD dwPattern);
 void OEMWriteDebugString(unsigned short* str);
 
 /* _wcepb_SetInterruptEvent: page-printed prototype (Windows CE OS). */
+/* ee482788: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL SetInterruptEvent(DWORD idInt) AKARI_CE_NAME(SetInterruptEvent);
 
 /* _wcepb_SetKernelCommDev: page-printed prototype (Windows CE OS). */

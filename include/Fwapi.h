@@ -116,30 +116,37 @@ typedef struct _FIREWALL_RULE FW_RULE, *PFW_RULE;
 
 /* "FirewallCreateRule" (Fwapi.lib): print `DWORD FirewallCreateRule(
  * FW_RULE* pRule, BOOL bPersist);` */
+/* aa450371: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD FirewallCreateRule(FW_RULE *pRule, BOOL bPersist)
                     AKARI_CE_NAME(FirewallCreateRule);
 
 /* "FirewallEnable" (Fwapi.lib): print `DWORD FirewallEnable(
  * USHORT Family, BOOL bEnable, BOOL bPersist);` */
+/* aa450373: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD FirewallEnable(USHORT Family, BOOL bEnable,
                     BOOL bPersist) AKARI_CE_NAME(FirewallEnable);
 
 /* FirewallLogInit / FirewallLogUninit / FirewallRefresh (no Link
  * Library row): prints `void FirewallLogInit();`,
  * `void FirewallLogUninit();`, `VOID FirewallRefresh();` */
+/* aa450376: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void FirewallLogInit(void) AKARI_CE_NAME(FirewallLogInit);
+/* aa450378: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void FirewallLogUninit(void)
                     AKARI_CE_NAME(FirewallLogUninit);
+/* aa450379: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT VOID FirewallRefresh(void) AKARI_CE_NAME(FirewallRefresh);
 
 /* FirewallLogPacket (no Link Library row): print
  * `void FirewallLogPacket ( const FW_LOG_ENTRY* pLogEntry);` */
+/* aa450377: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void FirewallLogPacket(const FW_LOG_ENTRY *pLogEntry)
                     AKARI_CE_NAME(FirewallLogPacket);
 
 /* FirewallSetInterface (no Link Library row): print
  * `DWORD FirewallSetInterface( LPCWSTR pszInterfaceName,
  * BOOL bFirewalled, BOOL bPersist);` */
+/* aa450380: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD FirewallSetInterface(
                     LPCWSTR pszInterfaceName, BOOL bFirewalled,
                     BOOL bPersist) AKARI_CE_NAME(FirewallSetInterface);
@@ -147,8 +154,10 @@ AKARI_CE_IMPORT DWORD FirewallSetInterface(
 /* IsFirewallEnabled / IsInterfaceFirewalled (no Link Library rows):
  * prints `BOOL IsFirewallEnabled( USHORT Family);`,
  * `BOOL IsInterfaceFirewalled( LPCWSTR pszInterfaceName);` */
+/* aa450624: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL IsFirewallEnabled(USHORT Family)
                     AKARI_CE_NAME(IsFirewallEnabled);
+/* aa450625: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL IsInterfaceFirewalled(LPCWSTR pszInterfaceName)
                     AKARI_CE_NAME(IsInterfaceFirewalled);
 

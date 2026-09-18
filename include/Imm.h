@@ -221,6 +221,7 @@ typedef UINT (CALLBACK *REGISTERWORDENUMPROC)(LPCTSTR lpszReading,
 
 /* input-context management */
 
+/* ms906003: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HIMC ImmGetContext(HWND hWnd)
     AKARI_CE_NAME(ImmGetContext);                       /* ms906003 */
 AKARI_CE_IMPORT BOOL ImmReleaseContext(HWND hWnd, HIMC hIMC)
@@ -245,6 +246,7 @@ AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCLockCount(HIMC hIMC)
 
 /* IMCC (input-method-context component) memory blocks */
 
+/* ms905988: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HIMCC WINAPI ImmCreateIMCC(DWORD dwSize)
     AKARI_CE_NAME(ImmCreateIMCC);                       /* ms905988 */
 AKARI_CE_IMPORT HIMCC WINAPI ImmDestroyIMCC(HIMCC hIMCC)
@@ -320,6 +322,7 @@ AKARI_CE_IMPORT BOOL ImmSetCompositionFontW(HIMC hIMC, LPLOGFONT lplf)
 
 /* conversion status / list */
 
+/* ms906005: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL ImmGetConversionStatus(HIMC hIMC,
     LPDWORD lpfdwConversion, LPDWORD lpfdwSentence)
     AKARI_CE_NAME(ImmGetConversionStatus);              /* ms906005 */
@@ -336,6 +339,7 @@ AKARI_CE_IMPORT UINT ImmGetConversionListW(HKL hKL, HIMC hIMC,
 
 /* status window / open status / properties */
 
+/* ms906016: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL ImmGetOpenStatus(HIMC hIMC)
     AKARI_CE_NAME(ImmGetOpenStatus);                    /* ms906016 */
 AKARI_CE_IMPORT BOOL ImmSetOpenStatus(HIMC hIMC, BOOL fOpen)
@@ -366,6 +370,7 @@ AKARI_CE_IMPORT BOOL WINAPI ImmGetImeMenuItemsW(HIMC hIMC, DWORD dwFlags,
 
 /* keyboard layout / IME identity */
 
+/* ms906021: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL ImmIsIME(HKL hKL)
     AKARI_CE_NAME(ImmIsIME);                            /* ms906021 */
 AKARI_CE_IMPORT UINT ImmGetDescriptionW(HKL hKL, LPTSTR lpszDescription,
@@ -410,6 +415,7 @@ AKARI_CE_IMPORT UINT ImmGetVirtualKey(HWND hWnd)
 
 /* hot keys */
 
+/* ms906010: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI ImmGetHotKey(DWORD dwHotKeyID,
     LPUINT lpuModifiers, LPUINT lpuVKey, LPHKL lphKL)
     AKARI_CE_NAME(ImmGetHotKey);                        /* ms906010 */
@@ -455,6 +461,7 @@ AKARI_CE_IMPORT UINT ImmGetRegisterWordStyleW(HKL hKL, UINT nItem,
 
 /* IME control / CE-specific */
 
+/* ms906025: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL ImmNotifyIME(HIMC hIMC, DWORD dwAction,
     DWORD dwIndex, DWORD dwValue)
     AKARI_CE_NAME(ImmNotifyIME);                        /* ms906025 */

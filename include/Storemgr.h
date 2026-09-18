@@ -74,26 +74,32 @@ typedef struct tagSTORAGECONTEXT STORAGECONTEXT, *PSTORAGECONTEXT;
 
 /* --- Functions (Storeapi.lib). --------------------------------- */
 /* "DeletePartition": print `BOOL WINAPI DeletePartition(HANDLE hStore,LPCTSTR szPartitionName)` */
+/* ms889008: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI DeletePartition(HANDLE hStore, LPCTSTR szPartitionName)
                     AKARI_CE_NAME(DeletePartition);
 
 /* "DismountPartition": print `BOOL WINAPI DismountPartition(HANDLE hPartition)` */
+/* ms889019: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI DismountPartition(HANDLE hPartition)
                     AKARI_CE_NAME(DismountPartition);
 
 /* "DismountStore": print `BOOL WINAPI DismountStore(HANDLE hStore)` */
+/* ms889024: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI DismountStore(HANDLE hStore)
                     AKARI_CE_NAME(DismountStore);
 
 /* "FindClosePartition": print `BOOL WINAPI FindClosePartition(HANDLE hSearch)` */
+/* ms889632: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI FindClosePartition(HANDLE hSearch)
                     AKARI_CE_NAME(FindClosePartition);
 
 /* "FindCloseStore": print `BOOL WINAPI FindCloseStore(HANDLE hSearch)` */
+/* ms889642: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI FindCloseStore(HANDLE hSearch)
                     AKARI_CE_NAME(FindCloseStore);
 
 /* "FindFirstPartition": print `HANDLE WINAPI FindFirstPartition(HANDLE hStore,PPARTINFO pPartInfo)` */
+/* ms889689: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HANDLE WINAPI FindFirstPartition(HANDLE hStore, PPARTINFO pPartInfo)
                     AKARI_CE_NAME(FindFirstPartition);
 
@@ -102,6 +108,7 @@ AKARI_CE_IMPORT HANDLE WINAPI FindFirstStore(PSTOREMGR_STOREINFO pStoreInfo)
                     AKARI_CE_NAME(FindFirstStore);
 
 /* "FindNextPartition": print `BOOL WINAPI FindNextPartition(HANDLE hSearch,PPARTINFO pPartInfo)` */
+/* ms889968: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI FindNextPartition(HANDLE hSearch, PPARTINFO pPartInfo)
                     AKARI_CE_NAME(FindNextPartition);
 
@@ -110,18 +117,22 @@ AKARI_CE_IMPORT BOOL WINAPI FindNextStore(HANDLE hSearch, PSTOREMGR_STOREINFO pS
                     AKARI_CE_NAME(FindNextStore);
 
 /* "FormatPartition": print `BOOL WINAPI FormatPartition(HANDLE hPartition)` */
+/* ms890426: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI FormatPartition(HANDLE hPartition)
                     AKARI_CE_NAME(FormatPartition);
 
 /* "FormatPartitionEx": print `BOOL WINAPI FormatPartitionEx(HANDLE hPartition,BYTE bPartType,BOOL bAuto)` */
+/* ms890434: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI FormatPartitionEx(HANDLE hPartition, BYTE bPartType, BOOL bAuto)
                     AKARI_CE_NAME(FormatPartitionEx);
 
 /* "FormatStore": print `BOOL WINAPI FormatStore(HANDLE hStore)` */
+/* ms890450: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI FormatStore(HANDLE hStore)
                     AKARI_CE_NAME(FormatStore);
 
 /* "GetPartitionInfo": print `BOOL WINAPI GetPartitionInfo(HANDLE hPartition,PPARTINFO pPartInfo)` */
+/* ms890985: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI GetPartitionInfo(HANDLE hPartition, PPARTINFO pPartInfo)
                     AKARI_CE_NAME(GetPartitionInfo);
 
@@ -130,22 +141,27 @@ AKARI_CE_IMPORT BOOL WINAPI GetStoreInfo(HANDLE hStore, PSTOREMGR_STOREINFO pSto
                     AKARI_CE_NAME(GetStoreInfo);
 
 /* "MountPartition": print `BOOL WINAPI MountPartition(HANDLE hPartition)` */
+/* ms891387: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI MountPartition(HANDLE hPartition)
                     AKARI_CE_NAME(MountPartition);
 
 /* "OpenPartition": print `HANDLE WINAPI OpenPartition(HANDLE hStore,LPCTSTR szPartitionName)` */
+/* ms891420: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HANDLE WINAPI OpenPartition(HANDLE hStore, LPCTSTR szPartitionName)
                     AKARI_CE_NAME(OpenPartition);
 
 /* "OpenStore": print `HANDLE OpenStore(LPCSTR szDeviceName)` */
+/* ms891421: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HANDLE OpenStore(LPCSTR szDeviceName)
                     AKARI_CE_NAME(OpenStore);
 
 /* "RenamePartition": print `BOOL WINAPI RenamePartition(HANDLE hPartition,LPCTSTR szNewName)` */
+/* ms891471: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI RenamePartition(HANDLE hPartition, LPCTSTR szNewName)
                     AKARI_CE_NAME(RenamePartition);
 
 /* "SetPartitionAttributes": print `BOOL WINAPI SetPartitionAttributes(HANDLE hPartition,DWORD dwAttrs)` */
+/* ms891941: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI SetPartitionAttributes(HANDLE hPartition, DWORD dwAttrs)
                     AKARI_CE_NAME(SetPartitionAttributes);
 

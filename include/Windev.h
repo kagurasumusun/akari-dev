@@ -23,6 +23,7 @@
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* _wcepb_IsAPIReady: page-printed prototype (Windows CE OS; coredll.dll). */
+/* ee482834: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL IsAPIReady(DWORD hAPI) AKARI_CE_NAME(IsAPIReady);
 
 

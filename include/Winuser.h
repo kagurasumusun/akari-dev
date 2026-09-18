@@ -397,6 +397,7 @@ void SystemIdleTimerReset(void);
 /* Carets Reference functions (CE 1.0+).                              */
 /* ------------------------------------------------------------------ */
 
+/* ee502564: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CreateCaret(HWND hWnd, HBITMAP hBitmap, int nWidth,  /* ms908164 */
                  int nHeight) AKARI_CE_NAME(CreateCaret);
 AKARI_CE_IMPORT BOOL DestroyCaret(void) AKARI_CE_NAME(DestroyCaret);                                  /* aa452936 */
@@ -520,6 +521,7 @@ AKARI_CE_IMPORT BOOL InSendMessage(VOID) AKARI_CE_NAME(InSendMessage);
 /* not its Requirements row (corrected in M52, docs/inventory.md).    */
 /* ------------------------------------------------------------------ */
 
+/* ee503615: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT SHORT GetKeyState(int nVirtKey) AKARI_CE_NAME(GetKeyState);                       /* aa453132 */
 AKARI_CE_IMPORT SHORT GetAsyncKeyState(int vKey) AKARI_CE_NAME(GetAsyncKeyState);                      /* ms929204 */
 AKARI_CE_IMPORT HWND  GetFocus(void) AKARI_CE_NAME(GetFocus);                                  /* ms929240 */
@@ -530,6 +532,7 @@ AKARI_CE_IMPORT BOOL  EnableWindow(HWND hWnd, BOOL bEnable) AKARI_CE_NAME(Enable
 AKARI_CE_IMPORT BOOL  IsWindowEnabled(HWND hWnd) AKARI_CE_NAME(IsWindowEnabled);                      /* aa453234 */
 
 /* Keyboard layout (HKL). */
+/* aa452845: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HKL   ActivateKeyboardLayout(HKL hkl, UINT Flags) AKARI_CE_NAME(ActivateKeyboardLayout);     /* aa452845 */
 AKARI_CE_IMPORT HKL   GetKeyboardLayout(DWORD idThread) AKARI_CE_NAME(GetKeyboardLayout);               /* ms929249 */
 AKARI_CE_IMPORT UINT  GetKeyboardLayoutList(int nBuff, HKL *lpList) AKARI_CE_NAME(GetKeyboardLayoutList);   /* ms929250 */
@@ -825,6 +828,7 @@ AKARI_CE_IMPORT HKL LoadKeyboardLayoutW(LPCSTR pwszKLID, UINT Flags) AKARI_CE_NA
 #define LoadKeyboardLayout LoadKeyboardLayoutW
 
 /* Hot keys (CE 2.0+). */
+/* ms913104: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL RegisterHotKey(HWND hWnd, int id, UINT fsModifiers, UINT vk) AKARI_CE_NAME(RegisterHotKey);
 BOOL UnregisterHotKey(HWND hWnd, int id);
 
@@ -852,6 +856,7 @@ AKARI_CE_IMPORT UINT SendInput(UINT nInputs, LPINPUT pInputs, int cbSize) AKARI_
 /* Scroll Bars Reference functions (Header: Winuser.h).              */
 /* ------------------------------------------------------------------ */
 
+/* ee504048: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL GetScrollInfo(HWND hwnd, int fnBar, LPSCROLLINFO lpsi) AKARI_CE_NAME(GetScrollInfo); /* aa453163 */
 AKARI_CE_IMPORT int  SetScrollInfo(HWND hwnd, int fnBar, LPSCROLLINFO lpsi,  /* aa453652 */
                    BOOL fRedraw) AKARI_CE_NAME(SetScrollInfo);
@@ -1181,6 +1186,7 @@ AKARI_CE_IMPORT LONG   SendDlgItemMessageW(HWND hDlg, int nIDDlgItem, UINT Msg, 
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define SendDlgItemMessage SendDlgItemMessageW
+/* ee504580: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL   SetDlgItemInt(HWND hDlg, int nIDDlgItem, UINT uValue,      /* ms940020 */
                      BOOL bSigned) AKARI_CE_NAME(SetDlgItemInt);
 AKARI_CE_IMPORT BOOL   SetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPCTSTR lpString) AKARI_CE_NAME(SetDlgItemTextW); /* ms940021 */
@@ -1197,6 +1203,7 @@ AKARI_CE_IMPORT BOOL CheckRadioButton(HWND hDlg, int nIDFirstButton, int nIDLast
 /* Clipboards Reference functions (Header Winuser.h).                 */
 /* ------------------------------------------------------------------ */
 
+/* ee499346: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL   CloseClipboard(void) AKARI_CE_NAME(CloseClipboard);                       /* ms928586 */
 AKARI_CE_IMPORT int    CountClipboardFormats(void) AKARI_CE_NAME(CountClipboardFormats);                /* ms908153 */
 AKARI_CE_IMPORT BOOL   EmptyClipboard(void) AKARI_CE_NAME(EmptyClipboard);                       /* aa453019 */
@@ -1222,6 +1229,7 @@ AKARI_CE_IMPORT HANDLE SetClipboardData(UINT uFormat, HANDLE hMem) AKARI_CE_NAME
 /* Resources Reference icon/image functions (Header Winuser.h).        */
 /* ------------------------------------------------------------------ */
 
+/* ms924843: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HICON  CreateIconIndirect(PICONINFO piconinfo) AKARI_CE_NAME(CreateIconIndirect);     /* ms908175 */
 AKARI_CE_IMPORT BOOL   DestroyIcon(HICON hIcon) AKARI_CE_NAME(DestroyIcon);                    /* aa452938 */
 AKARI_CE_IMPORT BOOL   DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon,
@@ -1238,6 +1246,7 @@ AKARI_CE_IMPORT HANDLE LoadImageW(HINSTANCE hinst, LPCTSTR lpszName, UINT uType,
 /* System Information Reference functions (Header Winuser.h).          */
 /* ------------------------------------------------------------------ */
 
+/* aa453033: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL  EnableHardwareKeyboard(BOOL bEnable) AKARI_CE_NAME(EnableHardwareKeyboard);          /* aa453033 */
 AKARI_CE_IMPORT DWORD GetSysColor(int nIndex) AKARI_CE_NAME(GetSysColor);                       /* aa453167 */
 AKARI_CE_IMPORT int   GetSystemMetrics(int nIndex) AKARI_CE_NAME(GetSystemMetrics);                  /* aa453170 */
@@ -1259,6 +1268,7 @@ AKARI_CE_IMPORT BOOL  SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID p
     { (pt).x = (SHORT) LOWORD(pts);     \
       (pt).y = (SHORT) HIWORD(pts); }
 
+/* ee504320: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL     ClipCursor(CONST RECT *lpRect) AKARI_CE_NAME(ClipCursor);        /* ms928585 */
 AKARI_CE_IMPORT BOOL     GetClipCursor(LPRECT lpRect) AKARI_CE_NAME(GetClipCursor);       /* ms929220 */
 AKARI_CE_IMPORT HCURSOR  GetCursor(void) AKARI_CE_NAME(GetCursor);                        /* ms929225 */

@@ -321,6 +321,7 @@ typedef struct LdapReferralCallback {
 /* ------------------------------------------------------------------ */
 
 /* --- Session functions --- */
+/* ms863877: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LDAP*    cldap_open(PTCHAR HostName, ULONG PortNumber) AKARI_CE_NAME(cldap_open);            /* ms863877 */
 AKARI_CE_IMPORT ULONG    ldap_abandon(LDAP *ld, ULONG msgid) AKARI_CE_NAME(ldap_abandon);                      /* ms891743 */
 AKARI_CE_IMPORT ULONG    ldap_bind(LDAP *ld, PTCHAR dn, PTCHAR cred, ULONG method) AKARI_CE_NAME(ldap_bind);/* ms891748 */
@@ -340,6 +341,7 @@ AKARI_CE_IMPORT ULONG    ldap_unbind(LDAP *ld) AKARI_CE_NAME(ldap_unbind);      
 AKARI_CE_IMPORT ULONG    ldap_unbind_s(LDAP *ld) AKARI_CE_NAME(ldap_unbind_s);                                  /* ms892318 */
 
 /* --- Directory entry functions --- */
+/* ms891744: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT ULONG    ldap_add(LDAP *ld, PTCHAR dn, LDAPMod *attrs[]) AKARI_CE_NAME(ldap_add);          /* ms891744 */
 AKARI_CE_IMPORT ULONG    ldap_add_ext(LDAP *ld, PTCHAR dn, LDAPMod *attrs[],
                       LDAPControl **ServerControls,
@@ -395,6 +397,7 @@ AKARI_CE_IMPORT ULONG    ldap_extended_operation(LDAP *ld, PTCHAR Oid,
                                  ULONG *MessageNumber) AKARI_CE_NAME(ldap_extended_operation);            /* ms892261 */
 
 /* --- Search functions --- */
+/* ms891750: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT ULONG    ldap_check_filter(LDAP *ld, PTCHAR SearchFilter) AKARI_CE_NAME(ldap_check_filter);         /* ms891750 */
 AKARI_CE_IMPORT ULONG    ldap_count_entries(LDAP *ld, LDAPMessage *res) AKARI_CE_NAME(ldap_count_entries);           /* ms891760 */
 AKARI_CE_IMPORT ULONG    ldap_count_references(LDAP *ld, LDAPMessage *res) AKARI_CE_NAME(ldap_count_references);        /* ms891761 */
@@ -463,12 +466,14 @@ AKARI_CE_IMPORT ULONG    ldap_result(LDAP *ld, ULONG msgid, ULONG all,
                      LDAP_TIMEVAL *timeout, LDAPMessage **res) AKARI_CE_NAME(ldap_result);    /* ms892297 */
 
 /* --- Error handling functions --- */
+/* ms892105: param-list verified against this page; the print shows the UNICODE-decorated return form (proto-cite) */
 AKARI_CE_IMPORT PTCHAR   ldap_err2string(ULONG err) AKARI_CE_NAME(ldap_err2string);                               /* ms892105 */
 AKARI_CE_IMPORT ULONG    ldap_result2error(LDAP *ld, LDAPMessage *res, ULONG freeit) AKARI_CE_NAME(ldap_result2error); /* ms892298 */
 AKARI_CE_IMPORT ULONG    LdapGetLastError(void) AKARI_CE_NAME(LdapGetLastError);                                   /* ms892267 */
 AKARI_CE_IMPORT ULONG    LdapMapErrorToWin32(ULONG LdapError) AKARI_CE_NAME(LdapMapErrorToWin32);                     /* ms892276 */
 
 /* --- Memory management functions --- */
+/* ms891758: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT ULONG    ldap_control_free(LDAPControl *Control) AKARI_CE_NAME(ldap_control_free);                  /* ms891758 */
 AKARI_CE_IMPORT ULONG    ldap_controls_free(LDAPControl **Controls) AKARI_CE_NAME(ldap_controls_free);               /* ms891759 */
 AKARI_CE_IMPORT VOID     ldap_memfree(PTCHAR Block) AKARI_CE_NAME(ldap_memfree);                               /* ms892277 */
@@ -477,6 +482,7 @@ AKARI_CE_IMPORT ULONG    ldap_value_free(PTCHAR *vals) AKARI_CE_NAME(ldap_value_
 AKARI_CE_IMPORT ULONG    ldap_value_free_len(struct berval **vals) AKARI_CE_NAME(ldap_value_free_len);                /* ms892322 */
 
 /* --- Parse functions (LDAP Search book) --- */
+/* ms891770: param-list verified against this page; the print shows the UNICODE-decorated return form (proto-cite) */
 AKARI_CE_IMPORT PTCHAR   ldap_dn2ufn(PTCHAR dn) AKARI_CE_NAME(ldap_dn2ufn);                                   /* ms891770 */
 AKARI_CE_IMPORT PTCHAR*  ldap_explode_dn(PTCHAR dn, ULONG notypes) AKARI_CE_NAME(ldap_explode_dn);                /* ms892251 */
 /* ms892289 ldap_parse_extended_result: both the CE 5.0 page and its
@@ -517,6 +523,7 @@ AKARI_CE_IMPORT ULONG    ldap_count_values_len(struct berval **vals) AKARI_CE_NA
 AKARI_CE_IMPORT ULONG    ldap_ufn2dn(PTCHAR ufn, PTCHAR *pDn) AKARI_CE_NAME(ldap_ufn2dn);                     /* ms892316 */
 
 /* --- Other LDAP functions --- */
+/* ms892319: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int      LdapUnicodeToUTF8(LPCWSTR lpSrcStr, int cchSrc,
                            LPSTR lpDestStr, int cchDest) AKARI_CE_NAME(LdapUnicodeToUTF8);          /* ms892319 */
 AKARI_CE_IMPORT int      LdapUTF8ToUnicode(LPCSTR lpSrcStr, int cchSrc,

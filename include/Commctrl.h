@@ -127,6 +127,7 @@ typedef struct _IMAGELISTDRAWPARAMS {
 /* "Commctrl.lib, Imgctl.lib.").                                       */
 /* ------------------------------------------------------------------ */
 
+/* ee502231: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int      ImageList_Add(HIMAGELIST himl, HBITMAP hbmImage,     /* ms909786 */
                        HBITMAP hbmMask) AKARI_CE_NAME(ImageList_Add);
 AKARI_CE_IMPORT int      ImageList_AddMasked(HIMAGELIST himl, HBITMAP hbmImage,
@@ -533,6 +534,7 @@ AKARI_CE_IMPORT BOOL     InitCommonControlsEx(LPINITCOMMONCONTROLSEX lpInitCtrls
 /* Command Bars (CE-specific; all Commctrl.lib, CE 1.0+ unless        */
 /* noted).                                                             */
 /* ------------------------------------------------------------------ */
+/* ee504517: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HWND     CommandBar_Create(HINSTANCE hInst, HWND hwndParent,
                            int idCmdBar) AKARI_CE_NAME(CommandBar_Create);                     /* ms908131 */
 AKARI_CE_IMPORT BOOL     CommandBar_AddAdornments(HWND hwndCB, DWORD dwFlags,
@@ -572,6 +574,7 @@ AKARI_CE_IMPORT BOOL     CommandBar_Show(HWND hwndCB, BOOL fShow) AKARI_CE_NAME(
 /* ------------------------------------------------------------------ */
 /* Command Bands (CE-specific; all Commctrl.lib, CE 2.0+).            */
 /* ------------------------------------------------------------------ */
+/* ms908121: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HWND     CommandBands_Create(HINSTANCE hinst, HWND hwndParent, UINT wID,
                              DWORD dwStyles,
                              HIMAGELIST himl) AKARI_CE_NAME(CommandBands_Create);                /* ms908121 */

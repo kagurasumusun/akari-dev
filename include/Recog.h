@@ -62,6 +62,7 @@ typedef struct tagHWXRESULTS {
 
 /* --- Declared (grounded print). ---------------------------------- */
 /* "HwxConfig": print `BOOL HwxConfig(void);` (Hwxjpn.lib row). */
+/* ms905428: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL HwxConfig(void)
                     AKARI_CE_NAME(HwxConfig);
 

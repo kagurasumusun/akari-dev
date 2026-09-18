@@ -240,6 +240,7 @@ def main():
                     continue
                 h = open(pg, encoding="utf-8", errors="replace").read()
                 printed = None
+                trunc = None
                 for blk in PRE.findall(h):
                     t = html.unescape(re.sub(r"<[^>]+>", " ", blk))
                     t = re.sub(r"\s+", " ", t)
@@ -249,6 +250,23 @@ def main():
                     if mm:
                         printed = mm.group(1)
                         break
+                    # mslearn can split the closing "} NAME;" out of the
+                    # <pre><code> block; keep the truncated body as a
+                    # prefix-comparison fallback.
+                    if trunc is None:
+                        mt = re.search(
+                            r"typedef\s+(?:struct|union)\s*\w*\s*\{(.*)$", t)
+                        if mt:
+                            trunc = mt.group(1)
+                if printed is None and trunc is not None:
+                    a0 = member_names(body, peel_glued=False)
+                    b0 = member_names(trunc)
+                    if b0 and b0 == a0[:len(b0)]:
+                        bump("match-truncated-print")
+                        rows.append((hdr, name, pid,
+                                     "match-truncated-print",
+                                     "print block truncated by page"))
+                        continue
                 if printed is None:
                     bump("no-print-on-page")
                     rows.append((hdr, name, pid, "no-print-on-page", ""))

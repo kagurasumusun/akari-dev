@@ -62,6 +62,7 @@ typedef struct UserNotificationInfoHeader {
 
 /* Notify Reference functions (Header Notify.h; Link Library
  * Coredll.lib). */
+/* ms908074: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL   CeClearUserNotification(HANDLE hNotification) AKARI_CE_NAME(CeClearUserNotification);              /* ms908074 */
 AKARI_CE_IMPORT BOOL   CeGetUserNotification(HANDLE hNotification,                 /* ms908076 */
                              DWORD cBufferSize, LPDWORD pcBytesNeeded,

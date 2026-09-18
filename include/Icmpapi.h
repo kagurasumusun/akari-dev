@@ -20,24 +20,29 @@ typedef struct IP_OPTION_INFORMATION {
 } IP_OPTION_INFORMATION, *PIP_OPTION_INFORMATION;
 
 /* IcmpCreateFile: print `HANDLEWINAPI IcmpCreateFile(VOID);` */
+/* ms890359: param-list verified against this page; page glues WINAPI into the return type (HTML span artifact) (proto-cite) */
 AKARI_CE_IMPORT HANDLE WINAPI IcmpCreateFile(VOID)
                     AKARI_CE_NAME(IcmpCreateFile);
 
 /* IcmpCloseHandle: print `BOOLWINAPI IcmpCloseHandle(HANDLEIcmpHandle);` */
+/* ms890358: param-list verified against this page; page glues WINAPI into the return type (HTML span artifact) (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI IcmpCloseHandle(HANDLE IcmpHandle)
                     AKARI_CE_NAME(IcmpCloseHandle);
 
 /* IcmpParseReplies: print
  * `DWORD IcmpParseReplies(LPVOIDReplyBuffer,DWORDReplySize);` */
+/* ms890361: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD IcmpParseReplies(LPVOID ReplyBuffer,
                     DWORD ReplySize) AKARI_CE_NAME(IcmpParseReplies);
 
 /* Icmp6CreateFile: print `HANDLE WINAPI Icmp6CreateFile(VOID);` */
+/* ms890355: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HANDLE WINAPI Icmp6CreateFile(VOID)
                     AKARI_CE_NAME(Icmp6CreateFile);
 
 /* Icmp6ParseReplies: print
  * `DWORD Icmp6ParseReplies(LPVOID ReplyBuffer,DWORD ReplySize);` */
+/* ms890356: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT DWORD Icmp6ParseReplies(LPVOID ReplyBuffer,
                     DWORD ReplySize) AKARI_CE_NAME(Icmp6ParseReplies);
 

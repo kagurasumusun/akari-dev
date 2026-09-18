@@ -78,21 +78,25 @@ AKARI_CE_IMPORT void MDDFreeMem(PBYTE pBuffer)
                     AKARI_CE_NAME(MDDFreeMem);
 
 /* "MddDisconnect": `void MddDisconnect();` (empty parens -> void). */
+/* ms902180: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void MddDisconnect(void)
                     AKARI_CE_NAME(MddDisconnect);
 
 /* "MddIndicateRndisMessage":
  * `void MddIndicateRndisMessage(PDATA_WRAPPER pDataWrapper);` */
+/* ms902183: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void MddIndicateRndisMessage(PDATA_WRAPPER pDataWrapper)
                     AKARI_CE_NAME(MddIndicateRndisMessage);
 
 /* "MddIndicateRndisPacket":
  * `void MddIndicateRndisPacket(PDATA_WRAPPERpDataWrapper);` */
+/* ms902184: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void MddIndicateRndisPacket(PDATA_WRAPPER pDataWrapper)
                     AKARI_CE_NAME(MddIndicateRndisPacket);
 
 /* "PDDInit": `BOOL PDDInit(RNDIS_PDD_CHARACTERISTICS*
  * pRndisPddCharacteristics,PBYTE pBaseAddress);` */
+/* ms919398: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL PDDInit(RNDIS_PDD_CHARACTERISTICS *pRndisPddCharacteristics,
                     PBYTE pBaseAddress) AKARI_CE_NAME(PDDInit);
 

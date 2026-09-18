@@ -141,6 +141,7 @@ AKARI_CE_IMPORT void GwesPowerOffSystem(void) AKARI_CE_NAME(GwesPowerOffSystem);
 BOOL WINAPI ImmGetConversionStatusForeground(DWORD* pfdwConversion, DWORD* pfdwSentence);
 
 /* _wcepb_NotifyWinUserSystem: page-printed prototype (Windows CE OS). */
+/* ee478253: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT void NotifyWinUserSystem(UINT uEvent) AKARI_CE_NAME(NotifyWinUserSystem);
 
 /* ms919550: page-printed prototype (Windows CE 2.10 and later.). */

@@ -75,35 +75,44 @@ typedef struct _SCARD_ATRMASK {
 /* Functions (all Winscard.lib).                                       */
 /* ------------------------------------------------------------------ */
 
+/* ms938481: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardBeginTransaction(SCARDHANDLE hCard) AKARI_CE_NAME(SCardBeginTransaction);
 
+/* ms938495: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardCancel(SCARDCONTEXT hContext) AKARI_CE_NAME(SCardCancel);
 
+/* ms938504: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardConnect(SCARDCONTEXT hContext, LPCTSTR szReader,
                                   DWORD dwShareMode,
                                   DWORD dwPreferredProtocols,
                                   LPSCARDHANDLE phCard,
                                   LPDWORD pdwActiveProtocol) AKARI_CE_NAME(SCardConnect);
 
+/* ms938510: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardControl(SCARDHANDLE hCard, DWORD dwControlCode,
                                   LPCVOID lpInBuffer, DWORD nInBufferSize,
                                   LPVOID lpOutBuffer, DWORD nOutBufferSize,
                                   LPDWORD lpBytesReturned) AKARI_CE_NAME(SCardControl);
 
+/* ms938517: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardDisconnect(SCARDHANDLE hCard,
                                      DWORD dwDisposition) AKARI_CE_NAME(SCardDisconnect);
 
+/* ms938526: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardEndTransaction(SCARDHANDLE hCard,
                                          DWORD dwDisposition) AKARI_CE_NAME(SCardEndTransaction);
 
+/* ms938536: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardEstablishContext(DWORD dwScope,
                                            LPCVOID pvReserved1,
                                            LPCVOID pvReserved2,
                                            LPSCARDCONTEXT phContext) AKARI_CE_NAME(SCardEstablishContext);
 
+/* ms938545: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardForgetCardType(SCARDCONTEXT hContext,
                                          LPCTSTR szCardName) AKARI_CE_NAME(SCardForgetCardType);
 
+/* ms938553: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardForgetReader(SCARDCONTEXT hContext,
                                        LPCTSTR szReaderName) AKARI_CE_NAME(SCardForgetReader);
 
@@ -114,25 +123,30 @@ AKARI_CE_IMPORT LONG SCardFreeMemory(SCARDCONTEXT hContext,
                                      LPCVOID pvMem) AKARI_CE_NAME(SCardFreeMemory);
 #endif /* _WIN32_WCE >= 0x0500 */
 
+/* ms938574: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardGetAttrib(SCARDHANDLE hCard, DWORD dwAttrId,
                                     LPBYTE pbAttr,
                                     LPDWORD pcbAttrLen) AKARI_CE_NAME(SCardGetAttrib);
 
+/* ms926375: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardGetCardTypeProviderName(SCARDCONTEXT hContext,
                                                   LPCTSTR szCardName,
                                                   DWORD dwProviderId,
                                                   LPTSTR szProvider,
                                                   LPDWORD pcchProvider) AKARI_CE_NAME(SCardGetCardTypeProviderName);
 
+/* ms926397: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardGetProviderId(SCARDCONTEXT hContext,
                                         LPCTSTR szCard,
                                         LPGUID pguidProviderId) AKARI_CE_NAME(SCardGetProviderId);
 
+/* ms926406: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardGetStatusChange(SCARDCONTEXT hContext,
                                           DWORD dwTimeout,
                                           LPSCARD_READERSTATE rgReaderStates,
                                           DWORD cReaders) AKARI_CE_NAME(SCardGetStatusChange);
 
+/* ms926415: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardIntroduceCardType(SCARDCONTEXT hContext,
                                             LPCTSTR szCardName,
                                             LPGUID pguidPrimaryProvider,
@@ -141,6 +155,7 @@ AKARI_CE_IMPORT LONG SCardIntroduceCardType(SCARDCONTEXT hContext,
                                             LPCBYTE pbAtr, LPCBYTE pbAtrMask,
                                             DWORD cbAtrLen) AKARI_CE_NAME(SCardIntroduceCardType);
 
+/* ms926416: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardIntroduceReader(SCARDCONTEXT hContext,
                                           LPCTSTR szReaderName,
                                           LPCTSTR szDeviceName) AKARI_CE_NAME(SCardIntroduceReader);
@@ -163,6 +178,7 @@ AKARI_CE_IMPORT LONG SCardListReaders(SCARDCONTEXT hContext,
                                       LPCTSTR mszGroups, LPTSTR mszReaders,
                                       LPDWORD pcchReaders) AKARI_CE_NAME(SCardListReaders);
 
+/* ms926423: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardLocateCards(SCARDCONTEXT hContext,
                                       LPCTSTR mszCards,
                                       LPSCARD_READERSTATE rgReaderStates,
@@ -187,11 +203,13 @@ AKARI_CE_IMPORT LONG SCardSetAttrib(SCARDHANDLE hCard, DWORD dwAttrId,
                                     LPCBYTE pbAttr,
                                     DWORD cbAttrLen) AKARI_CE_NAME(SCardSetAttrib);
 
+/* ms926429: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardSetCardTypeProviderName(SCARDCONTEXT hContext,
                                                   LPCTSTR szCardName,
                                                   DWORD dwProviderId,
                                                   LPCTSTR szProvider) AKARI_CE_NAME(SCardSetCardTypeProviderName);
 
+/* ms926430: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LONG SCardStatus(SCARDHANDLE hCard, LPTSTR szReaderName,
                                  LPDWORD pcchReaderLen, LPDWORD pdwState,
                                  LPDWORD pdwProtocol, LPBYTE pbAtr,

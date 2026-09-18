@@ -27,9 +27,11 @@
  * from the official pages (tools/decl-d1.py). -------- */
 
 /* _wcepb_RegCopyFile: page-printed prototype (Windows CE OS). */
+/* ms891449: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL RegCopyFile(LPCWSTR lpszFile) AKARI_CE_NAME(RegCopyFile);
 
 /* _wcepb_RegRestoreFile: page-printed prototype (Windows CE OS). */
+/* ms891464: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL RegRestoreFile(LPCWSTR lpszFile) AKARI_CE_NAME(RegRestoreFile);
 
 

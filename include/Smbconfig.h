@@ -15,16 +15,20 @@ AKARI_CE_IMPORT HRESULT Add_Share(const WCHAR *pName, DWORD dwType,
                     const WCHAR *pPath)
                     AKARI_CE_NAME(Add_Share);
 
+/* aa450328: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT Del_Share(const WCHAR *pName)
                     AKARI_CE_NAME(Del_Share);
 
+/* ms887907: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT Change_ACL(const WCHAR *pShareName,
                     const WCHAR *pACL, const WCHAR *pPath)
                     AKARI_CE_NAME(Change_ACL);
 
+/* ms894568: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT List_Connected_Users(WCHAR *pBuffer,
                     UINT *puiLen) AKARI_CE_NAME(List_Connected_Users);
 
+/* ms896350: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT QueryAmountTransfered(
                     LARGE_INTEGER *pRead, LARGE_INTEGER *pWrite)
                     AKARI_CE_NAME(QueryAmountTransfered);

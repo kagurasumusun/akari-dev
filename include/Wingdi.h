@@ -651,6 +651,7 @@ AKARI_CE_IMPORT UINT GetOutlineTextMetricsW(HDC hdc, UINT cbData, LPOUTLINETEXTM
 #define GetOutlineTextMetrics GetOutlineTextMetricsW
 /* ms939800 "RestoreDC" */
 #endif /* _WIN32_WCE >= 0x0500 (GetOutlineTextMetricsW, and its generic alias) */
+/* ee500251: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL RestoreDC(HDC hdc, int nSavedDC) AKARI_CE_NAME(RestoreDC);
 /* ms939867 "RoundRect" */
 AKARI_CE_IMPORT BOOL RoundRect(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,
@@ -710,6 +711,7 @@ typedef struct {
 typedef BOOL (CALLBACK *ABORTPROC)(HDC hdc, int iError);
 
 /* Printing functions (CE 2.0+; Wingdi.h; Mgprint.lib). */
+/* aa452835: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int  AbortDoc(HDC hdc) AKARI_CE_NAME(AbortDoc);                          /* aa452835 */
 AKARI_CE_IMPORT int  EndDoc(HDC hdc) AKARI_CE_NAME(EndDoc);                            /* aa453039 */
 AKARI_CE_IMPORT int  EndPage(HDC hdc) AKARI_CE_NAME(EndPage);                           /* aa453040 */
