@@ -1,0 +1,21 @@
+; dnsapi-doc.def -- Dnsapi.lib export surface for Windows CE.
+;
+; Copyright (c) 2026 Akari API contributors
+; SPDX-License-Identifier: MIT
+;
+; Derived exclusively from the official Microsoft CE
+; documentation pages: each name below appears on the
+; listed page whose Requirements row names this link
+; library (wince-docs-corpus).  No shared-source/
+; device-dump/VS/PB-derived name is used.  Ordinals are
+; not published; entries are name-only.
+; LIBRARY tag = documented Link Library row (Dnsapi.lib); the on-device
+; module name is not published by the CE documentation.
+;
+; Pages: DnsModifyRecordsInSet_W (aa450335); DnsModifyRecordsInSet_W (ee493441); DnsQuery_W (aa450336); DnsQuery_W (ee494031); DnsRecordListFree (aa450337); DnsRecordListFree (ee493040); DnsReplaceRecordSetW (aa450338); DnsReplaceRecordSetW (ee494708)
+LIBRARY dnsapi.lib
+EXPORTS
+  DnsModifyRecordsInSet_W
+  DnsQuery_W
+  DnsRecordListFree
+  DnsReplaceRecordSetW
