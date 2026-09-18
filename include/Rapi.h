@@ -411,4 +411,17 @@ LPCWSTR szCommand
  * (Windows CE 3.0 and later; Link Library: rapi.lib) */
 AKARI_CE_IMPORT HRESULT CeSyncStart(LPCWSTR szCommand) AKARI_CE_NAME(CeSyncStart);
 
+/* ee496440 CeSyncStop: print `HRESULT CeSyncStop();`
+ * (Windows Embedded CE 6.0 and later; documented Header: rapi2.h,
+ * Link Library: ole32.lib, rapiuuid.lib; carried here with the other
+ * CeSync* surface). */
+AKARI_CE_IMPORT HRESULT CeSyncStop(void) AKARI_CE_NAME(CeSyncStop);
+
+/* ee496409 CeGetDiskFreeSpaceEx: the page print contains doubled
+ * commas (mslearn artifact); declared once each.
+ * (Windows Embedded CE 6.0 and later; documented Header: rapi2.h,
+ * Link Library: ole32.lib, rapiuuid.lib). */
+AKARI_CE_IMPORT int CeGetDiskFreeSpaceEx(LPCTSTR lpDirectoryName, PULARGE_INTEGER lpFreeBytesAvailable, PULARGE_INTEGER lpTotalNumberOfBytes, PULARGE_INTEGER lpTotalNumberOfFreeBytes) AKARI_CE_NAME(CeGetDiskFreeSpaceEx);
+
+
 #endif /* AKARI_RAPI_H */

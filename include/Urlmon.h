@@ -1224,4 +1224,14 @@ HRESULT URLDownloadToCacheFile(LPUNKNOWN lpUnkcaller, LPCSTR szURL, LPTSTR szFil
 /* ms918866: page-printed prototype (Windows CE .NET 4.0 and later.; urlmon.lib). */
 HRESULT URLDownloadToFile(LPUNKNOWN pCaller, LPCTSTR szURL, LPCTSTR szFileName, DWORD dwReserved, LPBINDSTATUSCALLBACK lpfnCB);
 
+
+/* ee491853 CoInternetCreateSecurityManager: print `HRESULT
+ * CoInternetCreateSecurityManager( IServiceProvider* pSP,
+ * IInternetSecurityManager** ppSM, DWORD dwReserved );`
+ * (Windows CE 5.0 and later; urlmon.lib).  IServiceProvider is used
+ * only through a pointer here; no corpus page prints its vtable
+ * order (checked 2026-09-18), so it stays opaque. */
+typedef struct IServiceProvider IServiceProvider;
+AKARI_CE_IMPORT HRESULT CoInternetCreateSecurityManager(IServiceProvider *pSP, IInternetSecurityManager **ppSM, DWORD dwReserved) AKARI_CE_NAME(CoInternetCreateSecurityManager);
+
 #endif /* AKARI_URLMON_H */

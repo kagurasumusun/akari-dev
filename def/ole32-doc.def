@@ -116,3 +116,5 @@ EXPORTS
   UpdateDCOMSettings
   WriteClassStg
   WriteClassStm
+  CeGetDiskFreeSpaceEx
+  CeSyncStop

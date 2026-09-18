@@ -52,3 +52,4 @@ EXPORTS
   UrlMkGetSessionOption
   UrlMkSetSessionOption
   WriteHitLogging
+  CoInternetCreateSecurityManager

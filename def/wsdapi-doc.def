@@ -19,3 +19,23 @@ EXPORTS
   WSDFreeLinkedMemory
   WSDGetConfigurationOption
   WSDSetConfigurationOption
+  WSDCreateDeviceHost
+  WSDCreateDeviceHostAdvanced
+  WSDCreateDeviceProxy
+  WSDCreateDiscoveryProvider
+  WSDCreateDiscoveryPublisher
+  WSDCreateHttpAddress
+  WSDCreateHttpMessageParameters
+  WSDCreateOutboundAttachment
+  WSDCreateUdpAddress
+  WSDCreateUdpMessageParameters
+  WSDGenerateFault
+  WSDGenerateFaultEx
+  WSDRegisterNamespaces
+  WSDXMLAddChild
+  WSDXMLAddSibling
+  WSDXMLBuildAnyForSingleElement
+  WSDXMLCleanupElement
+  WSDXMLCreateContext
+  WSDXMLGetNameFromBuiltinNamespace
+  WSDXMLGetValueFromAny
