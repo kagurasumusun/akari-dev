@@ -15,10 +15,14 @@
 LIBRARY wzcsapi.dll
 EXPORTS
   WZCDeleteIntfObj
+  WZCDeleteIntfObjEx
   WZCEnumInterfaces
   WZCPassword2Key
   WZCQueryContext
   WZCQueryInterface
+  WZCQueryInterfaceEx
   WZCRefreshInterface
+  WZCRefreshInterfaceEx
   WZCSetContext
   WZCSetInterface
+  WZCSetInterfaceEx

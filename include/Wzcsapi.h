@@ -130,4 +130,34 @@ AKARI_CE_IMPORT DWORD WZCSetInterface(LPWSTR pSrvAddr,
                     LPDWORD pdwOutFlags) AKARI_CE_NAME(WZCSetInterface);
 
 
+
+/* INTF_ENTRY_EX: ee486847 prints the full struct, but five of its
+ * members are RAW_DATA and no corpus page defines RAW_DATA (checked
+ * 2026-09-18); kept opaque so the Ex-function pointer parameters can
+ * be declared without inventing RAW_DATA.  Full print recorded at
+ * ee486847. */
+typedef struct _INTF_ENTRY_EX INTF_ENTRY_EX, *PINTF_ENTRY_EX;
+
+/* ee481708 WZCDeleteIntfObjEx: print `VOID WZCDeleteIntfObjEx(
+ * PINTF_ENTRY_EX pIntf );` (Link Library: Wzcsapi.lib) */
+AKARI_CE_IMPORT void WZCDeleteIntfObjEx(PINTF_ENTRY_EX pIntf) AKARI_CE_NAME(WZCDeleteIntfObjEx);
+
+/* ee483427 WZCQueryInterfaceEx: print `DWORD WZCQueryInterfaceEx(
+ * LPWSTR pSrvAddr, DWORD dwInFlags, PINTF_ENTRY_EX pIntfEx,
+ * LPDWORD pdwOutFlags );` (Link Library: Wzcsapi.lib) */
+AKARI_CE_IMPORT DWORD WZCQueryInterfaceEx(LPWSTR pSrvAddr, DWORD dwInFlags, PINTF_ENTRY_EX pIntfEx, LPDWORD pdwOutFlags) AKARI_CE_NAME(WZCQueryInterfaceEx);
+
+/* ee482278 WZCRefreshInterfaceEx: print `DWORD WZCRefreshInterfaceEx(
+ * LPWSTR pSrvAddr, DWORD dwInFlags, PINTF_ENTRY_EX pIntfEx,
+ * LPDWORD pdwOutFlags );` (Link Library: Wzcsapi.lib) */
+AKARI_CE_IMPORT DWORD WZCRefreshInterfaceEx(LPWSTR pSrvAddr, DWORD dwInFlags, PINTF_ENTRY_EX pIntfEx, LPDWORD pdwOutFlags) AKARI_CE_NAME(WZCRefreshInterfaceEx);
+
+/* ee481704 WZCSetInterfaceEx: print `DWORD WZCSetInterfaceEx(
+ * LPWSTR pSrvAddr, DWORD dwInFlags, PINTF_ENTRY_EX pIntfEx,
+ * LPDWORD pdwOutFlags );` (Link Library: Wzcsapi.lib) */
+AKARI_CE_IMPORT DWORD WZCSetInterfaceEx(LPWSTR pSrvAddr, DWORD dwInFlags, PINTF_ENTRY_EX pIntfEx, LPDWORD pdwOutFlags) AKARI_CE_NAME(WZCSetInterfaceEx);
+
+/* WZCEnumEapExtensions HELD: EAP_EXTENSION_INFO has no corpus page
+ * (checked 2026-09-18). */
+
 #endif /* AKARI_WZCSAPI_H */

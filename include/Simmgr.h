@@ -232,5 +232,21 @@ LPSIMRECORDINFO lpSimRecordInfo
  * (generation not stated; Link Library: cellcore.lib) */
 AKARI_CE_IMPORT HRESULT SimGetRecordInfo(HSIM hSim, DWORD dwAddress, LPSIMRECORDINFO lpSimRecordInfo) AKARI_CE_NAME(SimGetRecordInfo);
 
+/* ee497617 SimGetPhonebookCapabilities: print `HRESULT
+ * SimGetPhonebookCapabilities( HSIM hSim, LPSIMPHONEBOOKCAPS
+ * lpCapabilities );` (Link Library: Cellcore.lib).  The print spells
+ * the pointer LPSIMPHONEBOOKCAPS while the SIMPHONEBOOKCAPS page
+ * (ee497628) typedefs only LPPHONEBOOKSIMCAPS; alias added so the
+ * parameter keeps its printed spelling. */
+typedef SIMPHONEBOOKCAPS FAR *LPSIMPHONEBOOKCAPS;
+AKARI_CE_IMPORT HRESULT SimGetPhonebookCapabilities(HSIM hSim, LPSIMPHONEBOOKCAPS lpCapabilities) AKARI_CE_NAME(SimGetPhonebookCapabilities);
+
+/* HELD (array-size constants no corpus page prints, checked
+ * 2026-09-18): SimGetDevCaps (SIMCAPS/SIM_NUMLOCKFACILITIES),
+ * SimReadMessage/SimWriteMessage (SIMMESSAGE/MAX_LENGTH_*),
+ * SimReadPhonebookEntry(ies)/SimWritePhonebookEntry(Ex)
+ * (SIMPHONEBOOKENTRY(EX), MAX_LENGTH_ constants, MAX_NUM_GROUPS). */
+
 #endif /* _WIN32_WCE >= 0x0600 */
+
 #endif /* AKARI_SIMMGR_H */

@@ -69,3 +69,6 @@ EXPORTS
   lineSetSendCallerIDState
   lineUnregister
   tapiRequestMakeCall
+  ConnMgrQueryDetailedStatus
+  ConnMgrRegisterScheduledConnection
+  SimGetPhonebookCapabilities

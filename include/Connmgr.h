@@ -20,6 +20,7 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, GUID */
+#include "Winbase.h"   /* SYSTEMTIME */
 
 #ifdef __cplusplus
 extern "C" {
@@ -134,5 +135,67 @@ DWORD *pdwStatus
 );`
  * (Windows CE .NET 4.2 and later; Link Library: cellcore.lib) */
 AKARI_CE_IMPORT HRESULT ConnMgrEstablishConnectionSync(CONNMGR_CONNECTIONINFO *pConnInfo, HANDLE *phConnection, DWORD dwTimeout, DWORD *pdwStatus) AKARI_CE_NAME(ConnMgrEstablishConnectionSync);
+
+
+/* UINT64: the SCHEDULEDCONNECTIONINFO print (ee496918) uses it; no
+ * CE page typedefs it.  Standard base-type spelling of the 64-bit
+ * unsigned integer that Winnt.h declares as ULONGLONG. */
+typedef ULONGLONG UINT64;
+
+/* ee496918 "SCHEDULEDCONNECTIONINFO" (Windows Embedded CE 6.0 and
+ * later) page print. */
+typedef struct {
+  GUID guidDest;
+  UINT64 uiStartTime;
+  UINT64 uiEndTime;
+  UINT64 uiPeriod;
+  TCHAR szAppName[MAX_PATH];
+  TCHAR szCmdLine[MAX_PATH];
+  TCHAR szToken[32];
+  BOOL bPiggyback;
+} SCHEDULEDCONNECTIONINFO;
+
+/* CONNMGR_CONNECTION_IPADDR: ee496901 prints `typedef struct
+ * _CONNMGR_CONNECTION_IPADDR { DWORD cIPAddr; SOCKADDR_STORAGE
+ * IPAddr[1] } CONNMGR_CONNECTION_IPADDR;`, but SOCKADDR_STORAGE is
+ * sized by _SS_PAD1SIZE/_SS_PAD2SIZE and no corpus page prints those
+ * values (checked 2026-09-18); carried opaque -- only its pointer is
+ * used below. */
+typedef struct _CONNMGR_CONNECTION_IPADDR CONNMGR_CONNECTION_IPADDR;
+
+/* ee498254 "CONNMGR_CONNECTION_DETAILED_STATUS" (Windows Embedded CE
+ * 6.0 and later) page print. */
+typedef struct _CONNMGR_CONNECTION_DETAILED_STATUS {
+  struct _CONNMGR_CONNECTION_DETAILED_STATUS *pNext;
+  DWORD dwVer;
+  DWORD dwParams;
+  DWORD dwType;
+  DWORD dwSubtype;
+  DWORD dwFlags;
+  DWORD dwSecure;
+  GUID guidDestNet;
+  GUID guidSourceNet;
+  TCHAR *szDescription;
+  TCHAR *szAdapterName;
+  DWORD dwConnectionStatus;
+  SYSTEMTIME LastConnectTime;
+  DWORD dwSignalQuality;
+  CONNMGR_CONNECTION_IPADDR *pIPAddr;
+} CONNMGR_CONNECTION_DETAILED_STATUS;
+
+/* ee498068 ConnMgrRegisterScheduledConnection: print `HRESULT WINAPI
+ * ConnMgrRegisterScheduledConnection( SCHEDULEDCONNECTIONINFO *pSCI
+ * );` (Link Library: Cellcore.lib) */
+AKARI_CE_IMPORT HRESULT ConnMgrRegisterScheduledConnection(SCHEDULEDCONNECTIONINFO *pSCI) AKARI_CE_NAME(ConnMgrRegisterScheduledConnection);
+
+/* ee497106 ConnMgrQueryDetailedStatus: print `HRESULT WINAPI
+ * ConnMgrQueryDetailedStatus( CONNMGR_CONNECTION_DETAILED_STATUS
+ * *pStatusBuffer, DWORD *pcbBufferSize );` (Link Library:
+ * Cellcore.lib) */
+AKARI_CE_IMPORT HRESULT ConnMgrQueryDetailedStatus(CONNMGR_CONNECTION_DETAILED_STATUS *pStatusBuffer, DWORD *pcbBufferSize) AKARI_CE_NAME(ConnMgrQueryDetailedStatus);
+
+/* ConnMgrEnumDestinations HELD: CONNMGR_DESTINATION_INFO (ee496840)
+ * is sized by CONNMGR_MAX_DESC, whose value no corpus page prints
+ * (checked 2026-09-18). */
 
 #endif /* AKARI_CONNMGR_H */
