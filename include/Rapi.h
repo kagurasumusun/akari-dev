@@ -148,7 +148,7 @@ AKARI_CE_IMPORT HRESULT CeRapiInit(void)
 AKARI_CE_IMPORT HRESULT CeRapiInitEx(RAPIINIT* pRapiInit)
     AKARI_CE_NAME(CeRapiInitEx);
 /* aa513386 CeRapiInvoke: print `HRESULT CeRapiInvoke( LPCWSTRpDllPath,LPCWSTRpFunctionName,DWORDcbInput, BYTE* pInput,DWORD* pcbOutput,BYTE** ppOutput,IRAPIStream** ppIRAPIStream,DWORD dwReserved);` */
-AKARI_CE_IMPORT HRESULT CeRapiInvoke(LPCWSTR pDllPath, LPCWSTR pFunctionName, DWORD cbInput, BYTE* pInput, DWORD* pcbOutput, BYTE* ppOutput, IRAPIStream* ppIRAPIStream, DWORD dwReserved)
+AKARI_CE_IMPORT HRESULT CeRapiInvoke(LPCWSTR pDllPath, LPCWSTR pFunctionName, DWORD cbInput, BYTE* pInput, DWORD* pcbOutput, BYTE** ppOutput, IRAPIStream** ppIRAPIStream, DWORD dwReserved)
     AKARI_CE_NAME(CeRapiInvoke);
 /* aa513387 CeRapiUninit: print `` */
 AKARI_CE_IMPORT HRESULT CeRapiUninit(void)

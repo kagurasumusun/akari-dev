@@ -404,7 +404,7 @@ AKARI_CE_IMPORT LPVOID TlsGetValue(DWORD dwTlsIndex) AKARI_CE_NAME(TlsGetValue);
  * only once, so the dwFlags settings apply to all further loads of
  * the same module.  Because Windows CE is Unicode-only, the export
  * is LoadLibraryExW. */
-AKARI_CE_IMPORT HINSTANCE LoadLibraryExW(LPCWSTR lpLibFileName, HANDLE hFile,
+AKARI_CE_IMPORT HMODULE LoadLibraryExW(LPCWSTR lpLibFileName, HANDLE hFile,
                          DWORD dwFlags) AKARI_CE_NAME(LoadLibraryExW);
 #define LoadLibraryEx LoadLibraryExW
 

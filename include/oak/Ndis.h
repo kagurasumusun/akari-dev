@@ -400,6 +400,11 @@ typedef struct _NDIS_REQUEST NDIS_REQUEST, *PNDIS_REQUEST;
  * *PNDIS_PACKET;` -- NDIS_PACKET_PRIVATE is not printed by any CE
  * page; held (glued tokens split, layout recorded). */
 typedef struct _NDIS_PACKET NDIS_PACKET, *PNDIS_PACKET;
+/* PPNDIS_PACKET: the spelling printed by NdisSendPackets (ms904962)
+ * and NdisMIndicateReceivePacket (aa448038) for their packet-array
+ * parameter ("PPNDIS_PACKETPacketArray" / "PPNDIS_PACKETReceivePackets").
+ * Derived: the P-spelling of PNDIS_PACKET, i.e. PNDIS_PACKET *. */
+typedef PNDIS_PACKET *PPNDIS_PACKET;
 
 /* ms904085 "NDIS_PACKET_EXTENSION": print `typedef struct
  * _NDIS_PACKET_EXTENSION {PVOID NdisPacketInfo[MaxPerPacketInfo];}
@@ -869,9 +874,10 @@ AKARI_CE_IMPORT VOID  NdisInitializeReadWriteLock(PNDIS_RW_LOCK Lock)
 AKARI_CE_IMPORT VOID NdisInitializeString(PNDIS_STRING DestinationString, PUCHAR SourceString)
                     AKARI_CE_NAME(NdisInitializeString);
 
-/* "NdisInitializeTimer" (aa448008): print `VOID NdisInitializeTimer(PNDIS_TIMERTimer,PNDIS_TIMER_FUNCTIONTimerFunction,PVOIDFunctionContext)` */
-AKARI_CE_IMPORT VOID  NdisInitializeTimer(PNDIS_TIMER Timer, PNDIS_TIMER _FUNCTIONTimerFunction, PVOID FunctionContext)
-                    AKARI_CE_NAME(NdisInitializeTimer);
+/* "NdisInitializeTimer" (aa448008): record-only -- the print names
+ * PNDIS_TIMER_FUNCTION, a type no CE page prints (moved to the record
+ * section per the policy note above; a space typo once hid this and
+ * the declaration was shipped without the type). */
 
 /* "NdisInitializeWorkItem" (aa448009): print `VOID NdisInitializeWorkItem(PNDIS_WORK_ITEMWorkItem,NDIS_PROCRoutine,PVOIDContext)` */
 AKARI_CE_IMPORT VOID  NdisInitializeWorkItem(PNDIS_WORK_ITEM WorkItem, NDIS_PROC Routine, PVOID Context)
@@ -950,7 +956,7 @@ AKARI_CE_IMPORT VOID  NdisMFreeSharedMemory(NDIS_HANDLE MiniportAdapterHandle, U
                     AKARI_CE_NAME(NdisMFreeSharedMemory);
 
 /* "NdisMIndicateReceivePacket" (aa448038): print `VOIDNdisMIndicateReceivePacket(NDIS_HANDLEMiniportAdapterHandle,PPNDIS_PACKETReceivePackets,UINTNumberOfPackets)` */
-AKARI_CE_IMPORT VOID NdisMIndicateReceivePacket(NDIS_HANDLE MiniportAdapterHandle, PNDIS_PACKET*ReceivePackets, UINT NumberOfPackets)
+AKARI_CE_IMPORT VOID NdisMIndicateReceivePacket(NDIS_HANDLE MiniportAdapterHandle, PPNDIS_PACKET ReceivePackets, UINT NumberOfPackets)
                     AKARI_CE_NAME(NdisMIndicateReceivePacket);
 
 /* "NdisMIndicateStatus" (aa448039): print `VOID NdisMIndicateStatus(NDIS_HANDLEMiniportAdapterHandle,NDIS_STATUSGeneralStatus,PVOIDStatusBuffer,UINTStatusBufferSize)` */
@@ -961,9 +967,8 @@ AKARI_CE_IMPORT VOID  NdisMIndicateStatus(NDIS_HANDLE MiniportAdapterHandle, NDI
 AKARI_CE_IMPORT VOID  NdisMIndicateStatusComplete(NDIS_HANDLE MiniportAdapterHandle)
                     AKARI_CE_NAME(NdisMIndicateStatusComplete);
 
-/* "NdisMInitializeTimer" (aa448042): print `VOID NdisMInitializeTimer(PNDIS_MINIPORT_TIMERTimer,NDIS_HANDLEMiniportAdapterHandle,PNDIS_TIMER_FUNCTIONTimerFunction,PVOIDFunctionContext)` */
-AKARI_CE_IMPORT VOID  NdisMInitializeTimer(PNDIS_MINIPORT_TIMER Timer, NDIS_HANDLE MiniportAdapterHandle, PNDIS_TIMER _FUNCTIONTimerFunction, PVOID FunctionContext)
-                    AKARI_CE_NAME(NdisMInitializeTimer);
+/* "NdisMInitializeTimer" (aa448042): record-only -- as
+ * NdisInitializeTimer (PNDIS_TIMER_FUNCTION is ungrounded). */
 
 /* "NdisCompletePnPEvent" (aa448313): print `VOID NdisCompletePnPEvent( IN NDIS_STATUS Status, IN NDIS_HANDLE NdisBindingHandle, IN PNET_PNP_EVENT NetPnPEvent )` */
 AKARI_CE_IMPORT VOID  NdisCompletePnPEvent(NDIS_STATUS Status, NDIS_HANDLE NdisBindingHandle, PNET_PNP_EVENT NetPnPEvent)
@@ -1328,7 +1333,7 @@ AKARI_CE_IMPORT VOID  NdisSend(PNDIS_STATUS Status, NDIS_HANDLE NdisBindingHandl
                     AKARI_CE_NAME(NdisSend);
 
 /* "NdisSendPackets" (ms904962): print `VOID NdisSendPackets(NDIS_HANDLENdisBindingHandle,PPNDIS_PACKETPacketArray,UINTNumberOfPackets)` */
-AKARI_CE_IMPORT VOID  NdisSendPackets(NDIS_HANDLE NdisBindingHandle, PNDIS_PACKET*PacketArray, UINT NumberOfPackets)
+AKARI_CE_IMPORT VOID  NdisSendPackets(NDIS_HANDLE NdisBindingHandle, PPNDIS_PACKET PacketArray, UINT NumberOfPackets)
                     AKARI_CE_NAME(NdisSendPackets);
 
 /* "NdisSetEvent" (ms904963): print `VOID NdisSetEvent(PNDIS_EVENTEvent)` */
@@ -1475,6 +1480,8 @@ AKARI_CE_IMPORT VOID NdisZeroMemory(PVOID Destination, ULONG Length)
 /* "NdisMStartBufferPhysicalMapping" (ms904065): `NdisMStartBufferPhysicalMapping(NDIS_HANDLE MiniportAdapterHandle,PNDIS_BUFFER Buffer,ULONG PhysicalMapRegister,BOOLEAN WriteToDevice,PNDIS_PHYSICAL_ADDRESS_UNIT PhysicalAddressArray,PUINT ArraySize)` */
 /* "NdisOpenAdapter" (ms904078): `VOIDNdisOpenAdapter(PNDIS_STATUSStatus,PNDIS_STATUSOpenErrorStatus,PNDIS_HANDLENdisBindingHandle,PUINTSelectedMediumIndex,PNDIS_MEDIUMMediumArray,UINTMediumArraySize,NDIS_HANDLENdisProtocolHandle,NDIS_HANDLEProtocolBindingContext,PNDIS_STRINGAdapterName,UINTOpenOptions,PSTRINGAddressingInformation)` */
 /* "NdisQueryBufferSafe" (ms904103): `VOID NdisQueryBufferSafe(PNDIS_BUFFERBuffer,PVOID* VirtualAddressOPTIONAL,PUINTLength,MM_PAGE_PRIORITYPriority)` */
+/* "NdisInitializeTimer" (aa448008): `VOID NdisInitializeTimer(PNDIS_TIMERTimer,PNDIS_TIMER_FUNCTIONTimerFunction,PVOIDFunctionContext)` */
+/* "NdisMInitializeTimer" (aa448042): `VOID NdisMInitializeTimer(PNDIS_MINIPORT_TIMERTimer,NDIS_HANDLEMiniportAdapterHandle,PNDIS_TIMER_FUNCTIONTimerFunction,PVOIDFunctionContext)` */
 
 /* --- Record-only: macro prints (Ndis.h). ---------------------- */
 /* These pages print macro definitions ("The XX macro is defined

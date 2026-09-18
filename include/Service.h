@@ -9,6 +9,7 @@
 #define AKARI_SERVICE_H
 
 #include "Windef.h"    /* HANDLE, BOOL, DWORD, LPVOID, LPCWSTR */
+#include "Winbase.h"   /* LPOVERLAPPED (ServiceIoControl, aa450904) */
 #include "Winsock2.h"  /* SOCKADDR */
 
 /* aa450899 "ServiceEnumInfo": print (sic)
@@ -86,13 +87,15 @@ AKARI_CE_IMPORT HANDLE ActivateService(LPCWSTR lpszDevKey,
 
 /* aa450904 "ServiceIoControl": print
  * `BOOL ServiceIoControl(HANDLEhService,DWORD dwIoControlCode,
- * LPVOID lpInBuf,DWORD dwInBufLen,LPVOID lpOutBuf,
- * DWORD dwOutBufLen,PDWORD pdwBytesTransferred);` */
+ * LPVOID lpInBuf,DWORD nInBufSize,LPVOID lpOutBuf,
+ * DWORD nOutBufSize,LPDWORD lpBytesReturned,LPOVERLAPPED lpOverlapped);`
+ * (identical print on ms938325 CE .NET 4.2 and ee499485 CE 6.0) */
 AKARI_CE_IMPORT BOOL ServiceIoControl(HANDLE hService,
                     DWORD dwIoControlCode, LPVOID lpInBuf,
-                    DWORD dwInBufLen, LPVOID lpOutBuf,
-                    DWORD dwOutBufLen,
-                    PDWORD pdwBytesTransferred)
+                    DWORD nInBufSize, LPVOID lpOutBuf,
+                    DWORD nOutBufSize,
+                    LPDWORD lpBytesReturned,
+                    LPOVERLAPPED lpOverlapped)
                     AKARI_CE_NAME(ServiceIoControl);
 
 /* aa450892 "ServiceAddPort": print
@@ -107,10 +110,13 @@ AKARI_CE_IMPORT BOOL ServiceAddPort(HANDLE hService,
 
 /* aa450897 "ServiceClosePort": print
  * `BOOL ServiceClosePort(HANDLE hService, SOCKADDR* pSockAddr,
- * int cbSockAddr,INT iProtocol);` */
+ * int cbSockAddr, int iProtocol, BOOL fRemoveFromRegistry);`
+ * (identical print on ee500505 CE 6.0) */
 AKARI_CE_IMPORT BOOL ServiceClosePort(HANDLE hService,
                     SOCKADDR *pSockAddr, int cbSockAddr,
-                    INT iProtocol) AKARI_CE_NAME(ServiceClosePort);
+                    int iProtocol,
+                    BOOL fRemoveFromRegistry)
+                    AKARI_CE_NAME(ServiceClosePort);
 
 /* aa450914 "ServiceUnbindPorts": print
  * `BOOL ServiceUnbindPorts(HANDLEhService);` */

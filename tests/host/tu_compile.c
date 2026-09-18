@@ -7042,7 +7042,9 @@ static int m78a_shaped_usage(void)
 #endif /* _WIN32_WCE >= 0x0500 */
     NdisInitializeEvent(pev);
     NdisAcquireReadWriteLock(prwl, b, pls);
-    NdisMInitializeTimer(pmt, nh, NULL, pv);
+    /* NdisMInitializeTimer: record-only (PNDIS_TIMER_FUNCTION is not
+     * printed by any CE page) -- not exercised here. */
+    (void)pmt;
     ns = NdisMMapIoSpace(&pv, nh, npa, u);
     ns = NdisEqualMemory(pv, pv, u);
     u = NdisGetCacheFillSize();

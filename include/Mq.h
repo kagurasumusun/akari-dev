@@ -120,8 +120,9 @@ AKARI_CE_IMPORT HRESULT APIENTRY MQCreateQueue(PSECURITY_DESCRIPTOR pSecurityDes
 AKARI_CE_IMPORT HRESULT APIENTRY MQDeleteQueue(LPCWSTR lpwcsFormatName)
                     AKARI_CE_NAME(MQDeleteQueue);
 
-/* ms895113 "MQFreeMemory" */
-AKARI_CE_IMPORT HRESULT APIENTRY MQFreeMemory(PVOID pvMemory)
+/* ms895113 "MQFreeMemory": print `VOID MQFreeMemory(PVOID pvMemory);`
+ * and "Return Values" says "None." */
+AKARI_CE_IMPORT VOID APIENTRY MQFreeMemory(PVOID pvMemory)
                     AKARI_CE_NAME(MQFreeMemory);
 
 /* ms895115 "MQGetMachineProperties" */

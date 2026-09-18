@@ -1,0 +1,3187 @@
+# header	name	page	status	detail
+include/Acmdrv.h	ACM_Init	ms896097	match	
+include/Acmdrv.h	ACM_IOControl	ms896098	match	
+include/Acmdrv.h	ACM_Open	ms896099	match	
+include/Acmdrv.h	ACM_PowerDown	ms896100	match	
+include/Acmdrv.h	ACM_PowerUp	ms896101	match	
+include/Acmdrv.h	ACM_Read	ms896102	match	
+include/Acmdrv.h	ACM_Write	ms896104	match	
+include/Advbacklight.h	BacklightAdvApplet	aa452867	match	
+include/Astdtapi.h	tapiRequestMakeCall	ee497280	match	
+include/Autodial.h	AutoDialCleanupModule		no-pageid	
+include/Autodial.h	AutoDialEndConnection		no-pageid	
+include/Autodial.h	AutoDialInitializeModule		no-pageid	
+include/Autodial.h	AutoDialStartConnection		no-pageid	
+include/Avc_unit.h	UNIT_CloseUnitDeviceObject	aa448230	match	
+include/Avc_unit.h	UNIT_OpenUnitDeviceObject	aa448237	match	
+include/Bt_api.h	BthAcceptSCOConnections	aa450303	match	
+include/Bt_api.h	BthAuthenticate	ms887570	match	
+include/Bt_api.h	BthAnswerPairRequest	ms887558	match	
+include/Bt_api.h	BthCancelInquiry	ms887578	match	
+include/Bt_api.h	BthClearInquiryFilter	ms887586	match	
+include/Bt_api.h	BthCloseConnection	ms887598	match	
+include/Bt_api.h	BthCreateACLConnection	ms887605	match	
+include/Bt_api.h	BthCreateSCOConnection	ms887612	match	
+include/Bt_api.h	BthEnterHoldMode	ms887712	match	
+include/Bt_api.h	BthEnterParkMode	ms887822	match	
+include/Bt_api.h	BthEnterSniffMode	ms887829	match	
+include/Bt_api.h	BthExitParkMode	ms887830	match	
+include/Bt_api.h	BthExitSniffMode	ms887831	match	
+include/Bt_api.h	BthGetAddress	ms887833	match	
+include/Bt_api.h	BthGetBasebandConnections	ms887834	match	
+include/Bt_api.h	BthGetBasebandHandles	ms887835	match	
+include/Bt_api.h	BthGetCurrentMode	ms887836	match	
+include/Bt_api.h	BthGetHardwareStatus	ms887837	match	
+include/Bt_api.h	BthGetLinkKey	ms887838	match	
+include/Bt_api.h	BthGetPINRequest	ms887839	match	
+include/Bt_api.h	BthGetRemoteCOD	ms887840	match	
+include/Bt_api.h	BthNsLookupServiceBegin	ms887865	match	
+include/Bt_api.h	BthNsLookupServiceEnd	ms887866	match	
+include/Bt_api.h	BthNsLookupServiceNext	ms887867	match	
+include/Bt_api.h	BthNsSetService	ms887870	no-print-on-page	
+include/Bt_api.h	BthPairRequest	ms887871	match	
+include/Bt_api.h	BthPerformInquiry	ms887872	match	
+include/Bt_api.h	BthReadAuthenticationEnable	ms887873	match	
+include/Bt_api.h	BthReadCOD	ms887874	match	
+include/Bt_api.h	BthReadLinkPolicySettings	ms887875	match	
+include/Bt_api.h	BthReadLocalAddr	ms887876	match	
+include/Bt_api.h	BthReadLocalVersion	ms887877	match	
+include/Bt_api.h	BthReadPageTimeout	ms887878	match	
+include/Bt_api.h	BthReadRemoteVersion	ms887879	match	
+include/Bt_api.h	BthReadScanEnableMask	ms887880	match	
+include/Bt_api.h	BthRefusePINRequest	ms887881	match	
+include/Bt_api.h	BthRemoteNameQuery	ms887883	match	
+include/Bt_api.h	BthRevokeLinkKey	ms887885	match	
+include/Bt_api.h	BthRevokePIN	ms887886	match	
+include/Bt_api.h	BthSetEncryption	ms887887	match	
+include/Bt_api.h	BthSetInquiryFilter	ms887889	match	
+include/Bt_api.h	BthSetLinkKey	ms887890	match	
+include/Bt_api.h	BthSetPIN	ms887891	match	
+include/Bt_api.h	BthSetSecurityUI	ms887892	match	
+include/Bt_api.h	BthTerminateIdleConnections	ms887895	match	
+include/Bt_api.h	BthWriteAuthenticationEnable	ms887896	match	
+include/Bt_api.h	BthWriteCOD	ms887897	match	
+include/Bt_api.h	BthWriteLinkPolicySettings	ms887898	match	
+include/Bt_api.h	BthWritePageTimeout	ms887899	match	
+include/Bt_api.h	BthWriteScanEnableMask	ms887900	match	
+include/Bt_api.h	BthReadRSSI	ee495452	match	
+include/Bt_api.h	StopBluetoothNotifications	ee495572	match	
+include/Bt_api.h	BthSwitchRole	ee495608	match	
+include/Bt_api.h	RequestBluetoothNotifications	ee495612	match	
+include/Bt_api.h	BthActivatePAN	ee495854	match	
+include/Bt_api.h	BthSetCODInquiryFilter	ee495879	match	
+include/Bt_api.h	BthGetRole	ee495829	no-print-on-page	
+include/Bt_hcip.h	HCI_CloseConnection	ms899383	match	
+include/Bt_hcip.h	HCI_OpenConnection	ms899385	match	
+include/Bt_hcip.h	HCI_ReadHciParameters	ms899387	match	
+include/Bt_hcip.h	HCI_ReadPacket	ms899388	match	
+include/Bt_hcip.h	HCI_StartHardware	ms899390	match	
+include/Bt_hcip.h	HCI_StopHardware	ms899391	match	
+include/Bt_hcip.h	HCI_WritePacket	ms899393	match	
+include/Btagnetwork.h	BthAGOnNetworkEvent	aa450323	match	
+include/Btagpub.h	BthAGPhoneExtInit	aa450311	no-print-on-page	
+include/Btagpub.h	BthAGPhoneExtDeinit	aa450306	match	
+include/Btagpub.h	BthAGPhoneExtEvent	ms880975	match	
+include/Btagpub.h	BthAGGetLastDialed	aa450307	match	
+include/Btagpub.h	BthAGGetNameByPhoneNumber	aa450308	match	
+include/Btagpub.h	BthAGGetSpeedDial	aa450309	match	
+include/Btagpub.h	BthAGSetServiceCallback	aa450310	match	
+include/Btagpub.h	BthAGOverrideCallIn	aa450324	match	
+include/Btagpub.h	BthAGOverrideCallOut	ms887483	match	
+include/Btagpub.h	BthAGNetworkInit	aa450318	match	
+include/Btagpub.h	BthAGNetworkDeinit	aa450313	match	
+include/Btagpub.h	BthAGNetworkAnswerCall	aa450312	match	
+include/Btagpub.h	BthAGNetworkDropCall	aa450316	no-print-on-page	
+include/Btagpub.h	BthAGNetworkDialNumber	aa450314	match	
+include/Btagpub.h	BthAGNetworkGetCallState	aa450315	match	
+include/Btagpub.h	BthAGNetworkHoldCall	aa450317	no-print-on-page	
+include/Btagpub.h	BthAGNetworkRejectCall	aa450319	match	
+include/Btagpub.h	BthAGNetworkSwapCall	aa450320	match	
+include/Btagpub.h	BthAGNetworkTransmitDTMF	aa450321	match	
+include/Btagpub.h	BthAGNetworkUnholdCall	aa450322	match	
+include/Btagpub.h	BthAGNetworkDropSwapCall	ee495860	match	
+include/Bthutil.h	BthGetMode	ee495631	match	
+include/Bthutil.h	BthSetMode	ee495834	match	
+include/CEDDK.h	HalGetBusData	ms899356	match	
+include/CEDDK.h	HalGetBusDataByOffset	ms899357	match	
+include/CEDDK.h	HalSetBusData	ms899359	match	
+include/CEDDK.h	HalSetBusDataByOffset	ms899360	match	
+include/CEDDK.h	HalTranslateBusAddress	ms899361	match	
+include/CEDDK.h	HalTranslateSystemAddress	ms899362	match	
+include/CEDDK.h	READ_PORT_BUFFER_UCHAR	ms919746	match	
+include/CEDDK.h	READ_PORT_BUFFER_USHORT	ms919752	match	
+include/CEDDK.h	READ_PORT_BUFFER_ULONG	ms919750	match	
+include/CEDDK.h	READ_PORT_UCHAR	ms919756	match	
+include/CEDDK.h	READ_PORT_USHORT	ms919763	match	
+include/CEDDK.h	READ_PORT_ULONG	ms919759	match	
+include/CEDDK.h	READ_REGISTER_BUFFER_UCHAR	ms919766	match	
+include/CEDDK.h	READ_REGISTER_BUFFER_USHORT	ms919772	match	
+include/CEDDK.h	READ_REGISTER_BUFFER_ULONG	ms919769	match	
+include/CEDDK.h	READ_REGISTER_UCHAR	ms919775	match	
+include/CEDDK.h	READ_REGISTER_USHORT	ms919784	match	
+include/CEDDK.h	READ_REGISTER_ULONG	ms919780	match	
+include/CEDDK.h	WRITE_PORT_BUFFER_UCHAR	ms923671	match	
+include/CEDDK.h	WRITE_PORT_BUFFER_USHORT	ms923673	no-print-on-page	
+include/CEDDK.h	WRITE_PORT_BUFFER_ULONG	ms923672	match	
+include/CEDDK.h	WRITE_PORT_UCHAR	ms923674	match	
+include/CEDDK.h	WRITE_PORT_USHORT	ms923677	match	
+include/CEDDK.h	WRITE_PORT_ULONG	ms923676	match	
+include/CEDDK.h	WRITE_REGISTER_BUFFER_UCHAR	ms923678	match	
+include/CEDDK.h	WRITE_REGISTER_BUFFER_USHORT	ms923680	match	
+include/CEDDK.h	WRITE_REGISTER_BUFFER_ULONG	ms923679	match	
+include/CEDDK.h	WRITE_REGISTER_UCHAR	ms923681	match	
+include/CEDDK.h	WRITE_REGISTER_USHORT	ms923683	match	
+include/CEDDK.h	WRITE_REGISTER_ULONG	ms923682	match	
+include/CEDDK.h	MmMapIoSpace	aa447863	match	
+include/CEDDK.h	MmUnmapIoSpace	aa447865	match	
+include/CEDDK.h	TransBusAddrToVirtual	aa448212	match	
+include/CEDDK.h	TransBusAddrToStatic	aa448211	match	
+include/CEDDK.h	HalAllocateCommonBuffer	ms899352	match	
+include/CEDDK.h	HalFreeCommonBuffer	ms899355	match	
+include/Cecap.h	MarkProfile	ms894342	match	
+include/Cecap.h	NameProfile	ms894396	match	
+include/Cecap.h	ResumeProfile	ms894925	match	
+include/Cecap.h	StartProfile	ms894960	match	
+include/Cecap.h	StopProfile	ms894963	match	
+include/Cecap.h	SuspendProfile	ms894973	match	
+include/Cecap.h	CommentMarkProfile	ee480465	match	
+include/Cecertmod.h	CertVerify	ee498571	match	
+include/Celog.h	CeLogData	aa450823	match	
+include/Celog.h	CeLogGetZones	aa450824	match	
+include/Celog.h	CeLogInterrupt	aa451043	match	
+include/Celog.h	CeLogMsg	aa450825	match	
+include/Celog.h	CeLogQueryZones	aa450826	match	
+include/Celog.h	CeLogReSync	aa450827	match	
+include/Celog.h	CeLogSetZones	aa450828	match	
+include/Cesync.h	OnSSPDisable	ee484753	match	
+include/Cesync.h	OnSSPEnable	ee485570	match	
+include/Ceutil.h	CeSvcAdd	aa513818	match	
+include/Ceutil.h	CeSvcQueryInfo	aa513837	match	
+include/Ceutil.h	CeSvcRemove	aa513840	match	
+include/Ceutil.h	CeSvcGetDword	ee483497	match	
+include/Ceutil.h	CeSvcGetString	ee483915	match	
+include/Ceutil.h	CeSvcSetDword	ee484174	match	
+include/Ceutil.h	CeSvcDeleteVal	ee484373	match	
+include/Ceutil.h	CeSvcClose	ee484759	match	
+include/Ceutil.h	CeSvcDelete	ee484787	match	
+include/Ceutil.h	CeSvcGetBinary	ee484957	match	
+include/Ceutil.h	CeSvcSetString	ee486216	match	
+include/Ceutil.h	CeSvcSetBinary	ee486614	match	
+include/Ceutil.h	CeSvcOpenEx	ee483537	match	
+include/Ceutil.h	CeSvcOpen	ee484797	match	
+include/Ceutil.h	CeSvcEnumProfiles	ee486329	match	
+include/Cfgmgrapi.h	DMProcessConfigXML	ee497867	match	
+include/Commandapi.h	PHSendCommandLine	ee500962	match	
+include/Commandapi.h	PHGetAppWindow	ee501622	match	
+include/Commctrl.h	ImageList_Add		no-pageid	
+include/Commctrl.h	ImageList_AddMasked	ms909786	no-print-on-page	
+include/Commctrl.h	ImageList_BeginDrag	ms909795	no-print-on-page	
+include/Commctrl.h	ImageList_Copy	ms909799	no-print-on-page	
+include/Commctrl.h	ImageList_Create	ms909805	no-print-on-page	
+include/Commctrl.h	ImageList_DragEnter	ms909811	no-print-on-page	
+include/Commctrl.h	ImageList_DragLeave	ms909812	no-print-on-page	
+include/Commctrl.h	ImageList_DragMove	ms909813	no-print-on-page	
+include/Commctrl.h	ImageList_DragShowNolock	ms909814	no-print-on-page	
+include/Commctrl.h	ImageList_Draw	ms909815	no-print-on-page	
+include/Commctrl.h	ImageList_DrawEx	ms909816	no-print-on-page	
+include/Commctrl.h	ImageList_DrawIndirect	ms909817	no-print-on-page	
+include/Commctrl.h	ImageList_Duplicate	ms909818	no-print-on-page	
+include/Commctrl.h	ImageList_EndDrag	ms909820	no-print-on-page	
+include/Commctrl.h	ImageList_GetBkColor	ms909821	no-print-on-page	
+include/Commctrl.h	ImageList_GetDragImage	ms909823	no-print-on-page	
+include/Commctrl.h	ImageList_GetIcon	ms909824	no-print-on-page	
+include/Commctrl.h	ImageList_GetIconSize	ms909825	no-print-on-page	
+include/Commctrl.h	ImageList_GetImageCount	ms909826	no-print-on-page	
+include/Commctrl.h	ImageList_GetImageInfo	ms909827	no-print-on-page	
+include/Commctrl.h	ImageList_LoadImage	ms909828	no-print-on-page	
+include/Commctrl.h	ImageList_Merge	ms909830	no-print-on-page	
+include/Commctrl.h	ImageList_Remove	ms909831	no-print-on-page	
+include/Commctrl.h	ImageList_RemoveAll	ms909832	no-print-on-page	
+include/Commctrl.h	ImageList_Replace	ms909833	no-print-on-page	
+include/Commctrl.h	ImageList_ReplaceIcon	ms909834	no-print-on-page	
+include/Commctrl.h	ImageList_SetBkColor	ms909835	no-print-on-page	
+include/Commctrl.h	ImageList_SetDragCursorImage	ms909836	no-print-on-page	
+include/Commctrl.h	ImageList_SetIconSize	ms909837	no-print-on-page	
+include/Commctrl.h	ImageList_SetImageCount	ms909838	no-print-on-page	
+include/Commctrl.h	ImageList_SetOverlayImage	ms909839	no-print-on-page	
+include/Commctrl.h	InitCommonControls	ms909848	no-print-on-page	
+include/Commctrl.h	InitCommonControlsEx	ms909849	match	
+include/Commctrl.h	CommandBar_Create		no-pageid	
+include/Commctrl.h	CommandBar_AddAdornments	ms908131	no-print-on-page	
+include/Commctrl.h	CommandBar_AddBitmap	ms908127	no-print-on-page	
+include/Commctrl.h	CommandBar_AlignAdornments	ms908128	no-print-on-page	
+include/Commctrl.h	CommandBar_DrawMenuBar	aa453948	no-print-on-page	
+include/Commctrl.h	CommandBar_GetMenu	ms908133	no-print-on-page	
+include/Commctrl.h	CommandBar_Height	ms908134	no-print-on-page	
+include/Commctrl.h	CommandBar_InsertComboBox	ms908135	no-print-on-page	
+include/Commctrl.h	CommandBar_InsertMenubar	ms908137	no-print-on-page	
+include/Commctrl.h	CommandBar_InsertMenubarEx	ms908138	no-print-on-page	
+include/Commctrl.h	CommandBar_Show	ms908139	no-print-on-page	
+include/Commctrl.h	CommandBands_Create		no-pageid	
+include/Commctrl.h	CommandBands_AddAdornments	ms908121	no-print-on-page	
+include/Commctrl.h	CommandBands_AddBands	ms908118	no-print-on-page	
+include/Commctrl.h	CommandBands_GetCommandBar	ms908120	no-print-on-page	
+include/Commctrl.h	CommandBands_GetRestoreInformation	ms908122	no-print-on-page	
+include/Commctrl.h	CommandBands_Show	ms908123	no-print-on-page	
+include/Commctrl.h	CreateStatusWindow	ms908188	no-print-on-page	
+include/Commctrl.h	DrawStatusText	aa452976	no-print-on-page	
+include/Commdlg.h	ChooseColor	ms928579	match	
+include/Commdlg.h	CommDlgExtendedError	ms908144	match	
+include/Commdlg.h	GetOpenFileNameW	aa453150	no-print-on-page	
+include/Commdlg.h	GetSaveFileNameW	aa453162	no-print-on-page	
+include/Commdlg.h	PageSetupDlg	ms911909	match	
+include/Commdlg.h	PrintDlg	ms911940	match	
+include/Connmgr.h	ConnMgrProviderMessage	ee496830	match	
+include/Connmgr.h	ConnMgrSetConnectionPriority	ee497253	match	
+include/Connmgr.h	ConnMgrApiReadyEvent	ee497295	match	
+include/Connmgr.h	ConnMgrConnectionStatus	ee497349	match	
+include/Connmgr.h	ConnMgrEstablishConnection	ee497506	match	
+include/Connmgr.h	ConnMgrUnregisterScheduledConnection	ee497602	match	
+include/Connmgr.h	ConnMgrReleaseConnection	ee497660	match	
+include/Connmgr.h	ConnMgrMapConRef	ee497804	match	
+include/Connmgr.h	ConnMgrMapURL	ee497810	match	
+include/Connmgr.h	ConnMgrEstablishConnectionSync	ee498273	match	
+include/Connmgr_status.h	ConnMgrRegisterForStatusChangeNotification	ee497299	match	
+include/Controldefinitions.h	PHRegisterSingletonApplication	ee499558	match	
+include/Controldefinitions.h	PHDrawBackground	ee499853	match	
+include/Controldefinitions.h	PHGetColor	ee499881	match	
+include/Controldefinitions.h	PHGetFont	ee501040	match	
+include/Controldefinitions.h	PHMessageBox	ee499282	match	
+include/Controldefinitions.h	PHMenuScreen	ee501712	match	
+include/Cred.h	CredDelete	ms936977	match	
+include/Cred.h	CredFree	ms936983	match	
+include/Cred.h	CredRead	ms936984	match	
+include/Cred.h	CredUpdate	ms936985	match	
+include/Cred.h	CredWrite	ms936986	match	
+include/Credmgr.h	CeCredFree	ms937729	no-print-on-page	
+include/Credmgr.h	CeCredRead	ms937730	no-print-on-page	
+include/Credmgr.h	CeCredWrite	ms937731	no-print-on-page	
+include/Ctblt.h	SetClearTypeBltGamma	ms920529	match	
+include/Ctblt.h	SetClearTypeBltMasks	ms920541	match	
+include/D3dm.h	Direct3DMobileCreate	aa451581	match	
+include/D3dmx.h	D3DMXVec3LengthSqFxd	ee490058	match	
+include/D3dmx.h	D3DMXVec4LengthSq	ee490069	match	
+include/D3dmx.h	D3DMXVec3Length	ee490073	match	
+include/D3dmx.h	D3DMXVec3Dot	ee490084	match	
+include/D3dmx.h	D3DMXVec4Dot	ee490119	match	
+include/D3dmx.h	D3DMXVec3LengthFxd	ee490132	match	
+include/D3dmx.h	D3DMXVec4LengthFxd	ee490501	match	
+include/D3dmx.h	D3DMXMatrixfDeterminant	ee490516	match	
+include/D3dmx.h	D3DMXVec4LengthSqFxd	ee490525	match	
+include/D3dmx.h	D3DMXVec4DotFxd	ee490527	match	
+include/D3dmx.h	D3DMXVec3DotFxd	ee490715	match	
+include/D3dmx.h	D3DMXVec3LengthSq	ee490834	match	
+include/D3dmx.h	D3DMXMatrixfDeterminantFxd	ee491443	match	
+include/D3dmx.h	D3DMXVec4Length	ee491467	match	
+include/D3dmx.h	D3DMXVec4CrossFxd	ee490048	match	
+include/D3dmx.h	D3DMXMatrixMultiply	ee490065	match	
+include/D3dmx.h	D3DMXVec4Scale	ee490097	match	
+include/D3dmx.h	D3DMXVec4Normalize	ee490122	match	
+include/D3dmx.h	D3DMXVec3Normalize	ee490245	match	
+include/D3dmx.h	D3DMXVec3Add	ee490268	match	
+include/D3dmx.h	D3DMXVec4AddFxd	ee490286	match	
+include/D3dmx.h	D3DMXVec3Scale	ee490306	match	
+include/D3dmx.h	D3DMXVec4NormalizeFxd	ee490343	match	
+include/D3dmx.h	D3DMXVec4ScaleFxd	ee490471	match	
+include/D3dmx.h	D3DMXMatrixTranslationFxd	ee490472	match	
+include/D3dmx.h	D3DMXMatrixPerspectiveFovLHFxd	ee490493	match	
+include/D3dmx.h	D3DMXMatrixRotationYawPitchRoll	ee490497	match	
+include/D3dmx.h	D3DMXMatrixPerspectiveOffCenterLHFxd	ee490508	match	
+include/D3dmx.h	D3DMXMatrixRotationZ	ee490513	match	
+include/D3dmx.h	D3DMXVec4Transform	ee490534	match	
+include/D3dmx.h	D3DMXVec3CrossFxd	ee490540	match	
+include/D3dmx.h	D3DMXMatrixInverse	ee490656	match	
+include/D3dmx.h	D3DMXMatrixRotationX	ee490663	match	
+include/D3dmx.h	D3DMXMatrixRotationYFxd	ee490680	match	
+include/D3dmx.h	D3DMXMatrixTransposeFxd	ee490684	match	
+include/D3dmx.h	D3DMXMatrixRotationAxisFxd	ee490711	match	
+include/D3dmx.h	D3DMXVec4Add	ee490713	match	
+include/D3dmx.h	D3DMXMatrixScaling	ee490726	match	
+include/D3dmx.h	D3DMXMatrixTranspose	ee490738	match	
+include/D3dmx.h	D3DMXMatrixIdentity	ee490807	match	
+include/D3dmx.h	D3DMXMatrixPerspectiveOffCenterLH	ee490827	match	
+include/D3dmx.h	D3DMXMatrixRotationXFxd	ee490829	match	
+include/D3dmx.h	D3DMXVec3Cross	ee490851	match	
+include/D3dmx.h	D3DMXVec3TransformFxd	ee490862	match	
+include/D3dmx.h	D3DMXVec3NormalizeFxd	ee490864	match	
+include/D3dmx.h	D3DMXVec4TransformFxd	ee490866	match	
+include/D3dmx.h	D3DMXMatrixRotationYawPitchRollFxd	ee490873	match	
+include/D3dmx.h	D3DMXMatrixInverseFxd	ee491029	match	
+include/D3dmx.h	D3DMXVec3AddFxd	ee491035	match	
+include/D3dmx.h	D3DMXVec3ScaleFxd	ee491067	match	
+include/D3dmx.h	D3DMXVec3SubtractFxd	ee491077	match	
+include/D3dmx.h	D3DMXVec4Cross	ee491083	match	
+include/D3dmx.h	D3DMXMatrixOrthoOffCenterLHFxd	ee491093	match	
+include/D3dmx.h	D3DMXMatrixRotationY	ee491234	match	
+include/D3dmx.h	D3DMXMatrixOrthoOffCenterLH	ee491266	match	
+include/D3dmx.h	D3DMXVec4Subtract	ee491287	match	
+include/D3dmx.h	D3DMXMatrixRotationAxis	ee491290	match	
+include/D3dmx.h	D3DMXMatrixScalingFxd	ee491434	match	
+include/D3dmx.h	D3DMXVec3Transform	ee491471	match	
+include/D3dmx.h	D3DMXVec4SubtractFxd	ee491483	match	
+include/D3dmx.h	D3DMXMatrixMultiplyFxd	ee491511	match	
+include/D3dmx.h	D3DMXMatrixRotationZFxd	ee491593	match	
+include/D3dmx.h	D3DMXMatrixTranslation	ee491600	match	
+include/D3dmx.h	D3DMXMatrixPerspectiveFovLH	ee491621	match	
+include/D3dmx.h	D3DMXMatrixLookAtLHFxd	ee491628	match	
+include/D3dmx.h	D3DMXVec3Subtract	ee491634	match	
+include/D3dmx.h	D3DMXMatrixIdentityFxd	ee491650	match	
+include/D3dmx.h	D3DMXMatrixLookAtLH	ee491676	match	
+include/Databaseapi.h	PHAddSpeedDialEntry	ee499326	match	
+include/Ddraw.h	DirectDrawCreate	aa451583	match	
+include/Ddraw.h	DirectDrawCreateClipper	aa451584	match	
+include/Ddraw.h	DirectDrawEnumerate	aa451585	match	
+include/Ddraw.h	DirectDrawEnumerateEx	aa451586	match	
+include/Defragdisk.h	DefragVolumeUI	ms887957	match	
+include/Dmo.h	DMOEnum	aa451593	match	
+include/Dmo.h	DMOGetTypes	aa451597	match	
+include/Dmo.h	DMOGetName	aa451596	match	
+include/Dmo.h	DMOUnregister	aa451611	match	
+include/Dmo.h	DMOUnregisterFilter	aa452530	match	
+include/Dmo.h	MoInitMediaType	ms932077	match	
+include/Dmo.h	MoFreeMediaType	ms932068	match	
+include/Dmo.h	MoCopyMediaType	ms932064	match	
+include/Dmo.h	MoCreateMediaType	ms932065	match	
+include/Dmo.h	MoDeleteMediaType	ms932066	match	
+include/Dmo.h	MoDuplicateMediaType	ms932067	match	
+include/Dmo.h	DMORegister	aa451608	match	
+include/Dmoreg.h	DMORegisterFilter	ms886303	no-print-on-page	
+include/Dsgetdc.h	DsGetDcName		no-pageid	
+include/Dshow.h	AMGetErrorText	ms925335	match	
+include/Dshow.h	GetBitCount	aa451723	match	
+include/Dshow.h	ContainsPalette	ms926782	match	
+include/Dshow.h	GetBitmapSize	aa451726	match	
+include/Dshow.h	GetBitmapFormatSize	aa451724	match	
+include/Dshow.h	GetBitmapSubtype	aa451727	match-const-diff	
+include/Dshow.h	GetTrueColorType	aa451741	match-const-diff	
+include/Dshow.h	GetSubtypeName	aa451740	match	
+include/Dshow.h	GetBitmapPalette	aa451725	match	
+include/Dshow.h	WriteBSTR	aa452474	match	
+include/Dshow.h	FreeBSTR	aa451719	match	
+include/Dshow.h	IntToWstr	ms912061	match	
+include/Dshow.h	WstrToInt	aa452476	match	
+include/Dshow.h	ConvertVideoInfoToVideoInfo2	ms926785	match	
+include/Dshow.h	CreateAudioMediaType	ms907274	match	
+include/Dshow.h	CreateMediaType	ms907276	match	
+include/Dshow.h	CopyMediaType	ms926786	match	
+include/Dshow.h	DeleteMediaType	aa451572	match	
+include/Dshow.h	EqualPins	aa451697	match	
+include/Dshow.h	GetInterface	aa451732	match	
+include/Dshow.h	AMGetWideString	ms925336	match	
+include/Dshow.h	AMovieDllRegisterServer	ms925338	match	
+include/Dshow.h	AMovieDllUnregisterServer	ms925339	match	
+include/Dshow.h	LoadOLEAut32	ms932024	match	
+include/Dshow.h	llMulDiv	ms932023	match	
+include/Dshow.h	Int64x32Div32	ms912016	match	
+include/Dshow.h	IsEqualObject	ms931812	match	
+include/Dshow.h	atoi	ms925597	match	
+include/Dshow.h	WaitDispatchingMessages	aa452418	match	
+include/Dshow.h	WriteInt	aa452475	match	
+include/Dshow.h	CreatePosPassThru	ms907278	match	
+include/Dshow.h	DbgAssert	ms907766	match	
+include/Dshow.h	DbgKernelAssert	ms907780	match	
+include/Dshow.h	DbgBreakPoint	ms907768	match	
+include/Dshow.h	DbgOutString	ms907782	match	
+include/Dshow.h	DbgDumpObjectRegister	ms907769	match	
+include/Dshow.h	DbgSetWaitTimeout	ms907783	match	
+include/Dshow.h	DbgWaitForMultipleObjects	ms907784	match	
+include/Dshow.h	DbgWaitForSingleObject	ms907785	match	
+include/Dsound.h	DirectSoundCaptureCreate	ms897742	match	
+include/Dsound.h	DirectSoundCreate	ms897750	match	
+include/Dsound.h	DSEnumCallback	ms897792	match	
+include/ErrorRep.h	ReportFault	ms886799	match	
+include/Extapi.h	lineGetHSCSDState	ee496899	match	
+include/Extapi.h	lineGetRegisterStatus	ee496925	match	
+include/Extapi.h	lineGetUSSD	ee496946	match	
+include/Extapi.h	lineSetSendCallerIDState	ee497029	match	
+include/Extapi.h	lineGetCurrentSystemType	ee497124	match	
+include/Extapi.h	lineGetGPRSClass	ee497171	match	
+include/Extapi.h	lineGetHSCSDCaps	ee497245	match	
+include/Extapi.h	lineGetCurrentHSCSDStatus	ee497249	match	
+include/Extapi.h	lineGetCallBarringState	ee497307	match	
+include/Extapi.h	lineSetMuteState	ee497336	match	
+include/Extapi.h	lineGetSendCallerIDState	ee497350	match	
+include/Extapi.h	lineRegister	ee497399	match	
+include/Extapi.h	lineSetEquipmentState	ee497439	match	
+include/Extapi.h	lineGetRadioPresence	ee497463	match	
+include/Extapi.h	lineGetCallBarringCaps	ee497465	match	
+include/Extapi.h	lineUnregister	ee497486	match	
+include/Extapi.h	lineSetCallBarringPassword	ee497627	match	
+include/Extapi.h	lineSetHSCSDState	ee497680	match	
+include/Extapi.h	lineSetCallBarringState	ee497843	match	
+include/Extapi.h	lineGetCurrentAddressID	ee497891	match	
+include/Extapi.h	lineGetOperatorStatus	ee497893	match	
+include/Extapi.h	lineGetNumberCalls	ee498061	match	
+include/Extapi.h	lineGetGeneralInfo	ee498073	match	
+include/Extapi.h	lineGetCallWaitingCaps	ee498076	match	
+include/Extapi.h	lineGetEquipmentState	ee498088	match	
+include/Extapi.h	lineSetGPRSClass	ee498231	match	
+include/Extapi.h	lineSetCallWaitingState	ee498252	match	
+include/Extapi.h	lineGetMuteState	ee498265	match	
+include/Extapi.h	lineGetCallWaitingState	ee498266	match	
+include/Extapi.h	lineSetCurrentAddressID	ee498294	match	
+include/Formatdisk.h	FormatVolumeUI	ms890480	match	
+include/Fwapi.h	FirewallCreateRule		no-pageid	
+include/Fwapi.h	FirewallEnable		no-pageid	
+include/Fwapi.h	FirewallLogInit		no-pageid	
+include/Fwapi.h	FirewallLogUninit		no-pageid	
+include/Fwapi.h	FirewallRefresh		no-pageid	
+include/Fwapi.h	FirewallLogPacket		no-pageid	
+include/Fwapi.h	FirewallSetInterface		no-pageid	
+include/Fwapi.h	IsFirewallEnabled		no-pageid	
+include/Fwapi.h	IsInterfaceFirewalled		no-pageid	
+include/Gpsapi.h	GPSCloseDevice	ee483557	match	
+include/Gpsapi.h	GPSOpenDevice	ee485975	match	
+include/Gwebypasscoredllthunk.hpp	DestroyIcon_I		no-pageid	
+include/Gwebypasscoredllthunk.hpp	DrawIconEx_I	aa452973	match	
+include/Gwebypasscoredllthunk.hpp	KillTimer_I	aa453249	match	
+include/Gwebypasscoredllthunk.hpp	LoadIconW_I	aa453412	match	
+include/Gwebypasscoredllthunk.hpp	CreateIconIndirect_I	ms908176	match	
+include/Gwebypasscoredllthunk.hpp	GetForegroundWindow_I	ms929245	match	
+include/Gwebypasscoredllthunk.hpp	SendMessageW_I	ms939982	match	
+include/Gwebypasscoredllthunk.hpp	SetForegroundWindow_I	ms940025	match	
+include/Icmpapi.h	IcmpCreateFile		no-pageid	
+include/Icmpapi.h	IcmpCloseHandle		no-pageid	
+include/Icmpapi.h	IcmpParseReplies		no-pageid	
+include/Icmpapi.h	Icmp6CreateFile		no-pageid	
+include/Icmpapi.h	Icmp6ParseReplies		no-pageid	
+include/Imm.h	ImmGetContext		no-pageid	
+include/Imm.h	ImmReleaseContext	ms906003	no-print-on-page	
+include/Imm.h	ImmCreateContext	ms906027	no-print-on-page	
+include/Imm.h	ImmDestroyContext	ms905987	no-print-on-page	
+include/Imm.h	ImmAssociateContext	ms905989	no-print-on-page	
+include/Imm.h	ImmAssociateContextEx	ms905984	no-print-on-page	
+include/Imm.h	ImmLockIMC	ms905985	no-print-on-page	
+include/Imm.h	ImmUnlockIMC	ms906023	no-print-on-page	
+include/Imm.h	ImmGetIMCLockCount	ms906039	no-print-on-page	
+include/Imm.h	ImmCreateIMCC		no-pageid	
+include/Imm.h	ImmDestroyIMCC	ms905988	no-print-on-page	
+include/Imm.h	ImmReSizeIMCC	ms905990	no-print-on-page	
+include/Imm.h	ImmLockIMCC	ms906028	no-print-on-page	
+include/Imm.h	ImmUnlockIMCC	ms906024	no-print-on-page	
+include/Imm.h	ImmGetIMCCSize	ms906040	no-print-on-page	
+include/Imm.h	ImmGetIMCCLockCount	ms906012	no-print-on-page	
+include/Imm.h	ImmGetCandidateListW		no-pageid	
+include/Imm.h	ImmGetCandidateListCountW	ms905995	no-print-on-page	
+include/Imm.h	ImmGetCandidateWindow	ms905996	no-print-on-page	
+include/Imm.h	ImmSetCandidateWindow	ms905997	no-print-on-page	
+include/Imm.h	ImmGetCompositionStringW		no-pageid	
+include/Imm.h	ImmSetCompositionStringW	ms906001	no-print-on-page	
+include/Imm.h	ImmGetCompositionWindow	ms906031	no-print-on-page	
+include/Imm.h	ImmSetCompositionWindow	ms906002	no-print-on-page	
+include/Imm.h	ImmGetCompositionFontW	ms906032	no-print-on-page	
+include/Imm.h	ImmSetCompositionFontW	ms905998	no-print-on-page	
+include/Imm.h	ImmGetConversionStatus		no-pageid	
+include/Imm.h	ImmSetConversionStatus	ms906005	no-print-on-page	
+include/Imm.h	ImmGetConversionListW	ms906033	no-print-on-page	
+include/Imm.h	ImmGetOpenStatus		no-pageid	
+include/Imm.h	ImmSetOpenStatus	ms906016	no-print-on-page	
+include/Imm.h	ImmGetStatusWindowPos	ms906035	no-print-on-page	
+include/Imm.h	ImmSetStatusWindowPos	ms906019	no-print-on-page	
+include/Imm.h	ImmGetDefaultIMEWnd	ms906036	no-print-on-page	
+include/Imm.h	ImmGetProperty	ms906007	no-print-on-page	
+include/Imm.h	ImmGetGuideLineW	ms906017	no-print-on-page	
+include/Imm.h	ImmGetImeMenuItemsW	ms906009	no-print-on-page	
+include/Imm.h	ImmIsIME		no-pageid	
+include/Imm.h	ImmGetDescriptionW	ms906021	no-print-on-page	
+include/Imm.h	ImmGetIMEFileNameW	ms906008	no-print-on-page	
+include/Imm.h	ImmConfigureIMEW	ms906014	no-print-on-page	
+include/Imm.h	ImmEscapeW	ms905986	no-print-on-page	
+include/Imm.h	ImmIsUIMessageW	ms905993	no-print-on-page	
+include/Imm.h	ImmGenerateMessage	ms906022	no-print-on-page	
+include/Imm.h	ImmGetVirtualKey	ms905994	no-print-on-page	
+include/Imm.h	ImmGetHotKey		no-pageid	
+include/Imm.h	ImmSetHotKey	ms906010	no-print-on-page	
+include/Imm.h	ImmSimulateHotKey	ms906034	no-print-on-page	
+include/Imm.h	ImmRegisterWordW		no-pageid	
+include/Imm.h	ImmUnregisterWordW	ms906026	no-print-on-page	
+include/Imm.h	ImmEnumRegisterWordW	ms906041	no-print-on-page	
+include/Imm.h	ImmGetRegisterWordStyleW	ms905992	no-print-on-page	
+include/Imm.h	ImmNotifyIME		no-pageid	
+include/Imm.h	ImmDisableIME	ms906025	no-print-on-page	
+include/Imm.h	ImmSIPanelState	ms905991	no-print-on-page	
+include/Iphlpapi.h	CreateIpForwardEntry	ms887916	match	
+include/Iphlpapi.h	DeleteIpForwardEntry	aa450325	match	
+include/Iphlpapi.h	SetIpForwardEntry	aa450922	no-print-on-page	
+include/Iphlpapi.h	CreateIpNetEntry	ms887917	match	
+include/Iphlpapi.h	DeleteIpNetEntry	aa450326	match	
+include/Iphlpapi.h	SetIpNetEntry	aa450924	no-print-on-page	
+include/Iphlpapi.h	CreateProxyArpEntry	ms887918	match	
+include/Iphlpapi.h	DeleteProxyArpEntry	aa450327	match	
+include/Iphlpapi.h	FlushIpNetTable	aa450382	no-print-on-page	
+include/Iphlpapi.h	GetAdaptersInfo	aa450394	no-print-on-page	
+include/Iphlpapi.h	GetAdaptersAddresses	aa450393	match	
+include/Iphlpapi.h	GetAdapterIndex	aa450392	no-print-on-page	
+include/Iphlpapi.h	GetBestInterfaceEx	aa450397	no-print-on-page	
+include/Iphlpapi.h	GetBestRoute	aa450398	no-print-on-page	
+include/Iphlpapi.h	GetFriendlyIfIndex	aa450401	no-print-on-page	
+include/Iphlpapi.h	GetIcmpStatistics	aa450406	no-print-on-page	
+include/Iphlpapi.h	GetIcmpStatisticsEx	aa450407	no-print-on-page	
+include/Iphlpapi.h	GetIfEntry	aa450408	no-print-on-page	
+include/Iphlpapi.h	GetIfTable	aa450409	no-print-on-page	
+include/Iphlpapi.h	GetInterfaceInfo	aa450410	no-print-on-page	
+include/Iphlpapi.h	GetIpAddrTable	aa450411	no-print-on-page	
+include/Iphlpapi.h	GetIpForwardTable	aa450412	no-print-on-page	
+include/Iphlpapi.h	GetIpNetTable	aa450413	no-print-on-page	
+include/Iphlpapi.h	GetIpStatistics	aa450414	match	
+include/Iphlpapi.h	GetIpStatisticsEx	aa450415	match	
+include/Iphlpapi.h	GetNetworkParams	aa450417	no-print-on-page	
+include/Iphlpapi.h	GetNumberOfInterfaces	aa450418	no-print-on-page	
+include/Iphlpapi.h	GetPerAdapterInfo	aa450421	no-print-on-page	
+include/Iphlpapi.h	GetTcpStatistics	ms890306	no-print-on-page	
+include/Iphlpapi.h	GetTcpStatisticsEx	ms890307	no-print-on-page	
+include/Iphlpapi.h	GetTcpTable	ms890308	no-print-on-page	
+include/Iphlpapi.h	GetUdpStatistics	ms890309	no-print-on-page	
+include/Iphlpapi.h	GetUdpStatisticsEx	ms890310	no-print-on-page	
+include/Iphlpapi.h	GetUdpTable	ms890311	no-print-on-page	
+include/Iphlpapi.h	GetUniDirectionalAdapterInfo	ms890312	no-print-on-page	
+include/Iphlpapi.h	IpReleaseAddress	aa450426	no-print-on-page	
+include/Iphlpapi.h	IpRenewAddress	aa450427	no-print-on-page	
+include/Iphlpapi.h	NotifyAddrChange	ms895712	match	
+include/Iphlpapi.h	NotifyRouteChange	ms895720	match	
+include/Iphlpapi.h	SetIfEntry	aa450920	match	
+include/Iphlpapi.h	SetIpStatistics	aa450929	no-print-on-page	
+include/Iphlpapi.h	SetIpTTL	aa450931	no-print-on-page	
+include/Iphlpapi.h	SetTcpEntry	aa450937	no-print-on-page	
+include/Iphlpapi.h	DeleteIPAddress	ms887920	match	
+include/Ipsec_api.h	IsIPSecRunning		no-pageid	
+include/Ipsec_api.h	StartIPSec		no-pageid	
+include/Ipsec_api.h	StopIPSec		no-pageid	
+include/Ipsec_api.h	ResetIPSecMode		no-pageid	
+include/Ipsec_api.h	SetIPSecConfig		no-pageid	
+include/Ipsec_api.h	SetIPSecMode		no-pageid	
+include/Kernel.h	FlushDCache		no-pageid	
+include/Kernel.h	SC_GetTickCount	ee478614	match	
+include/Kernel.h	FlushICache	ee479199	match	
+include/Kernel.h	KLocalFileTimeToFileTime	ee479202	match	
+include/Kfuncs.h	CeGetCallerTrust	aa450792	match	
+include/Kfuncs.h	GetCurrentProcessId	ms885614	no-print-on-page	
+include/Kfuncs.h	GetCurrentThreadId	ms885616	no-print-on-page	
+include/Lap.h	VerifyUser	ms926456	match	
+include/Lap.h	CreateEnrollmentConfigDialog	ms937727	match	
+include/Lap.h	LAPDisplayPreWipe	ee498158	match	
+include/Lap.h	LAPDisplayCodeword	ee498295	match	
+include/Lap.h	LAPLockoutUser	ee498374	match	
+include/Lap.h	LASSGetValue	ee498753	match	
+include/Lass.h	LASSReloadConfig	ms926124	match	
+include/Mlang.h	ConvertINetMultiByteToUnicode	aa452124	match	
+include/Mlang.h	ConvertINetString	aa452127	match	
+include/Mlang.h	ConvertINetUnicodeToMultiByte	aa452129	match	
+include/Mlang.h	IsConvertINetStringAvailable	ms918805	no-print-on-page	
+include/Mlang.h	LcidToRfc1766	ms918817	no-print-on-page	
+include/Mlang.h	Rfc1766ToLcid	ms918853	no-print-on-page	
+include/Mmsystem.h	PlaySoundW	ms932262	no-print-on-page	
+include/Mmsystem.h	sndPlaySoundW	ms932314	match	
+include/Mmsystem.h	waveInAddBuffer	aa452421	match	
+include/Mmsystem.h	waveInClose	aa452423	match	
+include/Mmsystem.h	waveInGetDevCaps	aa452424	match	
+include/Mmsystem.h	waveInGetErrorText	aa452425	match	
+include/Mmsystem.h	waveInGetID	aa452426	match	
+include/Mmsystem.h	waveInGetPosition	aa452427	no-print-on-page	
+include/Mmsystem.h	waveInGetProperty	aa452429	match	
+include/Mmsystem.h	waveInMessage	aa452430	match	
+include/Mmsystem.h	waveInOpen	aa452431	match	
+include/Mmsystem.h	waveInPrepareHeader	aa452432	match	
+include/Mmsystem.h	waveInReset	aa452436	match	
+include/Mmsystem.h	waveInSetProperty	aa452437	match	
+include/Mmsystem.h	waveInStart	aa452438	match	
+include/Mmsystem.h	waveInStop	aa452439	match	
+include/Mmsystem.h	waveInUnprepareHeader	aa452440	match	
+include/Mmsystem.h	waveOutBreakLoop	aa452441	match	
+include/Mmsystem.h	waveOutClose	aa452443	match	
+include/Mmsystem.h	waveOutGetDevCaps	aa452445	match	
+include/Mmsystem.h	waveOutGetErrorText	aa452446	match	
+include/Mmsystem.h	waveOutGetID	aa452447	match	
+include/Mmsystem.h	waveOutGetPitch	aa452448	no-print-on-page	
+include/Mmsystem.h	waveOutGetPlaybackRate	aa452450	match	
+include/Mmsystem.h	waveOutGetPosition	aa452451	match	
+include/Mmsystem.h	waveOutGetProperty	aa452452	match	
+include/Mmsystem.h	waveOutGetVolume	aa452453	match	
+include/Mmsystem.h	waveOutMessage	aa452454	match	
+include/Mmsystem.h	waveOutOpen	aa452455	match	
+include/Mmsystem.h	waveOutPause	aa452456	match	
+include/Mmsystem.h	waveOutPrepareHeader	aa452457	match	
+include/Mmsystem.h	waveOutReset	aa452459	match	
+include/Mmsystem.h	waveOutRestart	aa452460	match	
+include/Mmsystem.h	waveOutSetPitch	aa452461	match	
+include/Mmsystem.h	waveOutSetPlaybackRate	aa452462	match	
+include/Mmsystem.h	waveOutSetProperty	aa452463	match	
+include/Mmsystem.h	waveOutSetVolume	aa452464	match	
+include/Mmsystem.h	waveOutUnprepareHeader	aa452465	match	
+include/Mmsystem.h	waveOutWrite	aa452466	match	
+include/Mmsystem.h	mixerClose	ms932037	no-print-on-page	
+include/Mmsystem.h	mixerGetControlDetails	ms932044	no-print-on-page	
+include/Mmsystem.h	mixerGetDevCaps	ms932045	match	
+include/Mmsystem.h	mixerGetID	ms932046	no-print-on-page	
+include/Mmsystem.h	mixerGetLineControls	ms932047	match	
+include/Mmsystem.h	mixerGetLineInfo	ms932048	match	
+include/Mmsystem.h	mixerMessage	ms932049	no-print-on-page	
+include/Mmsystem.h	mixerOpen	ms932053	match	
+include/Mmsystem.h	mixerSetControlDetails	ms932054	match	
+include/Mmsystem.h	timeBeginPeriod	aa448188	match	
+include/Mmsystem.h	timeEndPeriod	aa448190	match	
+include/Mmsystem.h	timeGetDevCaps	aa448191	match	
+include/Mmsystem.h	timeGetHardwareFrequency	aa448326	match	
+include/Mmsystem.h	timeGetSystemTime	aa448192	match	
+include/Mmsystem.h	timeGetTime	aa448193	match	
+include/Mmsystem.h	timeGetTimeSinceInterrupt	aa448327	match	
+include/Mmsystem.h	timeKillEvent	aa448194	match	
+include/Mmsystem.h	timeSetEvent	aa448195	match	
+include/Mq.h	MQCloseCursor	ms895103	match	
+include/Mq.h	MQCloseQueue	ms895104	match	
+include/Mq.h	MQCreateCursor	ms895106	match	
+include/Mq.h	MQCreateQueue	ms895108	match	
+include/Mq.h	MQDeleteQueue	ms895110	match	
+include/Mq.h	MQFreeMemory	ms895113	match	
+include/Mq.h	MQGetMachineProperties	ms895115	match	
+include/Mq.h	MQGetQueueProperties	ms895117	match	
+include/Mq.h	MQHandleToFormatName	ms895119	match	
+include/Mq.h	MQMgmtAction	ms895121	match	
+include/Mq.h	MQMgmtGetInfo	ms895123	match	
+include/Mq.h	MQOpenQueue	ms895127	match	
+include/Mq.h	MQPathNameToFormatName	ms895130	match	
+include/Mq.h	MQSendMessage	ms895144	match	
+include/Mq.h	MQSetQueueProperties	ms895147	match	
+include/Msgqueue.h	CloseMsgQueue	ms885168	match	
+include/Msgqueue.h	CreateMsgQueue	ms885180	match	
+include/Msgqueue.h	GetMsgQueueInfo	ms885632	match	
+include/Msgqueue.h	OpenMsgQueue	ms886765	match	
+include/Msgqueue.h	ReadMsgQueue	ms886793	match	
+include/Msgqueue.h	WriteMsgQueue	aa450991	match	
+include/Msgqueue.h	ReadMsgQueueEx	ee488391	match	
+include/Msime.h	CreateIFEDictionaryInstance	ms904718	match	
+include/Msime.h	CreateIImeIPointInstance	ms904719	match	
+include/Msimeui.h	ImeGetUIClassName	ms905977	no-print-on-page	
+include/Mspyime.h	GetPinyinType	ms905263	match	
+include/Mspyime.h	SetPinyinType	ms906278	match	
+include/Mspyime.h	ClearEudpContent		no-pageid	
+include/Mssoap.h	willWriteHeaders	ee483361	match	
+include/Mssoap.h	addElement	ee483495	match	
+include/Mssoap.h	varType	ee483684	match	
+include/Mssoap.h	EndMessage	ee483772	match	
+include/Mssoap.h	BeginMessage	ee483908	match	
+include/Mssoap.h	SoapDefaultNamespace	ee484101	match	
+include/Mssoap.h	SoapInvoke	ee484130	match	
+include/Mssoap.h	writeString	ee484553	match	
+include/Mssoap.h	getPrefixForNamespace	ee484724	match	
+include/Mssoap.h	writeBuffer	ee484920	match	
+include/Mssoap.h	SoapAttribute	ee485400	match	
+include/Mssoap.h	addType	ee486152	match	
+include/Mssoap.h	writeXML	ee486342	match	
+include/Mssoap.h	SoapNamespace	ee486404	match	
+include/Mssoap.h	reset	ee487040	match	
+include/Mssoap.h	addSchema	ee487174	match	
+include/Mssoap.h	mssoapinit	ee487268	match	
+include/Msxml2.h	setLocalName	ee502402	match	
+include/Msxml2.h	setAttributes	ee502641	match	
+include/Msxml2.h	setURI	ee503036	match	
+include/Msxml2.h	addAttributeFromIndex	ee503067	match	
+include/Msxml2.h	setType	ee503113	match	
+include/Msxml2.h	setQName	ee503119	match	
+include/Msxml2.h	addAttribute	ee503150	match	
+include/Msxml2.h	setValue	ee503456	match	
+include/Mwinreg.h	SetCurrentUser	ms919603	match	
+include/Natedit.h	EditorInitialize	ms885210	match	
+include/Natedit.h	RegisterEditor	ms886796	match	
+include/Natedit.h	CreateHandler	ms885179	no-print-on-page	
+include/Natedit.h	DataHandler	ms885191	no-print-on-page	
+include/Natedit.h	DeleteHandler	ms885198	no-print-on-page	
+include/Natedit.h	CreateTicket	ms885188	match	
+include/Natedit.h	DeleteTicket	ms885199	match	
+include/Natedit.h	EditSession	ms885211	match	
+include/Natedit.h	QueryInfoSession	ms886786	match	
+include/Natedit.h	TimeoutSession	aa450941	match	
+include/Natedit.h	DisassociateSession	ms885201	match	
+include/Natedit.h	EditorDeregister	ms885209	match	
+include/Netui.h	RegisterIPClass		no-pageid	
+include/Netui.h	CloseUsernamePasswordDialog	ms928587	match	
+include/Netui.h	GetNetString	ee493082	match	
+include/Netui.h	NetMsgBox	ee493233	match	
+include/Netui.h	CreateScanDevice	ee493629	match	
+include/Netui.h	UnregisterIPClass	ee493662	match	
+include/Netui.h	DisconnectDialog	ee493832	match	
+include/Netui.h	GetIPAddress	ee493896	match	
+include/Netui.h	AdapterIPProperties	ee494642	match	
+include/New.h	_set_new_mode	ms861451	match	
+include/Notify.h	CeClearUserNotification		no-pageid	
+include/Notify.h	CeGetUserNotification	ms908074	no-print-on-page	
+include/Notify.h	CeGetUserNotificationHandles	ms908076	no-print-on-page	
+include/Notify.h	CeGetUserNotificationPreferences	ms908077	no-print-on-page	
+include/Notify.h	CeHandleAppNotifications	ms908078	no-print-on-page	
+include/Notify.h	CeRunAppAtEvent	ms908079	no-print-on-page	
+include/Notify.h	CeRunAppAtTime	ms908102	no-print-on-page	
+include/Notify.h	CeSetUserNotification	ms908103	no-print-on-page	
+include/Notify.h	CeSetUserNotificationEx	ms908104	no-print-on-page	
+include/Notify.h	CeEventHasOccurred	ms920365	match	
+include/Ntlmssp.h	NTLMAddGroup	ms926159	match	
+include/Ntlmssp.h	NTLMAddUserToGroup	ms926164	match	
+include/Ntlmssp.h	NTLMDeleteUser	ms926171	match	
+include/Ntlmssp.h	NTLMEnumGroups	ms926178	match	
+include/Ntlmssp.h	NTLMEnumUser	ms926183	match	
+include/Ntlmssp.h	NTLMGetGroupList	ms926187	match	
+include/Ntlmssp.h	NTLMGetUserList	ms926195	match	
+include/Ntlmssp.h	NTLMRemoveGroup	ms926201	match	
+include/Ntlmssp.h	NTLMRemoveUserFromGroup	ms926207	match	
+include/Ntlmssp.h	NTLMSetUserInfo	ms926215	match	
+include/Objbase.h	BindMoniker	ms886121	match	
+include/Objbase.h	CLSIDFromProgID	ms886181	match	
+include/Objbase.h	CLSIDFromString	ms886190	match	
+include/Objbase.h	CoAddRefServerProcess	ms886201	match	
+include/Objbase.h	CoCopyProxy	ms886216	match	
+include/Objbase.h	CoCreateFreeThreadedMarshaler	ms886221	match	
+include/Objbase.h	CoCreateGuid	ms886229	match	
+include/Objbase.h	CoCreateInstance	ms886232	match	
+include/Objbase.h	CoCreateInstanceEx	ms886235	match	
+include/Objbase.h	CoDisconnectObject	ms886239	match	
+include/Objbase.h	CoFileTimeNow	ms886243	match	
+include/Objbase.h	CoFreeAllLibraries	ms886248	match	
+include/Objbase.h	CoFreeLibrary	ms886250	match	
+include/Objbase.h	CoFreeUnusedLibraries	ms886254	match	
+include/Objbase.h	CoGetCallContext	ms886256	match	
+include/Objbase.h	CoGetClassObject	ms886259	match	
+include/Objbase.h	CoGetCurrentProcess	ms886262	match	
+include/Objbase.h	CoGetInstanceFromFile	ms886267	match	
+include/Objbase.h	CoGetInstanceFromIStorage	ms886271	match	
+include/Objbase.h	CoGetInterfaceAndReleaseStream	ms886275	match	
+include/Objbase.h	CoGetMalloc	ms886278	match	
+include/Objbase.h	CoGetMarshalSizeMax	ms886282	match	
+include/Objbase.h	CoGetObject	ms886284	match	
+include/Objbase.h	CoGetPSClsid	ms886289	match	
+include/Objbase.h	CoGetStandardMarshal	ms886292	match	
+include/Objbase.h	CoGetTreatAsClass	ms886297	match	
+include/Objbase.h	CoImpersonateClient	ms886299	match	
+include/Objbase.h	CoInitialize	ms886303	match	
+include/Objbase.h	CoInitializeEx	ms886306	match	
+include/Objbase.h	CoInitializeSecurity	ms886314	match	
+include/Objbase.h	CoIsHandlerConnected	ms886324	match	
+include/Objbase.h	CoIsOle1Class	ms886335	match	
+include/Objbase.h	CoLoadLibrary	ms886346	match	
+include/Objbase.h	CoLockObjectExternal	ms886357	match	
+include/Objbase.h	CoMarshalHresult	ms886365	match	
+include/Objbase.h	CoMarshalInterface	ms886456	match	
+include/Objbase.h	CoMarshalInterThreadInterfaceInStream	ms886464	match	
+include/Objbase.h	CoQueryAuthenticationServices	ms886468	match	
+include/Objbase.h	CoQueryClientBlanket	ms886469	match	
+include/Objbase.h	CoQueryProxyBlanket	ms886470	match	
+include/Objbase.h	CoRegisterClassObject	ms886471	match	
+include/Objbase.h	CoRegisterMallocSpy	ms886472	match	
+include/Objbase.h	CoRegisterMessageFilter	ms886491	match	
+include/Objbase.h	CoRegisterPSClsid	ms886499	no-print-on-page	
+include/Objbase.h	CoRegisterSurrogate	ms886609	match	
+include/Objbase.h	CoReleaseMarshalData	ms886724	match	
+include/Objbase.h	CoReleaseServerProcess	ms886823	match	
+include/Objbase.h	CoResumeClassObjects	ms886929	match	
+include/Objbase.h	CoRevertToSelf	ms886931	match	
+include/Objbase.h	CoRevokeClassObject	ms886932	match	
+include/Objbase.h	CoRevokeMallocSpy	ms886933	match	
+include/Objbase.h	CoSetProxyBlanket	ms886936	match	
+include/Objbase.h	CoSuspendClassObjects	ms886937	match	
+include/Objbase.h	CoSwitchCallContext	ms886938	match	
+include/Objbase.h	CoTaskMemAlloc	ms886939	match	
+include/Objbase.h	CoTaskMemFree	ms886940	page-drops-star	args [0]: page print omits pointer
+include/Objbase.h	CoTaskMemRealloc	ms886941	match	
+include/Objbase.h	CoTreatAsClass	ms886942	match	
+include/Objbase.h	CoUninitialize	ms886943	match	
+include/Objbase.h	CoUnmarshalHresult	ms886944	match	
+include/Objbase.h	CoUnmarshalInterface	ms886945	match	
+include/Objbase.h	CreateAntiMoniker	ms886946	match	
+include/Objbase.h	CreateBindCtx	ms886947	match	
+include/Objbase.h	CreateClassMoniker	ms886948	match	
+include/Objbase.h	CreateFileMoniker	ms886950	match	
+include/Objbase.h	CreateGenericComposite	ms886951	match	
+include/Objbase.h	CreateItemMoniker	ms886952	match	
+include/Objbase.h	CreatePointerMoniker	ms886954	match	
+include/Objbase.h	DllGetClassObject	ms886973	match	
+include/Objbase.h	GetClassFile	ms886988	match	
+include/Objbase.h	GetRunningObjectTable	ms886991	match	
+include/Objbase.h	IIDFromString	ms887797	match	
+include/Objbase.h	MkParseDisplayName	ms890774	match	
+include/Objbase.h	MonikerCommonPrefixWith	ms890790	match	
+include/Objbase.h	MonikerRelativePathTo	ms890794	match	
+include/Objbase.h	ProgIDFromCLSID	ms891234	match	
+include/Objbase.h	StgCreateDocfile	ms891271	match	
+include/Objbase.h	StgCreateDocfileOnILockBytes	ms891272	match	
+include/Objbase.h	StgOpenStorage	ms891276	match	
+include/Objbase.h	StgOpenStorageOnILockBytes	ms891277	match	
+include/Objbase.h	StringFromCLSID	ms891280	match	
+include/Objbase.h	StringFromGUID2	ms891281	no-print-on-page	
+include/Objbase.h	StringFromIID	ms891282	match	
+include/Objbase.h	UpdateDCOMSettings	ms891304	match	
+include/Oleauto.h	BstrFromVector	ms886153	match	
+include/Oleauto.h	CreateErrorInfo	ms886949	match	
+include/Oleauto.h	CreateTypeLib2	ms886956	match	
+include/Oleauto.h	DispGetIDsOfNames	ms886965	match	
+include/Oleauto.h	DispGetParam	ms886966	match	
+include/Oleauto.h	DispInvoke	ms886969	page-drops-star	args [6]: page print omits pointer
+include/Oleauto.h	DllCanUnloadNow	ms886972	match	
+include/Oleauto.h	GetErrorInfo	ms886989	match	
+include/Oleauto.h	LoadRegTypeLib	ms890751	annotated-deviation	argc: page=3 hdr=5
+include/Oleauto.h	LoadTypeLib	ms890755	match	
+include/Oleauto.h	RegisterTypeLib	ms891239	match	
+include/Oleauto.h	SafeArrayAccessData	ms891243	match	
+include/Oleauto.h	SafeArrayAllocData	ms891244	match	
+include/Oleauto.h	SafeArrayAllocDescriptor	ms891245	match	
+include/Oleauto.h	SafeArrayCopy	ms891246	match	
+include/Oleauto.h	SafeArrayCopyData	ms891247	match	
+include/Oleauto.h	SafeArrayCreate	ms891248	match	
+include/Oleauto.h	SafeArrayCreateVector	ms891250	match	
+include/Oleauto.h	SafeArrayDestroy	ms891251	match	
+include/Oleauto.h	SafeArrayDestroyData	ms891252	match	
+include/Oleauto.h	SafeArrayDestroyDescriptor	ms891253	match	
+include/Oleauto.h	SafeArrayGetDim	ms891254	annotated-deviation	ret: page='HRESULT' hdr='ULONG'
+include/Oleauto.h	SafeArrayGetElement	ms891255	match	
+include/Oleauto.h	SafeArrayGetElemsize	ms891256	annotated-deviation	ret: page='HRESULT' hdr='ULONG'
+include/Oleauto.h	SafeArrayGetLBound	ms891257	match	
+include/Oleauto.h	SafeArrayGetUBound	ms891258	match	
+include/Oleauto.h	SafeArrayLock	ms891259	match	
+include/Oleauto.h	SafeArrayPtrOfIndex	ms891260	match	
+include/Oleauto.h	SafeArrayPutElement	ms891261	match	
+include/Oleauto.h	SafeArrayRedim	ms891262	match	
+include/Oleauto.h	SafeArrayUnaccessData	ms891263	match	
+include/Oleauto.h	SafeArrayUnlock	ms891264	match	
+include/Oleauto.h	SetErrorInfo	ms891266	match	
+include/Oleauto.h	SysAllocString	ms891285	match	
+include/Oleauto.h	SysAllocStringByteLen	ms891286	match	
+include/Oleauto.h	SysAllocStringLen	ms891287	match	
+include/Oleauto.h	SysFreeString	ms891288	match	
+include/Oleauto.h	SysReAllocString	ms891290	match	
+include/Oleauto.h	SysReAllocStringLen	ms891291	match	
+include/Oleauto.h	SysStringByteLen	ms891292	match	
+include/Oleauto.h	SysStringLen	ms891293	match	
+include/Oleauto.h	SystemTimeToVariantTime	ms891294	page-drops-star	args [0]: page print omits pointer
+include/Oleauto.h	UnRegisterTypeLib	ms891303	annotated-deviation	argc: page=3 hdr=5
+include/Oleauto.h	VarBoolFromCy	ms891305	match	
+include/Oleauto.h	VarBoolFromDate	ms891306	match	
+include/Oleauto.h	VarBoolFromDec	ms891307	match	
+include/Oleauto.h	VarBoolFromDisp	ms891308	match	
+include/Oleauto.h	VarBoolFromI1	ms891309	match	
+include/Oleauto.h	VarBoolFromI2	ms891310	match	
+include/Oleauto.h	VarBoolFromI4	ms891311	match	
+include/Oleauto.h	VarBoolFromR4	ms891312	match	
+include/Oleauto.h	VarBoolFromR8	ms891313	match	
+include/Oleauto.h	VarBoolFromStr	ms891314	match	
+include/Oleauto.h	VarBoolFromUI1	ms891315	match	
+include/Oleauto.h	VarBoolFromUI2	ms891316	match	
+include/Oleauto.h	VarBoolFromUI4	ms891317	match	
+include/Oleauto.h	VarBstrFromBool	ms891318	match	
+include/Oleauto.h	VarBstrFromCy	ms891319	match	
+include/Oleauto.h	VarBstrFromDate	ms891320	match	
+include/Oleauto.h	VarBstrFromDec	ms891321	match	
+include/Oleauto.h	VarBstrFromDisp	ms891322	match	
+include/Oleauto.h	VarBstrFromI1	ms891323	match	
+include/Oleauto.h	VarBstrFromI2	ms891324	match	
+include/Oleauto.h	VarBstrFromI4	ms891325	match	
+include/Oleauto.h	VarBstrFromR4	ms891326	match	
+include/Oleauto.h	VarBstrFromR8	ms891327	match	
+include/Oleauto.h	VarBstrFromUI1	ms891328	no-print-on-page	
+include/Oleauto.h	VarBstrFromUI2	ms891329	match	
+include/Oleauto.h	VarBstrFromUI4	ms891330	match	
+include/Oleauto.h	VarCyFromBool	ms891331	match	
+include/Oleauto.h	VarCyFromDate	ms891465	match	
+include/Oleauto.h	VarCyFromDec	ms891479	match	
+include/Oleauto.h	VarCyFromDisp	ms891485	match	
+include/Oleauto.h	VarCyFromI1	ms891500	match	
+include/Oleauto.h	VarCyFromI2	ms891507	match	
+include/Oleauto.h	VarCyFromI4	ms891510	match	
+include/Oleauto.h	VarCyFromR4	ms891516	match	
+include/Oleauto.h	VarCyFromR8	ms891523	match	
+include/Oleauto.h	VarCyFromStr	ms891532	match	
+include/Oleauto.h	VarCyFromUI1	ms891539	match	
+include/Oleauto.h	VarCyFromUI2	ms891548	match	
+include/Oleauto.h	VarCyFromUI4	ms891557	match	
+include/Oleauto.h	VarDateFromBool	ms891564	match	
+include/Oleauto.h	VarDateFromCy	ms891578	match	
+include/Oleauto.h	VarDateFromDec	ms891584	match	
+include/Oleauto.h	VarDateFromDisp	ms891593	match	
+include/Oleauto.h	VarDateFromI1	ms891600	match	
+include/Oleauto.h	VarDateFromI2	ms891606	match	
+include/Oleauto.h	VarDateFromI4	ms891609	match	
+include/Oleauto.h	VarDateFromR4	ms891610	match	
+include/Oleauto.h	VarDateFromR8	ms891611	match	
+include/Oleauto.h	VarDateFromStr	ms891612	match	
+include/Oleauto.h	VarDateFromUdate	ms891613	match	
+include/Oleauto.h	VarDateFromUI1	ms891614	match	
+include/Oleauto.h	VarDateFromUI2	ms891615	match	
+include/Oleauto.h	VarDateFromUI4	ms891616	match	
+include/Oleauto.h	VarDecFromBool	ms891617	match	
+include/Oleauto.h	VarDecFromCy	ms891618	match	
+include/Oleauto.h	VarDecFromDate	ms891619	match	
+include/Oleauto.h	VarDecFromDisp	ms891620	match	
+include/Oleauto.h	VarDecFromI1	ms891621	match	
+include/Oleauto.h	VarDecFromI2	ms891622	match	
+include/Oleauto.h	VarDecFromI4	ms891623	match	
+include/Oleauto.h	VarDecFromR4	ms891624	match	
+include/Oleauto.h	VarDecFromR8	ms891625	match	
+include/Oleauto.h	VarDecFromStr	ms891626	match	
+include/Oleauto.h	VarDecFromUI1	ms891627	match	
+include/Oleauto.h	VarDecFromUI2	ms891628	match	
+include/Oleauto.h	VarDecFromUI4	ms891629	no-print-on-page	
+include/Oleauto.h	VarI1FromBool	ms891631	match	
+include/Oleauto.h	VarI1FromCy	ms891632	match	
+include/Oleauto.h	VarI1FromDate	ms891633	match	
+include/Oleauto.h	VarI1FromDec	ms891634	match	
+include/Oleauto.h	VarI1FromDisp	ms891635	match	
+include/Oleauto.h	VarI1FromI2	ms891636	match	
+include/Oleauto.h	VarI1FromI4	ms891637	match	
+include/Oleauto.h	VarI1FromR4	ms891638	match	
+include/Oleauto.h	VarI1FromR8	ms891639	match	
+include/Oleauto.h	VarI1FromStr	ms891640	match	
+include/Oleauto.h	VarI1FromUI1	ms891641	match	
+include/Oleauto.h	VarI1FromUI2	ms891642	match	
+include/Oleauto.h	VarI1FromUI4	ms891643	match	
+include/Oleauto.h	VarI2FromBool	ms891644	match	
+include/Oleauto.h	VarI2FromCy	ms891645	match	
+include/Oleauto.h	VarI2FromDate	ms891646	match	
+include/Oleauto.h	VarI2FromDec	ms891647	match	
+include/Oleauto.h	VarI2FromDisp	ms891648	match	
+include/Oleauto.h	VarI2FromI1	ms891649	match	
+include/Oleauto.h	VarI2FromI4	ms891650	match	
+include/Oleauto.h	VarI2FromR4	ms891651	match	
+include/Oleauto.h	VarI2FromR8	ms891652	match	
+include/Oleauto.h	VarI2FromStr	ms891653	match	
+include/Oleauto.h	VarI2FromUI1	ms891654	match	
+include/Oleauto.h	VarI2FromUI2	ms891655	match	
+include/Oleauto.h	VarI2FromUI4	ms891656	match	
+include/Oleauto.h	VarI4FromBool	ms891657	match	
+include/Oleauto.h	VarI4FromCy	ms891658	match	
+include/Oleauto.h	VarI4FromDec	ms891660	match	
+include/Oleauto.h	VarI4FromDisp	ms891661	match	
+include/Oleauto.h	VarI4FromI1	ms891662	match	
+include/Oleauto.h	VarI4FromI2	ms891663	no-print-on-page	
+include/Oleauto.h	VarI4FromR4	ms891664	match	
+include/Oleauto.h	VarI4FromR8	ms891665	match	
+include/Oleauto.h	VarI4FromStr	ms891667	match	
+include/Oleauto.h	VarI4FromUI1	ms891668	match	
+include/Oleauto.h	VarI4FromUI2	ms891669	match	
+include/Oleauto.h	VarI4FromUI4	ms891670	match	
+include/Oleauto.h	VariantChangeType	ms891671	match	
+include/Oleauto.h	VariantChangeTypeEx	ms891672	match	
+include/Oleauto.h	VariantClear	ms891673	match	
+include/Oleauto.h	VariantCopy	ms891674	match	
+include/Oleauto.h	VariantCopyInd	ms891675	match	
+include/Oleauto.h	VariantInit	ms891676	match	
+include/Oleauto.h	VariantTimeToSystemTime	ms891677	match	
+include/Oleauto.h	VarNumFromParseNum	ms891680	match	
+include/Oleauto.h	VarParseNumFromStr	ms891681	match	
+include/Oleauto.h	VarR4FromBool	ms891682	match	
+include/Oleauto.h	VarR4FromCy	ms891683	match	
+include/Oleauto.h	VarR4FromDate	ms891684	match	
+include/Oleauto.h	VarR4FromDec	ms891685	match	
+include/Oleauto.h	VarR4FromDisp	ms891686	match	
+include/Oleauto.h	VarR4FromI1	ms891687	annotated-deviation	arg0: page='DOUBLE' hdr='char'
+include/Oleauto.h	VarR4FromI2	ms891688	match	
+include/Oleauto.h	VarR4FromI4	ms891689	match	
+include/Oleauto.h	VarR4FromR8	ms891690	match	
+include/Oleauto.h	VarR4FromStr	ms891691	match	
+include/Oleauto.h	VarR4FromUI1	ms891700	match	
+include/Oleauto.h	VarR4FromUI2	ms891773	match	
+include/Oleauto.h	VarR4FromUI4	ms891776	match	
+include/Oleauto.h	VarR8FromBool	ms891785	match	
+include/Oleauto.h	VarR8FromCy	ms891790	match	
+include/Oleauto.h	VarR8FromDate	ms891796	match	
+include/Oleauto.h	VarR8FromDec	ms891802	match	
+include/Oleauto.h	VarR8FromDisp	ms891810	no-print-on-page	
+include/Oleauto.h	VarR8FromI1	ms891812	match	
+include/Oleauto.h	VarR8FromI2	ms891816	match	
+include/Oleauto.h	VarR8FromI4	ms891823	match	
+include/Oleauto.h	VarR8FromR4	ms891825	match	
+include/Oleauto.h	VarR8FromStr	ms891831	match	
+include/Oleauto.h	VarR8FromUI1	ms891836	match	
+include/Oleauto.h	VarR8FromUI2	ms891839	match	
+include/Oleauto.h	VarR8FromUI4	ms891846	no-print-on-page	
+include/Oleauto.h	VarUdateFromDate	ms891856	match	
+include/Oleauto.h	VarUI1FromBool	ms891863	match	
+include/Oleauto.h	VarUI1FromCy	ms891867	match	
+include/Oleauto.h	VarUI1FromDate	ms891869	match	
+include/Oleauto.h	VarUI1FromDec	ms891876	match	
+include/Oleauto.h	VarUI1FromDisp	ms891887	match	
+include/Oleauto.h	VarUI1FromI1	ms891893	match	
+include/Oleauto.h	VarUI1FromI2	ms891901	match	
+include/Oleauto.h	VarUI1FromI4	ms891905	match	
+include/Oleauto.h	VarUI1FromR4	ms891912	match	
+include/Oleauto.h	VarUI1FromR8	ms891915	match	
+include/Oleauto.h	VarUI1FromStr	ms891922	match	
+include/Oleauto.h	VarUI1FromUI2	ms891926	match	
+include/Oleauto.h	VarUI1FromUI4	ms891930	match	
+include/Oleauto.h	VarUI2FromBool	ms891935	match	
+include/Oleauto.h	VarUI2FromCy	ms891940	match	
+include/Oleauto.h	VarUI2FromDate	ms891947	match	
+include/Oleauto.h	VarUI2FromDec	ms891951	match	
+include/Oleauto.h	VarUI2FromDisp	ms891955	match	
+include/Oleauto.h	VarUI2FromI1	ms891961	match	
+include/Oleauto.h	VarUI2FromI2	ms891966	match	
+include/Oleauto.h	VarUI2FromI4	ms891970	match	
+include/Oleauto.h	VarUI2FromR4	ms891981	match	
+include/Oleauto.h	VarUI2FromR8	ms891986	match	
+include/Oleauto.h	VarUI2FromStr	ms891993	match	
+include/Oleauto.h	VarUI2FromUI1	ms891998	match	
+include/Oleauto.h	VarUI2FromUI4	ms892004	match	
+include/Oleauto.h	VarUI4FromBool	ms892011	match	
+include/Oleauto.h	VarUI4FromCy	ms892020	match	
+include/Oleauto.h	VarUI4FromDate	ms892026	match	
+include/Oleauto.h	VarUI4FromDec	ms892103	match	
+include/Oleauto.h	VarUI4FromDisp	ms892107	match	
+include/Oleauto.h	VarUI4FromI1	ms892116	match	
+include/Oleauto.h	VarUI4FromI2	ms892117	match	
+include/Oleauto.h	VarUI4FromI4	ms892118	match	
+include/Oleauto.h	VarUI4FromR4	ms892119	match	
+include/Oleauto.h	VarUI4FromR8	ms892120	match	
+include/Oleauto.h	VarUI4FromStr	ms892121	match	
+include/Oleauto.h	VarUI4FromUI1	ms892122	match	
+include/Oleauto.h	VarUI4FromUI2	ms892123	match	
+include/Oleauto.h	VarI4FromDate	aa519078	no-print-on-page	
+include/Oleauto.h	PropVariantClear	aa519285	match	
+include/Oleauto.h	PropVariantCopy	aa519286	match	
+include/Oleauto.h	FreePropVariantArray	aa519255	match	
+include/Oleauto.h	VectorFromBstr	ms892124	match	
+include/Oleauto.h	CoFreeUnusedLibrariesEx	ms863900	match	
+include/Oleauto.h	IsEqualGUID	ms886018	match	
+include/Oleauto.h	CreateStreamOnHGlobal	ms864401	match	
+include/Oleauto.h	GetHGlobalFromStream	aa515040	match	
+include/Oleauto.h	CreateOleAdviseHolder	ms864397	no-print-on-page	
+include/Oleauto.h	OleRun	ms892596	no-print-on-page	
+include/Oleauto.h	OleIsRunning	ms892593	no-print-on-page	
+include/Oleauto.h	OleLoadFromStream	ms892595	match	
+include/Oleauto.h	OleSaveToStream	ms892598	match	
+include/Oleauto.h	OleSave	ms892597	match	
+include/Oleauto.h	OleSetContainedObject	ms892599	no-print-on-page	
+include/Oleauto.h	OleCreate	ms892590	match	
+include/Oleauto.h	OleDraw	ms892591	no-print-on-page	
+include/Oleauto.h	ReadClassStg	ms892641	match	
+include/Oleauto.h	ReadClassStm	ms892642	match	
+include/Oleauto.h	WriteClassStg	ms897190	no-print-on-page	
+include/Oleauto.h	WriteClassStm	ms897191	no-print-on-page	
+include/Oleauto.h	ReleaseStgMedium	ms892649	match	
+include/Phoneapi.h	PHProcessProvisionXML	ee500412	match	
+include/Phoneapi.h	PHOnHookDialing	ee500691	match	
+include/Phoneapi.h	PHValidateProvisionXML	ee501635	match	
+include/Psapi.h	GetModuleInformation	ms885631	match	
+include/Psapi.h	CeSetProcessVersion	ee488003	match	
+include/Pwinbase.h	FileSystemPowerFunction	ms902891	match	
+include/Pwinbase.h	GetPasswordStatus	ms891004	match	
+include/Pwinbase.h	SetPasswordStatus	ms891976	match	
+include/Pwindbas.h	SetSystemMemoryDivision		no-pageid	
+include/Pwinreg.h	RegCopyFile		no-pageid	
+include/Pwinreg.h	RegRestoreFile		no-pageid	
+include/Pwinreg.h	RegReplaceKey	ee489789	match	
+include/Pwinreg.h	RegSaveKey	ee489766	match	
+include/Pwinuser.h	GetForegroundInfo	ms929241	match	
+include/Pwinuser.h	GetForegroundKeyboardLayoutHandle	ms929242	match	
+include/Pwinuser.h	GetForegroundKeyboardTarget	ms929243	match	
+include/Pwinuser.h	GetAsyncShiftFlags	aa453955	match	
+include/Pwinuser.h	KeybdGetDeviceInfo	aa453246	match	
+include/Pwinuser.h	BatteryGetLifeTimeInfo	ms896132	match	
+include/Pwinuser.h	BatteryNotifyOfTimeChange	ms896134	match	
+include/Pwinuser.h	TouchCalibrate	aa448196	match	
+include/Pwinuser.h	GwesPowerOffSystem	ms902923	match	
+include/Pwinuser.h	NotifyWinUserSystem		no-pageid	
+include/Pwinuser.h	RegisterTaskBar	ms919550	match	
+include/Rapi.h	CeCheckPassword	aa513323	no-print-on-page	
+include/Rapi.h	CeCloseHandle	aa513324	no-print-on-page	
+include/Rapi.h	CeCopyFile	aa513325	no-print-on-page	
+include/Rapi.h	CeCreateDirectory	aa513328	no-print-on-page	
+include/Rapi.h	CeDeleteFile	aa513344	no-print-on-page	
+include/Rapi.h	CeFindClose	aa513349	no-print-on-page	
+include/Rapi.h	CeFindNextFile	aa513356	no-print-on-page	
+include/Rapi.h	CeGetClassName	aa513357	no-print-on-page	
+include/Rapi.h	CeGetDesktopDeviceCaps	aa513358	no-print-on-page	
+include/Rapi.h	CeGetFileAttributes	aa513359	no-print-on-page	
+include/Rapi.h	CeGetFileSize	aa513360	no-print-on-page	
+include/Rapi.h	CeGetFileTime	aa513361	no-print-on-page	
+include/Rapi.h	CeGetLastError	aa513362	no-print-on-page	
+include/Rapi.h	CeGetSpecialFolderPath	aa513364	match	
+include/Rapi.h	CeGetStoreInformation	aa513365	no-print-on-page	
+include/Rapi.h	CeGetSystemMetrics	aa513367	match	
+include/Rapi.h	CeGetSystemPowerStatusEx	aa513368	no-print-on-page	
+include/Rapi.h	CeGetTempPath	aa513369	match	
+include/Rapi.h	CeGetWindow	aa513372	no-print-on-page	
+include/Rapi.h	CeGetWindowLong	aa513371	no-print-on-page	
+include/Rapi.h	CeGetWindowText	aa513373	no-print-on-page	
+include/Rapi.h	CeGlobalMemoryStatus	aa513374	no-print-on-page	
+include/Rapi.h	CeMoveFile	aa513376	no-print-on-page	
+include/Rapi.h	CeQueryInstructionSet	ms879800	match	
+include/Rapi.h	CeRapiGetError	aa513383	match	
+include/Rapi.h	CeRapiInit	aa513384	no-print-on-page	
+include/Rapi.h	CeRapiInitEx	aa513385	no-print-on-page	
+include/Rapi.h	CeRapiInvoke	aa513386	match	
+include/Rapi.h	CeRapiUninit	aa513387	no-print-on-page	
+include/Rapi.h	CeReadFile	aa513388	no-print-on-page	
+include/Rapi.h	CeRegCloseKey	aa513391	no-print-on-page	
+include/Rapi.h	CeRegDeleteKey	aa513393	no-print-on-page	
+include/Rapi.h	CeRegDeleteValue	aa513394	no-print-on-page	
+include/Rapi.h	CeRegEnumKeyEx	aa513395	no-print-on-page	
+include/Rapi.h	CeRegEnumValue	aa513396	no-print-on-page	
+include/Rapi.h	CeRegOpenKeyEx	aa513397	no-print-on-page	
+include/Rapi.h	CeRegQueryInfoKey	aa513398	no-print-on-page	
+include/Rapi.h	CeRegQueryValueEx	aa513399	no-print-on-page	
+include/Rapi.h	CeRemoveDirectory	aa513401	no-print-on-page	
+include/Rapi.h	CeSetEndOfFile	aa513405	no-print-on-page	
+include/Rapi.h	CeSetFileAttributes	aa513406	no-print-on-page	
+include/Rapi.h	CeSetFilePointer	aa513810	no-print-on-page	
+include/Rapi.h	CeSHCreateShortcut	aa513814	no-print-on-page	
+include/Rapi.h	CeSHGetShortcutTarget	aa513816	no-print-on-page	
+include/Rapi.h	CeWriteFile	aa513847	no-print-on-page	
+include/Rapi.h	CeSyncStart	ee497258	match	
+include/Ras.h	RasDial		no-pageid	
+include/Ras.h	RasEnumConnections		no-pageid	
+include/Ras.h	RasEnumDevicesW		no-pageid	
+include/Ras.h	RasEnumEntries		no-pageid	
+include/Ras.h	RasGetConnectStatus		no-pageid	
+include/Ras.h	RasGetEntryDialParams		no-pageid	
+include/Ras.h	RasGetEntryProperties		no-pageid	
+include/Ras.h	RasGetLinkStatistics		no-pageid	
+include/Ras.h	RasGetProjectionInfoW		no-pageid	
+include/Ras.h	RasHangUp		no-pageid	
+include/Ras.h	RasSetEntryDialParams		no-pageid	
+include/Ras.h	RasSetEntryProperties		no-pageid	
+include/Ras.h	RasDeleteEntry		no-pageid	
+include/Ras.h	RasRenameEntry		no-pageid	
+include/Ras.h	RasValidateEntryName		no-pageid	
+include/Ras.h	RasDevConfigDialogEditW	ms897088	match	
+include/Ras.h	RasGetEapConnectionData	ms897102	match	
+include/Ras.h	RasGetEapUserData	ms897103	match	
+include/Ras.h	RasSetEapConnectionData	ms897092	match	
+include/Ras.h	RasSetEapUserData	ms897117	match	
+include/Recog.h	HwxConfig		no-pageid	
+include/Recog.h	HwxSetPartial	ee490977	match	
+include/Recog.h	HwxSetAbort	ee491134	match	
+include/Recog.h	HwxGetResults	ee491138	match	
+include/Recog.h	HwxResultsAvailable	ee491152	match	
+include/Recog.h	HwxSetContext	ee491204	match	
+include/Recog.h	HwxEndInput	ee491529	match	
+include/Recog.h	HwxSetGuide	ee491580	match	
+include/Recog.h	HwxProcess	ee491763	match	
+include/Recog.h	HwxDestroy	ee491781	match	
+include/Recog.h	HwxCreate	ee491902	match	
+include/Recog.h	HwxInput	ee492154	match	
+include/Regext.h	RegistryTestExchangeDWORD	ee488186	match	
+include/Regext.h	RegistryStopNotification	ee488205	match	
+include/Regext.h	RegistryGetDWORD	ee488582	match	
+include/Regext.h	RegistrySetString	ee488611	match	
+include/Regext.h	RegistrySetDWORD	ee488764	match	
+include/Regext.h	RegistryGetString	ee488928	match	
+include/Regext.h	RegistryNotifyApp	ee488776	match	
+include/Regext.h	RegistryNotifyWindow	ee488231	match	
+include/Regext.h	RegistryNotifyMsgQueue	ee488614	match	
+include/Regext.h	RegistryCloseNotification	ee488922	match	
+include/Scandisk.h	ScanVolumeUI	ms891864	match	
+include/Service.h	RegisterService	aa450871	match	
+include/Service.h	DeregisterService	aa450329	match	
+include/Service.h	EnumServices	aa450368	match	
+include/Service.h	GetServiceHandle	aa450425	match	
+include/Service.h	ActivateService	aa450278	match	
+include/Service.h	ServiceIoControl	aa450904	match	
+include/Service.h	ServiceAddPort	aa450892	match	
+include/Service.h	ServiceClosePort	aa450897	match	
+include/Service.h	ServiceUnbindPorts	aa450914	match	
+include/Settingsapi.h	PHGetVolumeSetting	ee499873	match	
+include/Settingsapi.h	PHSetValue	ee499875	match	
+include/Settingsapi.h	PHReadPIN	ee500423	match	
+include/Settingsapi.h	PHSetActiveVolume	ee500680	match	
+include/Settingsapi.h	PHAuthenticateUser	ee500995	match	
+include/Settingsapi.h	PHWritePIN	ee501008	match	
+include/Settingsapi.h	PHSetVolume	ee501292	match	
+include/Settingsapi.h	PHCancelAuthenticationRequest	ee501360	match	
+include/Settingsapi.h	PHGetSetting	ee501650	match	
+include/Settingsapi.h	PHGetActiveVolume	ee501700	match	
+include/Shellapi.h	Shell_NotifyIcon	aa453686	match	
+include/Shellapi.h	ShellExecuteEx	aa453684	match	
+include/Shellapi.h	SHFileOperation	aa453690	match	
+include/Shellapi.h	SHGetFileInfo	aa453700	match	
+include/Shellapi.h	SHGetPathFromIDList	aa453704	match	
+include/Shellapi.h	SHGetShortcutTarget	aa453705	no-print-on-page	
+include/Shellapi.h	SHGetSpecialFolderPath	aa453707	match	
+include/Shellapi.h	SHCreateShortcut	aa453680	no-print-on-page	
+include/Shellapi.h	SHCreateShortcutEx	aa453681	match	
+include/Shellapi.h	SHAddToRecentDocs	aa453667	match	
+include/Shellapi.h	SHLoadDIBitmap	aa453720	no-print-on-page	
+include/Shellapi.h	SHShowOutOfMemory	aa453739	no-print-on-page	
+include/Shellcb.h	ShellRegisterCallbacks	aa453687	match	
+include/Shelwapi.h	StrRetToBuf	ms940378	match	
+include/Shlobj.h	SHBrowseForFolder	aa453669	match	
+include/Shlobj.h	SHBindToParent	aa453668	match	
+include/Shlobj.h	SHGetDesktopFolder	aa453697	match	
+include/Shlobj.h	SHGetMalloc	aa453702	match	
+include/Shlobj.h	SHGetSpecialFolderLocation	aa453706	match	
+include/Shlobj.h	SHGetDocumentsFolder	aa453698	match	
+include/Simmgr.h	SimReadRecord	ee496869	match	
+include/Simmgr.h	SimGetPhoneLockedState	ee496922	match	
+include/Simmgr.h	SimChangeLockingPassword	ee497120	match	
+include/Simmgr.h	SimGetPhonebookStatus	ee497261	match	
+include/Simmgr.h	SimWriteRecord	ee497384	match	
+include/Simmgr.h	SimDeletePhonebookEntry	ee497408	match	
+include/Simmgr.h	SimGetSmsStorageStatus	ee497538	match	
+include/Simmgr.h	SimDeleteMessage	ee497657	match	
+include/Simmgr.h	SimGetLockingStatus	ee497684	match	
+include/Simmgr.h	SimReadPhonebookTag	ee498041	skip-complex-page	
+include/Simmgr.h	SimDeinitialize	ee498206	match	
+include/Simmgr.h	SimSetLockingStatus	ee498240	match	
+include/Simmgr.h	SimUnlockPhone	ee498242	match	
+include/Simmgr.h	SimGetRecordInfo	ee498259	match	
+include/Sipapi.h	SipEnumIM	aa453742	match	
+include/Sipapi.h	SipGetCurrentIM	aa453744	match	
+include/Sipapi.h	SipGetInfo	aa453745	match	
+include/Sipapi.h	SipRegisterNotification	ms932947	match	
+include/Sipapi.h	SipSetCurrentIM	ms940337	match	
+include/Sipapi.h	SipSetDefaultRect	ms940340	no-print-on-page	
+include/Sipapi.h	SipSetInfo	ms940341	match	
+include/Sipapi.h	SipShowIM	ms940342	match	
+include/Sipapi.h	SipStatus	ms940343	match	
+include/Smbconfig.h	Add_Share		no-pageid	
+include/Smbconfig.h	Del_Share		no-pageid	
+include/Smbconfig.h	Change_ACL		no-pageid	
+include/Smbconfig.h	List_Connected_Users		no-pageid	
+include/Smbconfig.h	QueryAmountTransfered		no-pageid	
+include/Sms.h	SmsGetTime	ee497060	match	
+include/Sms.h	SmsClearMessageNotification	ee497339	match	
+include/Sms.h	SmsClose	ee497862	match	
+include/Sms.h	SmsOpen	ee498029	match	
+include/Snmp.h	SnmpExtensionClose	ms896018	match	
+include/Snmp.h	SnmpExtensionInit	ms896019	page-drops-star	args [1, 2]: page print omits pointer
+include/Snmp.h	SnmpExtensionInitEx	ms896020	match	
+include/Snmp.h	SnmpExtensionQuery	ms896021	page-drops-star	args [1, 2, 3]: page print omits pointer
+include/Snmp.h	SnmpExtensionQueryEx	ms896022	page-drops-star	args [2, 3, 4, 5]: page print omits pointer
+include/Snmp.h	SnmpExtensionTrap	ms896023	page-drops-star	args [0, 1, 2, 3, 4]: page print omits pointer
+include/Snmp.h	SnmpSvcGetUptime	ms896024	match	
+include/Snmp.h	SnmpSvcSetLogLevel	ms896025	annotated-deviation	ret: page='DWORD' hdr='VOID'
+include/Snmp.h	SnmpSvcSetLogType	ms896026	annotated-deviation	ret: page='DWORD' hdr='VOID'
+include/Snmp.h	SnmpUtilAsnAnyCpy	ms896031	match	
+include/Snmp.h	SnmpUtilAsnAnyFree	ms896032	annotated-deviation	ret: page='SNMPAPI' hdr='VOID'
+include/Snmp.h	SnmpUtilDbgPrint	ms896033	match	
+include/Snmp.h	SnmpUtilIdsToA	ms896034	page-drops-star	args [0]: page print omits pointer
+include/Snmp.h	SnmpUtilIdsToW	ms896035	page-drops-star	args [0]: page print omits pointer
+include/Snmp.h	SnmpUtilMemFree	ms896037	match	
+include/Snmp.h	SnmpUtilMemReAlloc	ms896038	match	
+include/Snmp.h	SnmpUtilOctetsCmp	ms896039	no-print-on-page	
+include/Snmp.h	SnmpUtilOctetsCpy	ms896040	no-print-on-page	
+include/Snmp.h	SnmpUtilOctetsFree	ms896041	match	
+include/Snmp.h	SnmpUtilOctetsNCmp	ms896042	no-print-on-page	
+include/Snmp.h	SnmpUtilOidAppend	ms896043	match	
+include/Snmp.h	SnmpUtilOidCmp	ms896044	match	
+include/Snmp.h	SnmpUtilOidCpy	ms896045	match	
+include/Snmp.h	SnmpUtilOidFree	ms896046	match	
+include/Snmp.h	SnmpUtilOidNCmp	ms896047	no-print-on-page	
+include/Snmp.h	SnmpUtilOidToA	ms896048	page-drops-star	args [0]: page print omits pointer
+include/Snmp.h	SnmpUtilOidToW	ms896049	page-drops-star	args [0]: page print omits pointer
+include/Snmp.h	SnmpUtilPrintToStrAsnAny	ms896050	match	
+include/Snmp.h	SnmpUtilVarBindCpy	ms896051	annotated-deviation	ret: page='VOID' hdr='SNMPAPI'
+include/Snmp.h	SnmpUtilVarBindFree	ms896052	match	
+include/Snmp.h	SnmpUtilVarBindListCpy	ms896053	annotated-deviation	ret: page='VOID' hdr='SNMPAPI'
+include/Snmp.h	SnmpUtilVarBindListFree	ms896054	match	
+include/Snmpapi.h	SnmpUtilMemAlloc	ms896036	match	
+include/Snmpexts.h	SnmpTfxOpen	ms896029	match	
+include/Snmpexts.h	SnmpTfxQuery	ms896030	match	
+include/Snmpexts.h	SnmpTfxClose	ms896028	match	
+include/Splapi.h	SplAddUserDict	ms926842	match	
+include/Splapi.h	SplCheck	ms926858	match	
+include/Splapi.h	SplClrUserDict	ms926865	match	
+include/Splapi.h	SplEnumUserDict	ms926873	match	
+include/Splapi.h	SplInit	ms926880	match	
+include/Splapi.h	SplLimitGet	ms926886	match	
+include/Splapi.h	SplLimitSet	ms926893	match	
+include/Splapi.h	SplOptionGet	ms926898	match	
+include/Splapi.h	SplOptionSet	ms926904	match	
+include/Splapi.h	SplQuit	ms926914	match	
+include/Splapi.h	SplRemUserDict	ms926921	match	
+include/Splapi.h	SplReplace	ms926925	match	
+include/Splapi.h	SplSizeUserDict	ms926932	match	
+include/Splapi.h	SplSuggest	ms907061	match	
+include/Sspi.h	AcceptSecurityContext	ms937012	match	
+include/Sspi.h	AcquireCredentialsHandle	ms937013	match	
+include/Sspi.h	ApplyControlToken	ms937015	match	
+include/Sspi.h	CompleteAuthToken	ms937725	match	
+include/Sspi.h	DecryptMessage	ms938416	match	
+include/Sspi.h	DeleteSecurityContext	ms906494	match	
+include/Sspi.h	EncryptMessage	ms906502	match	
+include/Sspi.h	EnumerateSecurityPackages	ms906509	match	
+include/Sspi.h	FreeContextBuffer	ms906515	match	
+include/Sspi.h	FreeCredentialsHandle	ms906519	match	
+include/Sspi.h	InitSecurityInterface	ms926095	match	
+include/Sspi.h	InitializeSecurityContext	ms926002	match	
+include/Sspi.h	MakeSignature	ms926142	match	
+include/Sspi.h	QueryContextAttributes	ms938456	match	
+include/Sspi.h	QueryCredentialsAttributes	ms938459	match	
+include/Sspi.h	QuerySecurityPackageInfo	ms938462	match	
+include/Sspi.h	SealMessage	ms926485	argc-page-short	argc: page=3 hdr=4 (page print missing comma?)
+include/Sspi.h	UnsealMessage	ms926486	match	
+include/Sspi.h	VerifySignature	ms926455	match	
+include/Startui.h	Startup_DlgProc		no-pageid	
+include/Startui.h	Startup_WantStartupScreen	ee501481	match	
+include/Startui.h	Startup_DestroyDialogCallback	ee503134	match	
+include/Stlib.h	_swab	ms861247	match	
+include/Storemgr.h	DeletePartition		no-pageid	
+include/Storemgr.h	DismountPartition		no-pageid	
+include/Storemgr.h	DismountStore		no-pageid	
+include/Storemgr.h	FindClosePartition		no-pageid	
+include/Storemgr.h	FindCloseStore		no-pageid	
+include/Storemgr.h	FindFirstPartition		no-pageid	
+include/Storemgr.h	FindFirstStore		no-pageid	
+include/Storemgr.h	FindNextPartition		no-pageid	
+include/Storemgr.h	FindNextStore		no-pageid	
+include/Storemgr.h	FormatPartition		no-pageid	
+include/Storemgr.h	FormatPartitionEx		no-pageid	
+include/Storemgr.h	FormatStore		no-pageid	
+include/Storemgr.h	GetPartitionInfo		no-pageid	
+include/Storemgr.h	GetStoreInfo		no-pageid	
+include/Storemgr.h	MountPartition		no-pageid	
+include/Storemgr.h	OpenPartition		no-pageid	
+include/Storemgr.h	OpenStore		no-pageid	
+include/Storemgr.h	RenamePartition		no-pageid	
+include/Storemgr.h	SetPartitionAttributes		no-pageid	
+include/Strsafe.h	StringCbCat		no-pageid	
+include/Strsafe.h	StringCbCatEx	ms860396	match	
+include/Strsafe.h	StringCbCatN	ms860397	match	
+include/Strsafe.h	StringCbCatNEx	ms860398	match	
+include/Strsafe.h	StringCbCopy	ms860399	match	
+include/Strsafe.h	StringCbCopyEx	ms860400	match	
+include/Strsafe.h	StringCbCopyN	ms860401	match	
+include/Strsafe.h	StringCbCopyNEx	ms860402	match	
+include/Strsafe.h	StringCbGets	ms860403	match	
+include/Strsafe.h	StringCbLength	ms860405	match	
+include/Strsafe.h	StringCbPrintf	ms860406	match	
+include/Strsafe.h	StringCbPrintfEx	ms860407	match	
+include/Strsafe.h	StringCbVPrintf	ms860408	match	
+include/Strsafe.h	StringCbVPrintfEx	ms860409	match	
+include/Strsafe.h	StringCchCat	ms860410	match	
+include/Strsafe.h	StringCchCatEx	ms860411	match	
+include/Strsafe.h	StringCchCatN	ms860413	match	
+include/Strsafe.h	StringCchCatNEx	ms860415	match	
+include/Strsafe.h	StringCchCopy	ms860418	match	
+include/Strsafe.h	StringCchCopyEx	ms860420	match	
+include/Strsafe.h	StringCchCopyN	ms860422	match	
+include/Strsafe.h	StringCchCopyNEx	ms860424	match	
+include/Strsafe.h	StringCchGets	ms860427	match	
+include/Strsafe.h	StringCchGetsEx	ms860429	match	
+include/Strsafe.h	StringCchLength	ms860431	match	
+include/Strsafe.h	StringCchPrintf	ms860433	match	
+include/Strsafe.h	StringCchPrintfEx	ms860435	match	
+include/Strsafe.h	StringCchVPrintf	ms860438	match	
+include/Strsafe.h	StringCchVPrintfEx	ms860440	match	
+include/Tapi.h	lineInitialize		no-pageid	
+include/Tapi.h	lineInitializeEx	ms894369	no-print-on-page	
+include/Tapi.h	lineShutdown	ms894370	no-print-on-page	
+include/Tapi.h	lineNegotiateAPIVersion	ms894517	no-print-on-page	
+include/Tapi.h	lineNegotiateExtVersion	ms894402	no-print-on-page	
+include/Tapi.h	lineGetMessage	ms894404	no-print-on-page	
+include/Tapi.h	lineSetCurrentLocation	ms894338	no-print-on-page	
+include/Tapi.h	lineAddProvider	ms894481	no-print-on-page	
+include/Tapi.h	lineGetProviderList	ms893340	no-print-on-page	
+include/Tapi.h	lineOpen		no-pageid	
+include/Tapi.h	lineClose	ms894420	no-print-on-page	
+include/Tapi.h	lineGetDevCaps	ms894118	no-print-on-page	
+include/Tapi.h	lineGetLineDevStatus	ms894165	no-print-on-page	
+include/Tapi.h	lineGetAddressCaps	ms894336	no-print-on-page	
+include/Tapi.h	lineGetAddressStatus	ms894158	no-print-on-page	
+include/Tapi.h	lineGetAddressID	ms894160	no-print-on-page	
+include/Tapi.h	lineGetID	ms894159	no-print-on-page	
+include/Tapi.h	lineGetIcon	ms894331	no-print-on-page	
+include/Tapi.h	lineGetStatusMessages	ms894313	no-print-on-page	
+include/Tapi.h	lineSetStatusMessages	ms894356	no-print-on-page	
+include/Tapi.h	lineGetNewCalls	ms894500	no-print-on-page	
+include/Tapi.h	lineGetNumRings	ms894341	no-print-on-page	
+include/Tapi.h	lineSetNumRings	ms894350	no-print-on-page	
+include/Tapi.h	lineMakeCall		no-pageid	
+include/Tapi.h	lineAnswer	ms894387	no-print-on-page	
+include/Tapi.h	lineAccept	ms893395	no-print-on-page	
+include/Tapi.h	lineDeallocateCall	ms893325	no-print-on-page	
+include/Tapi.h	lineDrop	ms894128	no-print-on-page	
+include/Tapi.h	lineDial	ms894142	no-print-on-page	
+include/Tapi.h	lineHold	ms894137	no-print-on-page	
+include/Tapi.h	lineUnhold	ms894368	no-print-on-page	
+include/Tapi.h	lineSwapHold	ms894557	no-print-on-page	
+include/Tapi.h	linePickup	ms894522	no-print-on-page	
+include/Tapi.h	lineRedirect	ms894423	no-print-on-page	
+include/Tapi.h	lineForward	ms894435	no-print-on-page	
+include/Tapi.h	lineHandoff	ms894147	no-print-on-page	
+include/Tapi.h	lineGetCallInfo		no-pageid	
+include/Tapi.h	lineGetCallStatus	ms894162	no-print-on-page	
+include/Tapi.h	lineGetConfRelatedCalls	ms894163	no-print-on-page	
+include/Tapi.h	lineSetCallParams	ms894164	no-print-on-page	
+include/Tapi.h	lineSetCallPrivilege	ms894473	no-print-on-page	
+include/Tapi.h	lineSetMediaMode	ms894475	no-print-on-page	
+include/Tapi.h	lineSetTerminal	ms894491	no-print-on-page	
+include/Tapi.h	lineMonitorDigits	ms894505	no-print-on-page	
+include/Tapi.h	lineMonitorMedia	ms894391	no-print-on-page	
+include/Tapi.h	lineGenerateDigits	ms894395	no-print-on-page	
+include/Tapi.h	lineGenerateTone	ms894152	no-print-on-page	
+include/Tapi.h	lineSendUserUserInfo	ms894156	no-print-on-page	
+include/Tapi.h	lineReleaseUserUserInfo	ms894466	no-print-on-page	
+include/Tapi.h	lineDevSpecific	ms894438	no-print-on-page	
+include/Tapi.h	lineAddToConference		no-pageid	
+include/Tapi.h	lineRemoveFromConference	ms893390	no-print-on-page	
+include/Tapi.h	lineSetupConference	ms894452	no-print-on-page	
+include/Tapi.h	linePrepareAddToConference	ms894512	no-print-on-page	
+include/Tapi.h	lineSetupTransfer	ms894429	no-print-on-page	
+include/Tapi.h	lineCompleteTransfer	ms894514	no-print-on-page	
+include/Tapi.h	lineBlindTransfer	ms894122	no-print-on-page	
+include/Tapi.h	lineGetDevConfig		no-pageid	
+include/Tapi.h	lineSetDevConfig	ms894177	no-print-on-page	
+include/Tapi.h	lineConfigDialogEdit	ms894488	no-print-on-page	
+include/Tapi.h	lineGetTranslateCaps	ms894123	no-print-on-page	
+include/Tapi.h	lineTranslateAddress	ms894361	no-print-on-page	
+include/Tapi.h	lineTranslateDialog	ms894539	no-print-on-page	
+include/Tapi.h	lineSetTollList	ms894543	no-print-on-page	
+include/Tapi.h	lineGetAppPriority	ms894509	no-print-on-page	
+include/Tapi.h	lineSetAppPriority	ms894161	no-print-on-page	
+include/Tapi.h	phoneInitializeEx		no-pageid	
+include/Tapi.h	phoneShutdown	ms895937	no-print-on-page	
+include/Tapi.h	phoneOpen	ms896208	no-print-on-page	
+include/Tapi.h	phoneClose	ms895944	no-print-on-page	
+include/Tapi.h	phoneNegotiateAPIVersion	ms895912	no-print-on-page	
+include/Tapi.h	phoneNegotiateExtVersion	ms895942	no-print-on-page	
+include/Tapi.h	phoneGetMessage	ms895943	no-print-on-page	
+include/Tapi.h	phoneGetDevCaps	ms895930	no-print-on-page	
+include/Tapi.h	phoneGetStatus	ms895925	no-print-on-page	
+include/Tapi.h	phoneGetGain	ms895932	no-print-on-page	
+include/Tapi.h	phoneSetGain	ms895926	no-print-on-page	
+include/Tapi.h	phoneGetVolume	ms896179	no-print-on-page	
+include/Tapi.h	phoneSetVolume	ms895934	no-print-on-page	
+include/Tapi.h	phoneGetHookSwitch	ms896201	no-print-on-page	
+include/Tapi.h	phoneSetHookSwitch	ms895927	no-print-on-page	
+include/Tapi.h	phoneGetRing	ms896185	no-print-on-page	
+include/Tapi.h	phoneSetRing	ms895931	no-print-on-page	
+include/Tapi.h	phoneGetStatusMessages	ms896190	no-print-on-page	
+include/Tapi.h	phoneSetStatusMessages	ms895933	no-print-on-page	
+include/Tapi.h	phoneGetIcon	ms896197	no-print-on-page	
+include/Tapi.h	phoneGetID	ms895928	no-print-on-page	
+include/Tapi.h	phoneConfigDialog	ms895929	no-print-on-page	
+include/Tapi.h	phoneDevSpecific	ms895915	no-print-on-page	
+include/Tapi.h	phoneCallbackFunc	ee496217	match	
+include/Tapi.h	lineCallbackFunc	ee497464	match	
+include/Tapicomn.h	TSPI_lineAccept		no-pageid	
+include/Tapicomn.h	TSPI_lineAddToConference		no-pageid	
+include/Tapicomn.h	TSPI_lineAnswer		no-pageid	
+include/Tapicomn.h	TSPI_lineBlindTransfer		no-pageid	
+include/Tapicomn.h	TSPI_lineClose		no-pageid	
+include/Tapicomn.h	TSPI_lineCloseCall		no-pageid	
+include/Tapicomn.h	TSPI_lineCompleteTransfer		no-pageid	
+include/Tapicomn.h	TSPI_lineConfigDialogEdit		no-pageid	
+include/Tapicomn.h	TSPI_lineDevSpecific		no-pageid	
+include/Tapicomn.h	TSPI_lineDial		no-pageid	
+include/Tapicomn.h	TSPI_lineDrop		no-pageid	
+include/Tapicomn.h	TSPI_lineForward	aa451032	no-print-on-page	
+include/Tapicomn.h	TSPI_lineGenerateDigits	aa451032	no-print-on-page	
+include/Tapicomn.h	TSPI_lineGenerateTone	aa451032	no-print-on-page	
+include/Tapicomn.h	TSPI_lineGetAddressCaps		no-pageid	
+include/Tapicomn.h	TSPI_lineGetAddressID		no-pageid	
+include/Tapicomn.h	TSPI_lineGetAddressStatus		no-pageid	
+include/Tapicomn.h	TSPI_lineGetCallAddressID		no-pageid	
+include/Tapicomn.h	TSPI_lineGetCallInfo		no-pageid	
+include/Tapicomn.h	TSPI_lineGetCallStatus		no-pageid	
+include/Tapicomn.h	TSPI_lineGetDevCaps		no-pageid	
+include/Tapicomn.h	TSPI_lineGetDevConfig		no-pageid	
+include/Tapicomn.h	TSPI_lineGetExtensionID		no-pageid	
+include/Tapicomn.h	TSPI_lineGetIcon		no-pageid	
+include/Tapicomn.h	TSPI_lineGetID		no-pageid	
+include/Tapicomn.h	TSPI_lineGetLineDevStatus		no-pageid	
+include/Tapicomn.h	TSPI_lineGetNumAddressIDs		no-pageid	
+include/Tapicomn.h	TSPI_lineHold		no-pageid	
+include/Tapicomn.h	TSPI_lineMakeCall		no-pageid	
+include/Tapicomn.h	TSPI_lineMonitorDigits		no-pageid	
+include/Tapicomn.h	TSPI_lineMonitorMedia		no-pageid	
+include/Tapicomn.h	TSPI_lineNegotiateExtVersion		no-pageid	
+include/Tapicomn.h	TSPI_lineNegotiateTSPIVersion		no-pageid	
+include/Tapicomn.h	TSPI_lineOpen		no-pageid	
+include/Tapicomn.h	TSPI_linePickup		no-pageid	
+include/Tapicomn.h	TSPI_linePrepareAddToConference		no-pageid	
+include/Tapicomn.h	TSPI_lineRedirect		no-pageid	
+include/Tapicomn.h	TSPI_lineReleaseUserUserInfo		no-pageid	
+include/Tapicomn.h	TSPI_lineRemoveFromConference		no-pageid	
+include/Tapicomn.h	TSPI_lineSendUserUserInfo		no-pageid	
+include/Tapicomn.h	TSPI_lineSetCallParams		no-pageid	
+include/Tapicomn.h	TSPI_lineSetDefaultMediaDetection		no-pageid	
+include/Tapicomn.h	TSPI_lineSetDevConfig		no-pageid	
+include/Tapicomn.h	TSPI_lineSetMediaMode		no-pageid	
+include/Tapicomn.h	TSPI_lineSetStatusMessages		no-pageid	
+include/Tapicomn.h	TSPI_lineSetTerminal		no-pageid	
+include/Tapicomn.h	TSPI_lineSetupConference		no-pageid	
+include/Tapicomn.h	TSPI_lineSetupTransfer		no-pageid	
+include/Tapicomn.h	TSPI_lineSwapHold		no-pageid	
+include/Tapicomn.h	TSPI_lineUnhold		no-pageid	
+include/Tapicomn.h	TSPI_phoneClose		no-pageid	
+include/Tapicomn.h	TSPI_phoneConfigDialog		no-pageid	
+include/Tapicomn.h	TSPI_phoneDevSpecific		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetDevCaps		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetExtensionID		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetGain		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetHookSwitch		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetIcon		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetID		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetRing		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetStatus		no-pageid	
+include/Tapicomn.h	TSPI_phoneGetVolume		no-pageid	
+include/Tapicomn.h	TSPI_phoneNegotiateExtVersion		no-pageid	
+include/Tapicomn.h	TSPI_phoneNegotiateTSPIVersion		no-pageid	
+include/Tapicomn.h	TSPI_phoneOpen		no-pageid	
+include/Tapicomn.h	TSPI_phoneSelectExtVersion		no-pageid	
+include/Tapicomn.h	TSPI_phoneSetGain		no-pageid	
+include/Tapicomn.h	TSPI_phoneSetHookSwitch		no-pageid	
+include/Tapicomn.h	TSPI_phoneSetRing		no-pageid	
+include/Tapicomn.h	TSPI_phoneSetStatusMessages		no-pageid	
+include/Tapicomn.h	TSPI_phoneSetVolume		no-pageid	
+include/Tapicomn.h	TSPI_providerCreateLineDevice		no-pageid	
+include/Tapicomn.h	TSPI_providerCreatePhoneDevice		no-pageid	
+include/Tapicomn.h	TSPI_providerEnumDevices		no-pageid	
+include/Tapicomn.h	TSPI_providerInit		no-pageid	
+include/Tapicomn.h	TSPI_providerInstall		no-pageid	
+include/Tapicomn.h	TSPI_providerRemove		no-pageid	
+include/Tapicomn.h	TSPI_providerRemoveDevice		no-pageid	
+include/Tapicomn.h	TSPI_providerShutdown		no-pageid	
+include/TileProxy.h	TPGetViewVisBounds	ee487455	match	
+include/TileProxy.h	TPChangeZoomScale	ee487466	match	
+include/TileProxy.h	TPRedraw	ee487469	match	
+include/TileProxy.h	TPWindowToPage	ee487471	match	
+include/TileProxy.h	TPGetViewPosition	ee487483	match	
+include/TileProxy.h	TPChangeZoom	ee487486	match	
+include/TileProxy.h	TPGetViewDocSize	ee487487	match	
+include/TileProxy.h	TPGetWaitTimeout	ee487507	match	
+include/TileProxy.h	TPGetHostWindow	ee487508	match	
+include/TileProxy.h	TPChangePos	ee487553	match	
+include/TileProxy.h	TPForwardWindowInput	ee487559	match	
+include/TileProxy.h	TPSetView	ee487571	match	
+include/TileProxy.h	TPShowTileWindow	ee487584	match	
+include/TileProxy.h	TPGetWaitEvent	ee487611	match	
+include/TileProxy.h	TPGetIsChanging	ee487617	match	
+include/TileProxy.h	TPSetHtmlWindow	ee487648	match	
+include/TileProxy.h	TPSetPageChanged	ee487667	match	
+include/TileProxy.h	ReleaseTileProxy	ee487669	match	
+include/TileProxy.h	TPSetViewPosition	ee487791	match	
+include/TileProxy.h	TPUpdate	ee487837	match	
+include/TileProxy.h	TPGetViewScale	ee487843	match	
+include/Tlhelp32.h	CreateToolhelp32Snapshot	ms885189	match	
+include/Tlhelp32.h	CloseToolhelp32Snapshot	ms885169	match	
+include/Tlhelp32.h	Process32First	ms886772	match	
+include/Tlhelp32.h	Process32Next	ms886772	no-print-on-page	
+include/Tlhelp32.h	Thread32First	aa450934	match	
+include/Tlhelp32.h	Thread32Next	aa450934	no-print-on-page	
+include/Tlhelp32.h	Module32First	ms886754	match	
+include/Tlhelp32.h	Module32Next	ms886754	no-print-on-page	
+include/Tlhelp32.h	Heap32ListFirst	ms885651	match	
+include/Tlhelp32.h	Heap32ListNext	ms885651	no-print-on-page	
+include/Tlhelp32.h	Heap32First	ms885650	match	
+include/Tlhelp32.h	Heap32Next	ms885650	no-print-on-page	
+include/Tlhelp32.h	Toolhelp32ReadProcessMemory	aa450953	match	
+include/Upnpdevapi.h	UpnpAddDevice	aa451138	match	
+include/Upnpdevapi.h	UpnpPublishDevice	aa451149	match	
+include/Upnpdevapi.h	UpnpUnpublishDevice	ms898561	match	
+include/Upnpdevapi.h	UpnpRemoveDevice	aa451150	match	
+include/Upnpdevapi.h	UpnpGetSCPDPath	aa451145	match	
+include/Upnpdevapi.h	UpnpGetUDN	aa451146	match	
+include/Upnpdevapi.h	UpnpSetControlResponse	ms898523	no-print-on-page	
+include/Upnpdevapi.h	UpnpSetErrorResponse	ms898523	no-print-on-page	
+include/Upnpdevapi.h	UpnpSetRawControlResponse	ms898523	no-print-on-page	
+include/Upnpdevapi.h	UpnpSubmitPropertyEvent	ms898553	match	
+include/Urlmon.h	CoGetClassObjectFromURL	aa452108	match	
+include/Urlmon.h	CoInternetCombineUrl	aa452109	match	
+include/Urlmon.h	CoInternetGetProtocolFlags	aa452110	match	
+include/Urlmon.h	CoInternetGetSecurityUrl	aa452113	no-print-on-page	
+include/Urlmon.h	CoInternetGetSession	aa452114	match	
+include/Urlmon.h	CoInternetParseUrl	aa452117	match	
+include/Urlmon.h	CoInternetQueryInfo	aa452118	no-print-on-page	
+include/Urlmon.h	CopyBindInfo	aa452131	match	
+include/Urlmon.h	CopyStgMedium	aa452132	no-print-on-page	
+include/Urlmon.h	CreateAsyncBindCtx	aa452136	no-print-on-page	
+include/Urlmon.h	CreateAsyncBindCtxEx	aa452138	no-print-on-page	
+include/Urlmon.h	CreateFormatEnumerator	aa452140	no-print-on-page	
+include/Urlmon.h	CreateURLMoniker	aa452144	no-print-on-page	
+include/Urlmon.h	CreateURLMonikerEx	aa452146	no-print-on-page	
+include/Urlmon.h	FindMediaType	aa452199	no-print-on-page	
+include/Urlmon.h	FindMediaTypeClass	aa452201	no-print-on-page	
+include/Urlmon.h	FindMimeFromData	aa452204	no-print-on-page	
+include/Urlmon.h	GetClassFileOrMime	ms906288	no-print-on-page	
+include/Urlmon.h	IsAsyncMoniker	ms918804	match	
+include/Urlmon.h	IsLoggingEnabledW	ms918808	match	
+include/Urlmon.h	IsValidURL	ms918810	match	
+include/Urlmon.h	MkParseDisplayNameEx	ms918822	match	
+include/Urlmon.h	ObtainUserAgentString	ms918829	match	
+include/Urlmon.h	RegisterBindStatusCallback	ms918844	no-print-on-page	
+include/Urlmon.h	RegisterFormatEnumerator	ms918845	no-print-on-page	
+include/Urlmon.h	RegisterMediaTypeClass	ms918846	match	
+include/Urlmon.h	RegisterMediaTypes	ms918847	match	
+include/Urlmon.h	ReleaseBindInfo	ms918848	match	
+include/Urlmon.h	RevokeBindStatusCallback	ms918850	match	
+include/Urlmon.h	RevokeFormatEnumerator	ms918851	match	
+include/Urlmon.h	URLDownloadToCacheFileW	ms918865	match	
+include/Urlmon.h	URLDownloadToFileW	ms918866	match	
+include/Urlmon.h	URLOpenBlockingStream	ms918871	match	
+include/Urlmon.h	URLOpenPullStream	ms918872	match	
+include/Urlmon.h	URLOpenStream	ms918873	match	
+include/Urlmon.h	UrlMkGetSessionOption	ms918868	match	
+include/Urlmon.h	UrlMkSetSessionOption	ms918869	match	
+include/Urlmon.h	WriteHitLogging	ms918878	no-print-on-page	
+include/Urlmonui.h	IsDialogBoxHandled	ms918806	match	
+include/Usp10.h	ScriptApplyDigitSubstitution	ms906233	match-const-diff	
+include/Usp10.h	ScriptApplyLogicalWidth	ms906234	match-const-diff	
+include/Usp10.h	ScriptBreak	ms906235	match-const-diff	
+include/Usp10.h	ScriptCPtoX	ms906237	match-const-diff	
+include/Usp10.h	ScriptCacheGetHeight	ms906236	match	
+include/Usp10.h	ScriptFreeCache	ms906238	match	
+include/Usp10.h	ScriptGetCMap	ms906239	match-const-diff	
+include/Usp10.h	ScriptGetFontProperties	ms906240	match	
+include/Usp10.h	ScriptGetGlyphABCWidth	ms906241	match	
+include/Usp10.h	ScriptGetLogicalWidths	ms906242	match-const-diff	
+include/Usp10.h	ScriptGetProperties	ms906243	match-const-diff	
+include/Usp10.h	ScriptIsComplex	ms906244	match-const-diff	
+include/Usp10.h	ScriptItemize	ms906245	match-const-diff	
+include/Usp10.h	ScriptJustify	ms906246	match-const-diff	
+include/Usp10.h	ScriptLayout	ms906247	match-const-diff	
+include/Usp10.h	ScriptPlace	ms906248	match-const-diff	
+include/Usp10.h	ScriptRecordDigitSubstitution	ms906249	match	
+include/Usp10.h	ScriptShape	ms906250	match-const-diff	
+include/Usp10.h	ScriptStringAnalyse	ms906251	match-const-diff	
+include/Usp10.h	ScriptStringCPtoX	ms906252	match	
+include/Usp10.h	ScriptStringFree	ms906253	match	
+include/Usp10.h	ScriptStringGetLogicalWidths	ms906254	match	
+include/Usp10.h	ScriptStringGetOrder	ms906255	match	
+include/Usp10.h	ScriptStringOut	ms906256	match-const-diff	
+include/Usp10.h	ScriptStringValidate	ms906257	match	
+include/Usp10.h	ScriptStringXtoCP	ms906258	match	
+include/Usp10.h	ScriptString_pLogAttr	ms906260	match	
+include/Usp10.h	ScriptString_pSize	ms906261	match	
+include/Usp10.h	ScriptString_pcOutChars	ms906259	match	
+include/Usp10.h	ScriptTextOut	ms906262	match-const-diff	
+include/Usp10.h	ScriptXtoCP	ms906263	match-const-diff	
+include/Uxtheme.h	IsAppThemed	ms918803	match	
+include/Voiplap.h	AttemptConnection	ms909303	match	
+include/Voiplap.h	GetPCSyncName	ms909307	match	
+include/Voiplap.h	SetPCSyncName	ms912594	match	
+include/WMDRM10ND.h	DRM_ND_DeregisterFromService	aa456346	match	
+include/WMDRM10ND.h	DRM_ND_Init	aa456348	match	
+include/WMDRM10ND.h	DRM_ND_RegisterWithService	aa456349	match	
+include/Webproxy.h	ProxyInitializeFilter	ms896343	match	
+include/Webproxy.h	ProxyUninitializeFilter		no-pageid	
+include/Webproxy.h	ProxyNotifyAddrChange		no-pageid	
+include/Webproxy.h	ProxySignalFilter		no-pageid	
+include/Winbase.h	TerminateProcess	aa450927	no-print-on-page	
+include/Winbase.h	ExitThread	ms885219	no-print-on-page	
+include/Winbase.h	TerminateThread	aa450930	match	
+include/Winbase.h	GetModuleHandleW	ms885630	match	
+include/Winbase.h	GetModuleFileNameW	ms885629	no-print-on-page	
+include/Winbase.h	GetCommandLineW	ms885605	match	
+include/Winbase.h	GetProcAddressW	ms885634	no-print-on-page	
+include/Winbase.h	LocalAlloc	ms886742	no-print-on-page	
+include/Winbase.h	LocalFree	ms886741	no-print-on-page	
+include/Winbase.h	GetLastError	ms885627	no-print-on-page	
+include/Winbase.h	CreateThread	ms885186	no-print-on-page	
+include/Winbase.h	CreateProcessW		no-pageid	
+include/Winbase.h	LoadLibraryW	ms886736	no-print-on-page	
+include/Winbase.h	FreeLibrary	ms885601	no-print-on-page	
+include/Winbase.h	CloseHandle	aa517300	no-print-on-page	
+include/Winbase.h	OpenProcess	ms886766	match	
+include/Winbase.h	GetExitCodeProcess	ms885622	match	
+include/Winbase.h	SetLastError	ms886817	no-print-on-page	
+include/Winbase.h	SuspendThread	aa450913	no-print-on-page	
+include/Winbase.h	ResumeThread	ms886801	no-print-on-page	
+include/Winbase.h	GetExitCodeThread	ms885623	no-print-on-page	
+include/Winbase.h	Sleep	aa450900	no-print-on-page	
+include/Winbase.h	GetThreadPriority	ms885643	no-print-on-page	
+include/Winbase.h	SetThreadPriority	aa450891	no-print-on-page	
+include/Winbase.h	TlsAlloc	aa450945	match	
+include/Winbase.h	TlsFree	aa450947	no-print-on-page	
+include/Winbase.h	TlsSetValue	aa450951	no-print-on-page	
+include/Winbase.h	TlsGetValue	aa450949	no-print-on-page	
+include/Winbase.h	LoadLibraryExW	ms886737	match	
+include/Winbase.h	CreateFileW	aa517318	no-print-on-page	
+include/Winbase.h	DeleteFileW	ms889001	no-print-on-page	
+include/Winbase.h	GetFileAttributesW	ms890895	no-print-on-page	
+include/Winbase.h	FindFirstFileW	ms889678	no-print-on-page	
+include/Winbase.h	FindNextFileW	ms889873	no-print-on-page	
+include/Winbase.h	FindClose	ms889619	no-print-on-page	
+include/Winbase.h	ReadFile	ms891445	no-print-on-page	
+include/Winbase.h	WriteFile	ms892380	no-print-on-page	
+include/Winbase.h	GetFileSize	ms890939	no-print-on-page	
+include/Winbase.h	SetFilePointer	ms891933	no-print-on-page	
+include/Winbase.h	SetEndOfFile	ms891916	no-print-on-page	
+include/Winbase.h	FlushFileBuffers	ms890238	match	
+include/Winbase.h	MoveFileW	ms891388	no-print-on-page	
+include/Winbase.h	CopyFileW	aa517309	no-print-on-page	
+include/Winbase.h	CopyFileExW	aa517311	no-print-on-page	
+include/Winbase.h	CreateDirectoryW	aa517316	no-print-on-page	
+include/Winbase.h	RemoveDirectoryW	ms891470	no-print-on-page	
+include/Winbase.h	SetFileAttributesW	ms891925	no-print-on-page	
+include/Winbase.h	CreateEventW	ms885177	no-print-on-page	
+include/Winbase.h	OpenEventW	ms886764	no-print-on-page	
+include/Winbase.h	SetEvent	ms886810	no-print-on-page	
+include/Winbase.h	ResetEvent	ms886800	no-print-on-page	
+include/Winbase.h	PulseEvent	ms886784	no-print-on-page	
+include/Winbase.h	CreateMutexW	ms885181	match	
+include/Winbase.h	ReleaseSemaphore	ms886798	match	
+include/Winbase.h	DuplicateHandle	ms885208	match	
+include/Winbase.h	WaitForSingleObject	aa450988	no-print-on-page	
+include/Winbase.h	TryEnterCriticalSection	aa450959	match	
+include/Winbase.h	InterlockedExchange	ms885670	no-print-on-page	
+include/Winbase.h	InterlockedIncrement	ms885673	no-print-on-page	
+include/Winbase.h	InterlockedDecrement	ms885669	no-print-on-page	
+include/Winbase.h	InterlockedExchangeAdd	ms885671	match	
+include/Winbase.h	InterlockedCompareExchange	ms885667	match	
+include/Winbase.h	InterlockedTestExchange	ms885674	no-print-on-page	
+include/Winbase.h	InterlockedExchangePointer	ms885672	match	
+include/Winbase.h	InterlockedCompareExchangePointer	ms885668	match	
+include/Winbase.h	GetProcessHeap	ms885635	match	
+include/Winbase.h	HeapCreate	ms885656	no-print-on-page	
+include/Winbase.h	HeapDestroy	ms885657	no-print-on-page	
+include/Winbase.h	HeapAlloc	ms885654	match	
+include/Winbase.h	HeapFree	ms885659	no-print-on-page	
+include/Winbase.h	HeapReAlloc	ms885661	no-print-on-page	
+include/Winbase.h	HeapSize	ms885662	match	
+include/Winbase.h	HeapValidate	ms885663	match	
+include/Winbase.h	HeapCompact	ms885655	match	
+include/Winbase.h	LocalReAlloc	ms886742	no-print-on-page	
+include/Winbase.h	LocalSize	ms886743	no-print-on-page	
+include/Winbase.h	GlobalMemoryStatus	ms885649	no-print-on-page	
+include/Winbase.h	IsBadCodePtr	ms885687	match	
+include/Winbase.h	IsBadReadPtr	ms885688	no-print-on-page	
+include/Winbase.h	IsBadWritePtr	ms885689	no-print-on-page	
+include/Winbase.h	GetLocalTime	ms885628	no-print-on-page	
+include/Winbase.h	GetSystemTime	ms885640	match	
+include/Winbase.h	SetLocalTime	ms886818	no-print-on-page	
+include/Winbase.h	SetSystemTime	aa450867	no-print-on-page	
+include/Winbase.h	FileTimeToLocalFileTime	ms885589	no-print-on-page	
+include/Winbase.h	LocalFileTimeToFileTime	ms886740	no-print-on-page	
+include/Winbase.h	FileTimeToSystemTime	ms885593	no-print-on-page	
+include/Winbase.h	SystemTimeToFileTime	aa450925	no-print-on-page	
+include/Winbase.h	GetTickCount	ms885645	no-print-on-page	
+include/Winbase.h	GetFileTime	ms885625	no-print-on-page	
+include/Winbase.h	SetFileTime	ms886812	no-print-on-page	
+include/Winbase.h	CompareFileTime	ms885172	no-print-on-page	
+include/Winbase.h	GetCurrentFT	aa451027	match	
+include/Winbase.h	GetIdleTime	ms885626	match	
+include/Winbase.h	Random	ms886791	match	
+include/Winbase.h	SetDaylightTime	ms886808	match	
+include/Winbase.h	QueryPerformanceCounter	ms886788	match	
+include/Winbase.h	QueryPerformanceFrequency	ms886789	match	
+include/Winbase.h	GetSystemInfo	ms885638	no-print-on-page	
+include/Winbase.h	GetVersionEx	ms885648	no-print-on-page	
+include/Winbase.h	SignalStarted	aa450898	no-print-on-page	
+include/Winbase.h	VirtualAlloc	aa450975	no-print-on-page	
+include/Winbase.h	VirtualFree	aa450979	no-print-on-page	
+include/Winbase.h	VirtualProtect	aa450980	no-print-on-page	
+include/Winbase.h	VirtualQuery	aa450981	no-print-on-page	
+include/Winbase.h	FlushInstructionCache	ms885595	match	
+include/Winbase.h	GetProcessVersion	ms885636	no-print-on-page	
+include/Winbase.h	GetDllVersion	ms885617	no-print-on-page	
+include/Winbase.h	GetThreadTimes	ms885644	match	
+include/Winbase.h	GetTimeZoneInformation	ms885646	no-print-on-page	
+include/Winbase.h	SetTimeZoneInformation	aa450893	no-print-on-page	
+include/Winbase.h	CreateFiber	ms885178	match	
+include/Winbase.h	ConvertThreadToFiber	ms885176	match	
+include/Winbase.h	DeleteFiber	ms885197	match	
+include/Winbase.h	GetCurrentFiber	ms885611	match	
+include/Winbase.h	GetFiberData	ms885624	match	
+include/Winbase.h	SwitchToFiber	aa450915	match	
+include/Winbase.h	FindFirstChangeNotificationW	ms889670	match	
+include/Winbase.h	FindNextChangeNotification	ms889784	match	
+include/Winbase.h	FindCloseChangeNotification	ms889625	match	
+include/Winbase.h	FindFirstFileExW	ms889683	match	
+include/Winbase.h	GetFileAttributesExW	ms890909	match	
+include/Winbase.h	GetDiskFreeSpaceExW	ms890887	no-print-on-page	
+include/Winbase.h	GetFileInformationByHandle	ms890926	no-print-on-page	
+include/Winbase.h	GetTempPathW	ms891189	match	
+include/Winbase.h	GetTempFileNameW	ms891186	match	
+include/Winbase.h	LockFileEx	ms891385	match	
+include/Winbase.h	UnlockFileEx	ms892364	match	
+include/Winbase.h	GetFileVersionInfoSizeW	ms890963	match	
+include/Winbase.h	GetFileVersionInfoW	ms890963	no-print-on-page	
+include/Winbase.h	GetStoreInformation	ms891023	no-print-on-page	
+include/Winbase.h	CeGenRandom	aa517140	match	
+include/Winbase.h	CeGetCanonicalPathNameW	aa517144	match	
+include/Winbase.h	CeGetFileNotificationInfo	aa517158	no-print-on-page	
+include/Winbase.h	DisableThreadLibraryCalls	ms885200	match	
+include/Winbase.h	CreateFileForMappingW	aa517321	match	
+include/Winbase.h	CreateFileMappingW	aa517331	match	
+include/Winbase.h	MapViewOfFile	ms891386	match	
+include/Winbase.h	UnmapViewOfFile	ms892373	match	
+include/Winbase.h	FlushViewOfFile	ms890303	match	
+include/Winbase.h	CharLowerW	ms885159	match	
+include/Winbase.h	CharLowerBuffW	ms885160	no-print-on-page	
+include/Winbase.h	CharUpperW	ms885164	match	
+include/Winbase.h	CharUpperBuffW	ms885165	no-print-on-page	
+include/Winbase.h	CharNextW	ms885161	match	
+include/Winbase.h	CharPrevW	ms885162	match	
+include/Winbase.h	IsCharAlphaW		no-pageid	
+include/Winbase.h	IsCharAlphaNumericW	ms885690	no-print-on-page	
+include/Winbase.h	IsCharLowerW	ms885691	no-print-on-page	
+include/Winbase.h	IsCharUpperW	ms885692	no-print-on-page	
+include/Winbase.h	LoadStringW	ms886738	no-print-on-page	
+include/Winbase.h	wsprintfW	aa450993	no-print-on-page	
+include/Winbase.h	wvsprintfW	aa450994	no-print-on-page	
+include/Winbase.h	ClearCommBreak	ms885166	no-print-on-page	
+include/Winbase.h	ClearCommError	ms885167	no-print-on-page	
+include/Winbase.h	EscapeCommFunction	ms885213	no-print-on-page	
+include/Winbase.h	GetCommMask	ms885606	no-print-on-page	
+include/Winbase.h	GetCommModemStatus	ms885607	no-print-on-page	
+include/Winbase.h	GetCommProperties	ms885608	no-print-on-page	
+include/Winbase.h	GetCommState	ms885609	match	
+include/Winbase.h	GetCommTimeouts	ms885610	no-print-on-page	
+include/Winbase.h	PurgeComm	ms886785	match	
+include/Winbase.h	SetCommBreak	ms886804	no-print-on-page	
+include/Winbase.h	SetCommMask	ms886805	no-print-on-page	
+include/Winbase.h	SetCommState	ms886806	no-print-on-page	
+include/Winbase.h	SetCommTimeouts	ms886807	no-print-on-page	
+include/Winbase.h	SetupComm	aa450896	no-print-on-page	
+include/Winbase.h	TransmitCommChar	aa450957	no-print-on-page	
+include/Winbase.h	WaitCommEvent	aa450985	no-print-on-page	
+include/Winbase.h	RaiseException	ms886790	match	
+include/Winbase.h	DebugBreak	ms885194	no-print-on-page	
+include/Winbase.h	ContinueDebugEvent	ms885175	match	
+include/Winbase.h	DebugActiveProcess	ms885193	match	
+include/Winbase.h	WaitForDebugEvent	aa450986	match	
+include/Winbase.h	FormatMessageW	ms885599	match	
+include/Winbase.h	MsgWaitForMultipleObjects	ms931460	match	
+include/Winbase.h	MsgWaitForMultipleObjectsEx	ms931460	no-print-on-page	
+include/Winbase.h	InflateRect	ms909847	no-print-on-page	
+include/Winbase.h	SetRect	aa453648	no-print-on-page	
+include/Winbase.h	GetSystemPowerStatusEx	aa453172	no-print-on-page	
+include/Winbase.h	GetSystemPowerStatusEx2	aa453172	no-print-on-page	
+include/Winbase.h	MessageBeep	ms911826	no-print-on-page	
+include/Winbase.h	FindResourceW		no-pageid	
+include/Winbase.h	LoadResource		no-pageid	
+include/Winbase.h	LockResource	aa453416	no-print-on-page	
+include/Winbase.h	SizeofResource	aa453417	no-print-on-page	
+include/Winbase.h	FreeLibraryAndExitThread	ms885602	match	
+include/Winbase.h	CeZeroPointer	ms885158	match	
+include/Winbase.h	CeGetThreadQuantum	aa450796	match	
+include/Winbase.h	CeSetThreadQuantum	ms885156	match	
+include/Winbase.h	CeGetThreadPriority	aa450795	match	
+include/Winbase.h	VerQueryValueW	aa450973	match	
+include/Winbase.h	GetThreadContext	ms885642	match	
+include/Winbase.h	ReadProcessMemory	ms885642	no-print-on-page	
+include/Winbase.h	IsProcessorFeaturePresent	ms886726	match	
+include/Winbase.h	QueryInstructionSet	ms886787	match	
+include/Winbase.h	GetUserNameExW	aa517595	match	
+include/Winbase.h	ActivateDevice	ms896106	match	
+include/Winbase.h	ActivateDeviceEx	ms896107	match	
+include/Winbase.h	DeactivateDevice	ms898278	match	
+include/Winbase.h	DeregisterDevice	ms898281	match	
+include/Winbase.h	DeviceIoControl	ms898288	match	
+include/Winbase.h	EnumDeviceInterfaces	aa447790	match	
+include/Winbase.h	RegisterDevice	ms919794	match	
+include/Winbase.h	ResourceCreateList	ms919852	match	
+include/Winbase.h	ResourceRelease	ms919859	match	
+include/Winbase.h	ResourceRequest	ms919861	match	
+include/Winbase.h	CeFsIoControlW	aa517137	match	
+include/Winbase.h	CeResyncFilesys	aa517244	match	
+include/Winbase.h	LoadFSD	ms891383	match	
+include/Winbase.h	LoadFSDEx	ms891384	match	
+include/Winbase.h	SetUserData	ms919623	match	
+include/Winbase.h	AdvertiseInterface	ms896109	match	
+include/Winbase.h	FindFirstDevice	aa447798	match	
+include/Winbase.h	VirtualAllocEx	ee488642	match	
+include/Winbase.h	VirtualFreeEx	ee488440	match	
+include/Winbase.h	VirtualProtectEx	ee488232	match	
+include/Winbase.h	VirtualQueryEx	ee488556	match	
+include/Winbase.h	StopDeviceNotifications	aa448147	match	
+include/Winbase.h	RequestDeviceNotifications	ms919831	match	
+include/Winbase.h	RemoveVectoredExceptionHandler	ee488595	match	
+include/Winbase.h	CheckRemoteDebuggerPresent	ee488625	match	
+include/Winbase.h	OpenThread	ee488755	match	
+include/Winbase.h	IsDebuggerPresent	ee488799	match	
+include/Winbase.h	DebugActiveProcessStop	ee488909	match	
+include/Winbase.h	GetSystemTimeAsFileTime	ee488937	match	
+include/Winbase.h	GetSystemMemoryDivision	ms885639	no-print-on-page	
+include/Winber.h	ber_alloc_t	ms863718	match	
+include/Winber.h	ber_bvdup	ms863718	no-print-on-page	
+include/Winber.h	ber_bvecfree	ms863725	no-print-on-page	
+include/Winber.h	ber_bvfree	ms863730	no-print-on-page	
+include/Winber.h	ber_first_element	ms863737	no-print-on-page	
+include/Winber.h	ber_flatten	ms863754	no-print-on-page	
+include/Winber.h	ber_free	ms863761	no-print-on-page	
+include/Winber.h	ber_init	ms863769	no-print-on-page	
+include/Winber.h	ber_next_element	ms863775	no-print-on-page	
+include/Winber.h	ber_peek_tag	ms863786	no-print-on-page	
+include/Winber.h	ber_printf	ms863791	no-print-on-page	
+include/Winber.h	ber_scanf	ms863798	no-print-on-page	
+include/Winber.h	ber_skip_tag	ms863810	no-print-on-page	
+include/Wincrypt.h	CPAcquireContext	ms937726	match	
+include/Wincrypt.h	CryptAcquireContextW	ms937733	match	
+include/Wincrypt.h	CryptContextAddRef		no-pageid	
+include/Wincrypt.h	CryptCreateHash		no-pageid	
+include/Wincrypt.h	CryptDecrypt		no-pageid	
+include/Wincrypt.h	CryptDeriveKey		no-pageid	
+include/Wincrypt.h	CryptDestroyHash		no-pageid	
+include/Wincrypt.h	CryptDestroyKey		no-pageid	
+include/Wincrypt.h	CryptDuplicateHash		no-pageid	
+include/Wincrypt.h	CryptDuplicateKey	ms937746	no-print-on-page	
+include/Wincrypt.h	CryptEncrypt	ms937746	no-print-on-page	
+include/Wincrypt.h	CryptEnumProvidersW	ms937746	no-print-on-page	
+include/Wincrypt.h	CryptEnumProviderTypesW		no-pageid	
+include/Wincrypt.h	CryptExportKey	ms938025	no-print-on-page	
+include/Wincrypt.h	CryptFindLocalizedName	aa452566	match	
+include/Wincrypt.h	CryptGenKey	aa452566	no-print-on-page	
+include/Wincrypt.h	CryptGenRandom	aa452566	no-print-on-page	
+include/Wincrypt.h	CryptGetDefaultProviderW	aa452566	no-print-on-page	
+include/Wincrypt.h	CryptGetHashParam	ms938096	no-print-on-page	
+include/Wincrypt.h	CryptGetKeyParam	ms938096	no-print-on-page	
+include/Wincrypt.h	CryptGetProvParam	ms938096	no-print-on-page	
+include/Wincrypt.h	CryptGetUserKey	ms938096	no-print-on-page	
+include/Wincrypt.h	CryptHashData		no-pageid	
+include/Wincrypt.h	CryptHashSessionKey		no-pageid	
+include/Wincrypt.h	CryptImportKey		no-pageid	
+include/Wincrypt.h	CryptMsgCalculateEncodedLength		no-pageid	
+include/Wincrypt.h	CryptMsgClose		no-pageid	
+include/Wincrypt.h	CryptMsgControl		no-pageid	
+include/Wincrypt.h	CryptMsgDuplicate		no-pageid	
+include/Wincrypt.h	CryptMsgGetParam		no-pageid	
+include/Wincrypt.h	CryptMsgOpenToDecode		no-pageid	
+include/Wincrypt.h	CryptMsgOpenToEncode		no-pageid	
+include/Wincrypt.h	CryptMsgUpdate		no-pageid	
+include/Wincrypt.h	CryptProtectData		no-pageid	
+include/Wincrypt.h	CryptUnprotectData		no-pageid	
+include/Wincrypt.h	CryptReleaseContext		no-pageid	
+include/Wincrypt.h	CryptSetHashParam		no-pageid	
+include/Wincrypt.h	CryptSetKeyParam		no-pageid	
+include/Wincrypt.h	CryptSetProviderW		no-pageid	
+include/Wincrypt.h	CryptSetProviderExW		no-pageid	
+include/Wincrypt.h	CryptSetProvParam		no-pageid	
+include/Wincrypt.h	CryptSignHashW		no-pageid	
+include/Wincrypt.h	CryptVerifySignatureW		no-pageid	
+include/Wincrypt.h	CertAddCertificateContextToStore		no-pageid	
+include/Wincrypt.h	CertAddCertificateLinkToStore		no-pageid	
+include/Wincrypt.h	CertAddEncodedCertificateToStore		no-pageid	
+include/Wincrypt.h	CertAddEnhancedKeyUsageIdentifier		no-pageid	
+include/Wincrypt.h	CertAddSerializedElementToStore		no-pageid	
+include/Wincrypt.h	CertAlgIdToOID		no-pageid	
+include/Wincrypt.h	CertCloseStore		no-pageid	
+include/Wincrypt.h	CertCompareCertificate		no-pageid	
+include/Wincrypt.h	CertCompareCertificateName		no-pageid	
+include/Wincrypt.h	CertCompareIntegerBlob		no-pageid	
+include/Wincrypt.h	CertComparePublicKeyInfo		no-pageid	
+include/Wincrypt.h	CertControlStore		no-pageid	
+include/Wincrypt.h	CertCreateCertificateContext		no-pageid	
+include/Wincrypt.h	CertDeleteCertificateFromStore		no-pageid	
+include/Wincrypt.h	CertDuplicateCertificateChain		no-pageid	
+include/Wincrypt.h	CertDuplicateCertificateContext		no-pageid	
+include/Wincrypt.h	CertDuplicateStore		no-pageid	
+include/Wincrypt.h	CertEnumCertificateContextProperties		no-pageid	
+include/Wincrypt.h	CertEnumCertificatesInStore		no-pageid	
+include/Wincrypt.h	CertEnumPhysicalStore		no-pageid	
+include/Wincrypt.h	CertEnumSystemStore		no-pageid	
+include/Wincrypt.h	CertEnumSystemStoreLocation		no-pageid	
+include/Wincrypt.h	CertFindAttribute		no-pageid	
+include/Wincrypt.h	CertFindCertificateInStore		no-pageid	
+include/Wincrypt.h	CertFindExtension		no-pageid	
+include/Wincrypt.h	CertFindRDNAttr		no-pageid	
+include/Wincrypt.h	CertFreeCertificateChain	ms937658	match	
+include/Wincrypt.h	CertFreeCertificateContext	ms937658	no-print-on-page	
+include/Wincrypt.h	CertGetCertificateChain	ms937658	no-print-on-page	
+include/Wincrypt.h	CertGetCertificateContextProperty	ms937658	no-print-on-page	
+include/Wincrypt.h	CertGetEnhancedKeyUsage		no-pageid	
+include/Wincrypt.h	CertGetIntendedKeyUsage		no-pageid	
+include/Wincrypt.h	CertGetIssuerCertificateFromStore		no-pageid	
+include/Wincrypt.h	CertGetNameString		no-pageid	
+include/Wincrypt.h	CertGetPublicKeyLength		no-pageid	
+include/Wincrypt.h	CertGetStoreProperty	ms937668	match	
+include/Wincrypt.h	CertGetSubjectCertificateFromStore	ms937668	no-print-on-page	
+include/Wincrypt.h	CertGetValidUsages	ms937668	no-print-on-page	
+include/Wincrypt.h	CertIsRDNAttrsInCertificateName		no-pageid	
+include/Wincrypt.h	CertNameToStr		no-pageid	
+include/Wincrypt.h	CertOIDToAlgId		no-pageid	
+include/Wincrypt.h	CertOpenStore		no-pageid	
+include/Wincrypt.h	CertOpenSystemStore		no-pageid	
+include/Wincrypt.h	CertRDNValueToStr		no-pageid	
+include/Wincrypt.h	CertRemoveEnhancedKeyUsageIdentifier		no-pageid	
+include/Wincrypt.h	CertSaveStore		no-pageid	
+include/Wincrypt.h	CertSerializeCertificateStoreElement		no-pageid	
+include/Wincrypt.h	CertSetCertificateContextProperty		no-pageid	
+include/Wincrypt.h	CertSetEnhancedKeyUsage		no-pageid	
+include/Wincrypt.h	CertSetStoreProperty	ms937700	match	
+include/Wincrypt.h	CertStrToName	ms937700	no-print-on-page	
+include/Wincrypt.h	CertVerifySubjectCertificateContext	ms937700	no-print-on-page	
+include/Wincrypt.h	CertVerifyTimeValidity	ms937700	no-print-on-page	
+include/Wincrypt.h	CertVerifyValidityNesting		no-pageid	
+include/Wincrypt.h	CryptAcquireCertificatePrivateKey		no-pageid	
+include/Wincrypt.h	CryptCreateKeyIdentifierFromCSP		no-pageid	
+include/Wincrypt.h	CryptDecodeObjectEx		no-pageid	
+include/Wincrypt.h	CryptEncodeObjectEx		no-pageid	
+include/Wincrypt.h	CryptEnumKeyIdentifierProperties		no-pageid	
+include/Wincrypt.h	CryptEnumOIDInfo		no-pageid	
+include/Wincrypt.h	CryptExportPublicKeyInfoEx		no-pageid	
+include/Wincrypt.h	CryptFindCertificateKeyProvInfo		no-pageid	
+include/Wincrypt.h	CryptFindOIDInfo		no-pageid	
+include/Wincrypt.h	CryptFreeOIDFunctionAddress		no-pageid	
+include/Wincrypt.h	CryptGetDefaultOIDFunctionAddress		no-pageid	
+include/Wincrypt.h	CryptGetKeyIdentifierProperty		no-pageid	
+include/Wincrypt.h	CryptGetOIDFunctionAddress		no-pageid	
+include/Wincrypt.h	CryptHashCertificate		no-pageid	
+include/Wincrypt.h	CryptHashPublicKeyInfo		no-pageid	
+include/Wincrypt.h	CryptHashToBeSigned		no-pageid	
+include/Wincrypt.h	CryptImportPublicKeyInfoEx		no-pageid	
+include/Wincrypt.h	CryptInitOIDFunctionSet		no-pageid	
+include/Wincrypt.h	CryptInstallDefaultContext		no-pageid	
+include/Wincrypt.h	CryptInstallOIDFunctionAddress		no-pageid	
+include/Wincrypt.h	CryptSetKeyIdentifierProperty		no-pageid	
+include/Wincrypt.h	CryptSignAndEncodeCertificate		no-pageid	
+include/Wincrypt.h	CryptSignCertificate		no-pageid	
+include/Wincrypt.h	CryptVerifyCertificateSignature	aa452567	match	
+include/Wincrypt.h	CryptUninstallDefaultContext	aa452567	no-print-on-page	
+include/Wincrypt.h	PFXExportCertStoreEx		no-pageid	
+include/Wincrypt.h	PFXImportCertStore		no-pageid	
+include/Wincrypt.h	PFXIsPFXBlob		no-pageid	
+include/Wincrypt.h	PFXVerifyPassword		no-pageid	
+include/Windbase.h	CeCreateDatabase	aa516985	no-print-on-page	
+include/Windbase.h	CeCreateDatabaseEx	aa516986	match	
+include/Windbase.h	CeCreateDatabaseEx2	aa516987	match	
+include/Windbase.h	CeChangeDatabaseLCID	aa516982	match	
+include/Windbase.h	CeDeleteDatabase	aa516994	no-print-on-page	
+include/Windbase.h	CeDeleteDatabaseEx	aa516996	match	
+include/Windbase.h	CeDeleteRecord	aa516997	no-print-on-page	
+include/Windbase.h	CeEnumDBVolumes	aa517003	match	
+include/Windbase.h	CeFindFirstDatabase	aa517106	no-print-on-page	
+include/Windbase.h	CeFindFirstDatabaseEx	aa517109	match	
+include/Windbase.h	CeFindNextDatabase	aa517118	no-print-on-page	
+include/Windbase.h	CeFindNextDatabaseEx	aa517120	match	
+include/Windbase.h	CeFlushDBVol	aa517128	match	
+include/Windbase.h	CeFreeNotification	aa517132	no-print-on-page	
+include/Windbase.h	CeGetDBInformationByHandle	aa517152	no-print-on-page	
+include/Windbase.h	CeMountDBVol	aa517177	match	
+include/Windbase.h	CeOidGetInfo	aa517194	no-print-on-page	
+include/Windbase.h	CeOidGetInfoEx	aa517197	match	
+include/Windbase.h	CeOidGetInfoEx2	aa517198	match	
+include/Windbase.h	CeOpenDatabase	aa517213	no-print-on-page	
+include/Windbase.h	CeOpenDatabaseEx	aa517216	match	
+include/Windbase.h	CeOpenDatabaseEx2	aa517218	match	
+include/Windbase.h	CeReadRecordProps	aa517229	no-print-on-page	
+include/Windbase.h	CeReadRecordPropsEx	aa517235	match	
+include/Windbase.h	CeSeekDatabase	aa517246	no-print-on-page	
+include/Windbase.h	CeSeekDatabaseEx	aa517251	no-print-on-page	
+include/Windbase.h	CeSetDatabaseInfo	aa517254	no-print-on-page	
+include/Windbase.h	CeSetDatabaseInfoEx	aa517258	match	
+include/Windbase.h	CeSetDatabaseInfoEx2	aa517259	match	
+include/Windbase.h	CeUnmountDBVol	aa517280	match	
+include/Windbase.h	CeWriteRecordProps	aa517285	no-print-on-page	
+include/Windbase.h	CeRegisterReplNotification		no-pageid	
+include/Windbase.h	CeGetReplChangeMask		no-pageid	
+include/Windbase.h	CeSetReplChangeMask		no-pageid	
+include/Windbase.h	CeGetReplChangeBitsEx		no-pageid	
+include/Windbase.h	CeSetReplChangeBitsEx		no-pageid	
+include/Windbase.h	CeClearReplChangeBitsEx		no-pageid	
+include/Windbase.h	CeGetReplOtherBitsEx		no-pageid	
+include/Windbase.h	CeSetReplOtherBitsEx		no-pageid	
+include/Windbase.h	CeAddDatabaseProps	aa516979	match	
+include/Windbase.h	CeBeginTransaction	aa516980	match	
+include/Windbase.h	CeCreateDatabaseWithProps	aa516989	match	
+include/Windbase.h	CeCreateSession	aa516990	match	
+include/Windbase.h	CeEndTransaction	aa517002	match	
+include/Windbase.h	CeGetDatabaseProps	aa517146	match	
+include/Windbase.h	CeGetDatabaseSession	aa517147	match	
+include/Windbase.h	CeMountDBVolEx	aa517182	match	
+include/Windbase.h	CeOpenDatabaseInSession	aa517220	match	
+include/Windbase.h	CeOpenStream	aa517223	match	
+include/Windbase.h	CeRemoveDatabaseProps	aa517242	match	
+include/Windbase.h	CeSetSessionOption	aa517268	match	
+include/Windbase.h	CeStreamRead	aa517270	match	
+include/Windbase.h	CeStreamSaveChanges	aa517272	match	
+include/Windbase.h	CeStreamSeek	aa517274	match	
+include/Windbase.h	CeStreamSetSize	aa517275	match	
+include/Windbase.h	CeStreamWrite	aa517278	match	
+include/Windbase.h	SetPassword		no-pageid	
+include/Windbase.h	CeFindNextChangedRecord	ee490379	match	
+include/Windev.h	IsAPIReady		no-pageid	
+include/Windows.h	ExitProcess	ms885217	match	
+include/Windows.h	SetPropW		no-pageid	
+include/Windows.h	GetPropW	aa453647	no-print-on-page	
+include/Windows.h	RemovePropW	aa453155	no-print-on-page	
+include/Windows.h	EnumPropsExW	ms939781	no-print-on-page	
+include/Windows.h	GlobalAddAtomW		no-pageid	
+include/Windows.h	GlobalDeleteAtom	aa453188	no-print-on-page	
+include/Windows.h	GlobalFindAtomW	aa453189	no-print-on-page	
+include/Windows.h	GetMessageQueueReadyTimeStamp	aa453137	match	
+include/Windows.h	SendMessageTimeout	ms939981	match	
+include/Windows.h	ScrollDC	ms932696	no-print-on-page	
+include/Windows.h	MessageBoxW	ms911827	no-print-on-page	
+include/Windows.h	CheckDlgButton	ms928573	match	
+include/Windows.h	IsDlgButtonChecked	ms909866	match	
+include/Windows.h	SetUserDefaultLCID	ms906279	match	
+include/Windows.h	SHGetAutoRunPath	aa453696	match	
+include/Windows.h	EnumUILanguagesW	ms905092	match	
+include/Windows.h	GetSystemDefaultUILanguage	ms905303	match	
+include/Windows.h	GetUserDefaultUILanguage	ms905328	match	
+include/Windows.h	SetUserDefaultUILanguage	ms906280	match	
+include/Windows.h	EnableEUDC	ms901122	match	
+include/Windows.h	GetCharABCWidthsI	aa520324	match	
+include/Windows.h	LoadAnimatedCursor	ms924841	match	
+include/Wingdi.h	AlphaBlend	aa452850	match	
+include/Wingdi.h	BitBlt	aa452879	match	
+include/Wingdi.h	DeleteDC	aa452930	no-print-on-page	
+include/Wingdi.h	DeleteObject	aa452933	no-print-on-page	
+include/Wingdi.h	DrawEdge	aa452968	no-print-on-page	
+include/Wingdi.h	DrawFocusRect	aa452969	no-print-on-page	
+include/Wingdi.h	Ellipse	aa452997	no-print-on-page	
+include/Wingdi.h	EnumDisplayDevices	aa453048	match	
+include/Wingdi.h	EnumDisplaySettings	aa453049	match	
+include/Wingdi.h	EqualRgn	aa453056	no-print-on-page	
+include/Wingdi.h	ExcludeClipRect	aa453058	no-print-on-page	
+include/Wingdi.h	ExtCreateRegion	aa453061	match	
+include/Wingdi.h	ExtEscape	aa453063	match	
+include/Wingdi.h	FillRect	aa453067	no-print-on-page	
+include/Wingdi.h	FillRgn	aa453068	match	
+include/Wingdi.h	GetLayout	aa453133	match	
+include/Wingdi.h	GetNearestColor	aa453140	no-print-on-page	
+include/Wingdi.h	GetNearestPaletteIndex	aa453141	match	
+include/Wingdi.h	GetObjectW	aa453147	no-print-on-page	
+include/Wingdi.h	GetObjectType	aa453148	no-print-on-page	
+include/Wingdi.h	GetPaletteEntries	aa453151	match	
+include/Wingdi.h	GetPixel	aa453153	no-print-on-page	
+include/Wingdi.h	GetRegionData	aa453157	no-print-on-page	
+include/Wingdi.h	GetRgnBox	aa453159	no-print-on-page	
+include/Wingdi.h	GetROP2	aa453160	match	
+include/Wingdi.h	GetStockObject	aa453164	no-print-on-page	
+include/Wingdi.h	GetStretchBltMode	aa453165	match	
+include/Wingdi.h	GetSysColorBrush	aa453168	no-print-on-page	
+include/Wingdi.h	SetSysColors	aa453656	match	
+include/Wingdi.h	GetSystemPaletteEntries	aa453171	match	
+include/Wingdi.h	GradientFill	aa453192	match	
+include/Wingdi.h	LineTo	aa453296	match	
+include/Wingdi.h	PtInRegion	aa453602	no-print-on-page	
+include/Wingdi.h	RealizePalette	aa453638	match	
+include/Wingdi.h	SetPixel	aa453646	no-print-on-page	
+include/Wingdi.h	SetRectRgn	aa453650	match	
+include/Wingdi.h	SetROP2	aa453651	match	
+include/Wingdi.h	SetStretchBltMode	aa453655	match	
+include/Wingdi.h	SetViewportOrgEx	aa453660	no-print-on-page	
+include/Wingdi.h	TransparentBlt	aa453778	match	
+include/Wingdi.h	TransparentImage	aa453779	match	
+include/Wingdi.h	GetViewportExtEx	aa453949	no-print-on-page	
+include/Wingdi.h	GetViewportOrgEx	aa453950	no-print-on-page	
+include/Wingdi.h	GetWindowExtEx	aa453951	no-print-on-page	
+include/Wingdi.h	GetWindowOrgEx	aa453952	no-print-on-page	
+include/Wingdi.h	OffsetViewportOrgEx	aa453953	no-print-on-page	
+include/Wingdi.h	SetWindowOrgEx	aa453954	no-print-on-page	
+include/Wingdi.h	ChangeDisplaySettingsEx	ms908108	match	
+include/Wingdi.h	CreateBitmap	ms908163	no-print-on-page	
+include/Wingdi.h	CreateCompatibleBitmap	ms908165	no-print-on-page	
+include/Wingdi.h	CreateCompatibleDC	ms908166	no-print-on-page	
+include/Wingdi.h	CreateDCW	ms908168	match	
+include/Wingdi.h	CreateDIBPatternBrushPt	ms908173	no-print-on-page	
+include/Wingdi.h	CreateDIBSection	ms908174	no-print-on-page	
+include/Wingdi.h	CreatePalette	ms908178	match	
+include/Wingdi.h	CreatePatternBrush	ms908179	match	
+include/Wingdi.h	CreatePen	ms908180	match	
+include/Wingdi.h	CreatePenIndirect	ms908181	no-print-on-page	
+include/Wingdi.h	CreateRectRgn	ms908184	match	
+include/Wingdi.h	CreateRectRgnIndirect	ms908185	no-print-on-page	
+include/Wingdi.h	CreateSolidBrush	ms908187	match	
+include/Wingdi.h	IntersectClipRect	ms909855	no-print-on-page	
+include/Wingdi.h	InvalidateRgn	ms909858	match	
+include/Wingdi.h	InvertRect	ms909859	match	
+include/Wingdi.h	MaskBlt	ms911792	no-print-on-page	
+include/Wingdi.h	OffsetRgn	ms911892	no-print-on-page	
+include/Wingdi.h	PatBlt	ms911916	no-print-on-page	
+include/Wingdi.h	Polygon	ms911933	no-print-on-page	
+include/Wingdi.h	Polyline	ms911934	no-print-on-page	
+include/Wingdi.h	Rectangle	ms912947	no-print-on-page	
+include/Wingdi.h	RectInRegion	ms913051	no-print-on-page	
+include/Wingdi.h	RectVisible	ms913070	match	
+include/Wingdi.h	RedrawWindow	ms913080	match	
+include/Wingdi.h	ValidateRgn	ms914092	match	
+include/Wingdi.h	CombineRgn	ms928608	no-print-on-page	
+include/Wingdi.h	GetBkColor	ms929205	no-print-on-page	
+include/Wingdi.h	GetBkMode	ms929206	no-print-on-page	
+include/Wingdi.h	GetClipBox	ms929219	no-print-on-page	
+include/Wingdi.h	GetClipRgn	ms929221	no-print-on-page	
+include/Wingdi.h	GetCurrentObject	ms929223	no-print-on-page	
+include/Wingdi.h	GetCurrentPositionEx	ms929224	match	
+include/Wingdi.h	GetDeviceCaps	ms929230	no-print-on-page	
+include/Wingdi.h	GetDIBColorTable	ms929232	match	
+include/Wingdi.h	MoveToEx	ms931457	match	
+include/Wingdi.h	SelectClipRgn	ms932714	no-print-on-page	
+include/Wingdi.h	SelectObject	ms932715	no-print-on-page	
+include/Wingdi.h	SelectPalette	ms932716	match	
+include/Wingdi.h	GetOutlineTextMetricsW	ms933897	match	
+include/Wingdi.h	RestoreDC		no-pageid	
+include/Wingdi.h	RoundRect	ms939867	no-print-on-page	
+include/Wingdi.h	SaveDC	ms939894	match	
+include/Wingdi.h	SetBitmapBits	ms939987	match	
+include/Wingdi.h	SetBkColor	ms939988	no-print-on-page	
+include/Wingdi.h	SetBkMode	ms939989	no-print-on-page	
+include/Wingdi.h	SetBrushOrgEx	ms940010	no-print-on-page	
+include/Wingdi.h	SetDIBColorTable	ms940018	match	
+include/Wingdi.h	SetDIBitsToDevice	ms940019	match	
+include/Wingdi.h	SetLayout	ms940026	match	
+include/Wingdi.h	SetPaletteEntries	ms940028	match	
+include/Wingdi.h	StretchBlt	ms940373	no-print-on-page	
+include/Wingdi.h	StretchDIBits	ms940374	match	
+include/Wingdi.h	AbortDoc		no-pageid	
+include/Wingdi.h	EndDoc	aa452835	no-print-on-page	
+include/Wingdi.h	EndPage	aa453039	no-print-on-page	
+include/Wingdi.h	SetAbortProc	aa453040	no-print-on-page	
+include/Wingdi.h	StartDocW	ms939985	no-print-on-page	
+include/Wingdi.h	StartPage	ms940349	no-print-on-page	
+include/Wingdi.h	TranslateCharsetInfo	aa450955	match	
+include/Wingdi.h	AddFontResourceW	ms901109	no-print-on-page	
+include/Wingdi.h	CreateFontIndirectW	ms901120	no-print-on-page	
+include/Wingdi.h	DrawTextW	ms901121	no-print-on-page	
+include/Wingdi.h	EnumFontFamiliesW	ms901123	no-print-on-page	
+include/Wingdi.h	EnumFontFamiliesExW	ms901124	no-print-on-page	
+include/Wingdi.h	EnumFontsW	ms901126	no-print-on-page	
+include/Wingdi.h	ExtTextOutW	ms901129	no-print-on-page	
+include/Wingdi.h	GetCharABCWidthsW	ms901130	match	
+include/Wingdi.h	GetCharWidth32W	ms901131	match	
+include/Wingdi.h	GetFontData	aa520325	match	
+include/Wingdi.h	GetTextAlign	ms901132	match	
+include/Wingdi.h	GetTextCharacterExtra	ms901133	no-print-on-page	
+include/Wingdi.h	GetTextColor	ms901134	no-print-on-page	
+include/Wingdi.h	GetTextExtentExPointW	ms901135	no-print-on-page	
+include/Wingdi.h	GetTextExtentPointW	ms901136	match	
+include/Wingdi.h	GetTextExtentPoint32W	ms901137	match	
+include/Wingdi.h	GetTextFaceW	ms901138	no-print-on-page	
+include/Wingdi.h	GetTextMetricsW	ms901139	no-print-on-page	
+include/Wingdi.h	RemoveFontResourceW	ms901142	no-print-on-page	
+include/Wingdi.h	SetTextAlign	ms901143	match	
+include/Wingdi.h	SetTextCharacterExtra	ms901144	no-print-on-page	
+include/Wingdi.h	SetTextColor	ms901145	no-print-on-page	
+include/Wingdi.h	EnumDisplayMonitors	ms932091	no-print-on-page	
+include/Wingdi.h	GetMonitorInfo	ms932091	no-print-on-page	
+include/Wingdi.h	MonitorFromPoint	ms932091	no-print-on-page	
+include/Wingdi.h	MonitorFromRect	ms932091	no-print-on-page	
+include/Wingdi.h	MonitorFromWindow	ms932091	no-print-on-page	
+include/Wininet.h	InternetAttemptConnect	ms918340	match	
+include/Wininet.h	InternetCheckConnection	ms918346	match	
+include/Wininet.h	InternetConfirmZoneCrossing	ms918350	no-print-on-page	
+include/Wininet.h	InternetCombineUrl	ms918349	match	
+include/Wininet.h	InternetCanonicalizeUrl	ms926106	match	
+include/Wininet.h	InternetEnumPerSiteCookieDecisionA	ms918356	match	
+include/Wininet.h	InternetEnumPerSiteCookieDecisionW	ms918357	match	
+include/Wininet.h	InternetGetConnectedState	ms918360	match	
+include/Wininet.h	InternetGetConnectedStateEx	ms918361	no-print-on-page	
+include/Wininet.h	InternetGetCookie	ms918362	match	
+include/Wininet.h	InternetGetLastResponseInfo	ms918363	match	
+include/Wininet.h	InternetGetPerSiteCookieDecisionA	ms918364	match	
+include/Wininet.h	InternetGetPerSiteCookieDecisionW	ms918365	match	
+include/Wininet.h	InternetGoOnline	ms918366	match	
+include/Wininet.h	InternetSetCookie	ms918378	match	
+include/Wininet.h	InternetSetCookieEx	ms918379	match	
+include/Wininet.h	InternetSetPerSiteCookieDecisionA	ms918383	match	
+include/Wininet.h	InternetSetPerSiteCookieDecisionW	ms918384	match	
+include/Wininet.h	FtpGetFileEx	ee491828	match	
+include/Wininet.h	HttpOpenRequest	ee491851	match	
+include/Wininet.h	InternetReadFile	ee491861	match	
+include/Wininet.h	InternetQueryDataAvailable	ee491998	match	
+include/Wininet.h	InternetFindNextFile	ee492003	match	
+include/Wininet.h	FtpRenameFile	ee492006	match	
+include/Wininet.h	InternetOpen	ee492088	match	
+include/Wininet.h	InternetOpenUrl	ee492089	match	
+include/Wininet.h	InternetReadFileEx	ee492164	match	
+include/Wininet.h	HttpSendRequestEx	ee492193	match	
+include/Wininet.h	InternetLockRequestFile	ee492208	match	
+include/Wininet.h	InternetCloseHandle	ee492251	match	
+include/Wininet.h	HttpSendRequest	ee492362	match	
+include/Wininet.h	FtpGetFile	ee492396	match	
+include/Wininet.h	FtpFindFirstFile	ee492397	match	
+include/Wininet.h	HttpEndRequest	ee492407	match	
+include/Wininet.h	InternetQueryOption	ee492415	match	
+include/Wininet.h	InternetWriteFile	ee492463	match	
+include/Wininet.h	FtpCreateDirectory	ee492470	match	
+include/Wininet.h	FtpRemoveDirectory	ee492589	match	
+include/Wininet.h	FtpGetFileSize	ee492614	match	
+include/Wininet.h	FtpCommand	ee492630	match	
+include/Wininet.h	FtpOpenFile	ee492663	match	
+include/Wininet.h	FtpGetCurrentDirectory	ee492802	match	
+include/Wininet.h	InternetSetOption	ee492811	match	
+include/Wininet.h	FtpDeleteFile	ee492815	match	
+include/Wininet.h	HttpAddRequestHeaders	ee492818	match	
+include/Wininet.h	FtpSetCurrentDirectory	ee492829	match	
+include/Wininet.h	FtpPutFile	ee492833	match	
+include/Wininet.h	HttpQueryInfo	ee492848	match	
+include/Wininet.h	InternetSetFilePointer	ee492858	match	
+include/Wininet.h	InternetErrorDlg	ee492869	match	
+include/Wininet.h	InternetTimeFromSystemTime	ms918387	match	
+include/Wininet.h	InternetTimeToSystemTime	ms918388	match	
+include/Wininet.h	InternetUnlockRequestFile	ms918389	match	
+include/Wininet.h	CommitUrlCacheEntry	aa452121	match	
+include/Wininet.h	CreateUrlCacheEntry	aa452142	match	
+include/Wininet.h	DeleteUrlCacheEntry	aa452150	match	
+include/Wininet.h	FindCloseUrlCache	aa452195	match	
+include/Wininet.h	FindFirstUrlCacheEntry	aa452197	match	
+include/Wininet.h	FindNextUrlCacheEntry	ms919204	match	
+include/Wininet.h	FindNextUrlCacheEntryEx	aa452206	match	
+include/Wininet.h	GetUrlCacheEntryInfo	ms906320	match	
+include/Wininet.h	GetUrlCacheEntryInfoEx	ms906328	match	
+include/Wininet.h	ReadUrlCacheEntryStream	aa452489	match	
+include/Wininet.h	RetrieveUrlCacheEntryStream	aa452490	annotated-deviation	argc: page=4 hdr=5
+include/Wininet.h	RetrieveUrlCacheEntryFile	ms918849	no-print-on-page	
+include/Wininet.h	SetUrlCacheEntryInfo	ms918858	no-print-on-page	
+include/Wininet.h	UnlockUrlCacheEntryFile	ms918862	no-print-on-page	
+include/Wininet.h	UnlockUrlCacheEntryStream	aa452493	match	
+include/Wininet.h	InternetClearAllPerSiteCookieDecisions	ee492602	match	
+include/Wininet.h	PrivacyGetZonePreferenceW	ee492807	match	
+include/Wininetui.h	IsMessageBoxHandled	ms918809	match	
+include/Winldap.h	cldap_open		no-pageid	
+include/Winldap.h	ldap_abandon	ms863877	no-print-on-page	
+include/Winldap.h	ldap_bind	ms891743	no-print-on-page	
+include/Winldap.h	ldap_bind_s	ms891748	no-print-on-page	
+include/Winldap.h	ldap_connect	ms891756	match	
+include/Winldap.h	ldap_get_option	ms891756	no-print-on-page	
+include/Winldap.h	ldap_init	ms892271	no-print-on-page	
+include/Winldap.h	ldap_open	ms892275	no-print-on-page	
+include/Winldap.h	ldap_set_option	ms892288	no-print-on-page	
+include/Winldap.h	ldap_simple_bind	ms892310	no-print-on-page	
+include/Winldap.h	ldap_simple_bind_s	ms892311	no-print-on-page	
+include/Winldap.h	ldap_sslinit	ms892312	no-print-on-page	
+include/Winldap.h	ldap_unbind	ms892314	no-print-on-page	
+include/Winldap.h	ldap_unbind_s	ms892317	no-print-on-page	
+include/Winldap.h	ldap_add		no-pageid	
+include/Winldap.h	ldap_add_ext	ms891744	no-print-on-page	
+include/Winldap.h	ldap_add_ext_s	ms891745	no-print-on-page	
+include/Winldap.h	ldap_add_s	ms891746	no-print-on-page	
+include/Winldap.h	ldap_close_extended_op	ms891747	no-print-on-page	
+include/Winldap.h	ldap_compare	ms891751	no-print-on-page	
+include/Winldap.h	ldap_compare_ext	ms891752	no-print-on-page	
+include/Winldap.h	ldap_compare_ext_s	ms891753	no-print-on-page	
+include/Winldap.h	ldap_compare_s	ms891754	no-print-on-page	
+include/Winldap.h	ldap_delete	ms891755	no-print-on-page	
+include/Winldap.h	ldap_delete_ext	ms891766	no-print-on-page	
+include/Winldap.h	ldap_delete_ext_s	ms891767	no-print-on-page	
+include/Winldap.h	ldap_delete_s	ms891768	no-print-on-page	
+include/Winldap.h	ldap_modify	ms891769	no-print-on-page	
+include/Winldap.h	ldap_modify_ext	ms892280	no-print-on-page	
+include/Winldap.h	ldap_modify_ext_s	ms892281	no-print-on-page	
+include/Winldap.h	ldap_modify_s	ms892282	no-print-on-page	
+include/Winldap.h	ldap_rename_ext	ms892283	no-print-on-page	
+include/Winldap.h	ldap_rename_ext_s	ms892295	no-print-on-page	
+include/Winldap.h	ldap_extended_operation	ms892296	no-print-on-page	
+include/Winldap.h	ldap_check_filter		no-pageid	
+include/Winldap.h	ldap_count_entries	ms891750	no-print-on-page	
+include/Winldap.h	ldap_count_references	ms891760	no-print-on-page	
+include/Winldap.h	ldap_escape_filter_element	ms891761	no-print-on-page	
+include/Winldap.h	ldap_first_attribute	ms892136	no-print-on-page	
+include/Winldap.h	ldap_first_entry	ms892263	no-print-on-page	
+include/Winldap.h	ldap_first_reference	ms892264	no-print-on-page	
+include/Winldap.h	ldap_get_dn	ms892265	no-print-on-page	
+include/Winldap.h	ldap_get_next_page	ms892266	no-print-on-page	
+include/Winldap.h	ldap_get_next_page_s	ms892268	no-print-on-page	
+include/Winldap.h	ldap_get_paged_count	ms892269	no-print-on-page	
+include/Winldap.h	ldap_get_values	ms892272	no-print-on-page	
+include/Winldap.h	ldap_get_values_len	ms892273	no-print-on-page	
+include/Winldap.h	ldap_next_attribute	ms892274	no-print-on-page	
+include/Winldap.h	ldap_next_entry	ms892285	no-print-on-page	
+include/Winldap.h	ldap_next_reference	ms892286	no-print-on-page	
+include/Winldap.h	ldap_search	ms892287	no-print-on-page	
+include/Winldap.h	ldap_search_abandon_page	ms892302	no-print-on-page	
+include/Winldap.h	ldap_search_ext	ms892303	no-print-on-page	
+include/Winldap.h	ldap_search_ext_s	ms892304	no-print-on-page	
+include/Winldap.h	ldap_search_init_page	ms892305	no-print-on-page	
+include/Winldap.h	ldap_search_s	ms892306	no-print-on-page	
+include/Winldap.h	ldap_search_st	ms892307	no-print-on-page	
+include/Winldap.h	ldap_result	ms892308	no-print-on-page	
+include/Winldap.h	ldap_err2string		no-pageid	
+include/Winldap.h	ldap_result2error	ms892105	no-print-on-page	
+include/Winldap.h	LdapGetLastError	ms892298	no-print-on-page	
+include/Winldap.h	LdapMapErrorToWin32	ms892267	no-print-on-page	
+include/Winldap.h	ldap_control_free		no-pageid	
+include/Winldap.h	ldap_controls_free	ms891758	no-print-on-page	
+include/Winldap.h	ldap_memfree	ms891759	no-print-on-page	
+include/Winldap.h	ldap_msgfree	ms892277	no-print-on-page	
+include/Winldap.h	ldap_value_free	ms892284	no-print-on-page	
+include/Winldap.h	ldap_value_free_len	ms892321	no-print-on-page	
+include/Winldap.h	ldap_dn2ufn		no-pageid	
+include/Winldap.h	ldap_explode_dn	ms891770	no-print-on-page	
+include/Winldap.h	ldap_parse_extended_result	ms892289	page-drops-star	args [0]: page print omits pointer
+include/Winldap.h	ldap_parse_page_control	ms892289	no-print-on-page	
+include/Winldap.h	ldap_parse_reference	ms892290	no-print-on-page	
+include/Winldap.h	ldap_parse_result	ms892291	no-print-on-page	
+include/Winldap.h	ldap_parse_sort_control	ms892292	no-print-on-page	
+include/Winldap.h	ldap_create_page_control	ms892293	no-print-on-page	
+include/Winldap.h	ldap_create_sort_control	ms891764	no-print-on-page	
+include/Winldap.h	ldap_count_values	ms891765	no-print-on-page	
+include/Winldap.h	ldap_count_values_len	ms891762	no-print-on-page	
+include/Winldap.h	ldap_ufn2dn	ms891763	no-print-on-page	
+include/Winldap.h	LdapUnicodeToUTF8		no-pageid	
+include/Winldap.h	LdapUTF8ToUnicode	ms892319	no-print-on-page	
+include/Winldap.h	ldap_sasl_bind_s	ms892301	match	
+include/Winnetwk.h	WNetOpenEnumW	ms898713	match	
+include/Winnetwk.h	WNetEnumResourceW	ms898709	match	
+include/Winnetwk.h	WNetCloseEnum	ms898606	match	
+include/Winnetwk.h	WNetAddConnection3W	ms898589	match	
+include/Winnetwk.h	WNetCancelConnection2W	ms898597	match	
+include/Winnetwk.h	WNetConnectionDialog1W	ms898611	no-print-on-page	
+include/Winnetwk.h	WNetDisconnectDialog	ms898697	match	
+include/Winnetwk.h	WNetDisconnectDialog1W	ms898705	no-print-on-page	
+include/Winnetwk.h	WNetGetConnectionW	ms898710	match	
+include/Winnetwk.h	WNetGetUniversalNameW	ms898711	match	
+include/Winnetwk.h	WNetGetUserW	ms898712	match	
+include/Winnls.h	MultiByteToWideChar	ms886760	match	
+include/Winnls.h	WideCharToMultiByte	aa450989	match	
+include/Winnls.h	IsDBCSLeadByte	ms886515	match	
+include/Winnls.h	IsDBCSLeadByteEx	ms886608	match	
+include/Winnls.h	GetACP	ms905215	match	
+include/Winnls.h	GetOEMCP	ms905256	match	
+include/Winnls.h	GetSystemDefaultLCID	ms905298	no-print-on-page	
+include/Winnls.h	GetUserDefaultLCID	ms905323	match	
+include/Winnls.h	GetSystemDefaultLangID	ms905289	no-print-on-page	
+include/Winnls.h	GetUserDefaultLangID	ms905315	match	
+include/Winnls.h	IsValidCodePage	ms906218	match	
+include/Winnls.h	IsValidLocale	ms906219	no-print-on-page	
+include/Winnls.h	CompareStringW	ms904713	no-print-on-page	
+include/Winnls.h	ConvertDefaultLocale	ms904716	no-print-on-page	
+include/Winnls.h	GetCPInfo	ms905221	match	
+include/Winnls.h	GetStringTypeW	ms905272	match	
+include/Winnls.h	GetStringTypeExW	ms905283	match	
+include/Winnls.h	GetCurrencyFormatW		no-pageid	
+include/Winnls.h	GetNumberFormatW		no-pageid	
+include/Winnls.h	GetDateFormatW		no-pageid	
+include/Winnls.h	GetTimeFormatW		no-pageid	
+include/Winnls.h	GetLocaleInfoW		no-pageid	
+include/Winnls.h	SetLocaleInfoW		no-pageid	
+include/Winnls.h	FoldStringW	ms905209	match	
+include/Winnls.h	LCMapStringW	ms906221	match	
+include/Winnls.h	EnumSystemCodePagesW	ms905062	match	
+include/Winnls.h	EnumSystemLocalesW	ms905070	no-print-on-page	
+include/Winnls.h	EnumDateFormatsW	ms904724	no-print-on-page	
+include/Winnls.h	EnumTimeFormatsW	ms905077	no-print-on-page	
+include/Winnt.h	SecureZeroMemory	ms886803	no-print-on-page	
+include/Winreg.h	RegCloseKeyW	ms891448	no-print-on-page	
+include/Winreg.h	RegOpenKeyExW	ms891460	no-print-on-page	
+include/Winreg.h	RegCreateKeyExW	ms891450	no-print-on-page	
+include/Winreg.h	RegDeleteKeyW	ms891451	no-print-on-page	
+include/Winreg.h	RegDeleteValueW	ms891452	no-print-on-page	
+include/Winreg.h	RegEnumKeyExW	ms891453	no-print-on-page	
+include/Winreg.h	RegEnumValueW	ms891454	no-print-on-page	
+include/Winreg.h	RegQueryInfoKeyW	ms891461	no-print-on-page	
+include/Winreg.h	RegQueryValueExW	ms891462	no-print-on-page	
+include/Winreg.h	RegSetValueExW	ms891469	no-print-on-page	
+include/Winreg.h	RegFlushKeyW	ms891455	match	
+include/Winreg.h	CeFindFirstRegChange	aa517116	match	
+include/Winreg.h	CeFindNextRegChange	aa517123	match	
+include/Winreg.h	CeFindCloseRegChange	aa517103	match	
+include/Winreg.h	CeRegGetNotificationInfo	ee490197	skip-complex-page	
+include/Winreg.h	CeRegTestSetValueW	ee490635	no-print-on-page	
+include/Winscard.h	SCardBeginTransaction		no-pageid	
+include/Winscard.h	SCardCancel		no-pageid	
+include/Winscard.h	SCardConnect		no-pageid	
+include/Winscard.h	SCardControl		no-pageid	
+include/Winscard.h	SCardDisconnect		no-pageid	
+include/Winscard.h	SCardEndTransaction		no-pageid	
+include/Winscard.h	SCardEstablishContext		no-pageid	
+include/Winscard.h	SCardForgetCardType		no-pageid	
+include/Winscard.h	SCardForgetReader		no-pageid	
+include/Winscard.h	SCardFreeMemory	ms938564	match	
+include/Winscard.h	SCardGetAttrib		no-pageid	
+include/Winscard.h	SCardGetCardTypeProviderName		no-pageid	
+include/Winscard.h	SCardGetProviderId		no-pageid	
+include/Winscard.h	SCardGetStatusChange		no-pageid	
+include/Winscard.h	SCardIntroduceCardType		no-pageid	
+include/Winscard.h	SCardIntroduceReader		no-pageid	
+include/Winscard.h	SCardIsValidContext	ms926418	match	
+include/Winscard.h	SCardListCards	ms926418	no-print-on-page	
+include/Winscard.h	SCardListInterfaces	ms926418	no-print-on-page	
+include/Winscard.h	SCardListReaders	ms926418	no-print-on-page	
+include/Winscard.h	SCardLocateCards		no-pageid	
+include/Winscard.h	SCardLocateCardsByATR	ms926424	no-print-on-page	
+include/Winscard.h	SCardReconnect	ms926424	no-print-on-page	
+include/Winscard.h	SCardReleaseContext	ms926424	no-print-on-page	
+include/Winscard.h	SCardSetAttrib	ms926424	no-print-on-page	
+include/Winscard.h	SCardSetCardTypeProviderName		no-pageid	
+include/Winscard.h	SCardStatus		no-pageid	
+include/Winscard.h	SCardTransmit	ms926431	match	
+include/Winsock2.h	accept		no-pageid	
+include/Winsock2.h	bind		no-pageid	
+include/Winsock2.h	closesocket		no-pageid	
+include/Winsock2.h	connect		no-pageid	
+include/Winsock2.h	gethostname		no-pageid	
+include/Winsock2.h	getpeername		no-pageid	
+include/Winsock2.h	getsockname		no-pageid	
+include/Winsock2.h	getsockopt		no-pageid	
+include/Winsock2.h	htonl		no-pageid	
+include/Winsock2.h	htons		no-pageid	
+include/Winsock2.h	inet_addr		no-pageid	
+include/Winsock2.h	ioctlsocket		no-pageid	
+include/Winsock2.h	listen		no-pageid	
+include/Winsock2.h	ntohl		no-pageid	
+include/Winsock2.h	ntohs		no-pageid	
+include/Winsock2.h	recv		no-pageid	
+include/Winsock2.h	recvfrom		no-pageid	
+include/Winsock2.h	select		no-pageid	
+include/Winsock2.h	send		no-pageid	
+include/Winsock2.h	sendto		no-pageid	
+include/Winsock2.h	sethostname		no-pageid	
+include/Winsock2.h	setsockopt		no-pageid	
+include/Winsock2.h	shutdown		no-pageid	
+include/Winsock2.h	socket		no-pageid	
+include/Winsock2.h	WSAAccept	ee493507	no-print-on-page	
+include/Winsock2.h	WSAAddressToString	ee493507	no-print-on-page	
+include/Winsock2.h	WSACleanup	ee493507	no-print-on-page	
+include/Winsock2.h	WSACloseEvent		no-pageid	
+include/Winsock2.h	WSAConnect		no-pageid	
+include/Winsock2.h	WSACreateEvent		no-pageid	
+include/Winsock2.h	WSAEnumNetworkEvents		no-pageid	
+include/Winsock2.h	WSAEnumNameSpaceProviders	ms898737	match	
+include/Winsock2.h	WSAEnumProtocols	ms898737	no-print-on-page	
+include/Winsock2.h	WSAEventSelect	ms898737	no-print-on-page	
+include/Winsock2.h	WSAGetLastError	ms898737	no-print-on-page	
+include/Winsock2.h	WSAGetOverlappedResult	ms898737	no-print-on-page	
+include/Winsock2.h	WSAHtonl		no-pageid	
+include/Winsock2.h	WSAHtons		no-pageid	
+include/Winsock2.h	WSAIoctl		no-pageid	
+include/Winsock2.h	WSAJoinLeaf		no-pageid	
+include/Winsock2.h	WSALookupServiceBegin	ms898748	match	
+include/Winsock2.h	WSALookupServiceEnd	ms898750	match	
+include/Winsock2.h	WSALookupServiceNext	ms898752	match	
+include/Winsock2.h	WSANtohl	ms898752	no-print-on-page	
+include/Winsock2.h	WSANtohs	ms898752	no-print-on-page	
+include/Winsock2.h	WSARecv	ms898752	no-print-on-page	
+include/Winsock2.h	WSARecvFrom		no-pageid	
+include/Winsock2.h	WSAResetEvent		no-pageid	
+include/Winsock2.h	WSASend		no-pageid	
+include/Winsock2.h	WSASendTo		no-pageid	
+include/Winsock2.h	WSASetEvent		no-pageid	
+include/Winsock2.h	WSASetLastError		no-pageid	
+include/Winsock2.h	WSASetService	ms898772	no-print-on-page	
+include/Winsock2.h	WSASocket	ms898772	no-print-on-page	
+include/Winsock2.h	WSAStartup	ms898772	no-print-on-page	
+include/Winsock2.h	WSAStringToAddress	ms898772	no-print-on-page	
+include/Winsock2.h	WSAWaitForMultipleEvents		no-pageid	
+include/Winuser.h	CreateCaret		no-pageid	
+include/Winuser.h	DestroyCaret	ms908164	no-print-on-page	
+include/Winuser.h	GetCaretBlinkTime	aa452936	no-print-on-page	
+include/Winuser.h	GetCaretPos	ms929209	no-print-on-page	
+include/Winuser.h	HideCaret	ms929210	no-print-on-page	
+include/Winuser.h	SetCaretBlinkTime	ms929930	no-print-on-page	
+include/Winuser.h	SetCaretPos	ms940012	no-print-on-page	
+include/Winuser.h	ShowCaret	ms940013	no-print-on-page	
+include/Winuser.h	GetMessageW		no-pageid	
+include/Winuser.h	PeekMessageW		no-pageid	
+include/Winuser.h	MapWindowPoints	ms911790	no-print-on-page	
+include/Winuser.h	DispatchMessageW	ms911790	no-print-on-page	
+include/Winuser.h	TranslateMessage	aa453776	no-print-on-page	
+include/Winuser.h	PostMessageW	ms911937	no-print-on-page	
+include/Winuser.h	PostThreadMessageW		no-pageid	
+include/Winuser.h	SendMessageW		no-pageid	
+include/Winuser.h	SendNotifyMessageW		no-pageid	
+include/Winuser.h	PostQuitMessage	ms911938	no-print-on-page	
+include/Winuser.h	RegisterWindowMessageW	ms939737	match	
+include/Winuser.h	GetMessagePos	aa453136	no-print-on-page	
+include/Winuser.h	GetMessageSource	aa453138	match	
+include/Winuser.h	GetQueueStatus	aa453156	match	
+include/Winuser.h	InSendMessage	ms909852	match	
+include/Winuser.h	GetKeyState		no-pageid	
+include/Winuser.h	GetAsyncKeyState	aa453132	no-print-on-page	
+include/Winuser.h	GetFocus	ms929204	no-print-on-page	
+include/Winuser.h	SetFocus	ms929240	no-print-on-page	
+include/Winuser.h	GetActiveWindow	ms940023	no-print-on-page	
+include/Winuser.h	SetActiveWindow	ms929203	no-print-on-page	
+include/Winuser.h	EnableWindow	ms939986	no-print-on-page	
+include/Winuser.h	IsWindowEnabled	aa453035	no-print-on-page	
+include/Winuser.h	ActivateKeyboardLayout		no-pageid	
+include/Winuser.h	GetKeyboardLayout	aa452845	no-print-on-page	
+include/Winuser.h	GetKeyboardLayoutList	ms929249	no-print-on-page	
+include/Winuser.h	GetKeyboardLayoutNameW	ms929250	no-print-on-page	
+include/Winuser.h	GetKeyboardStatus	ms929252	no-print-on-page	
+include/Winuser.h	GetKeyboardType	ms929253	no-print-on-page	
+include/Winuser.h	MapVirtualKeyW	ms911789	no-print-on-page	
+include/Winuser.h	keybd_event	aa453245	match	
+include/Winuser.h	PostKeybdMessage	ms911936	match	
+include/Winuser.h	LoadKeyboardLayoutW	aa453414	match	
+include/Winuser.h	RegisterHotKey		no-pageid	
+include/Winuser.h	CreateAcceleratorTableW		no-pageid	
+include/Winuser.h	LoadAcceleratorsW	ms908162	no-print-on-page	
+include/Winuser.h	DestroyAcceleratorTable	aa453407	no-print-on-page	
+include/Winuser.h	TranslateAcceleratorW	aa452935	no-print-on-page	
+include/Winuser.h	SendInput	ms932719	match	
+include/Winuser.h	GetScrollInfo		no-pageid	
+include/Winuser.h	SetScrollInfo	aa453163	no-print-on-page	
+include/Winuser.h	SetScrollPos	aa453652	no-print-on-page	
+include/Winuser.h	SetScrollRange	aa453653	no-print-on-page	
+include/Winuser.h	ScrollWindowEx	aa453654	no-print-on-page	
+include/Winuser.h	BeginPaint	aa452871	match	
+include/Winuser.h	ClientToScreen	ms928584	no-print-on-page	
+include/Winuser.h	CopyRect	ms908152	no-print-on-page	
+include/Winuser.h	DrawFrameControl	aa452970	match	
+include/Winuser.h	EndPaint	aa453041	no-print-on-page	
+include/Winuser.h	EqualRect	aa453055	no-print-on-page	
+include/Winuser.h	GetDC	ms929227	no-print-on-page	
+include/Winuser.h	GetDCEx	ms929228	match	
+include/Winuser.h	GetUpdateRect	aa453174	no-print-on-page	
+include/Winuser.h	GetUpdateRgn	aa453175	no-print-on-page	
+include/Winuser.h	GetWindowDC	aa453179	no-print-on-page	
+include/Winuser.h	GetWindowRgn	aa453182	match	
+include/Winuser.h	IntersectRect	ms909856	no-print-on-page	
+include/Winuser.h	InvalidateRect	ms909857	no-print-on-page	
+include/Winuser.h	IsRectEmpty	ms909894	no-print-on-page	
+include/Winuser.h	LoadBitmapW	aa453409	no-print-on-page	
+include/Winuser.h	MapWindowPoints	ms911790	no-print-on-page	
+include/Winuser.h	OffsetRect	ms911891	no-print-on-page	
+include/Winuser.h	PtInRect	aa453601	no-print-on-page	
+include/Winuser.h	ReleaseDC	ms939760	no-print-on-page	
+include/Winuser.h	ScreenToClient	ms932582	no-print-on-page	
+include/Winuser.h	SetRectEmpty	aa453649	no-print-on-page	
+include/Winuser.h	SetWindowRgn	aa453663	match	
+include/Winuser.h	SubtractRect	ms940381	no-print-on-page	
+include/Winuser.h	UnionRect	ms914081	no-print-on-page	
+include/Winuser.h	UpdateWindow	ms914085	no-print-on-page	
+include/Winuser.h	ValidateRect	ms914091	no-print-on-page	
+include/Winuser.h	CheckMenuItem	aa452862	no-print-on-page	
+include/Winuser.h	CheckMenuRadioItem	ms928575	no-print-on-page	
+include/Winuser.h	CreateMenu	ms928576	no-print-on-page	
+include/Winuser.h	CreatePopupMenu	ms908177	no-print-on-page	
+include/Winuser.h	DeleteMenu	ms908182	no-print-on-page	
+include/Winuser.h	DestroyMenu	aa452932	no-print-on-page	
+include/Winuser.h	DrawMenuBar	aa452940	no-print-on-page	
+include/Winuser.h	EnableMenuItem	aa452975	no-print-on-page	
+include/Winuser.h	GetMenuItemInfoW	aa453034	no-print-on-page	
+include/Winuser.h	GetSubMenu	aa453134	no-print-on-page	
+include/Winuser.h	GetSystemMenu	aa453166	no-print-on-page	
+include/Winuser.h	InsertMenuW	aa453169	no-print-on-page	
+include/Winuser.h	LoadMenuW	ms909853	no-print-on-page	
+include/Winuser.h	RemoveMenu	aa453415	no-print-on-page	
+include/Winuser.h	SetMenuItemInfoW	ms939775	no-print-on-page	
+include/Winuser.h	TrackPopupMenu	ms940027	no-print-on-page	
+include/Winuser.h	TrackPopupMenuEx	aa453773	no-print-on-page	
+include/Winuser.h	CreateDialogIndirect	ms908169	no-print-on-page	
+include/Winuser.h	CreateDialogIndirectParamW	ms908170	no-print-on-page	
+include/Winuser.h	DefDlgProcW	ms908172	no-print-on-page	
+include/Winuser.h	DialogBoxIndirectParamW	aa452948	no-print-on-page	
+include/Winuser.h	EndDialog	aa452950	no-print-on-page	
+include/Winuser.h	GetDialogBaseUnits	aa453038	no-print-on-page	
+include/Winuser.h	GetDlgCtrlID	ms929231	no-print-on-page	
+include/Winuser.h	GetDlgItem	ms929233	no-print-on-page	
+include/Winuser.h	GetDlgItemInt	ms929234	no-print-on-page	
+include/Winuser.h	GetDlgItemTextW	ms929235	no-print-on-page	
+include/Winuser.h	GetNextDlgGroupItem	ms929236	no-print-on-page	
+include/Winuser.h	GetNextDlgTabItem	aa453145	no-print-on-page	
+include/Winuser.h	IsDialogMessageW	aa453146	no-print-on-page	
+include/Winuser.h	MapDialogRect	ms909864	no-print-on-page	
+include/Winuser.h	SendDlgItemMessageW	ms911788	no-print-on-page	
+include/Winuser.h	SetDlgItemInt		no-pageid	
+include/Winuser.h	SetDlgItemTextW	ms940020	no-print-on-page	
+include/Winuser.h	CheckRadioButton	ms928577	no-print-on-page	
+include/Winuser.h	CloseClipboard		no-pageid	
+include/Winuser.h	CountClipboardFormats	ms928586	no-print-on-page	
+include/Winuser.h	EmptyClipboard	ms908153	no-print-on-page	
+include/Winuser.h	EnumClipboardFormats	aa453019	no-print-on-page	
+include/Winuser.h	GetClipboardData	aa453047	no-print-on-page	
+include/Winuser.h	GetClipboardDataAlloc	ms929215	no-print-on-page	
+include/Winuser.h	GetClipboardFormatNameW	ms929216	no-print-on-page	
+include/Winuser.h	GetClipboardOwner	ms929217	no-print-on-page	
+include/Winuser.h	GetOpenClipboardWindow	ms929218	no-print-on-page	
+include/Winuser.h	GetPriorityClipboardFormat	aa453149	no-print-on-page	
+include/Winuser.h	IsClipboardFormatAvailable	aa453154	no-print-on-page	
+include/Winuser.h	OpenClipboard	ms909863	no-print-on-page	
+include/Winuser.h	RegisterClipboardFormatW	ms911905	no-print-on-page	
+include/Winuser.h	SetClipboardData	ms913094	no-print-on-page	
+include/Winuser.h	CreateIconIndirect		no-pageid	
+include/Winuser.h	DestroyIcon	ms908175	no-print-on-page	
+include/Winuser.h	DrawIconEx	aa452938	no-print-on-page	
+include/Winuser.h	GetIconInfo	aa452972	no-print-on-page	
+include/Winuser.h	LoadIconW	ms929247	no-print-on-page	
+include/Winuser.h	LoadImageW	aa453411	no-print-on-page	
+include/Winuser.h	EnableHardwareKeyboard		no-pageid	
+include/Winuser.h	GetSysColor	aa453033	no-print-on-page	
+include/Winuser.h	GetSystemMetrics	aa453167	no-print-on-page	
+include/Winuser.h	SystemParametersInfoW	aa453170	no-print-on-page	
+include/Winuser.h	ClipCursor		no-pageid	
+include/Winuser.h	GetClipCursor	ms928585	no-print-on-page	
+include/Winuser.h	GetCursor	ms929220	no-print-on-page	
+include/Winuser.h	GetCursorPos	ms929225	no-print-on-page	
+include/Winuser.h	SetCursor	ms929226	no-print-on-page	
+include/Winuser.h	ShowCursor	ms940016	no-print-on-page	
+include/Winuser.h	LoadCursorW	aa453730	no-print-on-page	
+include/Winuser.h	CreateCursor	aa453410	no-print-on-page	
+include/Winuser.h	DestroyCursor	ms908167	no-print-on-page	
+include/Winuser.h	DrawIcon	aa452937	no-print-on-page	
+include/Winuser.h	SetCapture	aa452971	no-print-on-page	
+include/Winuser.h	ReleaseCapture	ms940011	no-print-on-page	
+include/Winuser.h	GetCapture	ms939750	no-print-on-page	
+include/Winuser.h	GetDoubleClickTime	ms929208	no-print-on-page	
+include/Winuser.h	GetMouseMovePoints	ms929237	no-print-on-page	
+include/Winuser.h	mouse_event	aa453139	no-print-on-page	
+include/Winuser.h	SetCursorPos	ms924860	match	
+include/Winuser.h	AllKeys	ee501942	match	
+include/Ws2spi.h	WSPAccept		no-pageid	
+include/Ws2spi.h	WSPAddressToString		no-pageid	
+include/Ws2spi.h	WSPAsyncSelect		no-pageid	
+include/Ws2spi.h	WSPBind		no-pageid	
+include/Ws2spi.h	WSPCleanup		no-pageid	
+include/Ws2spi.h	WSPCloseSocket		no-pageid	
+include/Ws2spi.h	WSPConnect		no-pageid	
+include/Ws2spi.h	WSPDuplicateSocket		no-pageid	
+include/Ws2spi.h	WSPEnumNetworkEvents		no-pageid	
+include/Ws2spi.h	WSPEventSelect		no-pageid	
+include/Ws2spi.h	WSPGetOverlappedResult		no-pageid	
+include/Ws2spi.h	WSPGetPeerName		no-pageid	
+include/Ws2spi.h	WSPGetSockName		no-pageid	
+include/Ws2spi.h	WSPGetSockOpt		no-pageid	
+include/Ws2spi.h	WSPIoctl		no-pageid	
+include/Ws2spi.h	WSPJoinLeaf		no-pageid	
+include/Ws2spi.h	WSPListen		no-pageid	
+include/Ws2spi.h	WSPRecv		no-pageid	
+include/Ws2spi.h	WSPRecvDisconnect		no-pageid	
+include/Ws2spi.h	WSPRecvFrom		no-pageid	
+include/Ws2spi.h	WSPSelect		no-pageid	
+include/Ws2spi.h	WSPSend		no-pageid	
+include/Ws2spi.h	WSPSendDisconnect		no-pageid	
+include/Ws2spi.h	WSPSendTo		no-pageid	
+include/Ws2spi.h	WSPSetSockOpt		no-pageid	
+include/Ws2spi.h	WSPShutdown		no-pageid	
+include/Ws2spi.h	WSPSocket		no-pageid	
+include/Ws2spi.h	WSPStartup	ms898913	annotated-deviation	arg3: page='WSPUPCALLTABLE' hdr='const WSPUPCALLTABLE*'
+include/Ws2spi.h	WSPStringToAddress	ms898913	no-print-on-page	
+include/Ws2spi.h	NSPCleanup		no-pageid	
+include/Ws2spi.h	NSPGetServiceClassInfo		no-pageid	
+include/Ws2spi.h	NSPInstallServiceClass		no-pageid	
+include/Ws2spi.h	NSPLookupServiceBegin		no-pageid	
+include/Ws2spi.h	NSPLookupServiceEnd		no-pageid	
+include/Ws2spi.h	NSPLookupServiceNext	ms895756	no-print-on-page	
+include/Ws2spi.h	NSPRemoveServiceClass	ms895756	no-print-on-page	
+include/Ws2spi.h	NSPSetService	ms895756	no-print-on-page	
+include/Ws2spi.h	NSPStartup		no-pageid	
+include/Ws2spi.h	WPUCloseEvent		no-pageid	
+include/Ws2spi.h	WPUCloseSocketHandle		no-pageid	
+include/Ws2spi.h	WPUCreateEvent		no-pageid	
+include/Ws2spi.h	WPUCreateSocketHandle		no-pageid	
+include/Ws2spi.h	WPUFDIsSet		no-pageid	
+include/Ws2spi.h	WPUGetProviderPath		no-pageid	
+include/Ws2spi.h	WPUQuerySocketHandleContext		no-pageid	
+include/Ws2spi.h	WPUResetEvent		no-pageid	
+include/Ws2spi.h	WPUSetEvent		no-pageid	
+include/Ws2spi.h	WSCEnumProtocols		no-pageid	
+include/Ws2spi.h	WSCInstallNameSpace		no-pageid	
+include/Ws2spi.h	WSCInstallProvider		no-pageid	
+include/Ws2spi.h	WSCUnInstallNameSpace		no-pageid	
+include/Ws2tcpip.h	getaddrinfo		no-pageid	
+include/Ws2tcpip.h	freeaddrinfo		no-pageid	
+include/Ws2tcpip.h	getnameinfo		no-pageid	
+include/Wsdapi.h	WSDDetachLinkedMemory	ee499176	match	
+include/Wsdapi.h	WSDFreeLinkedMemory	ee499437	match	
+include/Wsdapi.h	WSDAttachLinkedMemory	ee499826	match	
+include/Wsdapi.h	WSDSetConfigurationOption	ee500770	match	
+include/Wsdapi.h	WSDGetConfigurationOption	ee500826	match	
+include/Wsdapi.h	WSDAllocateLinkedMemory	ee501098	match	
+include/Wzcsapi.h	WZCDeleteIntfObj	ms923684	match	
+include/Wzcsapi.h	WZCEnumInterfaces	ms923686	match	
+include/Wzcsapi.h	WZCPassword2Key	ms923687	match	
+include/Wzcsapi.h	WZCQueryContext	ms923688	match	
+include/Wzcsapi.h	WZCQueryInterface	ms923689	match	
+include/Wzcsapi.h	WZCRefreshInterface	ms923690	match	
+include/Wzcsapi.h	WZCSetContext	ms923691	match	
+include/Wzcsapi.h	WZCSetInterface	ms923692	match	
+include/aygshell.h	SHChangeNotifyDeregister		no-pageid	
+include/aygshell.h	SHChangeNotifyFree	aa453672	match	
+include/aygshell.h	SHChangeNotifyRegister	aa453673	match	
+include/aygshell.h	SHCloseApps	aa453674	match	
+include/aygshell.h	SHCreateMenuBar	aa453678	match	
+include/aygshell.h	SHCreateNewItem	aa453679	match	
+include/aygshell.h	SHDoneButton	aa453682	match	
+include/aygshell.h	SHEnumPropSheetHandlers	aa453688	match	
+include/aygshell.h	SHFindMenuBar	aa453692	match	
+include/aygshell.h	SHFreeContextMenuExtensions	aa453693	match	
+include/aygshell.h	SHFullScreen	aa453694	match	
+include/aygshell.h	SHGetAppKeyAssoc	aa453695	match	
+include/aygshell.h	SHGetEmergencyCallList	aa453699	match	
+include/aygshell.h	SHGetInputContext	aa453701	match	
+include/aygshell.h	SHHandleWMActivate	aa453710	match	
+include/aygshell.h	SHHandleWMSettingChange	aa453711	match	
+include/aygshell.h	SHInitExtraControls	aa453715	match	
+include/aygshell.h	SHInputDialog	aa453716	match	
+include/aygshell.h	SHInvokeContextMenuCommand	aa453717	match	
+include/aygshell.h	SHLoadContextMenuExtensions	aa453719	match	
+include/aygshell.h	SHNavigateBack	aa453722	match	
+include/aygshell.h	SHNotificationAdd	aa453723	match	
+include/aygshell.h	SHNotificationGetData	aa453725	match	
+include/aygshell.h	SHNotificationRemove	aa453726	match	
+include/aygshell.h	SHNotificationUpdate	aa453727	match	
+include/aygshell.h	SHRecognizeGesture	aa453732	match	
+include/aygshell.h	SHSetAppKeyWndAssoc		no-pageid	
+include/aygshell.h	SHSetBack	aa453735	match	
+include/aygshell.h	SHSetInputContext	aa453736	match	
+include/aygshell.h	SHSetNavBarText	aa453737	match	
+include/aygshell.h	SHSipInfo	aa453740	match	
+include/aygshell.h	SHSipPreference		no-pageid	
+include/getdeviceuniqueid.h	GetDeviceUniqueID	ee488618	match	
+include/p2p.h	PeerCreatePeerName	ms895846	match	
+include/p2p.h	PeerEndEnumeration	ms895848	match	
+include/p2p.h	PeerEnumGroups	ms895849	match	
+include/p2p.h	PeerEnumIdentities	ms895853	match	
+include/p2p.h	PeerFreeData	ms895857	match	
+include/p2p.h	PeerGetItemCount	ms895860	match	
+include/p2p.h	PeerGetNextItem	ms895866	match	
+include/p2p.h	PeerIdentityCreate	ms895870	match	
+include/p2p.h	PeerIdentityDelete	ms895875	match	
+include/p2p.h	PeerIdentityExport	ms895877	match	
+include/p2p.h	PeerIdentityGetCryptKey	ms895881	match	
+include/p2p.h	PeerIdentityGetFriendlyName	ms895884	match	
+include/p2p.h	PeerIdentityGetXML	ms895889	match	
+include/p2p.h	PeerIdentityImport	ms895893	match	
+include/p2p.h	PeerIdentitySetFriendlyName	ms895898	match	
+include/pm.h	DevicePowerNotify	ms898291	match	
+include/pm.h	GetDevicePower	aa447831	match	
+include/pm.h	GetSystemPowerState	ms899319	match	
+include/pm.h	ReleasePowerRelationship	ms919802	match	
+include/pm.h	ReleasePowerRequirement	ms919803	match	
+include/pm.h	RequestPowerNotifications	ms919833	match	
+include/pm.h	SetDevicePower	ms920584	match	
+include/pm.h	SetPowerRequirement	ms920689	match	
+include/pm.h	SetSystemPowerState	ms920754	match	
+include/pm.h	StopPowerNotifications	aa448148	match	
+include/pm.h	RegisterPowerRelationship	ms919797	match	
+include/shellsdk.h	SHInitDialog	aa453713	match	
+include/sideshow.h	SideShowMgr_FindFirstItem	cc664381	match	
+include/sideshow.h	SideShowMgr_FindNextItem	cc700961	match	
+include/sideshow.h	SideShowMgr_GetAvailableUserNames	cc664367	match	
+include/sideshow.h	SideShowMgr_GetCurrentCacheSize	cc664369	match	
+include/sideshow.h	SideShowMgr_GetGadgetCount	cc664397	match	
+include/sideshow.h	SideShowMgr_GetGadgetInfo	cc664402	match	
+include/sideshow.h	SideShowMgr_GetGadgetInfoSizes	cc664224	match	
+include/sideshow.h	SideShowMgr_GetGadgetOrder	cc664399	match	
+include/sideshow.h	SideShowMgr_GetGuidsFromGadgetId	cc664368	match	
+include/sideshow.h	SideShowMgr_GetItemData	cc700960	match	
+include/sideshow.h	SideShowMgr_GetItemDataSize	cc664231	match	
+include/sideshow.h	SideShowMgr_GetItemDataSizeTimeout	cc664227	match	
+include/sideshow.h	SideShowMgr_GetNotificationInfo	cc700970	match	
+include/sideshow.h	SideShowMgr_GetNotificationInfoSizes	cc664400	match	
+include/sideshow.h	SideShowMgr_GetSizeOfAvailableUserNames	cc664373	match	
+include/sideshow.h	SideShowMgr_IsServiceRunning	cc700962	match	
+include/sideshow.h	SideShowMgr_SendApplicationEvent	cc664228	match	
+include/sideshow.h	SideShowMgr_SetMaximumCacheSize	cc664392	match	
+include/sideshow.h	SideShowMgr_Start	cc664223	match	
+include/sideshow.h	SideShowMgr_Stop	cc664220	match	
+include/sideshow.h	SideShowMgr_UserChangeRequest	cc700964	match	
+include/sideshow.h	SideShowMgr_UserChangeRequestCch	cc664225	match	
+include/oak/Battery.h	BatteryDrvrGetLevels	ms896130	match	
+include/oak/Battery.h	BatteryDrvrSupportsChangeNotification	ms896131	match	
+include/oak/Dbgapi.h	WriteDebugLED	aa450990	match	
+include/oak/Devload.h	EnumPnpIds	aa447792	match	
+include/oak/Devload.h	OpenDeviceKey	ms919310	match	
+include/oak/Devload.h	EnumDevices	aa447791	match	
+include/oak/Fsdmgr.h	FSDMGR_ReadDiskEx		no-pageid	
+include/oak/Fsdmgr.h	FSDMGR_WriteDiskEx		no-pageid	
+include/oak/Fsdmgr.h	FSD_UnhookVolume		no-pageid	
+include/oak/Fsdmgr.h	FSDMGR_EmptyLockContainer	aa517921	no-print-on-page	
+include/oak/Hiddi.h	HIDDeviceNotifications	ms899395	match	
+include/oak/Led_drvr.h	NLedDriverGetDeviceInfo	ms905300	match	
+include/oak/Led_drvr.h	NLedDriverInitialize	ms905305	match	
+include/oak/Led_drvr.h	NLedDriverPowerDown	ms905309	match	
+include/oak/Led_drvr.h	NLedDriverSetDevice	ms905313	match	
+include/oak/Lockmgrhelp.h	FSDMGR_OpenFileLockState		no-pageid	
+include/oak/Lockmgrhelp.h	FSDMGR_CloseFileLockState		no-pageid	
+include/oak/Ndis.h	NdisAcquireReadWriteLock	aa447900	match	
+include/oak/Ndis.h	NdisAcquireSpinLock	aa447901	match	
+include/oak/Ndis.h	NdisAdjustBufferLength	aa447902	match	
+include/oak/Ndis.h	NdisAllocateBuffer	aa447903	match	
+include/oak/Ndis.h	NdisAllocateBufferPool	aa447904	match	
+include/oak/Ndis.h	NdisAllocateMemory	aa447905	match	
+include/oak/Ndis.h	NdisAllocateMemoryWithTag	aa447906	match	
+include/oak/Ndis.h	NdisAllocatePacket	aa447907	match	
+include/oak/Ndis.h	NdisAllocatePacketPool	aa447908	match	
+include/oak/Ndis.h	NdisAllocateSpinLock	aa447910	match	
+include/oak/Ndis.h	NdisAnsiStringToUnicodeString	aa447911	match	
+include/oak/Ndis.h	NdisBindProtocolsToAdapter	aa447912	match	
+include/oak/Ndis.h	NdisBufferLength	aa447914	match	
+include/oak/Ndis.h	NdisBufferVirtualAddress	aa447917	match	
+include/oak/Ndis.h	NdisCancelSendPackets	aa447919	match	
+include/oak/Ndis.h	NdisCancelTimer	aa447920	match	
+include/oak/Ndis.h	NdisChainBufferAtBack	aa447921	match	
+include/oak/Ndis.h	NdisChainBufferAtFront	aa447922	match	
+include/oak/Ndis.h	NdisCloseAdapter	aa447923	match	
+include/oak/Ndis.h	NdisCloseConfiguration	aa447924	match	
+include/oak/Ndis.h	NdisCloseFile	aa447925	match	
+include/oak/Ndis.h	NdisCompleteBindAdapter	aa447926	match	
+include/oak/Ndis.h	NdisCompleteUnbindAdapter	aa447927	match	
+include/oak/Ndis.h	NdisCopyBuffer	aa447929	match	
+include/oak/Ndis.h	NdisCopyFromPacketToPacket	aa447930	match	
+include/oak/Ndis.h	NdisCopyLookaheadData	aa447931	match	
+include/oak/Ndis.h	NdisCreateLookaheadBufferFromSharedMemory	aa447932	no-print-on-page	
+include/oak/Ndis.h	NdisDeregisterAdapter	aa447934	match	
+include/oak/Ndis.h	NdisDeregisterProtocol	aa447935	match	
+include/oak/Ndis.h	NdisDestroyLookaheadBufferFromSharedMemory	aa447936	match	
+include/oak/Ndis.h	NdisDprAcquireSpinLock	aa447937	no-print-on-page	
+include/oak/Ndis.h	NdisDprAllocatePacket	aa447938	match	
+include/oak/Ndis.h	NdisDprAllocatePacketNonInterlocked	aa447939	match	
+include/oak/Ndis.h	NdisDprFreePacket	aa447940	match	
+include/oak/Ndis.h	NdisDprFreePacketNonInterlocked	aa447941	match	
+include/oak/Ndis.h	NdisDprReleaseSpinLock	aa447942	no-print-on-page	
+include/oak/Ndis.h	NdisEqualAnsiString	aa447944	match	
+include/oak/Ndis.h	NdisEqualMemory	aa447945	match	
+include/oak/Ndis.h	NdisEqualString	aa447946	no-print-on-page	
+include/oak/Ndis.h	NdisEqualUnicodeString	aa447947	match	
+include/oak/Ndis.h	NdisFillMemory	aa447949	match	
+include/oak/Ndis.h	NdisFlushBuffer	aa447950	match	
+include/oak/Ndis.h	NdisFreeBuffer	aa447951	match	
+include/oak/Ndis.h	NdisFreeBufferPool	aa447952	match	
+include/oak/Ndis.h	NdisFreeEvent	aa447953	match	
+include/oak/Ndis.h	NdisFreeMemory	aa447954	no-print-on-page	
+include/oak/Ndis.h	NdisFreePacket	aa447955	match	
+include/oak/Ndis.h	NdisFreePacketPool	aa447956	match	
+include/oak/Ndis.h	NdisFreeReadWriteLock	aa447957	match	
+include/oak/Ndis.h	NdisFreeSpinLock	aa447958	no-print-on-page	
+include/oak/Ndis.h	NdisFreeString	aa447959	match	
+include/oak/Ndis.h	NdisGeneratePartialCancelId	aa447960	match	
+include/oak/Ndis.h	NdisGetAdapterBindings	aa447961	match	
+include/oak/Ndis.h	NdisGetAdapterNames	aa447962	match	
+include/oak/Ndis.h	NdisGetCacheFillSize	aa447963	match	
+include/oak/Ndis.h	NdisGetCurrentSystemTime	aa447964	match	
+include/oak/Ndis.h	NdisGetDriverHandle	aa447965	match	
+include/oak/Ndis.h	NdisGetFirstBufferFromPacket	aa447966	no-print-on-page	
+include/oak/Ndis.h	NdisGetNextBuffer	aa447968	match	
+include/oak/Ndis.h	NdisGetPacketCancelId	aa447970	match	
+include/oak/Ndis.h	NdisGetPacketFlags	aa447972	match	
+include/oak/Ndis.h	NdisGetPhysicalAddressHigh	aa447980	match	
+include/oak/Ndis.h	NdisGetPhysicalAddressLow	aa447981	match	
+include/oak/Ndis.h	NdisGetPoolFromPacket	aa447982	match	
+include/oak/Ndis.h	NdisGetProtocolNames	aa447983	match	
+include/oak/Ndis.h	NdisGetReceivedPacket	aa447984	match	
+include/oak/Ndis.h	NdisGetSystemUpTime	aa447985	match	
+include/oak/Ndis.h	NdisIMAssociateMiniport	aa447987	match	
+include/oak/Ndis.h	NdisIMCancelInitializeDeviceInstance	aa447988	match	
+include/oak/Ndis.h	NdisIMCopySendCompletePerPacketInfo	aa447989	match	
+include/oak/Ndis.h	NdisIMCopySendPerPacketInfo	aa447990	match	
+include/oak/Ndis.h	NdisIMDeInitializeDeviceInstance	aa447991	match	
+include/oak/Ndis.h	NdisIMDeregisterLayeredMiniport	aa447992	match	
+include/oak/Ndis.h	NdisIMGetBindingContext	aa447993	match	
+include/oak/Ndis.h	NdisIMGetCurrentPacketStack	aa447994	match	
+include/oak/Ndis.h	NdisIMGetDeviceContext	aa447995	match	
+include/oak/Ndis.h	NdisIMInitializeDeviceInstance	aa447996	match	
+include/oak/Ndis.h	NdisIMInitializeDeviceInstanceEx	aa447997	match	
+include/oak/Ndis.h	NdisIMNotifyPnPEvent	aa447998	match	
+include/oak/Ndis.h	NdisIMRegisterLayeredMiniport	aa448001	match	
+include/oak/Ndis.h	NdisInitAnsiString	aa448002	no-print-on-page	
+include/oak/Ndis.h	NdisInitializeEvent	aa448004	match	
+include/oak/Ndis.h	NdisInitializeReadWriteLock	aa448006	match	
+include/oak/Ndis.h	NdisInitializeString	aa448007	no-print-on-page	
+include/oak/Ndis.h	NdisInitializeTimer	aa448008	match	
+include/oak/Ndis.h	NdisInitializeWorkItem	aa448009	match	
+include/oak/Ndis.h	NdisInitUnicodeString	aa448010	no-print-on-page	
+include/oak/Ndis.h	NdisInterlockedAddUlong	aa448012	match	
+include/oak/Ndis.h	NdisInterlockedDecrement	aa448013	match	
+include/oak/Ndis.h	NdisInterlockedIncrement	aa448014	match	
+include/oak/Ndis.h	NdisMAllocateSharedMemory	aa448023	match	
+include/oak/Ndis.h	NdisMapFile	aa448024	match	
+include/oak/Ndis.h	NdisMCancelTimer	aa448025	match	
+include/oak/Ndis.h	NdisMCloseLog	aa448026	match	
+include/oak/Ndis.h	NdisMCompleteBufferPhysicalMapping	aa448027	match	
+include/oak/Ndis.h	NdisMCreateLog	aa448028	match	
+include/oak/Ndis.h	NdisMDeregisterAdapterShutdownHandler	aa448029	match	
+include/oak/Ndis.h	NdisMDeregisterInterrupt	aa448030	match	
+include/oak/Ndis.h	NdisMDeregisterIoPortRange	aa448031	match	
+include/oak/Ndis.h	NdisMEthIndicateReceive	aa448033	match	
+include/oak/Ndis.h	NdisMEthIndicateReceiveComplete	aa448034	match	
+include/oak/Ndis.h	NdisMFlushLog	aa448035	match	
+include/oak/Ndis.h	NdisMFreeMapRegisters	aa448036	match	
+include/oak/Ndis.h	NdisMFreeSharedMemory	aa448037	match	
+include/oak/Ndis.h	NdisMIndicateReceivePacket	aa448038	no-print-on-page	
+include/oak/Ndis.h	NdisMIndicateStatus	aa448039	match	
+include/oak/Ndis.h	NdisMIndicateStatusComplete	aa448040	match	
+include/oak/Ndis.h	NdisMInitializeTimer	aa448042	match	
+include/oak/Ndis.h	NdisCompletePnPEvent	aa448313	match	
+include/oak/Ndis.h	NdisGetVersion	aa448316	match	
+include/oak/Ndis.h	NdisIMRevertBack	aa448318	no-print-on-page	
+include/oak/Ndis.h	NdisIMSwitchToMiniport	aa448319	match	
+include/oak/Ndis.h	NdisPacketSize	aa448321	match	
+include/oak/Ndis.h	NdisSetPacketPoolProtocolId	aa448322	match	
+include/oak/Ndis.h	NdisMInitializeWrapper	ms904029	match	
+include/oak/Ndis.h	NdisMMapIoSpace	ms904037	match	
+include/oak/Ndis.h	NdisMoveFromMappedMemory	ms904038	match	
+include/oak/Ndis.h	NdisMoveMappedMemory	ms904039	match	
+include/oak/Ndis.h	NdisMoveMemory	ms904040	no-print-on-page	
+include/oak/Ndis.h	NdisMoveToMappedMemory	ms904041	no-print-on-page	
+include/oak/Ndis.h	NdisMPciAssignResources	ms904042	match	
+include/oak/Ndis.h	NdisMPromoteMiniport	ms904043	match	
+include/oak/Ndis.h	NdisMQueryAdapterInstanceName	ms904044	match	
+include/oak/Ndis.h	NdisMQueryAdapterResources	ms904045	match	
+include/oak/Ndis.h	NdisMQueryInformationComplete	ms904046	match	
+include/oak/Ndis.h	NdisMRebindProtocolsToAdapter	ms904047	match	
+include/oak/Ndis.h	NdisMRegisterInterrupt	ms904049	match	
+include/oak/Ndis.h	NdisMRegisterIoPortRange	ms904051	match	
+include/oak/Ndis.h	NdisMRegisterMiniport	ms904052	match	
+include/oak/Ndis.h	NdisMRemoveMiniport	ms904054	match	
+include/oak/Ndis.h	NdisMResetComplete	ms904055	match	
+include/oak/Ndis.h	NdisMSendComplete	ms904056	match	
+include/oak/Ndis.h	NdisMSendResourcesAvailable	ms904057	match	
+include/oak/Ndis.h	NdisMSetAttributes	ms904058	match	
+include/oak/Ndis.h	NdisMSetAttributesEx	ms904059	match	
+include/oak/Ndis.h	NdisMSetInformationComplete	ms904060	match	
+include/oak/Ndis.h	NdisMSetMiniportSecondary	ms904061	match	
+include/oak/Ndis.h	NdisMSetPeriodicTimer	ms904062	match	
+include/oak/Ndis.h	NdisMSetTimer	ms904063	match	
+include/oak/Ndis.h	NdisMSleep	ms904064	no-print-on-page	
+include/oak/Ndis.h	NdisMSynchronizeWithInterrupt	ms904066	match	
+include/oak/Ndis.h	NdisMTransferDataComplete	ms904067	match	
+include/oak/Ndis.h	NdisMTrIndicateReceive	ms904068	match	
+include/oak/Ndis.h	NdisMTrIndicateReceiveComplete	ms904069	match	
+include/oak/Ndis.h	NdisMUnmapIoSpace	ms904070	match	
+include/oak/Ndis.h	NdisMUpdateSharedMemory	ms904071	match	
+include/oak/Ndis.h	NdisMWanIndicateReceive	ms904072	match	
+include/oak/Ndis.h	NdisMWanIndicateReceiveComplete	ms904073	match	
+include/oak/Ndis.h	NdisMWanSendComplete	ms904074	match	
+include/oak/Ndis.h	NdisMWriteLogData	ms904075	match	
+include/oak/Ndis.h	NdisOpenConfiguration	ms904079	no-print-on-page	
+include/oak/Ndis.h	NdisOpenConfigurationKeyByIndex	ms904080	match	
+include/oak/Ndis.h	NdisOpenConfigurationKeyByName	ms904081	match	
+include/oak/Ndis.h	NdisOpenFile	ms904082	match	
+include/oak/Ndis.h	NdisOpenProtocolConfiguration	ms904083	no-print-on-page	
+include/oak/Ndis.h	NdisPrintString	ms904097	match	
+include/oak/Ndis.h	NdisQueryAdapterInstanceName	ms904100	match	
+include/oak/Ndis.h	NdisQueryBuffer	ms904101	no-print-on-page	
+include/oak/Ndis.h	NdisQueryBufferOffset	ms904102	match	
+include/oak/Ndis.h	NdisQueryPacket	ms904104	match	
+include/oak/Ndis.h	NdisQueryPendingIoCount	ms904105	match	
+include/oak/Ndis.h	NdisRawReadPortBufferUchar	ms904107	match	
+include/oak/Ndis.h	NdisRawReadPortBufferUlong	ms904108	match	
+include/oak/Ndis.h	NdisRawReadPortBufferUshort	ms904109	match	
+include/oak/Ndis.h	NdisRawReadPortUchar	ms904110	match	
+include/oak/Ndis.h	NdisRawReadPortUlong	ms904112	match	
+include/oak/Ndis.h	NdisRawReadPortUshort	ms904113	match	
+include/oak/Ndis.h	NdisRawWritePortBufferUchar	ms904114	match	
+include/oak/Ndis.h	NdisRawWritePortBufferUlong	ms904115	match	
+include/oak/Ndis.h	NdisRawWritePortBufferUshort	ms904116	match	
+include/oak/Ndis.h	NdisRawWritePortUchar	ms904117	match	
+include/oak/Ndis.h	NdisRawWritePortUlong	ms904118	match	
+include/oak/Ndis.h	NdisRawWritePortUshort	ms904119	match	
+include/oak/Ndis.h	NdisReadConfiguration	ms904120	match	
+include/oak/Ndis.h	NdisReadNetworkAddress	ms904121	no-print-on-page	
+include/oak/Ndis.h	NdisReadPciSlotInformation	ms904122	match	
+include/oak/Ndis.h	NdisReadPcmciaAttributeMemory	ms904123	match	
+include/oak/Ndis.h	NdisReadPortUchar	ms904124	match	
+include/oak/Ndis.h	NdisReadPortUlong	ms904125	match	
+include/oak/Ndis.h	NdisReadPortUshort	ms904126	no-print-on-page	
+include/oak/Ndis.h	NdisReadRegisterUchar	ms904127	match	
+include/oak/Ndis.h	NdisReadRegisterUlong	ms904128	match	
+include/oak/Ndis.h	NdisReadRegisterUshort	ms904129	match	
+include/oak/Ndis.h	NdisRebindProtocolsToAdapter	ms904130	match	
+include/oak/Ndis.h	NdisRecalculatePacketCounts	ms904131	match	
+include/oak/Ndis.h	NdisReEnumerateProtocolBindings	ms904132	match	
+include/oak/Ndis.h	NdisRegisterAdapter	ms904133	match	
+include/oak/Ndis.h	NdisRegisterProtocol	ms904134	no-print-on-page	
+include/oak/Ndis.h	NdisReinitializePacket	ms904135	match	
+include/oak/Ndis.h	NdisReleaseReadWriteLock	ms904136	match	
+include/oak/Ndis.h	NdisReleaseSpinLock	ms904137	match	
+include/oak/Ndis.h	NdisRequest	ms904323	match	
+include/oak/Ndis.h	NdisReset	ms904619	match	
+include/oak/Ndis.h	NdisResetEvent	ms904728	match	
+include/oak/Ndis.h	NdisRetrieveUlong	ms904737	match	
+include/oak/Ndis.h	NdisReturnPackets	ms904846	match	
+include/oak/Ndis.h	NdisScheduleWorkItem	ms904952	match	
+include/oak/Ndis.h	NdisSend	ms904960	match	
+include/oak/Ndis.h	NdisSendPackets	ms904962	match	
+include/oak/Ndis.h	NdisSetEvent	ms904963	match	
+include/oak/Ndis.h	NdisSetPacketCancelId	ms904966	match	
+include/oak/Ndis.h	NdisSetPacketFlags	ms904968	match	
+include/oak/Ndis.h	NdisSetPhysicalAddressHigh	ms904976	match	
+include/oak/Ndis.h	NdisSetPhysicalAddressLow	ms904977	match	
+include/oak/Ndis.h	NdisSetTimer	ms904979	match	
+include/oak/Ndis.h	NdisStallExecution	ms904980	match	
+include/oak/Ndis.h	NdisStoreUlong	ms904982	match	
+include/oak/Ndis.h	NdisSystemProcessorCount	ms904984	match	
+include/oak/Ndis.h	NdisTerminateWrapper	ms905028	no-print-on-page	
+include/oak/Ndis.h	NdisTransferData	ms905029	match	
+include/oak/Ndis.h	NdisUnbindProtocolsFromAdapter	ms905035	match	
+include/oak/Ndis.h	NdisUnchainBufferAtBack	ms905036	match	
+include/oak/Ndis.h	NdisUnchainBufferAtFront	ms905037	match	
+include/oak/Ndis.h	NdisUnicodeStringToAnsiString	ms905038	match	
+include/oak/Ndis.h	NdisUnmapFile	ms905039	match	
+include/oak/Ndis.h	NdisUpcaseUnicodeString	ms905040	match	
+include/oak/Ndis.h	NdisWaitEvent	ms905041	match	
+include/oak/Ndis.h	NdisWriteConfiguration	ms905055	match	
+include/oak/Ndis.h	NdisWriteErrorLogEntry	ms905056	no-print-on-page	
+include/oak/Ndis.h	NdisWritePciSlotInformation	ms905057	match	
+include/oak/Ndis.h	NdisWritePcmciaAttributeMemory	ms905058	match	
+include/oak/Ndis.h	NdisWritePortUchar	ms905254	match	
+include/oak/Ndis.h	NdisWritePortUlong	ms905257	match	
+include/oak/Ndis.h	NdisWritePortUshort	ms905261	match	
+include/oak/Ndis.h	NdisWriteRegisterUchar	ms905264	match	
+include/oak/Ndis.h	NdisWriteRegisterUlong	ms905268	match	
+include/oak/Ndis.h	NdisWriteRegisterUshort	ms905271	match	
+include/oak/Ndis.h	NdisZeroMappedMemory	ms905277	match	
+include/oak/Ndis.h	NdisZeroMemory	ms905279	no-print-on-page	
+include/oak/Nkintr.h	SetInterruptEvent		no-pageid	
+include/oak/Nled.h	NLedGetDeviceInfo	ms905318	match	
+include/oak/Nled.h	NLedSetDevice	ms905321	match	
+include/oak/Pkfuncs.h	CaptureDumpFileOnDevice	ms939622	match	
+include/oak/Pkfuncs.h	CacheSync		no-pageid	
+include/oak/Pkfuncs.h	ForcePageout		no-pageid	
+include/oak/Pkfuncs.h	FreeIntChainHandler	ms905534	match	
+include/oak/Pkfuncs.h	GetCurrentPermissions		no-pageid	
+include/oak/Pkfuncs.h	GetOwnerProcess		no-pageid	
+include/oak/Pkfuncs.h	InterruptDisable		no-pageid	
+include/oak/Pkfuncs.h	InterruptDone		no-pageid	
+include/oak/Pkfuncs.h	InterruptInitialize		no-pageid	
+include/oak/Pkfuncs.h	KernelIoControl		no-pageid	
+include/oak/Pkfuncs.h	LoadDriver		no-pageid	
+include/oak/Pkfuncs.h	LoadKernelLibrary	ms903212	match	
+include/oak/Pkfuncs.h	LockPages		no-pageid	
+include/oak/Pkfuncs.h	MapPtrToProcess		no-pageid	
+include/oak/Pkfuncs.h	NKCreateStaticMapping	ms903215	match	
+include/oak/Pkfuncs.h	NKForceCleanBoot	ms903216	match	
+include/oak/Pkfuncs.h	PowerOffSystem	ms903546	match	
+include/oak/Pkfuncs.h	ReadRegistryFromOEM	ms919353	match	
+include/oak/Pkfuncs.h	SetCleanRebootFlag	ms903552	match	
+include/oak/Pkfuncs.h	SetKMode		no-pageid	
+include/oak/Pkfuncs.h	SetOOMEvent	ms919612	match	
+include/oak/Pkfuncs.h	SetProcPermissions		no-pageid	
+include/oak/Pkfuncs.h	UnlockPages		no-pageid	
+include/oak/Pkfuncs.h	VirtualCopy		no-pageid	
+include/oak/Pkfuncs.h	VirtualSetPageFlags	ms920084	match	
+include/oak/Pkfuncs.h	WriteRegistryToOEM	ms920093	match	
+include/oak/Pkfuncs.h	CeCloseCallerBuffer	ee488934	match	
+include/oak/Pkfuncs.h	CeOpenCallerBuffer	ee488382	annotated-deviation	argc: page=4 hdr=5
+include/oak/Pkfuncs.h	GetCallerVMProcessId	ee482772	match	
+include/oak/Pkfuncs.h	GetDirectCallerProcessId	ee482980	match	
+include/oak/Pkfuncs.h	SetEventData	ee482792	match	
+include/oak/Pkfuncs.h	VirtualAllocCopyEx	ee488184	match	
+include/oak/Pkfuncs.h	CeGetCacheInfo	aa450791	match	
+include/oak/Pkfuncs.h	CeSetMemoryAttributes	ms885152	no-print-on-page	
+include/oak/Pkfuncs.h	DrWatsonClear	ms885203	no-print-on-page	
+include/oak/Pkfuncs.h	DrWatsonFlush	ms885204	no-print-on-page	
+include/oak/Pkfuncs.h	DrWatsonGetSize	ms885205	no-print-on-page	
+include/oak/Pkfuncs.h	DrWatsonReadData	ms885206	no-print-on-page	
+include/oak/Pkfuncs.h	DrWatsonWriteData	ms885207	no-print-on-page	
+include/oak/Pmimpl.h	PlatformManageSystemPower	ms919406	match	
+include/oak/Pmimpl.h	PlatformMapPowerStateHint	ms919407	match	
+include/oak/Pmimpl.h	PlatformResumeSystem	ms919408	match	
+include/oak/Pmimpl.h	PlatformValidatePMRegistry	ms919660	match	
+include/oak/Pmpolicy.h	PowerPolicyNotify	ms919677	match	
+include/oak/Profiler.h	ProfileStart		no-pageid	
+include/oak/Profiler.h	ProfileStop		no-pageid	
+include/oak/Rndismini.h	MDDAllocDataWrapper	ms902178	match	
+include/oak/Rndismini.h	MDDFreeDataWrapper	ms902181	skip-complex-page	
+include/oak/Rndismini.h	MDDAllocMem	ms902181	no-print-on-page	
+include/oak/Rndismini.h	MDDFreeMem	ms902182	match	
+include/oak/Rndismini.h	MddDisconnect		no-pageid	
+include/oak/Rndismini.h	MddIndicateRndisMessage		no-pageid	
+include/oak/Rndismini.h	MddIndicateRndisPacket		no-pageid	
+include/oak/Rndismini.h	PDDInit		no-pageid	
+include/oak/Sdmem.h	SDDeinitializeCardLib	ms920339	match	
+include/oak/Sdmem.h	SDInitializeCardLib	ms920376	match	
+include/oak/Serhw.h	COM_Close	aa447675	match	
+include/oak/Serhw.h	COM_Deinit	aa447676	match	
+include/oak/Serhw.h	COM_Init	aa447677	match	
+include/oak/Serhw.h	COM_IOControl	aa447678	match	
+include/oak/Serhw.h	COM_Open	aa447679	match	
+include/oak/Serhw.h	COM_PowerDown	aa447680	match	
+include/oak/Serhw.h	COM_PowerUp	aa447681	match	
+include/oak/Serhw.h	COM_Read	aa447682	match	
+include/oak/Serhw.h	COM_Write	aa447683	match	
+include/oak/Tchddi.h	TouchPanelCalibrateAPoint	aa448197	match	
+include/oak/Tchddi.h	TouchPanelDisable	aa448198	match	
+include/oak/Tchddi.h	TouchPanelGetDeviceCaps	aa448200	match	
+include/oak/Tchddi.h	TouchPanelPowerHandler	aa448202	match	
+include/oak/Tchddi.h	TouchPanelReadCalibrationAbort	aa448203	match	
+include/oak/Tchddi.h	TouchPanelReadCalibrationPoint	aa448204	match	
+include/oak/Tchddi.h	TouchPanelSetCalibration	aa448206	match	
+include/oak/Tchddi.h	TouchPanelSetMode	aa448207	match	
+include/oak/Tchddi.h	ErrorAnalysis	aa447795	match	
+include/oak/Tchddsi.h	DdsiTouchPanelAttach	ms898269	match	
+include/oak/Tchddsi.h	DdsiTouchPanelDetach	ms898270	match	
+include/oak/Tchddsi.h	DdsiTouchPanelDisable	ms898271	match	
+include/oak/Tchddsi.h	DdsiTouchPanelEnable	ms898272	match	
+include/oak/Tchddsi.h	DdsiTouchPanelGetDeviceCaps	ms898273	match	
+include/oak/Tchddsi.h	DdsiTouchPanelPowerHandler	ms898276	match	
+include/oak/Tchddsi.h	DdsiTouchPanelSetMode	ms898277	match	
+include/oak/Usbfntypes.h	UfnGetSystemSerialNumber	ee482831	match	
+include/oak/Winddi.h	BRUSHOBJ_pvAllocRbrush	ms896145	match	
+include/oak/Winddi.h	BRUSHOBJ_pvGetRbrush	ms896146	match	
+include/oak/Winddi.h	CLIPOBJ_bEnum	aa447668	match	
+include/oak/Winddi.h	CLIPOBJ_cEnumStart	aa447669	match	
+include/oak/Winddi.h	DrvCopyBits	aa447734	match	
+include/oak/Winddi.h	DrvDisableDriver	aa447737	match	
+include/oak/Winddi.h	DrvGetModes	aa447748	match	
+include/oak/Winddi.h	DrvGradientFill	aa447749	match	
+include/oak/Winddi.h	DrvMovePointer	aa447750	match	
+include/oak/Winddi.h	DrvRealizeBrush	aa447754	match	
+include/oak/Winddi.h	DrvRealizeColor	aa447755	match	
+include/oak/Winddi.h	DrvTransparentBlt	aa447761	match	
+include/oak/Winddi.h	EngDeleteSurface	aa447788	match	
+include/oak/Winddi.h	PALOBJ_cGetColors	ms919337	match	
+include/oak/Winddi.h	PATHOBJ_bEnum	ms919360	match	
+include/oak/Winddi.h	PATHOBJ_vEnumStart	ms919375	match	
+include/oak/Winddi.h	XLATEOBJ_cGetPalette	ms923694	match	

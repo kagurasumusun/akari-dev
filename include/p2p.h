@@ -129,8 +129,10 @@ AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityGetXML(PCWSTR pwzIdentity,
                     PWSTR *ppwzIdentityXML)
                     AKARI_CE_NAME(PeerIdentityGetXML);
 
-/* ms895893 "PeerIdentityImport" */
-AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityImport(PWSTR *ppwzImportXML,
+/* ms895893 "PeerIdentityImport": print `HRESULT WINAPI
+ * PeerIdentityImport( PCWSTR* ppwzImportXML, PCWSTR pwzPassword,
+ * PCWSTR* ppwzIdentity);` */
+AKARI_CE_IMPORT HRESULT WINAPI PeerIdentityImport(PCWSTR *ppwzImportXML,
                     PCWSTR pwzPassword, PCWSTR *ppwzIdentity)
                     AKARI_CE_NAME(PeerIdentityImport);
 

@@ -489,9 +489,11 @@ AKARI_CE_IMPORT MMRESULT waveOutGetVolume(HWAVEOUT hwo,
 AKARI_CE_IMPORT MMRESULT waveOutMessage(HWAVEOUT hwo, UINT uMsg,
     DWORD dw1, DWORD dw2) AKARI_CE_NAME(waveOutMessage);
 
-/* aa452455 "waveOutOpen". */
+/* aa452455 "waveOutOpen": print `MMRESULT waveOutOpen(LPHWAVEOUTphwo,
+ * UINTuDeviceID,LPWAVEFORMATEXpwfx,DWORDdwCallback,DWORDdwInstance,
+ * DWORDfdwOpen );` */
 AKARI_CE_IMPORT MMRESULT waveOutOpen(LPHWAVEOUT phwo, UINT uDeviceID,
-    LPCWAVEFORMATEX pwfx, DWORD dwCallback, DWORD dwInstance,
+    LPWAVEFORMATEX pwfx, DWORD dwCallback, DWORD dwInstance,
     DWORD fdwOpen) AKARI_CE_NAME(waveOutOpen);
 
 /* aa452456 "waveOutPause". */
