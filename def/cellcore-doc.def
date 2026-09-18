@@ -72,3 +72,4 @@ EXPORTS
   ConnMgrQueryDetailedStatus
   ConnMgrRegisterScheduledConnection
   SimGetPhonebookCapabilities
+  SimInitialize

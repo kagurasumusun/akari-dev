@@ -38,6 +38,24 @@
  * `typedef HANDLE HRSRC;`.  Its size is not published; a wrong one would
  * fix a wrong ABI, so HANDLE is the only spelling the pages support. */
 typedef HANDLE HSIM;
+typedef HSIM *LPHSIM;   /* page spelling of the SimInitialize out parameter */
+
+/* ee497363 "SIMCALLBACK" (Windows Embedded CE 6.0 and later) page
+ * print verbatim (Header: simmgr.h, Link Library: cellcore.lib). */
+typedef void (*SIMCALLBACK)(
+    DWORD dwNotifyCode,
+    const void *pData,
+    DWORD dwDataSize,
+    DWORD dwParam);
+
+/* ee497869 "SimInitialize" (Windows Embedded CE 6.0 and later) page
+ * print verbatim (Header: simmgr.h, Link Library: cellcore.lib). */
+AKARI_CE_IMPORT HRESULT SimInitialize(
+    DWORD dwFlags,
+    SIMCALLBACK lpfnCallBack,
+    DWORD dwParam,
+    LPHSIM lphSim) AKARI_CE_NAME(SimInitialize);
+
 
 #ifdef __cplusplus
 extern "C" {
