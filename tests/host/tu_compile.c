@@ -124,8 +124,8 @@
 #include <Snmpexts.h>
 #include <pm.h>
 #include <CEDDK.h>
-#include <dvddrvr.h>
-#include <dvdcss.h>
+#include <oak/dvddrvr.h>
+#include <oak/dvdcss.h>
 #include <Ddraw.h>
 #include <Dvp.h>
 #include <Urlmon.h>

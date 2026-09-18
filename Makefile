@@ -52,7 +52,7 @@ include/Ceutil.h \
 include/Cfgmgrapi.h \
 include/Comboboxview.hpp \
 include/Comcat.h \
-include/Commandapi.h \
+include/Commandapi.hpp \
 include/Commctrl.h \
 include/Commctrlview.hpp \
 include/Commdlg.h \
@@ -71,7 +71,7 @@ include/D3dmcaps.h \
 include/D3dmddk.h \
 include/D3dmtypes.h \
 include/D3dmx.h \
-include/Databaseapi.h \
+include/Databaseapi.hpp \
 include/Dccole.h \
 include/Ddraw.h \
 include/Ddvdata.h \
@@ -98,7 +98,7 @@ include/Excpt.h \
 include/Extapi.h \
 include/Externs.h \
 include/Extfile.h \
-include/Fatui.h \
+include/oak/Fatui.h \
 include/Formatdisk.h \
 include/Fwapi.h \
 include/Gcacheview.hpp \
@@ -171,7 +171,7 @@ include/Pchannel.h \
 include/Pcommctr.h \
 include/Pcommctrl.h \
 include/Pegdser.h \
-include/Phoneapi.h \
+include/Phoneapi.hpp \
 include/Pimstore.h \
 include/Playlist.h \
 include/Pnp.h \
@@ -208,7 +208,7 @@ include/Sdcard.h \
 include/Sdkddkver.h \
 include/Security.h \
 include/Service.h \
-include/Settingsapi.h \
+include/Settingsapi.hpp \
 include/Shellapi.h \
 include/Shellcb.h \
 include/Shelwapi.h \
@@ -243,7 +243,7 @@ include/Tabview.hpp \
 include/Tapi.h \
 include/Tapicomn.h \
 include/Tchar.h \
-include/Tchaud.h \
+include/oak/Tchaud.h \
 include/TileProxy.h \
 include/Tlhelp.h \
 include/Tlhelp32.h \
@@ -308,8 +308,8 @@ include/Wzcsapi.h \
 include/XamlRuntime.h \
 include/aygshell.h \
 include/bt_ddi.h \
-include/dvdcss.h \
-include/dvddrvr.h \
+include/oak/dvdcss.h \
+include/oak/dvddrvr.h \
 include/dvdmedia.h \
 include/getdeviceuniqueid.h \
 include/newmenu.h \

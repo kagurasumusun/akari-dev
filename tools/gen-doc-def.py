@@ -365,6 +365,11 @@ def main():
         # "Imejpp.dll" (M84) -- map onto the imejpp.lib token.
         if not tokens and re.search(r"imejpp\.dll", lib):
             tokens = ["imejpp.lib"]
+        # Phone (PH*) pages print the module form "PhCommon.dll"
+        # (headers commandapi.hpp/databaseapi.hpp/phoneapi.hpp/
+        # settingsapi.hpp) -- map onto the phcommon token.
+        if not tokens and re.search(r"phcommon\.dll", lib):
+            tokens = ["phcommon.lib"]
         for token in tokens:
             bylib.setdefault(token, {})[sn] = r["id"]
 
