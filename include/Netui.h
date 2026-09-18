@@ -112,4 +112,34 @@ LPTSTR szAdapterName
  * Link Library: netui.lib) */
 AKARI_CE_IMPORT BOOL AdapterIPProperties(HWND hWndOwner, LPTSTR szAdapterName) AKARI_CE_NAME(AdapterIPProperties);
 
+
+/* --- absent-surface pass 2026-09-18: HELD Netui dialog surface.
+ * Eight functions (ConnectionDialog ms908147, GetDriverName ms929238,
+ * GetNewPassword aa453143, GetNewPasswordEx aa453144,
+ * GetResourcePassword aa453158, GetUsernamePassword aa453176,
+ * GetUsernamePasswordEx aa453177, LineConfigEdit aa453295) are in
+ * netui-doc.def and print full prototypes, but every one takes a
+ * parameter struct whose array-size macros are not published anywhere
+ * in the corpus (corpus-wide value search 2026-09-18 found no print
+ * for RMLEN, PWLEN, UNLEN, DNLEN, DRIVER_NAME_LEN or
+ * NETUI_LCD_DIAL_MOD_LEN).  Shipping the structs would require
+ * inventing those values, so the prints are recorded, not shipped:
+ *
+ * aa452847:  typedef struct ADDCONNECT_DLGPARAMS {WCHAR LocalName[RMLEN + 10];WCHAR RemoteName[RMLEN];BOOL bReadOnly;} ADDCONNECT_DLGPARAMS, *PADDCONNECT_DLGPARAMS;
+ * ms929239:  typedef struct _GETDRIVERNAMEPARMS {WCHAR DriverName[DRIVER_NAME_LEN];DWORD Socket;DWORD PCCardType;} GETDRIVERNAMEPARMS, *PGETDRIVERNAMEPARMS;
+ * ms931467:  typedef struct _NETUI_NEWPWD { TCHAR szNewPassword[PWLEN+1];} NETUI_NEWPWD, *PNETUI_NEWPWD;
+ * ms931465:  typedef struct _NETUI_RESPWD {TCHAR szPassword[PWLEN +1];TCHAR szResourceName[RMLEN];} NETUI_RESPWD, *PNETUI_RESPWD;
+ * ms931466:  typedef struct _NETUI_USERPWD {TCHAR szUserName[UNLEN + 1];TCHAR szPassword[PWLEN + 1];TCHAR szDomain[DNLEN +1];DWORD dwFlags;TCHAR szResourceName[RMLEN];} NETUI_USERPWD, *PNETUI_USERPWD;
+ * aa453294:  typedef struct _LINECONFIGDATA {DWORD dwVersion;DWORD dwBaudRate;DWORD dwSettableBaud;BYTE bByteSize;BYTE bParity;BYTE bStopBits;BYTE bReserved;WORD wSettableData;WORD wWaitBong;DWORD dwCallSetupFailTimer;DWORD dwModemOptions;DWORD dwTermOptions;DWORD dwDdevCapFlags;DWORD dwModMaxLen;TCHAR szDialModifier[NETUI_LCD_DIAL_MOD_LEN + 1];WORD wSettableStopParity;} LINECONFIGDATA, *PLINECONFIGDATA;
+ *
+ * ms908147:  BOOL ConnectionDialog(HWND hParent,PADDCONNECT_DLGPARAMS pDlgParams);
+ * ms929238:  BOOL GetDriverName(HWND hParent,PGETDRIVERNAMEPARMS pDriverParms);
+ * aa453143:  BOOL WINAPI GetNewPassword ( HWND hParent, OUT PNETUI_NEWPWD pNewPwd);
+ * aa453144:  BOOL WINAPI GetNewPasswordEx ( HWND hParent, OUT PNETUI_NEWPWD pNewPwd, OUT OPTIONAL HWND* phDlg);
+ * aa453158:  BOOL GetResourcePassword(HWND hParent, PNETUI_RESPWD pResPwd);
+ * aa453176:  BOOL GetUsernamePassword(HWND hParent, PNETUI_USERPWD pUserPwd);
+ * aa453177:  BOOL GetUsernamePasswordEx ( HWND hParent, PNETUI_USERPWD pUserPwd, OPTIONAL HWND* phDlg);
+ * aa453295:  BOOL LineConfigEdit(HWND hParent,PLINECONFIGDATA pLineConfigData);
+ */
+
 #endif /* AKARI_NETUI_H_ */
