@@ -165,3 +165,4 @@ SP_MAX_WORD_LENGTH	ms895652	Sapi.h	held	no official value published; R1 check no
 Uninstall_Init	ms864576	Ce_setup.h	held	no official value published; R1 check not yet run (held per policy v3 §5)
 VMS_	ms912596	Voipmanager.h	held	no official value published; R1 check not yet run (held per policy v3 §5)
 WSACOMPLETION	ms898732	Winsock2.h	held	no official value published; R1 check not yet run (held per policy v3 §5)
+MAX_WAP_ADDRESS_LENGTH	ee497374,ee497695,ee497490	Wap.h	held	no page prints a value, only uses it as an array bound (WAP_ADDRESS.ptsAddress[MAX_WAP_ADDRESS_LENGTH]); R1 check not yet run (held per policy v3 §5); found 2026-09-19, WAP_ADDRESS shipped as an opaque forward declaration in the meantime since every function takes it only by pointer

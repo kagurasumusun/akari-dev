@@ -270,6 +270,7 @@ include/Voiperrorcodes.h \
 include/Voiplap.h \
 include/Voipmanager.h \
 include/WMDRM10ND.h \
+include/Wap.h \
 include/Wceemul.h \
 include/Webproxy.h \
 include/Wfmtmidi.h \
@@ -613,9 +614,25 @@ clean:
 # llvm-readobj.
 #   make e2e WINCECLANG=/path/to/clang
 #
-# The CRT is in-tree (crt/, merged from kagurasumusun/wince-crt), so
+# The CRT is in-tree (startup/, this tree's own "Akari CRT" -- see
+# startup/Makefile and startup/README-equivalent header comment), so
 # e2e needs nothing but the clang binary; CRTDIR only has to be
 # overridden to build against a different CRT checkout.
+#
+# FIXED 2026-09-19: CRTDIR pointed at $(CURDIR)/crt, a directory that
+# has never existed in this tree (comment above pre-dated an intended
+# "merge kagurasumusun/wince-crt into crt/" that never happened; the
+# CRT that actually shipped lives at startup/, one level up from
+# src/crt/, not crt/). Every path this Makefile builds under
+# $(CRTDIR) -- src/crt/crt0.c, build/akari_crt0.o, build/libakari.a,
+# build/akari_dllcrt.o, and `make -C $(CRTDIR)` itself -- already
+# matches startup/'s actual layout and its own Makefile 1:1; only the
+# directory name was wrong. Before this fix, `make crt` and `make e2e`
+# failed immediately with "the in-tree CRT is missing: no
+# crt/src/crt/crt0.c", so the one build step that actually links
+# def/*.def + the startup objects into a real WinCE PE image and
+# checks it with llvm-readobj had never been exercised against this
+# tree as committed.
 #
 # Toolchain adaptation (2026-09-10 LLVM-WinCE artifact, wince-llvm-
 # 01c51ef / 10134447081; superseded 2026-09-11 by 5b8f2fb / artifact
@@ -629,7 +646,7 @@ clean:
 # 0583ffe45).  The ARM e2e objects are therefore pinned to
 # -march=armv5tej to match the wince-crt build (its WCE_ARCHFLAGS)
 # and keep the pipeline on the link-verified ARMv5TE codegen.
-CRTDIR    ?= $(CURDIR)/crt
+CRTDIR    ?= $(CURDIR)/startup
 
 # M39 note: the M39 ws2 import assertions below resolve through ws2.dll (Ws2.lib
 # per the official CE pages).

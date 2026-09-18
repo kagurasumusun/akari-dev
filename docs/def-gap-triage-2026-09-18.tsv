@@ -16,19 +16,29 @@ needs-investigation	redir	0	-	no Link Library row anywhere in 85,816 pages
 needs-investigation	schannel	0	-	no Link Library row anywhere in 85,816 pages
 needs-investigation	shortcut	0	-	no Link Library row anywhere in 85,816 pages
 needs-investigation	user32	0	-	no Link Library row anywhere in 85,816 pages
-# --- new DLL-backed no-def libs found by the fixed scan (30 total):
-app-candidate	av_upnp	136	UPnP OS Design Development	UPnP framework; check for non-COM exports before def
-app-candidate	cellcore	148	ConnMgrProviderMessage	Cell Core / connection-manager provider API
-app-candidate	commctrlview	2	Customizing Common Controls	shell common-control customization
-app-candidate	gpsapi	8	(GPS Intermediate Driver client)	app-callable GPS API
-app-candidate	imaging	72	(Imaging API)	mostly COM; check for exported functions
-app-candidate	mqelib	92	(Message Queuing)	MSMQ on CE
-app-candidate	mqoa	68	Using Message Queuing COM Components	MSMQ COM automation
-app-candidate	owaexchangeclient	33	(OWA Exchange client)	mobile Exchange client API
-app-candidate	shdocvw	132	IWebBrowser2::ClientToWindow	HTML/DHTML control host
-app-candidate	sms	28	SmsGetMessageSize	SMS API
-app-candidate	wap	12	(WAP)	WAP push / services
-app-candidate	wsdapi	472	IWSDDeviceProxy::BeginGetMetadata	Web Services for Devices; COM-proxy heavy
+# --- STALE as of 2026-09-19: this bucket was not updated after
+# --- 25c96db (cellcore/gpsapi/sms/wsdapi shipped) or after this
+# --- session's wap-doc.def. The other 7 rows were re-verified this
+# --- session with tools/gen-app-defs.py against wince-docs-corpus:
+# --- av_upnp (23 titled pages), imaging (72), mqelib (46), mqoa (68),
+# --- owaexchangeclient (33), shdocvw (66), commctrlview (1) are ALL
+# --- "IFoo::Bar"/"Class.Member" COM interface or dispatch-property
+# --- names, zero plain exports -- confirmed genuinely COM-only, a
+# --- .def for them would be correctly empty (see docs/def-gap.md).
+# --- shipped, remove from active triage:
+shipped	cellcore	148	ConnMgrProviderMessage	def/cellcore-doc.def (25c96db)
+shipped	gpsapi	8	(GPS Intermediate Driver client)	def/gpsapi-doc.def (25c96db)
+shipped	sms	28	SmsGetMessageSize	def/sms-doc.def (25c96db)
+shipped	wsdapi	472	IWSDDeviceProxy::BeginGetMetadata	def/wsdapi-doc.def (25c96db)
+shipped	wap	12	WapOpen/WapClose/WapPing/WapRead/WapSend/WapGetNextPrimitiveSize	def/wap-doc.def + include/Wap.h (2026-09-19; 6 of 12 pages were plain C exports, not COM -- prior note "(WAP)/WAP push / services" undercounted this)
+# --- confirmed COM-only, correctly no .def (kept for the record):
+com-only	av_upnp	136	UPnP OS Design Development	23 titled pages, all IAVTransport::/IConnectionManager*::/IContentDirectory*::/IRenderingControl*::/wstring:: methods -- 0 plain exports
+com-only	commctrlview	2	Customizing Common Controls	1 titled page (CommCtrlView_t::Init) -- C++ class wrapper method like the *view.hpp headers already shipped, not a flat export
+com-only	imaging	72	(Imaging API)	72 titled pages, all IImage*::/IBasicBitmapOps:: methods -- 0 plain exports
+com-only	mqelib	92	(Message Queuing)	46 titled pages, all *_t:: methods (MediaQueryEngine_t:: etc.) -- 0 plain exports
+com-only	mqoa	68	Using Message Queuing COM Components	68 titled pages, all MSMQ*. dispatch properties/methods -- 0 plain exports
+com-only	owaexchangeclient	33	(OWA Exchange client)	33 titled pages, all IExchangeClient*:: methods -- 0 plain exports
+com-only	shdocvw	132	IWebBrowser2::ClientToWindow	66 titled pages, all IWebBrowser2::/DWebBrowserEvents2:: methods -- 0 plain exports
 oak-excluded	blcommon	32	OEMWriteFlash	bootloader common library
 oak-excluded	bootpart	7	(boot partition)	bootloader
 oak-excluded	bthutil	4	(bluetooth util)	driver utility
