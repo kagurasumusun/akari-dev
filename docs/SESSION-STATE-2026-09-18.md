@@ -220,3 +220,24 @@ match 2,036), + twin-struct-scan commit.
   Left running (6h runner cap ~01:05Z); if killed with 0 pushes,
   re-dispatch with batch=25.  On yield: pull corpus, re-run surface/
   proto/const audits, re-sweep B blockers on new pages, absent recheck.
+
+## cont.14 harvest resolution (evening)
+- ROOT CAUSE of 0-yield wayback runs: harvest.py resume index used raw
+  filenames; 17,622 stored files carry `(v=...)` suffixes, so ~30,937
+  already-harvested queue URLs were RE-FETCHED every run (never
+  reaching a batch push within the runner cap).  Fixed: bare-id
+  indexing of (v=) files (corpus commit 06283904a).
+- Queue truths: wayback-msdn-2010.txt = 30,937 already stored + 1 new
+  pid (ms838324) + 450 legacy-slug URLs (/library/01c3x0ze.aspx form
+  - parseable by dest_for, genuinely new content).
+  to-fetch-mslearn.txt = 0 new (fully harvested).  The only remaining
+  collection work is those ~451 pages.
+- Owner (kagurasumusun) actively working in corpus repo same evening:
+  massive harvest.py refactor (5b4c59c69, +708/-156, keeps my (v=)
+  fix, adds learn.microsoft.com parser) + own dispatch/cancel cycles
+  that cancelled my runs B/C via workflow concurrency.  Final run D
+  35392202849 (head 5b4c59c69, batch=25) in flight at session end.
+- NEXT SESSION: check run D; if pushed, pull corpus, count new pages
+  in wayback-msdn/2010-05, re-run surface/proto/const audits, re-sweep
+  B blockers + absent recheck on new pages.  If D cancelled by owner
+  activity again, coordinate timing / re-dispatch off-peak.
