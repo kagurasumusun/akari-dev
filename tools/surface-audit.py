@@ -115,7 +115,12 @@ def main():
                    "ce6", "chm-windows-ce-3.0": "ce3",
                    "windows-ce-net-4x": "ce4",
                    "windows-embedded-compact-7": "ce7",
-                   "wayback-msdn-2010": "wayback"}
+                   "wayback-msdn-2010": "wayback",
+                   # 2026-09-18: uncategorized + DCF titles were silently
+                   # skipped (11,071 pages); every harvested section is a
+                   # full-collection target, so all count as documented.
+                   "uncategorized": "misc",
+                   "dotnet-compact-framework": "dcf"}
         idx = os.path.join(corpus, "data", "index", "INDEX.tsv")
         titlere = re.compile(
             r"^([A-Za-z_]\w+)\s*(?:\((?:Windows|RAPI)\b|\b(?:Function|"
