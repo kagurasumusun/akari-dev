@@ -45,6 +45,7 @@ DWORD LineTranslateDialog(HWND hParent, HWND* pDialogWnd);
  * (Windows CE 5.0 and later.; Link Library: Netui.lib) */
 /* ee495072: param-list verified against this page (proto-cite) */
 /* ee495072: page print verified (proto-cite) */
+/* ms913115 RegisterIPClass: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT void RegisterIPClass(HINSTANCE hInst) AKARI_CE_NAME(RegisterIPClass);
 
 /* ms928587 CloseUsernamePasswordDialog: print `BOOL CloseUsernamePasswordDialog(

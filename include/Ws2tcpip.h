@@ -25,6 +25,7 @@
 
 #include "Winsock2.h"
 
+/* aa450395 getaddrinfo: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int getaddrinfo(const char *nodename,
                                 const char *servname,
                                 const struct addrinfo *hints,

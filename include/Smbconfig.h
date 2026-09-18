@@ -11,11 +11,13 @@
 #include "Objbase.h"   /* HRESULT */
 #include "Winnt.h"     /* LARGE_INTEGER */
 
-AKARI_CE_IMPORT HRESULT Add_Share(const WCHAR *pName, DWORD dwType,
-                    const WCHAR *pPath)
-                    AKARI_CE_NAME(Add_Share);
-
-/* aa450328: param-list verified against this page (proto-cite) */
+/* aa450283 "Add_Share" (Windows CE 5.0 and later): print `HRESULT
+ * Add_Share( const WCHAR* pName, DWORD dwType, const WCHAR* pPath,
+ * const WCHAR* pACL, const WCHAR* pROACL, const WCHAR* pDriver,
+ * const WCHAR* pComment);` -- the earlier 3-param form and the
+ * aa450328 cite were wrong (aa450328 is the Del_Share page; fixed
+ * 2026-09-18). */
+AKARI_CE_IMPORT HRESULT Add_Share(const WCHAR *pName, DWORD dwType, const WCHAR *pPath, const WCHAR *pACL, const WCHAR *pROACL, const WCHAR *pDriver, const WCHAR *pComment) AKARI_CE_NAME(Add_Share);
 AKARI_CE_IMPORT HRESULT Del_Share(const WCHAR *pName)
                     AKARI_CE_NAME(Del_Share);
 

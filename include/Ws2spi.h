@@ -117,10 +117,12 @@ typedef WSPPROC_TABLE *LPWSPPROC_TABLE;
 /* Winsock SPI functions (transport SPI; the documented SPI client)    */
 /* ------------------------------------------------------------------ */
 
+/* ms898783 WSPAccept: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT SOCKET WSPAccept(SOCKET s, struct sockaddr *addr,
                                  INT *addrlen, LPCONDITIONPROC lpfnCondition,
                                  DWORD dwCallbackData, INT *lpErrno)
     AKARI_CE_NAME(WSPAccept);
+/* ms898784 WSPAddressToString: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPAddressToString(LPSOCKADDR lpsaAddress,
                                        DWORD dwAddressLength,
                                        LPWSAPROTOCOL_INFOW lpProtocolInfo,
@@ -128,48 +130,61 @@ AKARI_CE_IMPORT int WSPAddressToString(LPSOCKADDR lpsaAddress,
                                        LPDWORD lpdwAddressStringLength,
                                        INT *lpErrno)
     AKARI_CE_NAME(WSPAddressToString);
+/* ms898785 WSPAsyncSelect: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPAsyncSelect(SOCKET s, HWND hWnd,
                                    unsigned int wMsg, long lEvent,
                                    INT *lpErrno)
     AKARI_CE_NAME(WSPAsyncSelect);
+/* ms898786 WSPBind: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPBind(SOCKET s, const struct sockaddr *name,
                             int namelen, INT *lpErrno)
     AKARI_CE_NAME(WSPBind);
+/* ms898787 WSPCleanup: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPCleanup(INT *lpErrno)
     AKARI_CE_NAME(WSPCleanup);
+/* ms898788 WSPCloseSocket: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPCloseSocket(SOCKET s, INT *lpErrno)
     AKARI_CE_NAME(WSPCloseSocket);
+/* ms898789 WSPConnect: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPConnect(SOCKET s, const struct sockaddr *name,
                                int namelen, LPWSABUF lpCallerData,
                                LPWSABUF lpCalleeData, LPQOS lpSQOS,
                                LPQOS lpGQOS, INT *lpErrno)
     AKARI_CE_NAME(WSPConnect);
+/* ms898790 WSPDuplicateSocket: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPDuplicateSocket(SOCKET s, DWORD dwProcessId,
                                        LPWSAPROTOCOL_INFOW lpProtocolInfo,
                                        INT *lpErrno)
     AKARI_CE_NAME(WSPDuplicateSocket);
+/* ms898791 WSPEnumNetworkEvents: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPEnumNetworkEvents(SOCKET s, WSAEVENT hEventObject,
                                          LPWSANETWORKEVENTS lpNetworkEvents,
                                          INT *lpErrno)
     AKARI_CE_NAME(WSPEnumNetworkEvents);
+/* ms898792 WSPEventSelect: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPEventSelect(SOCKET s, WSAEVENT hEventObject,
                                    long lNetworkEvents, INT *lpErrno)
     AKARI_CE_NAME(WSPEventSelect);
+/* ms898793 WSPGetOverlappedResult: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT BOOL WSPGetOverlappedResult(SOCKET s,
                                             LPWSAOVERLAPPED lpOverlapped,
                                             LPDWORD lpcbTransfer,
                                             BOOL fWait, LPDWORD lpdwFlags,
                                             INT *lpErrno)
     AKARI_CE_NAME(WSPGetOverlappedResult);
+/* ms898794 WSPGetPeerName: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPGetPeerName(SOCKET s, struct sockaddr *name,
                                    INT *namelen, INT *lpErrno)
     AKARI_CE_NAME(WSPGetPeerName);
+/* ms898811 WSPGetSockName: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPGetSockName(SOCKET s, struct sockaddr *name,
                                    INT *namelen, INT *lpErrno)
     AKARI_CE_NAME(WSPGetSockName);
+/* ms898877 WSPGetSockOpt: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPGetSockOpt(SOCKET s, int level, int optname,
                                   char *optval, INT *optlen, INT *lpErrno)
     AKARI_CE_NAME(WSPGetSockOpt);
+/* ms898897 WSPIoctl: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPIoctl(SOCKET s, DWORD dwIoControlCode,
                              LPVOID lpvInBuffer, DWORD cbInBuffer,
                              LPVOID lpvOutBuffer, DWORD cbOutBuffer,
@@ -179,13 +194,16 @@ AKARI_CE_IMPORT int WSPIoctl(SOCKET s, DWORD dwIoControlCode,
                                  lpCompletionRoutine,
                              LPWSATHREADID lpThreadId, INT *lpErrno)
     AKARI_CE_NAME(WSPIoctl);
+/* ms898901 WSPJoinLeaf: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT SOCKET WSPJoinLeaf(SOCKET s, const struct sockaddr *name,
                                    int namelen, LPWSABUF lpCallerData,
                                    LPWSABUF lpCalleeData, LPQOS lpSQOS,
                                    LPQOS lpGQOS, DWORD dwFlags, INT *lpErrno)
     AKARI_CE_NAME(WSPJoinLeaf);
+/* ms898902 WSPListen: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPListen(SOCKET s, int backlog, INT *lpErrno)
     AKARI_CE_NAME(WSPListen);
+/* ms898903 WSPRecv: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPRecv(SOCKET s, LPWSABUF lpBuffers,
                             DWORD dwBufferCount,
                             LPDWORD lpNumberOfBytesRecvd, LPDWORD lpFlags,
@@ -194,10 +212,12 @@ AKARI_CE_IMPORT int WSPRecv(SOCKET s, LPWSABUF lpBuffers,
                                 lpCompletionRoutine,
                             LPWSATHREADID lpThreadId, INT *lpErrno)
     AKARI_CE_NAME(WSPRecv);
+/* ms898904 WSPRecvDisconnect: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPRecvDisconnect(SOCKET s,
                                       LPWSABUF lpInboundDisconnectData,
                                       INT *lpErrno)
     AKARI_CE_NAME(WSPRecvDisconnect);
+/* ms898905 WSPRecvFrom: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPRecvFrom(SOCKET s, LPWSABUF lpBuffers,
                                 DWORD dwBufferCount,
                                 LPDWORD lpNumberOfBytesRecvd,
@@ -207,10 +227,12 @@ AKARI_CE_IMPORT int WSPRecvFrom(SOCKET s, LPWSABUF lpBuffers,
                                     lpCompletionRoutine,
                                 LPWSATHREADID lpThreadId, INT *lpErrno)
     AKARI_CE_NAME(WSPRecvFrom);
+/* ms898906 WSPSelect: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPSelect(int nfds, fd_set *readfds, fd_set *writefds,
                               fd_set *exceptfds, const struct timeval *timeout,
                               INT *lpErrno)
     AKARI_CE_NAME(WSPSelect);
+/* ms898907 WSPSend: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPSend(SOCKET s, LPWSABUF lpBuffers,
                             DWORD dwBufferCount,
                             LPDWORD lpNumberOfBytesSent, DWORD dwFlags,
@@ -219,10 +241,12 @@ AKARI_CE_IMPORT int WSPSend(SOCKET s, LPWSABUF lpBuffers,
                                 lpCompletionRoutine,
                             LPWSATHREADID lpThreadId, INT *lpErrno)
     AKARI_CE_NAME(WSPSend);
+/* ms898908 WSPSendDisconnect: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPSendDisconnect(SOCKET s,
                                       LPWSABUF lpOutboundDisconnectData,
                                       INT *lpErrno)
     AKARI_CE_NAME(WSPSendDisconnect);
+/* ms898909 WSPSendTo: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPSendTo(SOCKET s, LPWSABUF lpBuffers,
                               DWORD dwBufferCount,
                               LPDWORD lpNumberOfBytesSent, DWORD dwFlags,
@@ -232,12 +256,15 @@ AKARI_CE_IMPORT int WSPSendTo(SOCKET s, LPWSABUF lpBuffers,
                                   lpCompletionRoutine,
                               LPWSATHREADID lpThreadId, INT *lpErrno)
     AKARI_CE_NAME(WSPSendTo);
+/* ms898910 WSPSetSockOpt: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPSetSockOpt(SOCKET s, int level, int optname,
                                   const char *optval, int optlen,
                                   INT *lpErrno)
     AKARI_CE_NAME(WSPSetSockOpt);
+/* ms898911 WSPShutdown: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT int WSPShutdown(SOCKET s, int how, INT *lpErrno)
     AKARI_CE_NAME(WSPShutdown);
+/* ms898912 WSPSocket: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT SOCKET WSPSocket(int af, int type, int protocol,
                                  LPWSAPROTOCOL_INFOW lpProtocolInfo,
                                  GROUP g, DWORD dwFlags, INT *lpErrno)
@@ -342,6 +369,7 @@ AKARI_CE_IMPORT WSAEVENT WPUCreateEvent(LPINT lpErrno)
 /* WPUCreateSocketHandle: print `SOCKET WPUCreateSocketHandle(
  * DWORD dwCatalogEntryId,DWORD_PTR dwContext,LPINT lpErrno);` */
 /* ms898718: param-list verified against this page (proto-cite) */
+/* ms898719 WPUFDIsSet: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT SOCKET WPUCreateSocketHandle(DWORD dwCatalogEntryId,
                     DWORD_PTR dwContext, LPINT lpErrno)
                     AKARI_CE_NAME(WPUCreateSocketHandle);

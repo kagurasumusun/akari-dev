@@ -335,6 +335,8 @@ include/Ddraw.h	DirectDrawCreateClipper	aa451584	match
 include/Ddraw.h	DirectDrawEnumerate	aa451585	match	
 include/Ddraw.h	DirectDrawEnumerateEx	aa451586	match	
 include/Defragdisk.h	DefragVolumeUI	ms887957	match	
+include/Devmgmt.h	CeSetDevMgmtTask	ms895003	match	
+include/Dinput.h	DirectInputCreate	ms864419	match	
 include/Dmo.h	DMOEnum	aa451593	match	
 include/Dmo.h	DMOGetTypes	aa451597	match	
 include/Dmo.h	DMOGetName	aa451596	match	
@@ -391,6 +393,8 @@ include/Dshow.h	DbgWaitForSingleObject	ms907785	match
 include/Dsound.h	DirectSoundCaptureCreate	ms897742	match	
 include/Dsound.h	DirectSoundCreate	ms897750	match	
 include/Dsound.h	DSEnumCallback	ms897792	match	
+include/Dsound.h	DirectSoundCaptureEnumerate	ms897746	match	
+include/Dsound.h	DirectSoundEnumerate	ms897753	match	
 include/ErrorRep.h	ReportFault	ms886799	match	
 include/Extapi.h	lineGetHSCSDState	ee496899	match	
 include/Extapi.h	lineGetRegisterStatus	ee496925	match	
@@ -550,7 +554,7 @@ include/Iphlpapi.h	SetTcpEntry	aa450937	no-print-on-page
 include/Iphlpapi.h	DeleteIPAddress	ms887920	match	
 include/Ipsec_api.h	IsIPSecRunning	aa450627	match	
 include/Ipsec_api.h	StartIPSec	aa450960	match	
-include/Ipsec_api.h	StopIPSec	aa450962	match	
+include/Ipsec_api.h	StopIPSec	aa450874	no-print-on-page	
 include/Ipsec_api.h	ResetIPSecMode		no-pageid	
 include/Ipsec_api.h	SetIPSecConfig	aa450926	match	
 include/Ipsec_api.h	SetIPSecMode	aa450928	match	
@@ -1257,8 +1261,8 @@ include/Sipapi.h	SipSetDefaultRect	ms940340	no-print-on-page
 include/Sipapi.h	SipSetInfo	ms940341	match	
 include/Sipapi.h	SipShowIM	ms940342	match	
 include/Sipapi.h	SipStatus	ms940343	match	
-include/Smbconfig.h	Add_Share		no-pageid	
-include/Smbconfig.h	Del_Share	aa450328	match	
+include/Smbconfig.h	Add_Share	aa450283	match	
+include/Smbconfig.h	Del_Share	aa450283	no-print-on-page	
 include/Smbconfig.h	Change_ACL	ms887907	match	
 include/Smbconfig.h	List_Connected_Users	ms894568	match	
 include/Smbconfig.h	QueryAmountTransfered	ms896350	match	
@@ -2729,33 +2733,33 @@ include/Winuser.h	GetMouseMovePoints	ms929237	no-print-on-page
 include/Winuser.h	mouse_event	aa453139	no-print-on-page	
 include/Winuser.h	SetCursorPos	ms924860	match	
 include/Winuser.h	AllKeys	ee501942	match	
-include/Ws2spi.h	WSPAccept		no-pageid	
-include/Ws2spi.h	WSPAddressToString		no-pageid	
-include/Ws2spi.h	WSPAsyncSelect		no-pageid	
-include/Ws2spi.h	WSPBind		no-pageid	
-include/Ws2spi.h	WSPCleanup		no-pageid	
-include/Ws2spi.h	WSPCloseSocket		no-pageid	
-include/Ws2spi.h	WSPConnect		no-pageid	
-include/Ws2spi.h	WSPDuplicateSocket		no-pageid	
-include/Ws2spi.h	WSPEnumNetworkEvents		no-pageid	
-include/Ws2spi.h	WSPEventSelect		no-pageid	
-include/Ws2spi.h	WSPGetOverlappedResult		no-pageid	
-include/Ws2spi.h	WSPGetPeerName		no-pageid	
-include/Ws2spi.h	WSPGetSockName		no-pageid	
-include/Ws2spi.h	WSPGetSockOpt		no-pageid	
-include/Ws2spi.h	WSPIoctl		no-pageid	
-include/Ws2spi.h	WSPJoinLeaf		no-pageid	
-include/Ws2spi.h	WSPListen		no-pageid	
-include/Ws2spi.h	WSPRecv		no-pageid	
-include/Ws2spi.h	WSPRecvDisconnect		no-pageid	
-include/Ws2spi.h	WSPRecvFrom		no-pageid	
-include/Ws2spi.h	WSPSelect		no-pageid	
-include/Ws2spi.h	WSPSend		no-pageid	
-include/Ws2spi.h	WSPSendDisconnect		no-pageid	
-include/Ws2spi.h	WSPSendTo		no-pageid	
-include/Ws2spi.h	WSPSetSockOpt		no-pageid	
-include/Ws2spi.h	WSPShutdown		no-pageid	
-include/Ws2spi.h	WSPSocket		no-pageid	
+include/Ws2spi.h	WSPAccept	ms898783	match	
+include/Ws2spi.h	WSPAddressToString	ms898784	match	
+include/Ws2spi.h	WSPAsyncSelect	ms898785	match	
+include/Ws2spi.h	WSPBind	ms898786	match	
+include/Ws2spi.h	WSPCleanup	ms898787	match	
+include/Ws2spi.h	WSPCloseSocket	ms898788	match	
+include/Ws2spi.h	WSPConnect	ms898789	match	
+include/Ws2spi.h	WSPDuplicateSocket	ms898790	match	
+include/Ws2spi.h	WSPEnumNetworkEvents	ms898791	match	
+include/Ws2spi.h	WSPEventSelect	ms898792	match	
+include/Ws2spi.h	WSPGetOverlappedResult	ms898793	match	
+include/Ws2spi.h	WSPGetPeerName	ms898794	match	
+include/Ws2spi.h	WSPGetSockName	ms898811	match	
+include/Ws2spi.h	WSPGetSockOpt	ms898877	match	
+include/Ws2spi.h	WSPIoctl	ms898897	match	
+include/Ws2spi.h	WSPJoinLeaf	ms898901	match	
+include/Ws2spi.h	WSPListen	ms898902	match	
+include/Ws2spi.h	WSPRecv	ms898903	match	
+include/Ws2spi.h	WSPRecvDisconnect	ms898904	match	
+include/Ws2spi.h	WSPRecvFrom	ms898905	match	
+include/Ws2spi.h	WSPSelect	ms898906	match	
+include/Ws2spi.h	WSPSend	ms898907	match	
+include/Ws2spi.h	WSPSendDisconnect	ms898908	match	
+include/Ws2spi.h	WSPSendTo	ms898909	match	
+include/Ws2spi.h	WSPSetSockOpt	ms898910	match	
+include/Ws2spi.h	WSPShutdown	ms898911	match	
+include/Ws2spi.h	WSPSocket	ms898912	match	
 include/Ws2spi.h	WSPStartup	ms898913	annotated-deviation	arg3: page='WSPUPCALLTABLE' hdr='const WSPUPCALLTABLE*'
 include/Ws2spi.h	WSPStringToAddress	ms898913	no-print-on-page	
 include/Ws2spi.h	NSPCleanup	ms895725	match	
@@ -2770,7 +2774,7 @@ include/Ws2spi.h	NSPStartup	ms895771	match
 include/Ws2spi.h	WPUCloseEvent	ms898715	match	
 include/Ws2spi.h	WPUCloseSocketHandle	ms898716	match	
 include/Ws2spi.h	WPUCreateEvent	ms898717	match	
-include/Ws2spi.h	WPUCreateSocketHandle	ms898718	match	
+include/Ws2spi.h	WPUCreateSocketHandle	ms898719	no-print-on-page	
 include/Ws2spi.h	WPUFDIsSet		no-pageid	
 include/Ws2spi.h	WPUGetProviderPath	ms898720	match	
 include/Ws2spi.h	WPUQuerySocketHandleContext	ms898722	match	
@@ -2780,7 +2784,7 @@ include/Ws2spi.h	WSCEnumProtocols	ms898779	match
 include/Ws2spi.h	WSCInstallNameSpace	ms898780	match	
 include/Ws2spi.h	WSCInstallProvider	ms898781	match	
 include/Ws2spi.h	WSCUnInstallNameSpace		no-pageid	
-include/Ws2tcpip.h	getaddrinfo		no-pageid	
+include/Ws2tcpip.h	getaddrinfo	aa450395	match	
 include/Ws2tcpip.h	freeaddrinfo	aa450383	match	
 include/Ws2tcpip.h	getnameinfo	aa450416	match	
 include/Wsdapi.h	WSDDetachLinkedMemory	ee499176	match	

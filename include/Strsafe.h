@@ -49,6 +49,7 @@ LPCTSTR pszSrc);`
  * (Windows CE 5.0 and later.; Link Library: strsafe.lib) */
 /* ee480128: param-list verified against this page (proto-cite) */
 /* ee480128: page print verified (proto-cite) */
+/* ms860394 StringCbCat: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT HRESULT StringCbCat(LPTSTR pszDest, size_t cbDest, LPCTSTR pszSrc) AKARI_CE_NAME(StringCbCat);
 
 /* ms860396 StringCbCatEx: print `HRESULT StringCbCatEx( LPTSTR pszDest,

@@ -43,6 +43,7 @@ void Startup_PowerOnNotification(HWND hwndDlg);
  * (Windows CE 2.10 and later.; Link Library: not stated) */
 /* ee502285: param-list verified against this page (proto-cite) */
 /* ee502285: page print verified (proto-cite) */
+/* ms940352 Startup_DlgProc: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT BOOL Startup_DlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(Startup_DlgProc);
 
 

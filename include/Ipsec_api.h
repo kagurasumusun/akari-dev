@@ -39,6 +39,7 @@ AKARI_CE_IMPORT HRESULT IsIPSecRunning(void)
 /* aa450960: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HRESULT StartIPSec(void) AKARI_CE_NAME(StartIPSec);
 /* aa450962: param-list verified against this page (proto-cite) */
+/* aa450874: ResetIPSecMode title page (print drops the param comma; decl repaired). */
 AKARI_CE_IMPORT HRESULT StopIPSec(void) AKARI_CE_NAME(StopIPSec);
 
 /* ResetIPSecMode: print `HRESULT ResetIPSecMode( DWORD srcIP

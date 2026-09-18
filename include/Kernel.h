@@ -49,6 +49,7 @@ void OEMCacheRangeFlush(LPVOID pAddr, DWORD dwLength, DWORD dwFlags);
  * and later.; Link Library: nk.lib) */
 /* ee478340: param-list verified against this page (proto-cite) */
 /* ee478340: page print verified (proto-cite) */
+/* ms904164 FlushDCache: title-page print verified (pid backfill 2026-09-18). */
 AKARI_CE_IMPORT void FlushDCache(void) AKARI_CE_NAME(FlushDCache);
 
 /* ee478614 SC_GetTickCount: print `DWORD SC_GetTickCount(void);`

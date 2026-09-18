@@ -6887,7 +6887,7 @@ static int m75e_shaped_usage(void)
     sei.dwServiceState = 0u;
     h = RegisterService((LPCWSTR)0, sei.dwServiceState, (LPCWSTR)0, 0u);
     (void)DeregisterService(h);
-    (void)Add_Share((const WCHAR *)0, 0u, (const WCHAR *)0);
+    (void)Add_Share((const WCHAR *)0, 0u, (const WCHAR *)0, (const WCHAR *)0, (const WCHAR *)0, (const WCHAR *)0, (const WCHAR *)0);
     (void)ProxySignalFilter(0u);
     return (int)pi->dwProxyVersion;
 }
