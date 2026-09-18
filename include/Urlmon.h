@@ -437,7 +437,9 @@ typedef enum {
  * enumerator name, so the second occurrence is dropped here, and
  * enumerators after it number one less than a "count the duplicate"
  * reading.  The page also prints "VERFIEDMIMETYPEAVAILABLE" (spelling
- * kept) and drops the comma between BINDSTATUS_ACCEPTRANGES and
+ * kept), prints BINDSTATUS_ENDUPLOADINGDATA (spelling kept; the
+ * desktop-SDK-style ENDUPLOADDATA name is NOT what the page prints)
+ * and drops the comma between BINDSTATUS_ACCEPTRANGES and
  * BINDSTATUS_COOKIE_SENT (spacing artifact).
  */
 typedef enum tagBINDSTATUS {
@@ -459,7 +461,7 @@ typedef enum tagBINDSTATUS {
     BINDSTATUS_ENDSYNCOPERATION,
     BINDSTATUS_BEGINUPLOADDATA,
     BINDSTATUS_UPLOADINGDATA,
-    BINDSTATUS_ENDUPLOADDATA,
+    BINDSTATUS_ENDUPLOADINGDATA,
     BINDSTATUS_PROTOCOLCLASSID,
     BINDSTATUS_ENCODING,
     BINDSTATUS_VERFIEDMIMETYPEAVAILABLE,

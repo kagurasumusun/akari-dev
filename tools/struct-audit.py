@@ -29,7 +29,8 @@ LEX = pa.LEX
 BUILTIN = pa.BUILTIN
 
 TS = re.compile(r"typedef\s+(struct|union)\s*(\w+)?\s*\{(.*?)\}\s*"
-                r"([A-Za-z_]\w*)\s*(?:,\s*\*\s*\w+\s*)*;", re.S)
+                r"([A-Za-z_]\w*)(?:\s*,\s*\*?\s*[A-Za-z_]\w*)*\s*;",
+                re.S)
 PAGEID = re.compile(r"\b([a-z]{2}\d{6})\b")
 PRE = re.compile(r"<pre[^>]*>(.*?)</pre>", re.S)
 

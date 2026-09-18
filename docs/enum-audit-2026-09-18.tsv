@@ -1,0 +1,354 @@
+# header	name	page	status	detail
+include/Av_upnp.h	DIRECTION	ee501152	no-print-on-page	
+include/Avc_stream.h	AUDIO_SampleFrequency	ms896115	match	
+include/Avc_stream.h	STREAM_MediaType	aa448165	match	
+include/Avc_vvcr.h	VVCR_EVENT_Type	ms923273	match	
+include/Avc_vvcr.h	VVCR_MECHANISM_STATE	ms923274	match	
+include/Bt_hcip.h	HCI_EVENT	ee486889	no-print-on-page	
+include/Bthsdpdef.h	SDP_TYPE	aa450880	match	
+include/Bthsdpdef.h	SDP_SPECIFICTYPE	aa450879	match	
+include/Bthsdpdef.h	NODECONTAINERTYPE	ms895690	match	
+include/Bthutil.h	BTH_RADIO_MODE	ee495609	no-print-on-page	
+include/CEDDK.h	BUS_DATA_TYPE	ms896151	match	
+include/CEDDK.h	INTERFACE_TYPE	ms901367	match	
+include/Camera.h	CSPROPERTY_BUFFER_MODE	ee482927	match	
+include/Camera.h	BUFFER_COMMANDS	ee483385	match	
+include/Ce_setup.h	codeINSTALL_INIT	ee483720	match	
+include/Ce_setup.h	codeINSTALL_EXIT	ee484783	match	
+include/Ce_setup.h	codeUNINSTALL_INIT	ee485190	match	
+include/Ce_setup.h	codeUNINSTALL_EXIT	ee486781	match	
+include/Celog.h	CEL_MAPFLUSH_TYPE	aa451058	match	
+include/Cesync.h	ReplDialogs	ee483764	no-print-on-page	
+include/Commandapi.h	PH_APPLICATION	ee501030	match	
+include/Connmgr.h	ConnMgrConRefTypeEnum	ee498245	match	
+include/Controldefinitions.h	STATUS_HEADER_PRIORITY	ee499254	match	
+include/Controldefinitions.h	PH_COLOR	ee499844	match	
+include/Controldefinitions.h	PH_FONT	ee500372	match	
+include/Cs.h	CSPROPERTY_CONNECTION	ee481240	match	
+include/Cs.h	CSSTATE	ee484413	match	
+include/Cs.h	CSPROPERTY_PIN	ee486638	match	
+include/D3dm.h	D3DMBACKBUFFER_TYPE		no-pageid	
+include/D3dm.h	D3DMBLEND		no-pageid	
+include/D3dm.h	D3DMBLENDOP		no-pageid	
+include/D3dm.h	D3DMCMPFUNC		no-pageid	
+include/D3dm.h	D3DMCULL		no-pageid	
+include/D3dm.h	D3DMDEVTYPE		no-pageid	
+include/D3dm.h	D3DMFILLMODE		no-pageid	
+include/D3dm.h	D3DMFOGMODE		no-pageid	
+include/D3dm.h	D3DMFORMAT		no-pageid	
+include/D3dm.h	D3DMLIGHTTYPE		no-pageid	
+include/D3dm.h	D3DMMATERIALCOLORSOURCE		no-pageid	
+include/D3dm.h	D3DMMULTISAMPLE_TYPE		no-pageid	
+include/D3dm.h	D3DMPOOL		no-pageid	
+include/D3dm.h	D3DMPRIMITIVETYPE		no-pageid	
+include/D3dm.h	D3DMPROFILE		no-pageid	
+include/D3dm.h	D3DMRENDERSTATETYPE		no-pageid	
+include/D3dm.h	D3DMRESOURCETYPE		no-pageid	
+include/D3dm.h	D3DMSHADEMODE		no-pageid	
+include/D3dm.h	D3DMSTENCILOP		no-pageid	
+include/D3dm.h	D3DMSWAPEFFECT		no-pageid	
+include/D3dm.h	D3DMTEXTUREADDRESS		no-pageid	
+include/D3dm.h	D3DMTEXTUREFILTERTYPE		no-pageid	
+include/D3dm.h	D3DMTEXTUREOP		no-pageid	
+include/D3dm.h	D3DMTEXTURESTAGESTATETYPE		no-pageid	
+include/D3dm.h	D3DMTEXTURETRANSFORMFLAGS		no-pageid	
+include/D3dm.h	D3DMTRANSFORMSTATETYPE		no-pageid	
+include/D3dm.h	D3DMZBUFFERTYPE		no-pageid	
+include/D3dmddk.h	D3DM_OPERATION	ms896740	match	
+include/D3dmddk.h	D3DM_SETLIGHT_DATATYPE	ms896749	match	
+include/D3dmddk.h	D3DM_SETPALETTE_DATATYPE	ms896752	match	
+include/D3dmddk.h	D3DM_RESOURCEMANAGER_ACTION	ms896745	match	
+include/Discodlg.h	ExtendedDisconnectReasonCode	aa513913	no-print-on-page	
+include/Dshow.h	FILTER_STATE	aa451714	match	
+include/Dshow.h	PIN_DIRECTION	ms932255	match	
+include/Dshow.h	QualityMessageType	ms932273	match	
+include/Dshow.h	AM_STREAM_INFO_FLAGS	ms925346	match	
+include/Dshow.h	AMVP_MODE	ms925348	match	
+include/Dshow.h	AnalogVideoStandard	ms925439	match	
+include/Dshow.h	STRMBUF_CAPTURE_MODE	aa452561	match	
+include/Dshow.h	STRMBUF_PLAYBACK_TUNE_POLICY	aa452562	match	
+include/Dshow.h	AMTunerModeType		no-pageid	
+include/Dshow.h	TunerInputType		no-pageid	
+include/Dvdata.h	EDVDDomainType	aa451672	match	
+include/Dvdata.h	ENavCmdArea	aa451678	match	
+include/Dvdata.h	EPGCLinkType	aa451695	match	
+include/Dvdata.h	EPGCPlaybackMode	aa451696	match	
+include/Dvdnav.h	EDDVDPlaybackState	aa451671	match	
+include/Dvdnav.h	EDVDNavException	aa451673	match	
+include/Dvdnav.h	EDVDSParamEvent	aa451674	match	
+include/Fwapi.h	FW_ACTIONS		no-pageid	
+include/Fwapi.h	FW_DAYS		no-pageid	
+include/Fwapi.h	FW_DIRECTIONS		no-pageid	
+include/Fwapi.h	FW_RULE_FLAGS		no-pageid	
+include/Gpsapi.h	GPS_FIX_TYPE	ee484122	match	
+include/Gpsapi.h	GPS_FIX_QUALITY	ee485759	match	
+include/Gpsapi.h	GPS_FIX_SELECTION	ee487278	match	
+include/IExchangeClient.h	ExchangeClientRequestStatus	ee484913	no-print-on-page	
+include/IExchangeClient.h	ExchangeClientRequestType	ee487270	no-print-on-page	
+include/Iptypes.h	IF_OPER_STATUS	ms890886	match	
+include/Iptypes.h	IP_DAD_STATE	ms891176	match	
+include/Iptypes.h	IP_PREFIX_ORIGIN	ms891180	match	
+include/Iptypes.h	IP_SUFFIX_ORIGIN	aa450430	match	
+include/Iptypes.h	SCOPE_LEVEL	aa450875	match	
+include/MediaQueryEngine.h	DeviceStatus_e	aa456357	no-print-on-page	
+include/MediaQueryEngine.h	Item_Attribute_e	aa456358	no-print-on-page	
+include/MediaQueryEngine.h	MediaType_e	aa456396	no-print-on-page	
+include/MediaQueryEngine.h	QueryEngineState_e	aa456397	no-print-on-page	
+include/MediaQueryEngine.h	QuerySinkEvent_e	aa456400	no-print-on-page	
+include/MediaQueryEngine.h	SearchBy_e	aa456401	no-print-on-page	
+include/MediaQueryEngine.h	SortBy_e	aa456413	no-print-on-page	
+include/Mlang.h	MIMECONTF	ms918819	match	
+include/Mlang.h	MLCONVCHAR	ms918823	match	
+include/Mlang.h	MLCP	ms918824	match	
+include/Mlang.h	MLDETECTCP	ms918825	match	
+include/Mlang.h	SCRIPTCONTF	ms918854	match	
+include/Mlang.h	SCRIPTFONTCONTF	ms918856	match	
+include/Mshtmhst.h	NVFOCUS_DIRECTION	ms918828	match	
+include/Msxml2.h	DOMNodeType		no-pageid	
+include/Obex.h	OBEX_EVENT	ms895790	match	
+include/Objbase.h	VARENUM	ms891853	no-print-on-page	
+include/Objbase.h	CLSCTX	ms863882	match	
+include/Objbase.h	DVASPECT	ms864437	match	
+include/Objbase.h	TYMED	ms896492	match	
+include/Objbase.h	STGC	ms896217	match	
+include/Objbase.h	MKSYS	ms892349	match	
+include/Objbase.h	MKRREDUCE	ms892348	match	
+include/Objbase.h	BIND_FLAGS	ms863834	match	
+include/Objbase.h	SYSKIND	ms896474	match	
+include/Objbase.h	TYPEKIND	ms896496	match	
+include/Objbase.h	VARKIND	aa519097	match	
+include/Objbase.h	CALLCONV	ms863871	match	
+include/Objbase.h	FUNCKIND	aa515010	match	
+include/Objbase.h	INVOKEKIND	ms882878	match	
+include/Objbase.h	FUNCFLAGS	aa515008	match	
+include/Objbase.h	ADVF	aa513925	match	
+include/Objbase.h	TYPEFLAGS	ms896495	match	
+include/Objbase.h	DATADIR	ms864408	match	
+include/Objbase.h	DESCKIND	ms864416	match	
+include/Objbase.h	DVASPECT2	ms864438	match	
+include/Objbase.h	DVASPECTINFOFLAG	ms864450	match	
+include/Objbase.h	DVEXTENTMODE	ms864452	match	
+include/Objbase.h	HITRESULT	aa515087	match	
+include/Objbase.h	VIEWSTATUS	ms897186	match	
+include/Oleauto.h	OLEGETMONIKER	ms892592	match	
+include/Oleauto.h	OLELINKBIND	ms892594	match	
+include/Oleauto.h	OLEUPDATE	ms892601	match	
+include/Oleauto.h	OLEVERBATTRIB	ms892603	match	
+include/Oleauto.h	OLEWHICHMK	ms892604	match	
+include/Pimstore.h	PIMTYPE	ms863874	match	
+include/Pimstore.h	OlCurrentCity	ee483770	no-print-on-page	
+include/Rapitypes.h	RAPI_CONNECTIONTYPE	ms879804	match	
+include/Rapitypes.h	RAPI_DEVICESTATUS	ms879806	match	
+include/Rapitypes.h	RAPISTREAMFLAG	ms879802	match	
+include/Ras.h	RASCONNSTATE	ms896360	match	
+include/Ras.h	RASPROJECTION		no-pageid	
+include/Ras.h	RasCntlEnum	ms924957	match	
+include/Raseapif.h	RAS_AUTH_ATTRIBUTE_TYPE		no-pageid	
+include/Raseapif.h	PPP_EAP_ACTION		no-pageid	
+include/Regext.h	REG_COMPARISONTYPE	ee488568	match	
+include/Rules.h	FW_RULE_MASKS		no-pageid	
+include/Sapi.h	SPAUDIOOPTIONS		no-pageid	
+include/Sapi.h	SPBOOKMARKOPTIONS		no-pageid	
+include/Sapi.h	SPCFGNOTIFY		no-pageid	
+include/Sapi.h	SPCFGRULEATTRIBUTES		no-pageid	
+include/Sapi.h	SPCONTEXTSTATE		no-pageid	
+include/Sapi.h	SPDATAKEYLOCATION		no-pageid	
+include/Sapi.h	SPEAKFLAGS		no-pageid	
+include/Sapi.h	SPENDSRSTREAMFLAGS		no-pageid	
+include/Sapi.h	SPINTERFERENCE		no-pageid	
+include/Sapi.h	SPEVENTENUM		no-pageid	
+include/Sapi.h	SPEVENTLPARAMTYPE		no-pageid	
+include/Sapi.h	SPFILEMODE		no-pageid	
+include/Sapi.h	SPGRAMMARSTATE		no-pageid	
+include/Sapi.h	SPGRAMMARWORDTYPE		no-pageid	
+include/Sapi.h	SPLEXICONTYPE		no-pageid	
+include/Sapi.h	SPLOADOPTIONS		no-pageid	
+include/Sapi.h	SPPARTOFSPEECH		no-pageid	
+include/Sapi.h	SPPHRASERNG		no-pageid	
+include/Sapi.h	SPPROPSRC		no-pageid	
+include/Sapi.h	SPRECOEVENTFLAGS		no-pageid	
+include/Sapi.h	SPRESULTTYPE		no-pageid	
+include/Sapi.h	SPRECOSTATE		no-pageid	
+include/Sapi.h	SPRULEINFOOPT		no-pageid	
+include/Sapi.h	SPRULESTATE		no-pageid	
+include/Sapi.h	SPRUNSTATE		no-pageid	
+include/Sapi.h	SPWORDTYPE		no-pageid	
+include/Sapi.h	SPSTREAMFORMAT		no-pageid	
+include/Sapi.h	SPTRANSITIONTYPE		no-pageid	
+include/Sapi.h	SPVACTIONS		no-pageid	
+include/Sapi.h	SPVALUETYPE		no-pageid	
+include/Sapi.h	SPVESACTIONS		no-pageid	
+include/Sapi.h	SPVFEATURE		no-pageid	
+include/Sapi.h	SPVISEMES		no-pageid	
+include/Sapi.h	SPVLIMITS		no-pageid	
+include/Sapi.h	SPVPRIORITY		no-pageid	
+include/Sapi.h	SPVSKIPTYPE		no-pageid	
+include/Sapi.h	SPSTREAMFORMATTYPE		no-pageid	
+include/Sapi.h	SPWORDINFOOPT		no-pageid	
+include/Sapi.h	SPWORDPRONOUNCEABLE		no-pageid	
+include/Sapi.h	SPAUDIOSTATE		no-pageid	
+include/Sapi.h	SPDISPLAYATTRIBUTES		no-pageid	
+include/Settingsapi.h	PHSetting	ee499871	no-print-on-page	
+include/Settingsapi.h	PHVolumeSetting	ee500378	no-print-on-page	
+include/Settingsapi.h	PHActiveVolumeMode	ee501527	no-print-on-page	
+include/Settingsapi.h	AuthenticationResult_e	ee501567	no-print-on-page	
+include/Shobjidl.h	SHGNO		no-pageid	
+include/Sms.h	BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE	ee496874	no-print-on-page	
+include/Sms.h	SMS_ADDRESS_TYPE	ee497250	no-print-on-page	
+include/Sms.h	PROVIDER_SPECIFIC_REPLACE_OPTION	ee497352	no-print-on-page	
+include/Sms.h	SMS_DATA_ENCODING	ee497445	no-print-on-page	
+include/Sms.h	WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING	ee497655	no-print-on-page	
+include/Sms.h	PROVIDER_SPECIFIC_MESSAGE_CLASS	ee497683	no-print-on-page	
+include/Sms.h	NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE	ee498093	no-print-on-page	
+include/Sms.h	WCMP_PROVIDER_SPECIFIC_MESSAGE_TYPE	ee498229	no-print-on-page	
+include/Sms.h	NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE	ee498285	no-print-on-page	
+include/Tsp.h	CALLER_ID_OPTIONS	ee497030	no-print-on-page	
+include/Upnpdevapi.h	UPNPCB_ID	aa451143	match	
+include/Urlmon.h	BINDF	aa452098	match	
+include/Urlmon.h	PI_FLAGS	ms918833	match	
+include/Urlmon.h	BINDINFO_OPTIONS	aa452101	match	
+include/Urlmon.h	MONIKERPROPERTY	ms918826	match	
+include/Urlmon.h	URL_ENCODING	ms918867	match	
+include/Urlmon.h	PUAF	ms918841	match	
+include/Urlmon.h	SZM_FLAGS	ms918860	match	
+include/Urlmon.h	URLTEMPLATE	ms918875	match	
+include/Urlmon.h	ZAFLAGS	ms918890	match	
+include/Urlmon.h	PSUACTION	ms918840	match	
+include/Urlmon.h	BINDSTRING	aa452103	match	
+include/Urlmon.h	PARSEACTION	ms918832	match	
+include/Urlmon.h	QUERYOPTION	ms918843	match	
+include/Urlmon.h	URLZONE	ms918876	match	
+include/Urlmon.h	URLZONEREG	ms918877	match	
+include/Urlmon.h	BINDINFOF	aa452100	match	
+include/Urlmon.h	BINDVERB	aa452104	match	
+include/Urlmon.h	BSCF	aa452105	match	
+include/Urlmon.h	BINDSTATUS	aa452102	annotated-deviation	hdr=BINDSTATUS_FINDINGRESOURCE,BINDSTATUS_CONNECTING,BINDSTATUS_REDIRECTING,BINDSTATUS_BEGINDOWNLOADDATA,BINDSTATUS_DOWNLOADINGDATA,BINDSTATUS_ENDDOWNLOADDATA,BINDSTATUS_BEGINDOWNLOADCOMPONENTS,BINDSTATUS_INSTALLINGCOMPONENTS,BINDSTATUS_ENDDOWNLOADCOMPONENTS,BINDSTATUS_USINGCACHEDCOPY,BINDSTATUS_SENDINGREQUEST,BINDSTATUS_CLASSIDAVAILABLE,BINDSTATUS_MIMETYPEAVAILABLE,BINDSTATUS_CACHEFILENAMEAVAILABLE,BINDSTATUS_BEGINSYNCOPERATION,BINDSTATUS_ENDSYNCOPERATION,BINDSTATUS_BEGINUPLOADDATA,BINDSTATUS_UPLOADINGDATA,BINDSTATUS_ENDUPLOADINGDATA,BINDSTATUS_PROTOCOLCLASSID,BINDSTATUS_ENCODING,BINDSTATUS_VERFIEDMIMETYPEAVAILABLE,BINDSTATUS_CLASSINSTALLLOCATION,BINDSTATUS_DECODING,BINDSTATUS_LOADINGMIMEHANDLER,BINDSTATUS_CONTENTDISPOSITIONATTACH,BINDSTATUS_FILTERREPORTMIMETYPE,BINDSTATUS_CLSIDCANINSTANTIATE,BINDSTATUS_IUNKNOWNAVAILABLE,BINDSTATUS_DIRECTBIND,BINDSTATUS_RAWMIMETYPE,BINDSTATUS_PROXYDETECTING,BINDSTATUS_ACCEPTRANGES,BINDSTATUS_COOKIE_SENT,BINDSTATUS_COMPACT_POLICY_RECEIVED,BINDSTATUS_COOKIE_SUPPRESSED,BINDSTATUS_COOKIE_STATE_UNKNOWN,BINDSTATUS_COOKIE_STATE_ACCEPT,BINDSTATUS_COOKIE_STATE_REJECT,BINDSTATUS_COOKIE_STATE_PROMPT,BINDSTATUS_COOKIE_STATE_LEASH,BINDSTATUS_COOKIE_STATE_DOWNGRADE,BINDSTATUS_POLICY_HREF,BINDSTATUS_P3P_HEADER,BINDSTATUS_PERSISTENT_COOKIE_RECEIVED,BINDSTATUS_SESSION_COOKIE_RECEIVED,BINDSTATUS_SESSION_COOKIES_ALLOWED,BINDSTATUS_CACHECONTROL,BINDSTATUS_SIZEAVAILABLE page=BINDSTATUS_FINDINGRESOURCE,BINDSTATUS_CONNECTING,BINDSTATUS_REDIRECTING,BINDSTATUS_BEGINDOWNLOADDATA,BINDSTATUS_DOWNLOADINGDATA,BINDSTATUS_ENDDOWNLOADDATA,BINDSTATUS_BEGINDOWNLOADCOMPONENTS,BINDSTATUS_INSTALLINGCOMPONENTS,BINDSTATUS_ENDDOWNLOADCOMPONENTS,BINDSTATUS_USINGCACHEDCOPY,BINDSTATUS_SENDINGREQUEST,BINDSTATUS_CLASSIDAVAILABLE,BINDSTATUS_MIMETYPEAVAILABLE,BINDSTATUS_CACHEFILENAMEAVAILABLE,BINDSTATUS_BEGINSYNCOPERATION,BINDSTATUS_ENDSYNCOPERATION,BINDSTATUS_BEGINUPLOADDATA,BINDSTATUS_UPLOADINGDATA,BINDSTATUS_ENDUPLOADINGDATA,BINDSTATUS_PROTOCOLCLASSID,BINDSTATUS_ENCODING,BINDSTATUS_VERFIEDMIMETYPEAVAILABLE,BINDSTATUS_CLASSINSTALLLOCATION,BINDSTATUS_DECODING,BINDSTATUS_LOADINGMIMEHANDLER,BINDSTATUS_CONTENTDISPOSITIONATTACH,BINDSTATUS_FILTERREPORTMIMETYPE,BINDSTATUS_CLSIDCANINSTANTIATE,BINDSTATUS_IUNKNOWNAVAILABLE,BINDSTATUS_DIRECTBIND,BINDSTATUS_RAWMIMETYPE,BINDSTATUS_PROXYDETECTING,BINDSTATUS_ACCEPTRANGES,BINDSTATUS_COOKIE_SENT,BINDSTATUS_COMPACT_POLICY_RECEIVED,BINDSTATUS_COOKIE_SUPPRESSED,BINDSTATUS_COOKIE_STATE_UNKNOWN,BINDSTATUS_COOKIE_STATE_ACCEPT,BINDSTATUS_COOKIE_STATE_REJECT,BINDSTATUS_COOKIE_STATE_PROMPT,BINDSTATUS_COOKIE_STATE_LEASH,BINDSTATUS_COOKIE_STATE_PROMPT,BINDSTATUS_COOKIE_STATE_DOWNGRADE,BINDSTATUS_POLICY_HREF,BINDSTATUS_P3P_HEADER,BINDSTATUS_PERSISTENT_COOKIE_RECEIVED,BINDSTATUS_SESSION_COOKIE_RECEIVED,BINDSTATUS_SESSION_COOKIES_ALLOWED,BINDSTATUS_CACHECONTROL,BINDSTATUS_SIZEAVAILABLE
+include/Usp10.h	SCRIPT_JUSTIFY	ms906270	match	
+include/Voipmanager.h	VoIPCallEvent	ms912597	match	
+include/Voipmanager.h	VoIPCallStatus	ms912598	match	
+include/Voipmanager.h	VoIPCallType	ms912599	match	
+include/Voipmanager.h	VoIPSystemEvent	ms912606	match	
+include/Voipmanager.h	VoIPProgressTone	ms912604	match	
+include/Winbase.h	FINDEX_INFO_LEVELS	ms889654	match	
+include/Winbase.h	FINDEX_SEARCH_OPS	ms889654	no-print-on-page	
+include/Winbase.h	GET_FILEEX_INFO_LEVELS	ms889654	no-print-on-page	
+include/Winbase.h	EXTENDED_NAME_FORMAT	ee483142	match	
+include/Winbase.h	DeviceSearchType	ms898292	match	
+include/Wininet.h	INTERNET_SCHEME	ms918377	match	
+include/Wininet.h	InternetCookieState	ms918353	match	
+include/Winldap.h	LDAP_RETCODE		no-pageid	
+include/Winsock2.h	WSAECOMPARATOR	ms898736	match	
+include/Winsock2.h	WSAESETSERVICEOP	ms898772	no-print-on-page	
+include/Wsdapi.h	WSD_PROTOCOL_TYPE	ee498851	match	
+include/Wsdapi.h	WSDUdpMessageType	ee498997	match	
+include/Wsdapi.h	WSDEventType	ee499157	match	
+include/XamlRuntime.h	XRLineStackingStrategy	ee501486	no-print-on-page	
+include/XamlRuntime.h	XRTextWrapping	ee501505	no-print-on-page	
+include/XamlRuntime.h	XRFontWeight	ee501509	no-print-on-page	
+include/XamlRuntime.h	XRPenLineJoin	ee501538	no-print-on-page	
+include/XamlRuntime.h	XRClockState	ee501562	no-print-on-page	
+include/XamlRuntime.h	XRColorInterpolationMode	ee501619	no-print-on-page	
+include/XamlRuntime.h	XRGridUnitType	ee501637	no-print-on-page	
+include/XamlRuntime.h	XRStretch	ee501819	no-print-on-page	
+include/XamlRuntime.h	XRStyleSimulations	ee501839	no-print-on-page	
+include/XamlRuntime.h	XRGradientSpreadMethod	ee501840	no-print-on-page	
+include/XamlRuntime.h	XRThreeState	ee501855	no-print-on-page	
+include/XamlRuntime.h	XRPenLineCap	ee502118	no-print-on-page	
+include/XamlRuntime.h	XRAlignmentY	ee502120	no-print-on-page	
+include/XamlRuntime.h	XRBrushMappingMode	ee502139	no-print-on-page	
+include/XamlRuntime.h	XRVerticalAlignment	ee502425	no-print-on-page	
+include/XamlRuntime.h	XRVisibility	ee502426	no-print-on-page	
+include/XamlRuntime.h	XRSweepDirection	ee502478	no-print-on-page	
+include/XamlRuntime.h	XRTextDecorationType	ee502711	no-print-on-page	
+include/XamlRuntime.h	XRTextAlignment	ee502747	no-print-on-page	
+include/XamlRuntime.h	XRFontStretch	ee502998	no-print-on-page	
+include/XamlRuntime.h	XRFillRule	ee503028	no-print-on-page	
+include/XamlRuntime.h	XRKeyboardNavigationMode	ee503321	no-print-on-page	
+include/XamlRuntime.h	XRHorizontalAlignment	ee503344	no-print-on-page	
+include/XamlRuntime.h	XROrientation	ee503573	no-print-on-page	
+include/XamlRuntime.h	XRScrollEventType	ee503585	no-print-on-page	
+include/XamlRuntime.h	XRClickMode	ee503686	no-print-on-page	
+include/XamlRuntime.h	XRFillBehavior	ee503994	no-print-on-page	
+include/XamlRuntime.h	XRAlignmentX	ee504017	no-print-on-page	
+include/XamlRuntime.h	XRScrollBarVisibility	ee504179	no-print-on-page	
+include/XamlRuntime.h	XRCursor	ee504201	no-print-on-page	
+include/XamlRuntime.h	XRFontStyle	ee504467	no-print-on-page	
+include/aygshell.h	SHNP	aa453728	match	
+include/aygshell.h	SHIC_FEATURE	aa453701	no-print-on-page	
+include/aygshell.h	SIPSTATE	aa453741	no-print-on-page	
+include/dvddrvr.h	EDVDAspectRatioMode	aa447766	match	
+include/dvddrvr.h	EDVDAudioFreq	aa447767	match	
+include/dvddrvr.h	EDVDAudioStreamType	aa447768	match	
+include/dvddrvr.h	EDVDDisplayAspectRatio	aa447769	match	
+include/dvddrvr.h	EDVDLpcmQuantization	aa447780	match	
+include/dvddrvr.h	EDVDSyncEventType	aa447781	match	
+include/dvddrvr.h	EHighlightAction	aa447783	match	
+include/dvdmedia.h	KS_AM_PROPERTY_TS_RATE_CHANGE	aa452528	match	
+include/p2p.h	PEER_RECORD_CHANGE_TYPE	ms895904	match	
+include/p2p.h	PEER_CONNECTION_FLAGS	ms886712	match	
+include/pm.h	CEDEVICE_POWER_STATE	aa447663	match	
+include/pnrpdef.h	PNRP_CLOUD_FLAGS	ms896278	match	
+include/pnrpdef.h	PNRP_CLOUD_STATE	ms896280	match	
+include/pnrpdef.h	PNRP_RESOLVE_CRITERIA	ms896281	match	
+include/oak/DwCeDump.h	MINIDUMP_STREAM_TYPE	ms939649	match	
+include/oak/Hiddi.h	HID_STRING_TYPE	ms899890	match	
+include/oak/Hidpi.h	HIDP_KEYBOARD_DIRECTION	ms899798	match	
+include/oak/Hidpi.h	HIDP_REPORT_TYPE	ms899820	match	
+include/oak/Ndis.h	NDIS_PARAMETER_TYPE	ms904090	match	
+include/oak/Ndis.h	NDIS_INTERFACE_TYPE	aa448011	match	
+include/oak/Ndis.h	NDIS_INTERRUPT_MODE	aa448018	no-print-on-page	
+include/oak/Ntddndis.h	NDIS_802_11_AUTHENTICATION_MODE	aa447877	match	
+include/oak/Ntddndis.h	NDIS_802_11_NETWORK_INFRASTRUCTURE	aa447884	match	
+include/oak/Ntddndis.h	NDIS_802_11_NETWORK_TYPE	aa447885	match	
+include/oak/Ntddndis.h	NDIS_802_11_POWER_MODE	aa447887	match	
+include/oak/Ntddndis.h	NDIS_802_11_PRIVACY_FILTER	aa447889	match	
+include/oak/Ntddndis.h	NDIS_802_11_RELOAD_DEFAULTS	aa447891	match	
+include/oak/Ntddndis.h	NDIS_802_11_WEP_STATUS	aa447898	match	
+include/oak/Ntddndis.h	NDIS_802_5_RING_STATE	aa447899	match	
+include/oak/Ntddndis.h	NDIS_MEDIUM	aa448032	match	
+include/oak/Ntddndis.h	NDIS_WAN_MEDIUM_SUBTYPE	ms905049	match	
+include/oak/Rtccore.h	RTC_ACE_SCOPE		no-pageid	
+include/oak/Rtccore.h	RTC_ANSWER_MODE		no-pageid	
+include/oak/Rtccore.h	RTC_AUDIO_DEVICE		no-pageid	
+include/oak/Rtccore.h	RTC_BUDDY_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_BUDDY_SUBSCRIPTION_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_CLIENT_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_DTMF		no-pageid	
+include/oak/Rtccore.h	RTC_EVENT		no-pageid	
+include/oak/Rtccore.h	RTC_GROUP_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_LISTEN_MODE		no-pageid	
+include/oak/Rtccore.h	RTC_MEDIA_EVENT_REASON		no-pageid	
+include/oak/Rtccore.h	RTC_MEDIA_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_MESSAGING_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_MESSAGING_USER_STATUS		no-pageid	
+include/oak/Rtccore.h	RTC_OFFER_WATCHER_MODE		no-pageid	
+include/oak/Rtccore.h	RTC_PARTICIPANT_STATE		no-pageid	
+include/oak/Rtccore.h	RTC_PORT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_PRESENCE_PROPERTY		no-pageid	
+include/oak/Rtccore.h	RTC_PRESENCE_STATUS		no-pageid	
+include/oak/Rtccore.h	RTC_PRIVACY_MODE		no-pageid	
+include/oak/Rtccore.h	RTC_PROFILE_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_PROVIDER_URI		no-pageid	
+include/oak/Rtccore.h	RTC_REGISTRATION_STATE		no-pageid	
+include/oak/Rtccore.h	RTC_REINVITE_STATE		no-pageid	
+include/oak/Rtccore.h	RTC_RING_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_ROAMING_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_SECURITY_LEVEL		no-pageid	
+include/oak/Rtccore.h	RTC_SECURITY_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_SESSION_REFER_STATUS		no-pageid	
+include/oak/Rtccore.h	RTC_SESSION_STATE		no-pageid	
+include/oak/Rtccore.h	RTC_SESSION_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_T120_APPLET		no-pageid	
+include/oak/Rtccore.h	RTC_TERMINATE_REASON		no-pageid	
+include/oak/Rtccore.h	RTC_USER_SEARCH_COLUMN		no-pageid	
+include/oak/Rtccore.h	RTC_USER_SEARCH_PREFERENCE		no-pageid	
+include/oak/Rtccore.h	RTC_VIDEO_DEVICE		no-pageid	
+include/oak/Rtccore.h	RTC_WATCHER_EVENT_TYPE		no-pageid	
+include/oak/Rtccore.h	RTC_WATCHER_MATCH_MODE		no-pageid	
+include/oak/Rtccore.h	RTC_WATCHER_STATE		no-pageid	
+include/oak/Sdcardddk.h	SD_FS_TYPE	ms920432	match	
+include/oak/Sdcardddk.h	SD_INTERFACE_MODE	ms920436	match	
+include/oak/Sdcardddk.h	SD_RESPONSE_TYPE	ms920454	annotated-deviation	hdr=NoResponse,ResponseR1,ResponseR1b,ResponseR2,ResponseR3,ResponseR4,ResponseR5,ResponseR6,ResponseR7 page=NoResponse,ResponseR1,ResponseR1b,ResponseR2,ResponseR3,ResponseR4,ResponseR5,ResponseR6
+include/oak/Sdcardddk.h	SD_TRANSFER_CLASS	ms920459	match	
+include/oak/Sdcardddk.h	SDCARD_DEVICE_TYPE	ms920321	match	
+include/oak/Sdcardddk.h	SD_IO_TRANSFER_TYPE	ms920440	match	

@@ -1,5 +1,6 @@
 # header	name	page	status	detail
 include/Af_irda.h	_IRDA_DEVICE_INFO	aa450461	match	
+include/Autoras.h	DIALER_NOTIFICATION	ms897083	match	
 include/Avc_stream.h	STREAM_CreateLocalPlug_Response	aa448155	match	
 include/Avc_stream.h	STREAM_DeleteLocalPlug_Request	aa448156	match	
 include/Avc_stream.h	STREAM_DereferenceRemotePlug_Request	aa448157	match	
@@ -86,7 +87,8 @@ include/Controldefinitions.h	result	ee501318	match
 include/Cpl.h	CPLINFO	ms908158	match	
 include/Cpl.h	NEWCPLINFO	ms931468	match	
 include/Credmgr.h	CREDENTIAL	ms937728	no-print-on-page	
-include/Cs.h	CSTIME	ee483400	no-print-on-page	
+include/Cs.h	CSDATAFORMAT	ee483400	match	
+include/Cs.h	CSTIME	ee483433	match	
 include/Cs.h	CSPIN_CINSTANCES	ee484198	match	
 include/Cs.h	CSMULTIPLE_ITEM	ee484262	match	
 include/Cs.h	CSPROPERTY_MEMBERSHEADER	ee484426	match	
@@ -292,7 +294,8 @@ include/Iprtrmib.h	MIB_UDPROW	ms895094	match
 include/Iprtrmib.h	MIB_UDPSTATS	ms895094	no-print-on-page	
 include/Ipsec_api.h	IPSEC_API_PARAM		no-pageid	
 include/Ipsec_api.h	IPSEC_API_MODE_INFO		no-pageid	
-include/Iptypes.h	IP_ADDR_STRING	ms895038	no-print-on-page	
+include/Iptypes.h	IP_ADDRESS_STRING	ms895038	no-print-on-page	
+include/Iptypes.h	IP_ADDR_STRING	ms891175	match	
 include/Iptypes.h	IP_PER_ADAPTER_INFO	ms895046	no-print-on-page	
 include/Iptypes.h	IP_ADAPTER_UNICAST_ADDRESS	ms891173	match	
 include/Iptypes.h	IP_ADAPTER_ANYCAST_ADDRESS	ms891168	match	
@@ -482,7 +485,7 @@ include/Ras.h	RASCONNSTATUS	ms896361	match
 include/Ras.h	RASDIALPARAMS	aa450835	match	
 include/Ras.h	RASENTRYNAME	aa450837	match	
 include/Ras.h	RASENTRY	aa450836	no-print-on-page	
-include/Ras.h	RASPROJECTION		skip-fnptr	
+include/Ras.h	RASDEVINFO	aa450833	match	
 include/Ras.h	RASPPPIP	aa450854	match	
 include/Ras.h	RASDIALEXTENSIONS		no-pageid	
 include/Ras.h	RAS_STATS	aa450865	match	
@@ -704,20 +707,24 @@ include/Winbase.h	SYSTEM_POWER_STATUS_EX	ms940384	match
 include/Winbase.h	SYSTEM_POWER_STATUS_EX2	ms940385	match	
 include/Winbase.h	VS_FIXEDFILEINFO	aa450983	match	
 include/Winbase.h	DEVMGR_DEVICE_INFORMATION	ms898294	match	
-include/Wincrypt.h	CMSG_STREAM_INFO		skip-fnptr	
+include/Wincrypt.h	CRYPT_INTEGER_BLOB	ms937016	match	
+include/Wincrypt.h	CMSG_STREAM_INFO	ms937724	match	
 include/Wincrypt.h	VTableProvStruc	ms926457	match	
 include/Wincrypt.h	CRYPT_BIT_BLOB	ms937736	match	
 include/Wincrypt.h	CRYPT_ALGORITHM_IDENTIFIER	ms937734	match	
 include/Wincrypt.h	CRYPT_ATTRIBUTE	ms937735	match	
-include/Wincrypt.h	CRYPT_KEY_PROV_PARAM	ms938388	no-print-on-page	
+include/Wincrypt.h	CRYPT_ATTRIBUTES	ms938388	match	
+include/Wincrypt.h	CRYPT_KEY_PROV_PARAM	ms938221	match	
 include/Wincrypt.h	CRYPT_KEY_PROV_INFO	ms938212	match	
 include/Wincrypt.h	CRYPT_OID_FUNC_ENTRY	ms938293	match	
 include/Wincrypt.h	CRYPT_OID_INFO	ms938300	match	
 include/Wincrypt.h	HMAC_INFO	ms925995	match	
 include/Wincrypt.h	PROV_ENUMALGS	ms906557	match	
 include/Wincrypt.h	PROV_ENUMALGS_EX	ms938451	match	
-include/Wincrypt.h	RSAPUBKEY	ms938453	no-print-on-page	
-include/Wincrypt.h	CERT_TRUST_STATUS	ms938410	no-print-on-page	
+include/Wincrypt.h	BLOBHEADER	ms938453	match	
+include/Wincrypt.h	RSAPUBKEY	ms938465	match	
+include/Wincrypt.h	CTL_USAGE	ms938410	match	
+include/Wincrypt.h	CERT_TRUST_STATUS	ms937707	match	
 include/Wincrypt.h	CERT_EXTENSION	ms937651	match	
 include/Wincrypt.h	CERT_ISSUER_SERIAL_NUMBER	ms937675	match	
 include/Wincrypt.h	CERT_PRIVATE_KEY_VALIDITY	ms937689	match	
@@ -864,7 +871,8 @@ include/Wininet.h	INTERNET_PER_CONN_OPTION_LIST	ms918371	match
 include/Wininet.h	INTERNET_PROXY_INFO	ms918372	match	
 include/Wininet.h	INTERNET_VERSION_INFO	ms918390	match	
 include/Winldap.h	BerElement	ms863747	match	
-include/Winldap.h	LDAPControl	ms863826	no-print-on-page	
+include/Winldap.h	LDAP_BERVAL	ms863826	match	
+include/Winldap.h	LDAPControl	ms891757	MISMATCH	hdr=ldctl_oid,ldctl_value,ldctl_iscritical page=ldctl_oid,bervalldctl_value,ldctl_iscritical
 include/Winldap.h	mod_vals	ms892279	match	
 include/Winldap.h	LDAP_TIMEVAL	ms892315	match	
 include/Winldap.h	LDAPSortKey	ms892313	match	
