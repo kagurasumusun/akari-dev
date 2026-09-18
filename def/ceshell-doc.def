@@ -23,3 +23,7 @@ EXPORTS
   SHGetPathFromIDList
   SHGetSpecialFolderLocation
   StrRetToBuf
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  SHChangeNotifyDeregister
+  SHChangeNotifyFree
+  SHChangeNotifyRegister

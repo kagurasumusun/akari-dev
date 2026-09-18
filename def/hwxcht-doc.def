@@ -15,3 +15,15 @@
 LIBRARY hwxcht.dll
 EXPORTS
   HwxConfig
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  HwxCreate
+  HwxDestroy
+  HwxEndInput
+  HwxGetResults
+  HwxInput
+  HwxProcess
+  HwxResultsAvailable
+  HwxSetAbort
+  HwxSetContext
+  HwxSetGuide
+  HwxSetPartial

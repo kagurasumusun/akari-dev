@@ -97,3 +97,12 @@ EXPORTS
   PFXImportCertStore
   PFXIsPFXBlob
   PFXVerifyPassword
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  CryptMsgCalculateEncodedLength
+  CryptMsgClose
+  CryptMsgControl
+  CryptMsgDuplicate
+  CryptMsgGetParam
+  CryptMsgOpenToDecode
+  CryptMsgOpenToEncode
+  CryptMsgUpdate

@@ -64,3 +64,9 @@ EXPORTS
   BthWriteLinkPolicySettings
   BthWritePageTimeout
   BthWriteScanEnableMask
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  BthActivatePAN
+  BthGetRole
+  BthReadRSSI
+  BthSetCODInquiryFilter
+  BthSwitchRole

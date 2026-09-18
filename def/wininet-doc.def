@@ -49,3 +49,6 @@ EXPORTS
   SetUrlCacheEntryInfo
   UnlockUrlCacheEntryFile
   UnlockUrlCacheEntryStream
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  InternetClearAllPerSiteCookieDecisions
+  PrivacyGetZonePreferenceW

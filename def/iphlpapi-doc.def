@@ -57,3 +57,9 @@ EXPORTS
   SetIpStatistics
   SetIpTTL
   SetTcpEntry
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  Icmp6CreateFile
+  Icmp6ParseReplies
+  IcmpCloseHandle
+  IcmpCreateFile
+  IcmpParseReplies

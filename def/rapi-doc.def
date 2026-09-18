@@ -81,3 +81,6 @@ EXPORTS
   CeUnmountDBVol
   CeWriteFile
   CeWriteRecordProps
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  CeFlushDBVol
+  CeGetDiskFreeSpaceEx

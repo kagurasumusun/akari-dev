@@ -25,3 +25,5 @@ EXPORTS
   BthAGNetworkSwapCall
   BthAGNetworkTransmitDTMF
   BthAGNetworkUnholdCall
+; documented exports missing from this def (2026-09-19 def-gap audit)
+  BthAGNetworkDropSwapCall
