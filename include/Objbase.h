@@ -3316,4 +3316,82 @@ struct IViewObject2 { const IViewObject2Vtbl *lpVtbl; };
 /* _wcesdk_ReportStatus: page-printed prototype (Windows CE OS). */
 BOOL ReportStatus(LPWSTR lpszObjType, UINT uCode, UINT uParam);
 
+typedef struct IContinueCallback IContinueCallback;
+
+/* ---- IContinueCallback: vtable order printed by ms880195.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IContinueCallbackVtbl {
+    HRESULT (WINAPI *QueryInterface)(IContinueCallback*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IContinueCallback*);  /* (R1) */
+    ULONG (WINAPI *Release)(IContinueCallback*);  /* (R1) */
+    HRESULT (WINAPI *FContinue)(IContinueCallback*);  /* ms880185 */
+    HRESULT (WINAPI *FContinuePrinting)(IContinueCallback*, LONG cPagesPrinted, LONG nCurrentPage, LPOLESTR pszPrintStatus);  /* ms880191 */
+} IContinueCallbackVtbl;
+struct IContinueCallback { const IContinueCallbackVtbl *lpVtbl; };
+#define IContinueCallback_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IContinueCallback_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IContinueCallback_Release(T) ((T)->lpVtbl->Release(T))
+#define IContinueCallback_FContinue(T) ((T)->lpVtbl->FContinue(T))
+#define IContinueCallback_FContinuePrinting(T,a,b,c) ((T)->lpVtbl->FContinuePrinting(T,a,b,c))
+
+/* ---- IEnumMoniker: vtable order printed by aa515624.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IEnumMonikerVtbl {
+    HRESULT (WINAPI *QueryInterface)(IEnumMoniker*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IEnumMoniker*);  /* (R1) */
+    ULONG (WINAPI *Release)(IEnumMoniker*);  /* (R1) */
+    HRESULT (WINAPI *Next)(IEnumMoniker*, ULONG celt, IMoniker*** rgelt, ULONG* pceltFetched);  /* aa515626 */
+    HRESULT (WINAPI *Skip)(IEnumMoniker*, ULONG celt);  /* aa515628 */
+    HRESULT (WINAPI *Reset)(IEnumMoniker*);  /* aa515627 */
+    HRESULT (WINAPI *Clone)(IEnumMoniker*, IEnumMoniker** ppenum);  /* aa515623 */
+} IEnumMonikerVtbl;
+struct IEnumMoniker { const IEnumMonikerVtbl *lpVtbl; };
+#define IEnumMoniker_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IEnumMoniker_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IEnumMoniker_Release(T) ((T)->lpVtbl->Release(T))
+#define IEnumMoniker_Next(T,a,b,c) ((T)->lpVtbl->Next(T,a,b,c))
+#define IEnumMoniker_Skip(T,a) ((T)->lpVtbl->Skip(T,a))
+#define IEnumMoniker_Reset(T) ((T)->lpVtbl->Reset(T))
+#define IEnumMoniker_Clone(T,a) ((T)->lpVtbl->Clone(T,a))
+
+/* ---- IMultiQI: vtable order printed by ms882829.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMultiQIVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMultiQI*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMultiQI*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMultiQI*);  /* (R1) */
+    HRESULT (WINAPI *QueryMultipleInterfaces)(IMultiQI*, ULONG cMQIs, MULTI_QI* pMQIs);  /* ms882837 */
+} IMultiQIVtbl;
+struct IMultiQI { const IMultiQIVtbl *lpVtbl; };
+#define IMultiQI_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMultiQI_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMultiQI_Release(T) ((T)->lpVtbl->Release(T))
+#define IMultiQI_QueryMultipleInterfaces(T,a,b) ((T)->lpVtbl->QueryMultipleInterfaces(T,a,b))
+
+/* ---- IRunningObjectTable: vtable order printed by ms884601.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IRunningObjectTableVtbl {
+    HRESULT (WINAPI *QueryInterface)(IRunningObjectTable*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IRunningObjectTable*);  /* (R1) */
+    ULONG (WINAPI *Release)(IRunningObjectTable*);  /* (R1) */
+    HRESULT (WINAPI *Register)(IRunningObjectTable*, DWORD grfFlags, IUnknown* punkObject, IMoniker* pmkObjectName, DWORD* pdwRegister);  /* ms884603 */
+    HRESULT (WINAPI *Revoke)(IRunningObjectTable*, DWORD dwRegister);  /* ms884604 */
+    HRESULT (WINAPI *IsRunning)(IRunningObjectTable*, IMoniker* pmkObjectName);  /* ms884600 */
+    HRESULT (WINAPI *GetObject)(IRunningObjectTable*, IMoniker* pmkObjectName, IUnknown** ppunkObject);  /* ms884597 */
+    HRESULT (WINAPI *NoteChangeTime)(IRunningObjectTable*, DWORD dwRegister, FILETIME* pfiletime);  /* ms884602 */
+    HRESULT (WINAPI *GetTimeOfLastChange)(IRunningObjectTable*, IMoniker* pmkObjectName, FILETIME* pfiletime);  /* ms884598 */
+    HRESULT (WINAPI *EnumRunning)(IRunningObjectTable*, IEnumMoniker** ppenumMoniker);  /* ms884596 */
+} IRunningObjectTableVtbl;
+struct IRunningObjectTable { const IRunningObjectTableVtbl *lpVtbl; };
+#define IRunningObjectTable_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IRunningObjectTable_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IRunningObjectTable_Release(T) ((T)->lpVtbl->Release(T))
+#define IRunningObjectTable_Register(T,a,b,c,d) ((T)->lpVtbl->Register(T,a,b,c,d))
+#define IRunningObjectTable_Revoke(T,a) ((T)->lpVtbl->Revoke(T,a))
+#define IRunningObjectTable_IsRunning(T,a) ((T)->lpVtbl->IsRunning(T,a))
+#define IRunningObjectTable_GetObject(T,a,b) ((T)->lpVtbl->GetObject(T,a,b))
+#define IRunningObjectTable_NoteChangeTime(T,a,b) ((T)->lpVtbl->NoteChangeTime(T,a,b))
+#define IRunningObjectTable_GetTimeOfLastChange(T,a,b) ((T)->lpVtbl->GetTimeOfLastChange(T,a,b))
+#define IRunningObjectTable_EnumRunning(T,a) ((T)->lpVtbl->EnumRunning(T,a))
+
 #endif /* AKARI_OBJBASE_H */

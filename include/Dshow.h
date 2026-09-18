@@ -73,6 +73,49 @@ extern "C" {
  * official print. */
 typedef LONGLONG REFERENCE_TIME;
 
+/* REFTIME: printed only as a parameter/return type in the DirectShow
+ * method prints (e.g. IBasicVideo::get_AvgTimePerFrame, ms939551:
+ * "REFTIME* pAvgTimePerFrame", described as "Time between frames");
+ * no page in the corpus (95,439 pages, checked 2026-09-18) prints the
+ * underlying typedef.  The documented values are fractional times in
+ * seconds, so double is the C carrier; same derivation policy as
+ * REFERENCE_TIME above.  Replace on an official print. */
+typedef double REFTIME;
+
+/* OAEVENT / MSPID / STREAM_TYPE / REFMSPID: printed only as parameter
+ * types -- IMediaEvent(Ex)::GetEventHandle (aa452274, "OAEVENT* hEvent",
+ * an event handle), IMediaStream::GetInformation (ms911621, "MSPID*
+ * pPurposeId, STREAM_TYPE* pType"), IMultiMediaStream::GetMediaStream
+ * (ms911850, "REFMSPID idPurpose").  No page in the corpus prints their
+ * typedefs (checked 2026-09-18).  Derivation: the documented event
+ * handle is HANDLE (CreateEvent/CloseHandle pair); the purpose id and
+ * stream type are numeric identifiers, DWORD being the CE carrier;
+ * REFMSPID follows Objbase.h's REFIID macro convention.  Replace on
+ * official prints. */
+typedef HANDLE OAEVENT;
+typedef DWORD MSPID;
+#define REFMSPID const MSPID *
+typedef DWORD STREAM_TYPE;
+
+/* STREAM_STATE / STREAM_TIME: printed only as parameter types --
+ * IMultiMediaStream::GetState/SetState (ms911855/ms911980) and
+ * GetTime/GetDuration/Seek (ms911946/ms931676/ms911969: "Pointer to a
+ * STREAM_TIME value that will contain the current time, if the media
+ * stream has a clock").  No typedef prints in the corpus.  Derivation:
+ * the state is a numeric value (DWORD carrier); the stream time comes
+ * from the stream clock, whose documented carrier is REFERENCE_TIME.
+ * Replace on official prints. */
+typedef DWORD STREAM_STATE;
+typedef REFERENCE_TIME STREAM_TIME;
+
+/* PAPCFUNC: printed only as a parameter of IStreamSample::Update
+ * (ms931818: "PAPCFUNC pfnAPC", "Pointer to the callback function");
+ * its call signature is printed nowhere in the corpus (checked
+ * 2026-09-18), so it is carried by the documented generic callback
+ * pointer FARPROC rather than an invented signature.  Replace on an
+ * official print. */
+typedef FARPROC PAPCFUNC;
+
 /* Opaque interface forwards used by pointer in the structure prints
  * (rtccore.h M69 pattern; the interface overview pages live in the
  * DirectShow Interfaces book, still pending -- no method records
@@ -1110,8 +1153,8 @@ typedef struct IVideoWindow IVideoWindow;
  *   ms911850 GetMediaStream: HRESULT GetMediaStream(REFMSPID idPurpose,IMediaStream** ppMediaStream);
  *   ms911855 GetState: HRESULT GetState(STREAM_STATE* pCurrentState);
  *   ms911946 GetTime: HRESULT GetTime(STREAM_TIME* pCurrentTime);
- *   ms911969 Seek: HRESULT Seek(STREAM_TIMESeekTime);
- *   ms911980 SetState: HRESULT SetState(STREAM_STATENewState);
+ *   ms911969 Seek: HRESULT Seek(STREAM_TIME SeekTime);
+ *   ms911980 SetState: HRESULT SetState(STREAM_STATE NewState);
  *   ms931669 EnumMediaStreams: HRESULT EnumMediaStreams(longIndex,IMediaStream** ppMediaStream);
  *   ms931676 GetDuration: HRESULT GetDuration(STREAM_TIME* pDuration);
  *   ms931682 GetEndOfStreamEventHandle: HRESULT GetEndOfStreamEventHandle(HANDLE* phEOS);
@@ -1217,7 +1260,7 @@ typedef struct IVideoWindow IVideoWindow;
  *   ms931814 GetMediaStream: HRESULT GetMediaStream(IMediaStream** ppMediaStream);
  *   ms931815 GetSampleTimes: HRESULT GetSampleTimes(STREAM_TIME* pStartTime,STREAM_TIME* pEndTime,STREAM_TIME* pCurrentTime);
  *   ms931817 SetSampleTimes: HRESULT SetSampleTimes(const STREAM_TIME* pStartTime,const STREAM_TIME* pEndTime);
- *   ms931818 Update: HRESULTUpdate(DWORDdwFlags,HANDLEhEvent,PAPCFUNCpfnAPC,DWORDdwAPCData);
+ *   ms931818 Update: HRESULTUpdate(DWORDdwFlags,HANDLEhEvent,PAPCFUNC pfnAPC,DWORDdwAPCData);
  */
 
 /* IVPBaseConfig: documented methods (13 pages).  Signatures recorded
@@ -2324,4 +2367,865 @@ struct IVideoWindow { const IVideoWindowVtbl *lpVtbl; };
 /* ms908703 IAMMediaContent::get_Rating (Header: Dshow.h, Initguid.h, Qnetwork.h.) */
 /* ms908713 IAMMediaContent::get_Title (Header: Dshow.h, Initguid.h, Qnetwork.h.) */
 /* ms908716 IAMMediaContent::get_WatermarkURL (Header: Dshow.h, Initguid.h, Qnetwork.h.) */
+
+/* ---- IAMDevMemoryAllocator: vtable order printed by aa451750.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMDevMemoryAllocatorVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMDevMemoryAllocator*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMDevMemoryAllocator*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMDevMemoryAllocator*);  /* (R1) */
+    HRESULT (WINAPI *GetInfo)(IAMDevMemoryAllocator*, DWORD* pdwcbTotalFree, DWORD* pdwcbLargestFree, DWORD* pdwcbTotalMemory, DWORD* pdwcbMinimumChunk);  /* aa451749 */
+    HRESULT (WINAPI *CheckMemory)(IAMDevMemoryAllocator*, const BYTE* pBuffer);  /* aa451746 */
+    HRESULT (WINAPI *Alloc)(IAMDevMemoryAllocator*, BYTE** ppBuffer, DWORD* pdwcbBuffer);  /* aa451745 */
+    HRESULT (WINAPI *Free)(IAMDevMemoryAllocator*, BYTE* pBuffer);  /* aa451747 */
+    HRESULT (WINAPI *GetDevMemoryObject)(IAMDevMemoryAllocator*, IUnknown** ppUnkInnner, IUnknown* pUnkOuter);  /* aa451748 */
+} IAMDevMemoryAllocatorVtbl;
+struct IAMDevMemoryAllocator { const IAMDevMemoryAllocatorVtbl *lpVtbl; };
+#define IAMDevMemoryAllocator_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMDevMemoryAllocator_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMDevMemoryAllocator_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMDevMemoryAllocator_GetInfo(T,a,b,c,d) ((T)->lpVtbl->GetInfo(T,a,b,c,d))
+#define IAMDevMemoryAllocator_CheckMemory(T,a) ((T)->lpVtbl->CheckMemory(T,a))
+#define IAMDevMemoryAllocator_Alloc(T,a,b) ((T)->lpVtbl->Alloc(T,a,b))
+#define IAMDevMemoryAllocator_Free(T,a) ((T)->lpVtbl->Free(T,a))
+#define IAMDevMemoryAllocator_GetDevMemoryObject(T,a,b) ((T)->lpVtbl->GetDevMemoryObject(T,a,b))
+
+/* ---- IAMDevMemoryControl: vtable order printed by aa451752.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMDevMemoryControlVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMDevMemoryControl*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMDevMemoryControl*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMDevMemoryControl*);  /* (R1) */
+    HRESULT (WINAPI *QueryWriteSync)(IAMDevMemoryControl*);  /* aa451753 */
+    HRESULT (WINAPI *WriteSync)(IAMDevMemoryControl*);  /* aa451754 */
+    HRESULT (WINAPI *GetDevId)(IAMDevMemoryControl*, DWORD* pdwDevId);  /* aa451751 */
+} IAMDevMemoryControlVtbl;
+struct IAMDevMemoryControl { const IAMDevMemoryControlVtbl *lpVtbl; };
+#define IAMDevMemoryControl_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMDevMemoryControl_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMDevMemoryControl_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMDevMemoryControl_QueryWriteSync(T) ((T)->lpVtbl->QueryWriteSync(T))
+#define IAMDevMemoryControl_WriteSync(T) ((T)->lpVtbl->WriteSync(T))
+#define IAMDevMemoryControl_GetDevId(T,a) ((T)->lpVtbl->GetDevId(T,a))
+
+/* ---- IAMPlayList: vtable order printed by ms908755.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMPlayListVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMPlayList*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMPlayList*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMPlayList*);  /* (R1) */
+    HRESULT (WINAPI *GetFlags)(IAMPlayList*, DWORD* pdwFlags);  /* ms908734 */
+    HRESULT (WINAPI *GetItemCount)(IAMPlayList*, DWORD* pdwItems);  /* ms908742 */
+    HRESULT (WINAPI *GetItem)(IAMPlayList*, DWORD dwItemIndex, IAMPlayListItem** ppItem);  /* ms908738 */
+    HRESULT (WINAPI *GetNamedEvent)(IAMPlayList*, WCHAR pwszEventName, DWORD dwItemIndex, IAMPlayListItem** ppItem, DWORD* pdwFlags);  /* ms908746 */
+    HRESULT (WINAPI *GetRepeatInfo)(IAMPlayList*, DWORD* pdwRepeatCount, DWORD* pdwRepeatStart, DWORD* pdwRepeatEnd);  /* ms908750 */
+} IAMPlayListVtbl;
+struct IAMPlayList { const IAMPlayListVtbl *lpVtbl; };
+#define IAMPlayList_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMPlayList_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMPlayList_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMPlayList_GetFlags(T,a) ((T)->lpVtbl->GetFlags(T,a))
+#define IAMPlayList_GetItemCount(T,a) ((T)->lpVtbl->GetItemCount(T,a))
+#define IAMPlayList_GetItem(T,a,b) ((T)->lpVtbl->GetItem(T,a,b))
+#define IAMPlayList_GetNamedEvent(T,a,b,c,d) ((T)->lpVtbl->GetNamedEvent(T,a,b,c,d))
+#define IAMPlayList_GetRepeatInfo(T,a,b,c) ((T)->lpVtbl->GetRepeatInfo(T,a,b,c))
+
+/* ---- IAMPlayListItem: vtable order printed by ms908801.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMPlayListItemVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMPlayListItem*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMPlayListItem*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMPlayListItem*);  /* (R1) */
+    HRESULT (WINAPI *GetFlags)(IAMPlayListItem*, DWORD* pdwFlags);  /* ms908759 */
+    HRESULT (WINAPI *GetSourceCount)(IAMPlayListItem*, DWORD* pdwSources);  /* ms908770 */
+    HRESULT (WINAPI *GetSourceURL)(IAMPlayListItem*, DWORD dwSourceIndex, BSTR* pbstrURL);  /* ms908797 */
+    HRESULT (WINAPI *GetSourceStart)(IAMPlayListItem*, DWORD dwSourceIndex, REFERENCE_TIME* prtStart);  /* ms908787 */
+    HRESULT (WINAPI *GetSourceDuration)(IAMPlayListItem*, DWORD dwSourceIndex, REFERENCE_TIME* prtDuration);  /* ms908773 */
+    HRESULT (WINAPI *GetSourceStartMarker)(IAMPlayListItem*, DWORD dwSourceIndex, DWORD* pdwMarker);  /* ms908790 */
+    HRESULT (WINAPI *GetSourceEndMarker)(IAMPlayListItem*, DWORD dwSourceIndex, DWORD* pdwMarker);  /* ms908778 */
+    HRESULT (WINAPI *GetSourceStartMarkerName)(IAMPlayListItem*, DWORD dwSourceIndex, BSTR* pbstrStartMarker);  /* ms908793 */
+    HRESULT (WINAPI *GetSourceEndMarkerName)(IAMPlayListItem*, DWORD dwSourceIndex, BSTR* pbstrEndMarker);  /* ms908782 */
+    HRESULT (WINAPI *GetLinkURL)(IAMPlayListItem*, BSTR* pbstrURL);  /* ms908763 */
+    HRESULT (WINAPI *GetScanDuration)(IAMPlayListItem*, DWORD dwSourceIndex, REFERENCE_TIME* prtScanDuration);  /* ms908767 */
+} IAMPlayListItemVtbl;
+struct IAMPlayListItem { const IAMPlayListItemVtbl *lpVtbl; };
+#define IAMPlayListItem_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMPlayListItem_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMPlayListItem_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMPlayListItem_GetFlags(T,a) ((T)->lpVtbl->GetFlags(T,a))
+#define IAMPlayListItem_GetSourceCount(T,a) ((T)->lpVtbl->GetSourceCount(T,a))
+#define IAMPlayListItem_GetSourceURL(T,a,b) ((T)->lpVtbl->GetSourceURL(T,a,b))
+#define IAMPlayListItem_GetSourceStart(T,a,b) ((T)->lpVtbl->GetSourceStart(T,a,b))
+#define IAMPlayListItem_GetSourceDuration(T,a,b) ((T)->lpVtbl->GetSourceDuration(T,a,b))
+#define IAMPlayListItem_GetSourceStartMarker(T,a,b) ((T)->lpVtbl->GetSourceStartMarker(T,a,b))
+#define IAMPlayListItem_GetSourceEndMarker(T,a,b) ((T)->lpVtbl->GetSourceEndMarker(T,a,b))
+#define IAMPlayListItem_GetSourceStartMarkerName(T,a,b) ((T)->lpVtbl->GetSourceStartMarkerName(T,a,b))
+#define IAMPlayListItem_GetSourceEndMarkerName(T,a,b) ((T)->lpVtbl->GetSourceEndMarkerName(T,a,b))
+#define IAMPlayListItem_GetLinkURL(T,a) ((T)->lpVtbl->GetLinkURL(T,a))
+#define IAMPlayListItem_GetScanDuration(T,a,b) ((T)->lpVtbl->GetScanDuration(T,a,b))
+
+/* ---- IAMStreamControl: vtable order printed by ms908830.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMStreamControlVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMStreamControl*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMStreamControl*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMStreamControl*);  /* (R1) */
+    HRESULT (WINAPI *StartAt)(IAMStreamControl*, const REFERENCE_TIME* ptStart, DWORD dwCookie);  /* ms908841 */
+    HRESULT (WINAPI *StopAt)(IAMStreamControl*, const REFERENCE_TIME* ptStop, BOOL bSendExtra, DWORD dwCookie);  /* ms908842 */
+    HRESULT (WINAPI *GetInfo)(IAMStreamControl*, AM_STREAM_INFO* pInfo);  /* ms908825 */
+} IAMStreamControlVtbl;
+struct IAMStreamControl { const IAMStreamControlVtbl *lpVtbl; };
+#define IAMStreamControl_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMStreamControl_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMStreamControl_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMStreamControl_StartAt(T,a,b) ((T)->lpVtbl->StartAt(T,a,b))
+#define IAMStreamControl_StopAt(T,a,b,c) ((T)->lpVtbl->StopAt(T,a,b,c))
+#define IAMStreamControl_GetInfo(T,a) ((T)->lpVtbl->GetInfo(T,a))
+
+/* ---- IAMStreamSelect: vtable order printed by ms908860.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMStreamSelectVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMStreamSelect*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMStreamSelect*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMStreamSelect*);  /* (R1) */
+    HRESULT (WINAPI *Count)(IAMStreamSelect*, DWORD* pcStreams);  /* ms908847 */
+    HRESULT (WINAPI *Info)(IAMStreamSelect*, long lIndex, AM_MEDIA_TYPE** ppmt, DWORD* pdwFlags, LCID* plcid, DWORD* pdwGroup, WCHAR** ppszName, IUnknown** ppObject, IUnknown** ppUnk);  /* ms908855 */
+    HRESULT (WINAPI *Enable)(IAMStreamSelect*, long lIndex, DWORD dwFlags);  /* ms908850 */
+} IAMStreamSelectVtbl;
+struct IAMStreamSelect { const IAMStreamSelectVtbl *lpVtbl; };
+#define IAMStreamSelect_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMStreamSelect_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMStreamSelect_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMStreamSelect_Count(T,a) ((T)->lpVtbl->Count(T,a))
+#define IAMStreamSelect_Info(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->Info(T,a,b,c,d,e,f,g,h))
+#define IAMStreamSelect_Enable(T,a,b) ((T)->lpVtbl->Enable(T,a,b))
+
+/* ---- IAMovieSetup: vtable order printed by ms908725.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAMovieSetupVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAMovieSetup*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAMovieSetup*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAMovieSetup*);  /* (R1) */
+    HRESULT (WINAPI *Register)(IAMovieSetup*);  /* ms908728 */
+    HRESULT (WINAPI *Unregister)(IAMovieSetup*);  /* ms908731 */
+} IAMovieSetupVtbl;
+struct IAMovieSetup { const IAMovieSetupVtbl *lpVtbl; };
+#define IAMovieSetup_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAMovieSetup_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAMovieSetup_Release(T) ((T)->lpVtbl->Release(T))
+#define IAMovieSetup_Register(T) ((T)->lpVtbl->Register(T))
+#define IAMovieSetup_Unregister(T) ((T)->lpVtbl->Unregister(T))
+
+/* ---- IAsyncReader: vtable order printed by ms908871.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IAsyncReaderVtbl {
+    HRESULT (WINAPI *QueryInterface)(IAsyncReader*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IAsyncReader*);  /* (R1) */
+    ULONG (WINAPI *Release)(IAsyncReader*);  /* (R1) */
+    HRESULT (WINAPI *RequestAllocator)(IAsyncReader*, IMemAllocator* pPreferred, ALLOCATOR_PROPERTIES* pProps, IMemAllocator** ppActual);  /* ms939473 */
+    HRESULT (WINAPI *Request)(IAsyncReader*, IMediaSample* pSample, DWORD dwUser);  /* ms939468 */
+    HRESULT (WINAPI *WaitForNext)(IAsyncReader*, DWORD dwTimeout, IMediaSample** ppSample, DWORD* pdwUser);  /* ms939486 */
+    HRESULT (WINAPI *SyncReadAligned)(IAsyncReader*, IMediaSample* pSample);  /* ms939481 */
+    HRESULT (WINAPI *SyncRead)(IAsyncReader*, LONGLONG llPosition, LONG lLength, BYTE* pBuffer);  /* ms939476 */
+    HRESULT (WINAPI *Length)(IAsyncReader*, LONGLONG* pTotal, LONGLONG* pAvailable);  /* ms908876 */
+    HRESULT (WINAPI *BeginFlush)(IAsyncReader*);  /* ms908864 */
+    HRESULT (WINAPI *EndFlush)(IAsyncReader*);  /* ms908869 */
+} IAsyncReaderVtbl;
+struct IAsyncReader { const IAsyncReaderVtbl *lpVtbl; };
+#define IAsyncReader_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IAsyncReader_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IAsyncReader_Release(T) ((T)->lpVtbl->Release(T))
+#define IAsyncReader_RequestAllocator(T,a,b,c) ((T)->lpVtbl->RequestAllocator(T,a,b,c))
+#define IAsyncReader_Request(T,a,b) ((T)->lpVtbl->Request(T,a,b))
+#define IAsyncReader_WaitForNext(T,a,b,c) ((T)->lpVtbl->WaitForNext(T,a,b,c))
+#define IAsyncReader_SyncReadAligned(T,a) ((T)->lpVtbl->SyncReadAligned(T,a))
+#define IAsyncReader_SyncRead(T,a,b,c) ((T)->lpVtbl->SyncRead(T,a,b,c))
+#define IAsyncReader_Length(T,a,b) ((T)->lpVtbl->Length(T,a,b))
+#define IAsyncReader_BeginFlush(T) ((T)->lpVtbl->BeginFlush(T))
+#define IAsyncReader_EndFlush(T) ((T)->lpVtbl->EndFlush(T))
+
+/* ---- IBasicAudio: vtable order printed by ms939524.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IBasicAudioVtbl {
+    HRESULT (WINAPI *QueryInterface)(IBasicAudio*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IBasicAudio*);  /* (R1) */
+    ULONG (WINAPI *Release)(IBasicAudio*);  /* (R1) */
+    HRESULT (WINAPI *GetTypeInfoCount)(IBasicAudio*, unsigned int FAR* pctinfo);  /* aa515585 */
+    HRESULT (WINAPI *GetTypeInfo)(IBasicAudio*, unsigned int iTInfo, LCID lcid, ITypeInfo FAR* FAR* ppTInfo);  /* aa515584 */
+    HRESULT (WINAPI *GetIDsOfNames)(IBasicAudio*, REFIID riid, OLECHAR FAR* FAR* rgszNames, unsigned int cNames, LCID lcid, DISPID FAR* rgDispId);  /* aa515582 */
+    HRESULT (WINAPI *Invoke)(IBasicAudio*, DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS FAR* pDispParams, VARIANT FAR* pVarResult, EXCEPINFO FAR* pExcepInfo, unsigned int FAR* puArgErr);  /* aa515589 */
+    HRESULT (WINAPI *put_Volume)(IBasicAudio*, long lVolume);  /* ms939532 */
+    HRESULT (WINAPI *get_Volume)(IBasicAudio*, long* plVolume);  /* ms939519 */
+    HRESULT (WINAPI *put_Balance)(IBasicAudio*, long lBalance);  /* ms939529 */
+    HRESULT (WINAPI *get_Balance)(IBasicAudio*, long* plBalance);  /* ms939515 */
+} IBasicAudioVtbl;
+struct IBasicAudio { const IBasicAudioVtbl *lpVtbl; };
+#define IBasicAudio_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IBasicAudio_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IBasicAudio_Release(T) ((T)->lpVtbl->Release(T))
+#define IBasicAudio_GetTypeInfoCount(T,a) ((T)->lpVtbl->GetTypeInfoCount(T,a))
+#define IBasicAudio_GetTypeInfo(T,a,b,c) ((T)->lpVtbl->GetTypeInfo(T,a,b,c))
+#define IBasicAudio_GetIDsOfNames(T,a,b,c,d,e) ((T)->lpVtbl->GetIDsOfNames(T,a,b,c,d,e))
+#define IBasicAudio_Invoke(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->Invoke(T,a,b,c,d,e,f,g,h))
+#define IBasicAudio_put_Volume(T,a) ((T)->lpVtbl->put_Volume(T,a))
+#define IBasicAudio_get_Volume(T,a) ((T)->lpVtbl->get_Volume(T,a))
+#define IBasicAudio_put_Balance(T,a) ((T)->lpVtbl->put_Balance(T,a))
+#define IBasicAudio_get_Balance(T,a) ((T)->lpVtbl->get_Balance(T,a))
+
+/* ---- IBasicVideo: vtable order printed by ms939570.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IBasicVideoVtbl {
+    HRESULT (WINAPI *QueryInterface)(IBasicVideo*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IBasicVideo*);  /* (R1) */
+    ULONG (WINAPI *Release)(IBasicVideo*);  /* (R1) */
+    HRESULT (WINAPI *GetTypeInfoCount)(IBasicVideo*, unsigned int FAR* pctinfo);  /* aa515585 */
+    HRESULT (WINAPI *GetTypeInfo)(IBasicVideo*, unsigned int iTInfo, LCID lcid, ITypeInfo FAR* FAR* ppTInfo);  /* aa515584 */
+    HRESULT (WINAPI *GetIDsOfNames)(IBasicVideo*, REFIID riid, OLECHAR FAR* FAR* rgszNames, unsigned int cNames, LCID lcid, DISPID FAR* rgDispId);  /* aa515582 */
+    HRESULT (WINAPI *Invoke)(IBasicVideo*, DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS FAR* pDispParams, VARIANT FAR* pVarResult, EXCEPINFO FAR* pExcepInfo, unsigned int FAR* puArgErr);  /* aa515589 */
+    HRESULT (WINAPI *get_AvgTimePerFrame)(IBasicVideo*, REFTIME* pAvgTimePerFrame);  /* ms939551 */
+    HRESULT (WINAPI *get_BitRate)(IBasicVideo*, long* pBitRate);  /* ms939553 */
+    HRESULT (WINAPI *get_BitErrorRate)(IBasicVideo*, long* pBitErrorRate);  /* ms939552 */
+    HRESULT (WINAPI *get_VideoWidth)(IBasicVideo*, long* pVideoWidth);  /* ms939569 */
+    HRESULT (WINAPI *get_VideoHeight)(IBasicVideo*, long* pVideoHeight);  /* ms939566 */
+    HRESULT (WINAPI *put_SourceLeft)(IBasicVideo*, long SourceLeft);  /* ms939578 */
+    HRESULT (WINAPI *get_SourceLeft)(IBasicVideo*, long* pSourceLeft);  /* ms939562 */
+    HRESULT (WINAPI *put_SourceWidth)(IBasicVideo*, long SourceWidth);  /* ms939580 */
+    HRESULT (WINAPI *get_SourceWidth)(IBasicVideo*, long* pSourceWidth);  /* ms939565 */
+    HRESULT (WINAPI *put_SourceTop)(IBasicVideo*, long SourceTop);  /* ms939579 */
+    HRESULT (WINAPI *get_SourceTop)(IBasicVideo*, long* pSourceTop);  /* ms939564 */
+    HRESULT (WINAPI *put_SourceHeight)(IBasicVideo*, long SourceHeight);  /* ms939577 */
+    HRESULT (WINAPI *get_SourceHeight)(IBasicVideo*, long* pSourceHeight);  /* ms939561 */
+    HRESULT (WINAPI *put_DestinationLeft)(IBasicVideo*, long DestinationLeft);  /* ms939574 */
+    HRESULT (WINAPI *get_DestinationLeft)(IBasicVideo*, long* pDestinationLeft);  /* ms939557 */
+    HRESULT (WINAPI *put_DestinationWidth)(IBasicVideo*, long DestinationWidth);  /* ms939576 */
+    HRESULT (WINAPI *get_DestinationWidth)(IBasicVideo*, long* pDestinationWidth);  /* ms939560 */
+    HRESULT (WINAPI *put_DestinationTop)(IBasicVideo*, long DestinationTop);  /* ms939575 */
+    HRESULT (WINAPI *get_DestinationTop)(IBasicVideo*, long* pDestinationTop);  /* ms939559 */
+    HRESULT (WINAPI *put_DestinationHeight)(IBasicVideo*, long DestinationHeight);  /* ms939573 */
+    HRESULT (WINAPI *get_DestinationHeight)(IBasicVideo*, long* pDestinationHeight);  /* ms939556 */
+    HRESULT (WINAPI *SetSourcePosition)(IBasicVideo*, long Left, long Top, long Width, long Height);  /* ms939584 */
+    HRESULT (WINAPI *GetSourcePosition)(IBasicVideo*, long* pLeft, long* pTop, long* pWidth, long* pHeight);  /* ms939563 */
+    HRESULT (WINAPI *SetDefaultSourcePosition)(IBasicVideo*);  /* ms939582 */
+    HRESULT (WINAPI *SetDestinationPosition)(IBasicVideo*, long Left, long Top, long Width, long Height);  /* ms939583 */
+    HRESULT (WINAPI *GetDestinationPosition)(IBasicVideo*, long* pLeft, long* pTop, long* pWidth, long* pHeight);  /* ms939558 */
+    HRESULT (WINAPI *SetDefaultDestinationPosition)(IBasicVideo*);  /* ms939581 */
+    HRESULT (WINAPI *GetVideoSize)(IBasicVideo*, long* pWidth, long* pHeight);  /* ms939568 */
+    HRESULT (WINAPI *GetVideoPaletteEntries)(IBasicVideo*, long StartIndex, long Entries, long* pRetrieved, long* pPalette);  /* ms939567 */
+    HRESULT (WINAPI *GetCurrentImage)(IBasicVideo*, long* pBufferSize, long* pDIBImage);  /* ms939554 */
+    HRESULT (WINAPI *IsUsingDefaultSource)(IBasicVideo*);  /* ms939572 */
+    HRESULT (WINAPI *IsUsingDefaultDestination)(IBasicVideo*);  /* ms939571 */
+} IBasicVideoVtbl;
+struct IBasicVideo { const IBasicVideoVtbl *lpVtbl; };
+#define IBasicVideo_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IBasicVideo_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IBasicVideo_Release(T) ((T)->lpVtbl->Release(T))
+#define IBasicVideo_GetTypeInfoCount(T,a) ((T)->lpVtbl->GetTypeInfoCount(T,a))
+#define IBasicVideo_GetTypeInfo(T,a,b,c) ((T)->lpVtbl->GetTypeInfo(T,a,b,c))
+#define IBasicVideo_GetIDsOfNames(T,a,b,c,d,e) ((T)->lpVtbl->GetIDsOfNames(T,a,b,c,d,e))
+#define IBasicVideo_Invoke(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->Invoke(T,a,b,c,d,e,f,g,h))
+#define IBasicVideo_get_AvgTimePerFrame(T,a) ((T)->lpVtbl->get_AvgTimePerFrame(T,a))
+#define IBasicVideo_get_BitRate(T,a) ((T)->lpVtbl->get_BitRate(T,a))
+#define IBasicVideo_get_BitErrorRate(T,a) ((T)->lpVtbl->get_BitErrorRate(T,a))
+#define IBasicVideo_get_VideoWidth(T,a) ((T)->lpVtbl->get_VideoWidth(T,a))
+#define IBasicVideo_get_VideoHeight(T,a) ((T)->lpVtbl->get_VideoHeight(T,a))
+#define IBasicVideo_put_SourceLeft(T,a) ((T)->lpVtbl->put_SourceLeft(T,a))
+#define IBasicVideo_get_SourceLeft(T,a) ((T)->lpVtbl->get_SourceLeft(T,a))
+#define IBasicVideo_put_SourceWidth(T,a) ((T)->lpVtbl->put_SourceWidth(T,a))
+#define IBasicVideo_get_SourceWidth(T,a) ((T)->lpVtbl->get_SourceWidth(T,a))
+#define IBasicVideo_put_SourceTop(T,a) ((T)->lpVtbl->put_SourceTop(T,a))
+#define IBasicVideo_get_SourceTop(T,a) ((T)->lpVtbl->get_SourceTop(T,a))
+#define IBasicVideo_put_SourceHeight(T,a) ((T)->lpVtbl->put_SourceHeight(T,a))
+#define IBasicVideo_get_SourceHeight(T,a) ((T)->lpVtbl->get_SourceHeight(T,a))
+#define IBasicVideo_put_DestinationLeft(T,a) ((T)->lpVtbl->put_DestinationLeft(T,a))
+#define IBasicVideo_get_DestinationLeft(T,a) ((T)->lpVtbl->get_DestinationLeft(T,a))
+#define IBasicVideo_put_DestinationWidth(T,a) ((T)->lpVtbl->put_DestinationWidth(T,a))
+#define IBasicVideo_get_DestinationWidth(T,a) ((T)->lpVtbl->get_DestinationWidth(T,a))
+#define IBasicVideo_put_DestinationTop(T,a) ((T)->lpVtbl->put_DestinationTop(T,a))
+#define IBasicVideo_get_DestinationTop(T,a) ((T)->lpVtbl->get_DestinationTop(T,a))
+#define IBasicVideo_put_DestinationHeight(T,a) ((T)->lpVtbl->put_DestinationHeight(T,a))
+#define IBasicVideo_get_DestinationHeight(T,a) ((T)->lpVtbl->get_DestinationHeight(T,a))
+#define IBasicVideo_SetSourcePosition(T,a,b,c,d) ((T)->lpVtbl->SetSourcePosition(T,a,b,c,d))
+#define IBasicVideo_GetSourcePosition(T,a,b,c,d) ((T)->lpVtbl->GetSourcePosition(T,a,b,c,d))
+#define IBasicVideo_SetDefaultSourcePosition(T) ((T)->lpVtbl->SetDefaultSourcePosition(T))
+#define IBasicVideo_SetDestinationPosition(T,a,b,c,d) ((T)->lpVtbl->SetDestinationPosition(T,a,b,c,d))
+#define IBasicVideo_GetDestinationPosition(T,a,b,c,d) ((T)->lpVtbl->GetDestinationPosition(T,a,b,c,d))
+#define IBasicVideo_SetDefaultDestinationPosition(T) ((T)->lpVtbl->SetDefaultDestinationPosition(T))
+#define IBasicVideo_GetVideoSize(T,a,b) ((T)->lpVtbl->GetVideoSize(T,a,b))
+#define IBasicVideo_GetVideoPaletteEntries(T,a,b,c,d) ((T)->lpVtbl->GetVideoPaletteEntries(T,a,b,c,d))
+#define IBasicVideo_GetCurrentImage(T,a,b) ((T)->lpVtbl->GetCurrentImage(T,a,b))
+#define IBasicVideo_IsUsingDefaultSource(T) ((T)->lpVtbl->IsUsingDefaultSource(T))
+#define IBasicVideo_IsUsingDefaultDestination(T) ((T)->lpVtbl->IsUsingDefaultDestination(T))
+
+/* ---- IDMOWrapperFilter: vtable order printed by aa451818.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IDMOWrapperFilterVtbl {
+    HRESULT (WINAPI *QueryInterface)(IDMOWrapperFilter*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IDMOWrapperFilter*);  /* (R1) */
+    ULONG (WINAPI *Release)(IDMOWrapperFilter*);  /* (R1) */
+    HRESULT (WINAPI *Init)(IDMOWrapperFilter*, REFCLSID clsidDMO, REFCLSID catDMO);  /* aa451817 */
+} IDMOWrapperFilterVtbl;
+struct IDMOWrapperFilter { const IDMOWrapperFilterVtbl *lpVtbl; };
+#define IDMOWrapperFilter_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IDMOWrapperFilter_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IDMOWrapperFilter_Release(T) ((T)->lpVtbl->Release(T))
+#define IDMOWrapperFilter_Init(T,a,b) ((T)->lpVtbl->Init(T,a,b))
+
+/* ---- IDistributorNotify: vtable order printed by aa451802.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IDistributorNotifyVtbl {
+    HRESULT (WINAPI *QueryInterface)(IDistributorNotify*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IDistributorNotify*);  /* (R1) */
+    ULONG (WINAPI *Release)(IDistributorNotify*);  /* (R1) */
+    HRESULT (WINAPI *Stop)(IDistributorNotify*);  /* aa451807 */
+    HRESULT (WINAPI *Pause)(IDistributorNotify*);  /* aa451804 */
+    HRESULT (WINAPI *Run)(IDistributorNotify*, REFERENCE_TIME tStart);  /* aa451805 */
+    HRESULT (WINAPI *SetSyncSource)(IDistributorNotify*, IReferenceClock* pClock);  /* aa451806 */
+    HRESULT (WINAPI *NotifyGraphChange)(IDistributorNotify*);  /* aa451803 */
+} IDistributorNotifyVtbl;
+struct IDistributorNotify { const IDistributorNotifyVtbl *lpVtbl; };
+#define IDistributorNotify_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IDistributorNotify_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IDistributorNotify_Release(T) ((T)->lpVtbl->Release(T))
+#define IDistributorNotify_Stop(T) ((T)->lpVtbl->Stop(T))
+#define IDistributorNotify_Pause(T) ((T)->lpVtbl->Pause(T))
+#define IDistributorNotify_Run(T,a) ((T)->lpVtbl->Run(T,a))
+#define IDistributorNotify_SetSyncSource(T,a) ((T)->lpVtbl->SetSyncSource(T,a))
+#define IDistributorNotify_NotifyGraphChange(T) ((T)->lpVtbl->NotifyGraphChange(T))
+
+/* ---- IEnumFilters: vtable order printed by ms910535.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IEnumFiltersVtbl {
+    HRESULT (WINAPI *QueryInterface)(IEnumFilters*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IEnumFilters*);  /* (R1) */
+    ULONG (WINAPI *Release)(IEnumFilters*);  /* (R1) */
+    HRESULT (WINAPI *Next)(IEnumFilters*, ULONG cFilters, IBaseFilter** ppFilter, ULONG* pcFetched);  /* ms910536 */
+    HRESULT (WINAPI *Skip)(IEnumFilters*, ULONG cFilter);  /* ms910539 */
+    HRESULT (WINAPI *Reset)(IEnumFilters*);  /* ms910538 */
+    HRESULT (WINAPI *Clone)(IEnumFilters*, IEnumFilters** ppEnum);  /* ms910534 */
+} IEnumFiltersVtbl;
+struct IEnumFilters { const IEnumFiltersVtbl *lpVtbl; };
+#define IEnumFilters_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IEnumFilters_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IEnumFilters_Release(T) ((T)->lpVtbl->Release(T))
+#define IEnumFilters_Next(T,a,b,c) ((T)->lpVtbl->Next(T,a,b,c))
+#define IEnumFilters_Skip(T,a) ((T)->lpVtbl->Skip(T,a))
+#define IEnumFilters_Reset(T) ((T)->lpVtbl->Reset(T))
+#define IEnumFilters_Clone(T,a) ((T)->lpVtbl->Clone(T,a))
+
+/* ---- IEnumRegFilters: vtable order printed by ms910551.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IEnumRegFiltersVtbl {
+    HRESULT (WINAPI *QueryInterface)(IEnumRegFilters*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IEnumRegFilters*);  /* (R1) */
+    ULONG (WINAPI *Release)(IEnumRegFilters*);  /* (R1) */
+    HRESULT (WINAPI *Next)(IEnumRegFilters*, ULONG cFilters, REGFILTER** apRegFilter, ULONG* pcFetched);  /* ms910552 */
+    HRESULT (WINAPI *Skip)(IEnumRegFilters*, ULONG celt);  /* ms910554 */
+    HRESULT (WINAPI *Reset)(IEnumRegFilters*);  /* ms910553 */
+    HRESULT (WINAPI *Clone)(IEnumRegFilters*, IEnumRegFilters** ppEnum);  /* ms910550 */
+} IEnumRegFiltersVtbl;
+struct IEnumRegFilters { const IEnumRegFiltersVtbl *lpVtbl; };
+#define IEnumRegFilters_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IEnumRegFilters_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IEnumRegFilters_Release(T) ((T)->lpVtbl->Release(T))
+#define IEnumRegFilters_Next(T,a,b,c) ((T)->lpVtbl->Next(T,a,b,c))
+#define IEnumRegFilters_Skip(T,a) ((T)->lpVtbl->Skip(T,a))
+#define IEnumRegFilters_Reset(T) ((T)->lpVtbl->Reset(T))
+#define IEnumRegFilters_Clone(T,a) ((T)->lpVtbl->Clone(T,a))
+
+/* ---- IFileSourceFilter: vtable order printed by ms910557.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IFileSourceFilterVtbl {
+    HRESULT (WINAPI *QueryInterface)(IFileSourceFilter*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IFileSourceFilter*);  /* (R1) */
+    ULONG (WINAPI *Release)(IFileSourceFilter*);  /* (R1) */
+    HRESULT (WINAPI *Load)(IFileSourceFilter*, LPCOLESTR pszFileName, const AM_MEDIA_TYPE* pmt);  /* ms910558 */
+    HRESULT (WINAPI *GetCurfile)(IFileSourceFilter*, LPOLESTR* ppszFileName, AM_MEDIA_TYPE* pmt);  /* ms910556 */
+} IFileSourceFilterVtbl;
+struct IFileSourceFilter { const IFileSourceFilterVtbl *lpVtbl; };
+#define IFileSourceFilter_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IFileSourceFilter_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IFileSourceFilter_Release(T) ((T)->lpVtbl->Release(T))
+#define IFileSourceFilter_Load(T,a,b) ((T)->lpVtbl->Load(T,a,b))
+#define IFileSourceFilter_GetCurfile(T,a,b) ((T)->lpVtbl->GetCurfile(T,a,b))
+
+/* ---- IFilterGraph2: vtable order printed by ms910559.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IFilterGraph2Vtbl {
+    HRESULT (WINAPI *QueryInterface)(IFilterGraph2*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IFilterGraph2*);  /* (R1) */
+    ULONG (WINAPI *Release)(IFilterGraph2*);  /* (R1) */
+    HRESULT (WINAPI *ReconnectEx)(IFilterGraph2*, IPin* ppin, const AM_MEDIA_TYPE* pmt);  /* ms910560 */
+} IFilterGraph2Vtbl;
+struct IFilterGraph2 { const IFilterGraph2Vtbl *lpVtbl; };
+#define IFilterGraph2_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IFilterGraph2_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IFilterGraph2_Release(T) ((T)->lpVtbl->Release(T))
+#define IFilterGraph2_ReconnectEx(T,a,b) ((T)->lpVtbl->ReconnectEx(T,a,b))
+
+/* ---- IFilterMapper: vtable order printed by ms910571.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IFilterMapperVtbl {
+    HRESULT (WINAPI *QueryInterface)(IFilterMapper*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IFilterMapper*);  /* (R1) */
+    ULONG (WINAPI *Release)(IFilterMapper*);  /* (R1) */
+    HRESULT (WINAPI *RegisterFilter)(IFilterMapper*, CLSID clsid, LPCWSTR Name, DWORD dwMerit);  /* ms910572 */
+    HRESULT (WINAPI *RegisterFilterInstance)(IFilterMapper*, CLSID clsid, LPCWSTR Name, CLSID* MRId);  /* ms910573 */
+    HRESULT (WINAPI *RegisterPin)(IFilterMapper*, CLSID Filter, LPCWSTR Name, BOOL bRendered, BOOL bOutput, BOOL bZero, BOOL bMany, CLSID ConnectsToFilter, LPWSTR ConnectsToPin);  /* ms910574 */
+    HRESULT (WINAPI *UnregisterFilter)(IFilterMapper*, CLSID Filter);  /* ms910576 */
+    HRESULT (WINAPI *UnregisterFilterInstance)(IFilterMapper*, CLSID MRId);  /* ms910577 */
+    HRESULT (WINAPI *UnregisterPin)(IFilterMapper*, CLSID Filter, LPCWSTR Name);  /* ms910578 */
+    HRESULT (WINAPI *EnumMatchingFilters)(IFilterMapper*, IEnumRegFilters** ppEnum, DWORD dwMerit, BOOL bInputNeeded, CLSID clsInMaj, CLSID clsInSub, BOOL bRender, BOOL bOutputNeeded, CLSID clsOutMaj, CLSID clsOutSub);  /* ms910570 */
+} IFilterMapperVtbl;
+struct IFilterMapper { const IFilterMapperVtbl *lpVtbl; };
+#define IFilterMapper_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IFilterMapper_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IFilterMapper_Release(T) ((T)->lpVtbl->Release(T))
+#define IFilterMapper_RegisterFilter(T,a,b,c) ((T)->lpVtbl->RegisterFilter(T,a,b,c))
+#define IFilterMapper_RegisterFilterInstance(T,a,b,c) ((T)->lpVtbl->RegisterFilterInstance(T,a,b,c))
+#define IFilterMapper_RegisterPin(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->RegisterPin(T,a,b,c,d,e,f,g,h))
+#define IFilterMapper_UnregisterFilter(T,a) ((T)->lpVtbl->UnregisterFilter(T,a))
+#define IFilterMapper_UnregisterFilterInstance(T,a) ((T)->lpVtbl->UnregisterFilterInstance(T,a))
+#define IFilterMapper_UnregisterPin(T,a,b) ((T)->lpVtbl->UnregisterPin(T,a,b))
+#define IFilterMapper_EnumMatchingFilters(T,a,b,c,d,e,f,g,h,i) ((T)->lpVtbl->EnumMatchingFilters(T,a,b,c,d,e,f,g,h,i))
+
+/* ---- IGraphVersion: vtable order printed by ms910585.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IGraphVersionVtbl {
+    HRESULT (WINAPI *QueryInterface)(IGraphVersion*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IGraphVersion*);  /* (R1) */
+    ULONG (WINAPI *Release)(IGraphVersion*);  /* (R1) */
+    HRESULT (WINAPI *QueryVersion)(IGraphVersion*, LONG* pVersion);  /* ms910586 */
+} IGraphVersionVtbl;
+struct IGraphVersion { const IGraphVersionVtbl *lpVtbl; };
+#define IGraphVersion_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IGraphVersion_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IGraphVersion_Release(T) ((T)->lpVtbl->Release(T))
+#define IGraphVersion_QueryVersion(T,a) ((T)->lpVtbl->QueryVersion(T,a))
+
+/* ---- IMediaEvent: vtable order printed by aa452275.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaEventVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaEvent*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaEvent*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaEvent*);  /* (R1) */
+    HRESULT (WINAPI *GetTypeInfoCount)(IMediaEvent*, unsigned int FAR* pctinfo);  /* aa515585 */
+    HRESULT (WINAPI *GetTypeInfo)(IMediaEvent*, unsigned int iTInfo, LCID lcid, ITypeInfo FAR* FAR* ppTInfo);  /* aa515584 */
+    HRESULT (WINAPI *GetIDsOfNames)(IMediaEvent*, REFIID riid, OLECHAR FAR* FAR* rgszNames, unsigned int cNames, LCID lcid, DISPID FAR* rgDispId);  /* aa515582 */
+    HRESULT (WINAPI *Invoke)(IMediaEvent*, DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS FAR* pDispParams, VARIANT FAR* pVarResult, EXCEPINFO FAR* pExcepInfo, unsigned int FAR* puArgErr);  /* aa515589 */
+    HRESULT (WINAPI *GetEventHandle)(IMediaEvent*, OAEVENT* hEvent);  /* aa452274 */
+    HRESULT (WINAPI *GetEvent)(IMediaEvent*, long* lEventCode, long* lParam1, long* lParam2, long msTimeout);  /* aa452273 */
+    HRESULT (WINAPI *WaitForCompletion)(IMediaEvent*, long msTimeout, long* pEvCode);  /* aa452282 */
+    HRESULT (WINAPI *CancelDefaultHandling)(IMediaEvent*, long lEvCode);  /* aa452267 */
+    HRESULT (WINAPI *RestoreDefaultHandling)(IMediaEvent*, long lEvCode);  /* aa452276 */
+    HRESULT (WINAPI *FreeEventParams)(IMediaEvent*, long lEventCode, long lParam1, long lParam2);  /* aa452272 */
+} IMediaEventVtbl;
+struct IMediaEvent { const IMediaEventVtbl *lpVtbl; };
+#define IMediaEvent_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaEvent_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaEvent_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaEvent_GetTypeInfoCount(T,a) ((T)->lpVtbl->GetTypeInfoCount(T,a))
+#define IMediaEvent_GetTypeInfo(T,a,b,c) ((T)->lpVtbl->GetTypeInfo(T,a,b,c))
+#define IMediaEvent_GetIDsOfNames(T,a,b,c,d,e) ((T)->lpVtbl->GetIDsOfNames(T,a,b,c,d,e))
+#define IMediaEvent_Invoke(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->Invoke(T,a,b,c,d,e,f,g,h))
+#define IMediaEvent_GetEventHandle(T,a) ((T)->lpVtbl->GetEventHandle(T,a))
+#define IMediaEvent_GetEvent(T,a,b,c,d) ((T)->lpVtbl->GetEvent(T,a,b,c,d))
+#define IMediaEvent_WaitForCompletion(T,a,b) ((T)->lpVtbl->WaitForCompletion(T,a,b))
+#define IMediaEvent_CancelDefaultHandling(T,a) ((T)->lpVtbl->CancelDefaultHandling(T,a))
+#define IMediaEvent_RestoreDefaultHandling(T,a) ((T)->lpVtbl->RestoreDefaultHandling(T,a))
+#define IMediaEvent_FreeEventParams(T,a,b,c) ((T)->lpVtbl->FreeEventParams(T,a,b,c))
+
+/* ---- IMediaEventEx: vtable order printed by aa452269.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaEventExVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaEventEx*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaEventEx*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaEventEx*);  /* (R1) */
+    HRESULT (WINAPI *GetTypeInfoCount)(IMediaEventEx*, unsigned int FAR* pctinfo);  /* aa515585 */
+    HRESULT (WINAPI *GetTypeInfo)(IMediaEventEx*, unsigned int iTInfo, LCID lcid, ITypeInfo FAR* FAR* ppTInfo);  /* aa515584 */
+    HRESULT (WINAPI *GetIDsOfNames)(IMediaEventEx*, REFIID riid, OLECHAR FAR* FAR* rgszNames, unsigned int cNames, LCID lcid, DISPID FAR* rgDispId);  /* aa515582 */
+    HRESULT (WINAPI *Invoke)(IMediaEventEx*, DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS FAR* pDispParams, VARIANT FAR* pVarResult, EXCEPINFO FAR* pExcepInfo, unsigned int FAR* puArgErr);  /* aa515589 */
+    HRESULT (WINAPI *GetEventHandle)(IMediaEventEx*, OAEVENT* hEvent);  /* aa452274 */
+    HRESULT (WINAPI *GetEvent)(IMediaEventEx*, long* lEventCode, long* lParam1, long* lParam2, long msTimeout);  /* aa452273 */
+    HRESULT (WINAPI *WaitForCompletion)(IMediaEventEx*, long msTimeout, long* pEvCode);  /* aa452282 */
+    HRESULT (WINAPI *CancelDefaultHandling)(IMediaEventEx*, long lEvCode);  /* aa452267 */
+    HRESULT (WINAPI *RestoreDefaultHandling)(IMediaEventEx*, long lEvCode);  /* aa452276 */
+    HRESULT (WINAPI *FreeEventParams)(IMediaEventEx*, long lEventCode, long lParam1, long lParam2);  /* aa452272 */
+    HRESULT (WINAPI *SetNotifyWindow)(IMediaEventEx*, OAHWND hwnd, long lMsg, long lInstanceData);  /* aa452271 */
+    HRESULT (WINAPI *SetNotifyFlags)(IMediaEventEx*, long lNoNotifyFlags);  /* aa452270 */
+    HRESULT (WINAPI *GetNotifyFlags)(IMediaEventEx*, long* lplNoNotifyFlags);  /* aa452268 */
+} IMediaEventExVtbl;
+struct IMediaEventEx { const IMediaEventExVtbl *lpVtbl; };
+#define IMediaEventEx_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaEventEx_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaEventEx_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaEventEx_GetTypeInfoCount(T,a) ((T)->lpVtbl->GetTypeInfoCount(T,a))
+#define IMediaEventEx_GetTypeInfo(T,a,b,c) ((T)->lpVtbl->GetTypeInfo(T,a,b,c))
+#define IMediaEventEx_GetIDsOfNames(T,a,b,c,d,e) ((T)->lpVtbl->GetIDsOfNames(T,a,b,c,d,e))
+#define IMediaEventEx_Invoke(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->Invoke(T,a,b,c,d,e,f,g,h))
+#define IMediaEventEx_GetEventHandle(T,a) ((T)->lpVtbl->GetEventHandle(T,a))
+#define IMediaEventEx_GetEvent(T,a,b,c,d) ((T)->lpVtbl->GetEvent(T,a,b,c,d))
+#define IMediaEventEx_WaitForCompletion(T,a,b) ((T)->lpVtbl->WaitForCompletion(T,a,b))
+#define IMediaEventEx_CancelDefaultHandling(T,a) ((T)->lpVtbl->CancelDefaultHandling(T,a))
+#define IMediaEventEx_RestoreDefaultHandling(T,a) ((T)->lpVtbl->RestoreDefaultHandling(T,a))
+#define IMediaEventEx_FreeEventParams(T,a,b,c) ((T)->lpVtbl->FreeEventParams(T,a,b,c))
+#define IMediaEventEx_SetNotifyWindow(T,a,b,c) ((T)->lpVtbl->SetNotifyWindow(T,a,b,c))
+#define IMediaEventEx_SetNotifyFlags(T,a) ((T)->lpVtbl->SetNotifyFlags(T,a))
+#define IMediaEventEx_GetNotifyFlags(T,a) ((T)->lpVtbl->GetNotifyFlags(T,a))
+
+/* ---- IMediaEventSink: vtable order printed by aa452278.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaEventSinkVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaEventSink*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaEventSink*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaEventSink*);  /* (R1) */
+    HRESULT (WINAPI *Notify)(IMediaEventSink*, long EventCode, long EventParam1, long EventParam2);  /* aa452280 */
+} IMediaEventSinkVtbl;
+struct IMediaEventSink { const IMediaEventSinkVtbl *lpVtbl; };
+#define IMediaEventSink_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaEventSink_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaEventSink_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaEventSink_Notify(T,a,b,c) ((T)->lpVtbl->Notify(T,a,b,c))
+
+/* ---- IMediaPosition: vtable order printed by ms911576.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaPositionVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaPosition*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaPosition*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaPosition*);  /* (R1) */
+    HRESULT (WINAPI *GetTypeInfoCount)(IMediaPosition*, unsigned int FAR* pctinfo);  /* aa515585 */
+    HRESULT (WINAPI *GetTypeInfo)(IMediaPosition*, unsigned int iTInfo, LCID lcid, ITypeInfo FAR* FAR* ppTInfo);  /* aa515584 */
+    HRESULT (WINAPI *GetIDsOfNames)(IMediaPosition*, REFIID riid, OLECHAR FAR* FAR* rgszNames, unsigned int cNames, LCID lcid, DISPID FAR* rgDispId);  /* aa515582 */
+    HRESULT (WINAPI *Invoke)(IMediaPosition*, DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS FAR* pDispParams, VARIANT FAR* pVarResult, EXCEPINFO FAR* pExcepInfo, unsigned int FAR* puArgErr);  /* aa515589 */
+    HRESULT (WINAPI *get_Duration)(IMediaPosition*, REFTIME* plength);  /* ms931426 */
+    HRESULT (WINAPI *put_CurrentPosition)(IMediaPosition*, REFTIME llTime);  /* ms911577 */
+    HRESULT (WINAPI *get_CurrentPosition)(IMediaPosition*, REFTIME* pllTime);  /* ms931425 */
+    HRESULT (WINAPI *get_StopTime)(IMediaPosition*, REFTIME* pllTime);  /* ms911575 */
+    HRESULT (WINAPI *put_StopTime)(IMediaPosition*, REFTIME llTime);  /* ms911580 */
+    HRESULT (WINAPI *get_PrerollTime)(IMediaPosition*, REFTIME* pllTime);  /* ms931427 */
+    HRESULT (WINAPI *put_PrerollTime)(IMediaPosition*, REFTIME llTime);  /* ms911578 */
+    HRESULT (WINAPI *put_Rate)(IMediaPosition*, double dRate);  /* ms911579 */
+    HRESULT (WINAPI *get_Rate)(IMediaPosition*, double* pdRate);  /* ms911574 */
+    HRESULT (WINAPI *CanSeekForward)(IMediaPosition*, LONG* pCanSeekForward);  /* ms931424 */
+    HRESULT (WINAPI *CanSeekBackward)(IMediaPosition*, LONG* pCanSeekBackward);  /* ms931423 */
+} IMediaPositionVtbl;
+struct IMediaPosition { const IMediaPositionVtbl *lpVtbl; };
+#define IMediaPosition_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaPosition_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaPosition_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaPosition_GetTypeInfoCount(T,a) ((T)->lpVtbl->GetTypeInfoCount(T,a))
+#define IMediaPosition_GetTypeInfo(T,a,b,c) ((T)->lpVtbl->GetTypeInfo(T,a,b,c))
+#define IMediaPosition_GetIDsOfNames(T,a,b,c,d,e) ((T)->lpVtbl->GetIDsOfNames(T,a,b,c,d,e))
+#define IMediaPosition_Invoke(T,a,b,c,d,e,f,g,h) ((T)->lpVtbl->Invoke(T,a,b,c,d,e,f,g,h))
+#define IMediaPosition_get_Duration(T,a) ((T)->lpVtbl->get_Duration(T,a))
+#define IMediaPosition_put_CurrentPosition(T,a) ((T)->lpVtbl->put_CurrentPosition(T,a))
+#define IMediaPosition_get_CurrentPosition(T,a) ((T)->lpVtbl->get_CurrentPosition(T,a))
+#define IMediaPosition_get_StopTime(T,a) ((T)->lpVtbl->get_StopTime(T,a))
+#define IMediaPosition_put_StopTime(T,a) ((T)->lpVtbl->put_StopTime(T,a))
+#define IMediaPosition_get_PrerollTime(T,a) ((T)->lpVtbl->get_PrerollTime(T,a))
+#define IMediaPosition_put_PrerollTime(T,a) ((T)->lpVtbl->put_PrerollTime(T,a))
+#define IMediaPosition_put_Rate(T,a) ((T)->lpVtbl->put_Rate(T,a))
+#define IMediaPosition_get_Rate(T,a) ((T)->lpVtbl->get_Rate(T,a))
+#define IMediaPosition_CanSeekForward(T,a) ((T)->lpVtbl->CanSeekForward(T,a))
+#define IMediaPosition_CanSeekBackward(T,a) ((T)->lpVtbl->CanSeekBackward(T,a))
+
+/* ---- IMediaSample2: vtable order printed by ms911582.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaSample2Vtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaSample2*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaSample2*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaSample2*);  /* (R1) */
+    HRESULT (WINAPI *GetPointer)(IMediaSample2*, BYTE** ppBuffer);  /* ms911587 */
+    HRESULT (WINAPI *GetSize)(IMediaSample2*);  /* ms911588 */
+    HRESULT (WINAPI *GetTime)(IMediaSample2*, REFERENCE_TIME* pTimeStart, REFERENCE_TIME* pTimeEnd);  /* ms911589 */
+    HRESULT (WINAPI *SetTime)(IMediaSample2*, REFERENCE_TIME* pTimeStart, REFERENCE_TIME* pTimeEnd);  /* ms911600 */
+    HRESULT (WINAPI *IsSyncPoint)(IMediaSample2*);  /* ms911593 */
+    HRESULT (WINAPI *SetSyncPoint)(IMediaSample2*, BOOL bIsSyncPoint);  /* ms911599 */
+    HRESULT (WINAPI *IsPreroll)(IMediaSample2*);  /* ms911592 */
+    HRESULT (WINAPI *SetPreroll)(IMediaSample2*, BOOL bIsPreroll);  /* ms911598 */
+    HRESULT (WINAPI *GetActualDataLength)(IMediaSample2*);  /* ms911584 */
+    HRESULT (WINAPI *SetActualDataLength)(IMediaSample2*, long lLen);  /* ms911594 */
+    HRESULT (WINAPI *GetMediaType)(IMediaSample2*, AM_MEDIA_TYPE** ppMediaType);  /* ms911586 */
+    HRESULT (WINAPI *SetMediaType)(IMediaSample2*, AM_MEDIA_TYPE* pMediaType);  /* ms911597 */
+    HRESULT (WINAPI *IsDiscontinuity)(IMediaSample2*);  /* ms911591 */
+    HRESULT (WINAPI *SetDiscontinuity)(IMediaSample2*, BOOL bIsDiscontinuity);  /* ms911595 */
+    HRESULT (WINAPI *GetMediaTime)(IMediaSample2*, LONGLONG* pTimeStart, LONGLONG* pTimeEnd);  /* ms911585 */
+    HRESULT (WINAPI *SetMediaTime)(IMediaSample2*, LONGLONG* pTimeStart, LONGLONG* pTimeEnd);  /* ms911596 */
+    HRESULT (WINAPI *GetProperties)(IMediaSample2*, DWORD cbProperties, BYTE* pbProperties);  /* ms911581 */
+    HRESULT (WINAPI *SetProperties)(IMediaSample2*, DWORD cbProperties, const BYTE* pbProperties);  /* ms911583 */
+} IMediaSample2Vtbl;
+struct IMediaSample2 { const IMediaSample2Vtbl *lpVtbl; };
+#define IMediaSample2_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaSample2_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaSample2_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaSample2_GetPointer(T,a) ((T)->lpVtbl->GetPointer(T,a))
+#define IMediaSample2_GetSize(T) ((T)->lpVtbl->GetSize(T))
+#define IMediaSample2_GetTime(T,a,b) ((T)->lpVtbl->GetTime(T,a,b))
+#define IMediaSample2_SetTime(T,a,b) ((T)->lpVtbl->SetTime(T,a,b))
+#define IMediaSample2_IsSyncPoint(T) ((T)->lpVtbl->IsSyncPoint(T))
+#define IMediaSample2_SetSyncPoint(T,a) ((T)->lpVtbl->SetSyncPoint(T,a))
+#define IMediaSample2_IsPreroll(T) ((T)->lpVtbl->IsPreroll(T))
+#define IMediaSample2_SetPreroll(T,a) ((T)->lpVtbl->SetPreroll(T,a))
+#define IMediaSample2_GetActualDataLength(T) ((T)->lpVtbl->GetActualDataLength(T))
+#define IMediaSample2_SetActualDataLength(T,a) ((T)->lpVtbl->SetActualDataLength(T,a))
+#define IMediaSample2_GetMediaType(T,a) ((T)->lpVtbl->GetMediaType(T,a))
+#define IMediaSample2_SetMediaType(T,a) ((T)->lpVtbl->SetMediaType(T,a))
+#define IMediaSample2_IsDiscontinuity(T) ((T)->lpVtbl->IsDiscontinuity(T))
+#define IMediaSample2_SetDiscontinuity(T,a) ((T)->lpVtbl->SetDiscontinuity(T,a))
+#define IMediaSample2_GetMediaTime(T,a,b) ((T)->lpVtbl->GetMediaTime(T,a,b))
+#define IMediaSample2_SetMediaTime(T,a,b) ((T)->lpVtbl->SetMediaTime(T,a,b))
+#define IMediaSample2_GetProperties(T,a,b) ((T)->lpVtbl->GetProperties(T,a,b))
+#define IMediaSample2_SetProperties(T,a,b) ((T)->lpVtbl->SetProperties(T,a,b))
+
+/* ---- IMediaSeeking: vtable order printed by ms911612.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaSeekingVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaSeeking*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaSeeking*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaSeeking*);  /* (R1) */
+    HRESULT (WINAPI *GetCapabilities)(IMediaSeeking*, DWORD* pCapabilities);  /* ms911604 */
+    HRESULT (WINAPI *CheckCapabilities)(IMediaSeeking*, DWORD* pCapabilities);  /* ms911601 */
+    HRESULT (WINAPI *IsFormatSupported)(IMediaSeeking*, const GUID* pFormat);  /* ms911613 */
+    HRESULT (WINAPI *QueryPreferredFormat)(IMediaSeeking*, GUID* pFormat);  /* ms911615 */
+    HRESULT (WINAPI *GetTimeFormat)(IMediaSeeking*, GUID* pFormat);  /* ms911611 */
+    HRESULT (WINAPI *IsUsingTimeFormat)(IMediaSeeking*, const GUID* pFormat);  /* ms911614 */
+    HRESULT (WINAPI *SetTimeFormat)(IMediaSeeking*, const GUID* pFormat);  /* ms911618 */
+    HRESULT (WINAPI *GetDuration)(IMediaSeeking*, LONGLONG* pDuration);  /* ms911606 */
+    HRESULT (WINAPI *GetStopPosition)(IMediaSeeking*, LONGLONG* pStop);  /* ms911610 */
+    HRESULT (WINAPI *GetCurrentPosition)(IMediaSeeking*, LONGLONG*pCurrent);  /* ms911605 */
+    HRESULT (WINAPI *ConvertTimeFormat)(IMediaSeeking*, LONGLONG* pTarget, const GUID* pTargetFormat, LONGLONG Source, const GUID* pSourceFormat);  /* ms911602 */
+    HRESULT (WINAPI *SetPositions)(IMediaSeeking*, LONGLONG* pCurrent, DWORD dwCurrentFlags, LONGLONG* pStop, DWORD dwStopFlags);  /* ms911616 */
+    HRESULT (WINAPI *GetPositions)(IMediaSeeking*, LONGLONG* pCurrent, LONGLONG* pStop);  /* ms911607 */
+    HRESULT (WINAPI *GetAvailable)(IMediaSeeking*, LONGLONG* pEarliest, LONGLONG* pLatest);  /* ms911603 */
+    HRESULT (WINAPI *SetRate)(IMediaSeeking*, double dRate);  /* ms911617 */
+    HRESULT (WINAPI *GetRate)(IMediaSeeking*, double* dRate);  /* ms911609 */
+    HRESULT (WINAPI *GetPreroll)(IMediaSeeking*, LONGLONG* pllPreroll);  /* ms911608 */
+} IMediaSeekingVtbl;
+struct IMediaSeeking { const IMediaSeekingVtbl *lpVtbl; };
+#define IMediaSeeking_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaSeeking_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaSeeking_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaSeeking_GetCapabilities(T,a) ((T)->lpVtbl->GetCapabilities(T,a))
+#define IMediaSeeking_CheckCapabilities(T,a) ((T)->lpVtbl->CheckCapabilities(T,a))
+#define IMediaSeeking_IsFormatSupported(T,a) ((T)->lpVtbl->IsFormatSupported(T,a))
+#define IMediaSeeking_QueryPreferredFormat(T,a) ((T)->lpVtbl->QueryPreferredFormat(T,a))
+#define IMediaSeeking_GetTimeFormat(T,a) ((T)->lpVtbl->GetTimeFormat(T,a))
+#define IMediaSeeking_IsUsingTimeFormat(T,a) ((T)->lpVtbl->IsUsingTimeFormat(T,a))
+#define IMediaSeeking_SetTimeFormat(T,a) ((T)->lpVtbl->SetTimeFormat(T,a))
+#define IMediaSeeking_GetDuration(T,a) ((T)->lpVtbl->GetDuration(T,a))
+#define IMediaSeeking_GetStopPosition(T,a) ((T)->lpVtbl->GetStopPosition(T,a))
+#define IMediaSeeking_GetCurrentPosition(T,a) ((T)->lpVtbl->GetCurrentPosition(T,a))
+#define IMediaSeeking_ConvertTimeFormat(T,a,b,c,d) ((T)->lpVtbl->ConvertTimeFormat(T,a,b,c,d))
+#define IMediaSeeking_SetPositions(T,a,b,c,d) ((T)->lpVtbl->SetPositions(T,a,b,c,d))
+#define IMediaSeeking_GetPositions(T,a,b) ((T)->lpVtbl->GetPositions(T,a,b))
+#define IMediaSeeking_GetAvailable(T,a,b) ((T)->lpVtbl->GetAvailable(T,a,b))
+#define IMediaSeeking_SetRate(T,a) ((T)->lpVtbl->SetRate(T,a))
+#define IMediaSeeking_GetRate(T,a) ((T)->lpVtbl->GetRate(T,a))
+#define IMediaSeeking_GetPreroll(T,a) ((T)->lpVtbl->GetPreroll(T,a))
+
+/* ---- IMediaStream: vtable order printed by ms911623.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMediaStreamVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMediaStream*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMediaStream*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMediaStream*);  /* (R1) */
+    HRESULT (WINAPI *GetMultiMediaStream)(IMediaStream*, IMultiMediaStream** ppMultiMediaStream);  /* ms911622 */
+    HRESULT (WINAPI *GetInformation)(IMediaStream*, MSPID* pPurposeId, STREAM_TYPE* pType);  /* ms911621 */
+    HRESULT (WINAPI *SetSameFormat)(IMediaStream*, IMediaStream* pStreamThatHasDesiredFormat, DWORD dwFlags);  /* ms911625 */
+    HRESULT (WINAPI *AllocateSample)(IMediaStream*, DWORD dwFlags, IStreamSample** ppSample);  /* ms911619 */
+    HRESULT (WINAPI *CreateSharedSample)(IMediaStream*, IStreamSample* pExistingSample, DWORD dwFlags, IStreamSample** ppNewSample);  /* ms911620 */
+    HRESULT (WINAPI *SendEndOfStream)(IMediaStream*, DWORD dwFlags);  /* ms911624 */
+} IMediaStreamVtbl;
+struct IMediaStream { const IMediaStreamVtbl *lpVtbl; };
+#define IMediaStream_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMediaStream_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMediaStream_Release(T) ((T)->lpVtbl->Release(T))
+#define IMediaStream_GetMultiMediaStream(T,a) ((T)->lpVtbl->GetMultiMediaStream(T,a))
+#define IMediaStream_GetInformation(T,a,b) ((T)->lpVtbl->GetInformation(T,a,b))
+#define IMediaStream_SetSameFormat(T,a,b) ((T)->lpVtbl->SetSameFormat(T,a,b))
+#define IMediaStream_AllocateSample(T,a,b) ((T)->lpVtbl->AllocateSample(T,a,b))
+#define IMediaStream_CreateSharedSample(T,a,b,c) ((T)->lpVtbl->CreateSharedSample(T,a,b,c))
+#define IMediaStream_SendEndOfStream(T,a) ((T)->lpVtbl->SendEndOfStream(T,a))
+
+/* ---- IMemAllocator: vtable order printed by ms911630.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMemAllocatorVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMemAllocator*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMemAllocator*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMemAllocator*);  /* (R1) */
+    HRESULT (WINAPI *SetProperties)(IMemAllocator*, ALLOCATOR_PROPERTIES* pRequest, ALLOCATOR_PROPERTIES* pActual);  /* ms931499 */
+    HRESULT (WINAPI *GetProperties)(IMemAllocator*, ALLOCATOR_PROPERTIES* pProps);  /* ms911629 */
+    HRESULT (WINAPI *Commit)(IMemAllocator*);  /* ms911626 */
+    HRESULT (WINAPI *Decommit)(IMemAllocator*);  /* ms911627 */
+    HRESULT (WINAPI *GetBuffer)(IMemAllocator*, IMediaSample** ppBuffer, REFERENCE_TIME* pStartTime, REFERENCE_TIME* pEndTime, DWORD dwFlags);  /* ms911628 */
+    HRESULT (WINAPI *ReleaseBuffer)(IMemAllocator*, IMediaSample* pBuffer);  /* ms911631 */
+} IMemAllocatorVtbl;
+struct IMemAllocator { const IMemAllocatorVtbl *lpVtbl; };
+#define IMemAllocator_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMemAllocator_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMemAllocator_Release(T) ((T)->lpVtbl->Release(T))
+#define IMemAllocator_SetProperties(T,a,b) ((T)->lpVtbl->SetProperties(T,a,b))
+#define IMemAllocator_GetProperties(T,a) ((T)->lpVtbl->GetProperties(T,a))
+#define IMemAllocator_Commit(T) ((T)->lpVtbl->Commit(T))
+#define IMemAllocator_Decommit(T) ((T)->lpVtbl->Decommit(T))
+#define IMemAllocator_GetBuffer(T,a,b,c,d) ((T)->lpVtbl->GetBuffer(T,a,b,c,d))
+#define IMemAllocator_ReleaseBuffer(T,a) ((T)->lpVtbl->ReleaseBuffer(T,a))
+
+/* ---- IMemInputPin: vtable order printed by ms931622.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMemInputPinVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMemInputPin*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMemInputPin*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMemInputPin*);  /* (R1) */
+    HRESULT (WINAPI *GetAllocator)(IMemInputPin*, IMemAllocator** ppAllocator);  /* ms931604 */
+    HRESULT (WINAPI *NotifyAllocator)(IMemInputPin*, IMemAllocator* pAllocator, BOOL bReadOnly);  /* ms931631 */
+    HRESULT (WINAPI *GetAllocatorRequirements)(IMemInputPin*, ALLOCATOR_PROPERTIES* pProps);  /* ms931613 */
+    HRESULT (WINAPI *Receive)(IMemInputPin*, IMediaSample* pSample);  /* ms931640 */
+    HRESULT (WINAPI *ReceiveMultiple)(IMemInputPin*, IMediaSample** pSamples, long nSamples, long* nSamplesProcessed);  /* ms931660 */
+    HRESULT (WINAPI *ReceiveCanBlock)(IMemInputPin*);  /* ms931649 */
+} IMemInputPinVtbl;
+struct IMemInputPin { const IMemInputPinVtbl *lpVtbl; };
+#define IMemInputPin_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMemInputPin_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMemInputPin_Release(T) ((T)->lpVtbl->Release(T))
+#define IMemInputPin_GetAllocator(T,a) ((T)->lpVtbl->GetAllocator(T,a))
+#define IMemInputPin_NotifyAllocator(T,a,b) ((T)->lpVtbl->NotifyAllocator(T,a,b))
+#define IMemInputPin_GetAllocatorRequirements(T,a) ((T)->lpVtbl->GetAllocatorRequirements(T,a))
+#define IMemInputPin_Receive(T,a) ((T)->lpVtbl->Receive(T,a))
+#define IMemInputPin_ReceiveMultiple(T,a,b,c) ((T)->lpVtbl->ReceiveMultiple(T,a,b,c))
+#define IMemInputPin_ReceiveCanBlock(T) ((T)->lpVtbl->ReceiveCanBlock(T))
+
+/* ---- IMultiMediaStream: vtable order printed by ms911956.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IMultiMediaStreamVtbl {
+    HRESULT (WINAPI *QueryInterface)(IMultiMediaStream*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IMultiMediaStream*);  /* (R1) */
+    ULONG (WINAPI *Release)(IMultiMediaStream*);  /* (R1) */
+    HRESULT (WINAPI *GetInformation)(IMultiMediaStream*, DWORD* pdwFlags, STREAM_TYPE* pStreamType);  /* ms911837 */
+    HRESULT (WINAPI *GetMediaStream)(IMultiMediaStream*, REFMSPID idPurpose, IMediaStream** ppMediaStream);  /* ms911850 */
+    HRESULT (WINAPI *EnumMediaStreams)(IMultiMediaStream*, long Index, IMediaStream** ppMediaStream);  /* ms931669 */
+    HRESULT (WINAPI *GetState)(IMultiMediaStream*, STREAM_STATE* pCurrentState);  /* ms911855 */
+    HRESULT (WINAPI *SetState)(IMultiMediaStream*, STREAM_STATE NewState);  /* ms911980 */
+    HRESULT (WINAPI *GetTime)(IMultiMediaStream*, STREAM_TIME* pCurrentTime);  /* ms911946 */
+    HRESULT (WINAPI *GetDuration)(IMultiMediaStream*, STREAM_TIME* pDuration);  /* ms931676 */
+    HRESULT (WINAPI *Seek)(IMultiMediaStream*, STREAM_TIME SeekTime);  /* ms911969 */
+    HRESULT (WINAPI *GetEndOfStreamEventHandle)(IMultiMediaStream*, HANDLE* phEOS);  /* ms931682 */
+} IMultiMediaStreamVtbl;
+struct IMultiMediaStream { const IMultiMediaStreamVtbl *lpVtbl; };
+#define IMultiMediaStream_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IMultiMediaStream_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IMultiMediaStream_Release(T) ((T)->lpVtbl->Release(T))
+#define IMultiMediaStream_GetInformation(T,a,b) ((T)->lpVtbl->GetInformation(T,a,b))
+#define IMultiMediaStream_GetMediaStream(T,a,b) ((T)->lpVtbl->GetMediaStream(T,a,b))
+#define IMultiMediaStream_EnumMediaStreams(T,a,b) ((T)->lpVtbl->EnumMediaStreams(T,a,b))
+#define IMultiMediaStream_GetState(T,a) ((T)->lpVtbl->GetState(T,a))
+#define IMultiMediaStream_SetState(T,a) ((T)->lpVtbl->SetState(T,a))
+#define IMultiMediaStream_GetTime(T,a) ((T)->lpVtbl->GetTime(T,a))
+#define IMultiMediaStream_GetDuration(T,a) ((T)->lpVtbl->GetDuration(T,a))
+#define IMultiMediaStream_Seek(T,a) ((T)->lpVtbl->Seek(T,a))
+#define IMultiMediaStream_GetEndOfStreamEventHandle(T,a) ((T)->lpVtbl->GetEndOfStreamEventHandle(T,a))
+
+/* ---- IOverlay: vtable order printed by ms912154.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IOverlayVtbl {
+    HRESULT (WINAPI *QueryInterface)(IOverlay*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IOverlay*);  /* (R1) */
+    ULONG (WINAPI *Release)(IOverlay*);  /* (R1) */
+    HRESULT (WINAPI *GetPalette)(IOverlay*, DWORD* pdwColors, PALETTEENTRY** ppPalette);  /* ms912127 */
+    HRESULT (WINAPI *SetPalette)(IOverlay*, DWORD dwColors, PALETTEENTRY* pPalette);  /* ms912218 */
+    HRESULT (WINAPI *GetDefaultColorKey)(IOverlay*, COLORKEY* pColorKey);  /* ms912119 */
+    HRESULT (WINAPI *GetColorKey)(IOverlay*, COLORKEY* pColorKey);  /* ms912107 */
+    HRESULT (WINAPI *SetColorKey)(IOverlay*, COLORKEY* pColorKey);  /* ms912211 */
+    HRESULT (WINAPI *GetWindowHandle)(IOverlay*, HWND* pHwnd);  /* ms912142 */
+    HRESULT (WINAPI *GetClipList)(IOverlay*, RECT* pSourceRect, RECT* pDestinationRect, RGNDATA** ppRgnData);  /* ms912095 */
+    HRESULT (WINAPI *GetVideoPosition)(IOverlay*, RECT* pSourceRect, RECT* pDestinationRect);  /* ms912134 */
+    HRESULT (WINAPI *Advise)(IOverlay*, IOverlayNotify* pOverlayNotify, DWORD dwInterests);  /* ms912083 */
+    HRESULT (WINAPI *Unadvise)(IOverlay*);  /* ms912237 */
+} IOverlayVtbl;
+struct IOverlay { const IOverlayVtbl *lpVtbl; };
+#define IOverlay_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IOverlay_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IOverlay_Release(T) ((T)->lpVtbl->Release(T))
+#define IOverlay_GetPalette(T,a,b) ((T)->lpVtbl->GetPalette(T,a,b))
+#define IOverlay_SetPalette(T,a,b) ((T)->lpVtbl->SetPalette(T,a,b))
+#define IOverlay_GetDefaultColorKey(T,a) ((T)->lpVtbl->GetDefaultColorKey(T,a))
+#define IOverlay_GetColorKey(T,a) ((T)->lpVtbl->GetColorKey(T,a))
+#define IOverlay_SetColorKey(T,a) ((T)->lpVtbl->SetColorKey(T,a))
+#define IOverlay_GetWindowHandle(T,a) ((T)->lpVtbl->GetWindowHandle(T,a))
+#define IOverlay_GetClipList(T,a,b,c) ((T)->lpVtbl->GetClipList(T,a,b,c))
+#define IOverlay_GetVideoPosition(T,a,b) ((T)->lpVtbl->GetVideoPosition(T,a,b))
+#define IOverlay_Advise(T,a,b) ((T)->lpVtbl->Advise(T,a,b))
+#define IOverlay_Unadvise(T) ((T)->lpVtbl->Unadvise(T))
+
+/* ---- IOverlayNotify: vtable order printed by ms912167.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IOverlayNotifyVtbl {
+    HRESULT (WINAPI *QueryInterface)(IOverlayNotify*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IOverlayNotify*);  /* (R1) */
+    ULONG (WINAPI *Release)(IOverlayNotify*);  /* (R1) */
+    HRESULT (WINAPI *OnPaletteChange)(IOverlayNotify*, DWORD dwColors, const PALETTEENTRY* pPalette);  /* ms912194 */
+    HRESULT (WINAPI *OnClipChange)(IOverlayNotify*, RECT* pSourceRect, RECT* pDestinationRect, RGNDATA* pRgnData);  /* ms912176 */
+    HRESULT (WINAPI *OnColorKeyChange)(IOverlayNotify*, COLORKEY* pColorKey);  /* ms912185 */
+    HRESULT (WINAPI *OnPositionChange)(IOverlayNotify*, const RECT* pSourceRect, const RECT* pDestinationRect);  /* ms912200 */
+} IOverlayNotifyVtbl;
+struct IOverlayNotify { const IOverlayNotifyVtbl *lpVtbl; };
+#define IOverlayNotify_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IOverlayNotify_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IOverlayNotify_Release(T) ((T)->lpVtbl->Release(T))
+#define IOverlayNotify_OnPaletteChange(T,a,b) ((T)->lpVtbl->OnPaletteChange(T,a,b))
+#define IOverlayNotify_OnClipChange(T,a,b,c) ((T)->lpVtbl->OnClipChange(T,a,b,c))
+#define IOverlayNotify_OnColorKeyChange(T,a) ((T)->lpVtbl->OnColorKeyChange(T,a))
+#define IOverlayNotify_OnPositionChange(T,a,b) ((T)->lpVtbl->OnPositionChange(T,a,b))
+
+/* ---- IQualityControl: vtable order printed by ms931702.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IQualityControlVtbl {
+    HRESULT (WINAPI *QueryInterface)(IQualityControl*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IQualityControl*);  /* (R1) */
+    ULONG (WINAPI *Release)(IQualityControl*);  /* (R1) */
+    HRESULT (WINAPI *Notify)(IQualityControl*, IBaseFilter* pSelf, Quality q);  /* ms931711 */
+    HRESULT (WINAPI *SetSink)(IQualityControl*, IQualityControl* piqc);  /* ms931717 */
+} IQualityControlVtbl;
+struct IQualityControl { const IQualityControlVtbl *lpVtbl; };
+#define IQualityControl_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IQualityControl_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IQualityControl_Release(T) ((T)->lpVtbl->Release(T))
+#define IQualityControl_Notify(T,a,b) ((T)->lpVtbl->Notify(T,a,b))
+#define IQualityControl_SetSink(T,a) ((T)->lpVtbl->SetSink(T,a))
+
+/* ---- ISeekingPassThru: vtable order printed by ms931811.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct ISeekingPassThruVtbl {
+    HRESULT (WINAPI *QueryInterface)(ISeekingPassThru*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(ISeekingPassThru*);  /* (R1) */
+    ULONG (WINAPI *Release)(ISeekingPassThru*);  /* (R1) */
+    HRESULT (WINAPI *Init)(ISeekingPassThru*, BOOL bSupportRendering, IPin* pPin);  /* ms931810 */
+} ISeekingPassThruVtbl;
+struct ISeekingPassThru { const ISeekingPassThruVtbl *lpVtbl; };
+#define ISeekingPassThru_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define ISeekingPassThru_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define ISeekingPassThru_Release(T) ((T)->lpVtbl->Release(T))
+#define ISeekingPassThru_Init(T,a,b) ((T)->lpVtbl->Init(T,a,b))
+
+/* ---- IStreamSample: vtable order printed by ms931816.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IStreamSampleVtbl {
+    HRESULT (WINAPI *QueryInterface)(IStreamSample*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IStreamSample*);  /* (R1) */
+    ULONG (WINAPI *Release)(IStreamSample*);  /* (R1) */
+    HRESULT (WINAPI *GetMediaStream)(IStreamSample*, IMediaStream** ppMediaStream);  /* ms931814 */
+    HRESULT (WINAPI *GetSampleTimes)(IStreamSample*, STREAM_TIME* pStartTime, STREAM_TIME* pEndTime, STREAM_TIME* pCurrentTime);  /* ms931815 */
+    HRESULT (WINAPI *SetSampleTimes)(IStreamSample*, const STREAM_TIME* pStartTime, const STREAM_TIME* pEndTime);  /* ms931817 */
+    HRESULT (WINAPI *Update)(IStreamSample*, DWORD dwFlags, HANDLE hEvent, PAPCFUNC pfnAPC, DWORD dwAPCData);  /* ms931818 */
+    HRESULT (WINAPI *CompletionStatus)(IStreamSample*, DWORD dwFlags, DWORD dwMilliseconds);  /* ms931813 */
+} IStreamSampleVtbl;
+struct IStreamSample { const IStreamSampleVtbl *lpVtbl; };
+#define IStreamSample_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IStreamSample_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IStreamSample_Release(T) ((T)->lpVtbl->Release(T))
+#define IStreamSample_GetMediaStream(T,a) ((T)->lpVtbl->GetMediaStream(T,a))
+#define IStreamSample_GetSampleTimes(T,a,b,c) ((T)->lpVtbl->GetSampleTimes(T,a,b,c))
+#define IStreamSample_SetSampleTimes(T,a,b) ((T)->lpVtbl->SetSampleTimes(T,a,b))
+#define IStreamSample_Update(T,a,b,c,d) ((T)->lpVtbl->Update(T,a,b,c,d))
+#define IStreamSample_CompletionStatus(T,a,b) ((T)->lpVtbl->CompletionStatus(T,a,b))
+
 #endif /* AKARI_DSHOW_H */

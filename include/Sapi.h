@@ -2390,4 +2390,19 @@ typedef struct tagSPTEXTSELECTIONINFO {
 }
 #endif
 
+
+/* ---- ISpTask: vtable order printed by ms937428.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct ISpTaskVtbl {
+    HRESULT (WINAPI *QueryInterface)(ISpTask*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(ISpTask*);  /* (R1) */
+    ULONG (WINAPI *Release)(ISpTask*);  /* (R1) */
+    HRESULT (WINAPI *Execute)(ISpTask*, void* pvTaskData, volatile const BOOL* pfContinueProcessing);  /* ms937429 */
+} ISpTaskVtbl;
+struct ISpTask { const ISpTaskVtbl *lpVtbl; };
+#define ISpTask_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define ISpTask_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define ISpTask_Release(T) ((T)->lpVtbl->Release(T))
+#define ISpTask_Execute(T,a,b) ((T)->lpVtbl->Execute(T,a,b))
+
 #endif /* AKARI_SAPI_H */
