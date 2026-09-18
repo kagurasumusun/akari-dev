@@ -2377,3 +2377,5 @@ drop	wprintf	dump-tier only; no official page names it as a Coredll.lib export
 drop	wprintf_s	dump-tier only; no official page names it as a Coredll.lib export
 drop	wscanf	dump-tier only; no official page names it as a Coredll.lib export
 drop	wscanf_s	dump-tier only; no official page names it as a Coredll.lib export
+keep	NKVirtualSetAttributes	doc-derived (ee478212, ms904874)
+keep	VirtualSetAttributesEx	doc-derived (ee488757; page Syntax reprints the non-Ex prototype -- artifact recorded in Mkfuncs.h)

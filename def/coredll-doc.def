@@ -522,6 +522,7 @@ EXPORTS
   MultiByteToWideChar
   NKCreateStaticMapping
   NKForceCleanBoot
+  NKVirtualSetAttributes
   NLedGetDeviceInfo
   NLedSetDevice
   NotifyWinUserSystem
@@ -852,6 +853,7 @@ EXPORTS
   VirtualQuery
   VirtualQueryEx
   VirtualSetAttributes
+  VirtualSetAttributesEx
   VirtualSetPageFlags
   WNetAddConnection3W
   WNetCancelConnection2W

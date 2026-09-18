@@ -2938,7 +2938,6 @@ include/oak/Ndis.h	NdisInitAnsiString	aa448002	no-print-on-page
 include/oak/Ndis.h	NdisInitializeEvent	aa448004	match	
 include/oak/Ndis.h	NdisInitializeReadWriteLock	aa448006	match	
 include/oak/Ndis.h	NdisInitializeString	aa448007	no-print-on-page	
-include/oak/Ndis.h	NdisInitializeTimer	aa448008	match	
 include/oak/Ndis.h	NdisInitializeWorkItem	aa448009	match	
 include/oak/Ndis.h	NdisInitUnicodeString	aa448010	no-print-on-page	
 include/oak/Ndis.h	NdisInterlockedAddUlong	aa448012	match	
@@ -2961,7 +2960,6 @@ include/oak/Ndis.h	NdisMFreeSharedMemory	aa448037	match
 include/oak/Ndis.h	NdisMIndicateReceivePacket	aa448038	no-print-on-page	
 include/oak/Ndis.h	NdisMIndicateStatus	aa448039	match	
 include/oak/Ndis.h	NdisMIndicateStatusComplete	aa448040	match	
-include/oak/Ndis.h	NdisMInitializeTimer	aa448042	match	
 include/oak/Ndis.h	NdisCompletePnPEvent	aa448313	match	
 include/oak/Ndis.h	NdisGetVersion	aa448316	match	
 include/oak/Ndis.h	NdisIMRevertBack	aa448318	no-print-on-page	
@@ -3119,12 +3117,14 @@ include/oak/Pkfuncs.h	GetDirectCallerProcessId	ee482980	match
 include/oak/Pkfuncs.h	SetEventData	ee482792	match	
 include/oak/Pkfuncs.h	VirtualAllocCopyEx	ee488184	match	
 include/oak/Pkfuncs.h	CeGetCacheInfo	aa450791	match	
+include/oak/Pkfuncs.h	VirtualSetAttributes	aa450982	match	
 include/oak/Pkfuncs.h	CeSetMemoryAttributes	ms885152	no-print-on-page	
 include/oak/Pkfuncs.h	DrWatsonClear	ms885203	no-print-on-page	
 include/oak/Pkfuncs.h	DrWatsonFlush	ms885204	no-print-on-page	
 include/oak/Pkfuncs.h	DrWatsonGetSize	ms885205	no-print-on-page	
 include/oak/Pkfuncs.h	DrWatsonReadData	ms885206	no-print-on-page	
 include/oak/Pkfuncs.h	DrWatsonWriteData	ms885207	no-print-on-page	
+include/oak/Pkfuncs.h	NKVirtualSetAttributes	ee478212	match	
 include/oak/Pmimpl.h	PlatformManageSystemPower	ms919406	match	
 include/oak/Pmimpl.h	PlatformMapPowerStateHint	ms919407	match	
 include/oak/Pmimpl.h	PlatformResumeSystem	ms919408	match	

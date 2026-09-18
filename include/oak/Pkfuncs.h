@@ -203,6 +203,18 @@ typedef struct _CacheInfo {
 AKARI_CE_IMPORT BOOL CeGetCacheInfo(DWORD cbSize, PCacheInfo pCacheInfo) AKARI_CE_NAME(CeGetCacheInfo);
 
 #endif /* _WIN32_WCE >= 0x0420 (CacheInfo / CeGetCacheInfo) */
+
+/* aa450982 "VirtualSetAttributes (Windows CE 5.0)": page-printed
+ * prototype `BOOL VirtualSetAttributes(LPVOIDlpvAddress,DWORDcbSize,
+ * DWORDdwNewFlags,DWORDdwMask,LPDWORDlpdwOldFlags);` (glued tokens
+ * split); identical print on the CE 6.0 twin ee482857.  CE .NET 4.1+;
+ * Pkfuncs.h; Coredll.lib.  (The VirtualSetAttributesEx page ee488757
+ * reprints this same prototype -- archive artifact, recorded in
+ * Mkfuncs.h.) */
+AKARI_CE_IMPORT BOOL VirtualSetAttributes(LPVOID lpvAddress, DWORD cbSize,
+                    DWORD dwNewFlags, DWORD dwMask, LPDWORD lpdwOldFlags)
+                    AKARI_CE_NAME(VirtualSetAttributes);
+
 #if _WIN32_WCE >= 0x0500   /* CeSetMemoryAttributes / DrWatson*: documented from CE 5.0 (docs/generation-audit.md) */
 /* ms885152 "CeSetMemoryAttributes (Windows CE 5.0)": page-printed
  * prototype `BOOL CeSetMemoryAttributes(LPVOID pVirtualAddr, LPVOID
@@ -235,6 +247,20 @@ AKARI_CE_IMPORT DWORD DrWatsonReadData(DWORD dwOffset, LPVOID pData,
  * DWORD cbSize);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
 AKARI_CE_IMPORT DWORD DrWatsonWriteData(DWORD dwOffset, LPVOID pData,
                     DWORD cbSize) AKARI_CE_NAME(DrWatsonWriteData);
+
+/* ee478212 "NKVirtualSetAttributes (Windows Embedded CE 6.0)" and
+ * ms904874 (CE 5.0): page-printed prototype `BOOL
+ * NKVirtualSetAttributes( LPVOID lpvAddress, DWORD cbSize, DWORD
+ * dwNewFlags, DWORD dwMask, LPDWORD lpdwOldFlags );`.  CE 5.0+;
+ * Pkfuncs.h; Coredll.lib. */
+AKARI_CE_IMPORT BOOL NKVirtualSetAttributes(LPVOID lpvAddress, DWORD cbSize,
+                    DWORD dwNewFlags, DWORD dwMask, LPDWORD lpdwOldFlags)
+                    AKARI_CE_NAME(NKVirtualSetAttributes);
+
+/* Record-only: "NKSetDataAbortHandler" (ms904873; CE 5.0+; Pkfuncs.h)
+ * prints `PFNVOID NKSetDataAbortHandler(PFNVOIDpfnDataAbortHandler);`
+ * -- PFNVOID is printed by no CE page's typedef (see Mkfuncs.h note),
+ * so the declaration stays recorded, not shipped. */
 
 #endif /* _WIN32_WCE >= 0x0500 (CeSetMemoryAttributes / DrWatson*) */
 
