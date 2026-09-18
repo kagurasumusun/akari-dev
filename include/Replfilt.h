@@ -111,4 +111,33 @@ typedef struct tagCFF_CONVERTOPTIONS {
 }
 #endif
 
+
+/* ICeFileFilterSite / IPegasusFileFilterSite: used only through
+ * pointers in the two CONVERTINFO prints; no corpus page prints
+ * their vtable order (checked 2026-09-18) -- opaque. */
+typedef struct ICeFileFilterSite ICeFileFilterSite;
+typedef struct IPegasusFileFilterSite IPegasusFileFilterSite;
+
+/* aa513851 "CFF_CONVERTINFO" (Windows CE 5.0 and later) page print. */
+typedef struct tagCFF_CONVERTINFO {
+    BOOL bImport;
+    HWND hwndParent;
+    BOOL bYesToAll;
+    ICeFileFilterSite *pffs;
+} CFF_CONVERTINFO;
+
+/* aa514424 "PFF_CONVERTINFO" (Windows CE 5.0 and later) page print. */
+typedef struct tagPFF_CONVERTINFO {
+    BOOL bImport;
+    HWND hwndParent;
+    BOOL bYesToAll;
+    IPegasusFileFilterSite *pffs;
+} PFF_CONVERTINFO;
+
+/* CFF_SOURCEFILE / CFF_DESTINATIONFILE / PFF_SOURCEFILE /
+ * PFF_DESTINATIONFILE (aa513855/aa513854/aa514428/aa514427 prints
+ * recorded above) stay HELD: sized by _MAX_PATH / _MAX_FNAME /
+ * _MAX_EXT, whose values are printed nowhere in the corpus and are
+ * absent from CeGCC (checked 2026-09-18). */
+
 #endif /* AKARI_REPLFILT_H */

@@ -16,6 +16,7 @@
 #define AKARI_AVC_UNIT_H
 
 #include <Windows.h>
+#include "Avc_stream.h"   /* STREAM_MediaType (aa448165) */
 
 #ifdef __cplusplus
 extern "C" {
@@ -113,5 +114,27 @@ typedef NTSTATUS (*UNIT_FreeLocalPlugCB)(PVOID Context, HANDLE Plug);
 #ifdef __cplusplus
 }
 #endif
+
+
+/* aa448228 "UNIT_AllocateLocalPlug_Request" (Windows CE 5.0 and
+ * later) page print (anonymous union/struct as printed). */
+typedef struct {
+  PVOID ualp_RegistrationToken;
+  STREAM_MediaType ualp_MediaType;
+  ULONG ualp_Direction;
+  ULONG ualp_Flags;
+  ULONG ualp_SubunitPlugID;
+  union {
+    ULONG ualp_MaximumThroughput;
+    struct {
+      ULONG ualp_ClusterDimension;
+      ULONG ualp_SampleFrequency;
+    };
+  };
+} UNIT_AllocateLocalPlug_Request;
+
+/* UNIT_RegisterSubunit_Request (aa448241 print recorded above)
+ * stays HELD: its three UNIT_*CB callback-pointer members have no
+ * typedef page (checked 2026-09-18). */
 
 #endif /* AKARI_AVC_UNIT_H */

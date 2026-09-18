@@ -215,3 +215,15 @@ typedef struct tagObjUIData {
     char szPlTypeText[80];
 } OBJUIDATA, *POBJUIDATA;
 
+/* aa513869 "HREPLFLD" page print `typedef struct _REPLFLD FAR*
+ * HREPLFLD;` (Windows CE 5.0 and later). */
+typedef struct _REPLFLD FAR *HREPLFLD;
+
+/* aa513871 "HREPLITEM" page print `typedef struct _REPLITEM FAR*
+ * HREPLITEM;` (Windows CE 5.0 and later). */
+typedef struct _REPLITEM FAR *HREPLITEM;
+
+/* CONFINFO / FINDOBJINFO / OBJNOTIFY / OBJTYPEINFO / REPLSETUP /
+ * SDREQUEST (prints recorded above) stay HELD: members are typed
+ * OBJTYPENAME and sized MAX_OBJTYPE_NAME -- neither is typedef'd or
+ * valued on any corpus page (checked 2026-09-18). */

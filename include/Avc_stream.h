@@ -273,4 +273,52 @@ typedef struct _STREAM_GetMediaSize_Request {
     STREAM_MediaType sgms_MediaType;
 } STREAM_GetMediaSize_Request;
 
+
+/* aa448154 "STREAM_CreateLocalPlug_Request" (Windows CE 5.0 and
+ * later) page print (anonymous union/struct as printed). */
+typedef struct {
+  ULONG sclp_PlugDirection;
+  STREAM_MediaType sclp_MediaType;
+  ULONG sclp_Direction;
+  union {
+    ULONG sclp_MaximumThroughput;
+    struct {
+      ULONG sclp_ClusterDimension;
+      ULONG sclp_SampleFrequency;
+    };
+  };
+} STREAM_CreateLocalPlug_Request;
+
+/* aa448169 "STREAM_StartReceiveSession_Request" page print. */
+typedef struct {
+  HANDLE ssrs_LocalPlug;
+  HANDLE ssrs_RemotePlug;
+  STREAM_MediaType ssrs_MediaType;
+  union {
+    struct {
+      ULONG ssrs_ClusterDimension;
+    };
+  };
+} STREAM_StartReceiveSession_Request;
+
+/* aa448171 "STREAM_StartTransmitSession_Request" page print. */
+typedef struct {
+  HANDLE ssts_LocalPlug;
+  HANDLE ssts_RemotePlug;
+  STREAM_MediaType ssts_MediaType;
+  union {
+    ULONG ssts_MaximumThroughput;
+    struct {
+      ULONG ssts_SampleFrequency;
+      ULONG ssts_ClusterDimension;
+    };
+  };
+} STREAM_StartTransmitSession_Request;
+
+/* STREAM_AttachBuffers / DetachBuffers / QueryBufferState /
+ * StopSession / *_Response structs (prints recorded above) stay
+ * HELD: members are typed STREAM_SESSION_ID / STREAM_BUFFER_ID and
+ * neither typedef is printed on any corpus page (checked
+ * 2026-09-18). */
+
 #endif /* AKARI_AVC_STREAM_H */

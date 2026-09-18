@@ -75,4 +75,17 @@ typedef struct _STORAGE_IDENTIFICATION {
 }
 #endif
 
+
+/* ms898280 "DELETE_SECTOR_INFO" (Windows CE 5.0 and later) page
+ * print. */
+typedef struct _DELETE_SECTOR_INFO {
+    DWORD cbSize;
+    DWORD startsector;
+    DWORD numsectors;
+} DELETE_SECTOR_INFO, *PDELETE_SECTOR_INFO;
+
+/* SG_REQ (ms920817/aa463166 print recorded above) stays HELD: its
+ * sr_callback member is typed PFN_REQDONE, whose typedef is printed
+ * nowhere in the corpus (checked 2026-09-18). */
+
 #endif /* AKARI_DISKIO_H */
