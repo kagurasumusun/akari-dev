@@ -90,10 +90,10 @@ typedef ULONG PROPID;      /* own-design closure; see note above */
 /*   #define ALPHA_MASK ((ARGB) 0xff << ALPHA_SHIFT)                   */
 /* ------------------------------------------------------------------ */
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms932026) */
-#define ALPHA_SHIFT 24
-#define RED_SHIFT 16
-#define GREEN_SHIFT 8
-#define BLUE_SHIFT 0
+#define ALPHA_SHIFT 24/* ee490465 */
+#define RED_SHIFT 16/* ee490465 */
+#define GREEN_SHIFT 8/* ee490465 */
+#define BLUE_SHIFT 0/* ee490465 */
 #define ALPHA_MASK ((ARGB) 0xff << ALPHA_SHIFT)
 
 #define MAKEARGB(a, r, g, b) \

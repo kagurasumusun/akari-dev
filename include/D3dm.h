@@ -678,7 +678,7 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
     (D3DMFVF_TEXCOORDFORMAT_FIXED << (CoordIndex*2 + 24))
 #define D3DMFVF_TEXCOORDFLOAT(CoordIndex) (D3DMFVF_TEXCOORDFORMAT_FLOAT)
 #define D3DM_MAKE_RSVALUE(Value) (*(ULONG *)(&(Value)))
-#define D3DMRENDERSTATE_WRAPBIAS 32
+#define D3DMRENDERSTATE_WRAPBIAS 32/* ee490886 */
 #define D3DMPV_DONOTCOPYDATA (1 << 0)
 #define D3DMPV_VALID D3DMPV_DONOTCOPYDATA
 
@@ -1627,7 +1627,7 @@ AKARI_CE_IMPORT IDirect3DMobile* WINAPI Direct3DMobileCreate(UINT SDKVersion)
 
 /* ms907695: page-printed definition (Windows CE 5.0 and later.). */
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms907695) */
-#define D3DMCURRENT_DISPLAY_MODE 0x00EFFFFF
+#define D3DMCURRENT_DISPLAY_MODE 0x00EFFFFF/* ee490298 */
 #endif /* _WIN32_WCE >= 0x0500 */
 
 #endif /* _WIN32_WCE >= 0x0500 -- whole-component gate, see above */

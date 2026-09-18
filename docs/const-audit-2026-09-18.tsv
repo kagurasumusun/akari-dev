@@ -668,12 +668,12 @@ include/Commctrl.h	RB_HITTEST	aa453619	name-no-value-on-page	value R1/derived
 include/Commctrl.h	TB_GETBUTTON	ms940429	name-no-value-on-page	value R1/derived
 include/Commctrlview.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
 include/D3dm.h	_FACD3DM	ms932027	match	
-include/D3dm.h	D3DMRENDERSTATE_WRAPBIAS		no-pageid	
+include/D3dm.h	D3DMRENDERSTATE_WRAPBIAS	ee490886	match	
 include/D3dm.h	MAX_DEVICE_IDENTIFIER_STRING	ms932031	match	
 include/D3dm.h	D3DMCREATE_MULTITHREADED	ms928109	match	
-include/D3dm.h	D3DMCURRENT_DISPLAY_MODE		no-pageid	
+include/D3dm.h	D3DMCURRENT_DISPLAY_MODE	ee490298	match	
 include/D3dmddk.h	D3DMTSS_TEXTURE	aa447708	match	
-include/D3dmtypes.h	D3DMPRESENTFLAG_LOCKABLE_BACKBUFFER		no-pageid	
+include/D3dmtypes.h	D3DMPRESENTFLAG_LOCKABLE_BACKBUFFER	ee490892	match	
 include/Ddraw.h	DD_ROP_SPACE	ms907789	name-no-value-on-page	
 include/Dmo.h	DMO_E_INVALIDSTREAMINDEX	aa451595	match	
 include/Dmo.h	DMO_E_INVALIDTYPE	aa451595	match	
@@ -683,54 +683,54 @@ include/Dmo.h	DMO_E_TYPE_NOT_ACCEPTED	aa451595	match
 include/Dmo.h	DMO_E_NO_MORE_ITEMS	aa451595	match	
 include/Dvdioctl.h	IOCTL_DVD_GET_REGION	ms902120	name-no-value-on-page	value R1/derived
 include/Dvdnav.h	DVD_SYSTEM_SPACE_BIT	ms925307	match	
-include/Dvdnav.h	DVD_NAVSTATREQ_VOLUME_BIT		no-pageid	
-include/Dvdnav.h	DVD_PROGRAM_PREVIOUS		no-pageid	
-include/Dvdnav.h	DVD_PROGRAM_NEXT		no-pageid	
-include/Dvdnav.h	DVD_PROGRAM_TOP		no-pageid	
-include/Dvdnav.h	DVD_MENU_TITLE		no-pageid	
-include/Dvdnav.h	DVD_MENU_ROOT		no-pageid	
-include/Dvdnav.h	DVD_MENU_SUBPICTURE		no-pageid	
-include/Dvdnav.h	DVD_MENU_AUDIO		no-pageid	
-include/Dvdnav.h	DVD_MENU_ANGLE		no-pageid	
-include/Dvdnav.h	DVD_MENU_PTT		no-pageid	
-include/Dvdnav.h	DVD_SELECT_UPPER		no-pageid	
-include/Dvdnav.h	DVD_SELECT_RIGHT		no-pageid	
-include/Dvdnav.h	DVD_SELECT_LOWER		no-pageid	
-include/Dvdnav.h	DVD_SELECT_LEFT		no-pageid	
-include/Dvdnav.h	DVD_SCANCAP_FORWARD_SCAN		no-pageid	
-include/Dvdnav.h	DVD_SCANCAP_FORWARD_SLOW		no-pageid	
-include/Dvdnav.h	DVD_SCANCAP_FORWARD_SINGLE		no-pageid	
-include/Dvdnav.h	DVD_SCANCAP_BACKWARD_SCAN		no-pageid	
-include/Dvdnav.h	DVD_SCANCAP_BACKWARD_SLOW		no-pageid	
-include/Dvdnav.h	DVD_SCANCAP_BACKWARD_SINGLE		no-pageid	
-include/Dvdnav.h	SPRM_M_LCD		no-pageid	
-include/Dvdnav.h	SPRM_ASTN		no-pageid	
-include/Dvdnav.h	SPRM_SPSTN		no-pageid	
-include/Dvdnav.h	SPRM_AGLN		no-pageid	
-include/Dvdnav.h	SPRM_TTN		no-pageid	
-include/Dvdnav.h	SPRM_VTS_TTN		no-pageid	
-include/Dvdnav.h	SPRM_TT_PGCN		no-pageid	
-include/Dvdnav.h	SPRM_PTTN		no-pageid	
-include/Dvdnav.h	SPRM_HL_BTNN		no-pageid	
-include/Dvdnav.h	SPRM_NV_TMR		no-pageid	
-include/Dvdnav.h	SPRM_NV_TMR_PGCN		no-pageid	
-include/Dvdnav.h	SPRM_P_AMXMD		no-pageid	
-include/Dvdnav.h	SPRM_CTY_CD		no-pageid	
-include/Dvdnav.h	SPRM_PTL_LVL		no-pageid	
-include/Dvdnav.h	SPRM_P_CFG_VIDEO		no-pageid	
-include/Dvdnav.h	SPRM_P_CFG_AUDIO		no-pageid	
-include/Dvdnav.h	SPRM_INI_LCD_AST		no-pageid	
-include/Dvdnav.h	SPRM_INI_LCD_EXT_AST		no-pageid	
-include/Dvdnav.h	SPRM_INI_LCD_SPST		no-pageid	
-include/Dvdnav.h	SPRM_INI_LCD_EXT_SPST		no-pageid	
-include/Dvdnav.h	SPRM_REGION		no-pageid	
+include/Dvdnav.h	DVD_NAVSTATREQ_VOLUME_BIT	ms925307	match	
+include/Dvdnav.h	DVD_PROGRAM_PREVIOUS	ms925307	match	
+include/Dvdnav.h	DVD_PROGRAM_NEXT	ms925307	match	
+include/Dvdnav.h	DVD_PROGRAM_TOP	ms925307	match	
+include/Dvdnav.h	DVD_MENU_TITLE	ms925307	match	
+include/Dvdnav.h	DVD_MENU_ROOT	ms925307	match	
+include/Dvdnav.h	DVD_MENU_SUBPICTURE	ms925307	match	
+include/Dvdnav.h	DVD_MENU_AUDIO	ms925307	match	
+include/Dvdnav.h	DVD_MENU_ANGLE	ms925307	match	
+include/Dvdnav.h	DVD_MENU_PTT	ms925307	match	
+include/Dvdnav.h	DVD_SELECT_UPPER	ms925307	match	
+include/Dvdnav.h	DVD_SELECT_RIGHT	ms925307	match	
+include/Dvdnav.h	DVD_SELECT_LOWER	ms925307	match	
+include/Dvdnav.h	DVD_SELECT_LEFT	ms925307	match	
+include/Dvdnav.h	DVD_SCANCAP_FORWARD_SCAN	ee481106	match	
+include/Dvdnav.h	DVD_SCANCAP_FORWARD_SLOW	ee481106	match	
+include/Dvdnav.h	DVD_SCANCAP_FORWARD_SINGLE	ee481106	match	
+include/Dvdnav.h	DVD_SCANCAP_BACKWARD_SCAN	ee481106	match	
+include/Dvdnav.h	DVD_SCANCAP_BACKWARD_SLOW	ee481106	match	
+include/Dvdnav.h	DVD_SCANCAP_BACKWARD_SINGLE	ee481106	match	
+include/Dvdnav.h	SPRM_M_LCD	ms925307	match	
+include/Dvdnav.h	SPRM_ASTN	ms925307	match	
+include/Dvdnav.h	SPRM_SPSTN	ms925307	match	
+include/Dvdnav.h	SPRM_AGLN	ms925307	match	
+include/Dvdnav.h	SPRM_TTN	ms925307	match	
+include/Dvdnav.h	SPRM_VTS_TTN	ms925307	match	
+include/Dvdnav.h	SPRM_TT_PGCN	ms925307	match	
+include/Dvdnav.h	SPRM_PTTN	ms925307	match	
+include/Dvdnav.h	SPRM_HL_BTNN	ms925307	match	
+include/Dvdnav.h	SPRM_NV_TMR	ms925307	match	
+include/Dvdnav.h	SPRM_NV_TMR_PGCN	ms925307	match	
+include/Dvdnav.h	SPRM_P_AMXMD	ms925307	match	
+include/Dvdnav.h	SPRM_CTY_CD	ms925307	match	
+include/Dvdnav.h	SPRM_PTL_LVL	ms925307	match	
+include/Dvdnav.h	SPRM_P_CFG_VIDEO	ms925307	match	
+include/Dvdnav.h	SPRM_P_CFG_AUDIO	ms925307	match	
+include/Dvdnav.h	SPRM_INI_LCD_AST	ms925307	match	
+include/Dvdnav.h	SPRM_INI_LCD_EXT_AST	ms925307	match	
+include/Dvdnav.h	SPRM_INI_LCD_SPST	ms925307	match	
+include/Dvdnav.h	SPRM_INI_LCD_EXT_SPST	ms925307	match	
+include/Dvdnav.h	SPRM_REGION	ms925307	match	
 include/Gcacheview.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
 include/Gdi.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
 include/Headerview.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
-include/Imaging.h	ALPHA_SHIFT		no-pageid	
-include/Imaging.h	RED_SHIFT		no-pageid	
-include/Imaging.h	GREEN_SHIFT		no-pageid	
-include/Imaging.h	BLUE_SHIFT		no-pageid	
+include/Imaging.h	ALPHA_SHIFT	ee490465	match	
+include/Imaging.h	RED_SHIFT	ee490465	match	
+include/Imaging.h	GREEN_SHIFT	ee490465	match	
+include/Imaging.h	BLUE_SHIFT	ee490465	match	
 include/Imm.h	ATTR_INPUT		no-pageid	
 include/Imm.h	ATTR_TARGET_CONVERTED		no-pageid	
 include/Imm.h	ATTR_CONVERTED		no-pageid	
@@ -3651,12 +3651,12 @@ include/dvddrvr.h	DVD_AUDIOCAP_AC3_KARAOKE	ms900194	name-no-value-on-page
 include/dvddrvr.h	DVD_AUDIOCAP_MPEG_KARAOKE	ms900194	name-no-value-on-page	
 include/dvddrvr.h	DVD_AUDIOCAP_DTS_KARAOKE	ms900194	name-no-value-on-page	
 include/dvddrvr.h	DVD_AUDIOCAP_SDDS_KARAOKE	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_SCANCAP_FORWARD_SCAN	ms900196	name-no-value-on-page	
-include/dvddrvr.h	DVD_SCANCAP_FORWARD_SLOW	ms900196	name-no-value-on-page	
-include/dvddrvr.h	DVD_SCANCAP_FORWARD_SINGLE	ms900196	name-no-value-on-page	
-include/dvddrvr.h	DVD_SCANCAP_BACKWARD_SCAN	ms900196	name-no-value-on-page	
-include/dvddrvr.h	DVD_SCANCAP_BACKWARD_SLOW	ms900196	name-no-value-on-page	
-include/dvddrvr.h	DVD_SCANCAP_BACKWARD_SINGLE	ms900196	name-no-value-on-page	
+include/dvddrvr.h	DVD_SCANCAP_FORWARD_SCAN	ee481106	match	
+include/dvddrvr.h	DVD_SCANCAP_FORWARD_SLOW	ee481106	match	
+include/dvddrvr.h	DVD_SCANCAP_FORWARD_SINGLE	ee481106	match	
+include/dvddrvr.h	DVD_SCANCAP_BACKWARD_SCAN	ee481106	match	
+include/dvddrvr.h	DVD_SCANCAP_BACKWARD_SLOW	ee481106	match	
+include/dvddrvr.h	DVD_SCANCAP_BACKWARD_SINGLE	ee481106	match	
 include/winerror.h	ERROR_SUCCESS	aa450917	match	
 include/winerror.h	NO_ERROR	aa450949	name-no-value-on-page	
 include/winerror.h	ERROR_INVALID_FUNCTION	aa450917	match	

@@ -130,12 +130,12 @@ typedef enum {
 
 /* ms892143: scan capability bits of IDVDRenderer::GetScanCaps
  * (ms900196). */
-#define DVD_SCANCAP_FORWARD_SCAN   0x1
-#define DVD_SCANCAP_FORWARD_SLOW   0x2
-#define DVD_SCANCAP_FORWARD_SINGLE 0x4
-#define DVD_SCANCAP_BACKWARD_SCAN  0x8
-#define DVD_SCANCAP_BACKWARD_SLOW  0x10
-#define DVD_SCANCAP_BACKWARD_SINGLE 0x20
+#define DVD_SCANCAP_FORWARD_SCAN   0x1/* ee481106 */
+#define DVD_SCANCAP_FORWARD_SLOW   0x2/* ee481106 */
+#define DVD_SCANCAP_FORWARD_SINGLE 0x4/* ee481106 */
+#define DVD_SCANCAP_BACKWARD_SCAN  0x8/* ee481106 */
+#define DVD_SCANCAP_BACKWARD_SLOW  0x10/* ee481106 */
+#define DVD_SCANCAP_BACKWARD_SINGLE 0x20/* ee481106 */
 
 /* ------------------------------------------------------------------ */
 /* Opaque interface records (M44/M53/M54/M57 model).                   */

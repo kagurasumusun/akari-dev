@@ -19,6 +19,8 @@ import re
 import sys
 
 ASSIGN = None          # compiled per run
+ADJ = None             # adjacent 'NAME [is|=|:] VALUE' inside <pre>
+PRE = re.compile(r"<pre[^>]*>(.*?)</pre>", re.S)
 CELLNAME = re.compile(r"^[A-Z_][A-Z0-9_]{1,63}$")
 
 
@@ -35,6 +37,13 @@ def scan_page(path, names, out):
         if n in names and (n, pid) not in seen:
             seen.add((n, pid))
             out.append((n, pid, v, "assign"))
+    for blk in PRE.findall(raw):
+        t = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", blk)))
+        for m in ADJ.finditer(t):
+            n, v = m.group(1), m.group(2)
+            if n in names and (n, pid) not in seen:
+                seen.add((n, pid))
+                out.append((n, pid, v, "adjacent"))
     for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", raw, re.S):
         cells = [re.sub(r"\s+", " ", html.unescape(
             re.sub(r"<[^>]+>", "", c))).strip()
@@ -73,7 +82,10 @@ def main():
             a = a[2:]
         else:
             a = a[1:]
-    global ASSIGN
+    global ASSIGN, ADJ
+    ADJ = re.compile(
+        r"\b([A-Z_][A-Z0-9_]{1,63})\b\s*(?:\bis\b|=|:)?\s+"
+        r"(0[xX][0-9A-Fa-f]{1,8}[LlUu]*|\d{1,10}[LlUu]*)\b")
     ASSIGN = re.compile(
         r"\b([A-Z_][A-Z0-9_]{1,63})\s*=\s*(0[xX][0-9A-Fa-f]+[LlUu]*|\d+[LlUu]*)"
         r"(?![A-Za-z0-9_])")

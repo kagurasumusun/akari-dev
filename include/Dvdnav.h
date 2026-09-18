@@ -31,49 +31,49 @@ extern "C" {
 #define DVD_MENU_SPACE_BIT              (DVD_SYSTEM_SPACE_BIT << 1)
 #define DVD_VMG_SPACE_BIT               (DVD_MENU_SPACE_BIT << 1)
 #define DVD_VTS_SPACE_BIT               (DVD_VMG_SPACE_BIT << 1)
-#define DVD_NAVSTATREQ_VOLUME_BIT       1
+#define DVD_NAVSTATREQ_VOLUME_BIT       1/* ms925307 */
 #define DVD_NAVSTATREQ_HIGHLIGHT_BIT    (DVD_NAVSTATREQ_VOLUME_BIT << 1)
 #define DVD_NAVSTATREQ_PCI_BIT          (DVD_NAVSTATREQ_HIGHLIGHT_BIT << 1)
-#define DVD_PROGRAM_PREVIOUS            0
-#define DVD_PROGRAM_NEXT                1
-#define DVD_PROGRAM_TOP                 2
-#define DVD_MENU_TITLE                  0
-#define DVD_MENU_ROOT                   1
-#define DVD_MENU_SUBPICTURE             2
-#define DVD_MENU_AUDIO                  3
-#define DVD_MENU_ANGLE                  4
-#define DVD_MENU_PTT                    5
-#define DVD_SELECT_UPPER                0
-#define DVD_SELECT_RIGHT                1
-#define DVD_SELECT_LOWER                2
-#define DVD_SELECT_LEFT                 3
-#define DVD_SCANCAP_FORWARD_SCAN        0x1
-#define DVD_SCANCAP_FORWARD_SLOW        0x2
-#define DVD_SCANCAP_FORWARD_SINGLE      0x4
-#define DVD_SCANCAP_BACKWARD_SCAN       0x8
-#define DVD_SCANCAP_BACKWARD_SLOW       0x10
-#define DVD_SCANCAP_BACKWARD_SINGLE     0x20
-#define SPRM_M_LCD                      0
-#define SPRM_ASTN                       1
-#define SPRM_SPSTN                      2
-#define SPRM_AGLN                       3
-#define SPRM_TTN                        4
-#define SPRM_VTS_TTN                    5
-#define SPRM_TT_PGCN                    6
-#define SPRM_PTTN                       7
-#define SPRM_HL_BTNN                    8
-#define SPRM_NV_TMR                     9
-#define SPRM_NV_TMR_PGCN                10
-#define SPRM_P_AMXMD                    11
-#define SPRM_CTY_CD                     12
-#define SPRM_PTL_LVL                    13
-#define SPRM_P_CFG_VIDEO                14
-#define SPRM_P_CFG_AUDIO                15
-#define SPRM_INI_LCD_AST                16
-#define SPRM_INI_LCD_EXT_AST            17
-#define SPRM_INI_LCD_SPST               18
-#define SPRM_INI_LCD_EXT_SPST           19
-#define SPRM_REGION                     20
+#define DVD_PROGRAM_PREVIOUS            0/* ms925307 */
+#define DVD_PROGRAM_NEXT                1/* ms925307 */
+#define DVD_PROGRAM_TOP                 2/* ms925307 */
+#define DVD_MENU_TITLE                  0/* ms925307 */
+#define DVD_MENU_ROOT                   1/* ms925307 */
+#define DVD_MENU_SUBPICTURE             2/* ms925307 */
+#define DVD_MENU_AUDIO                  3/* ms925307 */
+#define DVD_MENU_ANGLE                  4/* ms925307 */
+#define DVD_MENU_PTT                    5/* ms925307 */
+#define DVD_SELECT_UPPER                0/* ms925307 */
+#define DVD_SELECT_RIGHT                1/* ms925307 */
+#define DVD_SELECT_LOWER                2/* ms925307 */
+#define DVD_SELECT_LEFT                 3/* ms925307 */
+#define DVD_SCANCAP_FORWARD_SCAN        0x1/* ee481106 */
+#define DVD_SCANCAP_FORWARD_SLOW        0x2/* ee481106 */
+#define DVD_SCANCAP_FORWARD_SINGLE      0x4/* ee481106 */
+#define DVD_SCANCAP_BACKWARD_SCAN       0x8/* ee481106 */
+#define DVD_SCANCAP_BACKWARD_SLOW       0x10/* ee481106 */
+#define DVD_SCANCAP_BACKWARD_SINGLE     0x20/* ee481106 */
+#define SPRM_M_LCD                      0/* ms925307 */
+#define SPRM_ASTN                       1/* ms925307 */
+#define SPRM_SPSTN                      2/* ms925307 */
+#define SPRM_AGLN                       3/* ms925307 */
+#define SPRM_TTN                        4/* ms925307 */
+#define SPRM_VTS_TTN                    5/* ms925307 */
+#define SPRM_TT_PGCN                    6/* ms925307 */
+#define SPRM_PTTN                       7/* ms925307 */
+#define SPRM_HL_BTNN                    8/* ms925307 */
+#define SPRM_NV_TMR                     9/* ms925307 */
+#define SPRM_NV_TMR_PGCN                10/* ms925307 */
+#define SPRM_P_AMXMD                    11/* ms925307 */
+#define SPRM_CTY_CD                     12/* ms925307 */
+#define SPRM_PTL_LVL                    13/* ms925307 */
+#define SPRM_P_CFG_VIDEO                14/* ms925307 */
+#define SPRM_P_CFG_AUDIO                15/* ms925307 */
+#define SPRM_INI_LCD_AST                16/* ms925307 */
+#define SPRM_INI_LCD_EXT_AST            17/* ms925307 */
+#define SPRM_INI_LCD_SPST               18/* ms925307 */
+#define SPRM_INI_LCD_EXT_SPST           19/* ms925307 */
+#define SPRM_REGION                     20/* ms925307 */
 
 /* ------------------------------------------------------------------ */
 /* Structures (full prints, compiled verbatim).                      */
