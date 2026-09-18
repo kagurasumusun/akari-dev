@@ -134,7 +134,7 @@ typedef struct _PH_MENU_SCREEN_PARAMETERS {
     union {
         UINT SelectedId;
         HWND Dialog;
-    };
+    } result;
 } PH_MENU_SCREEN_PARAMETERS;
 
 /* ee501318 PH_MESSAGE_BOX_PARAMETERS: page print
@@ -152,7 +152,7 @@ typedef struct _PH_MESSAGE_BOX_PARAMETERS {
     union {
         UINT SelectedId;
         HWND Dialog;
-    };
+    } result;
 } PH_MESSAGE_BOX_PARAMETERS;
 
 

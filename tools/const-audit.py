@@ -55,6 +55,41 @@ def page_text_cache(pages):
 NUM = r"(0[xX][0-9A-Fa-f]+|\d+)"
 
 
+
+def strip_comments(s):
+    """Blank out C comments/strings, preserving offsets (so citations can
+    still be located in the original text)."""
+    out = list(s)
+    i = 0
+    n = len(s)
+    while i < n:
+        if s[i:i + 2] == "/*":
+            j = s.find("*/", i + 2)
+            j = n if j < 0 else j + 2
+            for k in range(i, j):
+                if out[k] != "\n":
+                    out[k] = " "
+            i = j
+        elif s[i:i + 2] == "//":
+            j = s.find("\n", i)
+            j = n if j < 0 else j
+            for k in range(i, j):
+                out[k] = " "
+            i = j
+        elif s[i] == '"':
+            j = i + 1
+            while j < n and s[j] != '"':
+                j += 2 if s[j] == "\\" else 1
+            j = min(j + 1, n)
+            for k in range(i + 1, j - 1):
+                if out[k] != "\n":
+                    out[k] = " "
+            i = j
+        else:
+            i += 1
+    return "".join(out)
+
+
 def find_printed_value(raw, txt, name):
     """Return (status, value...).  status in found/name-only/absent."""
     if not txt:

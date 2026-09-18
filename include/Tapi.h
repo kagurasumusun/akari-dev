@@ -414,7 +414,10 @@ typedef struct linecalltreatmententry_tag {
 } LINECALLTREATMENTENTRY;
 typedef LINECALLTREATMENTENTRY *LPLINECALLTREATMENTENTRY;
 
-/* LINEDEVCAPS page (ms894130). */
+/* LINEDEVCAPS page (ms894130).  Page-print artifact: the print glues
+ * "dwDevSpecificOffsetDWORD dwLineFeatures" (missing "; DWORD " between
+ * dwDevSpecificOffset and dwLineFeatures); the member list below is the
+ * full printed sequence with that one boundary restored. */
 typedef struct linedevcaps_tag {
     DWORD dwTotalSize;
     DWORD dwNeededSize;

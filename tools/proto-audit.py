@@ -51,6 +51,13 @@ def build_lexicon():
             s = open(os.path.join(d, fn), encoding="utf-8", errors="replace").read()
             lex |= set(re.findall(r"}\s*([A-Z][A-Za-z0-9_]*)\s*(?:,|;)", s))
             lex |= set(re.findall(r"typedef\s+[A-Za-z0-9_ \t\*]+?\b([A-Z][A-Za-z0-9_]*)\s*(?:,|;|\[)", s))
+            # struct/union/enum typedef names: '} NAME,' / '} NAME;'
+            lex |= set(re.findall(r"\}\s*([A-Z_][A-Za-z0-9_]{2,})\s*[,;]", s))
+            # struct/union/enum TAG names (struct _X {, union Y {)
+            lex |= set(re.findall(r"\b(?:struct|union|enum)\s+(_?[A-Za-z]\w*)\s*[\{;,\)]", s))
+            # lowercase typedef names (u_char, u_long, ...) -- needed to
+            # unglue prints like "u_charirdaDeviceID"
+            lex |= set(re.findall(r"typedef\s+[A-Za-z0-9_ \t\*]+?\b([a-z_][A-Za-z0-9_]*)\s*(?:,|;|\[)", s))
             lex |= set(re.findall(r"^\s*#define\s+([A-Z][A-Z0-9_]*)", s, re.M))
             lex |= set(re.findall(r"\b(L?PC?[A-Z][A-Z0-9_]*|HANDLE|H[A-Z][A-Z0-9]{1,})\b", s))
             # function-pointer typedefs:  typedef ... (*PFN_X)(...)
@@ -61,7 +68,7 @@ def build_lexicon():
                 r"typedef\s+\w[\w \t]*\(\s*(?:[A-Z][A-Z_]*\s+)*\*\s*"
                 r"([A-Za-z_]\w*)\s*\)\s*\(", s))
             # struct/union tag lists:  } TAG, *PTAG;  /  } VTableProvStruc, *PVTableProvStruc;
-            for tail in re.findall(r"}\s*([A-Za-z_][\w, \t\*]*);", s):
+            for tail in re.findall(r"}\s*([A-Za-z_][\w, \t\*\n]*);", s):
                 for nm in tail.split(","):
                     nm = nm.strip().lstrip("*").strip()
                     if re.fullmatch(r"[A-Za-z_]\w*", nm):
@@ -104,7 +111,11 @@ def unglue(tok):
                 nxt.extend((m.group(1), rest)); continue
             low = t.lower()
             m = UNGLUE_CI.match(low)
-            if m and 5 <= len(m.group(1)) < len(low):
+            # the case-insensitive fallback is for archive case typos in
+            # GLUED tokens; a clean single word ('Parameters') must not
+            # be split just because it starts with a lexicon word
+            clean = re.fullmatch(r"[A-Za-z][a-z0-9_]*|[A-Z0-9_]+", t)
+            if m and not clean and 5 <= len(m.group(1)) < len(low):
                 nxt.extend((_CANON[m.group(1)], t[len(m.group(1)):])); continue
             out.append(t)
         if not nxt:
@@ -229,6 +240,40 @@ def page_protos(path, name):
         cands.append((ret, name, params))
     return cands
 
+
+
+def strip_comments(s):
+    """Blank out C comments/strings, preserving offsets (so citations can
+    still be located in the original text)."""
+    out = list(s)
+    i = 0
+    n = len(s)
+    while i < n:
+        if s[i:i + 2] == "/*":
+            j = s.find("*/", i + 2)
+            j = n if j < 0 else j + 2
+            for k in range(i, j):
+                if out[k] != "\n":
+                    out[k] = " "
+            i = j
+        elif s[i:i + 2] == "//":
+            j = s.find("\n", i)
+            j = n if j < 0 else j
+            for k in range(i, j):
+                out[k] = " "
+            i = j
+        elif s[i] == '"':
+            j = i + 1
+            while j < n and s[j] != '"':
+                j += 2 if s[j] == "\\" else 1
+            j = min(j + 1, n)
+            for k in range(i + 1, j - 1):
+                if out[k] != "\n":
+                    out[k] = " "
+            i = j
+        else:
+            i += 1
+    return "".join(out)
 
 def main():
     corpus = sys.argv[1]
