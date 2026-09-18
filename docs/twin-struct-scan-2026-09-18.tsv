@@ -1,0 +1,163 @@
+name	hdr	cited-pid	twin-path	twin-pid	status	diffs
+ACCEL	include/Winuser.h	aa452837	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee505100.html	ee505100	twin-diff	membercount hdr=6 twin=4
+BITMAP	include/Wingdi.h	aa452880	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503208.html	ee503208	twin-match	
+BITMAPCOREHEADER	include/Wingdi.h	aa452881	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502290.html	ee502290	twin-match	
+BITMAPCOREINFO	include/Wingdi.h	aa452882	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee505513.html	ee505513	twin-match	
+BITMAPFILEHEADER	include/Wingdi.h	aa452883	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee500466.html	ee500466	twin-match	
+BITMAPINFO	include/Wingdi.h	aa452884	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee500572.html	ee500572	twin-match	
+BITMAPINFOHEADER	include/Wingdi.h	aa452885	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee499706.html	ee499706	twin-diff	membercount hdr=11 twin=10
+BitmapData	include/Imaging.h	ms925969	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms925969.html		no-print-in-twin	
+CANDIDATEFORM	include/Imm.h	ms904636	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms919085.html	ms919085	twin-match	
+CANDIDATELIST	include/Imm.h	ms904638	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms919103.html	ms919103	twin-match	
+CEGUID	include/Windbase.h	aa517295	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee496215(v=winembedded.60).html	ee496215	twin-match	
+CERT_AUTHORITY_INFO_ACCESS	include/Wincrypt.h	ms937017	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937026.html	ms937026	twin-diff	m1 hdr='DWORD' twin='DWORDcAccDescr'; m2 hdr='PCERT_ACCESS_DESCRIPTION' twin='PCERT_ACCESS_DESCRIPTIONrgAccDescr'
+CERT_AUTHORITY_KEY_ID2_INFO	include/Wincrypt.h	ms937028	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937027.html	ms937027	twin-match	
+CERT_BASIC_CONSTRAINTS2_INFO	include/Wincrypt.h	ms937030	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937029.html	ms937029	twin-diff	m1 hdr='BOOL' twin='BOOLfCA'; m2 hdr='BOOL' twin='BOOLfPathLenConstraint'; m3 hdr='DWORD' twin='DWORDdwPathLenConstraint'
+CERT_NAME_INFO	include/Wincrypt.h	ms937692	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937680.html	ms937680	twin-diff	m1 hdr='DWORD' twin='DWORDcRDN'; m2 hdr='PCERT_RDN' twin='PCERT_RDNrgRDN'
+CERT_POLICIES_INFO	include/Wincrypt.h	ms937688	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937685.html	ms937685	twin-diff	m1 hdr='DWORD' twin='DWORDcPolicyInfo'; m2 hdr='CERT_POLICY_INFO*rgPolicyInfo' twin='CERT_POLICY_INFO*'
+CERT_POLICY_ID	include/Wincrypt.h	ms937688	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937686.html	ms937686	twin-diff	m1 hdr='DWORD' twin='DWORDcCertPolicyElementId'; m2 hdr='LPSTR*rgpszCertPolicyElementId' twin='LPSTR*'
+CERT_POLICY_INFO	include/Wincrypt.h	ms937688	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937687.html	ms937687	twin-diff	m1 hdr='LPSTR' twin='LPSTRpszPolicyIdentifier'; m2 hdr='DWORD' twin='DWORDcPolicyQualifier'; m3 hdr='CERT_POLICY_QUALIFIER_INFO*rgPolicyQualifier' twin='CERT_POLICY_QUALIFIER_INFO*'
+CERT_RDN	include/Wincrypt.h	ms937692	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937691.html	ms937691	twin-match	
+CERT_SIGNED_CONTENT_INFO	include/Wincrypt.h	ms937701	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_crypto2_CERT_SIGNED_CONTENT_INFO.html		no-print-in-twin	
+CHANNEL_PDU_HEADER	include/Cchannel.h	aa513856	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa513859.html	aa513859	twin-diff	m1 hdr='UINT32' twin='UINT32length'; m2 hdr='UINT32' twin='UINT32flags'
+CMSG_HASHED_ENCODE_INFO	include/Wincrypt.h	ms937719	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms937719.html		no-print-in-twin	
+COMMANDBANDSRESTOREINFO	include/Commctrl.h	aa453639	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee505507.html	ee505507	twin-diff	membercount hdr=11 twin=5
+COMPOSITIONFORM	include/Imm.h	ms904714	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_win32_COMPOSITIONFORM_str.html		no-print-in-twin	
+CONTROLINFO	include/Objbase.h	ms886466	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms864020.html	ms864020	twin-match	
+CREATE_THREAD_DEBUG_INFO	include/Winbase.h	ms885187	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee488441.html	ee488441	twin-match	
+CREDENTIAL	include/Credmgr.h	ms937728	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497996.html	ee497996	twin-match	
+CUSTDATAITEM	include/Objbase.h	ms886959	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms864407.html	ms864407	twin-match	
+CY	include/Objbase.h	ms886958			no-twin-page	
+ContactsSearchCriteria	include/IExchangeClient.h	ms863932	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms863932.html		no-print-in-twin	
+ContrastCmdInputParm	include/Pwingdi.h	aa447689	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wceddkContrastCmdInputParm.html		no-print-in-twin	
+D3DMXVECTOR3FXD	include/D3dmx.h	ee491305	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee491659(v=winembedded.60).html	ee491659	twin-diff	membercount hdr=1 twin=21
+D3DMXVECTOR4FXD	include/D3dmx.h	ee491659	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee491305(v=winembedded.60).html	ee491305	twin-diff	membercount hdr=1 twin=20
+DEVMODE	include/Wingdi.h	aa452943	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee506078.html	ee506078	twin-match	
+DEVNAMES	include/Commdlg.h	aa452944	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501791.html	ee501791	twin-match	
+DISPPARAMS	include/Objbase.h	ms886970	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_DISPPARAMS.html		no-print-in-twin	
+DLGITEMTEMPLATEEX	include/Wingdi.h	aa452959	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504110.html	ee504110	twin-diff	membercount hdr=8 twin=11
+DLGTEMPLATEEX	include/Wingdi.h	aa452959	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504551.html	ee504551	twin-diff	membercount hdr=10 twin=17
+DOCINFO	include/Wingdi.h	aa452964	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms924806.html	ms924806	twin-diff	membercount hdr=8 twin=5
+DVASPECTINFO	include/Objbase.h	ms886467	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms864439.html		no-print-in-twin	
+DVEXTENTINFO	include/Objbase.h	ms886978	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms864451.html	ms864451	twin-match	
+ENUMLOGFONT	include/Wingdi.h	ms901128	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee489900.html	ee489900	twin-match	
+EncoderParameter	include/Imaging.h	aa451679	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa451679.html		no-print-in-twin	
+EncoderParameters	include/Imaging.h	aa451680	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa451680.html		no-print-in-twin	
+FILECHANGEINFO	include/Extfile.h	ms889030	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wcesdkrFILECHANGEINFO.html		no-print-in-twin	
+FORMATETC	include/Objbase.h	ms886985	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_com_FORMATETC.html		no-print-in-twin	
+FreeBusyCriteria	include/IExchangeClient.h	aa515003	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa515003.html		no-print-in-twin	
+GALSearchCriteria	include/IExchangeClient.h	aa515013	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa515013.html		no-print-in-twin	
+HARDWAREINPUT	include/Winuser.h	ms909851			no-twin-page	
+HD_HITTESTINFO	include/Commctrl.h	aa453620			no-twin-page	
+IDLDESC	include/Objbase.h	ms892132	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wcesdkrIDLDESC.html		no-print-in-twin	
+IMAGEINFO	include/Commctrl.h	ms909781	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504824.html	ee504824	twin-diff	membercount hdr=7 twin=5
+IMAGELISTDRAWPARAMS	include/Commctrl.h	ms909819	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504136.html	ee504136	twin-match	
+IMENUMINFO	include/Sipapi.h	ms909841	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_IMENUMINFO.html		no-print-in-twin	
+INITCOMMONCONTROLSEX	include/Commctrl.h	ms909850	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503993.html	ee503993	twin-match	
+IP_ADDRESS_STRING	include/Iptypes.h	ms895038	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms891174.html	ms891174	twin-match	
+IP_PER_ADAPTER_INFO	include/Iptypes.h	ms895046	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms891179.html	ms891179	twin-diff	m3 hdr='IP_ADDR_STRING*CurrentDnsServer' twin='PIP_ADDR_STRING CurrentDnsServer'
+ImageCodecInfo	include/Imaging.h	aa452241	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa452241.html		no-print-in-twin	
+KBDI_AUTOREPEAT_INFO	include/oak/Keybd.h	ms902134	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms902134.html		no-print-in-twin	
+KBDI_VKEY_TO_UNICODE_INFO	include/oak/Keybd.h	ms902135	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms902135.html		no-print-in-twin	
+LARGE_INTEGER	include/Winnt.h	ms891120			no-twin-page	
+LINECALLLIST	include/Tapi.h	ms893660	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms907302.html	ms907302	twin-match	
+LOGBRUSH	include/Wingdi.h	aa453418	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503661.html	ee503661	twin-match	
+LOGFONT	include/Wingdi.h	ms901140	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee489840.html	ee489840	twin-match	
+LOGPALETTE	include/Wingdi.h	aa453419	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee505709.html	ee505709	twin-match	
+LOGPEN	include/Wingdi.h	aa453420	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502585.html	ee502585	twin-match	
+LV_DISPINFO	include/Commctrl.h	ms931645	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_win32_LV_DISPINFO_str.html		no-print-in-twin	
+MCHITTESTINFO	include/Commctrl.h	ms931478	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee499735.html	ee499735	twin-match	
+MEMORY_BASIC_INFORMATION	include/Winnt.h	ms906230	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms886752.html	ms886752	twin-match	
+METHODDATA	include/Objbase.h	ms890768	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_oa96_METHODDATA.html		no-print-in-twin	
+MIBICMPINFO	include/Iprtrmib.h	ms894605	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms894602.html	ms894602	twin-match	
+MIB_ICMP	include/Iprtrmib.h	ms894605	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms894599.html	ms894599	twin-diff	membercount hdr=3 twin=1
+MIB_PROXYARP	include/Iprtrmib.h	ms895087	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895078.html	ms895078	twin-match	
+MIB_TCPSTATS	include/Iprtrmib.h	ms895081	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895084.html	ms895084	twin-match	
+MIB_UDPSTATS	include/Iprtrmib.h	ms895094	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895097.html	ms895097	twin-match	
+MSGQUEUEINFO	include/Msgqueue.h	ms886758	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms886758.html		no-print-in-twin	
+MSGQUEUEOPTIONS	include/Msgqueue.h	ms886759	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms886759.html		no-print-in-twin	
+NDIS_WLAN_BSSID	include/oak/Ntddndis.h	ms905053	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms905053.html		no-print-in-twin	
+NDIS_WORK_ITEM	include/oak/Ndis.h	ms905054	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms905054.html		no-print-in-twin	
+NEWTEXTMETRIC	include/Wingdi.h	ms901141	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee489904.html	ee489904	twin-match	
+NLED_COUNT_INFO	include/oak/Nled.h	ms905297	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wceddkNLED_COUNT_INFO.html		no-print-in-twin	
+NLED_SETTINGS_INFO	include/oak/Nled.h	ms905326	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wceddkNLED_SETTINGS_INFO.html		no-print-in-twin	
+NLED_SUPPORTS_INFO	include/oak/Nled.h	ms905332	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wceddkNLED_SUPPORTS_INFO.html		no-print-in-twin	
+NMLVCACHEHINT	include/Commctrl.h	aa453425	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501127.html	ee501127	twin-match	
+NMLVFINDITEM	include/Commctrl.h	ms931633	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee505948.html	ee505948	twin-match	
+NMRBAUTOSIZE	include/Commctrl.h	aa453640	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee505109.html	ee505109	twin-match	
+NMREBAR	include/Commctrl.h	ms911851	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502576.html	ee502576	twin-match	
+NMTVCUSTOMDRAW	include/Commctrl.h	ms911867	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee499431.html	ee499431	twin-match	
+NS_SERVICE_INFO	include/Winsock2.h	aa450894	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895775.html	ms895775	twin-match	
+PAINTSTRUCT	include/Winuser.h	ms911912	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee499378.html	ee499378	twin-match	
+PALETTEENTRY	include/Wingdi.h	ms911913	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504876.html	ee504876	twin-match	
+PANOSE	include/Wingdi.h	ms934025			no-twin-page	
+PARAMDATA	include/Objbase.h	ms891225	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_oa96_PARAMDATA.html		no-print-in-twin	
+PARAMDESC	include/Objbase.h	ms891232	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_oa96_PARAMDESC.html		no-print-in-twin	
+PBRANGE	include/Commctrl.h	ms911863	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502904.html	ee502904	twin-match	
+POINT	include/Windef.h	ms929214	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504157.html	ee504157	twin-match	
+POINTL	include/Windef.h	ms898774			no-twin-page	
+PROCESS_INFORMATION	include/Winbase.h	ms885182	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms886775.html	ms886775	twin-match	
+PropertyItem	include/Imaging.h	ms932269	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms932269.html		no-print-in-twin	
+RASENTRY	include/Ras.h	aa450836	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wcesdkrRASENTRY_str.html		no-print-in-twin	
+RECONVERTSTRING	include/Imm.h	ms906231	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms921470.html	ms921470	twin-match	
+RECT	include/Windef.h	ms929214	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms912843.html	ms912843	twin-match	
+RECTL	include/Windef.h	ms911931	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms913063.html	ms913063	twin-match	
+REGISTERWORD	include/Imm.h	ms906232	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms921471.html	ms921471	twin-match	
+REMOTE_NDIS_HALT_MSG	include/oak/Rndis.h	ms919807	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919807.html		no-print-in-twin	
+REMOTE_NDIS_INITIALIZE_MSG	include/oak/Rndis.h	ms919811	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919811.html		no-print-in-twin	
+REMOTE_NDIS_KEEPALIVE_CMPLT	include/oak/Rndis.h	ms919813	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919813.html		no-print-in-twin	
+REMOTE_NDIS_KEEPALIVE_MSG	include/oak/Rndis.h	ms919814	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919814.html		no-print-in-twin	
+REMOTE_NDIS_QUERY_CMPLT	include/oak/Rndis.h	ms919817	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919817.html		no-print-in-twin	
+REMOTE_NDIS_RESET_CMPLT	include/oak/Rndis.h	ms919820	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919820.html		no-print-in-twin	
+REMOTE_NDIS_RESET_MSG	include/oak/Rndis.h	ms919822	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919822.html		no-print-in-twin	
+REMOTE_NDIS_SET_CMPLT	include/oak/Rndis.h	ms919824	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms919824.html		no-print-in-twin	
+RGBQUAD	include/Wingdi.h	ms939815	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503753.html	ee503753	twin-match	
+RGBTRIPLE	include/Wingdi.h	ms939824	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee500218.html	ee500218	twin-match	
+RGNDATA	include/Wingdi.h	ms939837	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee500234.html	ee500234	twin-match	
+RGNDATAHEADER	include/Wingdi.h	ms939847	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee499122.html	ee499122	twin-match	
+RIP_INFO	include/Winbase.h	ms885195			no-twin-page	
+SAFEARRAY	include/Objbase.h	ms892133	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/wcesdkroa96_SAFEARRAY_Data_Type.html		no-print-in-twin	
+SECURITY_ATTRIBUTES	include/Objbase.h	ms928761			no-twin-page	
+SERVICE_ADDRESSES	include/Winsock2.h	aa450894	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa450895.html	aa450895	twin-match	
+SERVICE_INFO	include/Winsock2.h	aa450894	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa450902.html	aa450902	twin-match	
+SERVICE_TYPE_VALUE_ABS	include/Winsock2.h	aa450894	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa450912.html	aa450912	twin-match	
+SIZE	include/Windef.h	ms893070	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms940344.html	ms940344	twin-match	
+SIZEL	include/Windef.h	ms898774			no-twin-page	
+SPAUDIOSTATUS	include/Sapi.h	ms893502	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms893482.html		no-print-in-twin	
+SPEVENT	include/Sapi.h	ms895362	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895371.html		no-print-in-twin	
+SPPATHENTRY	include/Sapi.h	ms895600	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895664.html		no-print-in-twin	
+SPPHRASE	include/Sapi.h	ms895689	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895672.html		no-print-in-twin	
+SPPHRASEELEMENT	include/Sapi.h	ms895600	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895684.html		no-print-in-twin	
+SPPHRASEPROPERTY	include/Sapi.h	ms895689	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895689.html		no-print-in-twin	
+SPPHRASERULE	include/Sapi.h	ms895694	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895703.html		no-print-in-twin	
+SPRECOCONTEXTSTATUS	include/Sapi.h	ms895715	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895719.html		no-print-in-twin	
+SPRULEENTRY	include/Sapi.h	ms895743	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895754.html		no-print-in-twin	
+SPSERIALIZEDEVENT	include/Sapi.h	ms895768	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895774.html		no-print-in-twin	
+SPSERIALIZEDEVENT64	include/Sapi.h	ms895768	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895780.html		no-print-in-twin	
+SPSERIALIZEDPHRASE	include/Sapi.h	ms895689	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895784.html	ms895784	twin-diff	m1 hdr='ULONG' twin='ULONGulSerializedSize'
+SPSTATEINFO	include/Sapi.h	ms895974	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895810.html		no-print-in-twin	
+SPTEXTSELECTIONINFO	include/Sapi.h	ms895689	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895817.html	ms895817	twin-diff	m1 hdr='ULONG' twin='ULONGulStartActiveOffset'; m2 hdr='ULONG' twin='ULONGcchActiveChars'; m3 hdr='ULONG' twin='ULONGulStartSelection'; m4 hdr='ULONG' twin='ULONGcchSelection'
+SPTRANSITIONENTRY	include/Sapi.h	ms895974	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895826.html		no-print-in-twin	
+SPTRANSITIONPROPERTY	include/Sapi.h	ms895822	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895831.html		no-print-in-twin	
+SPVCONTEXT	include/Sapi.h	ms895842	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895850.html		no-print-in-twin	
+SPVSTATE	include/Sapi.h	ms895885	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895892.html		no-print-in-twin	
+SPWORD	include/Sapi.h	ms895974	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895959.html		no-print-in-twin	
+SPWORDENTRY	include/Sapi.h	ms895951	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895967.html		no-print-in-twin	
+SPWORDPRONUNCIATION	include/Sapi.h	ms895787	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895972.html		no-print-in-twin	
+STYLEBUF	include/Imm.h	ms906434	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-net-4x/ms921473.html	ms921473	twin-match	
+SdpQueryUuidUnion	include/Bthsdpdef.h	aa450878	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa450878.html		no-print-in-twin	
+SecPkgContext_StreamSizes	include/Sspi.h	ms926445	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee498163.html	ee498163	twin-match	
+ServiceEnumInfo	include/Service.h	aa450899	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa450899.html		no-print-in-twin	
+TBBUTTONINFOA	include/Commctrl.h	ms931482			no-twin-page	
+TBREPLACEBITMAP	include/Commctrl.h	ms913817	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee500497.html	ee500497	twin-match	
+TCPHeader	include/Fwapi.h	ms885685			no-twin-page	
+TLIBATTR	include/Objbase.h	ms891296	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms896486.html		no-print-in-twin	
+TPDC_CALIBRATION_POINT	include/oak/Tchddi.h	aa448208	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa448208.html		no-print-in-twin	
+TPDC_SAMPLE_RATE	include/oak/Tchddi.h	aa448210	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa448210.html		no-print-in-twin	
+TYPEATTR	include/Objbase.h	ms891299	/home/user/wince-docs-corpus/docs/chm/windows-ce-3.0/_wcesdk_oa96_TYPEATTR.html		no-print-in-twin	
+VARSTRING	include/Ras.h	ms897088	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms898569.html	ms898569	twin-match	
+WIN32_FIND_DATAW	include/Winbase.h	ms892378			no-twin-page	
+XFORM	include/Wingdi.h	aa453061			no-twin-page	
+u	include/Objbase.h	ms886983			no-twin-page	
+u	include/Objbase.h	ms891300			no-twin-page	
+u	include/Objbase.h	ms891630			no-twin-page	

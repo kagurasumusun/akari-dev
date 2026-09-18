@@ -726,6 +726,7 @@ include/Dvdnav.h	SPRM_INI_LCD_EXT_SPST	ms925307	match
 include/Dvdnav.h	SPRM_REGION	ms925307	match	
 include/Gcacheview.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
 include/Gdi.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
+include/Gpsapi.h	GPS_MAX_SATELLITES	ee483540	match	
 include/Headerview.hpp	_INC_WINDOWS_CE_SDK_DECOR_EMPTY		no-pageid	
 include/Imaging.h	ALPHA_SHIFT	ee490465	match	
 include/Imaging.h	RED_SHIFT	ee490465	match	
@@ -1145,6 +1146,7 @@ include/Sipapi.h	SIPF_OFF		no-pageid
 include/Sipapi.h	SIPF_ON		no-pageid	
 include/Sipapi.h	SIPF_DOCKED		no-pageid	
 include/Sipapi.h	SIPF_LOCKED		no-pageid	
+include/Sms.h	SMS_MAX_ADDRESS_LENGTH		no-pageid	
 include/Sspi.h	ASC_REQ_DELEGATE		no-pageid	
 include/Sspi.h	ASC_REQ_MUTUAL_AUTH		no-pageid	
 include/Sspi.h	ASC_REQ_REPLAY_DETECT		no-pageid	
@@ -3642,15 +3644,15 @@ include/aygshell.h	SPI_SETSIPINFO		no-pageid
 include/aygshell.h	SPI_GETSIPINFO		no-pageid	
 include/aygshell.h	SPI_SETCURRENTIM		no-pageid	
 include/aygshell.h	SPI_GETCURRENTIM		no-pageid	
-include/dvddrvr.h	DVD_AUDIOCAP_AC3	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_MPEG	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_DTS	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_SDDS	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_LPCM_KARAOKE	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_AC3_KARAOKE	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_MPEG_KARAOKE	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_DTS_KARAOKE	ms900194	name-no-value-on-page	
-include/dvddrvr.h	DVD_AUDIOCAP_SDDS_KARAOKE	ms900194	name-no-value-on-page	
+include/dvddrvr.h	DVD_AUDIOCAP_AC3	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_MPEG	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_DTS	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_SDDS	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_LPCM_KARAOKE	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_AC3_KARAOKE	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_MPEG_KARAOKE	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_DTS_KARAOKE	ee481106	match	
+include/dvddrvr.h	DVD_AUDIOCAP_SDDS_KARAOKE	ee481106	match	
 include/dvddrvr.h	DVD_SCANCAP_FORWARD_SCAN	ee481106	match	
 include/dvddrvr.h	DVD_SCANCAP_FORWARD_SLOW	ee481106	match	
 include/dvddrvr.h	DVD_SCANCAP_FORWARD_SINGLE	ee481106	match	
