@@ -346,6 +346,7 @@ include/Msime.h	POSTBL	ms906229	match
 include/Msime.h	IPCANDIDATE		no-pageid	
 include/Natedit.h	IP_NAT_SESSION_MAPPING_STATISTICS	ms885684	match	
 include/Natedit.h	IPRcvBuf	ms885685	match	
+include/Notifext.hxx	SettingsDialogData	ms919617	match	
 include/Notify.h	CE_NOTIFICATION_TRIGGER	ms908083	match	
 include/Notify.h	CE_USER_NOTIFICATION	ms908106	match	
 include/Notify.h	CE_NOTIFICATION_INFO_HEADER	ms908082	match	

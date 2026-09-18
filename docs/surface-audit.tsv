@@ -1160,9 +1160,9 @@ CeNotifyPrivate_FilterType	ce5+ce6	declared	0	0	0		app
 CeNotifyPrivate_Lock	ce5+ce6	declared	0	0	0		app	
 CeNotifyPrivate_Reschedule	ce5+ce6	declared	0	0	0		app	
 CeNotifyPrivate_SetUserAlarm	ce5+ce6	declared	0	0	0		app	
-CeNotifyPrivate_TranslateOID	ce5+ce6	absent	0	0	0		-	
+CeNotifyPrivate_TranslateOID	ce5+ce6	declared	0	0	0		app	
 CeNotifyPrivate_Unlock	ce5+ce6	declared	0	0	0		app	
-CeNotifyPublic_DisposeOfPacket	ce5+ce6	absent	0	0	0		-	
+CeNotifyPublic_DisposeOfPacket	ce5+ce6	declared	0	0	0		app	
 CeNotifyPublic_FilterEvent	ce5+ce6	declared	0	0	0		app	
 CeNotifyPublic_FilterUserNotification	ce5+ce6	declared	0	0	0		app	
 CeNotifyPublic_Initialize	ce5+ce6	declared	0	0	0		app	
@@ -6800,7 +6800,7 @@ NotifyAddrChange	ce5+ce6	declared	1	0	0		app
 NOTIFYICONDATA	ce5+ce6	declared	0	0	0		app	
 NOTIFYMSGQUEUEPACKET	ce6	declared	0	0	0		app	
 NOTIFYOFNEWCONNECTION	ce5+ce6	declared	0	0	0		app	
-NotifyPacket	ce5+ce6	absent	0	0	0		-	
+NotifyPacket	ce5+ce6	declared	0	0	0		app	
 NotifyRouteChange	ce5+ce6	declared	1	0	0		app	
 NotifyWinUserSystem	ce5+ce6	declared	1	0	0		app	
 novtable	ce5	absent	0	0	0		-	
