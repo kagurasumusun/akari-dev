@@ -748,96 +748,96 @@ extern "C" {
  * 2219), so no RAS or NERR constant is emitted; those are recorded
  * as unknown in docs/inventory.md.
  */
-#define NTE_BAD_UID                            0x80090001L
-#define NTE_BAD_HASH                           0x80090002L
-#define NTE_BAD_KEY                            0x80090003L
-#define NTE_BAD_LEN                            0x80090004L
-#define NTE_BAD_DATA                           0x80090005L
-#define NTE_BAD_SIGNATURE                      0x80090006L
-#define NTE_BAD_VER                            0x80090007L
-#define NTE_BAD_ALGID                          0x80090008L
-#define NTE_BAD_FLAGS                          0x80090009L
+#define NTE_BAD_UID                            0x80090001L/* aa451033 */
+#define NTE_BAD_HASH                           0x80090002L/* aa451033 */
+#define NTE_BAD_KEY                            0x80090003L/* aa451033 */
+#define NTE_BAD_LEN                            0x80090004L/* aa451033 */
+#define NTE_BAD_DATA                           0x80090005L/* aa451033 */
+#define NTE_BAD_SIGNATURE                      0x80090006L/* aa451033 */
+#define NTE_BAD_VER                            0x80090007L/* aa451033 */
+#define NTE_BAD_ALGID                          0x80090008L/* aa451033 */
+#define NTE_BAD_FLAGS                          0x80090009L/* aa451033 */
 #define NTE_BAD_TYPE                           0x8009000AL/* aa451033 */
 #define NTE_BAD_KEY_STATE                      0x8009000BL/* aa451033 */
 #define NTE_BAD_HASH_STATE                     0x8009000CL/* aa451033 */
 #define NTE_NO_KEY                             0x8009000DL/* aa451033 */
 #define NTE_NO_MEMORY                          0x8009000EL/* aa451033 */
 #define NTE_EXISTS                             0x8009000FL/* aa451033 */
-#define NTE_PERM                               0x80090010L
-#define NTE_NOT_FOUND                          0x80090011L
-#define NTE_DOUBLE_ENCRYPT                     0x80090012L
-#define NTE_BAD_PROVIDER                       0x80090013L
-#define NTE_BAD_PROV_TYPE                      0x80090014L
-#define NTE_BAD_PUBLIC_KEY                     0x80090015L
-#define NTE_BAD_KEYSET                         0x80090016L
-#define NTE_PROV_TYPE_NOT_DEF                  0x80090017L
-#define NTE_PROV_TYPE_ENTRY_BAD                0x80090018L
-#define NTE_KEYSET_NOT_DEF                     0x80090019L
+#define NTE_PERM                               0x80090010L/* aa451033 */
+#define NTE_NOT_FOUND                          0x80090011L/* aa451033 */
+#define NTE_DOUBLE_ENCRYPT                     0x80090012L/* aa451033 */
+#define NTE_BAD_PROVIDER                       0x80090013L/* aa451033 */
+#define NTE_BAD_PROV_TYPE                      0x80090014L/* aa451033 */
+#define NTE_BAD_PUBLIC_KEY                     0x80090015L/* aa451033 */
+#define NTE_BAD_KEYSET                         0x80090016L/* aa451033 */
+#define NTE_PROV_TYPE_NOT_DEF                  0x80090017L/* aa451033 */
+#define NTE_PROV_TYPE_ENTRY_BAD                0x80090018L/* aa451033 */
+#define NTE_KEYSET_NOT_DEF                     0x80090019L/* aa451033 */
 #define NTE_KEYSET_ENTRY_BAD                   0x8009001AL/* aa451033 */
 #define NTE_PROV_TYPE_NO_MATCH                 0x8009001BL/* aa451033 */
 #define NTE_SIGNATURE_FILE_BAD                 0x8009001CL/* aa451033 */
 #define NTE_PROVIDER_DLL_FAIL                  0x8009001DL/* aa451033 */
 #define NTE_PROV_DLL_NOT_FOUND                 0x8009001EL/* aa451033 */
 #define NTE_BAD_KEYSET_PARAM                   0x8009001FL/* aa451033 */
-#define NTE_FAIL                               0x80090020L
-#define NTE_SYS_ERR                            0x80090021L
-#define CRYPT_E_MSG_ERROR                      0x80091001L
-#define CRYPT_E_UNKNOWN_ALGO                   0x80091002L
-#define CRYPT_E_OID_FORMAT                     0x80091003L
-#define CRYPT_E_INVALID_MSG_TYPE               0x80091004L
-#define CRYPT_E_UNEXPECTED_ENCODING            0x80091005L
-#define CRYPT_E_AUTH_ATTR_MISSING              0x80091006L
-#define CRYPT_E_HASH_VALUE                     0x80091007L
-#define CRYPT_E_INVALID_INDEX                  0x80091008L
-#define CRYPT_E_ALREADY_DECRYPTED              0x80091009L
+#define NTE_FAIL                               0x80090020L/* aa451033 */
+#define NTE_SYS_ERR                            0x80090021L/* aa451033 */
+#define CRYPT_E_MSG_ERROR                      0x80091001L/* aa451026 */
+#define CRYPT_E_UNKNOWN_ALGO                   0x80091002L/* aa451026 */
+#define CRYPT_E_OID_FORMAT                     0x80091003L/* aa451026 */
+#define CRYPT_E_INVALID_MSG_TYPE               0x80091004L/* aa451026 */
+#define CRYPT_E_UNEXPECTED_ENCODING            0x80091005L/* aa451026 */
+#define CRYPT_E_AUTH_ATTR_MISSING              0x80091006L/* aa451026 */
+#define CRYPT_E_HASH_VALUE                     0x80091007L/* aa451026 */
+#define CRYPT_E_INVALID_INDEX                  0x80091008L/* aa451026 */
+#define CRYPT_E_ALREADY_DECRYPTED              0x80091009L/* aa451026 */
 #define CRYPT_E_NOT_DECRYPTED                  0x8009100AL/* aa451026 */
 #define CRYPT_E_RECIPIENT_NOT_FOUND            0x8009100BL/* aa451026 */
 #define CRYPT_E_CONTROL_TYPE                   0x8009100CL/* aa451026 */
 #define CRYPT_E_ISSUER_SERIALNUMBER            0x8009100DL/* aa451026 */
 #define CRYPT_E_SIGNER_NOT_FOUND               0x8009100EL/* aa451026 */
 #define CRYPT_E_ATTRIBUTES_MISSING             0x8009100FL/* aa451026 */
-#define CRYPT_E_STREAM_MSG_NOT_READY           0x80091010L
-#define CRYPT_E_BAD_LEN                        0x80092001L
-#define CRYPT_E_BAD_ENCODE                     0x80092002L
-#define CRYPT_E_FILE_ERROR                     0x80092003L
-#define CRYPT_E_NOT_FOUND                      0x80092004L
-#define CRYPT_E_EXISTS                         0x80092005L
-#define CRYPT_E_NO_PROVIDER                    0x80092006L
-#define CRYPT_E_SELF_SIGNED                    0x80092007L
-#define CRYPT_E_DELETED_PREV                   0x80092008L
-#define CRYPT_E_NO_MATCH                       0x80092009L
+#define CRYPT_E_STREAM_MSG_NOT_READY           0x80091010L/* aa451026 */
+#define CRYPT_E_BAD_LEN                        0x80092001L/* aa451026 */
+#define CRYPT_E_BAD_ENCODE                     0x80092002L/* aa451026 */
+#define CRYPT_E_FILE_ERROR                     0x80092003L/* aa451026 */
+#define CRYPT_E_NOT_FOUND                      0x80092004L/* aa451026 */
+#define CRYPT_E_EXISTS                         0x80092005L/* aa451026 */
+#define CRYPT_E_NO_PROVIDER                    0x80092006L/* aa451026 */
+#define CRYPT_E_SELF_SIGNED                    0x80092007L/* aa451026 */
+#define CRYPT_E_DELETED_PREV                   0x80092008L/* aa451026 */
+#define CRYPT_E_NO_MATCH                       0x80092009L/* aa451026 */
 #define CRYPT_E_UNEXPECTED_MSG_TYPE            0x8009200AL/* aa451026 */
 #define CRYPT_E_NO_KEY_PROPERTY                0x8009200BL/* aa451026 */
 #define CRYPT_E_NO_DECRYPT_CERT                0x8009200CL/* aa451026 */
 #define CRYPT_E_BAD_MSG                        0x8009200DL/* aa451026 */
 #define CRYPT_E_NO_SIGNER                      0x8009200EL/* aa451026 */
 #define CRYPT_E_PENDING_CLOSE                  0x8009200FL/* aa451026 */
-#define CRYPT_E_REVOKED                        0x80092010L
-#define CRYPT_E_NO_REVOCATION_DLL              0x80092011L
-#define CRYPT_E_NO_REVOCATION_CHECK            0x80092012L
-#define CRYPT_E_REVOCATION_OFFLINE             0x80092013L
-#define CRYPT_E_INVALID_X500_STRING            0x80092023L
-#define CRYPT_E_NOT_CHAR_STRING                0x80092024L
-#define CRYPT_E_FILERESIZED                    0x80092025L
-#define CRYPT_E_SECURITY_SETTINGS              0x80092026L
-#define CRYPT_E_NO_VERIFY_USAGE_DLL            0x80092027L
-#define CRYPT_E_NO_VERIFY_USAGE_CHECK          0x80092028L
-#define CRYPT_E_VERIFY_USAGE_OFFLINE           0x80092029L
+#define CRYPT_E_REVOKED                        0x80092010L/* aa451026 */
+#define CRYPT_E_NO_REVOCATION_DLL              0x80092011L/* aa451026 */
+#define CRYPT_E_NO_REVOCATION_CHECK            0x80092012L/* aa451026 */
+#define CRYPT_E_REVOCATION_OFFLINE             0x80092013L/* aa451026 */
+#define CRYPT_E_INVALID_X500_STRING            0x80092023L/* aa451026 */
+#define CRYPT_E_NOT_CHAR_STRING                0x80092024L/* aa451026 */
+#define CRYPT_E_FILERESIZED                    0x80092025L/* aa451026 */
+#define CRYPT_E_SECURITY_SETTINGS              0x80092026L/* aa451026 */
+#define CRYPT_E_NO_VERIFY_USAGE_DLL            0x80092027L/* aa451026 */
+#define CRYPT_E_NO_VERIFY_USAGE_CHECK          0x80092028L/* aa451026 */
+#define CRYPT_E_VERIFY_USAGE_OFFLINE           0x80092029L/* aa451026 */
 #define CRYPT_E_NOT_IN_CTL                     0x8009202AL/* aa451026 */
 #define CRYPT_E_NO_TRUSTED_SIGNER              0x8009202BL/* aa451026 */
-#define CRYPT_E_OSS_ERROR                      0x80093000L
-#define CERTSRV_E_BAD_REQUESTSUBJECT           0x80094001L
-#define CERTSRV_E_NO_REQUEST                   0x80094002L
-#define CERTSRV_E_BAD_REQUESTSTATUS            0x80094003L
-#define CERTSRV_E_PROPERTY_EMPTY               0x80094004L
-#define CERTDB_E_JET_ERROR                     0x80095000L
-#define TRUST_E_SYSTEM_ERROR                   0x80096001L
-#define TRUST_E_NO_SIGNER_CERT                 0x80096002L
-#define TRUST_E_COUNTER_SIGNER                 0x80096003L
-#define TRUST_E_CERT_SIGNATURE                 0x80096004L
-#define TRUST_E_TIME_STAMP                     0x80096005L
-#define TRUST_E_BAD_DIGEST                     0x80096010L
-#define TRUST_E_BASIC_CONSTRAINTS              0x80096019L
+#define CRYPT_E_OSS_ERROR                      0x80093000L/* aa451026 */
+#define CERTSRV_E_BAD_REQUESTSUBJECT           0x80094001L/* aa451023 */
+#define CERTSRV_E_NO_REQUEST                   0x80094002L/* aa451023 */
+#define CERTSRV_E_BAD_REQUESTSTATUS            0x80094003L/* aa451023 */
+#define CERTSRV_E_PROPERTY_EMPTY               0x80094004L/* aa451023 */
+#define CERTDB_E_JET_ERROR                     0x80095000L/* aa451023 */
+#define TRUST_E_SYSTEM_ERROR                   0x80096001L/* aa451035 */
+#define TRUST_E_NO_SIGNER_CERT                 0x80096002L/* aa451035 */
+#define TRUST_E_COUNTER_SIGNER                 0x80096003L/* aa451035 */
+#define TRUST_E_CERT_SIGNATURE                 0x80096004L/* aa451035 */
+#define TRUST_E_TIME_STAMP                     0x80096005L/* aa451035 */
+#define TRUST_E_BAD_DIGEST                     0x80096010L/* aa451035 */
+#define TRUST_E_BASIC_CONSTRAINTS              0x80096019L/* aa451035 */
 #define TRUST_E_FINANCIAL_CRITERIA             0x8009601EL/* aa451035 */
 
 #ifdef __cplusplus

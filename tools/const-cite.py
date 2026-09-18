@@ -24,12 +24,19 @@ DEF = re.compile(r"^(#define\s+([A-Z_][A-Z0-9_]*)\s+"
 GAPS = ("no-pageid", "name-not-on-page", "name-no-value-on-page")
 
 
-def parse_value(s):
+def parse_value(s, form=""):
+    if form == "cell-bare8":
+        # bare 8-hex-digit cells are hex even without 0x; int(s, 0)
+        # would silently read them as decimal
+        try:
+            return int(s, 16)
+        except ValueError:
+            return None
     try:
         return int(s, 0)
     except ValueError:
         try:
-            return int(s, 16)          # bare hex cell
+            return int(s, 16)
         except ValueError:
             return None
 
@@ -50,7 +57,7 @@ def main():
         f = line.rstrip("\n").split("\t")
         if len(f) < 4:
             continue
-        v = parse_value(f[2].rstrip("LlUu"))
+        v = parse_value(f[2].rstrip("LlUu"), f[3])
         if v is not None:
             idx.setdefault(f[0], []).append((f[1], v, f[3]))
     cited = differs = noprint = already = 0
