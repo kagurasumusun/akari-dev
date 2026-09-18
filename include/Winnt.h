@@ -209,7 +209,7 @@ typedef EXCEPTION_RECORD *PEXCEPTION_RECORD; /* type used by
  * exceptions most likely from common programming errors.  The names
  * are that CE page's list; the numeric values are the fixed Win32 ABI
  * codes of the desktop exception reference (recorded provenance). */
-#define EXCEPTION_ACCESS_VIOLATION         0xC0000005L
+#define EXCEPTION_ACCESS_VIOLATION         0xC0000005L  /* aa450192/ms927957: defined as STATUS_ACCESS_VIOLATION */
 #define EXCEPTION_BREAKPOINT               0x80000003L
 #define EXCEPTION_DATATYPE_MISALIGNMENT    0x80000002L
 #define EXCEPTION_SINGLE_STEP              0x80000004L

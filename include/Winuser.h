@@ -1726,7 +1726,7 @@ typedef struct tagNMHDR {
 #define EM_GETPASSWORDCHAR             0x00D2         /* aa453010 */
 #define EM_SETMARGINS                  0x00D3         /* aa453024 */
 #define EM_GETMARGINS                  0x00D4         /* aa453008 */
-#define EM_SETLIMITTEXT                0x00C5         /* aa453023: identical to EM_LIMITTEXT (aa453013) */
+#define EM_SETLIMITTEXT                0x00C5         /* aa453023: identical to EM_LIMITTEXT (aa453013); alias documented on ee499421 */
 #define EM_GETLIMITTEXT                0x00D5         /* aa453005 */
 #define EM_POSFROMCHAR                 0x00D6         /* aa453018 */
 #define EM_CHARFROMPOS                 0x00D7         /* aa453001 */

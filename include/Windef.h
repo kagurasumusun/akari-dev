@@ -199,7 +199,10 @@ typedef INT   *LPINT;   /* INT pointer (GetCharWidth32 ms901131 / */
 /* MAX_PATH: default path length limit, cited by the CE CreateFile
  * (aa517318), FindFirstFile (ms889678) and GetFileAttributes
  * (ms890895) pages as the default string size limit for paths
- * (Win32 ABI value 260). */
+ * (Win32 ABI value 260).  The `#define MAX_PATH 128` printed on the
+ * UNICODE_PATH pages (aa452397, ms897592, ee495176) is the
+ * DVD/IDL-local Dvdata.h value, not this global one.  260 value-
+ * checked against CeGCC w32api windef.h (reference only). */
 #define MAX_PATH 260
 
 /* Windows CE is Unicode-only: the generic-text forms are the wide ones. */
