@@ -23,10 +23,23 @@
 extern "C" {
 #endif
 
+/* LPDIRECTINPUT: no CE page prints the typedef (checked 2026-09-18;
+ * no IDirectSound-style wcesdkr record either).  Derived as the
+ * standard opaque interface-pointer spelling the print itself
+ * requires (LPDIRECTINPUT* = pointer to interface pointer), same
+ * pattern Dsound.h carries from the wcesdkr prints.  Replace on an
+ * official print. */
+typedef struct IDirectInput *LPDIRECTINPUT;
+
 /* ms864419 "DirectInputCreate": print `HRESULT WINAPI
  * DirectInputCreate(HINSTANCE hinst,DWORD dwVersion,LPDIRECTINPUT*
  * lplpDirectInput,LPUNKNOWN punkOuter);` (punkOuter = controlling
- * IUnknown for aggregation; LPUNKNOWN is carried by Objbase.h). */
+ * IUnknown for aggregation; LPUNKNOWN is carried by Objbase.h).
+ * Page: Windows CE 2.12 through .NET 4.1; not supported as of
+ * .NET 4.2 / Windows Mobile 2003.  No Link Library row is printed. */
+#if _WIN32_WCE >= 0x0212 && _WIN32_WCE <= 0x0410
+AKARI_CE_IMPORT HRESULT WINAPI DirectInputCreate(HINSTANCE hinst, DWORD dwVersion, LPDIRECTINPUT *lplpDirectInput, LPUNKNOWN punkOuter) AKARI_CE_NAME(DirectInputCreate);
+#endif
 
 #ifdef __cplusplus
 }

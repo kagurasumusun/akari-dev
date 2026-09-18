@@ -26,3 +26,5 @@ EXPORTS
   DirectSoundCaptureEnumerate
   DirectSoundCreate
   DirectSoundEnumerate
+  DirectSoundCaptureEnumerate
+  DirectSoundEnumerate

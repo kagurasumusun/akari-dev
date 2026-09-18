@@ -148,4 +148,27 @@ typedef struct _SCARD_READER_CAPABILITIES {
 
 
 
+
+/* ee485673 "OS_DEP_DATA" (Windows Embedded CE 6.0 and later) page
+ * print.  SMARTCARD_EXTENSION forward-declared: its full print
+ * (ee486507) needs READER_EXTENSION / SMARTCARD_REQUEST /
+ * SMARTCARD_REPLY, which have no corpus pages (checked 2026-09-18),
+ * so only the pointer member is usable here. */
+struct _SMARTCARD_EXTENSION;
+typedef struct _OS_DEP_DATA {
+  struct _SMARTCARD_EXTENSION *pSmartCardExtension;
+  CRITICAL_SECTION CritSect;
+  HANDLE hChangeEvent;
+  HANDLE hCancelEvent;
+} OS_DEP_DATA, *POS_DEP_DATA;
+
+/* Smartcard* functions (ms920926/933, ms921144/243/272/385/419/526/
+ * 641/760/781/790 prints recorded above) remain HELD: every print
+ * takes PSMARTCARD_EXTENSION by pointer, but the SMARTCARD_EXTENSION
+ * layout dead-ends at READER_EXTENSION / SMARTCARD_REQUEST /
+ * SMARTCARD_REPLY (no pages); VENDOR_ATTR is sized by
+ * MAXIMUM_ATTR_STRING_LENGTH and SCARD_CARD_CAPABILITIES needs
+ * CLOCK_RATE_CONVERSION / BIT_RATE_ADJUSTMENT -- none printed
+ * anywhere in the corpus (checked 2026-09-18). */
+
 #endif /* AKARI_SMCLIB_H */

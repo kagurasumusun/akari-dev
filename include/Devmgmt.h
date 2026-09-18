@@ -40,12 +40,33 @@ typedef struct  {
     LPTSTR pwzData;
     LPTSTR pwzXml;
 } DMTASKINFO, *PDMTASKINFO;
-/* ms895039 DMSINVRECORD -- HELD (page print; member types unpublished):
- *   typedef struct  { ... } DMSINVRECORD, *PDMSINVRECORD; */
-/* ms894998 CeGetDevMgmtPackageList: print `HRESULT CeGetDevMgmtPackageList(PDMSINVRECORD pRecord,LPDWORD pdwEntryNumber,DWORD dwFilter);` */
-/* (record-only: parameter or return type unpublished) */
-/* ms895003 CeSetDevMgmtTask: print `HRESULT CeSetDevMgmtTask(DMTASKINFO* pdi);` */
-HRESULT CeSetDevMgmtTask(DMTASKINFO* pdi);
+/* ms895034 "DMSDLINFO" (Windows CE 5.0 and later) page print. */
+typedef struct {
+    SYSTEMTIME stStartTime;
+    SYSTEMTIME stDeltaTime;
+    DWORD dwFlags;
+    TCHAR wzDest[MAX_PATH];
+    TCHAR wzCmdLine[MAX_PATH];
+} DMSDLINFO, *PDMSDLINFO;
+
+/* ms895039 DMSINVRECORD -- HELD: page print
+ *   typedef struct {TCHAR wzPackageID[DEVICE_ID_LEN];
+ *     TCHAR wzShortText[PACKAGE_SHORT_TEXT_LEN];
+ *     TCHAR wzLongText[PACKAGE_LONG_TEXT_LEN];
+ *     TCHAR wzAppName[PACKAGE_APPNAME_TEXT_LEN];
+ *     DWORD dwPackageSize; DWORD dwState; DMSDLINFO dlInfo;
+ *     DWORD dwAux;} DMSINVRECORD, *PDMSINVRECORD;
+ * but the four *_LEN array sizes are printed nowhere in the corpus
+ * (checked 2026-09-18). */
+/* ms894998 CeGetDevMgmtPackageList: print `HRESULT
+ * CeGetDevMgmtPackageList(PDMSINVRECORD pRecord,LPDWORD
+ * pdwEntryNumber,DWORD dwFilter);` -- record-only: PDMSINVRECORD is
+ * HELD (unprintable *_LEN sizes, see above). */
+
+/* ms895003 CeSetDevMgmtTask: print `HRESULT CeSetDevMgmtTask(
+ * DMTASKINFO* pdi);` (Windows CE .NET 4.2 and later; no Link
+ * Library row printed) */
+AKARI_CE_IMPORT HRESULT CeSetDevMgmtTask(DMTASKINFO *pdi) AKARI_CE_NAME(CeSetDevMgmtTask);
 /* ms895004 CeStartDevMgmtService: print `HANDLE CeStartDevMgmtService(intnAction,HWND hCallbackWnd);` -- recorded verbatim (no compiled prototype) */
 
 /* ------------------------------------------------------------------

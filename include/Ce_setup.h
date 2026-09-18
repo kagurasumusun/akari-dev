@@ -36,8 +36,8 @@ extern "C" {
 /* ------------------------------------------------------------------
  * Book surface: activesync (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
-/* aa514314 Install_Init: documented name-only (no value published; held) */
-/* ms864576 Uninstall_Init: documented name-only (no value published; held) */
+/* (Install_Init/Install_Exit/Uninstall_Init/Uninstall_Exit:
+ * prototypes declared after the enum prints below.) */
 
 #ifdef __cplusplus
 }
@@ -74,5 +74,33 @@ typedef enum {
 typedef enum {
     codeUNINSTALL_EXIT_DONE = 0
 } codeUNINSTALL_EXIT;
+
+
+/* ------------------------------------------------------------------
+ * Setup/uninstall entry points.  All four pages print "Link Library:
+ * Developer-provided" -- the application's setup program implements
+ * and exports them, so these are plain prototypes (not
+ * AKARI_CE_IMPORT) for type-checking.  Glued print artifacts split.
+ * ------------------------------------------------------------------ */
+
+/* aa514314 Install_Init: print `codeINSTALL_INITInstall_Init(HWND
+ * hwndParent,BOOLfFirstCall,BOOLfPreviouslyInstalled,LPCTSTR
+ * pszInstallDir);` (Windows CE 2.0 and later; Developer-provided) */
+codeINSTALL_INIT Install_Init(HWND hwndParent, BOOL fFirstCall, BOOL fPreviouslyInstalled, LPCTSTR pszInstallDir);
+
+/* aa514312 Install_Exit: print `codeINSTALL_EXIT Install_Exit(HWND
+ * hwndParent,LPCTSTRpszInstallDir,WORDcFailedDirs,WORDcFailedFiles,
+ * WORDcFailedRegKeys,WORDcFailedRegVals,WORDcFailedShortcuts);`
+ * (Windows CE 2.0 and later; Developer-provided) */
+codeINSTALL_EXIT Install_Exit(HWND hwndParent, LPCTSTR pszInstallDir, WORD cFailedDirs, WORD cFailedFiles, WORD cFailedRegKeys, WORD cFailedRegVals, WORD cFailedShortcuts);
+
+/* ms864576 Uninstall_Init: print `codeUNINSTALL_INITUninstall_Init(
+ * HWNDhwndParent,LPCTSTRpszInstallDir);` (Windows CE 2.0 and later;
+ * Developer-provided) */
+codeUNINSTALL_INIT Uninstall_Init(HWND hwndParent, LPCTSTR pszInstallDir);
+
+/* ms864467 Uninstall_Exit: print `codeUNINSTALL_EXIT Uninstall_Exit(
+ * HWNDhwndParent);` (Windows CE 2.0 and later; Developer-provided) */
+codeUNINSTALL_EXIT Uninstall_Exit(HWND hwndParent);
 
 #endif /* AKARI_CE_SETUP_H */

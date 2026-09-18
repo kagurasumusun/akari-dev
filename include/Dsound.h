@@ -244,4 +244,22 @@ AKARI_CE_IMPORT BOOL CALLBACK DSEnumCallback(LPGUID lpGuid, LPCSTR lpcstrDescrip
 }
 #endif
 
+
+/* ms897792 "DSEnumCallback" (Windows CE .NET 4.2) page print
+ * `BOOL CALLBACK DSEnumCallback(LPGUID lpGuid, LPCSTR
+ * lpcstrDescription, LPCSTR lpcstrModule, LPVOID lpContext);` --
+ * the LPDSENUMCALLBACK pointer typedef is derived from it (the two
+ * enumerate prints below name only the LP spelling). */
+typedef BOOL (CALLBACK *LPDSENUMCALLBACK)(LPGUID lpGuid, LPCSTR lpcstrDescription, LPCSTR lpcstrModule, LPVOID lpContext);
+
+/* ms897746 DirectSoundCaptureEnumerate: print `HRESULT WINAPI
+ * DirectSoundCaptureEnumerate( LPDSENUMCALLBACK lpDSEnumCallback,
+ * LPVOID lpContext );` (Windows CE 2.12 and later; Dsound.lib) */
+AKARI_CE_IMPORT HRESULT WINAPI DirectSoundCaptureEnumerate(LPDSENUMCALLBACK lpDSEnumCallback, LPVOID lpContext) AKARI_CE_NAME(DirectSoundCaptureEnumerate);
+
+/* ms897753 DirectSoundEnumerate: print `HRESULT WINAPI
+ * DirectSoundEnumerate( LPDSENUMCALLBACK lpDSEnumCallback, LPVOID
+ * lpContext );` (Windows CE 2.12 and later; Dsound.lib) */
+AKARI_CE_IMPORT HRESULT WINAPI DirectSoundEnumerate(LPDSENUMCALLBACK lpDSEnumCallback, LPVOID lpContext) AKARI_CE_NAME(DirectSoundEnumerate);
+
 #endif /* AKARI_DSOUND_H */
