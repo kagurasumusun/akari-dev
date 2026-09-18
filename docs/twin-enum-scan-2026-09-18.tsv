@@ -1,0 +1,70 @@
+name	hdr	cited-pid	twin-path	twin-pid	status	diffs
+AuthenticationResult_e	include/Settingsapi.h	ee501567	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501567(v=winembedded.60).html		no-print-in-twin	
+BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE	include/Sms.h	ee496874	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee496874(v=winembedded.60).html		no-print-in-twin	
+BTH_RADIO_MODE	include/Bthutil.h	ee495609	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee495609(v=winembedded.60).html		no-print-in-twin	
+CALLER_ID_OPTIONS	include/Tsp.h	ee497030	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497030(v=winembedded.60).html		no-print-in-twin	
+DIRECTION	include/Av_upnp.h	ee501152	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa450332.html		no-print-in-twin	
+DeviceStatus_e	include/MediaQueryEngine.h	aa456357	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456357(v=msdn.10).html		no-print-in-twin	
+ExchangeClientRequestStatus	include/IExchangeClient.h	ee484913	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa514944.html		no-print-in-twin	
+ExchangeClientRequestType	include/IExchangeClient.h	ee487270	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa514947.html		no-print-in-twin	
+ExtendedDisconnectReasonCode	include/Discodlg.h	aa513913			no-twin-page	
+FINDEX_SEARCH_OPS	include/Winbase.h	ms889654	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms889664.html	ms889664	twin-match	
+GET_FILEEX_INFO_LEVELS	include/Winbase.h	ms889654	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms890917.html	ms890917	twin-match	
+HCI_EVENT	include/Bt_hcip.h	ee486889	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms899384.html		no-print-in-twin	
+Item_Attribute_e	include/MediaQueryEngine.h	aa456358	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456358(v=msdn.10).html		no-print-in-twin	
+MediaType_e	include/MediaQueryEngine.h	aa456396	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456396(v=msdn.10).html		no-print-in-twin	
+NDIS_INTERRUPT_MODE	include/oak/Ndis.h	aa448018	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa448018.html		no-print-in-twin	
+NOTIFICATION_PROVIDER_SPECIFIC_INDICATOR_TYPE	include/Sms.h	ee498093	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee498093(v=winembedded.60).html		no-print-in-twin	
+NOTIFICATION_PROVIDER_SPECIFIC_MSG_WAITING_TYPE	include/Sms.h	ee498285	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee498285(v=winembedded.60).html		no-print-in-twin	
+OlCurrentCity	include/Pimstore.h	ee483770	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee483770(v=winembedded.60).html		no-print-in-twin	
+PHActiveVolumeMode	include/Settingsapi.h	ee501527	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501527(v=winembedded.60).html		no-print-in-twin	
+PHSetting	include/Settingsapi.h	ee499871	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee499871(v=winembedded.60).html		no-print-in-twin	
+PHVolumeSetting	include/Settingsapi.h	ee500378	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee500378(v=winembedded.60).html		no-print-in-twin	
+PROVIDER_SPECIFIC_MESSAGE_CLASS	include/Sms.h	ee497683	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497683(v=winembedded.60).html		no-print-in-twin	
+PROVIDER_SPECIFIC_REPLACE_OPTION	include/Sms.h	ee497352	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497352(v=winembedded.60).html		no-print-in-twin	
+QueryEngineState_e	include/MediaQueryEngine.h	aa456397	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456397(v=msdn.10).html		no-print-in-twin	
+QuerySinkEvent_e	include/MediaQueryEngine.h	aa456400	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456400(v=msdn.10).html		no-print-in-twin	
+ReplDialogs	include/Cesync.h	ee483764	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms861001.html		no-print-in-twin	
+SHIC_FEATURE	include/aygshell.h	aa453701			no-twin-page	
+SIPSTATE	include/aygshell.h	aa453741			no-twin-page	
+SMS_ADDRESS_TYPE	include/Sms.h	ee497250	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497250(v=winembedded.60).html		no-print-in-twin	
+SMS_DATA_ENCODING	include/Sms.h	ee497445	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497445(v=winembedded.60).html		no-print-in-twin	
+SPRECOEVENTFLAGS	include/Sapi.h	ms895715	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895724.html		no-print-in-twin	
+SPSTREAMFORMAT	include/Sapi.h	ms895974	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/ms895815.html	ms895815	twin-diff	m1 hdr='SPSF_Default = -1, SPSF_NoAssignedFormat = 0, SPSF_Text, SPSF_NonStandardFormat, SPSF_ExtendedAudioFormat, SPSF_8kHz8BitStereo, SPSF_8kHz16BitMono, SPSF_8kHz16BitStereo, SPSF_11kHz8BitMono, SP
+SearchBy_e	include/MediaQueryEngine.h	aa456401	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456401(v=msdn.10).html		no-print-in-twin	
+SortBy_e	include/MediaQueryEngine.h	aa456413	/home/user/wince-docs-corpus/docs/mslearn/windows-ce-5.0/aa456413(v=msdn.10).html		no-print-in-twin	
+VARENUM	include/Objbase.h	ms891853			no-twin-page	
+WCMP_PROVIDER_SPECIFIC_MESSAGE_TYPE	include/Sms.h	ee498229	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee498229(v=winembedded.60).html		no-print-in-twin	
+WDP_PROVIDER_SPECIFIC_PORT_ADDRESSING	include/Sms.h	ee497655	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee497655(v=winembedded.60).html		no-print-in-twin	
+WSAESETSERVICEOP	include/Winsock2.h	ms898772			no-twin-page	
+XRAlignmentX	include/XamlRuntime.h	ee504017	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504017(v=winembedded.60).html		no-print-in-twin	
+XRAlignmentY	include/XamlRuntime.h	ee502120	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502120(v=winembedded.60).html		no-print-in-twin	
+XRBrushMappingMode	include/XamlRuntime.h	ee502139	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502139(v=winembedded.60).html		no-print-in-twin	
+XRClickMode	include/XamlRuntime.h	ee503686	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503686(v=winembedded.60).html		no-print-in-twin	
+XRClockState	include/XamlRuntime.h	ee501562	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501562(v=winembedded.60).html		no-print-in-twin	
+XRColorInterpolationMode	include/XamlRuntime.h	ee501619	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501619(v=winembedded.60).html		no-print-in-twin	
+XRCursor	include/XamlRuntime.h	ee504201	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504201(v=winembedded.60).html		no-print-in-twin	
+XRFillBehavior	include/XamlRuntime.h	ee503994	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503994(v=winembedded.60).html		no-print-in-twin	
+XRFillRule	include/XamlRuntime.h	ee503028	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503028(v=winembedded.60).html		no-print-in-twin	
+XRFontStretch	include/XamlRuntime.h	ee502998	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502998(v=winembedded.60).html		no-print-in-twin	
+XRFontStyle	include/XamlRuntime.h	ee504467	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504467(v=winembedded.60).html		no-print-in-twin	
+XRFontWeight	include/XamlRuntime.h	ee501509	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501509(v=winembedded.60).html		no-print-in-twin	
+XRGradientSpreadMethod	include/XamlRuntime.h	ee501840	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501840(v=winembedded.60).html		no-print-in-twin	
+XRGridUnitType	include/XamlRuntime.h	ee501637	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501637(v=winembedded.60).html		no-print-in-twin	
+XRHorizontalAlignment	include/XamlRuntime.h	ee503344	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503344(v=winembedded.60).html		no-print-in-twin	
+XRKeyboardNavigationMode	include/XamlRuntime.h	ee503321	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503321(v=winembedded.60).html		no-print-in-twin	
+XRLineStackingStrategy	include/XamlRuntime.h	ee501486	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501486(v=winembedded.60).html		no-print-in-twin	
+XROrientation	include/XamlRuntime.h	ee503573	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503573(v=winembedded.60).html		no-print-in-twin	
+XRPenLineCap	include/XamlRuntime.h	ee502118	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502118(v=winembedded.60).html		no-print-in-twin	
+XRPenLineJoin	include/XamlRuntime.h	ee501538	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501538(v=winembedded.60).html		no-print-in-twin	
+XRScrollBarVisibility	include/XamlRuntime.h	ee504179	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee504179(v=winembedded.60).html		no-print-in-twin	
+XRScrollEventType	include/XamlRuntime.h	ee503585	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee503585(v=winembedded.60).html		no-print-in-twin	
+XRStretch	include/XamlRuntime.h	ee501819	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501819(v=winembedded.60).html		no-print-in-twin	
+XRStyleSimulations	include/XamlRuntime.h	ee501839	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501839.html		no-print-in-twin	
+XRSweepDirection	include/XamlRuntime.h	ee502478	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502478(v=winembedded.60).html		no-print-in-twin	
+XRTextAlignment	include/XamlRuntime.h	ee502747	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502747(v=winembedded.60).html		no-print-in-twin	
+XRTextDecorationType	include/XamlRuntime.h	ee502711	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502711(v=winembedded.60).html		no-print-in-twin	
+XRTextWrapping	include/XamlRuntime.h	ee501505	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501505(v=winembedded.60).html		no-print-in-twin	
+XRThreeState	include/XamlRuntime.h	ee501855	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee501855(v=winembedded.60).html		no-print-in-twin	
+XRVerticalAlignment	include/XamlRuntime.h	ee502425	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502425(v=winembedded.60).html		no-print-in-twin	
+XRVisibility	include/XamlRuntime.h	ee502426	/home/user/wince-docs-corpus/docs/mslearn/windows-embedded-ce-6.0/ee502426(v=winembedded.60).html		no-print-in-twin	
