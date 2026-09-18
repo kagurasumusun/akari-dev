@@ -56,11 +56,13 @@ typedef ULONG D3DMCOLOR;
 /* Enumerated types (D3dmtypes.h): verbatim prints, values printed.    */
 /* ------------------------------------------------------------------ */
 
+/* ms939134: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMBACKBUFFER_TYPE {
     D3DMBACKBUFFER_TYPE_MONO = 0,
     D3DMBACKBUFFER_TYPE_FORCE_DWORD = 0x7fffffff
 } D3DMBACKBUFFER_TYPE;
 
+/* ms939135: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMBLEND {
     D3DMBLEND_ZERO = 1,
     D3DMBLEND_ONE = 2,
@@ -76,6 +78,7 @@ typedef enum _D3DMBLEND {
     D3DMBLEND_FORCE_ULONG = 0x7fffffff
 } D3DMBLEND;
 
+/* ms939136: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMBLENDOP {
     D3DMBLENDOP_ADD = 1,
     D3DMBLENDOP_SUBTRACT = 2,
@@ -85,6 +88,7 @@ typedef enum _D3DMBLENDOP {
     D3DMBLENDOP_FORCE_ULONG = 0x7fffffff
 } D3DMBLENDOP;
 
+/* ms939141: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMCMPFUNC {
     D3DMCMP_NEVER = 1,
     D3DMCMP_LESS = 2,
@@ -97,6 +101,7 @@ typedef enum _D3DMCMPFUNC {
     D3DMCMP_FORCE_ULONG = 0x7fffffff
 } D3DMCMPFUNC;
 
+/* ms907687: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMCULL {
     D3DMCULL_NONE = 1,
     D3DMCULL_CW = 2,
@@ -104,11 +109,13 @@ typedef enum _D3DMCULL {
     D3DMCULL_FORCE_ULONG = 0x7fffffff
 } D3DMCULL;
 
+/* ms907702: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMDEVTYPE {
     D3DMDEVTYPE_DEFAULT = 0,
     D3DMDEVTYPE_FORCE_ULONG = 0x7fffffff
 } D3DMDEVTYPE;
 
+/* ms907704: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMFILLMODE {
     D3DMFILL_POINT = 1,
     D3DMFILL_WIREFRAME = 2,
@@ -116,6 +123,7 @@ typedef enum _D3DMFILLMODE {
     D3DMFILL_FORCE_ULONG = 0x7fffffff
 } D3DMFILLMODE;
 
+/* ms907705: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMFOGMODE {
     D3DMFOG_NONE = 0,
     D3DMFOG_EXP = 1,
@@ -124,6 +132,7 @@ typedef enum _D3DMFOGMODE {
     D3DMFOG_FORCE_ULONG = 0x7fffffff
 } D3DMFOGMODE;
 
+/* ms907707: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMFORMAT {
     D3DMFMT_UNKNOWN = 0,
     D3DMFMT_R8G8B8 = 1,
@@ -161,12 +170,14 @@ typedef enum _D3DMFORMAT {
     D3DMFMT_FORCE_ULONG = 0xFFFFFFFF
 } D3DMFORMAT;
 
+/* ms907714: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMLIGHTTYPE {
     D3DMLIGHT_POINT = 1,
     D3DMLIGHT_DIRECTIONAL = 3,
     D3DMLIGHT_FORCE_ULONG = 0x7fffffff
 } D3DMLIGHTTYPE;
 
+/* ms907719: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMMATERIALCOLORSOURCE {
     D3DMMCS_MATERIAL = 0,
     D3DMMCS_COLOR1 = 1,
@@ -174,6 +185,7 @@ typedef enum _D3DMMATERIALCOLORSOURCE {
     D3DMMCS_FORCE_ULONG = 0x7fffffff
 } D3DMMATERIALCOLORSOURCE;
 
+/* ms907721: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMMULTISAMPLE_TYPE {
     D3DMMULTISAMPLE_NONE = 0,
     D3DMMULTISAMPLE_2_SAMPLES = 2,
@@ -194,6 +206,7 @@ typedef enum _D3DMMULTISAMPLE_TYPE {
     D3DMMULTISAMPLE_FORCE_ULONG = 0x7fffffff
 } D3DMMULTISAMPLE_TYPE;
 
+/* ms907725: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMPOOL {
     D3DMPOOL_VIDEOMEM = 0,
     D3DMPOOL_SYSTEMMEM = 1,
@@ -201,6 +214,7 @@ typedef enum _D3DMPOOL {
     D3DMPOOL_FORCE_ULONG = 0x7fffffff
 } D3DMPOOL;
 
+/* ms907730: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMPRIMITIVETYPE {
     D3DMPT_POINTLIST = 1,
     D3DMPT_LINELIST = 2,
@@ -211,11 +225,13 @@ typedef enum _D3DMPRIMITIVETYPE {
     D3DMPT_FORCE_ULONG = 0x7fffffff
 } D3DMPRIMITIVETYPE;
 
+/* ms907731: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMPROFILE {
     D3DMPROFILE_BASE = 0,
     D3DMPROFILE_FORCE_DWORD = 0x7fffffff
 } D3DMPROFILE;
 
+/* ms907737: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMRENDERSTATETYPE {
     D3DMRS_FILLMODE = 0,
     D3DMRS_SHADEMODE = 1,
@@ -271,6 +287,7 @@ typedef enum _D3DMRENDERSTATETYPE {
     D3DMRS_FORCE_ULONG = 0x7fffffff
 } D3DMRENDERSTATETYPE;
 
+/* ms907739: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMRESOURCETYPE {
     D3DMRTYPE_SURFACE = 1,
     D3DMRTYPE_TEXTURE = 3,
@@ -279,12 +296,14 @@ typedef enum _D3DMRESOURCETYPE {
     D3DMRTYPE_FORCE_ULONG = 0x7fffffff
 } D3DMRESOURCETYPE;
 
+/* ms907740: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMSHADEMODE {
     D3DMSHADE_FLAT = 1,
     D3DMSHADE_GOURAUD = 2,
     D3DMSHADE_FORCE_ULONG = 0x7fffffff
 } D3DMSHADEMODE;
 
+/* ms907742: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMSTENCILOP {
     D3DMSTENCILOP_KEEP = 1,
     D3DMSTENCILOP_ZERO = 2,
@@ -297,6 +316,7 @@ typedef enum _D3DMSTENCILOP {
     D3DMSTENCILOP_FORCE_ULONG = 0x7fffffff
 } D3DMSTENCILOP;
 
+/* ms907745: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMSWAPEFFECT {
     D3DMSWAPEFFECT_DISCARD = 1,
     D3DMSWAPEFFECT_FLIP = 2,
@@ -305,6 +325,7 @@ typedef enum _D3DMSWAPEFFECT {
     D3DMSWAPEFFECT_FORCE_ULONG = 0x7fffffff
 } D3DMSWAPEFFECT;
 
+/* ms907748: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMTEXTUREADDRESS {
     D3DMTADDRESS_WRAP = 1,
     D3DMTADDRESS_MIRROR = 2,
@@ -313,6 +334,7 @@ typedef enum _D3DMTEXTUREADDRESS {
     D3DMTADDRESS_FORCE_ULONG = 0x7fffffff
 } D3DMTEXTUREADDRESS;
 
+/* ms907749: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMTEXTUREFILTERTYPE {
     D3DMTEXF_NONE = 0,
     D3DMTEXF_POINT = 1,
@@ -321,6 +343,7 @@ typedef enum _D3DMTEXTUREFILTERTYPE {
     D3DMTEXF_FORCE_ULONG = 0x7fffffff
 } D3DMTEXTUREFILTERTYPE;
 
+/* ms907750: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMTEXTUREOP {
     D3DMTOP_DISABLE = 1,
     D3DMTOP_SELECTARG1 = 2,
@@ -349,6 +372,7 @@ typedef enum _D3DMTEXTUREOP {
     D3DMTOP_FORCE_ULONG = 0x7fffffff
 } D3DMTEXTUREOP;
 
+/* ms907751: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMTEXTURESTAGESTATETYPE {
     D3DMTSS_COLOROP = 1,
     D3DMTSS_COLORARG1 = 2,
@@ -375,6 +399,7 @@ typedef enum _D3DMTEXTURESTAGESTATETYPE {
     D3DMTSS_FORCE_ULONG = 0x7fffffff
 } D3DMTEXTURESTAGESTATETYPE;
 
+/* ms907752: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMTEXTURETRANSFORMFLAGS {
     D3DMTTFF_DISABLE = 0,
     D3DMTTFF_COUNT1 = 1,
@@ -384,6 +409,7 @@ typedef enum _D3DMTEXTURETRANSFORMFLAGS {
     D3DMTTFF_FORCE_ULONG = 0x7fffffff
 } D3DMTEXTURETRANSFORMFLAGS;
 
+/* ms907753: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMTRANSFORMSTATETYPE {
     D3DMTS_WORLD = 0,
     D3DMTS_VIEW = 1,
@@ -396,6 +422,7 @@ typedef enum _D3DMTRANSFORMSTATETYPE {
     D3DMTS_FORCE_ULONG = 0x7fffffff
 } D3DMTRANSFORMSTATETYPE;
 
+/* ms907762: enumerators verified against this page (enum-cite) */
 typedef enum _D3DMZBUFFERTYPE {
     D3DMZB_FALSE = 0,
     D3DMZB_TRUE = 1,

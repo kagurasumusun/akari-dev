@@ -56,6 +56,7 @@ extern "C" {
 /* names (per the M99 ambiguity policy: strongest candidate adopted,  */
 /* the rejected candidates recorded).                                  */
 /* ------------------------------------------------------------------ */
+/* aa453709: enumerators verified against this page (enum-cite) */
 typedef enum tagSHGDN {
     SHGDN_NORMAL = 0,
     SHGDN_INFOLDER = 0x0001,

@@ -1,0 +1,8 @@
+# header	name	reason
+include/Dshow.h	AMTunerModeType	no-equal-print
+include/Dshow.h	TunerInputType	no-equal-print
+include/Msxml2.h	DOMNodeType	no-equal-print
+include/Ras.h	RASPROJECTION	no-equal-print
+include/Rules.h	FW_RULE_MASKS	no-equal-print
+include/Sapi.h	SPRECOEVENTFLAGS	no-equal-print
+include/Sapi.h	SPSTREAMFORMAT	no-equal-print

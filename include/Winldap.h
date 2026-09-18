@@ -120,6 +120,7 @@ typedef struct ldapsortkey {
 /* on the page, printed verbatim below).                               */
 /* ------------------------------------------------------------------ */
 
+/* ms892299: enumerators verified against this page (enum-cite) */
 typedef enum {
     LDAP_SUCCESS                 = 0x00,
     LDAP_OPERATIONS_ERROR        = 0x01,

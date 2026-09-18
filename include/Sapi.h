@@ -129,6 +129,7 @@ typedef struct SPAUDIOBUFFERINFO {
     ULONG   ulMsEventBias;
 } SPAUDIOBUFFERINFO;
 
+/* ms893480: enumerators verified against this page (enum-cite) */
 typedef enum SPAUDIOOPTIONS {
     SPAO_NONE = 0,
     SPAO_RETAIN_AUDIO = (1 << 0),
@@ -139,11 +140,13 @@ typedef struct SPBINARYGRAMMAR {
     ULONG ulTotalSerializedSize;
 } SPBINARYGRAMMAR;
 
+/* ms893485: enumerators verified against this page (enum-cite) */
 typedef enum SPBOOKMARKOPTIONS {
     SPBO_NONE = 0,
     SPBO_PAUSE = 1,
 } SPBOOKMARKOPTIONS;
 
+/* ms893486: enumerators verified against this page (enum-cite) */
 typedef enum SPCFGNOTIFY {
     SPCFGN_ADD,
     SPCFGN_REMOVE,
@@ -152,6 +155,7 @@ typedef enum SPCFGNOTIFY {
     SPCFGN_DEACTIVATE,
 } SPCFGNOTIFY;
 
+/* ms893487: enumerators verified against this page (enum-cite) */
 typedef enum SPCFGRULEATTRIBUTES {
     SPRAF_TopLevel = (1 << 0),
     SPRAF_Active = (1 << 1),
@@ -162,11 +166,13 @@ typedef enum SPCFGRULEATTRIBUTES {
     SPRAF_AutoPause = (1 << 16),
 } SPCFGRULEATTRIBUTES;
 
+/* ms893489: enumerators verified against this page (enum-cite) */
 typedef enum SPCONTEXTSTATE {
     SPCS_DISABLED = 0,
     SPCS_ENABLED = 1,
 } SPCONTEXTSTATE;
 
+/* ms893501: enumerators verified against this page (enum-cite) */
 typedef enum SPDATAKEYLOCATION {
     SPDKL_DefaultLocation = 0,
     SPDKL_CurrentUser = 1,
@@ -174,6 +180,7 @@ typedef enum SPDATAKEYLOCATION {
     SPDKL_CurrentConfig = 5,
 } SPDATAKEYLOCATION;
 
+/* ms895350: enumerators verified against this page (enum-cite) */
 typedef enum SPEAKFLAGS {
     SPF_DEFAULT = 0,  /* SpVoice flags */
     SPF_ASYNC = (1L << 0),
@@ -188,6 +195,7 @@ typedef enum SPEAKFLAGS {
     SPF_UNUSED_FLAGS = ~(SPF_VOICE_MASK),
 } SPEAKFLAGS;
 
+/* ms895362: enumerators verified against this page (enum-cite) */
 typedef enum SPENDSRSTREAMFLAGS {
     SPESF_NONE = 0,
     SPESF_STREAM_RELEASED = (1 << 0),
@@ -202,6 +210,7 @@ typedef struct SPEVENT {
     LPARAM lParam;
 } SPEVENT;
 
+/* ms895578: enumerators verified against this page (enum-cite) */
 typedef enum SPINTERFERENCE {
     SPINTERFERENCE_NONE = 0,
     SPINTERFERENCE_NOISE,
@@ -212,6 +221,7 @@ typedef enum SPINTERFERENCE {
     SPINTERFERENCE_TOOSLOW,
 } SPINTERFERENCE;
 
+/* ms895379: enumerators verified against this page (enum-cite) */
 typedef enum SPEVENTENUM {
     SPEI_UNDEFINED = 0,
     SPEI_START_INPUT_STREAM = 1,  /* TTS engine */
@@ -253,6 +263,7 @@ typedef enum SPEVENTENUM {
     SPEI_RESERVED3 = 63 // do not use,  /* do not use */
 } SPEVENTENUM;
 
+/* ms895384: enumerators verified against this page (enum-cite) */
 typedef enum SPEVENTLPARAMTYPE {
     SPET_LPARAM_IS_UNDEFINED = 0,
     SPET_LPARAM_IS_TOKEN,
@@ -268,6 +279,7 @@ typedef struct SPEVENTSOURCEINFO {
     ULONG ulCount;
 } SPEVENTSOURCEINFO;
 
+/* ms895407: enumerators verified against this page (enum-cite) */
 typedef enum SPFILEMODE {
     SPFM_OPEN_READONLY,
     SPFM_OPEN_READWRITE,
@@ -276,18 +288,21 @@ typedef enum SPFILEMODE {
     SPFM_NUM_MODES,
 } SPFILEMODE;
 
+/* ms895548: enumerators verified against this page (enum-cite) */
 typedef enum SPGRAMMARSTATE {
     SPGS_ENABLED = 0,
     SPGS_DISABLED = 1,
     SPGS_EXCLUSIVE = 3,
 } SPGRAMMARSTATE;
 
+/* ms895566: enumerators verified against this page (enum-cite) */
 typedef enum SPGRAMMARWORDTYPE {
     SPWT_DISPLAY,
     SPWT_LEXICAL,
     SPWT_PRONUNCIATION,
 } SPGRAMMARWORDTYPE;
 
+/* ms895589: enumerators verified against this page (enum-cite) */
 typedef enum SPLEXICONTYPE {
     eLEXTYPE_USER = (1L << 0),
     eLEXTYPE_APP = (1L << 1),
@@ -323,6 +338,7 @@ typedef enum SPLEXICONTYPE {
     eLEXTYPE_PRIVATE20 = (1L << 31),
 } SPLEXICONTYPE;
 
+/* ms895600: enumerators verified against this page (enum-cite) */
 typedef enum SPLOADOPTIONS {
     SPLO_STATIC = 0,
     SPLO_DYNAMIC = 1,
@@ -365,6 +381,7 @@ typedef struct SPPARSEINFO {
     const BYTE * pSREnginePrivateData;
 } SPPARSEINFO;
 
+/* ms895661: enumerators verified against this page (enum-cite) */
 typedef enum SPPARTOFSPEECH {
     SPPS_NotOverriden = -1,  /* --- SAPI5 public POS category values (bits 28-31) */
     SPPS_Unknown = 0,
@@ -375,10 +392,12 @@ typedef enum SPPARTOFSPEECH {
     SPPS_Interjection = 0x5000,
 } SPPARTOFSPEECH;
 
+/* ms895698: enumerators verified against this page (enum-cite) */
 typedef enum SPPHRASERNG {
     SPPR_ALL_ELEMENTS = -1,
 } SPPHRASERNG;
 
+/* ms895715: enumerators verified against this page (enum-cite) */
 typedef enum SPPROPSRC {
     SPPROPSRC_RECO_INST,
     SPPROPSRC_RECO_CTX,
@@ -396,6 +415,7 @@ typedef enum SPRECOEVENTFLAGS {
     SPREF_AutoPause = (1 << 0), SPREF_Emulated = (1 << 1),
 } SPRECOEVENTFLAGS;
 
+/* ms895750: enumerators verified against this page (enum-cite) */
 typedef enum SPRESULTTYPE {
     SPRT_CFG = 0,
     SPRT_SLM = 1,
@@ -425,6 +445,7 @@ typedef struct SPRECORESULTTIMES {
     ULONGLONG ullStart;
 } SPRECORESULTTIMES;
 
+/* ms895743: enumerators verified against this page (enum-cite) */
 typedef enum SPRECOSTATE {
     SPRST_INACTIVE,
     SPRST_ACTIVE,
@@ -441,16 +462,19 @@ typedef struct SPRULEENTRY {
     void * pvClientGrammarContext;
 } SPRULEENTRY;
 
+/* ms895759: enumerators verified against this page (enum-cite) */
 typedef enum SPRULEINFOOPT {
     SPRIO_NONE = 0,
 } SPRULEINFOOPT;
 
+/* ms895764: enumerators verified against this page (enum-cite) */
 typedef enum SPRULESTATE {
     SPRS_INACTIVE = 0,
     SPRS_ACTIVE = 1,
     SPRS_ACTIVE_WITH_AUTO_PAUSE = 3,
 } SPRULESTATE;
 
+/* ms895768: enumerators verified against this page (enum-cite) */
 typedef enum SPRUNSTATE {
     SPRS_DONE = (1L << 0),
     SPRS_IS_SPEAKING = (1L << 1),
@@ -488,6 +512,7 @@ typedef struct SPWORDPRONUNCIATION {
     SPPHONEID szPronunciation [ 1 ];
 } SPWORDPRONUNCIATION;
 
+/* ms895974: enumerators verified against this page (enum-cite) */
 typedef enum SPWORDTYPE {
     eWORDTYPE_ADDED = (1L << 0),
     eWORDTYPE_DELETED = (1L << 1),
@@ -620,6 +645,7 @@ typedef struct SPTRANSITIONPROPERTY {
     VARIANT vValue;
 } SPTRANSITIONPROPERTY;
 
+/* ms895836: enumerators verified against this page (enum-cite) */
 typedef enum SPTRANSITIONTYPE {
     SPTRANSEPSILON,
     SPTRANSWORD,
@@ -629,6 +655,7 @@ typedef enum SPTRANSITIONTYPE {
     SPTRANSDICTATION,
 } SPTRANSITIONTYPE;
 
+/* ms895839: enumerators verified against this page (enum-cite) */
 typedef enum SPVACTIONS {
     SPVA_Speak = 0,
     SPVA_Silence,
@@ -639,6 +666,7 @@ typedef enum SPVACTIONS {
     SPVA_ParseUnknownTag,
 } SPVACTIONS;
 
+/* ms895842: enumerators verified against this page (enum-cite) */
 typedef enum SPVALUETYPE {
     SPDF_PROPERTY = 0x00000001,
     SPDF_REPLACEMENT = 0x00000002,
@@ -657,6 +685,7 @@ typedef struct SPVCONTEXT {
     LPCWSTR pAfter;
 } SPVCONTEXT;
 
+/* ms895855: enumerators verified against this page (enum-cite) */
 typedef enum SPVESACTIONS {
     SPVES_CONTINUE = 0,
     SPVES_ABORT = ( 1L << 0 ),
@@ -665,11 +694,13 @@ typedef enum SPVESACTIONS {
     SPVES_VOLUME = ( 1L << 3 ),
 } SPVESACTIONS;
 
+/* ms895858: enumerators verified against this page (enum-cite) */
 typedef enum SPVFEATURE {
     SPVFEATURE_STRESSED = (1L << 0),
     SPVFEATURE_EMPHASIS = (1L << 1),
 } SPVFEATURE;
 
+/* ms895865: enumerators verified against this page (enum-cite) */
 typedef enum SPVISEMES {
     SP_VISEME_0 = 0,  /* English examples //------------------ */
     SP_VISEME_1,
@@ -695,6 +726,7 @@ typedef enum SPVISEMES {
     SP_VISEME_21,
 } SPVISEMES;
 
+/* ms895868: enumerators verified against this page (enum-cite) */
 typedef enum SPVLIMITS {
     SPMIN_VOLUME = 0,
     SPMAX_VOLUME = 100,
@@ -725,12 +757,14 @@ typedef struct SPVPITCH {
     long RangeAdj;
 } SPVPITCH;
 
+/* ms895882: enumerators verified against this page (enum-cite) */
 typedef enum SPVPRIORITY {
     SPVPRI_NORMAL = 0,
     SPVPRI_ALERT = (1L << 0),
     SPVPRI_OVER = (1L << 1),
 } SPVPRIORITY;
 
+/* ms895885: enumerators verified against this page (enum-cite) */
 typedef enum SPVSKIPTYPE {
     SPVST_SENTENCE = (1L << 0),
 } SPVSKIPTYPE;
@@ -758,6 +792,7 @@ typedef struct SPVTEXTFRAG {
     ULONG ulTextSrcOffset;
 } SPVTEXTFRAG;
 
+/* ms895951: enumerators verified against this page (enum-cite) */
 typedef enum SPWAVEFORMATTYPE {
     SPWF_INPUT,
     SPWF_SRENGINE,
@@ -772,6 +807,7 @@ typedef struct SPWORDENTRY {
     void * pvClientContext;
 } SPWORDENTRY;
 
+/* ms895968: enumerators verified against this page (enum-cite) */
 typedef enum SPWORDINFOOPT {
     SPWIO_NONE = 0,
     SPWIO_WANT_TEXT = 1,
@@ -784,6 +820,7 @@ typedef struct SPWORDLIST {
     SPWORD * pFirstWord;
 } SPWORDLIST;
 
+/* ms895970: enumerators verified against this page (enum-cite) */
 typedef enum SPWORDPRONOUNCEABLE {
     SPWP_UNKNOWN_WORD_UNPRONOUNCEABLE = 0,
     SPWP_UNKNOWN_WORD_PRONOUNCEABLE = 1,
@@ -797,6 +834,7 @@ typedef struct SPWORDPRONUNCIATIONLIST {
     SPWORDPRONUNCIATION * pFirstWordPronunciation;
 } SPWORDPRONUNCIATIONLIST;
 
+/* ms893481: enumerators verified against this page (enum-cite) */
 typedef enum _SPAUDIOSTATE {
     SPAS_CLOSED,
     SPAS_STOP,
@@ -804,6 +842,7 @@ typedef enum _SPAUDIOSTATE {
     SPAS_RUN,
 } SPAUDIOSTATE;
 
+/* ms893502: enumerators verified against this page (enum-cite) */
 typedef enum tagSPDISPLYATTRIBUTES {
     SPAF_ONE_TRAILING_SPACE = 0x02,
     SPAF_TWO_TRAILING_SPACES = 0x04,

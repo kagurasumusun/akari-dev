@@ -143,12 +143,14 @@ typedef LONG_PTR OAHWND;
 /* recorded where bare).                                              */
 /* ------------------------------------------------------------------ */
 
+/* ms931685: enumerators verified against this page (enum-cite) */
 typedef enum RTC_ACE_SCOPE {
     RTCAS_SCOPE_USER,
     RTCAS_SCOPE_DOMAIN,
     RTCAS_SCOPE_ALL,
 } RTC_ACE_SCOPE;
 
+/* ms931691: enumerators verified against this page (enum-cite) */
 typedef enum RTC_ANSWER_MODE {
     RTCAM_OFFER_SESSION_EVENT,
     RTCAM_AUTOMATICALLY_ACCEPT,
@@ -156,11 +158,13 @@ typedef enum RTC_ANSWER_MODE {
     RTCAM_NOT_SUPPORTED,
 } RTC_ANSWER_MODE;
 
+/* ms931705: enumerators verified against this page (enum-cite) */
 typedef enum RTC_AUDIO_DEVICE {
     RTCAD_SPEAKER,
     RTCAD_MICROPHONE,
 } RTC_AUDIO_DEVICE;
 
+/* ms931709: enumerators verified against this page (enum-cite) */
 typedef enum RTC_BUDDY_EVENT_TYPE {
     RTCBET_BUDDY_ADD,
     RTCBET_BUDDY_REMOVE,
@@ -170,6 +174,7 @@ typedef enum RTC_BUDDY_EVENT_TYPE {
     RTCBET_BUDDY_SUBSCRIBED,
 } RTC_BUDDY_EVENT_TYPE;
 
+/* ms931714: enumerators verified against this page (enum-cite) */
 typedef enum RTC_BUDDY_SUBSCRIPTION_TYPE {
     RTCBT_SUBSCRIBED,
     RTCBT_ALWAYS_OFFLINE,
@@ -177,6 +182,7 @@ typedef enum RTC_BUDDY_SUBSCRIPTION_TYPE {
     RTCBT_POLL,
 } RTC_BUDDY_SUBSCRIPTION_TYPE;
 
+/* ms931720: enumerators verified against this page (enum-cite) */
 typedef enum RTC_CLIENT_EVENT_TYPE {
     RTCCET_VOLUME_CHANGE,
     RTCCET_DEVICE_CHANGE,
@@ -184,6 +190,7 @@ typedef enum RTC_CLIENT_EVENT_TYPE {
     RTCCET_ASYNC_CLEANUP_DONE,
 } RTC_CLIENT_EVENT_TYPE;
 
+/* ms931788: enumerators verified against this page (enum-cite) */
 typedef enum RTC_DTMF {
     RTC_DTMF_0,
     RTC_DTMF_1,
@@ -204,6 +211,7 @@ typedef enum RTC_DTMF {
     RTC_DTMF_FLASH,
 } RTC_DTMF;
 
+/* ms912360: enumerators verified against this page (enum-cite) */
 typedef enum RTC_EVENT {
     RTCE_CLIENT,
     RTCE_REGISTRATION_STATE_CHANGE,
@@ -228,6 +236,7 @@ typedef enum RTC_EVENT {
     RTCE_REINVITE,
 } RTC_EVENT;
 
+/* ms912420: enumerators verified against this page (enum-cite) */
 typedef enum RTC_GROUP_EVENT_TYPE {
     RTCGET_GROUP_ADD,
     RTCGET_GROUP_REMOVE,
@@ -237,12 +246,14 @@ typedef enum RTC_GROUP_EVENT_TYPE {
     RTCGET_GROUP_ROAMED,
 } RTC_GROUP_EVENT_TYPE;
 
+/* ms912438: enumerators verified against this page (enum-cite) */
 typedef enum RTC_LISTEN_MODE {
     RTCLM_NONE,
     RTCLM_DYNAMIC,
     RTCLM_BOTH,
 } RTC_LISTEN_MODE;
 
+/* ms912439: enumerators verified against this page (enum-cite) */
 typedef enum RTC_MEDIA_EVENT_REASON {
     RTCMER_NORMAL,
     RTCMER_HOLD,
@@ -253,27 +264,32 @@ typedef enum RTC_MEDIA_EVENT_REASON {
     RTCMER_REMOTE_REQUEST,
 } RTC_MEDIA_EVENT_REASON;
 
+/* ms912440: enumerators verified against this page (enum-cite) */
 typedef enum RTC_MEDIA_EVENT_TYPE {
     RTCMET_STOPPED,
     RTCMET_STARTED,
     RTCMET_FAILED,
 } RTC_MEDIA_EVENT_TYPE;
 
+/* ms912441: enumerators verified against this page (enum-cite) */
 typedef enum RTC_MESSAGING_EVENT_TYPE {
     RTCMSET_MESSAGE,
     RTCMSET_STATUS,
 } RTC_MESSAGING_EVENT_TYPE;
 
+/* ms912453: enumerators verified against this page (enum-cite) */
 typedef enum RTC_MESSAGING_USER_STATUS {
     RTCMUS_IDLE,
     RTCMUS_TYPING,
 } RTC_MESSAGING_USER_STATUS;
 
+/* ms912564: enumerators verified against this page (enum-cite) */
 typedef enum RTC_OFFER_WATCHER_MODE {
     RTCOWM_OFFER_WATCHER_EVENT,
     RTCOWM_AUTOMATICALLY_ADD_WATCHER,
 } RTC_OFFER_WATCHER_MODE;
 
+/* ms912565: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PARTICIPANT_STATE {
     RTCPS_IDLE,
     RTCPS_PENDING,
@@ -286,6 +302,7 @@ typedef enum RTC_PARTICIPANT_STATE {
     RTCPS_DISCONNECTED,
 } RTC_PARTICIPANT_STATE;
 
+/* ms912566: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PORT_TYPE {
     RTCPT_AUDIO_RTP,
     RTCPT_AUDIO_RTCP,
@@ -294,6 +311,7 @@ typedef enum RTC_PORT_TYPE {
     RTCPT_SIP,
 } RTC_PORT_TYPE;
 
+/* ms912567: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PRESENCE_PROPERTY {
     RTCPP_PHONENUMBER,
     RTCPP_DISPLAYNAME,
@@ -302,6 +320,7 @@ typedef enum RTC_PRESENCE_PROPERTY {
     RTCPP_MULTIPLE,
 } RTC_PRESENCE_PROPERTY;
 
+/* ms912568: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PRESENCE_STATUS {
     RTCXS_PRESENCE_OFFLINE,
     RTCXS_PRESENCE_ONLINE,
@@ -313,16 +332,19 @@ typedef enum RTC_PRESENCE_STATUS {
     RTCXS_PRESENCE_OUT_TO_LUNCH,
 } RTC_PRESENCE_STATUS;
 
+/* ms912569: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PRIVACY_MODE {
     RTCPM_BLOCK_LIST_EXCLUDED,
     RTCPM_ALLOW_LIST_ONLY,
 } RTC_PRIVACY_MODE;
 
+/* ms912570: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PROFILE_EVENT_TYPE {
     RTCPFET_PROFILE_GET,
     RTCPFET_PROFILE_UPDATE,
 } RTC_PROFILE_EVENT_TYPE;
 
+/* ms912571: enumerators verified against this page (enum-cite) */
 typedef enum RTC_PROVIDER_URI {
     RTCPU_URIHOMEPAGE,
     RTCPU_URIHELPDESK,
@@ -331,6 +353,7 @@ typedef enum RTC_PROVIDER_URI {
     RTCPU_URIDISPLAYDURINGIDLE,
 } RTC_PROVIDER_URI;
 
+/* ms912572: enumerators verified against this page (enum-cite) */
 typedef enum RTC_REGISTRATION_STATE {
     RTCRS_NOT_REGISTERED,
     RTCRS_REGISTERING,
@@ -343,18 +366,21 @@ typedef enum RTC_REGISTRATION_STATE {
     RTCRS_REMOTE_PA_LOGGED_OFF,
 } RTC_REGISTRATION_STATE;
 
+/* ms912573: enumerators verified against this page (enum-cite) */
 typedef enum RTC_REINVITE_STATE {
     RTCRIN_INCOMING,
     RTCRIN_SUCCEEDED,
     RTCRIN_FAIL,
 } RTC_REINVITE_STATE;
 
+/* ms912575: enumerators verified against this page (enum-cite) */
 typedef enum RTC_RING_TYPE {
     RTCRT_PHONE,
     RTCRT_MESSAGE,
     RTCRT_RINGBACK,
 } RTC_RING_TYPE;
 
+/* ms912577: enumerators verified against this page (enum-cite) */
 typedef enum RTC_ROAMING_EVENT_TYPE {
     RTCRET_BUDDY_ROAMING,
     RTCRET_WATCHER_ROAMING,
@@ -363,17 +389,20 @@ typedef enum RTC_ROAMING_EVENT_TYPE {
     RTCRET_WPENDING_ROAMING,
 } RTC_ROAMING_EVENT_TYPE;
 
+/* ms912579: enumerators verified against this page (enum-cite) */
 typedef enum RTC_SECURITY_LEVEL {
     RTCSECL_UNSUPPORTED = 1,
     RTCSECL_SUPPORTED,
     RTCSECL_REQUIRED,
 } RTC_SECURITY_LEVEL;
 
+/* ms912580: enumerators verified against this page (enum-cite) */
 typedef enum RTC_SECURITY_TYPE {
     RTCSECT_AUDIO_VIDEO_MEDIA_ENCRYPTION,
     RTCSECT_T120_MEDIA_ENCRYPTION,
 } RTC_SECURITY_TYPE;
 
+/* ms912581: enumerators verified against this page (enum-cite) */
 typedef enum RTC_SESSION_REFER_STATUS {
     RTCSRS_REFERRING,
     RTCSRS_ACCEPTED,
@@ -383,6 +412,7 @@ typedef enum RTC_SESSION_REFER_STATUS {
     RTCSRS_DONE,
 } RTC_SESSION_REFER_STATUS;
 
+/* ms912582: enumerators verified against this page (enum-cite) */
 typedef enum RTC_SESSION_STATE {
     RTCSS_IDLE,
     RTCSS_INCOMING,
@@ -394,6 +424,7 @@ typedef enum RTC_SESSION_STATE {
     RTCSS_REFER,
 } RTC_SESSION_STATE;
 
+/* ms912583: enumerators verified against this page (enum-cite) */
 typedef enum RTC_SESSION_TYPE {
     RTCST_PC_TO_PC,
     RTCST_PC_TO_PHONE,
@@ -403,11 +434,13 @@ typedef enum RTC_SESSION_TYPE {
     RTCST_APPLICATION,
 } RTC_SESSION_TYPE;
 
+/* ms912585: enumerators verified against this page (enum-cite) */
 typedef enum RTC_T120_APPLET {
     RTCTA_WHITEBOARD,
     RTCTA_APPSHARING,
 } RTC_T120_APPLET;
 
+/* ms912586: enumerators verified against this page (enum-cite) */
 typedef enum RTC_TERMINATE_REASON {
     RTCTR_NORMAL,
     RTCTR_DND,
@@ -419,6 +452,7 @@ typedef enum RTC_TERMINATE_REASON {
     RTCTR_NOT_SUPPORTED,
 } RTC_TERMINATE_REASON;
 
+/* ms912588: enumerators verified against this page (enum-cite) */
 typedef enum RTC_USER_SEARCH_COLUMN {
     RTCUSC_URI,
     RTCUSC_DISPLAYNAME,
@@ -432,16 +466,19 @@ typedef enum RTC_USER_SEARCH_COLUMN {
     RTCUSC_EMAIL,
 } RTC_USER_SEARCH_COLUMN;
 
+/* ms912589: enumerators verified against this page (enum-cite) */
 typedef enum RTC_USER_SEARCH_PREFERENCE {
     RTCUSP_MAX_MATCHES,
     RTCUSP_TIME_LIMIT,
 } RTC_USER_SEARCH_PREFERENCE;
 
+/* ms912590: enumerators verified against this page (enum-cite) */
 typedef enum RTC_VIDEO_DEVICE {
     RTCVD_RECEIVE,
     RTCVD_PREVIEW,
 } RTC_VIDEO_DEVICE;
 
+/* ms912591: enumerators verified against this page (enum-cite) */
 typedef enum RTC_WATCHER_EVENT_TYPE {
     RTCWET_WATCHER_ADD,
     RTCWET_WATCHER_REMOVE,
@@ -450,11 +487,13 @@ typedef enum RTC_WATCHER_EVENT_TYPE {
     RTCWET_WATCHER_ROAMED,
 } RTC_WATCHER_EVENT_TYPE;
 
+/* ms912592: enumerators verified against this page (enum-cite) */
 typedef enum RTC_WATCHER_MATCH_MODE {
     RTCWMM_EXACT_MATCH,
     RTCWMM_BEST_ACE_MATCH,
 } RTC_WATCHER_MATCH_MODE;
 
+/* ms912593: enumerators verified against this page (enum-cite) */
 typedef enum RTC_WATCHER_STATE {
     RTCWS_UNKNOWN,
     RTCWS_OFFERING,

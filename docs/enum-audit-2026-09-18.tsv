@@ -27,33 +27,33 @@ include/Controldefinitions.h	PH_FONT	ee500372	match
 include/Cs.h	CSPROPERTY_CONNECTION	ee481240	match	
 include/Cs.h	CSSTATE	ee484413	match	
 include/Cs.h	CSPROPERTY_PIN	ee486638	match	
-include/D3dm.h	D3DMBACKBUFFER_TYPE		no-pageid	
-include/D3dm.h	D3DMBLEND		no-pageid	
-include/D3dm.h	D3DMBLENDOP		no-pageid	
-include/D3dm.h	D3DMCMPFUNC		no-pageid	
-include/D3dm.h	D3DMCULL		no-pageid	
-include/D3dm.h	D3DMDEVTYPE		no-pageid	
-include/D3dm.h	D3DMFILLMODE		no-pageid	
-include/D3dm.h	D3DMFOGMODE		no-pageid	
-include/D3dm.h	D3DMFORMAT		no-pageid	
-include/D3dm.h	D3DMLIGHTTYPE		no-pageid	
-include/D3dm.h	D3DMMATERIALCOLORSOURCE		no-pageid	
-include/D3dm.h	D3DMMULTISAMPLE_TYPE		no-pageid	
-include/D3dm.h	D3DMPOOL		no-pageid	
-include/D3dm.h	D3DMPRIMITIVETYPE		no-pageid	
-include/D3dm.h	D3DMPROFILE		no-pageid	
-include/D3dm.h	D3DMRENDERSTATETYPE		no-pageid	
-include/D3dm.h	D3DMRESOURCETYPE		no-pageid	
-include/D3dm.h	D3DMSHADEMODE		no-pageid	
-include/D3dm.h	D3DMSTENCILOP		no-pageid	
-include/D3dm.h	D3DMSWAPEFFECT		no-pageid	
-include/D3dm.h	D3DMTEXTUREADDRESS		no-pageid	
-include/D3dm.h	D3DMTEXTUREFILTERTYPE		no-pageid	
-include/D3dm.h	D3DMTEXTUREOP		no-pageid	
-include/D3dm.h	D3DMTEXTURESTAGESTATETYPE		no-pageid	
-include/D3dm.h	D3DMTEXTURETRANSFORMFLAGS		no-pageid	
-include/D3dm.h	D3DMTRANSFORMSTATETYPE		no-pageid	
-include/D3dm.h	D3DMZBUFFERTYPE		no-pageid	
+include/D3dm.h	D3DMBACKBUFFER_TYPE	ms939134	match	
+include/D3dm.h	D3DMBLEND	ms939135	match	
+include/D3dm.h	D3DMBLENDOP	ms939136	match	
+include/D3dm.h	D3DMCMPFUNC	ms939141	match	
+include/D3dm.h	D3DMCULL	ms907687	match	
+include/D3dm.h	D3DMDEVTYPE	ms907702	match	
+include/D3dm.h	D3DMFILLMODE	ms907704	match	
+include/D3dm.h	D3DMFOGMODE	ms907705	match	
+include/D3dm.h	D3DMFORMAT	ms907707	match	
+include/D3dm.h	D3DMLIGHTTYPE	ms907714	match	
+include/D3dm.h	D3DMMATERIALCOLORSOURCE	ms907719	match	
+include/D3dm.h	D3DMMULTISAMPLE_TYPE	ms907721	match	
+include/D3dm.h	D3DMPOOL	ms907725	match	
+include/D3dm.h	D3DMPRIMITIVETYPE	ms907730	match	
+include/D3dm.h	D3DMPROFILE	ms907731	match	
+include/D3dm.h	D3DMRENDERSTATETYPE	ms907737	match	
+include/D3dm.h	D3DMRESOURCETYPE	ms907739	match	
+include/D3dm.h	D3DMSHADEMODE	ms907740	match	
+include/D3dm.h	D3DMSTENCILOP	ms907742	match	
+include/D3dm.h	D3DMSWAPEFFECT	ms907745	match	
+include/D3dm.h	D3DMTEXTUREADDRESS	ms907748	match	
+include/D3dm.h	D3DMTEXTUREFILTERTYPE	ms907749	match	
+include/D3dm.h	D3DMTEXTUREOP	ms907750	match	
+include/D3dm.h	D3DMTEXTURESTAGESTATETYPE	ms907751	match	
+include/D3dm.h	D3DMTEXTURETRANSFORMFLAGS	ms907752	match	
+include/D3dm.h	D3DMTRANSFORMSTATETYPE	ms907753	match	
+include/D3dm.h	D3DMZBUFFERTYPE	ms907762	match	
 include/D3dmddk.h	D3DM_OPERATION	ms896740	match	
 include/D3dmddk.h	D3DM_SETLIGHT_DATATYPE	ms896749	match	
 include/D3dmddk.h	D3DM_SETPALETTE_DATATYPE	ms896752	match	
@@ -76,10 +76,10 @@ include/Dvdata.h	EPGCPlaybackMode	aa451696	match
 include/Dvdnav.h	EDDVDPlaybackState	aa451671	match	
 include/Dvdnav.h	EDVDNavException	aa451673	match	
 include/Dvdnav.h	EDVDSParamEvent	aa451674	match	
-include/Fwapi.h	FW_ACTIONS		no-pageid	
-include/Fwapi.h	FW_DAYS		no-pageid	
-include/Fwapi.h	FW_DIRECTIONS		no-pageid	
-include/Fwapi.h	FW_RULE_FLAGS		no-pageid	
+include/Fwapi.h	FW_ACTIONS	ms898963	match	
+include/Fwapi.h	FW_DAYS	aa450384	match	
+include/Fwapi.h	FW_DIRECTIONS	aa450385	match	
+include/Fwapi.h	FW_RULE_FLAGS	aa450389	match	
 include/Gpsapi.h	GPS_FIX_TYPE	ee484122	match	
 include/Gpsapi.h	GPS_FIX_QUALITY	ee485759	match	
 include/Gpsapi.h	GPS_FIX_SELECTION	ee487278	match	
@@ -143,56 +143,56 @@ include/Rapitypes.h	RAPISTREAMFLAG	ms879802	match
 include/Ras.h	RASCONNSTATE	ms896360	match	
 include/Ras.h	RASPROJECTION		no-pageid	
 include/Ras.h	RasCntlEnum	ms924957	match	
-include/Raseapif.h	RAS_AUTH_ATTRIBUTE_TYPE		no-pageid	
-include/Raseapif.h	PPP_EAP_ACTION		no-pageid	
+include/Raseapif.h	RAS_AUTH_ATTRIBUTE_TYPE	ms896352	match	
+include/Raseapif.h	PPP_EAP_ACTION	ms896284	match	
 include/Regext.h	REG_COMPARISONTYPE	ee488568	match	
 include/Rules.h	FW_RULE_MASKS		no-pageid	
-include/Sapi.h	SPAUDIOOPTIONS		no-pageid	
-include/Sapi.h	SPBOOKMARKOPTIONS		no-pageid	
-include/Sapi.h	SPCFGNOTIFY		no-pageid	
-include/Sapi.h	SPCFGRULEATTRIBUTES		no-pageid	
-include/Sapi.h	SPCONTEXTSTATE		no-pageid	
-include/Sapi.h	SPDATAKEYLOCATION		no-pageid	
-include/Sapi.h	SPEAKFLAGS		no-pageid	
-include/Sapi.h	SPENDSRSTREAMFLAGS		no-pageid	
-include/Sapi.h	SPINTERFERENCE		no-pageid	
-include/Sapi.h	SPEVENTENUM		no-pageid	
-include/Sapi.h	SPEVENTLPARAMTYPE		no-pageid	
-include/Sapi.h	SPFILEMODE		no-pageid	
-include/Sapi.h	SPGRAMMARSTATE		no-pageid	
-include/Sapi.h	SPGRAMMARWORDTYPE		no-pageid	
-include/Sapi.h	SPLEXICONTYPE		no-pageid	
-include/Sapi.h	SPLOADOPTIONS		no-pageid	
-include/Sapi.h	SPPARTOFSPEECH		no-pageid	
-include/Sapi.h	SPPHRASERNG		no-pageid	
-include/Sapi.h	SPPROPSRC		no-pageid	
-include/Sapi.h	SPRECOEVENTFLAGS		no-pageid	
-include/Sapi.h	SPRESULTTYPE		no-pageid	
-include/Sapi.h	SPRECOSTATE		no-pageid	
-include/Sapi.h	SPRULEINFOOPT		no-pageid	
-include/Sapi.h	SPRULESTATE		no-pageid	
-include/Sapi.h	SPRUNSTATE		no-pageid	
-include/Sapi.h	SPWORDTYPE		no-pageid	
-include/Sapi.h	SPSTREAMFORMAT		no-pageid	
-include/Sapi.h	SPTRANSITIONTYPE		no-pageid	
-include/Sapi.h	SPVACTIONS		no-pageid	
-include/Sapi.h	SPVALUETYPE		no-pageid	
-include/Sapi.h	SPVESACTIONS		no-pageid	
-include/Sapi.h	SPVFEATURE		no-pageid	
-include/Sapi.h	SPVISEMES		no-pageid	
-include/Sapi.h	SPVLIMITS		no-pageid	
-include/Sapi.h	SPVPRIORITY		no-pageid	
-include/Sapi.h	SPVSKIPTYPE		no-pageid	
-include/Sapi.h	SPSTREAMFORMATTYPE		no-pageid	
-include/Sapi.h	SPWORDINFOOPT		no-pageid	
-include/Sapi.h	SPWORDPRONOUNCEABLE		no-pageid	
-include/Sapi.h	SPAUDIOSTATE		no-pageid	
-include/Sapi.h	SPDISPLAYATTRIBUTES		no-pageid	
+include/Sapi.h	SPAUDIOOPTIONS	ms893480	match	
+include/Sapi.h	SPBOOKMARKOPTIONS	ms893485	match	
+include/Sapi.h	SPCFGNOTIFY	ms893486	match	
+include/Sapi.h	SPCFGRULEATTRIBUTES	ms893487	match	
+include/Sapi.h	SPCONTEXTSTATE	ms893489	match	
+include/Sapi.h	SPDATAKEYLOCATION	ms893501	match	
+include/Sapi.h	SPEAKFLAGS	ms895350	match	
+include/Sapi.h	SPENDSRSTREAMFLAGS	ms895362	match	
+include/Sapi.h	SPINTERFERENCE	ms895578	match	
+include/Sapi.h	SPEVENTENUM	ms895379	match	
+include/Sapi.h	SPEVENTLPARAMTYPE	ms895384	match	
+include/Sapi.h	SPFILEMODE	ms895407	match	
+include/Sapi.h	SPGRAMMARSTATE	ms895548	match	
+include/Sapi.h	SPGRAMMARWORDTYPE	ms895566	match	
+include/Sapi.h	SPLEXICONTYPE	ms895589	match	
+include/Sapi.h	SPLOADOPTIONS	ms895600	match	
+include/Sapi.h	SPPARTOFSPEECH	ms895661	match	
+include/Sapi.h	SPPHRASERNG	ms895698	match	
+include/Sapi.h	SPPROPSRC	ms895715	match	
+include/Sapi.h	SPRECOEVENTFLAGS	ms895715	no-print-on-page	
+include/Sapi.h	SPRESULTTYPE	ms895750	match	
+include/Sapi.h	SPRECOSTATE	ms895743	match	
+include/Sapi.h	SPRULEINFOOPT	ms895759	match	
+include/Sapi.h	SPRULESTATE	ms895764	match	
+include/Sapi.h	SPRUNSTATE	ms895768	match	
+include/Sapi.h	SPWORDTYPE	ms895974	match	
+include/Sapi.h	SPSTREAMFORMAT	ms895974	no-print-on-page	
+include/Sapi.h	SPTRANSITIONTYPE	ms895836	match	
+include/Sapi.h	SPVACTIONS	ms895839	match	
+include/Sapi.h	SPVALUETYPE	ms895842	match	
+include/Sapi.h	SPVESACTIONS	ms895855	match	
+include/Sapi.h	SPVFEATURE	ms895858	match	
+include/Sapi.h	SPVISEMES	ms895865	match	
+include/Sapi.h	SPVLIMITS	ms895868	match	
+include/Sapi.h	SPVPRIORITY	ms895882	match	
+include/Sapi.h	SPVSKIPTYPE	ms895885	match	
+include/Sapi.h	SPSTREAMFORMATTYPE	ms895951	match	
+include/Sapi.h	SPWORDINFOOPT	ms895968	match	
+include/Sapi.h	SPWORDPRONOUNCEABLE	ms895970	match	
+include/Sapi.h	SPAUDIOSTATE	ms893481	match	
+include/Sapi.h	SPDISPLAYATTRIBUTES	ms893502	match	
 include/Settingsapi.h	PHSetting	ee499871	no-print-on-page	
 include/Settingsapi.h	PHVolumeSetting	ee500378	no-print-on-page	
 include/Settingsapi.h	PHActiveVolumeMode	ee501527	no-print-on-page	
 include/Settingsapi.h	AuthenticationResult_e	ee501567	no-print-on-page	
-include/Shobjidl.h	SHGNO		no-pageid	
+include/Shobjidl.h	SHGNO	aa453709	match	
 include/Sms.h	BROADCAST_PROVIDER_SPECIFIC_GEOGRAPHICAL_SCOPE	ee496874	no-print-on-page	
 include/Sms.h	SMS_ADDRESS_TYPE	ee497250	no-print-on-page	
 include/Sms.h	PROVIDER_SPECIFIC_REPLACE_OPTION	ee497352	no-print-on-page	
@@ -236,7 +236,7 @@ include/Winbase.h	EXTENDED_NAME_FORMAT	ee483142	match
 include/Winbase.h	DeviceSearchType	ms898292	match	
 include/Wininet.h	INTERNET_SCHEME	ms918377	match	
 include/Wininet.h	InternetCookieState	ms918353	match	
-include/Winldap.h	LDAP_RETCODE		no-pageid	
+include/Winldap.h	LDAP_RETCODE	ms892299	match	
 include/Winsock2.h	WSAECOMPARATOR	ms898736	match	
 include/Winsock2.h	WSAESETSERVICEOP	ms898772	no-print-on-page	
 include/Wsdapi.h	WSD_PROTOCOL_TYPE	ee498851	match	
@@ -307,45 +307,45 @@ include/oak/Ntddndis.h	NDIS_802_11_WEP_STATUS	aa447898	match
 include/oak/Ntddndis.h	NDIS_802_5_RING_STATE	aa447899	match	
 include/oak/Ntddndis.h	NDIS_MEDIUM	aa448032	match	
 include/oak/Ntddndis.h	NDIS_WAN_MEDIUM_SUBTYPE	ms905049	match	
-include/oak/Rtccore.h	RTC_ACE_SCOPE		no-pageid	
-include/oak/Rtccore.h	RTC_ANSWER_MODE		no-pageid	
-include/oak/Rtccore.h	RTC_AUDIO_DEVICE		no-pageid	
-include/oak/Rtccore.h	RTC_BUDDY_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_BUDDY_SUBSCRIPTION_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_CLIENT_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_DTMF		no-pageid	
-include/oak/Rtccore.h	RTC_EVENT		no-pageid	
-include/oak/Rtccore.h	RTC_GROUP_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_LISTEN_MODE		no-pageid	
-include/oak/Rtccore.h	RTC_MEDIA_EVENT_REASON		no-pageid	
-include/oak/Rtccore.h	RTC_MEDIA_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_MESSAGING_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_MESSAGING_USER_STATUS		no-pageid	
-include/oak/Rtccore.h	RTC_OFFER_WATCHER_MODE		no-pageid	
-include/oak/Rtccore.h	RTC_PARTICIPANT_STATE		no-pageid	
-include/oak/Rtccore.h	RTC_PORT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_PRESENCE_PROPERTY		no-pageid	
-include/oak/Rtccore.h	RTC_PRESENCE_STATUS		no-pageid	
-include/oak/Rtccore.h	RTC_PRIVACY_MODE		no-pageid	
-include/oak/Rtccore.h	RTC_PROFILE_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_PROVIDER_URI		no-pageid	
-include/oak/Rtccore.h	RTC_REGISTRATION_STATE		no-pageid	
-include/oak/Rtccore.h	RTC_REINVITE_STATE		no-pageid	
-include/oak/Rtccore.h	RTC_RING_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_ROAMING_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_SECURITY_LEVEL		no-pageid	
-include/oak/Rtccore.h	RTC_SECURITY_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_SESSION_REFER_STATUS		no-pageid	
-include/oak/Rtccore.h	RTC_SESSION_STATE		no-pageid	
-include/oak/Rtccore.h	RTC_SESSION_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_T120_APPLET		no-pageid	
-include/oak/Rtccore.h	RTC_TERMINATE_REASON		no-pageid	
-include/oak/Rtccore.h	RTC_USER_SEARCH_COLUMN		no-pageid	
-include/oak/Rtccore.h	RTC_USER_SEARCH_PREFERENCE		no-pageid	
-include/oak/Rtccore.h	RTC_VIDEO_DEVICE		no-pageid	
-include/oak/Rtccore.h	RTC_WATCHER_EVENT_TYPE		no-pageid	
-include/oak/Rtccore.h	RTC_WATCHER_MATCH_MODE		no-pageid	
-include/oak/Rtccore.h	RTC_WATCHER_STATE		no-pageid	
+include/oak/Rtccore.h	RTC_ACE_SCOPE	ms931685	match	
+include/oak/Rtccore.h	RTC_ANSWER_MODE	ms931691	match	
+include/oak/Rtccore.h	RTC_AUDIO_DEVICE	ms931705	match	
+include/oak/Rtccore.h	RTC_BUDDY_EVENT_TYPE	ms931709	match	
+include/oak/Rtccore.h	RTC_BUDDY_SUBSCRIPTION_TYPE	ms931714	match	
+include/oak/Rtccore.h	RTC_CLIENT_EVENT_TYPE	ms931720	match	
+include/oak/Rtccore.h	RTC_DTMF	ms931788	match	
+include/oak/Rtccore.h	RTC_EVENT	ms912360	match	
+include/oak/Rtccore.h	RTC_GROUP_EVENT_TYPE	ms912420	match	
+include/oak/Rtccore.h	RTC_LISTEN_MODE	ms912438	match	
+include/oak/Rtccore.h	RTC_MEDIA_EVENT_REASON	ms912439	match	
+include/oak/Rtccore.h	RTC_MEDIA_EVENT_TYPE	ms912440	match	
+include/oak/Rtccore.h	RTC_MESSAGING_EVENT_TYPE	ms912441	match	
+include/oak/Rtccore.h	RTC_MESSAGING_USER_STATUS	ms912453	match	
+include/oak/Rtccore.h	RTC_OFFER_WATCHER_MODE	ms912564	match	
+include/oak/Rtccore.h	RTC_PARTICIPANT_STATE	ms912565	match	
+include/oak/Rtccore.h	RTC_PORT_TYPE	ms912566	match	
+include/oak/Rtccore.h	RTC_PRESENCE_PROPERTY	ms912567	match	
+include/oak/Rtccore.h	RTC_PRESENCE_STATUS	ms912568	match	
+include/oak/Rtccore.h	RTC_PRIVACY_MODE	ms912569	match	
+include/oak/Rtccore.h	RTC_PROFILE_EVENT_TYPE	ms912570	match	
+include/oak/Rtccore.h	RTC_PROVIDER_URI	ms912571	match	
+include/oak/Rtccore.h	RTC_REGISTRATION_STATE	ms912572	match	
+include/oak/Rtccore.h	RTC_REINVITE_STATE	ms912573	match	
+include/oak/Rtccore.h	RTC_RING_TYPE	ms912575	match	
+include/oak/Rtccore.h	RTC_ROAMING_EVENT_TYPE	ms912577	match	
+include/oak/Rtccore.h	RTC_SECURITY_LEVEL	ms912579	match	
+include/oak/Rtccore.h	RTC_SECURITY_TYPE	ms912580	match	
+include/oak/Rtccore.h	RTC_SESSION_REFER_STATUS	ms912581	match	
+include/oak/Rtccore.h	RTC_SESSION_STATE	ms912582	match	
+include/oak/Rtccore.h	RTC_SESSION_TYPE	ms912583	match	
+include/oak/Rtccore.h	RTC_T120_APPLET	ms912585	match	
+include/oak/Rtccore.h	RTC_TERMINATE_REASON	ms912586	match	
+include/oak/Rtccore.h	RTC_USER_SEARCH_COLUMN	ms912588	match	
+include/oak/Rtccore.h	RTC_USER_SEARCH_PREFERENCE	ms912589	match	
+include/oak/Rtccore.h	RTC_VIDEO_DEVICE	ms912590	match	
+include/oak/Rtccore.h	RTC_WATCHER_EVENT_TYPE	ms912591	match	
+include/oak/Rtccore.h	RTC_WATCHER_MATCH_MODE	ms912592	match	
+include/oak/Rtccore.h	RTC_WATCHER_STATE	ms912593	match	
 include/oak/Sdcardddk.h	SD_FS_TYPE	ms920432	match	
 include/oak/Sdcardddk.h	SD_INTERFACE_MODE	ms920436	match	
 include/oak/Sdcardddk.h	SD_RESPONSE_TYPE	ms920454	annotated-deviation	hdr=NoResponse,ResponseR1,ResponseR1b,ResponseR2,ResponseR3,ResponseR4,ResponseR5,ResponseR6,ResponseR7 page=NoResponse,ResponseR1,ResponseR1b,ResponseR2,ResponseR3,ResponseR4,ResponseR5,ResponseR6

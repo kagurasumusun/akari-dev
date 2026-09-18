@@ -11,6 +11,7 @@
 
 /* "RAS_AUTH_ATTRIBUTE_TYPE": print (explicit value anchors as
  * printed; sequential between anchors). */
+/* ms896352: enumerators verified against this page (enum-cite) */
 typedef enum _RAS_AUTH_ATTRIBUTE_TYPE_ {
     raatMinimum = 0,
     raatUserName,
@@ -108,6 +109,7 @@ typedef struct _PPP_EAP_PACKET {
 } PPP_EAP_PACKET, *PPPP_EAP_PACKET;   /* pointer spelling as printed (4 P) */
 
 /* "PPP_EAP_ACTION": print (sequential). */
+/* ms896284: enumerators verified against this page (enum-cite) */
 typedef enum _PPP_EAP_ACTION {
     EAPACTION_NoAction,
     EAPACTION_Authenticate,

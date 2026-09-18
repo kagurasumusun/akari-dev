@@ -31,6 +31,7 @@ typedef struct _FW_IP_ADDRESS {
 } FW_IP_ADDRESS;
 
 /* "FW_ACTIONS": print (explicit values). */
+/* ms898963: enumerators verified against this page (enum-cite) */
 typedef enum _FW_ACTIONS {
     FWA_BLOCK = 0x01,
     FWA_ALLOW = 0x02,
@@ -38,6 +39,7 @@ typedef enum _FW_ACTIONS {
 } FW_ACTIONS;
 
 /* "FW_DAYS": print (explicit values). */
+/* aa450384: enumerators verified against this page (enum-cite) */
 typedef enum _FW_DAYS {
     FWD_SUNDAY = 0x01,
     FWD_MONDAY = 0x02,
@@ -51,12 +53,14 @@ typedef enum _FW_DAYS {
 } FW_DAYS;
 
 /* "FW_DIRECTIONS": print (explicit values). */
+/* aa450385: enumerators verified against this page (enum-cite) */
 typedef enum _FW_DIRECTIONS {
     FWD_INBOUND = 0x08,
     FWD_OUTBOUND = 0x10,
 } FW_DIRECTIONS;
 
 /* "FW_RULE_FLAGS": print (value aliases of FW_ACTIONS/FW_DIRECTIONS). */
+/* aa450389: enumerators verified against this page (enum-cite) */
 typedef enum _FW_RULE_FLAGS {
     FWF_BLOCK = FWA_BLOCK,
     FWF_ALLOW = FWA_ALLOW,
