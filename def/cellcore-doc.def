@@ -1,0 +1,71 @@
+; cellcore-doc.def -- cellcore.lib export surface for Windows CE.
+;
+; Copyright (c) 2026 Akari API contributors
+; SPDX-License-Identifier: MIT
+;
+; Derived exclusively from the official Microsoft CE
+; documentation pages: each name below appears as a
+; page title whose Requirements row names this link
+; library (wince-docs-corpus) and is declared with
+; AKARI_CE_IMPORT by this tree's headers.  No
+; shared-source/device-dump/VS/PB-derived name is
+; used.  Ordinals are not published; entries are
+; name-only.
+LIBRARY cellcore.dll
+EXPORTS
+  ConnMgrApiReadyEvent
+  ConnMgrConnectionStatus
+  ConnMgrEstablishConnection
+  ConnMgrEstablishConnectionSync
+  ConnMgrMapConRef
+  ConnMgrMapURL
+  ConnMgrProviderMessage
+  ConnMgrRegisterForStatusChangeNotification
+  ConnMgrReleaseConnection
+  ConnMgrSetConnectionPriority
+  ConnMgrUnregisterScheduledConnection
+  SimChangeLockingPassword
+  SimDeinitialize
+  SimDeleteMessage
+  SimDeletePhonebookEntry
+  SimGetLockingStatus
+  SimGetPhoneLockedState
+  SimGetPhonebookStatus
+  SimGetRecordInfo
+  SimGetSmsStorageStatus
+  SimReadPhonebookTag
+  SimReadRecord
+  SimSetLockingStatus
+  SimUnlockPhone
+  SimWriteRecord
+  lineGetCallBarringCaps
+  lineGetCallBarringState
+  lineGetCallWaitingCaps
+  lineGetCallWaitingState
+  lineGetCurrentAddressID
+  lineGetCurrentHSCSDStatus
+  lineGetCurrentSystemType
+  lineGetEquipmentState
+  lineGetGPRSClass
+  lineGetGeneralInfo
+  lineGetHSCSDCaps
+  lineGetHSCSDState
+  lineGetMuteState
+  lineGetNumberCalls
+  lineGetOperatorStatus
+  lineGetRadioPresence
+  lineGetRegisterStatus
+  lineGetSendCallerIDState
+  lineGetUSSD
+  lineRegister
+  lineSetCallBarringPassword
+  lineSetCallBarringState
+  lineSetCallWaitingState
+  lineSetCurrentAddressID
+  lineSetEquipmentState
+  lineSetGPRSClass
+  lineSetHSCSDState
+  lineSetMuteState
+  lineSetSendCallerIDState
+  lineUnregister
+  tapiRequestMakeCall
