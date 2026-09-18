@@ -118,15 +118,15 @@ typedef enum {
 
 /* ms892143: audio capability bits of IDVDRenderer::GetAudioCaps
  * (ms900194). */
-#define DVD_AUDIOCAP_AC3           0x4000
-#define DVD_AUDIOCAP_MPEG          0x1000
-#define DVD_AUDIOCAP_DTS           0x0800
-#define DVD_AUDIOCAP_SDDS          0x0400
-#define DVD_AUDIOCAP_LPCM_KARAOKE  0x0080
-#define DVD_AUDIOCAP_AC3_KARAOKE   0x0040
-#define DVD_AUDIOCAP_MPEG_KARAOKE  0x0010
-#define DVD_AUDIOCAP_DTS_KARAOKE   0x0008
-#define DVD_AUDIOCAP_SDDS_KARAOKE  0x0004
+#define DVD_AUDIOCAP_AC3           0x4000/* ee481106 */
+#define DVD_AUDIOCAP_MPEG          0x1000/* ee481106 */
+#define DVD_AUDIOCAP_DTS           0x0800/* ee481106 */
+#define DVD_AUDIOCAP_SDDS          0x0400/* ee481106 */
+#define DVD_AUDIOCAP_LPCM_KARAOKE  0x0080/* ee481106 */
+#define DVD_AUDIOCAP_AC3_KARAOKE   0x0040/* ee481106 */
+#define DVD_AUDIOCAP_MPEG_KARAOKE  0x0010/* ee481106 */
+#define DVD_AUDIOCAP_DTS_KARAOKE   0x0008/* ee481106 */
+#define DVD_AUDIOCAP_SDDS_KARAOKE  0x0004/* ee481106 */
 
 /* ms892143: scan capability bits of IDVDRenderer::GetScanCaps
  * (ms900196). */

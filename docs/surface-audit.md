@@ -2,18 +2,18 @@
 
 Measured state -- replaces all earlier "complete" claims.
 
-* documented API-like rows: 11289
-* declared: 6706
-* comment-only: 2218
-* absent: 2365
+* documented API-like rows: 11605
+* declared: 6719
+* comment-only: 2234
+* absent: 2652
 
 Per layer (both layers compile together; `-I include -I include/oak`):
 
 | measure | include/ (app -dev) | include/oak/ (OAK-DDK) |
 |---|---|---|
-| declared | 5683 | 1023 |
-| comment-only | 1481 | 737 |
-| absent (neither layer) | 2365 | - |
+| declared | 5696 | 1023 |
+| comment-only | 1497 | 737 |
+| absent (neither layer) | 2652 | - |
 
 * coredll doc-def entries: 1064
 * verified coredll surface (unmangled): 0
