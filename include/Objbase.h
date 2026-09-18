@@ -204,9 +204,9 @@ typedef enum VARENUM {
     VT_UI1 = 17
 } VARENUM;
 /* The flag tail of the page prints without separators; transcribed: */
-#define VT_ARRAY          0x2000
-#define VT_BYREF          0x4000
-#define VT_RESERVED       0x8000
+#define VT_ARRAY          0x2000/* aa519284 */
+#define VT_BYREF          0x4000/* aa519284 */
+#define VT_RESERVED       0x8000/* ee488486 */
 
 /* Opaque types referenced by the documented prototypes but whose
  * definitions the CE corpus does not publish (declared so the

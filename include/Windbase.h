@@ -557,8 +557,8 @@ AKARI_CE_IMPORT BOOL CeSetReplOtherBitsEx(PCEGUID pguid, CEOID oid, DWORD bits)
  * calling process when it was loaded.  The page's return-value
  * table publishes exactly two levels: OEM_CERTIFY_TRUST (2) and
  * OEM_CERTIFY_RUN (1). */
-#define OEM_CERTIFY_RUN    1
-#define OEM_CERTIFY_TRUST  2
+#define OEM_CERTIFY_RUN    1/* ms904879 */
+#define OEM_CERTIFY_TRUST  2/* ee478190 */
 DWORD CeGetCurrentTrust(void);
 
 /* --- Password functions (CE 2.10 and later; Fspass component). ------

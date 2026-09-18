@@ -784,7 +784,7 @@ AKARI_CE_IMPORT BOOL SetFileAttributesW(LPCWSTR lpFileName, DWORD dwFileAttribut
 #define WAIT_OBJECT_0      0x00000000u
 #define WAIT_ABANDONED     0x00000080u
 #define WAIT_ABANDONED_0   0x00000080u
-#define WAIT_TIMEOUT       0x00000102u
+#define WAIT_TIMEOUT       0x00000102u/* ee487988 */
 #define WAIT_FAILED        ((DWORD)0xFFFFFFFFu)
 
 /* MAXIMUM_WAIT_OBJECTS: nCount limit cited by the CE

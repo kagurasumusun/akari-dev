@@ -54,10 +54,10 @@ typedef BOOL (*PFN_PDD_GET)(UINT uiRequestId, PVOID pvData,
                              ULONG ulDataLength,
                              ULONG *pulRequiredLength);
 
-#define REQ_ID_VENDOR_ID          0x80000001
-#define REQ_ID_VENDOR_DESCRIPTION 0x80000002
-#define REQ_ID_DEVICE_MAX_RX      0x80000003
-#define REQ_ID_DEVICE_MACADDR     0x80000004
+#define REQ_ID_VENDOR_ID          0x80000001/* aa447838 */
+#define REQ_ID_VENDOR_DESCRIPTION 0x80000002/* aa447838 */
+#define REQ_ID_DEVICE_MAX_RX      0x80000003/* aa447838 */
+#define REQ_ID_DEVICE_MACADDR     0x80000004/* aa447838 */
 
 /* --- MDD/PDD functions (printed; no Link Library row). -------- */
 /* ms902178 "MDDAllocDataWrapper": `PDATA_WRAPPER

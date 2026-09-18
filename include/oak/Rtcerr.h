@@ -200,7 +200,7 @@
 #define RTC_E_TOO_SMALL_EXPIRES_VALUE                   0x80EE0068L
 
 #if _WIN32_WCE >= 0x0600   /* documented on the CE 6.0 page only (ee499276) */
-#define RTC_E_INVALID_SUBSCRIPTION_STATE                0x80EE0090L
+#define RTC_E_INVALID_SUBSCRIPTION_STATE                0x80EE0090L/* ee499276 */
 #endif /* _WIN32_WCE >= 0x0600 */
 
 /* RTC_S_ (ms912578, ee500988): values printed on the pages. */

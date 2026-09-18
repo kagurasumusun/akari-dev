@@ -561,96 +561,96 @@ AKARI_CE_IMPORT VOID keybd_event(BYTE bVk, BYTE bScan, DWORD dwFlags, DWORD dwEx
 /* (the VK_APP1..VK_APP6 application keys of the AYGShell layer are   */
 /* defined in aygshell.h per their own documentation).                */
 /* ------------------------------------------------------------------ */
-#define VK_LBUTTON       0x01   /* ms927178 */
-#define VK_RBUTTON       0x02
-#define VK_CANCEL        0x03
-#define VK_MBUTTON       0x04
-#define VK_BACK          0x08
-#define VK_TAB           0x09
-#define VK_CLEAR         0x0C
-#define VK_RETURN        0x0D
-#define VK_SHIFT         0x10
-#define VK_CONTROL       0x11
-#define VK_MENU          0x12
-#define VK_PAUSE         0x13
-#define VK_CAPITAL       0x14
-#define VK_ESCAPE        0x1B
-#define VK_SPACE         0x20
-#define VK_PRIOR         0x21
-#define VK_NEXT          0x22
-#define VK_END           0x23
-#define VK_HOME          0x24
-#define VK_LEFT          0x25
-#define VK_UP            0x26
-#define VK_RIGHT         0x27
-#define VK_DOWN          0x28
-#define VK_SELECT        0x29
-#define VK_EXECUTE       0x2B
-#define VK_SNAPSHOT      0x2C
-#define VK_INSERT        0x2D
-#define VK_DELETE        0x2E
-#define VK_HELP          0x2F
-#define VK_LWIN          0x5B
-#define VK_RWIN          0x5C
-#define VK_APPS          0x5D
-#define VK_NUMPAD0       0x60
-#define VK_NUMPAD1       0x61
-#define VK_NUMPAD2       0x62
-#define VK_NUMPAD3       0x63
-#define VK_NUMPAD4       0x64
-#define VK_NUMPAD5       0x65
-#define VK_NUMPAD6       0x66
-#define VK_NUMPAD7       0x67
-#define VK_NUMPAD8       0x68
-#define VK_NUMPAD9       0x69
-#define VK_MULTIPLY      0x6A
-#define VK_ADD           0x6B
-#define VK_SEPARATOR     0x6C
-#define VK_SUBTRACT      0x6D
-#define VK_DECIMAL       0x6E
-#define VK_DIVIDE        0x6F
-#define VK_F1            0x70
-#define VK_F2            0x71
-#define VK_F3            0x72
-#define VK_F4            0x73
-#define VK_F5            0x74
-#define VK_F6            0x75
-#define VK_F7            0x76
-#define VK_F8            0x77
-#define VK_F9            0x78
-#define VK_F10           0x79
-#define VK_F11           0x7A
-#define VK_F12           0x7B
-#define VK_F13           0x7C
-#define VK_F14           0x7D
-#define VK_F15           0x7E
-#define VK_F16           0x7F
-#define VK_F17           0x80
-#define VK_F18           0x81
-#define VK_F19           0x82
-#define VK_F20           0x83
-#define VK_F21           0x84
-#define VK_F22           0x85   /* (PPC only) key used to lock device */
-#define VK_F23           0x86
-#define VK_F24           0x87
-#define VK_NUMLOCK       0x90
-#define VK_SCROLL        0x91
-#define VK_LSHIFT        0xA0
-#define VK_RSHIFT        0xA1
-#define VK_LCONTROL      0xA2
-#define VK_RCONTROL      0xA3
-#define VK_LMENU         0xA4
-#define VK_RMENU         0xA5
-#define VK_PACKET        0xE7   /* Unicode char in the scan code (SendInput) */
-#define VK_ATTN          0xF6
-#define VK_CRSEL         0xF7
-#define VK_EXSEL         0xF8
-#define VK_EREOF         0xF9
-#define VK_PLAY          0xFA
-#define VK_ZOOM          0xFB
-#define VK_NONAME        0xFC
-#define VK_PA1           0xFD
-#define VK_OEM_CLEAR     0xFE
+#define VK_LBUTTON       0x01   /* ee504832 ms927178 */
+#define VK_RBUTTON       0x02/* ee504832 */
+#define VK_CANCEL        0x03/* ee504832 */
+#define VK_MBUTTON       0x04/* ee504832 */
+#define VK_BACK          0x08/* ee504832 */
+#define VK_TAB           0x09/* ee504832 */
+#define VK_CLEAR         0x0C/* ee504832 */
+#define VK_RETURN        0x0D/* ee504832 */
+#define VK_SHIFT         0x10/* ee504832 */
+#define VK_CONTROL       0x11/* ee504832 */
+#define VK_MENU          0x12/* ee504832 */
+#define VK_PAUSE         0x13/* ee504832 */
+#define VK_CAPITAL       0x14/* ee504832 */
+#define VK_ESCAPE        0x1B/* ee504832 */
+#define VK_SPACE         0x20/* ee504832 */
+#define VK_PRIOR         0x21/* ee504832 */
+#define VK_NEXT          0x22/* ee504832 */
+#define VK_END           0x23/* ee504832 */
+#define VK_HOME          0x24/* ee504832 */
+#define VK_LEFT          0x25/* ee504832 */
+#define VK_UP            0x26/* ee504832 */
+#define VK_RIGHT         0x27/* ee504832 */
+#define VK_DOWN          0x28/* ee504832 */
+#define VK_SELECT        0x29/* ee504832 */
+#define VK_EXECUTE       0x2B/* ee504832 */
+#define VK_SNAPSHOT      0x2C/* ee504832 */
+#define VK_INSERT        0x2D/* ee504832 */
+#define VK_DELETE        0x2E/* ee504832 */
+#define VK_HELP          0x2F/* ee504832 */
+#define VK_LWIN          0x5B/* ee504832 */
+#define VK_RWIN          0x5C/* ee504832 */
+#define VK_APPS          0x5D/* ee504832 */
+#define VK_NUMPAD0       0x60/* ee504832 */
+#define VK_NUMPAD1       0x61/* ee504832 */
+#define VK_NUMPAD2       0x62/* ee504832 */
+#define VK_NUMPAD3       0x63/* ee504832 */
+#define VK_NUMPAD4       0x64/* ee504832 */
+#define VK_NUMPAD5       0x65/* ee504832 */
+#define VK_NUMPAD6       0x66/* ee504832 */
+#define VK_NUMPAD7       0x67/* ee504832 */
+#define VK_NUMPAD8       0x68/* ee504832 */
+#define VK_NUMPAD9       0x69/* ee504832 */
+#define VK_MULTIPLY      0x6A/* ee504832 */
+#define VK_ADD           0x6B/* ee504832 */
+#define VK_SEPARATOR     0x6C/* ee504832 */
+#define VK_SUBTRACT      0x6D/* ee504832 */
+#define VK_DECIMAL       0x6E/* ee504832 */
+#define VK_DIVIDE        0x6F/* ee504832 */
+#define VK_F1            0x70/* ee504832 */
+#define VK_F2            0x71/* ee504832 */
+#define VK_F3            0x72/* ee504832 */
+#define VK_F4            0x73/* ee504832 */
+#define VK_F5            0x74/* ee504832 */
+#define VK_F6            0x75/* ee504832 */
+#define VK_F7            0x76/* ee504832 */
+#define VK_F8            0x77/* ee504832 */
+#define VK_F9            0x78/* ee504832 */
+#define VK_F10           0x79/* ee504832 */
+#define VK_F11           0x7A/* ee504832 */
+#define VK_F12           0x7B/* ee504832 */
+#define VK_F13           0x7C/* ee504832 */
+#define VK_F14           0x7D/* ee504832 */
+#define VK_F15           0x7E/* ee504832 */
+#define VK_F16           0x7F/* ee504832 */
+#define VK_F17           0x80/* ee504832 */
+#define VK_F18           0x81/* ee504832 */
+#define VK_F19           0x82/* ee504832 */
+#define VK_F20           0x83/* ee504832 */
+#define VK_F21           0x84/* ee504832 */
+#define VK_F22           0x85   /* ee504832 (PPC only) key used to lock device */
+#define VK_F23           0x86/* ee504832 */
+#define VK_F24           0x87/* ee504832 */
+#define VK_NUMLOCK       0x90/* ee504832 */
+#define VK_SCROLL        0x91/* ee504832 */
+#define VK_LSHIFT        0xA0/* ee504832 */
+#define VK_RSHIFT        0xA1/* ee504832 */
+#define VK_LCONTROL      0xA2/* ee504832 */
+#define VK_RCONTROL      0xA3/* ee504832 */
+#define VK_LMENU         0xA4/* ee504832 */
+#define VK_RMENU         0xA5/* ee504832 */
+#define VK_PACKET        0xE7   /* ee504832 Unicode char in the scan code (SendInput) */
+#define VK_ATTN          0xF6/* ee504832 */
+#define VK_CRSEL         0xF7/* ee504832 */
+#define VK_EXSEL         0xF8/* ee504832 */
+#define VK_EREOF         0xF9/* ee504832 */
+#define VK_PLAY          0xFA/* ee504832 */
+#define VK_ZOOM          0xFB/* ee504832 */
+#define VK_NONAME        0xFC/* ee504832 */
+#define VK_PA1           0xFD/* ee504832 */
+#define VK_OEM_CLEAR     0xFE/* ee504832 */
 
 /* VK_KEYLOCK (ms927178): the CE table row prints the value "F22" --
  * a cross-reference to the VK_F22 row (0x85, "(PPC only) Key used to
@@ -730,47 +730,47 @@ AKARI_CE_IMPORT VOID keybd_event(BYTE bVk, BYTE bScan, DWORD dwFlags, DWORD dwEx
 #define VK_OEM_AUTO           (VK_ERICSSON_BASE + 11)
 #define VK_OEM_ENLW           (VK_ERICSSON_BASE + 12)
 #define VK_OEM_BACKTAB        (VK_ERICSSON_BASE + 13)
-#define VK_OEM_FJ_JISHO       0x92   /* Fujitsu/OASYS: 'Dictionary' */
-#define VK_OEM_FJ_MASSHOU     0x93   /* 'Unregister word' */
-#define VK_OEM_FJ_TOUROKU     0x94   /* 'Register word' */
-#define VK_OEM_FJ_LOYA        0x95   /* 'Left OYAYUBI' */
-#define VK_OEM_FJ_ROYA        0x96   /* 'Right OYAYUBI' */
-#define VK_OEM_FJ_000         0xB0   /* '000' on numeric pad */
-#define VK_OEM_FJ_EQUAL       0xB1   /* '=' on numeric pad */
-#define VK_OEM_FJ_00          0xB3   /* '00' on numeric pad */
-#define VK_OEM_OAS_1          0xB4   /* Fujitsu/OASYS */
-#define VK_OEM_OAS_2          0xB5
-#define VK_OEM_OAS_3          0xB6
-#define VK_OEM_OAS_4          0xB7
-#define VK_OEM_OAS_5          0xB8
-#define VK_OEM_OAS_6          0xB9
-#define VK_OEM_OAS_7          0xC1
-#define VK_OEM_OAS_8          0xC2
-#define VK_OEM_OAS_9          0xC3
-#define VK_OEM_OAS_10         0xC4
-#define VK_OEM_OAS_11         0xC5
-#define VK_OEM_OAS_12         0xC6
-#define VK_OEM_OAS_13         0xC7
-#define VK_OEM_OAS_14         0xC8
-#define VK_OEM_OAS_15         0xC9
-#define VK_OEM_OAS_16         0xCA
-#define VK_OEM_OAS_17         0xCB
-#define VK_OEM_OAS_18         0xCC
-#define VK_OEM_OAS_19         0xCD
-#define VK_OEM_OAS_20         0xCE
-#define VK_OEM_OAS_21         0xCF
-#define VK_OEM_OAS_22         0xD0
-#define VK_OEM_OAS_23         0xD1
-#define VK_OEM_OAS_24         0xD2
-#define VK_OEM_OAS_25         0xD3
-#define VK_OEM_OAS_26         0xD4
-#define VK_OEM_OAS_27         0xD5
-#define VK_OEM_OAS_28         0xD6
-#define VK_OEM_OAS_29         0xD7
-#define VK_OEM_FJ_DUMMY       0xEF
-#define VK_ICO_HELP           0xE3   /* ICO: Help key */
-#define VK_ICO_00             0xE4   /* ICO: 00 key */
-#define VK_ICO_CLEAR          0xE6   /* ICO */
+#define VK_OEM_FJ_JISHO       0x92   /* aa452679 Fujitsu/OASYS: 'Dictionary' */
+#define VK_OEM_FJ_MASSHOU     0x93   /* aa452679 'Unregister word' */
+#define VK_OEM_FJ_TOUROKU     0x94   /* aa452679 'Register word' */
+#define VK_OEM_FJ_LOYA        0x95   /* aa452679 'Left OYAYUBI' */
+#define VK_OEM_FJ_ROYA        0x96   /* aa452679 'Right OYAYUBI' */
+#define VK_OEM_FJ_000         0xB0   /* aa452679 '000' on numeric pad */
+#define VK_OEM_FJ_EQUAL       0xB1   /* aa452679 '=' on numeric pad */
+#define VK_OEM_FJ_00          0xB3   /* aa452679 '00' on numeric pad */
+#define VK_OEM_OAS_1          0xB4   /* aa452679 Fujitsu/OASYS */
+#define VK_OEM_OAS_2          0xB5/* aa452679 */
+#define VK_OEM_OAS_3          0xB6/* aa452679 */
+#define VK_OEM_OAS_4          0xB7/* aa452679 */
+#define VK_OEM_OAS_5          0xB8/* aa452679 */
+#define VK_OEM_OAS_6          0xB9/* aa452679 */
+#define VK_OEM_OAS_7          0xC1/* aa452679 */
+#define VK_OEM_OAS_8          0xC2/* aa452679 */
+#define VK_OEM_OAS_9          0xC3/* aa452679 */
+#define VK_OEM_OAS_10         0xC4/* aa452679 */
+#define VK_OEM_OAS_11         0xC5/* aa452679 */
+#define VK_OEM_OAS_12         0xC6/* aa452679 */
+#define VK_OEM_OAS_13         0xC7/* aa452679 */
+#define VK_OEM_OAS_14         0xC8/* aa452679 */
+#define VK_OEM_OAS_15         0xC9/* aa452679 */
+#define VK_OEM_OAS_16         0xCA/* aa452679 */
+#define VK_OEM_OAS_17         0xCB/* aa452679 */
+#define VK_OEM_OAS_18         0xCC/* aa452679 */
+#define VK_OEM_OAS_19         0xCD/* aa452679 */
+#define VK_OEM_OAS_20         0xCE/* aa452679 */
+#define VK_OEM_OAS_21         0xCF/* aa452679 */
+#define VK_OEM_OAS_22         0xD0/* aa452679 */
+#define VK_OEM_OAS_23         0xD1/* aa452679 */
+#define VK_OEM_OAS_24         0xD2/* aa452679 */
+#define VK_OEM_OAS_25         0xD3/* aa452679 */
+#define VK_OEM_OAS_26         0xD4/* aa452679 */
+#define VK_OEM_OAS_27         0xD5/* aa452679 */
+#define VK_OEM_OAS_28         0xD6/* aa452679 */
+#define VK_OEM_OAS_29         0xD7/* aa452679 */
+#define VK_OEM_FJ_DUMMY       0xEF/* aa452679 */
+#define VK_ICO_HELP           0xE3   /* aa452679 ICO: Help key */
+#define VK_ICO_00             0xE4   /* aa452679 ICO: 00 key */
+#define VK_ICO_CLEAR          0xE6   /* aa452679 ICO */
 
 /* ------------------------------------------------------------------ */
 /* M52: keybd_event / SendInput flag and type constants.               */
@@ -1385,7 +1385,7 @@ typedef struct tagNMHDR {
 
 /* --- Windows Messages --- */
 #define WM_CANCELMODE                  0x001F         /* ms914108 */
-#define WM_CLOSE                       0x0010         /* ms914114 */
+#define WM_CLOSE                       0x0010         /* ee481752 ms914114 */
 #define WM_CREATE                      0x0001         /* ms914118 */
 #define WM_DESTROY                     0x0002         /* aa453854 */
 #define WM_ENABLE                      0x000A         /* aa453856 */

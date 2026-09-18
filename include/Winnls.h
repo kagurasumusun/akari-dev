@@ -26,13 +26,13 @@ extern "C" {
  * MultiByteToWideChar / WideCharToMultiByte pages (ms886760,
  * aa450989), which mark CP_MACCP, CP_SYMBOL and CP_THREAD_ACP as "Not
  * supported" on Windows CE; values are the fixed Win32 ABI values. */
-#define CP_ACP        0     /* ANSI code page */
-#define CP_OEMCP      1     /* OEM code page */
-#define CP_MACCP      2     /* not supported on Windows CE */
-#define CP_THREAD_ACP 3     /* not supported on Windows CE */
-#define CP_SYMBOL     42    /* not supported on Windows CE */
-#define CP_UTF7       65000 /* UTF-7 code page */
-#define CP_UTF8       65001 /* UTF-8 code page */
+#define CP_ACP        0     /* ms906416 ANSI code page */
+#define CP_OEMCP      1     /* ms906416 OEM code page */
+#define CP_MACCP      2     /* ms906416 not supported on Windows CE */
+#define CP_THREAD_ACP 3     /* ms906416 not supported on Windows CE */
+#define CP_SYMBOL     42    /* ms906416 not supported on Windows CE */
+#define CP_UTF7       65000 /* ms906416 UTF-7 code page */
+#define CP_UTF8       65001 /* ms906416 UTF-8 code page */
 
 /* MultiByteToWideChar dwFlags (names per ms886760; values are the
  * fixed Win32 ABI values). */

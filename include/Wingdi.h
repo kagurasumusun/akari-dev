@@ -955,8 +955,8 @@ typedef int (CALLBACK *FONTENUMPROC)(const LOGFONT* lpelf,
 
 /* DrawText formatting flags (the DT_TABSTOP description on the page
  * defines the tab-stop field as bits 8-15 of uFormat). */
-#define DT_TOP            0x0000
-#define DT_LEFT           0x0000
+#define DT_TOP            0x0000/* ee504972 */
+#define DT_LEFT           0x0000/* ee504972 */
 #define DT_CENTER         0x0001
 #define DT_RIGHT          0x0002
 #define DT_VCENTER        0x0004

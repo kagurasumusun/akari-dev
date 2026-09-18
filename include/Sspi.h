@@ -432,7 +432,7 @@ AKARI_CE_IMPORT SECURITY_STATUS SEC_ENTRY VerifySignature(
 /* ---- SECBUFFER_ family (11 names; R1) ---- */
 #define SECBUFFER_EMPTY                              0x0000
 #define SECBUFFER_VERSION                            0x0000
-#define SECBUFFER_DATA                               0x0001
+#define SECBUFFER_DATA                               0x0001/* ee498798 */
 #define SECBUFFER_TOKEN                              0x0002
 #define SECBUFFER_PKG_PARAMS                         0x0003
 #define SECBUFFER_MISSING                            0x0004

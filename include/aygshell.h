@@ -503,12 +503,12 @@ typedef struct tagNMRGINFO {
  * C1-DA unassigned -- recorded in winuser.h).  The VK_APP_FIRST /
  * VK_APP_LAST alias spellings are recorded here; the VK_APP keys are
  * recognized only when wrapped with VK_LWIN (winuser.h). */
-#define VK_APP1   0xC1   /* derived: WM 6.5 Keys and Key Codes */
-#define VK_APP2   0xC2
-#define VK_APP3   0xC3
-#define VK_APP4   0xC4
-#define VK_APP5   0xC5
-#define VK_APP6   0xC6
+#define VK_APP1   0xC1   /* ee505065 derived: WM 6.5 Keys and Key Codes */
+#define VK_APP2   0xC2/* ee505065 */
+#define VK_APP3   0xC3/* ee505065 */
+#define VK_APP4   0xC4/* ee505065 */
+#define VK_APP5   0xC5/* ee505065 */
+#define VK_APP6   0xC6/* ee505065 */
 /* VK_APP_FIRST = 0xC1, VK_APP_LAST = 0xC6 (WM 6.5 alias spellings,
  * recorded; not defined to avoid the WM-only duplicate set). */
 

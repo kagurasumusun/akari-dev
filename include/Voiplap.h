@@ -17,14 +17,14 @@
 /* --- Constants (tables print the values). ----------------------- */
 /* ms912601 "VOIPLAP_E_": failure codes (decimal values as printed). */
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms912601) */
-#define VOIPLAP_E_NOSERVER                   6001
-#define VOIPLAP_E_NOCREDENTIALS              6002
-#define VOIPLAP_E_CANTCONNECT                6003
-#define VOIPLAP_E_CANTAUTHENTICATESERVER     6004
-#define VOIPLAP_E_TRANSMISSIONFAILED         6005
-#define VOIPLAP_E_TIMEOUT                    6006
-#define VOIPLAP_E_INVALIDDATA                6007
-#define VOIPLAP_E_BUSY                       6008
+#define VOIPLAP_E_NOSERVER                   6001/* ms912601 */
+#define VOIPLAP_E_NOCREDENTIALS              6002/* ms912601 */
+#define VOIPLAP_E_CANTCONNECT                6003/* ms912601 */
+#define VOIPLAP_E_CANTAUTHENTICATESERVER     6004/* ms912601 */
+#define VOIPLAP_E_TRANSMISSIONFAILED         6005/* ms912601 */
+#define VOIPLAP_E_TIMEOUT                    6006/* ms912601 */
+#define VOIPLAP_E_INVALIDDATA                6007/* ms912601 */
+#define VOIPLAP_E_BUSY                       6008/* ms912601 */
 
 /* ms912602 "VOIPLAP_S_": success codes. */
 #define VOIPLAP_S_PCUNLOCKED               0

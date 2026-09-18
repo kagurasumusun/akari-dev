@@ -223,53 +223,53 @@ typedef DWORD GROUP;
  * CE pages reference these codes throughout their Return Values
  * tables (see inventory for the per-page name list). */
 #define WSABASEERR                 10000
-#define WSAEINTR                   10004
+#define WSAEINTR                   10004/* aa450263 */
 #define WSAEBADF                   10009
-#define WSAEACCES                  10013
-#define WSAEFAULT                  10014
-#define WSAEINVAL                  10022
-#define WSAEMFILE                  10024
-#define WSAEWOULDBLOCK             10035
-#define WSAEINPROGRESS             10036
-#define WSAEALREADY                10037
-#define WSAENOTSOCK                10038
-#define WSAEDESTADDRREQ            10039
-#define WSAEMSGSIZE                10040
-#define WSAEPROTOTYPE              10041
-#define WSAENOPROTOOPT             10042
-#define WSAEPROTONOSUPPORT         10043
-#define WSAESOCKTNOSUPPORT         10044
-#define WSAEOPNOTSUPP              10045
-#define WSAEPFNOSUPPORT            10046
-#define WSAEAFNOSUPPORT            10047
-#define WSAEADDRINUSE              10048
-#define WSAEADDRNOTAVAIL           10049
-#define WSAENETDOWN                10050
-#define WSAENETUNREACH             10051
-#define WSAENETRESET               10052
-#define WSAECONNABORTED            10053
-#define WSAECONNRESET              10054
-#define WSAENOBUFS                 10055
-#define WSAEISCONN                 10056
-#define WSAENOTCONN                10057
-#define WSAESHUTDOWN               10058
+#define WSAEACCES                  10013/* aa450263 */
+#define WSAEFAULT                  10014/* aa450263 */
+#define WSAEINVAL                  10022/* aa450263 */
+#define WSAEMFILE                  10024/* aa450263 */
+#define WSAEWOULDBLOCK             10035/* aa450263 */
+#define WSAEINPROGRESS             10036/* aa450263 */
+#define WSAEALREADY                10037/* aa450263 */
+#define WSAENOTSOCK                10038/* aa450263 */
+#define WSAEDESTADDRREQ            10039/* aa450263 */
+#define WSAEMSGSIZE                10040/* aa450263 */
+#define WSAEPROTOTYPE              10041/* aa450263 */
+#define WSAENOPROTOOPT             10042/* aa450263 */
+#define WSAEPROTONOSUPPORT         10043/* aa450263 */
+#define WSAESOCKTNOSUPPORT         10044/* aa450263 */
+#define WSAEOPNOTSUPP              10045/* aa450263 */
+#define WSAEPFNOSUPPORT            10046/* aa450263 */
+#define WSAEAFNOSUPPORT            10047/* aa450263 */
+#define WSAEADDRINUSE              10048/* aa450263 */
+#define WSAEADDRNOTAVAIL           10049/* aa450263 */
+#define WSAENETDOWN                10050/* aa450263 */
+#define WSAENETUNREACH             10051/* aa450263 */
+#define WSAENETRESET               10052/* aa450263 */
+#define WSAECONNABORTED            10053/* aa450263 */
+#define WSAECONNRESET              10054/* aa450263 */
+#define WSAENOBUFS                 10055/* aa450263 */
+#define WSAEISCONN                 10056/* aa450263 */
+#define WSAENOTCONN                10057/* aa450263 */
+#define WSAESHUTDOWN               10058/* aa450263 */
 #define WSAETOOMANYREFS            10059
-#define WSAETIMEDOUT               10060
-#define WSAECONNREFUSED            10061
+#define WSAETIMEDOUT               10060/* aa450263 */
+#define WSAECONNREFUSED            10061/* aa450263 */
 #define WSAELOOP                   10062
 #define WSAENAMETOOLONG            10063
-#define WSAEHOSTDOWN               10064
-#define WSAEHOSTUNREACH            10065
+#define WSAEHOSTDOWN               10064/* aa450263 */
+#define WSAEHOSTUNREACH            10065/* aa450263 */
 #define WSAENOTEMPTY               10066
-#define WSAEPROCLIM                10067
+#define WSAEPROCLIM                10067/* aa450263 */
 #define WSAEUSERS                  10068
 #define WSAEDQUOT                  10069
 #define WSAESTALE                  10070
 #define WSAEREMOTE                 10071
-#define WSASYSNOTREADY             10091
-#define WSAVERNOTSUPPORTED         10092
-#define WSANOTINITIALISED          10093
-#define WSAEDISCON                 10101
+#define WSASYSNOTREADY             10091/* aa450263 */
+#define WSAVERNOTSUPPORTED         10092/* aa450263 */
+#define WSANOTINITIALISED          10093/* aa450263 */
+#define WSAEDISCON                 10101/* aa450263 */
 #define WSAENOMORE                 10102
 #define WSAECANCELLED              10103
 #define WSAEINVALIDPROCTABLE       10104
@@ -277,14 +277,14 @@ typedef DWORD GROUP;
 #define WSAEPROVIDERFAILEDINIT     10106
 #define WSASYSCALLFAILURE          10107
 #define WSASERVICE_NOT_FOUND       10108
-#define WSATYPE_NOT_FOUND          10109
+#define WSATYPE_NOT_FOUND          10109/* aa450263 */
 #define WSA_E_NO_MORE              10110
 #define WSA_E_CANCELLED            10111
 #define WSAEREFUSED                10112
-#define WSAHOST_NOT_FOUND          11001
-#define WSATRY_AGAIN               11002
-#define WSANO_RECOVERY             11003
-#define WSANO_DATA                 11004
+#define WSAHOST_NOT_FOUND          11001/* aa450263 */
+#define WSATRY_AGAIN               11002/* aa450263 */
+#define WSANO_RECOVERY             11003/* aa450263 */
+#define WSANO_DATA                 11004/* aa450263 */
 #define WSA_QOS_RECEIVERS          11005
 #define WSA_QOS_SENDERS            11006
 #define WSA_QOS_NO_SENDERS         11007
