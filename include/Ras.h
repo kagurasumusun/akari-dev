@@ -292,15 +292,19 @@ typedef struct tagRASDEVINFO {
  * CE 1.0+; Ras.h.  Passed to RasGetProjectionInfo to select the
  * protocol of interest.  The archive print drops the commas after
  * RASP_PppIp and RASP_PppCcp (printing artifact; commas restored).
- * Windows CE supports the RASP_PppIp value. */
+ * Windows CE supports the RASP_PppIp value.
+ * aa450856 "RASPROJECTION" (Windows CE 5.0) prints one more
+ * enumerator, RASP_PppIpV6 = 0x8057, absent from the older archive
+ * print; added with that page as its evidence. */
 typedef enum _RASPROJECTION {
-    RASP_Amb    = 0x10000,
-    RASP_PppNbf = 0x803F,
-    RASP_PppIpx = 0x802B,
-    RASP_PppIp  = 0x8021,
-    RASP_PppCcp = 0x80FD,
-    RASP_PppLcp = 0xC021,
-    RASP_Slip   = 0x20000
+    RASP_Amb     = 0x10000,
+    RASP_PppNbf  = 0x803F,
+    RASP_PppIpx  = 0x802B,
+    RASP_PppIp   = 0x8021,
+    RASP_PppIpV6 = 0x8057,
+    RASP_PppCcp  = 0x80FD,
+    RASP_PppLcp  = 0xC021,
+    RASP_Slip    = 0x20000
 } RASPROJECTION, *LPRASPROJECTION;
 
 /* wcesdkrRASPPPIP "RASPPPIP" (+ CE 5.0 twin aa450854): struct

@@ -17,6 +17,7 @@
  * (tools/decl-types.py). ----------------------------- */
 
 /* wceddkPDCARD_ADAPTER_INFO: page-printed definition (Windows CE OS). */
+/* ms922799 "PDCARD_ADAPTER_INFO" (Windows Embedded CE 6.0 and later) page print. */
 typedef struct _PDCARD_ADAPTER_INFO {
     UINT32 uMemGranularity;
     UINT8 fAdapterCaps;
@@ -25,12 +26,14 @@ typedef struct _PDCARD_ADAPTER_INFO {
 } PDCARD_ADAPTER_INFO;
 
 /* wceddkPDCARD_POWER_ENTRY: page-printed definition (Windows CE OS). */
+/* ms922818 "PDCARD_POWER_ENTRY" (Windows Embedded CE 6.0 and later) page print. */
 typedef struct _PDCARD_POWER_ENTRY {
     UINT8 uPowerLevel;
     UINT8 fSupply;
 } PDCARD_POWER_ENTRY;
 
 /* wceddkPDCARD_SOCKET_STATE: page-printed definition (Windows CE OS). */
+/* ms922829 "PDCARD_SOCKET_STATE" (Windows Embedded CE 6.0 and later) page print. */
 typedef struct _PDCARD_SOCKET_STATE {
     UINT8 fSocketCaps;
     UINT8 fInterruptEvents;
@@ -44,6 +47,7 @@ typedef struct _PDCARD_SOCKET_STATE {
 } PDCARD_SOCKET_STATE;
 
 /* wceddkPDCARD_WINDOW_INFO: page-printed definition (Windows CE OS). */
+/* ms922842 "PDCARD_WINDOW_INFO" (Windows Embedded CE 6.0 and later) page print. */
 typedef struct _PDCARD_WINDOW_INFO {
     UINT16 fSockets;
     UINT16 fWindowCaps;
@@ -67,6 +71,7 @@ typedef struct _PDCARD_WINDOW_INFO {
 } PDCARD_WINDOW_INFO;
 
 /* wceddkPDCARD_WINDOW_STATE: page-printed definition (Windows CE OS). */
+/* ms922856 "PDCARD_WINDOW_STATE" (Windows Embedded CE 6.0 and later) page print. */
 typedef struct _PDCARD_WINDOW_STATE {
     UINT16 uSocket;
     UINT8 fState;

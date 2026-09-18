@@ -6,6 +6,8 @@
 #define AKARI_RULES_H
 
 /* "FW_RULE_MASKS": print (explicit values; repaired comma). */
+/* aa450390 "FW_RULE_MASKS" (Windows CE 5.0 and later) page print
+ * (the print drops the comma after FWM_PROTOCOL = 0x20; restored). */
 typedef enum _FW_RULE_MASKS {
     FWM_PRIVATE_HOST = 0x01,
     FWM_PUBLIC_HOST = 0x02,
