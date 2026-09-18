@@ -703,6 +703,8 @@ include/Netui.h	DisconnectDialog	ee493832	match
 include/Netui.h	GetIPAddress	ee493896	match	
 include/Netui.h	AdapterIPProperties	ee494642	match	
 include/New.h	_set_new_mode	ms861451	match	
+include/Notifext.hxx	CeNotifyPublic_InitializeUI	ms908100	match	
+include/Notifext.hxx	CeNotifyPublic_Uninitialize	ms908101	match	
 include/Notify.h	CeClearUserNotification		no-pageid	
 include/Notify.h	CeGetUserNotification	ms908074	no-print-on-page	
 include/Notify.h	CeGetUserNotificationHandles	ms908076	no-print-on-page	

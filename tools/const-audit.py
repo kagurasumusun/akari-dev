@@ -171,7 +171,7 @@ def main():
     for dirpath in ("include", "include/oak"):
         d = os.path.join(ROOT, dirpath)
         for fn in sorted(os.listdir(d)):
-            if not fn.endswith((".h", ".hpp")):
+            if not fn.endswith((".h", ".hpp", ".hxx")):
                 continue
             lines = open(os.path.join(d, fn), encoding="utf-8",
                          errors="replace").read().splitlines()

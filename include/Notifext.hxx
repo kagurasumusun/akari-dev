@@ -51,8 +51,11 @@ void CeNotifyPrivate_Unlock(void);
 /* ms905411: page-printed prototype (Windows CE 2.10 and later.). */
 int CeNotifyPublic_FilterEvent(DWORD dwEvent);
 
-/* ms905413: page-printed prototype (Windows CE 2.10 and later.). */
-int CeNotifyPublic_Initialize(HINSTANCE hInst, HWND hwndUI);
+/* ms905413 / ms908095: page-printed prototype (Windows CE 2.10 and
+ * later.).  The page prints "int CeNotifyPublic_Initialize(void);" --
+ * an earlier splice had wrongly copied InitializeUI's parameter list
+ * here; corrected to the printed void signature. */
+int CeNotifyPublic_Initialize(void);
 
 /* ms905414: page-printed prototype (Windows CE 2.10 and later.). */
 void CeNotifyPublic_NewPacket(CEOID oidRecord);
@@ -144,5 +147,40 @@ union PersistentPacket {
     };
     unsigned char packet_start[1];
 };
+
+/* ms911890 NotifyPacket: page print
+ * struct NotifyPacket { NotifyPacket* pNext; NotifyPacket* pPrev;
+ * unsigned int uiPacketType; CEOID oidRecord; HICON hIcon;
+ * HICON hBigIcon; int fHasIcon; HWND hDlg; void* pExtraUIData;
+ * PersistentPacket* sPacket; };
+ * (Windows CE 2.10 and later.; placed after PersistentPacket, which
+ * it references) */
+struct NotifyPacket {
+    /* elaborated 'struct' spellings: the page prints the C++ form
+     * (Notifext.hxx is C++); the struct-keyword form is equivalent
+     * there and keeps this header C-hostcheck-safe */
+    struct NotifyPacket *pNext;
+    struct NotifyPacket *pPrev;
+    unsigned int uiPacketType;
+    CEOID oidRecord;
+    HICON hIcon;
+    HICON hBigIcon;
+    int fHasIcon;
+    HWND hDlg;
+    void *pExtraUIData;
+    union PersistentPacket *sPacket;
+};
+
+/* ms908090 CeNotifyPrivate_TranslateOID: print
+ * `NotifyPacket* CeNotifyPrivate_TranslateOID(CEOIDoid);`
+ * (Windows CE 2.10 and later. -- twin ms905408; Link Library: not
+ * stated on any Notifext page) */
+struct NotifyPacket *CeNotifyPrivate_TranslateOID(CEOID oid);
+
+/* ms908092 CeNotifyPublic_DisposeOfPacket: print
+ * `void CeNotifyPublic_DisposeOfPacket( NotifyPacket* pPacket);`
+ * (Windows CE 2.10 and later. -- twin ms905410; Link Library: not
+ * stated on any Notifext page) */
+void CeNotifyPublic_DisposeOfPacket(struct NotifyPacket *pPacket);
 
 #endif /* AKARI_NOTIFEXT_HXX_ */
