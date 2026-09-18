@@ -28,6 +28,8 @@
 LIBRARY coredll.dll
 EXPORTS
 
+  abs
+  acos
   ActivateDevice
   ActivateDeviceEx
   ActivateKeyboardLayout
@@ -37,6 +39,7 @@ EXPORTS
   AdvertiseInterface
   AllocPhysMem
   AlphaBlend
+  asin
   BatteryDrvrGetLevels
   BatteryDrvrSupportsChangeNotification
   BatteryGetLifeTimeInfo
@@ -45,6 +48,7 @@ EXPORTS
   BitBlt
   CacheRangeFlush
   CacheSync
+  calloc
   CaptureDumpFileOnDevice
   CeAllocAsynchronousBuffer
   CeAllocDuplicateBuffer
@@ -93,6 +97,7 @@ EXPORTS
   CeGetUserNotificationPreferences
   CeHandleAppNotifications
   CeHeapCreate
+  ceil
   CeImpersonateCurrentProcess
   CeLogData
   CeLogGetZones
@@ -114,8 +119,8 @@ EXPORTS
   CeReadRecordPropsEx
   CeRegGetInfo
   CeRegGetNotificationInfo
-  CeRegTestSetValueW
   CeRegisterReplNotification
+  CeRegTestSetValueW
   CeRemoteHeapCreate
   CeRemoteHeapTranslatePointer
   CeRunAppAtEvent
@@ -158,6 +163,7 @@ EXPORTS
   CheckDlgButton
   CheckPassword
   CheckRemoteDebuggerPresent
+  clearerr
   ClientToScreen
   CloseHandle
   CloseMsgQueue
@@ -214,8 +220,8 @@ EXPORTS
   CryptDuplicateHash
   CryptDuplicateKey
   CryptEncrypt
-  CryptEnumProviderTypesW
   CryptEnumProvidersW
+  CryptEnumProviderTypesW
   CryptExportKey
   CryptFindLocalizedName
   CryptGenKey
@@ -240,16 +246,16 @@ EXPORTS
   CryptReleaseContext
   CryptSetHashParam
   CryptSetKeyParam
-  CryptSetProvParam
   CryptSetProviderExW
   CryptSetProviderW
+  CryptSetProvParam
   CryptSignHashW
   CryptUnprotectData
   CryptVerifySignatureW
+  DataHandler
   DDKReg_GetIsrInfo
   DDKReg_GetPciInfo
   DDKReg_GetWindowInfo
-  DataHandler
   DeactivateDevice
   DebugActiveProcess
   DebugActiveProcessStop
@@ -269,18 +275,19 @@ EXPORTS
   DisableThreadLibraryCalls
   DisassociateSession
   DispatchMessageW
+  div
+  DrawEdge
+  DrawFocusRect
+  DrawTextW
   DrWatsonClear
   DrWatsonFlush
   DrWatsonGetSize
   DrWatsonReadData
   DrWatsonWriteData
-  DrawEdge
-  DrawFocusRect
-  DrawTextW
   DuplicateHandle
-  EditSession
   EditorDeregister
   EditorInitialize
+  EditSession
   Ellipse
   EnableEUDC
   EnumDevices
@@ -298,9 +305,15 @@ EXPORTS
   ExcludeClipRect
   ExitProcess
   ExitThread
+  exp
   ExtCreateRegion
   ExtEscape
   ExtTextOutW
+  fabs
+  feof
+  ferror
+  fflush
+  fgetpos
   FileSystemPowerFunction
   FileTimeToLocalFileTime
   FileTimeToSystemTime
@@ -315,15 +328,24 @@ EXPORTS
   FindNextFileW
   FindResource
   FindResourceW
+  floor
   FlushFileBuffers
   FlushInstructionCache
   FlushViewOfFile
+  fmod
   ForcePageout
   ForwardDeviceIoControl
+  fread
+  free
   FreeIntChainHandler
   FreeLibrary
   FreeLibraryAndExitThread
   FreePhysMem
+  frexp
+  fseek
+  fsetpos
+  ftell
+  fwrite
   GetBkColor
   GetBkMode
   GetCallerProcess
@@ -337,8 +359,8 @@ EXPORTS
   GetClipBox
   GetClipRgn
   GetCommandLineW
-  GetCurrentFT
   GetCurrentFiber
+  GetCurrentFT
   GetCurrentObject
   GetCurrentPermissions
   GetCurrentPositionEx
@@ -348,10 +370,10 @@ EXPORTS
   GetCurrentThreadId
   GetDC
   GetDCEx
-  GetDIBColorTable
   GetDeviceCaps
   GetDevicePower
   GetDeviceUniqueID
+  GetDIBColorTable
   GetDirectCallerProcessId
   GetDiskFreeSpaceExW
   GetDllVersion
@@ -398,9 +420,9 @@ EXPORTS
   GetProp
   GetPropW
   GetQueueStatus
-  GetROP2
   GetRegionData
   GetRgnBox
+  GetROP2
   GetServiceHandle
   GetStdioPathW
   GetStockObject
@@ -488,438 +510,11 @@ EXPORTS
   KernelIoControl
   KernelLibIoControl
   KeybdGetDeviceInfo
+  KLibAllocShareMem
+  KLibFreeShareMem
+  labs
   LAPCreateEnrollmentConfigDialog
   LASSReloadConfig
-  LineTo
-  LoadDriver
-  LoadFSD
-  LoadIntChainHandler
-  LoadKernelLibrary
-  LoadKeyboardLayoutW
-  LoadLibraryExW
-  LoadLibraryW
-  LoadResource
-  LocalAlloc
-  LocalFileTimeToFileTime
-  LocalFree
-  LocalReAlloc
-  LocalSize
-  LockFileEx
-  LockPages
-  LockResource
-  MapCallerPtr
-  MapPtrToProcess
-  MapViewOfFile
-  MapWindowPoints
-  MaskBlt
-  MatchTarget
-  MatchUser
-  MonitorFromPoint
-  MonitorFromRect
-  MonitorFromWindow
-  MoveFileW
-  MoveToEx
-  MultiByteToWideChar
-  NKCreateStaticMapping
-  NKForceCleanBoot
-  NKVirtualSetAttributes
-  NLedGetDeviceInfo
-  NLedSetDevice
-  NotifyWinUserSystem
-  OffsetRgn
-  OffsetViewportOrgEx
-  OpenDeviceKey
-  OpenEventW
-  OpenMsgQueue
-  OpenProcess
-  OpenThread
-  OpenWatchDogTimer
-  PageOutModule
-  PatBlt
-  PeekMessageW
-  PlatformManageSystemPower
-  PlatformMapPowerStateHint
-  PlatformResumeSystem
-  PlatformValidatePMRegistry
-  PlaySoundW
-  Polygon
-  Polyline
-  PostMessageW
-  PostQuitMessage
-  PostThreadMessageW
-  PowerOffSystem
-  PowerPolicyNotify
-  ProfileCaptureStatus
-  ProfileStart
-  ProfileStartEx
-  ProfileStop
-  PtInRegion
-  PulseEvent
-  QueryInfoSession
-  QueryInstructionSet
-  QueryPerformanceCounter
-  QueryPerformanceFrequency
-  RaiseException
-  Random
-  RasDeleteEntry
-  RasDevConfigDialogEditW
-  RasDial
-  RasEnumConnections
-  RasEnumDevicesW
-  RasEnumEntries
-  RasGetConnectStatus
-  RasGetDispPhoneNumW
-  RasGetEapConnectionData
-  RasGetEapUserData
-  RasGetEntryDialParams
-  RasGetEntryProperties
-  RasGetLinkStatistics
-  RasGetProjectionInfoW
-  RasHangUp
-  RasIOControl
-  RasRenameEntry
-  RasSetEapConnectionData
-  RasSetEapUserData
-  RasSetEntryDialParams
-  RasSetEntryProperties
-  RasValidateEntryName
-  ReadFile
-  ReadMsgQueue
-  ReadMsgQueueEx
-  ReadProcessMemory
-  RealizePalette
-  RectInRegion
-  RectVisible
-  Rectangle
-  RedrawWindow
-  RefreshWatchDogTimer
-  RegCloseKey
-  RegCloseKeyW
-  RegCopyFile
-  RegCreateKeyExW
-  RegDeleteKeyW
-  RegDeleteValueW
-  RegEnumKeyExW
-  RegEnumValueW
-  RegFlushKey
-  RegFlushKeyW
-  RegOpenKeyExW
-  RegQueryInfoKeyW
-  RegQueryValueExW
-  RegReplaceKey
-  RegRestoreFile
-  RegSaveKey
-  RegSetValueExW
-  RegisterAPISet
-  RegisterDevice
-  RegisterEditor
-  RegisterPowerRelationship
-  RegisterService
-  RegisterWindowMessageW
-  ReleaseCapture
-  ReleaseDC
-  ReleasePowerRelationship
-  ReleasePowerRequirement
-  ReleaseSemaphore
-  RemoveDirectoryW
-  RemoveFontResourceW
-  RemoveProp
-  RemovePropW
-  RemoveVectoredExceptionHandler
-  ReplChangeSyncSettings
-  ReplCheckpoint
-  ReplCloseSync
-  ReplFindNextChange
-  ReplGetOidStatus
-  ReplGetSyncState
-  ReplOpenSync
-  ReportFault
-  RequestBluetoothNotifications
-  RequestDeviceNotifications
-  RequestPowerNotifications
-  ResetEvent
-  ResourceCreateList
-  ResourceRelease
-  ResourceRequest
-  RestoreDC
-  ResumeThread
-  RoundRect
-  SHAddToRecentDocs
-  SHCreateShortcut
-  SHCreateShortcutEx
-  SHGetShortcutTarget
-  SHGetSpecialFolderPath
-  SHLoadDIBitmap
-  SaveDC
-  ScreenToClient
-  ScrollDC
-  ScrollWindowEx
-  SecureZeroMemory
-  SelectClipRgn
-  SelectObject
-  SelectPalette
-  SendMessageTimeout
-  SendMessageW
-  SendNotifyMessageW
-  ServiceAddPort
-  ServiceClosePort
-  ServiceIoControl
-  ServiceUnbindPorts
-  SetAPIErrorHandler
-  SetBitmapBits
-  SetBkColor
-  SetBkMode
-  SetBrushOrgEx
-  SetCapture
-  SetCleanRebootFlag
-  SetCurrentUser
-  SetDIBColorTable
-  SetDIBitsToDevice
-  SetDaylightTime
-  SetDbgZone
-  SetDevicePower
-  SetEndOfFile
-  SetEvent
-  SetEventData
-  SetFileAttributesW
-  SetFilePointer
-  SetFileTime
-  SetInterruptEvent
-  SetKMode
-  SetLastError
-  SetLayout
-  SetLocalTime
-  SetOOMEvent
-  SetPaletteEntries
-  SetPasswordStatus
-  SetPixel
-  SetPowerRequirement
-  SetProcPermissions
-  SetProp
-  SetPropW
-  SetROP2
-  SetRectRgn
-  SetStdioPathW
-  SetStretchBltMode
-  SetSystemMemoryDivision
-  SetSystemPowerState
-  SetSystemTime
-  SetTextAlign
-  SetTextCharacterExtra
-  SetTextColor
-  SetThreadPriority
-  SetTimeZoneInformation
-  SetUserData
-  SetViewportOrgEx
-  SetWindowOrgEx
-  ShellExecuteEx
-  SignalStarted
-  SipEnumIM
-  SipGetCurrentIM
-  SipGetInfo
-  SipRegisterNotification
-  SipSetCurrentIM
-  SipSetDefaultRect
-  SipSetInfo
-  SipShowIM
-  SipStatus
-  SizeofResource
-  Sleep
-  SleepTillTick
-  StartWatchDogTimer
-  StopBluetoothNotifications
-  StopDeviceNotifications
-  StopPowerNotifications
-  StopWatchDogTimer
-  StretchBlt
-  StretchDIBits
-  StringCbLengthW
-  SuspendThread
-  SwitchToFiber
-  SystemParametersInfoW
-  SystemTimeToFileTime
-  TSPI_lineAccept
-  TSPI_lineAddToConference
-  TSPI_lineAnswer
-  TSPI_lineBlindTransfer
-  TSPI_lineClose
-  TSPI_lineCloseCall
-  TSPI_lineCompleteTransfer
-  TSPI_lineConfigDialogEdit
-  TSPI_lineDevSpecific
-  TSPI_lineDial
-  TSPI_lineDrop
-  TSPI_lineForward
-  TSPI_lineGenerateDigits
-  TSPI_lineGenerateTone
-  TSPI_lineGetAddressCaps
-  TSPI_lineGetAddressID
-  TSPI_lineGetAddressStatus
-  TSPI_lineGetCallAddressID
-  TSPI_lineGetCallInfo
-  TSPI_lineGetCallStatus
-  TSPI_lineGetDevCaps
-  TSPI_lineGetDevConfig
-  TSPI_lineGetExtensionID
-  TSPI_lineGetID
-  TSPI_lineGetIcon
-  TSPI_lineGetLineDevStatus
-  TSPI_lineGetNumAddressIDs
-  TSPI_lineHold
-  TSPI_lineMakeCall
-  TSPI_lineMonitorDigits
-  TSPI_lineMonitorMedia
-  TSPI_lineNegotiateExtVersion
-  TSPI_lineNegotiateTSPIVersion
-  TSPI_lineOpen
-  TSPI_linePickup
-  TSPI_linePrepareAddToConference
-  TSPI_lineRedirect
-  TSPI_lineReleaseUserUserInfo
-  TSPI_lineRemoveFromConference
-  TSPI_lineSendUserUserInfo
-  TSPI_lineSetCallParams
-  TSPI_lineSetDefaultMediaDetection
-  TSPI_lineSetDevConfig
-  TSPI_lineSetMediaMode
-  TSPI_lineSetStatusMessages
-  TSPI_lineSetTerminal
-  TSPI_lineSetupConference
-  TSPI_lineSetupTransfer
-  TSPI_lineSwapHold
-  TSPI_lineUnhold
-  TSPI_phoneClose
-  TSPI_phoneConfigDialog
-  TSPI_phoneDevSpecific
-  TSPI_phoneGetDevCaps
-  TSPI_phoneGetExtensionID
-  TSPI_phoneGetGain
-  TSPI_phoneGetHookSwitch
-  TSPI_phoneGetID
-  TSPI_phoneGetIcon
-  TSPI_phoneGetRing
-  TSPI_phoneGetStatus
-  TSPI_phoneGetVolume
-  TSPI_phoneNegotiateExtVersion
-  TSPI_phoneNegotiateTSPIVersion
-  TSPI_phoneOpen
-  TSPI_phoneSelectExtVersion
-  TSPI_phoneSetGain
-  TSPI_phoneSetHookSwitch
-  TSPI_phoneSetRing
-  TSPI_phoneSetStatusMessages
-  TSPI_phoneSetVolume
-  TSPI_providerCreateLineDevice
-  TSPI_providerCreatePhoneDevice
-  TSPI_providerEnumDevices
-  TSPI_providerInit
-  TSPI_providerInstall
-  TSPI_providerRemove
-  TSPI_providerRemoveDevice
-  TSPI_providerShutdown
-  TerminateProcess
-  TerminateThread
-  TimeoutSession
-  TlsAlloc
-  TlsFree
-  TlsGetValue
-  TlsSetValue
-  TouchCalibrate
-  TranslateCharsetInfo
-  TranslateMessage
-  TransparentBlt
-  TransparentImage
-  TryEnterCriticalSection
-  UnlockFileEx
-  UnlockPages
-  UnmapViewOfFile
-  UpdateWindow
-  ValidateRect
-  ValidateRgn
-  VerQueryValueW
-  VerifyUser
-  VerifyUserStart
-  VerifyUserStop
-  VerifyUserToTop
-  VirtualAlloc
-  VirtualAllocCopyEx
-  VirtualAllocEx
-  VirtualCopy
-  VirtualCopyEx
-  VirtualFree
-  VirtualFreeEx
-  VirtualProtect
-  VirtualProtectEx
-  VirtualQuery
-  VirtualQueryEx
-  VirtualSetAttributes
-  VirtualSetAttributesEx
-  VirtualSetPageFlags
-  WNetAddConnection3W
-  WNetCancelConnection2W
-  WNetCloseEnum
-  WNetConnectionDialog1W
-  WNetDisconnectDialog
-  WNetDisconnectDialog1W
-  WNetEnumResourceW
-  WNetGetConnectionW
-  WNetGetUniversalNameW
-  WNetGetUserW
-  WNetOpenEnumW
-  WaitForAPIReady
-  WaitForDebugEvent
-  WaitForSingleObject
-  WideCharToMultiByte
-  WriteDebugLED
-  WriteFile
-  WriteMsgQueue
-  _cabs
-  _chgsign
-  _copysign
-  _ecvt
-  _fcvt
-  _fileno
-  _finite
-  _flushall
-  _fpclass
-  _fpieee_flt
-  _fpreset
-  _gcvt
-  _hypot
-  _isnan
-  _logb
-  _memccpy
-  _memicmp
-  _msize
-  _nextafter
-  _scalb
-  _setmode
-  _statusfp
-  _swab
-  _wfdopen
-  abs
-  acos
-  asin
-  calloc
-  ceil
-  clearerr
-  div
-  exp
-  fabs
-  feof
-  ferror
-  fflush
-  fgetpos
-  floor
-  fmod
-  fread
-  free
-  frexp
-  fseek
-  fsetpos
-  ftell
-  fwrite
-  labs
   ldexp
   ldiv
   lineAccept
@@ -946,8 +541,8 @@ EXPORTS
   lineGetConfRelatedCalls
   lineGetDevCaps
   lineGetDevConfig
-  lineGetID
   lineGetIcon
+  lineGetID
   lineGetLineDevStatus
   lineGetMessage
   lineGetNewCalls
@@ -985,11 +580,35 @@ EXPORTS
   lineSetupTransfer
   lineShutdown
   lineSwapHold
+  LineTo
   lineTranslateAddress
   lineTranslateDialog
   lineUnhold
+  LoadDriver
+  LoadFSD
+  LoadIntChainHandler
+  LoadKernelLibrary
+  LoadKeyboardLayoutW
+  LoadLibraryExW
+  LoadLibraryW
+  LoadResource
+  LocalAlloc
+  LocalFileTimeToFileTime
+  LocalFree
+  LocalReAlloc
+  LocalSize
+  LockFileEx
+  LockPages
+  LockResource
   longjmp
   malloc
+  MapCallerPtr
+  MapPtrToProcess
+  MapViewOfFile
+  MapWindowPoints
+  MaskBlt
+  MatchTarget
+  MatchUser
   mbstowcs
   memmove
   mixerClose
@@ -1003,15 +622,45 @@ EXPORTS
   mixerOpen
   mixerSetControlDetails
   modf
+  MonitorFromPoint
+  MonitorFromRect
+  MonitorFromWindow
   mouse_event
+  MoveFileW
+  MoveToEx
+  MultiByteToWideChar
+  NKCreateStaticMapping
+  NKForceCleanBoot
+  NKrdmsr
+  NKRegCloseKey
+  NKRegCreateKeyEx
+  NKRegOpenKeyEx
+  NKRegQueryValueEx
+  NKRegSetValueEx
+  NKVirtualSetAttributes
+  NKwrmsr
+  NLedGetDeviceInfo
+  NLedSetDevice
+  NotifyWinUserSystem
+  OffsetRgn
+  OffsetViewportOrgEx
+  OpenDeviceKey
+  OpenEventW
+  OpenMsgQueue
+  OpenProcess
+  OpenThread
+  OpenWatchDogTimer
+  PageOutModule
+  PatBlt
+  PeekMessageW
   phoneClose
   phoneConfigDialog
   phoneDevSpecific
   phoneGetDevCaps
   phoneGetGain
   phoneGetHookSwitch
-  phoneGetID
   phoneGetIcon
+  phoneGetID
   phoneGetMessage
   phoneGetRing
   phoneGetStatus
@@ -1027,17 +676,342 @@ EXPORTS
   phoneSetStatusMessages
   phoneSetVolume
   phoneShutdown
+  PlatformManageSystemPower
+  PlatformMapPowerStateHint
+  PlatformResumeSystem
+  PlatformValidatePMRegistry
+  PlaySoundW
+  Polygon
+  Polyline
+  PostMessageW
+  PostQuitMessage
+  PostThreadMessageW
   pow
+  PowerOffSystem
+  PowerPolicyNotify
+  ProfileCaptureStatus
+  ProfilerHitEx
+  ProfileStart
+  ProfileStartEx
+  ProfileStop
+  PtInRegion
+  PulseEvent
   qsort
+  QueryInfoSession
+  QueryInstructionSet
+  QueryPerformanceCounter
+  QueryPerformanceFrequency
+  RaiseException
   rand
+  Random
+  RasDeleteEntry
+  RasDevConfigDialogEditW
+  RasDial
+  RasEnumConnections
+  RasEnumDevicesW
+  RasEnumEntries
+  RasGetConnectStatus
+  RasGetDispPhoneNumW
+  RasGetEapConnectionData
+  RasGetEapUserData
+  RasGetEntryDialParams
+  RasGetEntryProperties
+  RasGetLinkStatistics
+  RasGetProjectionInfoW
+  RasHangUp
+  RasIOControl
+  RasRenameEntry
+  RasSetEapConnectionData
+  RasSetEapUserData
+  RasSetEntryDialParams
+  RasSetEntryProperties
+  RasValidateEntryName
+  ReadFile
+  ReadGenericData
+  ReadMsgQueue
+  ReadMsgQueueEx
+  ReadProcessMemory
+  ReadRegData
+  RealizePalette
   realloc
+  Rectangle
+  RectInRegion
+  RectVisible
+  RedrawWindow
+  RefreshWatchDogTimer
+  RegCloseKey
+  RegCloseKeyW
+  RegCopyFile
+  RegCreateKeyExW
+  RegDeleteKeyW
+  RegDeleteValueW
+  RegEnumKeyExW
+  RegEnumValueW
+  RegFlushKey
+  RegFlushKeyW
+  RegisterAPISet
+  RegisterDevice
+  RegisterEditor
+  RegisterPowerRelationship
+  RegisterService
+  RegisterWindowMessageW
+  RegistryOperation
+  RegOpenKeyExW
+  RegQueryInfoKeyW
+  RegQueryValueExW
+  RegReplaceKey
+  RegRestoreFile
+  RegSaveKey
+  RegSetValueExW
+  ReleaseCapture
+  ReleaseDC
+  ReleasePowerRelationship
+  ReleasePowerRequirement
+  ReleaseSemaphore
+  RemoveDirectoryW
+  RemoveFontResourceW
+  RemoveProp
+  RemovePropW
+  RemoveVectoredExceptionHandler
+  ReplChangeSyncSettings
+  ReplCheckpoint
+  ReplCloseSync
+  ReplFindNextChange
+  ReplGetOidStatus
+  ReplGetSyncState
+  ReplOpenSync
+  ReportFault
+  RequestBluetoothNotifications
+  RequestDeviceNotifications
+  RequestPowerNotifications
+  ResetEvent
+  ResourceCreateList
+  ResourceRelease
+  ResourceRequest
+  RestoreDC
+  ResumeThread
+  RoundRect
+  SaveDC
+  ScreenToClient
+  ScrollDC
+  ScrollWindowEx
+  SecureZeroMemory
+  SelectClipRgn
+  SelectObject
+  SelectPalette
+  SendMessageTimeout
+  SendMessageW
+  SendNotifyMessageW
+  ServiceAddPort
+  ServiceClosePort
+  ServiceIoControl
+  ServiceUnbindPorts
+  SetAPIErrorHandler
+  SetBitmapBits
+  SetBkColor
+  SetBkMode
+  SetBrushOrgEx
+  SetCapture
+  SetCleanRebootFlag
+  SetCurrentUser
+  SetDaylightTime
+  SetDbgZone
+  SetDevicePower
+  SetDIBColorTable
+  SetDIBitsToDevice
+  SetEndOfFile
+  SetEvent
+  SetEventData
+  SetFileAttributesW
+  SetFilePointer
+  SetFileTime
+  SetInterruptEvent
   setjmp
+  SetKMode
+  SetLastError
+  SetLayout
+  SetLocalTime
+  SetOOMEvent
+  SetPaletteEntries
+  SetPasswordStatus
+  SetPixel
+  SetPowerRequirement
+  SetProcPermissions
+  SetProp
+  SetPropW
+  SetRectRgn
+  SetROP2
+  SetStdioPathW
+  SetStretchBltMode
+  SetSystemMemoryDivision
+  SetSystemPowerState
+  SetSystemTime
+  SetTextAlign
+  SetTextCharacterExtra
+  SetTextColor
+  SetThreadPriority
+  SetTimeZoneInformation
+  SetUserData
   setvbuf
+  SetViewportOrgEx
+  SetWindowOrgEx
+  SHAddToRecentDocs
+  SHCreateShortcut
+  SHCreateShortcutEx
+  ShellExecuteEx
+  SHGetShortcutTarget
+  SHGetSpecialFolderPath
+  SHLoadDIBitmap
+  SignalStarted
+  SipEnumIM
+  SipGetCurrentIM
+  SipGetInfo
+  SipRegisterNotification
+  SipSetCurrentIM
+  SipSetDefaultRect
+  SipSetInfo
+  SipShowIM
+  SipStatus
+  SizeofResource
+  Sleep
+  SleepTillTick
   sndPlaySoundW
   sqrt
   srand
+  StartWatchDogTimer
+  StopBluetoothNotifications
+  StopDeviceNotifications
+  StopPowerNotifications
+  StopWatchDogTimer
+  StretchBlt
+  StretchDIBits
+  StringCbLengthW
+  SuspendThread
+  SwitchToFiber
+  SystemParametersInfoW
+  SystemTimeToFileTime
+  TerminateProcess
+  TerminateThread
+  TimeoutSession
+  TlsAlloc
+  TlsFree
+  TlsGetValue
+  TlsSetValue
+  TouchCalibrate
   towlower
   towupper
+  TranslateCharsetInfo
+  TranslateMessage
+  TransparentBlt
+  TransparentImage
+  TryEnterCriticalSection
+  TSPI_lineAccept
+  TSPI_lineAddToConference
+  TSPI_lineAnswer
+  TSPI_lineBlindTransfer
+  TSPI_lineClose
+  TSPI_lineCloseCall
+  TSPI_lineCompleteTransfer
+  TSPI_lineConfigDialogEdit
+  TSPI_lineDevSpecific
+  TSPI_lineDial
+  TSPI_lineDrop
+  TSPI_lineForward
+  TSPI_lineGenerateDigits
+  TSPI_lineGenerateTone
+  TSPI_lineGetAddressCaps
+  TSPI_lineGetAddressID
+  TSPI_lineGetAddressStatus
+  TSPI_lineGetCallAddressID
+  TSPI_lineGetCallInfo
+  TSPI_lineGetCallStatus
+  TSPI_lineGetDevCaps
+  TSPI_lineGetDevConfig
+  TSPI_lineGetExtensionID
+  TSPI_lineGetIcon
+  TSPI_lineGetID
+  TSPI_lineGetLineDevStatus
+  TSPI_lineGetNumAddressIDs
+  TSPI_lineHold
+  TSPI_lineMakeCall
+  TSPI_lineMonitorDigits
+  TSPI_lineMonitorMedia
+  TSPI_lineNegotiateExtVersion
+  TSPI_lineNegotiateTSPIVersion
+  TSPI_lineOpen
+  TSPI_linePickup
+  TSPI_linePrepareAddToConference
+  TSPI_lineRedirect
+  TSPI_lineReleaseUserUserInfo
+  TSPI_lineRemoveFromConference
+  TSPI_lineSendUserUserInfo
+  TSPI_lineSetCallParams
+  TSPI_lineSetDefaultMediaDetection
+  TSPI_lineSetDevConfig
+  TSPI_lineSetMediaMode
+  TSPI_lineSetStatusMessages
+  TSPI_lineSetTerminal
+  TSPI_lineSetupConference
+  TSPI_lineSetupTransfer
+  TSPI_lineSwapHold
+  TSPI_lineUnhold
+  TSPI_phoneClose
+  TSPI_phoneConfigDialog
+  TSPI_phoneDevSpecific
+  TSPI_phoneGetDevCaps
+  TSPI_phoneGetExtensionID
+  TSPI_phoneGetGain
+  TSPI_phoneGetHookSwitch
+  TSPI_phoneGetIcon
+  TSPI_phoneGetID
+  TSPI_phoneGetRing
+  TSPI_phoneGetStatus
+  TSPI_phoneGetVolume
+  TSPI_phoneNegotiateExtVersion
+  TSPI_phoneNegotiateTSPIVersion
+  TSPI_phoneOpen
+  TSPI_phoneSelectExtVersion
+  TSPI_phoneSetGain
+  TSPI_phoneSetHookSwitch
+  TSPI_phoneSetRing
+  TSPI_phoneSetStatusMessages
+  TSPI_phoneSetVolume
+  TSPI_providerCreateLineDevice
+  TSPI_providerCreatePhoneDevice
+  TSPI_providerEnumDevices
+  TSPI_providerInit
+  TSPI_providerInstall
+  TSPI_providerRemove
+  TSPI_providerRemoveDevice
+  TSPI_providerShutdown
+  UnlockFileEx
+  UnlockPages
+  UnmapViewOfFile
+  UpdateWindow
+  ValidateRect
+  ValidateRgn
+  VerifyUser
+  VerifyUserStart
+  VerifyUserStop
+  VerifyUserToTop
+  VerQueryValueW
+  VirtualAlloc
+  VirtualAllocCopyEx
+  VirtualAllocEx
+  VirtualCopy
+  VirtualCopyEx
+  VirtualFree
+  VirtualFreeEx
+  VirtualProtect
+  VirtualProtectEx
+  VirtualQuery
+  VirtualQueryEx
+  VirtualSetAttributes
+  VirtualSetAttributesEx
+  VirtualSetPageFlags
+  WaitForAPIReady
+  WaitForDebugEvent
+  WaitForSingleObject
   waveInAddBuffer
   waveInClose
   waveInGetDevCaps
@@ -1078,3 +1052,43 @@ EXPORTS
   waveOutUnprepareHeader
   waveOutWrite
   wcstombs
+  WideCharToMultiByte
+  WNetAddConnection3W
+  WNetCancelConnection2W
+  WNetCloseEnum
+  WNetConnectionDialog1W
+  WNetDisconnectDialog
+  WNetDisconnectDialog1W
+  WNetEnumResourceW
+  WNetGetConnectionW
+  WNetGetUniversalNameW
+  WNetGetUserW
+  WNetOpenEnumW
+  WriteDebugLED
+  WriteFile
+  WriteMsgQueue
+  WriteRegData
+  _cabs
+  _chgsign
+  _copysign
+  _ecvt
+  _fcvt
+  _fileno
+  _finite
+  _flushall
+  _fpclass
+  _fpieee_flt
+  _fpreset
+  _gcvt
+  _hypot
+  _isnan
+  _logb
+  _memccpy
+  _memicmp
+  _msize
+  _nextafter
+  _scalb
+  _setmode
+  _statusfp
+  _swab
+  _wfdopen
