@@ -115,6 +115,43 @@ cellcore 3), `79bfe6d` (wsdapi 20 + urlmon 1 + rapi2 2), `5365361`
   -> ZERO declarations changed; 108 no-twin-page + 41
   no-print-in-twin = no further evidence.
 
+## Continuation (cont. 13) -- comment-only axis + HELD recheck + struct twins
+Commits: `02cd9e4` (8 functions: Ce_setup 4 developer-provided,
+DirectInputCreate + derived LPDIRECTINPUT, CeSetDevMgmtTask;
+OS_DEP_DATA, DMSDLINFO, LPDSENUMCALLBACK + 2 Dsound enumerates),
+`a45a9f7` (Celog.h 51 CEL_* structs -- HELD notes were stale;
+CEL_INT_DATA from CHM page), `6a6d8be` (9 types: CFF/PFF_CONVERTINFO,
+HREPLFLD/HREPLITEM, 3 Avc STREAM_*_Request, UNIT_AllocateLocalPlug_
+Request, DELETE_SECTOR_INFO; blockers pinned), `2f41828` (audits:
+surface declared 6,847 / comment-only 2,179 / absent 2,579; const
+match 2,036), + twin-struct-scan commit.
+- comment-only 2,248 breakdown: 245 print-recorded (69 app-layer;
+  declarables extracted above, rest blocked on unprintable types),
+  230 HELD (rechecked: Celog 51 + 9 declared; precise blockers now
+  recorded per family: _MAX_* CRT sizes, OBJTYPENAME/MAX_OBJTYPE_
+  NAME, STREAM_SESSION_ID/STREAM_BUFFER_ID, WAVEFILTER, PFN_REQDONE,
+  READER_EXTENSION family, CONNMGR_MAX_DESC, CE5-vs-CE6 deltas),
+  1,091 book-record pattern (642 concept-page mentions = false
+  positives, 392 name-only, 20 no-print, 10 const-value records --
+  TBM_GETPOS/TVM_SETITEMSPACING values unprintable), 618 loose
+  mentions.  Axis exhausted; remaining comment-only are legitimately
+  unprintable or non-API mentions.
+- **twin-struct-scan** (tools/twin-struct-scan.py): 160 no-print
+  structs -> 60 twin-match, 20 twin-diff ALL reviewed as scanner
+  artifacts (fused print tokens, comments-as-members, dropped
+  semicolons, C++ #ifdef blocks, DLGTEMPLATEEX variable-length
+  pseudo-members) -> ZERO declaration changes; 66 no-print-in-twin,
+  16 no-twin-page.
+- const name-not-on-page 159: 15 have other-page prints, all known
+  mispair classes (AF_INET6 firewall ports, DT_* perftest syntax);
+  decls stand.
+- Harvest: dispatched urls/mslearn-embedded.txt (38,726 URLs) via
+  harvest.yml workflow_dispatch at 2026-09-18T10:38Z (run
+  in_progress; sequential rate-limited).
+- Snapshot rollback hit again this turn (Akari-dev at 9f4b870, corpus
+  .git wiped): recovered via PAT remote + reset --mixed + re-clone.
+  core.fileMode=false set.
+
 ## Environment hazards (hit 4× now)
 - Snapshot rollbacks wipe: corpus clone, .git config/identity, file
   modes, /home/user/.claude memory dir, and can roll Akari-dev back to
