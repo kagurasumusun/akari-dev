@@ -241,3 +241,50 @@ match 2,036), + twin-struct-scan commit.
   in wayback-msdn/2010-05, re-run surface/proto/const audits, re-sweep
   B blockers + absent recheck on new pages.  If D cancelled by owner
   activity again, coordinate timing / re-dispatch off-peak.
+
+## cont.15 (2026-09-19, user order: defs/headers structure, empty headers, SQL index, rate limits)
+CORPUS (wince-docs-corpus, shared with owner kagurasumusun):
+- tools/build-index-sql.py + data/index/corpus.sqlite3 committed
+  (9380a697b): pages/names(kind=title|const|proto|struct|enum) tables,
+  incremental by file size, full build 2m45s, no-op pass 0.8s.
+  Workflow refresh step updates it.
+- harvest.py: adaptive throttle (429/503 consecutive -> delay x2 up to
+  20x + jitter; only ever slows down), Retry-After to 300s, end-of-run
+  retry pass for non-404 fails, fail logs committed per batch.
+  urls/msdn-live.txt deleted.  Owner's big refactor 5b4c59c69 absorbed
+  the (v=) resume fix.
+- Run E 35396319250 (batch=25) YIELDING: first batch 01c7dadcb +25
+  pages 21:58Z.  Cancelled a duplicate concurrent run (35399399544) -
+  never run two harvesters (double wayback access).
+- Queue truth: only ~451 pages new (450 legacy /library/<slug>.aspx +
+  ms838324); everything else already stored.
+AKARI-DEV:
+- DEF RESTRUCTURE (user-flagged): 41 component defs merged into
+  coredll-doc.def (1,064->1,413 exports; gwes Module ms923451 +
+  coredll Module aa448387 prove componenthood; Nk.lib/Ceddk.lib/etc
+  are CE1.0-era import spellings, no such DLLs); 22 defs deleted
+  (18 driver/BSP static libs oak-scope, imgctl=commctrl duplicate,
+  msimeuic/urlmonui/wininetui undocumented).  131 -> 69 defs (+owner's
+  wap).  gen-doc-def.py: COREDLL_COMPONENTS/FORBIDDEN_TOKENS +
+  PhCommon.dll module-form mapping.
+- Header structure: Commandapi/Databaseapi/Phoneapi/Settingsapi ->
+  .hpp (page spelling) + new def/phcommon-doc.def (16 PH* exports,
+  "Library: PhCommon.dll" rows); Tchaud/dvdcss/dvddrvr/Fatui moved to
+  include/oak/ (DDK/PB content); Makefile+tu_compile updated.
+- def-gap closure: +51 documented exports across 10 defs (CryptMsg*8,
+  Hwx* 22, Bth*5, Icmp*5, SHChangeNotify*3, ...); undeclared-fn triage
+  done (118): SIMCALLBACK+SimInitialize+LPHSIM declared; rest blocked
+  on pinned HELD constants (IPAddr, CONNMGR_MAX_DESC, MAX_LENGTH_*,
+  EAP_EXTENSION_INFO, SIMCAPS) or page artifacts (sibling-signature
+  prints: WSDCreateDeviceProxyAdvanced, PrivacySetZonePreferenceW,
+  CoInternetCreateZoneManager) - records verified accurate.
+- Empty-header review: 14 zero-decl headers = COM vtable-order HELD
+  (interface pages print method tables "in alphabetical order" -
+  confirmed again on ms891543) or include-compat shims (D3dmcaps:
+  D3DMCAPS lives in D3dm.h; VARIANT/BSTR in Objbase.h).  Legit.
+- Commits this cont: e51d394(def restructure) 47de542(headers)
+  c82fcf4(RasGetDispPhoneNum) a3c9eec(+51 exports) 506f8a7(SimInit).
+  Owner interleaved 6ae383b (Wap.h + wap-doc.def + Makefile).
+- NEXT: wait run E finish -> pull corpus -> refresh SQL index ->
+  re-run surface/proto/const audits + B-blocker re-sweep + absent
+  recheck on new wayback pages; make check 0 at all times.
