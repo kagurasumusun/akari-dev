@@ -1,6 +1,6 @@
-# Session state — 2026-09-18 (continuation 9)
+# Session state — 2026-09-18 (continuation 9, final)
 
-Akari-dev pushed through `25c96db`. All audits 0 MISMATCH.
+Akari-dev pushed through `e9d6fce`. All audits 0 MISMATCH.
 Corpus: kagurasumusun/wince-docs-corpus @ `171adda42` (85,816 pages,
 layout `docs/{mslearn,chm,wayback-msdn}/<generation>/*.html`;
 INDEX at `data/index/INDEX.tsv`).
@@ -25,6 +25,9 @@ INDEX at `data/index/INDEX.tsv`).
   new layout); at 85,816 pages: 153 documented libs / 127 defs /
   49 no-def (30 DLL-backed). Old 14 still zero evidence. Triage ledger
   rewritten: 12 app-candidates, 18 oak-excluded.
+- `e9d6fce` no-pageid cleanup: Storemgr 3 + Wincrypt 2 documented
+  deviations annotated with pids; proto-cite base-name scanning for
+  W/A variants (+24 cites, no-page bucket zeroed)
 - `25c96db` tools/gen-app-defs.py + 4 new defs: cellcore-doc.def (56),
   wsdapi-doc.def (6), sms-doc.def (4), gpsapi-doc.def (2). No def for
   av_upnp/imaging/mqoa/shdocvw/mqelib/wap/owaexchangeclient/
@@ -33,8 +36,8 @@ INDEX at `data/index/INDEX.tsv`).
 ## Audit state (corpus 171adda42, 85,816 pages)
 - const: 2,026 match / 0 MISMATCH (no-pageid 1,582 = verified
   no-print; name-no-value 937; name-not-on-page 159)
-- proto: 2,160 match / 0 MISMATCH (no-print 870; no-pageid 68;
-  annotated 96 all documented; argc-page-short 3)
+- proto: 2,176 match / 0 MISMATCH (no-print 873; no-pageid 42;
+  annotated 101 all documented; argc-page-short 3; page-drops-star 17)
 - struct: 781 match / 0 (no-print 158; no-pageid 24; truncated 3)
 - enum: 277 / 0 (no-print 69; no-pageid 5)
 - fnptr: 65 / 0 (no-print 50; no-pageid 30)
@@ -50,8 +53,9 @@ Unresolved remainders: docs/{proto,type,enum}-cite-unresolved.tsv.
 ## Next axes
 1. proto no-print 870: try CE5↔CE6 twin pages / sibling generation
    pages for decls whose cited page lacks the print.
-2. no-pageid remainders: proto 68 (45 print-differs = investigate as
-   potential real diffs, 27 no-page), struct 24, fnptr 30, enum 5.
+2. no-pageid remainders: proto 42 (print-differs; sampled Storemgr/
+   Wincrypt cases = documented deviations, rest likely same class),
+   struct 24, fnptr 30, enum 5.
 3. COM surface for av_upnp/wsdapi/imaging/shdocvw (vtable decls,
    separate jurisdiction — decide scope with user).
 4. const name-no-value 937 / name-not-on-page 159 sweeps.
