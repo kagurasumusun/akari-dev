@@ -106,7 +106,7 @@ def peel_type(tok):
     cands = [w for w in LEX
              if len(w) >= 3 and tok.startswith(w)
              and re.fullmatch(r"[A-Z][A-Z0-9_]*", w)]
-    cands += [w for w in BASE_LOW | BUILTIN if len(w) >= 3
+    cands += [w for w in BASE_LOW | BUILTIN | LEX if len(w) >= 3
               and tok.startswith(w)
               and re.fullmatch(r"[a-z][a-z0-9_]*", w)]
     for w in sorted(cands, key=len, reverse=True):

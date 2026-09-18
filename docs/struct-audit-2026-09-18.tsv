@@ -872,7 +872,7 @@ include/Wininet.h	INTERNET_PROXY_INFO	ms918372	match
 include/Wininet.h	INTERNET_VERSION_INFO	ms918390	match	
 include/Winldap.h	BerElement	ms863747	match	
 include/Winldap.h	LDAP_BERVAL	ms863826	match	
-include/Winldap.h	LDAPControl	ms891757	MISMATCH	hdr=ldctl_oid,ldctl_value,ldctl_iscritical page=ldctl_oid,bervalldctl_value,ldctl_iscritical
+include/Winldap.h	LDAPControl	ms891757	match	
 include/Winldap.h	mod_vals	ms892279	match	
 include/Winldap.h	LDAP_TIMEVAL	ms892315	match	
 include/Winldap.h	LDAPSortKey	ms892313	match	
