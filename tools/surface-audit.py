@@ -105,6 +105,38 @@ def main():
 
     # documented rows from every harvested official tree
     rows = {}
+    if not any(os.path.exists(os.path.join(corpus, f)) for f in
+               ("rows.json", "rows4.json", "rows3.json")):
+        # reorganized corpus: derive documented names from the page
+        # index titles ("CeGetDeviceId Function (Ceutil.h)", "NAME
+        # (Windows CE 5.0)"); single capitalized English words
+        # (Error/Warning/Method...) are prose pages, not APIs
+        BOOKTAG = {"windows-ce-5.0": "ce5", "windows-embedded-ce-6.0":
+                   "ce6", "chm-windows-ce-3.0": "ce3",
+                   "windows-ce-net-4x": "ce4",
+                   "windows-embedded-compact-7": "ce7",
+                   "wayback-msdn-2010": "wayback"}
+        idx = os.path.join(corpus, "data", "index", "INDEX.tsv")
+        titlere = re.compile(
+            r"^([A-Za-z_]\w+)\s*(?:\((?:Windows|RAPI)\b|\b(?:Function|"
+            r"Structure|Enumeration|Macro|Constant|Notification|Message)\b)")
+        for ln in open(idx, encoding="utf-8", errors="replace"):
+            f = ln.rstrip("\n").split("\t")
+            if len(f) < 4 or f[0].startswith("#"):
+                continue
+            tag = BOOKTAG.get(f[1])
+            if not tag:
+                continue
+            m = titlere.match(f[3].strip())
+            if not m:
+                continue
+            nm = m.group(1)
+            if re.fullmatch(r"[A-Z][a-z]+", nm):
+                continue
+            e = rows.setdefault(nm, {"trees": set(), "lib": "",
+                                     "sig": False, "os": "",
+                                     "hdr": set()})
+            e["trees"].add(tag)
     for fn, tag in (("rows.json", "ce5+ce6"), ("rows4.json", "ce4"),
                     ("rows3.json", "ce3")):
         p = os.path.join(corpus, fn)
