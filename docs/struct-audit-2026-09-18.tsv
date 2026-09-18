@@ -210,6 +210,43 @@ include/Dshow.h	IPinVtbl		skip-fnptr
 include/Dshow.h	IQualPropVtbl		skip-fnptr	
 include/Dshow.h	IReferenceClockVtbl		skip-fnptr	
 include/Dshow.h	IVideoWindowVtbl		skip-fnptr	
+include/Dshow.h	IAMDevMemoryAllocatorVtbl		skip-fnptr	
+include/Dshow.h	IAMDevMemoryControlVtbl		skip-fnptr	
+include/Dshow.h	IAMPlayListVtbl		skip-fnptr	
+include/Dshow.h	IAMPlayListItemVtbl		skip-fnptr	
+include/Dshow.h	IAMStreamControlVtbl		skip-fnptr	
+include/Dshow.h	IAMStreamSelectVtbl		skip-fnptr	
+include/Dshow.h	IAMovieSetupVtbl		skip-fnptr	
+include/Dshow.h	IAsyncReaderVtbl		skip-fnptr	
+include/Dshow.h	IBasicAudioVtbl		skip-fnptr	
+include/Dshow.h	IBasicVideoVtbl		skip-fnptr	
+include/Dshow.h	IDMOWrapperFilterVtbl		skip-fnptr	
+include/Dshow.h	IDistributorNotifyVtbl		skip-fnptr	
+include/Dshow.h	IEnumFiltersVtbl		skip-fnptr	
+include/Dshow.h	IEnumRegFiltersVtbl		skip-fnptr	
+include/Dshow.h	IFileSourceFilterVtbl		skip-fnptr	
+include/Dshow.h	IFilterGraph2Vtbl		skip-fnptr	
+include/Dshow.h	IFilterMapperVtbl		skip-fnptr	
+include/Dshow.h	IGraphVersionVtbl		skip-fnptr	
+include/Dshow.h	IMediaEventVtbl		skip-fnptr	
+include/Dshow.h	IMediaEventExVtbl		skip-fnptr	
+include/Dshow.h	IMediaEventSinkVtbl		skip-fnptr	
+include/Dshow.h	IMediaPositionVtbl		skip-fnptr	
+include/Dshow.h	IMediaSample2Vtbl		skip-fnptr	
+include/Dshow.h	IMediaSeekingVtbl		skip-fnptr	
+include/Dshow.h	IMediaStreamVtbl		skip-fnptr	
+include/Dshow.h	IMemAllocatorVtbl		skip-fnptr	
+include/Dshow.h	IMemInputPinVtbl		skip-fnptr	
+include/Dshow.h	IMultiMediaStreamVtbl		skip-fnptr	
+include/Dshow.h	IOverlayVtbl		skip-fnptr	
+include/Dshow.h	IOverlayNotifyVtbl		skip-fnptr	
+include/Dshow.h	IQualityControlVtbl		skip-fnptr	
+include/Dshow.h	ISeekingPassThruVtbl		skip-fnptr	
+include/Dshow.h	IStreamSampleVtbl		skip-fnptr	
+include/Dshow.h	IVPBaseConfigVtbl		skip-fnptr	
+include/Dshow.h	IVPBaseNotifyVtbl		skip-fnptr	
+include/Dshow.h	IVPConfigVtbl		skip-fnptr	
+include/Dshow.h	IVPNotifyVtbl		skip-fnptr	
 include/Dsound.h	DSBCAPS	ms897756	match	
 include/Dsound.h	DSBPOSITIONNOTIFY	ms897759	match	
 include/Dsound.h	DSBUFFERDESC	ms897764	match	
@@ -457,6 +494,10 @@ include/Objbase.h	IServerSecurityVtbl		skip-fnptr
 include/Objbase.h	IStdMarshalInfoVtbl		skip-fnptr	
 include/Objbase.h	IViewObjectVtbl		skip-fnptr	
 include/Objbase.h	IViewObject2Vtbl		skip-fnptr	
+include/Objbase.h	IContinueCallbackVtbl		skip-fnptr	
+include/Objbase.h	IEnumMonikerVtbl		skip-fnptr	
+include/Objbase.h	IMultiQIVtbl		skip-fnptr	
+include/Objbase.h	IRunningObjectTableVtbl		skip-fnptr	
 include/Oleauto.h	OLEVERB	ms892602	match	
 include/Oleauto.h	STATDATA	ms882883	match	
 include/Oleauto.h	STOREINFO	ms896271	match	
@@ -509,33 +550,33 @@ include/Routprot.h	MIB_BEST_IF	ms894596	match
 include/Rpcdce.h	SEC_WINNT_AUTH_IDENTITY	ms926452	match	
 include/Sapi.h	SPAUDIOBUFFERINFO	ms893479	match	
 include/Sapi.h	SPBINARYGRAMMAR	ms893483	match	
-include/Sapi.h	SPEVENT		no-pageid	
+include/Sapi.h	SPEVENT	ms895362	no-print-on-page	
 include/Sapi.h	SPEVENTSOURCEINFO	ms895400	match	
-include/Sapi.h	SPPHRASEELEMENT		no-pageid	
-include/Sapi.h	SPPATHENTRY		no-pageid	
+include/Sapi.h	SPPHRASEELEMENT	ms895600	no-print-on-page	
+include/Sapi.h	SPPATHENTRY	ms895600	no-print-on-page	
 include/Sapi.h	SPPARSEINFO	ms895655	match	
-include/Sapi.h	SPRECOCONTEXTSTATUS		no-pageid	
+include/Sapi.h	SPRECOCONTEXTSTATUS	ms895715	no-print-on-page	
 include/Sapi.h	SPRECORESULTINFO	ms895734	match	
 include/Sapi.h	SPRECORESULTTIMES	ms895738	match	
-include/Sapi.h	SPRULEENTRY	ms895738	no-print-on-page	
-include/Sapi.h	SPSERIALIZEDEVENT	ms895738	no-print-on-page	
-include/Sapi.h	SPSERIALIZEDEVENT64	ms895738	no-print-on-page	
+include/Sapi.h	SPRULEENTRY	ms895743	no-print-on-page	
+include/Sapi.h	SPSERIALIZEDEVENT	ms895768	no-print-on-page	
+include/Sapi.h	SPSERIALIZEDEVENT64	ms895768	no-print-on-page	
 include/Sapi.h	SPSERIALIZEDRESULT	ms895787	match	
 include/Sapi.h	SPWORDPRONUNCIATION	ms895787	no-print-on-page	
-include/Sapi.h	SPWORD	ms895787	no-print-on-page	
-include/Sapi.h	SPTRANSITIONENTRY	ms895787	no-print-on-page	
-include/Sapi.h	SPSTATEINFO	ms895787	no-print-on-page	
+include/Sapi.h	SPWORD	ms895974	no-print-on-page	
+include/Sapi.h	SPTRANSITIONENTRY	ms895974	no-print-on-page	
+include/Sapi.h	SPSTATEINFO	ms895974	no-print-on-page	
 include/Sapi.h	SPTMTHREADINFO	ms895822	match	
 include/Sapi.h	SPTRANSITIONPROPERTY	ms895822	no-print-on-page	
-include/Sapi.h	SPVCONTEXT	ms895822	no-print-on-page	
+include/Sapi.h	SPVCONTEXT	ms895842	no-print-on-page	
 include/Sapi.h	SPVOICESTATUS	ms895874	match	
 include/Sapi.h	SPVPITCH	ms895878	match	
-include/Sapi.h	SPVSTATE	ms895878	no-print-on-page	
+include/Sapi.h	SPVSTATE	ms895885	no-print-on-page	
 include/Sapi.h	SPVTEXTFRAG	ms895896	match	
-include/Sapi.h	SPWORDENTRY	ms895896	no-print-on-page	
+include/Sapi.h	SPWORDENTRY	ms895951	no-print-on-page	
 include/Sapi.h	SPWORDLIST	ms895969	match	
 include/Sapi.h	SPWORDPRONUNCIATIONLIST	ms895973	match	
-include/Sapi.h	SPAUDIOSTATUS	ms895973	no-print-on-page	
+include/Sapi.h	SPAUDIOSTATUS	ms893502	no-print-on-page	
 include/Sapi.h	SPPHRASEALT	ms895676	match	
 include/Sapi.h	SPPHRASEALTREQUEST	ms895680	match	
 include/Sapi.h	SPPROPERTYINFO	ms895709	match	
@@ -545,6 +586,7 @@ include/Sapi.h	SPPHRASEPROPERTY	ms895689	no-print-on-page
 include/Sapi.h	SPPHRASE	ms895689	no-print-on-page	
 include/Sapi.h	SPSERIALIZEDPHRASE	ms895689	no-print-on-page	
 include/Sapi.h	SPTEXTSELECTIONINFO	ms895689	no-print-on-page	
+include/Sapi.h	ISpTaskVtbl		skip-fnptr	
 include/Scandisk.h	SCAN_OPTIONS	ms891827	match	
 include/Schnlsp.h	SCHANNEL_CRED	ms926432	match	
 include/Schnlsp.h	SecPkgContext_ConnectionInfo	ms926436	match	
