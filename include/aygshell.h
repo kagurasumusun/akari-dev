@@ -298,6 +298,7 @@ typedef struct IShellNotificationCallback IShellNotificationCallback;
 /* aa453670 (CE .NET 4.2+): removes a window from the file notification
  * chain (registered with SHChangeNotifyRegister).  Page prints WINAPI. */
 /* aa453670: param-list verified against this page (proto-cite) */
+/* aa453670: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL SHChangeNotifyDeregister(HWND hwnd) AKARI_CE_NAME(SHChangeNotifyDeregister);
 
 /* aa453672 (CE .NET 4.2+): frees the memory allocated for a

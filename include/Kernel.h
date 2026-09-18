@@ -48,6 +48,7 @@ void OEMCacheRangeFlush(LPVOID pAddr, DWORD dwLength, DWORD dwFlags);
  * function, removed as a duplicate above, stated Windows CE .NET 4.0
  * and later.; Link Library: nk.lib) */
 /* ee478340: param-list verified against this page (proto-cite) */
+/* ee478340: page print verified (proto-cite) */
 AKARI_CE_IMPORT void FlushDCache(void) AKARI_CE_NAME(FlushDCache);
 
 /* ee478614 SC_GetTickCount: print `DWORD SC_GetTickCount(void);`

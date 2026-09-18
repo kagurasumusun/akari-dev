@@ -207,6 +207,7 @@ AKARI_CE_IMPORT HANDLE CreateThread(LPSECURITY_ATTRIBUTES lpsa, DWORD cbStack,
  * priority classes; search order: \windows, root, OEM dir (and
  * \ceshell from CE 2.10); do not call from DllMain.  Export is
  * CreateProcessW. */
+/* ms885182: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL CreateProcessW(LPCWSTR pszImageName, LPCWSTR pszCmdLine,
                     LPSECURITY_ATTRIBUTES psaProcess,
                     LPSECURITY_ATTRIBUTES psaThread,
@@ -1938,6 +1939,7 @@ AKARI_CE_IMPORT LPTSTR CharPrevW(LPCTSTR lpszStart, LPCTSTR lpszCurrent) AKARI_C
 #define CharPrev CharPrevW
 
 /* Character-class queries (CE 1.0+, Coreloc.lib). */
+/* ee488793: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL IsCharAlphaW(TCHAR ch) AKARI_CE_NAME(IsCharAlphaW);          /* ms885690 */
 #define IsCharAlpha IsCharAlphaW
 AKARI_CE_IMPORT BOOL IsCharAlphaNumericW(TCHAR ch) AKARI_CE_NAME(IsCharAlphaNumericW);   /* ms885691 */
@@ -2451,6 +2453,7 @@ AKARI_CE_IMPORT BOOL MessageBeep(UINT uType) AKARI_CE_NAME(MessageBeep);
  * Winbase.h; Link Library rows "Coredll.lib, Nk.lib": the Coredll.lib
  * membership feeds def/coredll-doc.def; Nk.lib is kernel scope and is
  * kept out of import defs, see docs/inventory.md). */
+/* ee503121: page print verified (proto-cite) */
 AKARI_CE_IMPORT HRSRC  FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lpType) AKARI_CE_NAME(FindResourceW);
 #define FindResource FindResourceW
 /* ee505293: param-list verified against this page (proto-cite) */

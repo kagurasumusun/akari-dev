@@ -396,6 +396,7 @@ AKARI_CE_IMPORT DWORD RasEnumConnections(LPRASCONN lprasconn, LPDWORD lpcb,
                     LPDWORD lpcConnections) AKARI_CE_NAME(RasEnumConnections);
 
 /* wcesdkrRasEnumDevices "RasEnumDevices": CE 3.0+; Ras.h. */
+/* ee497423: page print verified (proto-cite) */
 AKARI_CE_IMPORT DWORD RasEnumDevicesW(LPRASDEVINFOW lpRasDevinfo, LPDWORD lpcb,
                     LPDWORD lpcDevices) AKARI_CE_NAME(RasEnumDevicesW);
 /* the verified coredll surface exports only the W form;
@@ -438,6 +439,7 @@ AKARI_CE_IMPORT DWORD RasGetLinkStatistics(HRASCONN hRasConn, DWORD dwSubEntry,
 
 /* wcesdkrRasGetProjectionInfo "RasGetProjectionInfo": CE 3.0+;
  * Ras.h, Afdfunc.h. */
+/* ee496239: page print verified (proto-cite) */
 AKARI_CE_IMPORT DWORD RasGetProjectionInfoW(HRASCONN hrasconn,
                     RASPROJECTION rasprojection, LPVOID lpprojection,
                     LPDWORD lpcb) AKARI_CE_NAME(RasGetProjectionInfoW);

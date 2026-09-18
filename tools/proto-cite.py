@@ -39,9 +39,16 @@ def main():
         if len(c) >= 4 and c[3] == "no-pageid":
             targets.append((c[0], c[1]))
     names = sorted({n for _, n in targets}, key=len, reverse=True)
-    print("no-pageid decls:", len(targets), "names:", len(names))
+    # pages usually print the base spelling of W/A variants
+    scan_names = set(names)
+    for n in names:
+        if n.endswith(("W", "A")) and len(n) > 2:
+            scan_names.add(n[:-1])
+    scan_names = sorted(scan_names, key=len, reverse=True)
+    print("no-pageid decls:", len(targets), "names:", len(names),
+          "scan names:", len(scan_names))
     name_re = re.compile(
-        r"\b(" + "|".join(map(re.escape, names)) + r")\s*\(")
+        r"\b(" + "|".join(map(re.escape, scan_names)) + r")\s*\(")
 
     # pass 1: which pages mention a candidate name at all (cached)
     cache = os.path.join(ROOT, "build", "proto-cite-cache.tsv")
@@ -102,6 +109,8 @@ def main():
             decl.setdefault(m.group(2), (m.group(3), m.start()))
         for nm in nms:
             pages = found.get(nm)
+            if not pages and nm.endswith(("W", "A")):
+                pages = found.get(nm[:-1])   # base-spelling pages
             if not pages:
                 stats["no-page"] += 1
                 unresolved.append((hdr, nm, "no-page"))

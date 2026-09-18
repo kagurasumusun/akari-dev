@@ -103,7 +103,7 @@ AKARI_CE_IMPORT BOOL WINAPI FindCloseStore(HANDLE hSearch)
 AKARI_CE_IMPORT HANDLE WINAPI FindFirstPartition(HANDLE hStore, PPARTINFO pPartInfo)
                     AKARI_CE_NAME(FindFirstPartition);
 
-/* "FindFirstStore": print `HANDLE WINAPI FindFirstStore(PSTOREINFO pStoreInfo)` */
+/* ee489983:  FindFirstStore: print `HANDLE WINAPI FindFirstStore(PSTOREINFO pStoreInfo)`  -- the print shows the PSTOREINFO spelling; this tree holds the incomplete STOREMGR_STOREINFO type (see header note) */
 AKARI_CE_IMPORT HANDLE WINAPI FindFirstStore(PSTOREMGR_STOREINFO pStoreInfo)
                     AKARI_CE_NAME(FindFirstStore);
 
@@ -112,7 +112,7 @@ AKARI_CE_IMPORT HANDLE WINAPI FindFirstStore(PSTOREMGR_STOREINFO pStoreInfo)
 AKARI_CE_IMPORT BOOL WINAPI FindNextPartition(HANDLE hSearch, PPARTINFO pPartInfo)
                     AKARI_CE_NAME(FindNextPartition);
 
-/* "FindNextStore": print `BOOL WINAPI FindNextStore(HANDLE hSearch,PSTOREINFO pStoreInfo)` */
+/* ee489568:  FindNextStore: print `BOOL WINAPI FindNextStore(HANDLE hSearch,PSTOREINFO pStoreInfo)`  -- the print shows the PSTOREINFO spelling; this tree holds the incomplete STOREMGR_STOREINFO type (see header note) */
 AKARI_CE_IMPORT BOOL WINAPI FindNextStore(HANDLE hSearch, PSTOREMGR_STOREINFO pStoreInfo)
                     AKARI_CE_NAME(FindNextStore);
 
@@ -136,7 +136,7 @@ AKARI_CE_IMPORT BOOL WINAPI FormatStore(HANDLE hStore)
 AKARI_CE_IMPORT BOOL WINAPI GetPartitionInfo(HANDLE hPartition, PPARTINFO pPartInfo)
                     AKARI_CE_NAME(GetPartitionInfo);
 
-/* "GetStoreInfo": print `BOOL WINAPI GetStoreInfo(HANDLE hStore,PSTOREINFO pStoreInfo)` */
+/* ee490360:  GetStoreInfo: print `BOOL WINAPI GetStoreInfo(HANDLE hStore,PSTOREINFO pStoreInfo)`  -- the print shows the PSTOREINFO spelling; this tree holds the incomplete STOREMGR_STOREINFO type (see header note) */
 AKARI_CE_IMPORT BOOL WINAPI GetStoreInfo(HANDLE hStore, PSTOREMGR_STOREINFO pStoreInfo)
                     AKARI_CE_NAME(GetStoreInfo);
 

@@ -48,6 +48,7 @@
  * block comment above): print `BOOL WINAPI DestroyIcon_I(HICON hicon);`
  * (Windows CE .NET 4.0 and later.; Link Library: not stated) */
 /* ee504624: param-list verified against this page (proto-cite) */
+/* ee504624: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL DestroyIcon_I(HICON hicon) AKARI_CE_NAME(DestroyIcon_I);
 
 /* aa452973 DrawIconEx_I: print `BOOL WINAPI DrawIconEx_I(HDC hdc,int X,int Y,HICON hicon,int cx,int cy,UINT istepIfAniCur,HBRUSH hbrFlickerFreeDraw,UINT diFlags);`

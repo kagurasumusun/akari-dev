@@ -61,6 +61,7 @@ AKARI_CE_IMPORT VOID ExitProcess(UINT uExitCode) AKARI_CE_NAME(ExitProcess);
 /* Window properties (Window Properties Reference; CE .NET 4.0+;
  * Header Windows.h; Link Library Coredll.lib).  Window properties are
  * per-window data keyed by a string or atom. */
+/* aa453647: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL   SetPropW(HWND hWnd, LPCTSTR lpString, HANDLE hData) AKARI_CE_NAME(SetPropW);  /* aa453647 */
 #define SetProp SetPropW
 AKARI_CE_IMPORT HANDLE GetPropW(HWND hWnd, LPCTSTR lpString) AKARI_CE_NAME(GetPropW);               /* aa453155 */
@@ -78,6 +79,7 @@ BOOL CALLBACK PropEnumProcEx(HWND hwnd, LPTSTR lpszString,
 
 /* Atoms (Atoms Reference; CE .NET 4.0+; Header Windows.h; Link
  * Library Coredll.lib). */
+/* aa453188: page print verified (proto-cite) */
 AKARI_CE_IMPORT ATOM GlobalAddAtomW(LPCTSTR lpString) AKARI_CE_NAME(GlobalAddAtomW);      /* aa453188 */
 #define GlobalAddAtom GlobalAddAtomW
 AKARI_CE_IMPORT ATOM GlobalDeleteAtom(ATOM nAtom) AKARI_CE_NAME(GlobalDeleteAtom);          /* aa453189 */

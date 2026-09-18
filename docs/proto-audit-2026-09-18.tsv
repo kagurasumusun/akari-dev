@@ -461,11 +461,11 @@ include/Imm.h	ImmLockIMCC	ms906028	no-print-on-page
 include/Imm.h	ImmUnlockIMCC	ms906024	no-print-on-page	
 include/Imm.h	ImmGetIMCCSize	ms906040	no-print-on-page	
 include/Imm.h	ImmGetIMCCLockCount	ms906012	no-print-on-page	
-include/Imm.h	ImmGetCandidateListW		no-pageid	
+include/Imm.h	ImmGetCandidateListW	ms905995	match	
 include/Imm.h	ImmGetCandidateListCountW	ms905995	no-print-on-page	
 include/Imm.h	ImmGetCandidateWindow	ms905996	no-print-on-page	
 include/Imm.h	ImmSetCandidateWindow	ms905997	no-print-on-page	
-include/Imm.h	ImmGetCompositionStringW		no-pageid	
+include/Imm.h	ImmGetCompositionStringW	ms906001	match	
 include/Imm.h	ImmSetCompositionStringW	ms906001	no-print-on-page	
 include/Imm.h	ImmGetCompositionWindow	ms906031	no-print-on-page	
 include/Imm.h	ImmSetCompositionWindow	ms906002	no-print-on-page	
@@ -1145,13 +1145,13 @@ include/Rapi.h	CeWriteFile	aa513847	no-print-on-page
 include/Rapi.h	CeSyncStart	ee497258	match	
 include/Ras.h	RasDial	ee496966	match	
 include/Ras.h	RasEnumConnections	ee496203	match	
-include/Ras.h	RasEnumDevicesW		no-pageid	
+include/Ras.h	RasEnumDevicesW	ee497423	match	
 include/Ras.h	RasEnumEntries	ee496207	match	
 include/Ras.h	RasGetConnectStatus	ee497517	match	
 include/Ras.h	RasGetEntryDialParams	ee496835	match	
 include/Ras.h	RasGetEntryProperties	ee496231	match	
 include/Ras.h	RasGetLinkStatistics	ee496606	match	
-include/Ras.h	RasGetProjectionInfoW		no-pageid	
+include/Ras.h	RasGetProjectionInfoW	ee496239	match	
 include/Ras.h	RasHangUp	ee497206	match	
 include/Ras.h	RasSetEntryDialParams	ee496751	match	
 include/Ras.h	RasSetEntryProperties	ee497296	match	
@@ -1338,14 +1338,14 @@ include/Storemgr.h	DismountStore	ms889024	match
 include/Storemgr.h	FindClosePartition	ms889632	match	
 include/Storemgr.h	FindCloseStore	ms889642	match	
 include/Storemgr.h	FindFirstPartition	ms889689	match	
-include/Storemgr.h	FindFirstStore		no-pageid	
+include/Storemgr.h	FindFirstStore	ee489983	annotated-deviation	arg0: page='PSTOREINFO' hdr='PSTOREMGR_STOREINFO'
 include/Storemgr.h	FindNextPartition	ms889968	match	
-include/Storemgr.h	FindNextStore		no-pageid	
+include/Storemgr.h	FindNextStore	ee489568	annotated-deviation	arg1: page='PSTOREINFO' hdr='PSTOREMGR_STOREINFO'
 include/Storemgr.h	FormatPartition	ms890426	match	
 include/Storemgr.h	FormatPartitionEx	ms890434	match	
 include/Storemgr.h	FormatStore	ms890450	match	
 include/Storemgr.h	GetPartitionInfo	ms890985	match	
-include/Storemgr.h	GetStoreInfo		no-pageid	
+include/Storemgr.h	GetStoreInfo	ee490360	annotated-deviation	arg1: page='PSTOREINFO' hdr='PSTOREMGR_STOREINFO'
 include/Storemgr.h	MountPartition	ms891387	match	
 include/Storemgr.h	OpenPartition	ms891420	match	
 include/Storemgr.h	OpenStore	ms891421	match	
@@ -1686,7 +1686,7 @@ include/Winbase.h	LocalAlloc	ms886742	no-print-on-page
 include/Winbase.h	LocalFree	ms886741	no-print-on-page	
 include/Winbase.h	GetLastError	ms885627	no-print-on-page	
 include/Winbase.h	CreateThread	ms885186	no-print-on-page	
-include/Winbase.h	CreateProcessW		no-pageid	
+include/Winbase.h	CreateProcessW	ms885182	match	
 include/Winbase.h	LoadLibraryW	ms886736	no-print-on-page	
 include/Winbase.h	FreeLibrary	ms885601	no-print-on-page	
 include/Winbase.h	CloseHandle	aa517300	no-print-on-page	
@@ -1821,7 +1821,7 @@ include/Winbase.h	CharUpperW	ms885164	match
 include/Winbase.h	CharUpperBuffW	ms885165	no-print-on-page	
 include/Winbase.h	CharNextW	ms885161	match	
 include/Winbase.h	CharPrevW	ms885162	match	
-include/Winbase.h	IsCharAlphaW		no-pageid	
+include/Winbase.h	IsCharAlphaW	ee488793	match	
 include/Winbase.h	IsCharAlphaNumericW	ms885690	no-print-on-page	
 include/Winbase.h	IsCharLowerW	ms885691	no-print-on-page	
 include/Winbase.h	IsCharUpperW	ms885692	no-print-on-page	
@@ -1857,7 +1857,7 @@ include/Winbase.h	SetRect	aa453648	no-print-on-page
 include/Winbase.h	GetSystemPowerStatusEx	aa453172	no-print-on-page	
 include/Winbase.h	GetSystemPowerStatusEx2	aa453172	no-print-on-page	
 include/Winbase.h	MessageBeep	ms911826	no-print-on-page	
-include/Winbase.h	FindResourceW		no-pageid	
+include/Winbase.h	FindResourceW	ee503121	match	
 include/Winbase.h	LoadResource	ee505293	match	
 include/Winbase.h	LockResource	aa453416	no-print-on-page	
 include/Winbase.h	SizeofResource	aa453417	no-print-on-page	
@@ -1927,7 +1927,7 @@ include/Wincrypt.h	CryptDuplicateHash	ms937745	match
 include/Wincrypt.h	CryptDuplicateKey	ms937746	no-print-on-page	
 include/Wincrypt.h	CryptEncrypt	ms937746	no-print-on-page	
 include/Wincrypt.h	CryptEnumProvidersW	ms937746	no-print-on-page	
-include/Wincrypt.h	CryptEnumProviderTypesW		no-pageid	
+include/Wincrypt.h	CryptEnumProviderTypesW	ms938017	match	
 include/Wincrypt.h	CryptExportKey	ms938025	no-print-on-page	
 include/Wincrypt.h	CryptFindLocalizedName	aa452566	match	
 include/Wincrypt.h	CryptGenKey	aa452566	no-print-on-page	
@@ -1948,16 +1948,16 @@ include/Wincrypt.h	CryptMsgGetParam	ms938257	match
 include/Wincrypt.h	CryptMsgOpenToDecode	ms938264	match	
 include/Wincrypt.h	CryptMsgOpenToEncode	ms938271	match	
 include/Wincrypt.h	CryptMsgUpdate	ms938279	match	
-include/Wincrypt.h	CryptProtectData		no-pageid	
-include/Wincrypt.h	CryptUnprotectData		no-pageid	
+include/Wincrypt.h	CryptProtectData	ee498338	annotated-deviation	arg4: page='CRYPTPROTECT_PROMPTSTRUCT*' hdr='struct CRYPTPROTECT_PROMPTSTRUCT*'
+include/Wincrypt.h	CryptUnprotectData	ee498169	annotated-deviation	arg4: page='CRYPTPROTECT_PROMPTSTRUCT*' hdr='struct CRYPTPROTECT_PROMPTSTRUCT*'
 include/Wincrypt.h	CryptReleaseContext	ms938317	match	
 include/Wincrypt.h	CryptSetHashParam	ms938326	match	
 include/Wincrypt.h	CryptSetKeyParam	ms938335	match	
 include/Wincrypt.h	CryptSetProviderW	ms938335	no-print-on-page	
-include/Wincrypt.h	CryptSetProviderExW		no-pageid	
+include/Wincrypt.h	CryptSetProviderExW	ms938353	match	
 include/Wincrypt.h	CryptSetProvParam	ms938358	match	
 include/Wincrypt.h	CryptSignHashW	ms938358	no-print-on-page	
-include/Wincrypt.h	CryptVerifySignatureW		no-pageid	
+include/Wincrypt.h	CryptVerifySignatureW	ms938383	match	
 include/Wincrypt.h	CertAddCertificateContextToStore	ms937018	match	
 include/Wincrypt.h	CertAddCertificateLinkToStore	ms937019	match	
 include/Wincrypt.h	CertAddEncodedCertificateToStore	ms937020	match	
@@ -2101,11 +2101,11 @@ include/Windbase.h	SetPassword	ms891953	match
 include/Windbase.h	CeFindNextChangedRecord	ee490379	match	
 include/Windev.h	IsAPIReady	ee482834	match	
 include/Windows.h	ExitProcess	ms885217	match	
-include/Windows.h	SetPropW		no-pageid	
+include/Windows.h	SetPropW	aa453647	match	
 include/Windows.h	GetPropW	aa453647	no-print-on-page	
 include/Windows.h	RemovePropW	aa453155	no-print-on-page	
 include/Windows.h	EnumPropsExW	ms939781	no-print-on-page	
-include/Windows.h	GlobalAddAtomW		no-pageid	
+include/Windows.h	GlobalAddAtomW	aa453188	match	
 include/Windows.h	GlobalDeleteAtom	aa453188	no-print-on-page	
 include/Windows.h	GlobalFindAtomW	aa453189	no-print-on-page	
 include/Windows.h	GetMessageQueueReadyTimeStamp	aa453137	match	
@@ -2440,9 +2440,9 @@ include/Winnls.h	ConvertDefaultLocale	ms904716	no-print-on-page
 include/Winnls.h	GetCPInfo	ms905221	match	
 include/Winnls.h	GetStringTypeW	ms905272	match	
 include/Winnls.h	GetStringTypeExW	ms905283	match	
-include/Winnls.h	GetCurrencyFormatW		no-pageid	
-include/Winnls.h	GetNumberFormatW		no-pageid	
-include/Winnls.h	GetDateFormatW		no-pageid	
+include/Winnls.h	GetCurrencyFormatW	ms906228	no-print-on-page	
+include/Winnls.h	GetNumberFormatW	ms906228	no-print-on-page	
+include/Winnls.h	GetDateFormatW	ms906228	no-print-on-page	
 include/Winnls.h	GetTimeFormatW		no-pageid	
 include/Winnls.h	GetLocaleInfoW		no-pageid	
 include/Winnls.h	SetLocaleInfoW		no-pageid	
@@ -2564,15 +2564,15 @@ include/Winuser.h	HideCaret	ms929210	no-print-on-page
 include/Winuser.h	SetCaretBlinkTime	ms929930	no-print-on-page	
 include/Winuser.h	SetCaretPos	ms940012	no-print-on-page	
 include/Winuser.h	ShowCaret	ms940013	no-print-on-page	
-include/Winuser.h	GetMessageW		no-pageid	
-include/Winuser.h	PeekMessageW		no-pageid	
+include/Winuser.h	GetMessageW	ee503715	page-drops-star	args [3]: page print omits pointer
+include/Winuser.h	PeekMessageW	ee502843	page-drops-star	args [3]: page print omits pointer
 include/Winuser.h	MapWindowPoints	ms911790	no-print-on-page	
 include/Winuser.h	DispatchMessageW	ms911790	no-print-on-page	
 include/Winuser.h	TranslateMessage	aa453776	no-print-on-page	
 include/Winuser.h	PostMessageW	ms911937	no-print-on-page	
-include/Winuser.h	PostThreadMessageW		no-pageid	
-include/Winuser.h	SendMessageW		no-pageid	
-include/Winuser.h	SendNotifyMessageW		no-pageid	
+include/Winuser.h	PostThreadMessageW	ee506038	match	
+include/Winuser.h	SendMessageW	ee504840	match	
+include/Winuser.h	SendNotifyMessageW	ee500168	match	
 include/Winuser.h	PostQuitMessage	ms911938	no-print-on-page	
 include/Winuser.h	RegisterWindowMessageW	ms939737	match	
 include/Winuser.h	GetMessagePos	aa453136	no-print-on-page	
@@ -2598,7 +2598,7 @@ include/Winuser.h	keybd_event	aa453245	match
 include/Winuser.h	PostKeybdMessage	ms911936	match	
 include/Winuser.h	LoadKeyboardLayoutW	aa453414	match	
 include/Winuser.h	RegisterHotKey	ms913104	match	
-include/Winuser.h	CreateAcceleratorTableW		no-pageid	
+include/Winuser.h	CreateAcceleratorTableW	ee505096	match	
 include/Winuser.h	LoadAcceleratorsW	ms908162	no-print-on-page	
 include/Winuser.h	DestroyAcceleratorTable	aa453407	no-print-on-page	
 include/Winuser.h	TranslateAcceleratorW	aa452935	no-print-on-page	

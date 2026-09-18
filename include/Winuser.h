@@ -424,12 +424,14 @@ AKARI_CE_IMPORT BOOL ShowCaret(HWND hWnd) AKARI_CE_NAME(ShowCaret);             
 /* Link Library row feed def/coredll-doc.def).                        */
 /* ------------------------------------------------------------------ */
 
+/* ee503715: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL GetMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,    /* aa453135 */
                  UINT wMsgFilterMax) AKARI_CE_NAME(GetMessageW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define GetMessage GetMessageW
+/* ee502843: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL PeekMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,   /* ms911928 */
                   UINT wMsgFilterMax, UINT wRemoveMsg) AKARI_CE_NAME(PeekMessageW);
 /* the verified coredll surface exports only the W form;
@@ -467,17 +469,20 @@ AKARI_CE_IMPORT BOOL PostMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lPa
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define PostMessage PostMessageW
+/* ee506038: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL PostThreadMessageW(DWORD idThread, UINT Msg, WPARAM wParam,
                         LPARAM lParam) AKARI_CE_NAME(PostThreadMessageW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define PostThreadMessage PostThreadMessageW
+/* ee504840: page print verified (proto-cite) */
 AKARI_CE_IMPORT LRESULT SendMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendMessageW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define SendMessage SendMessageW
+/* ee500168: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL SendNotifyMessageW(HWND hWnd, UINT Msg, WPARAM wParam,
                         LPARAM lParam) AKARI_CE_NAME(SendNotifyMessageW);
 /* the verified coredll surface exports only the W form;
@@ -837,6 +842,7 @@ AKARI_CE_IMPORT BOOL RegisterHotKey(HWND hWnd, int id, UINT fsModifiers, UINT vk
 BOOL UnregisterHotKey(HWND hWnd, int id);
 
 /* Accelerator tables (CE 1.0+; Link Library Accel.lib). */
+/* ee505096: page print verified (proto-cite) */
 AKARI_CE_IMPORT HACCEL CreateAcceleratorTableW(LPACCEL lpaccl, int cEntries) AKARI_CE_NAME(CreateAcceleratorTableW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is

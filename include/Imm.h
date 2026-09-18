@@ -264,6 +264,7 @@ AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCCLockCount(HIMCC hIMCC)
 
 /* candidate list / window */
 
+/* ms905995: page print verified (proto-cite) */
 AKARI_CE_IMPORT DWORD ImmGetCandidateListW(HIMC hIMC, DWORD deIndex,
     LPCANDIDATELIST lpCandList, DWORD dwBufLen)
     AKARI_CE_NAME(ImmGetCandidateListW);
@@ -287,6 +288,7 @@ AKARI_CE_IMPORT BOOL ImmSetCandidateWindow(HIMC hIMC,
 
 /* composition string / window / font */
 
+/* ms906001: page print verified (proto-cite) */
 AKARI_CE_IMPORT LONG ImmGetCompositionStringW(HIMC hIMC, DWORD dwIndex,
     LPVOID lpBuf, DWORD dwBufLen)
     AKARI_CE_NAME(ImmGetCompositionStringW);

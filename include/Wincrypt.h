@@ -861,6 +861,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptEnumProvidersW(DWORD dwIndex, DWORD *pdwReserve
  * Unicode-only). */
 #define CryptEnumProviders CryptEnumProvidersW
 
+/* ms938017: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptEnumProviderTypesW(DWORD dwIndex, DWORD *pdwReserved,
                                      DWORD dwFlags, DWORD *pdwProvType,
                                      LPTSTR pszTypeName,
@@ -973,12 +974,14 @@ AKARI_CE_IMPORT BOOL WINAPI CryptMsgUpdate(HCRYPTMSG hCryptMsg, const BYTE *pbDa
 
 /* ---- Protected storage (Windows CE .NET 4.0 and later) ----------- */
 
+/* ee498338: the print shows the typedef form CRYPTPROTECT_PROMPTSTRUCT*; this tree forward-declares the tag only -- the page states the struct is not used on Windows CE (see note above) */
 AKARI_CE_IMPORT BOOL WINAPI CryptProtectData(DATA_BLOB *pDataIn, LPCWSTR szDataDescr,
                                DATA_BLOB *pOptionalEntropy, PVOID pvReserved,
                                struct CRYPTPROTECT_PROMPTSTRUCT *pPromptStruct,
                                DWORD dwFlags,
                                DATA_BLOB *pDataOut) AKARI_CE_NAME(CryptProtectData);
 
+/* ee498169: the print shows the typedef form CRYPTPROTECT_PROMPTSTRUCT*; this tree forward-declares the tag only -- the page states the struct is not used on Windows CE (see note above) */
 AKARI_CE_IMPORT BOOL WINAPI CryptUnprotectData(DATA_BLOB *pDataIn, LPWSTR *ppszDataDescr,
                                  DATA_BLOB *pOptionalEntropy, PVOID pvReserved,
                                  struct CRYPTPROTECT_PROMPTSTRUCT *pPromptStruct,
@@ -1007,6 +1010,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptSetProviderW(LPCTSTR pszProvName,
  * Unicode-only). */
 #define CryptSetProvider CryptSetProviderW
 
+/* ms938353: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptSetProviderExW(LPCTSTR pszProvName, DWORD dwProvType,
                                  DWORD *pdwReserved,
                                  DWORD dwFlags) AKARI_CE_NAME(CryptSetProviderExW);
@@ -1029,6 +1033,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptSignHashW(HCRYPTHASH hHash, DWORD dwKeySpec,
  * Unicode-only). */
 #define CryptSignHash CryptSignHashW
 
+/* ms938383: page print verified (proto-cite) */
 AKARI_CE_IMPORT BOOL WINAPI CryptVerifySignatureW(HCRYPTHASH hHash, BYTE *pbSignature,
                                    DWORD dwSigLen, HCRYPTKEY hPubKey,
                                    LPCTSTR sDescription,
