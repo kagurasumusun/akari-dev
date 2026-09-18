@@ -212,6 +212,7 @@ typedef struct tagDetectEncodingInfo {
 /* values were ADOPTED from R1 (M96 section at the end of this header). */
 /* SCRIPTFONTINFO has no CE page (referenced by aa452373) -- opaque.    */
 /* ------------------------------------------------------------------ */
+/* ms918820: members/signature verified against this page (type-cite) */
 typedef struct tagMIMECPINFO {
     DWORD dwFlags;
     UINT uiCodePage;
@@ -224,16 +225,19 @@ typedef struct tagMIMECPINFO {
     WCHAR wszProportionalFont[MAX_MIMEFACE_NAME];
     BYTE bGDICharset;
 } MIMECPINFO, *PMIMECPINFO;
+/* ms918821: members/signature verified against this page (type-cite) */
 typedef struct tagMIMECSETINFO {
     UINT uiCodePage;
     UINT uiInternetEncoding;
     WCHAR wszCharset[MAX_MIMECSET_NAME];
 } MIMECSETINFO, *PMIMECSETINFO;
+/* ms918852: members/signature verified against this page (type-cite) */
 typedef struct tagRFC1766INFO {
     LCID lcid;
     WCHAR wszRfc1766[MAX_RFC1766_NAME];
     WCHAR wszLocaleName[MAX_LOCALE_NAME];
 } RFC1766INFO, *PRFC1766INFO;
+/* ms918857: members/signature verified against this page (type-cite) */
 typedef struct tagSCRIPINFO {      /* page tag misprint kept in the tag */
     SCRIPT_ID ScriptId;
     UINT uiCodePage;

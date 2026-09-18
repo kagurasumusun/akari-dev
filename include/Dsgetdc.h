@@ -13,6 +13,7 @@
  * GUID DomainGuid; LPTSTR DomainName; LPTSTR DnsForestName;
  * ULONG Flags; LPTSTR DcSiteName; LPTSTR ClientSiteName; ... }
  * DOMAIN_CONTROLLER_INFO, *PDOMAIN_CONTROLLER_INFO;` */
+/* aa450366: members/signature verified against this page (type-cite) */
 typedef struct _DOMAIN_CONTROLLER_INFO {
     LPTSTR DomainControllerName;
     LPTSTR DomainControllerAddress;

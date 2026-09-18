@@ -19,6 +19,7 @@
  * dwNotificationType;TCHAR ptcDeviceName[MAX_PATH]; UINT
  * uiOffsetToStatusBuffer; UINT uiStatusBufferSize;}
  * NDISUIO_DEVICE_NOTIFICATION, *PNDISUIO_DEVICE_NOTIFICATION;` */
+/* ms905030: members/signature verified against this page (type-cite) */
 typedef struct _NDISUIO_DEVICE_NOTIFICATION {
     DWORD dwNotificationType;
     TCHAR ptcDeviceName[MAX_PATH];
@@ -30,6 +31,7 @@ typedef struct _NDISUIO_DEVICE_NOTIFICATION {
  * _NDISUIO_QUERY_BINDING{ULONG BindingIndex;ULONG DeviceNameOffset;
  * ULONG DeviceNameLength;ULONG DeviceDescrOffset;ULONG ...;}`
  * (glued tokens split; full member list as printed). */
+/* ms905032: members/signature verified against this page (type-cite) */
 typedef struct _NDISUIO_QUERY_BINDING {
     ULONG BindingIndex;
     ULONG DeviceNameOffset;
@@ -62,6 +64,7 @@ typedef struct _NDISUIO_SET_OID {
 /* "NDISUIO_REQUEST_NOTIFICATION": print `typedef struct{ HANDLE
  * hMsgQueue; DWORD dwNotificationTypes; }NDISUIO_REQUEST_NOTIFICATION,
  * *PNDISUIO_REQUEST_NOTIFICATION;` */
+/* aa448323: members/signature verified against this page (type-cite) */
 typedef struct _NDISUIO_REQUEST_NOTIFICATION {
     HANDLE hMsgQueue;
     DWORD  dwNotificationTypes;
@@ -69,6 +72,7 @@ typedef struct _NDISUIO_REQUEST_NOTIFICATION {
 
 /* "NIC_STATISTICS": print (ULONGLONG counters; full member list as
  * printed). */
+/* ms905292: members/signature verified against this page (type-cite) */
 typedef struct _NIC_STATISTICS {
     ULONG     Size;
     PTCHAR    ptcDeviceName;

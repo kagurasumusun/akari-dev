@@ -9,6 +9,7 @@
 
 /* "IPSEC_API_PARAM": print `typedef struct { DWORD id; PVOID val;
  * DWORD valSize;} IPSEC_API_PARAM, *PIPSEC_API_PARAM;` */
+/* aa450429: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD id;
     PVOID val;
@@ -16,6 +17,7 @@ typedef struct {
 } IPSEC_API_PARAM, *PIPSEC_API_PARAM;
 
 /* "IPSEC_API_MODE_INFO": print. */
+/* aa450428: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD inAction;
     DWORD outAction;

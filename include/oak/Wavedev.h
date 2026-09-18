@@ -42,6 +42,7 @@ typedef struct  {
  * (tools/decl-types.py). ----------------------------- */
 
 /* wceddkMMDRV_MESSAGE_PARAMS: page-printed definition (Windows CE OS). */
+/* aa447862: members/signature verified against this page (type-cite) */
 typedef struct _MMDRV_MESSAGE_PARAMS {
     UINT uDeviceId;
     UINT uMsg;

@@ -63,6 +63,7 @@ extern "C" {
 /* against; CE pages do not republish the member layouts.             */
 /* ------------------------------------------------------------------ */
 
+/* ee504858: members/signature verified against this page (type-cite) */
 typedef struct tagMSG {
     HWND   hwnd;      /* window whose procedure receives the message */
     UINT   message;   /* message identifier */
@@ -72,14 +73,17 @@ typedef struct tagMSG {
     POINT  pt;        /* cursor position when the message was posted */
 } MSG, *PMSG, *LPMSG;
 
+/* ee499372: members/signature verified against this page (type-cite) */
 typedef LRESULT (CALLBACK *WNDPROC)(HWND hWnd, UINT Msg, WPARAM wParam,
                                     LPARAM lParam);
 typedef BOOL (CALLBACK *WNDENUMPROC)(HWND hwnd, LPARAM lParam);
+/* aa453551: members/signature verified against this page (type-cite) */
 typedef BOOL (CALLBACK *PROPENUMPROCEX)(HWND hwnd, LPTSTR lpszString,
                                         HANDLE hData, ULONG_PTR dwData);
 typedef VOID (CALLBACK *TIMERPROC)(HWND hwnd, UINT uMsg, UINT idEvent,
                                    DWORD dwTime);
 
+/* ee505233: members/signature verified against this page (type-cite) */
 typedef struct tagWNDCLASS {
     UINT      style;         /* class styles */
     WNDPROC   lpfnWndProc;   /* window procedure */
@@ -979,6 +983,7 @@ typedef BOOL (CALLBACK *DLGPROC)(HWND hDlg, UINT uMsg, WPARAM wParam,
 
 /* aa452958 "DLGITEMTEMPLATE": in-memory standard dialog template for   */
 /* one control (combined with DLGTEMPLATE).  CE 1.0+; Winuser.h.        */
+/* aa452958: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD style;         /* window + control styles (WS_*, BS_*, ...)  */
     DWORD dwExtendedStyle;
@@ -992,6 +997,7 @@ typedef struct {
 /* aa452960 "DLGTEMPLATE": in-memory standard dialog template header.   */
 /* CE 1.0+; Winuser.h.  (The CE page notes Windows CE does not support  */
 /* dialog menus.)                                                       */
+/* ee504037: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD style;         /* window + DS_* styles */
     DWORD dwExtendedStyle;
@@ -1010,6 +1016,7 @@ typedef const DLGITEMTEMPLATE *LPCDLGITEMTEMPLATE;
 /* ms911822 "MENUITEMINFO": menu-item information (Get/SetMenuItemInfo).*/
 /* CE 1.0+; Winuser.h.  (CE member list: UINT wID and DWORD dwItemData; */
 /* dwTypeData carries the item text for MIIM_TYPE / MFT_STRING.)        */
+/* ms911822: members/signature verified against this page (type-cite) */
 typedef struct tagMENUITEMINFO {
     UINT    cbSize;        /* sizeof(MENUITEMINFO) */
     UINT    fMask;         /* MIIM_* */
@@ -1026,6 +1033,7 @@ typedef struct tagMENUITEMINFO {
 
 /* aa453766 "TPMPARAMS": extended TrackPopupMenuEx parameters.  CE     */
 /* 1.0+; Winuser.h.                                                     */
+/* aa453766: members/signature verified against this page (type-cite) */
 typedef struct tagTPMPARAMS {
     UINT cbSize;          /* sizeof(TPMPARAMS) */
     RECT rcExclude;       /* rectangle to exclude (screen coords) */
@@ -1064,6 +1072,7 @@ typedef struct tagDELETEITEMSTRUCT {
 /* ms929934 "ICONINFO (Windows CE 5.0)": the official page lists Header:*/
 /* Commctrl.h; CreateIconIndirect (ms908175) and GetIconInfo (ms929247) */
 /* list Header: Winuser.h.  Fixed Win32-ABI member layout.             */
+/* ee504011: members/signature verified against this page (type-cite) */
 typedef struct _ICONINFO {
     BOOL    fIcon;        /* TRUE = icon, FALSE = cursor */
     DWORD   xHotspot;
@@ -1306,6 +1315,7 @@ AKARI_CE_IMPORT VOID     mouse_event(DWORD dwFlags, DWORD dx, DWORD dy, DWORD dw
 /* reference (winuser.h, learn.microsoft.com) -- a fixed-ABI record   */
 /* (same policy as HARDWAREINPUT / CRITICAL_SECTION).                  */
 /* ------------------------------------------------------------------ */
+/* ee501053: members/signature verified against this page (type-cite) */
 typedef struct tagCOPYDATASTRUCT {
     ULONG_PTR dwData;   /* application-defined data type tag */
     DWORD     cbData;   /* size, in bytes, of lpData */
@@ -1324,6 +1334,7 @@ typedef struct tagCOPYDATASTRUCT {
 /* Common Controls notifications book and are held in                  */
 /* docs/inventory.md.                                                  */
 /* ------------------------------------------------------------------ */
+/* ms931479: members/signature verified against this page (type-cite) */
 typedef struct tagNMHDR {
     HWND hwndFrom;   /* window handle of the control sending the message */
     UINT idFrom;     /* identifier of the control sending the message */

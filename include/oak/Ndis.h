@@ -200,6 +200,7 @@ typedef struct _NDIS_PACKET_STACK {
 } NDIS_PACKET_STACK, *PNDIS_PACKET_STACK;
 
 /* "TRANSPORT_HEADER_OFFSET" (Ndis.h data-type row): print. */
+/* aa448216: members/signature verified against this page (type-cite) */
 typedef struct _TRANSPORT_HEADER_OFFSET {
     USHORT ProtocolType;
     USHORT HeaderOffset;
@@ -254,6 +255,7 @@ typedef struct _NDIS_WAN_COMPRESS_INFO {
 } NDIS_WAN_COMPRESS_INFO;
 
 /* "NDIS_WAN_GET_LINK_INFO" (Ndis.h data-type row): print. */
+/* ms905044: members/signature verified against this page (type-cite) */
 typedef struct _NDIS_WAN_GET_LINK_INFO {
     NDIS_HANDLE NdisLinkHandle;
     ULONG       MaxSendFrameSize;
@@ -269,6 +271,7 @@ typedef struct _NDIS_WAN_GET_LINK_INFO {
 } NDIS_WAN_GET_LINK_INFO, *PNDIS_WAN_GET_LINK_INFO;
 
 /* "NDIS_WAN_SET_LINK_INFO" (Ndis.h data-type row): print. */
+/* ms905052: members/signature verified against this page (type-cite) */
 typedef struct _NDIS_WAN_SET_LINK_INFO {
     NDIS_HANDLE NdisLinkHandle;
     ULONG       MaxSendFrameSize;
@@ -284,6 +287,7 @@ typedef struct _NDIS_WAN_SET_LINK_INFO {
 } NDIS_WAN_SET_LINK_INFO, *PNDIS_WAN_SET_LINK_INFO;
 
 /* "NDIS_WAN_GET_COMP_INFO" (Ndis.h data-type row): print. */
+/* ms905043: members/signature verified against this page (type-cite) */
 typedef struct _NDIS_WAN_GET_COMP_INFO {
     NDIS_HANDLE           NdisLinkHandle;
     NDIS_WAN_COMPRESS_INFO SendCapabilities;
@@ -291,6 +295,7 @@ typedef struct _NDIS_WAN_GET_COMP_INFO {
 } NDIS_WAN_GET_COMP_INFO, *PNDIS_WAN_GET_COMP_INFO;
 
 /* "NDIS_WAN_SET_COMP_INFO" (Ndis.h data-type row): print. */
+/* ms905051: members/signature verified against this page (type-cite) */
 typedef struct _NDIS_WAN_SET_COMP_INFO {
     NDIS_HANDLE           NdisLinkHandle;
     NDIS_WAN_COMPRESS_INFO SendCapabilities;
@@ -298,6 +303,7 @@ typedef struct _NDIS_WAN_SET_COMP_INFO {
 } NDIS_WAN_SET_COMP_INFO, *PNDIS_WAN_SET_COMP_INFO;
 
 /* "NDIS_WAN_GET_STATS_INFO" (Ndis.h data-type row): print. */
+/* ms905045: members/signature verified against this page (type-cite) */
 typedef struct _NDIS_WAN_GET_STATS_INFO {
     NDIS_HANDLE NdisLinkHandle;
     ULONG       BytesSent;
@@ -357,6 +363,7 @@ typedef struct _NDIS_TASK_TCP_LARGE_SEND {
 
 /* "NDIS_TCP_IP_CHECKSUM_PACKET_INFO" (Ndis.h data-type row): print
  * (one-bit bitfields, Value alias). */
+/* ms905027: members/signature verified against this page (type-cite) */
 typedef struct _NDIS_TCP_IP_CHECKSUM_PACKET_INFO {
     union {
         struct {

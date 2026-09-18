@@ -11,6 +11,7 @@
 /* NETRESOURCE (title, print `typedef struct _NETRESOURCE {DWORD dwScope;
  * DWORD dwType; DWORD dwDisplayType; DWORD dwUsage; LPTSTR lpLocalName;
  * LPTSTR lpRemoteName; LPTSTR lpComment; LPTSTR lpProvider; }`). */
+/* ms895665: members/signature verified against this page (type-cite) */
 typedef struct _NETRESOURCE {
     DWORD  dwScope;
     DWORD  dwType;
@@ -23,6 +24,7 @@ typedef struct _NETRESOURCE {
 } NETRESOURCE, *LPNETRESOURCE;
 
 /* CONNECTDLGSTRUCT (tagless print; tag closed on typedef name). */
+/* ms887910: members/signature verified against this page (type-cite) */
 typedef struct CONNECTDLGSTRUCT {
     DWORD          cbStructure;
     HWND           hwndOwner;
@@ -34,6 +36,7 @@ typedef struct CONNECTDLGSTRUCT {
 /* DISCDLGSTRUCT: print `typedef struct _wcesdk_win32_DISCDLGSTRUCT_str
  * {DWORD cbStructure;HWND hwndOwner;LPTSTR lpLocalName;
  * LPTSTR lpRemoteName;DWORD dwFlags;} DISCDLGSTRUCT;` (wcesdk tag). */
+/* aa450334: members/signature verified against this page (type-cite) */
 typedef struct _wcesdk_win32_DISCDLGSTRUCT_str {
     DWORD  cbStructure;
     HWND   hwndOwner;
@@ -42,12 +45,14 @@ typedef struct _wcesdk_win32_DISCDLGSTRUCT_str {
     DWORD  dwFlags;
 } DISCDLGSTRUCT, *LPDISCDLGSTRUCT;
 
+/* aa450872: members/signature verified against this page (type-cite) */
 typedef struct _REMOTE_NAME_INFO {
     LPTSTR lpUniversalName;
     LPTSTR lpConnectionName;
     LPTSTR lpRemainingPath;
 } REMOTE_NAME_INFO, *LPREMOTE_NAME_INFO;
 
+/* aa451137: members/signature verified against this page (type-cite) */
 typedef struct _UNIVERSAL_NAME_INFO {
     LPTSTR lpUniversalName;
 } UNIVERSAL_NAME_INFO, *LPUNIVERSAL_NAME_INFO;

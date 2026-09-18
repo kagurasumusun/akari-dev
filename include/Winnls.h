@@ -372,6 +372,7 @@ typedef DWORD LCTYPE;   /* LCTYPE constant space (UINT-sized) */
  * references these constants directly -- the blocker recorded on
  * 2026-09-17 (task D) is closed. */
 
+/* ms904720: members/signature verified against this page (type-cite) */
 typedef struct _currencyfmt {
     UINT   NumDigits;
     UINT   LeadingZero;
@@ -383,6 +384,7 @@ typedef struct _currencyfmt {
     LPTSTR lpCurrencySymbol;
 } CURRENCYFMT;
 
+/* ms906228: members/signature verified against this page (type-cite) */
 typedef struct _numberfmt {
     UINT   NumDigits;
     UINT   LeadingZero;

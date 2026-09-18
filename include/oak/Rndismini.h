@@ -33,16 +33,19 @@ typedef struct _RNDIS_PDD_CHARACTERISTICS RNDIS_PDD_CHARACTERISTICS,
 /* "SendRndisMessageHandler": print
  * `typedef void(* PFN_PDD_SEND_RNDIS_MESSAGE)( PDATA_WRAPPER
  * pDataWrapper);` */
+/* ms920497: members/signature verified against this page (type-cite) */
 typedef void (*PFN_PDD_SEND_RNDIS_MESSAGE)(PDATA_WRAPPER pDataWrapper);
 
 /* "SendRndisPacketHandler": print
  * `typedef void (* PFN_PDD_SEND_RNDIS_PACKET)( PDATA_WRAPPER
  * pDataWrapper);` */
+/* ms920504: members/signature verified against this page (type-cite) */
 typedef void (*PFN_PDD_SEND_RNDIS_PACKET)(PDATA_WRAPPER pDataWrapper);
 
 /* "SetHandler": print
  * `typedef BOOL (* PFN_PDD_SET)( UINT uiRequestId, PVOID pvData,
  * ULONG ulDataLength);` */
+/* ms920646: members/signature verified against this page (type-cite) */
 typedef BOOL (*PFN_PDD_SET)(UINT uiRequestId, PVOID pvData,
                              ULONG ulDataLength);
 
@@ -50,6 +53,7 @@ typedef BOOL (*PFN_PDD_SET)(UINT uiRequestId, PVOID pvData,
  * `typedef BOOL(* PFN_PDD_GET)(UINT uiRequestId,PVOID pvData,
  * ULONG ulDataLength,ULONG* pulRequiredLength);` plus the four
  * REQ_ID_* request-identifier constants below. */
+/* aa447838: members/signature verified against this page (type-cite) */
 typedef BOOL (*PFN_PDD_GET)(UINT uiRequestId, PVOID pvData,
                              ULONG ulDataLength,
                              ULONG *pulRequiredLength);

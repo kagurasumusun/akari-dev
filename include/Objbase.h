@@ -1404,6 +1404,7 @@ typedef struct _tagLICINFO {
 } LICINFO;
 
 /* Ocidl.h structures. */
+/* ms863928: members/signature verified against this page (type-cite) */
 typedef struct _tagCONNECTDATA {   /* ms886466 */
     IUnknown *pUnk;
     DWORD     dwCookie;

@@ -91,6 +91,7 @@ typedef enum _RAS_AUTH_ATTRIBUTE_TYPE_ {
 } RAS_AUTH_ATTRIBUTE_TYPE;
 
 /* "RAS_AUTH_ATTRIBUTE": print. */
+/* ms896351: members/signature verified against this page (type-cite) */
 typedef struct _RAS_AUTH_ATTRIBUTE {
     RAS_AUTH_ATTRIBUTE_TYPE raaType;
     DWORD                   dwLength;
@@ -98,6 +99,7 @@ typedef struct _RAS_AUTH_ATTRIBUTE {
 } RAS_AUTH_ATTRIBUTE, *PRAS_AUTH_ATTRIBUTE;
 
 /* "PPP_EAP_PACKET": print (pointer typedef really is *PPPP_EAP_PACKET). */
+/* ms896289: members/signature verified against this page (type-cite) */
 typedef struct _PPP_EAP_PACKET {
     BYTE Code;
     BYTE Id;
@@ -117,6 +119,7 @@ typedef enum _PPP_EAP_ACTION {
 } PPP_EAP_ACTION;
 
 /* "PPP_EAP_INPUT": print. */
+/* ms896286: members/signature verified against this page (type-cite) */
 typedef struct _PPP_EAP_INPUT {
     DWORD               dwSizeInBytes;
     DWORD               fFlags;
@@ -151,6 +154,7 @@ typedef struct _PPP_EAP_INPUT {
  * distinct). */   /* pointer spelling as printed (4 P) */
 
 /* "PPP_EAP_OUTPUT": print (pointer typedef really is *PPPP_EAP_OUTPUT). */
+/* ms896288: members/signature verified against this page (type-cite) */
 typedef struct _PPP_EAP_OUTPUT {
     DWORD               dwSizeInBytes;
     PPP_EAP_ACTION      Action;

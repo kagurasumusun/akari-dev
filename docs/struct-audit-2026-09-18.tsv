@@ -103,20 +103,20 @@ include/Cs.h	CSALLOCATOR_FRAMING	ee485481	match
 include/Cs.h	CSPROPERTY_VALUES	ee485664	match	
 include/Cs.h	CSPROPERTY_BOUNDS_LONG	ee485917	match	
 include/Cs.h	CSPROPERTY_STEPPING_LONG	ee481471	match	
-include/D3dm.h	D3DMVECTOR		no-pageid	
-include/D3dm.h	D3DMCAPS		no-pageid	
-include/D3dm.h	D3DMCLIPSTATUS		no-pageid	
-include/D3dm.h	D3DMCOLORVALUE		no-pageid	
-include/D3dm.h	D3DMDEVICE_CREATION_PARAMETERS		no-pageid	
-include/D3dm.h	D3DMDISPLAYMODE		no-pageid	
-include/D3dm.h	D3DMINDEXBUFFER_DESC		no-pageid	
-include/D3dm.h	D3DMLIGHT		no-pageid	
-include/D3dm.h	D3DMLOCKED_RECT		no-pageid	
-include/D3dm.h	D3DMMATERIAL		no-pageid	
-include/D3dm.h	D3DMPRESENT_PARAMETERS		no-pageid	
-include/D3dm.h	D3DMSURFACE_DESC		no-pageid	
-include/D3dm.h	D3DMVERTEXBUFFER_DESC		no-pageid	
-include/D3dm.h	D3DMVIEWPORT		no-pageid	
+include/D3dm.h	D3DMVECTOR	ms907757	match	
+include/D3dm.h	D3DMCAPS	ms939138	match	
+include/D3dm.h	D3DMCLIPSTATUS	ms939140	match	
+include/D3dm.h	D3DMCOLORVALUE	ms939143	match	
+include/D3dm.h	D3DMDEVICE_CREATION_PARAMETERS	ms907701	match	
+include/D3dm.h	D3DMDISPLAYMODE	ms907703	match	
+include/D3dm.h	D3DMINDEXBUFFER_DESC	ms907712	match	
+include/D3dm.h	D3DMLIGHT	ms907713	match	
+include/D3dm.h	D3DMLOCKED_RECT	ms907716	match	
+include/D3dm.h	D3DMMATERIAL	ms907718	match	
+include/D3dm.h	D3DMPRESENT_PARAMETERS	ms907729	match	
+include/D3dm.h	D3DMSURFACE_DESC	ms907743	match	
+include/D3dm.h	D3DMVERTEXBUFFER_DESC	ms907758	match	
+include/D3dm.h	D3DMVIEWPORT	ms907759	match	
 include/D3dm.h	D3DMMATRIX	ms907720	match	
 include/D3dmddk.h	D3DM_CLEAR	aa447711	match	
 include/D3dmddk.h	D3DM_COLORFILL	aa447712	match	
@@ -169,7 +169,7 @@ include/Diskio.h	STORAGE_IDENTIFICATION	aa448149	match
 include/Dmo.h	DMO_MEDIA_TYPE	aa451601	match	
 include/Dmo.h	DMO_OUTPUT_DATA_BUFFER	aa451602	match	
 include/Dmo.h	DMO_PARTIAL_MEDIATYPE	aa451605	match	
-include/Dsgetdc.h	DOMAIN_CONTROLLER_INFO		no-pageid	
+include/Dsgetdc.h	DOMAIN_CONTROLLER_INFO	aa450366	match	
 include/Dshow.h	ALLOCATOR_PROPERTIES	ms925330	match	
 include/Dshow.h	AM_MEDIA_TYPE	ms925337	match	
 include/Dshow.h	AM_SAMPLE2_PROPERTIES	ms925343	match	
@@ -210,13 +210,13 @@ include/Dshow.h	IPinVtbl		skip-fnptr
 include/Dshow.h	IQualPropVtbl		skip-fnptr	
 include/Dshow.h	IReferenceClockVtbl		skip-fnptr	
 include/Dshow.h	IVideoWindowVtbl		skip-fnptr	
-include/Dsound.h	DSBCAPS		no-pageid	
-include/Dsound.h	DSBPOSITIONNOTIFY		no-pageid	
-include/Dsound.h	DSBUFFERDESC		no-pageid	
+include/Dsound.h	DSBCAPS	ms897756	match	
+include/Dsound.h	DSBPOSITIONNOTIFY	ms897759	match	
+include/Dsound.h	DSBUFFERDESC	ms897764	match	
 include/Dsound.h	DSCAPS		no-pageid	
-include/Dsound.h	DSCBCAPS		no-pageid	
-include/Dsound.h	DSCBUFFERDESC		no-pageid	
-include/Dsound.h	DSCCAPS		no-pageid	
+include/Dsound.h	DSCBCAPS	ms897780	match	
+include/Dsound.h	DSCBUFFERDESC	ms897785	match	
+include/Dsound.h	DSCCAPS	ms897788	match	
 include/Dvdata.h	DVD_AUDIO_MU_ATTR	aa451617	match	
 include/Dvdata.h	DVD_AUDIO_STREAM_ATTR	aa451618	match	
 include/Dvdata.h	DVD_CELL_PIECE	aa451619	match	
@@ -244,7 +244,7 @@ include/Extapi.h	LINEOPERATORSTATUS	ee497834	match
 include/Extfile.h	FILECHANGEINFO	ms889030	no-print-on-page	
 include/Fatui.h	UIPARAM		no-pageid	
 include/Fatui.h	FATUIDATA		no-pageid	
-include/Fwapi.h	FW_IP_ADDRESS		no-pageid	
+include/Fwapi.h	FW_IP_ADDRESS	aa450386	match	
 include/Fwapi.h	TCPHeader	ms885685	no-print-on-page	
 include/Htmlctrl.h	NM_HTMLCONTEXT		no-pageid	
 include/Htmlctrl.h	NM_HTMLVIEW		no-pageid	
@@ -261,7 +261,7 @@ include/Httpfilt.h	HTTP_FILTER_URL_MAP	ms900491	match
 include/IExchangeClient.h	ContactsSearchCriteria	ms863932	no-print-on-page	
 include/IExchangeClient.h	FreeBusyCriteria	aa515003	no-print-on-page	
 include/IExchangeClient.h	GALSearchCriteria	aa515013	no-print-on-page	
-include/Icmpapi.h	IP_OPTION_INFORMATION		no-pageid	
+include/Icmpapi.h	IP_OPTION_INFORMATION	ms891178	match	
 include/Iltiming.h	ILTIMING_MESSAGE	ms906156	match	
 include/Imaging.h	BitmapData	ms925969	no-print-on-page	
 include/Imaging.h	ImageCodecInfo	aa452241	no-print-on-page	
@@ -292,8 +292,8 @@ include/Iprtrmib.h	MIB_TCPROW	ms895081	match
 include/Iprtrmib.h	MIB_TCPSTATS	ms895081	no-print-on-page	
 include/Iprtrmib.h	MIB_UDPROW	ms895094	match	
 include/Iprtrmib.h	MIB_UDPSTATS	ms895094	no-print-on-page	
-include/Ipsec_api.h	IPSEC_API_PARAM		no-pageid	
-include/Ipsec_api.h	IPSEC_API_MODE_INFO		no-pageid	
+include/Ipsec_api.h	IPSEC_API_PARAM	aa450429	match	
+include/Ipsec_api.h	IPSEC_API_MODE_INFO	aa450428	match	
 include/Iptypes.h	IP_ADDRESS_STRING	ms895038	no-print-on-page	
 include/Iptypes.h	IP_ADDR_STRING	ms891175	match	
 include/Iptypes.h	IP_PER_ADAPTER_INFO	ms895046	no-print-on-page	
@@ -306,10 +306,10 @@ include/Loadauth.h	WIN_CERTIFICATE	ms920091	match
 include/Lt2pcfg.h	L2TP_CONFIG_DATA	ms893321	match	
 include/Mlang.h	UNICODERANGE	ms918861	match	
 include/Mlang.h	DetectEncodingInfo	aa452152	match	
-include/Mlang.h	MIMECPINFO		no-pageid	
-include/Mlang.h	MIMECSETINFO		no-pageid	
-include/Mlang.h	RFC1766INFO		no-pageid	
-include/Mlang.h	SCRIPTINFO		no-pageid	
+include/Mlang.h	MIMECPINFO	ms918820	match	
+include/Mlang.h	MIMECSETINFO	ms918821	match	
+include/Mlang.h	RFC1766INFO	ms918852	match	
+include/Mlang.h	SCRIPTINFO	ms918857	match	
 include/Mlang.h	IEnumCodePageVtbl		skip-fnptr	
 include/Mlang.h	IEnumRfc1766Vtbl		skip-fnptr	
 include/Mlang.h	IEnumScriptVtbl		skip-fnptr	
@@ -343,19 +343,19 @@ include/Msgqueue.h	MSGQUEUEOPTIONS	ms886759	no-print-on-page
 include/Msgqueue.h	MSGQUEUEINFO	ms886758	no-print-on-page	
 include/Msime.h	IMESHF	ms905982	match	
 include/Msime.h	POSTBL	ms906229	match	
-include/Msime.h	IPCANDIDATE		no-pageid	
+include/Msime.h	IPCANDIDATE	ms906186	match	
 include/Natedit.h	IP_NAT_SESSION_MAPPING_STATISTICS	ms885684	match	
 include/Natedit.h	IPRcvBuf	ms885685	match	
 include/Notifext.hxx	SettingsDialogData	ms919617	match	
 include/Notify.h	CE_NOTIFICATION_TRIGGER	ms908083	match	
 include/Notify.h	CE_USER_NOTIFICATION	ms908106	match	
 include/Notify.h	CE_NOTIFICATION_INFO_HEADER	ms908082	match	
-include/Nuiouser.h	NDISUIO_DEVICE_NOTIFICATION		no-pageid	
-include/Nuiouser.h	NDISUIO_QUERY_BINDING		no-pageid	
+include/Nuiouser.h	NDISUIO_DEVICE_NOTIFICATION	ms905030	match	
+include/Nuiouser.h	NDISUIO_QUERY_BINDING	ms905032	match	
 include/Nuiouser.h	NDISUIO_QUERY_OID		skip-fnptr	
 include/Nuiouser.h	NDISUIO_SET_OID		skip-fnptr	
-include/Nuiouser.h	NDISUIO_REQUEST_NOTIFICATION		no-pageid	
-include/Nuiouser.h	NIC_STATISTICS		no-pageid	
+include/Nuiouser.h	NDISUIO_REQUEST_NOTIFICATION	aa448323	match	
+include/Nuiouser.h	NIC_STATISTICS	ms905292	match	
 include/Obex.h	OBEX_REQUEST	ms895798	match	
 include/Obex.h	INBOX_EVENT_DATA	ms890978	match	
 include/Objbase.h	CY	ms886958	no-print-on-page	
@@ -393,7 +393,7 @@ include/Objbase.h	BIND_OPTS	ms886131	match
 include/Objbase.h	BIND_OPTS2	ms886139	match	
 include/Objbase.h	BINDINFO	ms928761	match	
 include/Objbase.h	LICINFO	ms890747	match	
-include/Objbase.h	CONNECTDATA		no-pageid	
+include/Objbase.h	CONNECTDATA	ms863928	match	
 include/Objbase.h	CONTROLINFO	ms886466	no-print-on-page	
 include/Objbase.h	DVASPECTINFO	ms886467	no-print-on-page	
 include/Objbase.h	DVEXTENTINFO	ms886978	no-print-on-page	
@@ -495,52 +495,52 @@ include/Ras.h	RASCNTL_SERVERLINE	ms896354	match
 include/Ras.h	RASCNTL_SERVERUSERCREDENTIALS	ms896356	match	
 include/Ras.h	RASCNTL_SERVERCONNECTION	ms896357	match	
 include/Ras.h	VARSTRING	ms897088	no-print-on-page	
-include/Raseapif.h	RAS_AUTH_ATTRIBUTE		no-pageid	
-include/Raseapif.h	PPP_EAP_PACKET		no-pageid	
-include/Raseapif.h	PPP_EAP_INPUT		no-pageid	
-include/Raseapif.h	PPP_EAP_OUTPUT		no-pageid	
+include/Raseapif.h	RAS_AUTH_ATTRIBUTE	ms896351	match	
+include/Raseapif.h	PPP_EAP_PACKET	ms896289	match	
+include/Raseapif.h	PPP_EAP_INPUT	ms896286	match	
+include/Raseapif.h	PPP_EAP_OUTPUT	ms896288	match	
 include/Raseapif.h	PPP_EAP_INFO		skip-fnptr	
 include/Recog.h	HWXGUIDE	ms905440	match	
-include/Recog.h	HWXRESULTS		no-pageid	
+include/Recog.h	HWXRESULTS	ms905443	match	
 include/Regext.h	NOTIFICATIONCONDITION	ee488645	match	
 include/Regext.h	NOTIFYMSGQUEUEPACKET	ee488220	match	
 include/Replfilt.h	CFF_CONVERTOPTIONS	aa513853	match	
-include/Routprot.h	MIB_BEST_IF		no-pageid	
+include/Routprot.h	MIB_BEST_IF	ms894596	match	
 include/Rpcdce.h	SEC_WINNT_AUTH_IDENTITY	ms926452	match	
-include/Sapi.h	SPAUDIOBUFFERINFO		no-pageid	
-include/Sapi.h	SPBINARYGRAMMAR		no-pageid	
+include/Sapi.h	SPAUDIOBUFFERINFO	ms893479	match	
+include/Sapi.h	SPBINARYGRAMMAR	ms893483	match	
 include/Sapi.h	SPEVENT		no-pageid	
-include/Sapi.h	SPEVENTSOURCEINFO		no-pageid	
+include/Sapi.h	SPEVENTSOURCEINFO	ms895400	match	
 include/Sapi.h	SPPHRASEELEMENT		no-pageid	
 include/Sapi.h	SPPATHENTRY		no-pageid	
-include/Sapi.h	SPPARSEINFO		no-pageid	
+include/Sapi.h	SPPARSEINFO	ms895655	match	
 include/Sapi.h	SPRECOCONTEXTSTATUS		no-pageid	
-include/Sapi.h	SPRECORESULTINFO		no-pageid	
-include/Sapi.h	SPRECORESULTTIMES		no-pageid	
-include/Sapi.h	SPRULEENTRY		no-pageid	
-include/Sapi.h	SPSERIALIZEDEVENT		no-pageid	
-include/Sapi.h	SPSERIALIZEDEVENT64		no-pageid	
-include/Sapi.h	SPSERIALIZEDRESULT		no-pageid	
-include/Sapi.h	SPWORDPRONUNCIATION		no-pageid	
-include/Sapi.h	SPWORD		no-pageid	
-include/Sapi.h	SPTRANSITIONENTRY		no-pageid	
-include/Sapi.h	SPSTATEINFO		no-pageid	
-include/Sapi.h	SPTMTHREADINFO		no-pageid	
-include/Sapi.h	SPTRANSITIONPROPERTY		no-pageid	
-include/Sapi.h	SPVCONTEXT		no-pageid	
-include/Sapi.h	SPVOICESTATUS		no-pageid	
-include/Sapi.h	SPVPITCH		no-pageid	
-include/Sapi.h	SPVSTATE		no-pageid	
-include/Sapi.h	SPVTEXTFRAG		no-pageid	
-include/Sapi.h	SPWORDENTRY		no-pageid	
-include/Sapi.h	SPWORDLIST		no-pageid	
-include/Sapi.h	SPWORDPRONUNCIATIONLIST		no-pageid	
-include/Sapi.h	SPAUDIOSTATUS		no-pageid	
-include/Sapi.h	SPPHRASEALT		no-pageid	
-include/Sapi.h	SPPHRASEALTREQUEST		no-pageid	
-include/Sapi.h	SPPROPERTYINFO		no-pageid	
-include/Sapi.h	SPPHRASEREPLACEMENT		no-pageid	
-include/Sapi.h	SPPHRASERULE		no-pageid	
+include/Sapi.h	SPRECORESULTINFO	ms895734	match	
+include/Sapi.h	SPRECORESULTTIMES	ms895738	match	
+include/Sapi.h	SPRULEENTRY	ms895738	no-print-on-page	
+include/Sapi.h	SPSERIALIZEDEVENT	ms895738	no-print-on-page	
+include/Sapi.h	SPSERIALIZEDEVENT64	ms895738	no-print-on-page	
+include/Sapi.h	SPSERIALIZEDRESULT	ms895787	match	
+include/Sapi.h	SPWORDPRONUNCIATION	ms895787	no-print-on-page	
+include/Sapi.h	SPWORD	ms895787	no-print-on-page	
+include/Sapi.h	SPTRANSITIONENTRY	ms895787	no-print-on-page	
+include/Sapi.h	SPSTATEINFO	ms895787	no-print-on-page	
+include/Sapi.h	SPTMTHREADINFO	ms895822	match	
+include/Sapi.h	SPTRANSITIONPROPERTY	ms895822	no-print-on-page	
+include/Sapi.h	SPVCONTEXT	ms895822	no-print-on-page	
+include/Sapi.h	SPVOICESTATUS	ms895874	match	
+include/Sapi.h	SPVPITCH	ms895878	match	
+include/Sapi.h	SPVSTATE	ms895878	no-print-on-page	
+include/Sapi.h	SPVTEXTFRAG	ms895896	match	
+include/Sapi.h	SPWORDENTRY	ms895896	no-print-on-page	
+include/Sapi.h	SPWORDLIST	ms895969	match	
+include/Sapi.h	SPWORDPRONUNCIATIONLIST	ms895973	match	
+include/Sapi.h	SPAUDIOSTATUS	ms895973	no-print-on-page	
+include/Sapi.h	SPPHRASEALT	ms895676	match	
+include/Sapi.h	SPPHRASEALTREQUEST	ms895680	match	
+include/Sapi.h	SPPROPERTYINFO	ms895709	match	
+include/Sapi.h	SPPHRASEREPLACEMENT	ms895694	match	
+include/Sapi.h	SPPHRASERULE	ms895694	no-print-on-page	
 include/Sapi.h	SPPHRASEPROPERTY	ms895689	no-print-on-page	
 include/Sapi.h	SPPHRASE	ms895689	no-print-on-page	
 include/Sapi.h	SPSERIALIZEDPHRASE	ms895689	no-print-on-page	
@@ -797,27 +797,27 @@ include/Windef.h	POINTS	ms911931	match
 include/Windef.h	RECTL	ms911931	no-print-on-page	
 include/Windef.h	POINTL	ms898774	no-print-on-page	
 include/Windef.h	SIZEL	ms898774	no-print-on-page	
-include/Windns.h	DNS_HEADER		no-pageid	
-include/Windns.h	DNS_MESSAGE_BUFFER		no-pageid	
-include/Windns.h	DNS_WIRE_QUESTION		no-pageid	
-include/Windns.h	DNS_WIRE_RECORD		no-pageid	
-include/Windns.h	DNS_RECORD_FLAGS		no-pageid	
-include/Windns.h	DNS_MINFO_DATA		no-pageid	
-include/Windns.h	DNS_MX_DATA		no-pageid	
-include/Windns.h	DNS_PTR_DATA		no-pageid	
-include/Windns.h	DNS_SOA_DATA		no-pageid	
-include/Windns.h	DNS_SRV_DATA		no-pageid	
-include/Windns.h	DNS_TXT_DATA		no-pageid	
-include/Windns.h	DNS_NULL_DATA		no-pageid	
-include/Windns.h	DNS_KEY_DATA		no-pageid	
-include/Windns.h	DNS_LOC_DATA		no-pageid	
-include/Windns.h	DNS_SIG_DATA		no-pageid	
-include/Windns.h	DNS_NXT_DATA		no-pageid	
-include/Windns.h	DNS_TKEY_DATA		no-pageid	
-include/Windns.h	DNS_TSIG_DATA		no-pageid	
-include/Windns.h	DNS_WINSR_DATA		no-pageid	
-include/Windns.h	IP6_ADDRESS		no-pageid	
-include/Windns.h	DNS_RRSET		no-pageid	
+include/Windns.h	DNS_HEADER	aa450342	match	
+include/Windns.h	DNS_MESSAGE_BUFFER	aa450345	match	
+include/Windns.h	DNS_WIRE_QUESTION	aa450362	match	
+include/Windns.h	DNS_WIRE_RECORD	aa450363	match	
+include/Windns.h	DNS_RECORD_FLAGS	aa450352	match	
+include/Windns.h	DNS_MINFO_DATA	aa450346	match	
+include/Windns.h	DNS_MX_DATA	aa450347	match	
+include/Windns.h	DNS_PTR_DATA	aa450350	match	
+include/Windns.h	DNS_SOA_DATA	aa450355	match	
+include/Windns.h	DNS_SRV_DATA	aa450356	match	
+include/Windns.h	DNS_TXT_DATA	aa450359	match	
+include/Windns.h	DNS_NULL_DATA	aa450348	match	
+include/Windns.h	DNS_KEY_DATA	aa450343	match	
+include/Windns.h	DNS_LOC_DATA	aa450344	match	
+include/Windns.h	DNS_SIG_DATA	aa450354	match	
+include/Windns.h	DNS_NXT_DATA	aa450349	match	
+include/Windns.h	DNS_TKEY_DATA	aa450357	match	
+include/Windns.h	DNS_TSIG_DATA	aa450358	match	
+include/Windns.h	DNS_WINSR_DATA	aa450360	match	
+include/Windns.h	IP6_ADDRESS	ms891166	match	
+include/Windns.h	DNS_RRSET	aa450353	match	
 include/Windows.h	DRAWITEMSTRUCT	aa452974	match	
 include/Windows.h	PERF_COUNTER_BLOCK	ms894451	match	
 include/Windows.h	PERF_COUNTER_DEFINITION	ms894453	match	
@@ -851,8 +851,8 @@ include/Wingdi.h	OUTLINETEXTMETRICW	ms934025	match
 include/Wingdi.h	DOCINFO	aa452964	no-print-on-page	
 include/Wingdi.h	DLGITEMTEMPLATEEX	aa452959	no-print-on-page	
 include/Wingdi.h	DLGTEMPLATEEX	aa452959	no-print-on-page	
-include/Wingdi.h	FONTSIGNATURE		no-pageid	
-include/Wingdi.h	CHARSETINFO		no-pageid	
+include/Wingdi.h	FONTSIGNATURE	ms885597	match	
+include/Wingdi.h	CHARSETINFO	ms885163	match	
 include/Wingdi.h	LOGFONT	ms901140	no-print-on-page	
 include/Wingdi.h	ENUMLOGFONT	ms901128	no-print-on-page	
 include/Wingdi.h	NEWTEXTMETRIC	ms901141	no-print-on-page	
@@ -879,21 +879,21 @@ include/Winldap.h	mod_vals	ms892279	match
 include/Winldap.h	LDAP_TIMEVAL	ms892315	match	
 include/Winldap.h	LDAPSortKey	ms892313	match	
 include/Winldap.h	LDAP_REFERRAL_CALLBACK	ms892294	match	
-include/Winnetwk.h	NETRESOURCE		no-pageid	
-include/Winnetwk.h	CONNECTDLGSTRUCT		no-pageid	
-include/Winnetwk.h	DISCDLGSTRUCT		no-pageid	
-include/Winnetwk.h	REMOTE_NAME_INFO		no-pageid	
-include/Winnetwk.h	UNIVERSAL_NAME_INFO		no-pageid	
+include/Winnetwk.h	NETRESOURCE	ms895665	match	
+include/Winnetwk.h	CONNECTDLGSTRUCT	ms887910	match	
+include/Winnetwk.h	DISCDLGSTRUCT	aa450334	match	
+include/Winnetwk.h	REMOTE_NAME_INFO	aa450872	match	
+include/Winnetwk.h	UNIVERSAL_NAME_INFO	aa451137	match	
 include/Winnls.h	CPINFO	ms904717	match	
-include/Winnls.h	CURRENCYFMT		no-pageid	
-include/Winnls.h	NUMBERFMT		no-pageid	
+include/Winnls.h	CURRENCYFMT	ms904720	match	
+include/Winnls.h	NUMBERFMT	ms906228	match	
 include/Winnt.h	LARGE_INTEGER	ms891120	no-print-on-page	
 include/Winnt.h	ULARGE_INTEGER		no-pageid	
-include/Winnt.h	GUID		no-pageid	
+include/Winnt.h	GUID	ee504705	match	
 include/Winnt.h	RTL_CRITICAL_SECTION		no-pageid	
 include/Winnt.h	FILE_NOTIFY_INFORMATION	ms889597	match	
 include/Winnt.h	MEMORY_BASIC_INFORMATION	ms906230	no-print-on-page	
-include/Winnt.h	EXCEPTION_RECORD		no-pageid	
+include/Winnt.h	EXCEPTION_RECORD	ms885216	match	
 include/Winnt.h	IMAGE_DATA_DIRECTORY	ms904424	match	
 include/Winreg.h	REG_NOTIFY_INFORMATION	ee489649	match	
 include/Winreg.h	CE_REGISTRY_INFO	aa517289	match	
@@ -920,9 +920,9 @@ include/Winsock2.h	SERVICE_ADDRESSES	aa450894	no-print-on-page
 include/Winsock2.h	SERVICE_INFO	aa450894	no-print-on-page	
 include/Winsock2.h	NS_SERVICE_INFO	aa450894	no-print-on-page	
 include/Winsock2.h	SERVICE_TYPE_VALUE_ABS	aa450894	no-print-on-page	
-include/Winsock2.h	SERVICE_TYPE_INFO_ABS		no-pageid	
-include/Winuser.h	MSG		no-pageid	
-include/Winuser.h	WNDCLASS		no-pageid	
+include/Winsock2.h	SERVICE_TYPE_INFO_ABS	aa450910	match	
+include/Winuser.h	MSG	ee504858	match	
+include/Winuser.h	WNDCLASS	ee505233	match	
 include/Winuser.h	CREATESTRUCT	ms908189	match	
 include/Winuser.h	STYLESTRUCT	ms940380	match	
 include/Winuser.h	WINDOWPOS	ms914101	match	
@@ -933,16 +933,16 @@ include/Winuser.h	HARDWAREINPUT	ms909851	no-print-on-page
 include/Winuser.h	INPUT	ms909851	match	
 include/Winuser.h	SCROLLINFO	ee504371	match	
 include/Winuser.h	PAINTSTRUCT	ms911912	no-print-on-page	
-include/Winuser.h	DLGITEMTEMPLATE		no-pageid	
-include/Winuser.h	DLGTEMPLATE		no-pageid	
-include/Winuser.h	MENUITEMINFO		no-pageid	
-include/Winuser.h	TPMPARAMS		no-pageid	
+include/Winuser.h	DLGITEMTEMPLATE	aa452958	match	
+include/Winuser.h	DLGTEMPLATE	ee504037	match	
+include/Winuser.h	MENUITEMINFO	ms911822	match	
+include/Winuser.h	TPMPARAMS	aa453766	match	
 include/Winuser.h	COMBOBOXINFO	ms928818	match	
 include/Winuser.h	MEASUREITEMSTRUCT	ms911820	match	
 include/Winuser.h	DELETEITEMSTRUCT	aa452931	match	
-include/Winuser.h	ICONINFO		no-pageid	
-include/Winuser.h	COPYDATASTRUCT		no-pageid	
-include/Winuser.h	NMHDR		no-pageid	
+include/Winuser.h	ICONINFO	ee504011	match	
+include/Winuser.h	COPYDATASTRUCT	ee501053	match	
+include/Winuser.h	NMHDR	ms931479	match	
 include/Winuser.h	ACCESSTIMEOUT	aa452839	match	
 include/Winuser.h	MOUSEKEYS	ms858526	match-truncated-print	print block truncated by page
 include/Winuser.h	SOUNDSENTRY	ms940347	match	
@@ -968,10 +968,10 @@ include/Wsdapi.h	WSD_DATETIME	ee500867	match
 include/Wsdapi.h	WSD_DURATION	ee500879	match	
 include/Wsdapi.h	WSDUdpRetransmitParams	ee501276	match	
 include/Wsdapi.h	WSD_EVENTING_EXPIRES	ee498840	match	
-include/Wzcsapi.h	INTF_KEY_ENTRY		no-pageid	
-include/Wzcsapi.h	INTFS_KEY_TABLE		no-pageid	
-include/Wzcsapi.h	WZC_CONTEXT		no-pageid	
-include/Wzcsapi.h	WZC_EAPOL_PARAMS		no-pageid	
+include/Wzcsapi.h	INTF_KEY_ENTRY	aa448307	match	
+include/Wzcsapi.h	INTFS_KEY_TABLE	aa448305	match	
+include/Wzcsapi.h	WZC_CONTEXT	aa448336	match	
+include/Wzcsapi.h	WZC_EAPOL_PARAMS	aa448337	match	
 include/aygshell.h	SHACTIVATEINFO	aa453665	match	
 include/aygshell.h	SHCHANGENOTIFYENTRY	aa453671	match	
 include/aygshell.h	SHINITDLGINFO	aa453714	match	
@@ -1018,20 +1018,20 @@ include/oak/Mmddk.h	WAVEOUTEXTCAPS	ms923289	match
 include/oak/Ndis.h	NDIS_WORK_ITEM	ms905054	no-print-on-page	
 include/oak/Ndis.h	NDIS_PACKET_OOB_DATA	ms904087	match	
 include/oak/Ndis.h	NDIS_PACKET_STACK	ms904089	match	
-include/oak/Ndis.h	TRANSPORT_HEADER_OFFSET		no-pageid	
+include/oak/Ndis.h	TRANSPORT_HEADER_OFFSET	aa448216	match	
 include/oak/Ndis.h	NDIS_MAC_LINE_DOWN	aa448020	match	
 include/oak/Ndis.h	NDIS_MAC_FRAGMENT	aa448019	match	
 include/oak/Ndis.h	NDIS_WAN_LINE_DOWN	ms905047	match	
 include/oak/Ndis.h	NDIS_WAN_INFO	ms905046	match	
 include/oak/Ndis.h	Proprietary	ms905042	match	
-include/oak/Ndis.h	NDIS_WAN_GET_LINK_INFO		no-pageid	
-include/oak/Ndis.h	NDIS_WAN_SET_LINK_INFO		no-pageid	
-include/oak/Ndis.h	NDIS_WAN_GET_COMP_INFO		no-pageid	
-include/oak/Ndis.h	NDIS_WAN_SET_COMP_INFO		no-pageid	
-include/oak/Ndis.h	NDIS_WAN_GET_STATS_INFO		no-pageid	
+include/oak/Ndis.h	NDIS_WAN_GET_LINK_INFO	ms905044	match	
+include/oak/Ndis.h	NDIS_WAN_SET_LINK_INFO	ms905052	match	
+include/oak/Ndis.h	NDIS_WAN_GET_COMP_INFO	ms905043	match	
+include/oak/Ndis.h	NDIS_WAN_SET_COMP_INFO	ms905051	match	
+include/oak/Ndis.h	NDIS_WAN_GET_STATS_INFO	ms905045	match	
 include/oak/Ndis.h	V4Transmit	ms905025	match	
 include/oak/Ndis.h	NDIS_TASK_TCP_LARGE_SEND	ms905026	match	
-include/oak/Ndis.h	Transmit		no-pageid	
+include/oak/Ndis.h	Transmit	ms905027	match	
 include/oak/Nled.h	NLED_COUNT_INFO	ms905297	no-print-on-page	
 include/oak/Nled.h	NLED_SETTINGS_INFO	ms905326	no-print-on-page	
 include/oak/Nled.h	NLED_SUPPORTS_INFO	ms905332	no-print-on-page	
@@ -1070,4 +1070,4 @@ include/oak/Tchddi.h	TPDC_CALIBRATION_POINT	aa448208	no-print-on-page
 include/oak/Tchddi.h	TPDC_SAMPLE_RATE	aa448210	no-print-on-page	
 include/oak/Usbdi.h	USB_DRIVER_SETTINGS	ms923236	match	
 include/oak/Wavedev.h	ACMDRV_MESSAGE_PARAMS	ms896092	match	
-include/oak/Wavedev.h	MMDRV_MESSAGE_PARAMS		no-pageid	
+include/oak/Wavedev.h	MMDRV_MESSAGE_PARAMS	aa447862	match	

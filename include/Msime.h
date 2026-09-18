@@ -58,6 +58,7 @@ typedef struct _POSTBL {
  * DWORD dwFlags;INT iSelIndex;INT nCandidate;DWORD
  * dwPrivateDataOffset;DWORD dwPrivateDataSize;DWORD dwOffset[1];}`
  * (flexible tail array as printed). */
+/* ms906186: members/signature verified against this page (type-cite) */
 typedef struct tagIPCANDIDATE {
     DWORD dwSize;
     DWORD dwFlags;

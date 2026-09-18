@@ -13,6 +13,7 @@
                         * PBYTE */
 #include "Winnt.h"     /* LONGLONG */
 
+/* aa450342: members/signature verified against this page (type-cite) */
 typedef struct _DNS_HEADER {
     WORD Xid;
     BYTE RecursionDesired;
@@ -29,16 +30,19 @@ typedef struct _DNS_HEADER {
     WORD AdditionalCount;
 } DNS_HEADER, *PDNS_HEADER;
 
+/* aa450345: members/signature verified against this page (type-cite) */
 typedef struct _DNS_MESSAGE_BUFFER {
     DNS_HEADER MessageHead;
     CHAR       MessageBody[1];
 } DNS_MESSAGE_BUFFER, *PDNS_MESSAGE_BUFFER;
 
+/* aa450362: members/signature verified against this page (type-cite) */
 typedef struct _DNS_WIRE_QUESTION {
     WORD QuestionType;
     WORD QuestionClass;
 } DNS_WIRE_QUESTION, *PDNS_WIRE_QUESTION;
 
+/* aa450363: members/signature verified against this page (type-cite) */
 typedef struct _DNS_WIRE_RECORD {
     WORD  RecordType;
     WORD  RecordClass;
@@ -49,6 +53,7 @@ typedef struct _DNS_WIRE_RECORD {
 /* "DNS_RECORD_FLAGS": print `typedef struct _DnsRecordFlags
  * {DWORD Section :2;DWORD Delete :1;DWORD CharSet :2;
  * DWORD Unused :3;DWORD Reserved :24;} DNS_RECORD_FLAGS;` */
+/* aa450352: members/signature verified against this page (type-cite) */
 typedef struct _DnsRecordFlags {
     DWORD Section : 2;
     DWORD Delete : 1;
@@ -57,44 +62,59 @@ typedef struct _DnsRecordFlags {
     DWORD Reserved : 24;
 } DNS_RECORD_FLAGS;
 
+/* aa450346: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameMailbox; LPTSTR pNameErrorsMailbox; }
     DNS_MINFO_DATA, *PDNS_MINFO_DATA;
+/* aa450347: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameExchange; WORD wPreference; WORD Pad; }
     DNS_MX_DATA, *PDNS_MX_DATA;
+/* aa450350: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameHost; } DNS_PTR_DATA, *PDNS_PTR_DATA;
+/* aa450355: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNamePrimaryServer; LPTSTR pNameAdministrator;
     DWORD dwSerialNo; DWORD dwRefresh; DWORD dwRetry; DWORD dwExpire;
     DWORD dwDefaultTtl; } DNS_SOA_DATA, *PDNS_SOA_DATA;
+/* aa450356: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameTarget; WORD wPriority; WORD wWeight;
     WORD wPort; WORD Pad; } DNS_SRV_DATA, *PDNS_SRV_DATA;
+/* aa450359: members/signature verified against this page (type-cite) */
 typedef struct { DWORD dwStringCount; LPTSTR pStringArray[1]; }
     DNS_TXT_DATA, *PDNS_TXT_DATA;
+/* aa450348: members/signature verified against this page (type-cite) */
 typedef struct { DWORD dwByteCount; BYTE Data[1]; }
     DNS_NULL_DATA, *PDNS_NULL_DATA;
+/* aa450343: members/signature verified against this page (type-cite) */
 typedef struct { WORD wFlags; BYTE chProtocol; BYTE chAlgorithm;
     BYTE Key[1]; } DNS_KEY_DATA, *PDNS_KEY_DATA;
+/* aa450344: members/signature verified against this page (type-cite) */
 typedef struct { WORD wVersion; WORD wSize; WORD wHorPrec;
     WORD wVerPrec; DWORD dwLatitude; DWORD dwLongitude;
     DWORD dwAltitude; } DNS_LOC_DATA, *PDNS_LOC_DATA;
+/* aa450354: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameSigner; WORD wTypeCovered;
     BYTE chAlgorithm; BYTE chLabelCount; DWORD dwOriginalTtl;
     DWORD dwExpiration; DWORD dwTimeSigned; WORD wKeyTag; WORD Pad;
     BYTE Signature[1]; } DNS_SIG_DATA, *PDNS_SIG_DATA;
+/* aa450349: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameNext; WORD wNumTypes; WORD wTypes[1]; }
     DNS_NXT_DATA, *PDNS_NXT_DATA;
+/* aa450357: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameAlgorithm; PBYTE pAlgorithmPacket;
     PBYTE pKey; PBYTE pOtherData; DWORD dwCreateTime;
     DWORD dwExpireTime; WORD wMode; WORD wError; WORD wKeyLength;
     WORD wOtherLength; UCHAR cAlgNameLength; BOOL bPacketPointers; }
     DNS_TKEY_DATA, *PDNS_TKEY_DATA;
+/* aa450358: members/signature verified against this page (type-cite) */
 typedef struct { LPTSTR pNameAlgorithm; PBYTE pAlgorithmPacket;
     PBYTE pSignature; PBYTE pOtherData; LONGLONG i64CreateTime;
     WORD wFudgeTime; WORD wOriginalXid; WORD wError; WORD wSigLength;
     WORD wOtherLength; UCHAR cAlgNameLength; BOOL bPacketPointers; }
     DNS_TSIG_DATA, *PDNS_TSIG_DATA;
+/* aa450360: members/signature verified against this page (type-cite) */
 typedef struct { DWORD dwMappingFlag; DWORD dwLookupTimeout;
     DWORD dwCacheTimeout; LPTSTR pNameResultDomain; }
     DNS_WINSR_DATA, *PDNS_WINSR_DATA;
+/* ms891166: members/signature verified against this page (type-cite) */
 typedef struct { DWORD IP6Dword[4]; } IP6_ADDRESS, *PIP6_ADDRESS;
 
 /* DNS_RECORD: verbatim print (the Data union embeds the
@@ -103,6 +123,7 @@ typedef struct _DnsRecord DNS_RECORD, *PDNS_RECORD;
 
 /* DNS_RRSET: print `typedef struct _DnsRRSet { PDNS_RECORD pFirstRR;
  * PDNS_RECORD pLastRR;} DNS_RRSET, *PDNS_RRSET;` */
+/* aa450353: members/signature verified against this page (type-cite) */
 typedef struct _DnsRRSet {
     PDNS_RECORD pFirstRR;
     PDNS_RECORD pLastRR;

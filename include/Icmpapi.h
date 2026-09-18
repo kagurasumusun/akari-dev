@@ -11,6 +11,7 @@
  * unsigned char Flags;unsigned char OptionsSize;
  * unsigned char FAR* OptionsData;} IP_OPTION_INFORMATION;`
  * (FAR is empty on CE). */
+/* ms891178: members/signature verified against this page (type-cite) */
 typedef struct IP_OPTION_INFORMATION {
     unsigned char  Ttl;
     unsigned char  Tos;

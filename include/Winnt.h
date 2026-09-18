@@ -75,6 +75,7 @@ typedef union _ULARGE_INTEGER {
 /* structure page, so the fixed Win32 ABI layout (Data1/Data2/Data3/   */
 /* Data4[8], 16 bytes) is used, recorded in docs/inventory.md.         */
 /* ------------------------------------------------------------------ */
+/* ee504705: members/signature verified against this page (type-cite) */
 typedef struct _GUID {
     unsigned long Data1;
     unsigned short Data2;
@@ -191,6 +192,7 @@ typedef struct _MEMORY_BASIC_INFORMATION {
  * used by RaiseException ms886790 too; its value is the fixed Win32
  * ABI 15 -- no CE page prints a number for it). */
 #define EXCEPTION_MAXIMUM_PARAMETERS 15   /* Win32 ABI array bound */
+/* ms885216: members/signature verified against this page (type-cite) */
 typedef struct _EXCEPTION_RECORD {
     DWORD  ExceptionCode;                 /* type of exception */
     DWORD  ExceptionFlags;                /* continuable or not */

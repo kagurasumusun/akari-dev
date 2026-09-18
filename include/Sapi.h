@@ -122,6 +122,7 @@ typedef struct ISpPhraseBuilder ISpPhraseBuilder;   /* SPPHRASEALT print; no CE 
 typedef struct ISpPhraseBuilder ISpPhraseBuilder;   /* SPPHRASEALT print; no CE 5.0 page of its own */
 
 
+/* ms893479: members/signature verified against this page (type-cite) */
 typedef struct SPAUDIOBUFFERINFO {
     ULONG   ulMsMinNotification;
     ULONG   ulMsBufferSize;
@@ -133,6 +134,7 @@ typedef enum SPAUDIOOPTIONS {
     SPAO_RETAIN_AUDIO = (1 << 0),
 } SPAUDIOOPTIONS;
 
+/* ms893483: members/signature verified against this page (type-cite) */
 typedef struct SPBINARYGRAMMAR {
     ULONG ulTotalSerializedSize;
 } SPBINARYGRAMMAR;
@@ -259,6 +261,7 @@ typedef enum SPEVENTLPARAMTYPE {
     SPET_LPARAM_IS_STRING,
 } SPEVENTLPARAMTYPE;
 
+/* ms895400: members/signature verified against this page (type-cite) */
 typedef struct SPEVENTSOURCEINFO {
     ULONGLONG ullEventInterest;
     ULONGLONG ullQueuedInterest;
@@ -348,6 +351,7 @@ typedef struct SPPATHENTRY {
     };
 } SPPATHENTRY;
 
+/* ms895655: members/signature verified against this page (type-cite) */
 typedef struct SPPARSEINFO {
     ULONG cbSize;
     SPRULEHANDLE hRule;
@@ -399,6 +403,7 @@ typedef enum SPRESULTTYPE {
     SPRT_FALSE_RECOGNITION = (1 << 1),
 } SPRESULTTYPE;
 
+/* ms895734: members/signature verified against this page (type-cite) */
 typedef struct SPRECORESULTINFO {
     ULONG cbSize;
     SPRESULTTYPE ResultType;
@@ -412,6 +417,7 @@ typedef struct SPRECORESULTINFO {
     ISpPhraseBuilder * pPhrase;
 } SPRECORESULTINFO;
 
+/* ms895738: members/signature verified against this page (type-cite) */
 typedef struct SPRECORESULTTIMES {
     FILETIME ftStreamTime;
     ULONGLONG ullLength;
@@ -468,6 +474,7 @@ typedef struct SPSERIALIZEDEVENT64 {
     LONG LONGSerializedlParam;
 } SPSERIALIZEDEVENT64;
 
+/* ms895787: members/signature verified against this page (type-cite) */
 typedef struct SPSERIALIZEDRESULT {
     ULONG ulSerializedSize;
 } SPSERIALIZEDRESULT;
@@ -598,6 +605,7 @@ typedef enum SPSTREAMFORMAT {
     SPSF_NUM_FORMATS,
 } SPSTREAMFORMAT;
 
+/* ms895822: members/signature verified against this page (type-cite) */
 typedef struct SPTMTHREADINFO {
     long lPoolSize;
     long lPriority;
@@ -694,6 +702,7 @@ typedef enum SPVLIMITS {
     SPMAX_RATE = 10,
 } SPVLIMITS;
 
+/* ms895874: members/signature verified against this page (type-cite) */
 typedef struct SPVOICESTATUS {
     ULONG ulCurrentStream;
     ULONG ulLastStreamQueued;
@@ -710,6 +719,7 @@ typedef struct SPVOICESTATUS {
     DWORD dwReserved2;
 } SPVOICESTATUS;
 
+/* ms895878: members/signature verified against this page (type-cite) */
 typedef struct SPVPITCH {
     long MiddleAdj;
     long RangeAdj;
@@ -739,6 +749,7 @@ typedef struct SPVSTATE {
     SPVCONTEXT Context;
 } SPVSTATE;
 
+/* ms895896: members/signature verified against this page (type-cite) */
 typedef struct SPVTEXTFRAG {
     struct SPVTEXTFRAG * pNext;
     SPVSTATE State;
@@ -766,6 +777,7 @@ typedef enum SPWORDINFOOPT {
     SPWIO_WANT_TEXT = 1,
 } SPWORDINFOOPT;
 
+/* ms895969: members/signature verified against this page (type-cite) */
 typedef struct SPWORDLIST {
     ULONG ulSize;
     BYTE * pvBuffer;
@@ -778,6 +790,7 @@ typedef enum SPWORDPRONOUNCEABLE {
     SPWP_KNOWN_WORD_PRONOUNCEABLE = 2,
 } SPWORDPRONOUNCEABLE;
 
+/* ms895973: members/signature verified against this page (type-cite) */
 typedef struct SPWORDPRONUNCIATIONLIST {
     ULONG ulSize;
     BYTE * pvBuffer;
@@ -808,6 +821,7 @@ typedef struct SPAUDIOSTATUS {
     DWORD   dwReserved2;
 } SPAUDIOSTATUS;
 
+/* ms895676: members/signature verified against this page (type-cite) */
 typedef struct tagSPPHRASEALT {
     ISpPhraseBuilder * pPhrase;
     ULONG ulStartElementInParent;
@@ -817,6 +831,7 @@ typedef struct tagSPPHRASEALT {
     ULONG cbAltExtra;
 } SPPHRASEALT;
 
+/* ms895680: members/signature verified against this page (type-cite) */
 typedef struct tagSPPHRASEALTREQUEST {
     ULONG ulStartElement;
     ULONG cElements;
@@ -829,6 +844,7 @@ typedef struct tagSPPHRASEALTREQUEST {
 
 
 
+/* ms895709: members/signature verified against this page (type-cite) */
 typedef struct tagSPPROPERTYINFO {
     const WCHAR * pszName;
     ULONG ulId;
@@ -836,6 +852,7 @@ typedef struct tagSPPROPERTYINFO {
     VARIANT vValue;
 } SPPROPERTYINFO;
 
+/* ms895694: members/signature verified against this page (type-cite) */
 typedef struct tagSPPHRASEREPLACEMENT {
     BYTE bDisplayAttributes;
     const WCHAR * pszReplacementText;

@@ -19,12 +19,14 @@
 
 /* "INTF_KEY_ENTRY": print `typedef struct{ LPWSTR wszGuid;}
  * INTF_KEY_ENTRY, *PINTF_KEY_ENTRY;` */
+/* aa448307: members/signature verified against this page (type-cite) */
 typedef struct _INTF_KEY_ENTRY {
     LPWSTR wszGuid;
 } INTF_KEY_ENTRY, *PINTF_KEY_ENTRY;
 
 /* "INTFS_KEY_TABLE": print `typedef struct{ DWORD dwNumIntfs;
  * PINTF_KEY_ENTRY pIntfs;} INTFS_KEY_TABLE, *PINTFS_KEY_TABLE;` */
+/* aa448305: members/signature verified against this page (type-cite) */
 typedef struct _INTFS_KEY_TABLE {
     DWORD           dwNumIntfs;
     PINTF_KEY_ENTRY pIntfs;
@@ -33,6 +35,7 @@ typedef struct _INTFS_KEY_TABLE {
 /* "WZC_CONTEXT": print `typedef struct _wzc_context_t{ DWORD
  * dwFlags; DWORD tmTr; DWORD tmTc; DWORD tmTp; DWORD tmTf; DWORD
  * tmTd; } WZC_CONTEXT, *PWZC_CONTEXT;` (tag as printed). */
+/* aa448336: members/signature verified against this page (type-cite) */
 typedef struct _wzc_context_t {
     DWORD dwFlags;
     DWORD tmTr;
@@ -46,6 +49,7 @@ typedef struct _wzc_context_t {
  * BOOL bEnable8021x; DWORD dwEapFlags; DWORD dwEapType; DWORD
  * dwAuthDataLen; BYTE *pbAuthData;}WZC_EAPOL_PARAMS,
  * *PWZC_EAPOL_PARAMS;` */
+/* aa448337: members/signature verified against this page (type-cite) */
 typedef struct _WZC_EAPOL_PARAMS {
     BOOL  bEnable8021x;
     DWORD dwEapFlags;

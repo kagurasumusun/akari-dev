@@ -10,6 +10,7 @@
 
 /* "MIB_BEST_IF": print `typedef struct _MIB_BEST_IF {DWORDdwDestAddr;
  * DWORDdwIfIndex;} MIB_BEST_IF*, PMIB_BEST_IF;` */
+/* ms894596: members/signature verified against this page (type-cite) */
 typedef struct _MIB_BEST_IF {
     DWORD dwDestAddr;
     DWORD dwIfIndex;

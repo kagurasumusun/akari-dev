@@ -37,6 +37,7 @@ typedef struct LPDIRECTSOUNDCAPTURE LPDIRECTSOUNDCAPTURE;   /* opaque carrier (l
  *   typedef struct { DWORD dwSize ; DWORD dwFlags ; DWORD dwBufferBytes ;
  *     DWORD dwUnlockTransferRate ; DWORD dwPlayCpuOverhead ; } DSBCAPS,
  *     *LPDSBCAPS; typedef const DSBCAPS *LPCDSBCAPS; */
+/* ms897756: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD dwSize;
     DWORD dwFlags;
@@ -50,6 +51,7 @@ typedef const DSBCAPS *LPCDSBCAPS;
  *   typedef struct { DWORD dwOffset ; HANDLE hEventNotify ; }
  *     DSBPOSITIONNOTIFY, *LPDSBPOSITIONNOTIFY;
  *   typedef const DSBPOSITIONNOTIFY *LPCDSBPOSITIONNOTIFY; */
+/* ms897759: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD  dwOffset;
     HANDLE hEventNotify;
@@ -60,6 +62,7 @@ typedef const DSBPOSITIONNOTIFY *LPCDSBPOSITIONNOTIFY;
  *   typedef struct { DWORD dwSize ; DWORD dwFlags ; DWORD dwBufferBytes ;
  *     DWORD dwReserved ; LPWAVEFORMATEX lpwfxFormat ; } DSBUFFERDESC,
  *     *LPDSBUFFERDESC; typedef const DSBUFFERDESC *LPCDSBUFFERDESC; */
+/* ms897764: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD           dwSize;
     DWORD           dwFlags;
@@ -105,6 +108,7 @@ typedef const DSCAPS *LPCDSCAPS;
  *   typedef struct { DWORD dwSize ; DWORD dwFlags ; DWORD dwBufferBytes ;
  *     DWORD dwReserved ; } DSCBCAPS, *LPDSCBCAPS;
  *   typedef const DSCBCAPS *LPCDSCBCAPS; */
+/* ms897780: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD dwSize;
     DWORD dwFlags;
@@ -117,6 +121,7 @@ typedef const DSCBCAPS *LPCDSCBCAPS;
  *   typedef struct { DWORD dwSize ; DWORD dwFlags ; DWORD dwBufferBytes ;
  *     DWORD dwReserved ; LPWAVEFORMATEX lpwfxFormat ; } DSCBUFFERDESC,
  *     *LPDSCBUFFERDESC; typedef const DSCBUFFERDESC *LPCDSCBUFFERDESC; */
+/* ms897785: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD           dwSize;
     DWORD           dwFlags;
@@ -130,6 +135,7 @@ typedef const DSCBUFFERDESC *LPCDSCBUFFERDESC;
  *   typedef struct { DWORD dwSize ; DWORD dwFlags ; DWORD dwFormats ;
  *     DWORD dwChannels ; } DSCCAPS, *LPDSCCAPS;
  *   typedef const DSCCAPS *LPCDSCCAPS; */
+/* ms897788: members/signature verified against this page (type-cite) */
 typedef struct {
     DWORD dwSize;
     DWORD dwFlags;

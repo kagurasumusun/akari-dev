@@ -109,10 +109,10 @@ include/Winnls.h	TIMEFMT_ENUMPROC		no-pageid
 include/Winnls.h	CALINFO_ENUMPROC		no-pageid	
 include/Winsock2.h	LPWSAOVERLAPPED_COMPLETION_ROUTINE	ms898745	no-print-on-page	
 include/Winsock2.h	LPCONDITIONPROC	ms898727	no-print-on-page	
-include/Winuser.h	WNDPROC		no-pageid	
-include/Winuser.h	WNDENUMPROC		no-pageid	
-include/Winuser.h	PROPENUMPROCEX		no-pageid	
-include/Winuser.h	TIMERPROC		no-pageid	
+include/Winuser.h	WNDPROC	ee499372	match	
+include/Winuser.h	WNDENUMPROC	ee499372	no-print-on-page	
+include/Winuser.h	PROPENUMPROCEX	aa453551	match	
+include/Winuser.h	TIMERPROC	aa453551	no-print-on-page	
 include/Winuser.h	DLGPROC		no-pageid	
 include/oak/Battimpl.h	PFN_BATTERY_PDD_IOCONTROL	ms919400	match	
 include/oak/Cardserv.h	CARD_ISR	ms896171	match	
@@ -135,10 +135,10 @@ include/oak/Kitl.h	PFN_KITLTIMERCB	ms897921	match
 include/oak/Kitltran.h	PFN_EnumProc	ms919247	match	
 include/oak/Lockmgrtypes.h	PACQUIREFILELOCKSTATE	aa517930	match	
 include/oak/Ndis.h	NDIS_PROC	ms904098	match	
-include/oak/Rndismini.h	PFN_PDD_SEND_RNDIS_MESSAGE		no-pageid	
-include/oak/Rndismini.h	PFN_PDD_SEND_RNDIS_PACKET		no-pageid	
-include/oak/Rndismini.h	PFN_PDD_SET		no-pageid	
-include/oak/Rndismini.h	PFN_PDD_GET		no-pageid	
+include/oak/Rndismini.h	PFN_PDD_SEND_RNDIS_MESSAGE	ms920497	match	
+include/oak/Rndismini.h	PFN_PDD_SEND_RNDIS_PACKET	ms920504	match	
+include/oak/Rndismini.h	PFN_PDD_SET	ms920646	match	
+include/oak/Rndismini.h	PFN_PDD_GET	aa447838	match	
 include/oak/Rndismini.h	PFN_PDD_ISR	ms902127	match	
 include/oak/Usbdi.h	LPGET_USBD_VERSION	ms899322	match	
 include/oak/Usbdi.h	LPOPEN_CLIENT_REGISTRY_KEY	ms919304	match	

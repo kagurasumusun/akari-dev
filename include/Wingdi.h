@@ -811,11 +811,13 @@ typedef struct {
 /* the FS_* font-signature bits appear in the page's remarks table by   */
 /* name only, so they are recorded (docs/inventory.md), not defined.    */
 /* ------------------------------------------------------------------ */
+/* ms885597: members/signature verified against this page (type-cite) */
 typedef struct tagFONTSIGNATURE {
     DWORD fsUsb[4];   /* 128-bit Unicode subset bitfield */
     DWORD fsCsb[2];   /* 64-bit code-page bitfield */
 } FONTSIGNATURE;
 
+/* ms885163: members/signature verified against this page (type-cite) */
 typedef struct tagCHARSETINFO {
     UINT         ciCharset;   /* character set value */
     UINT         ciACP;       /* ANSI code-page identifier */

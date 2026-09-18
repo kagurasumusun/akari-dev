@@ -403,6 +403,7 @@ typedef enum _D3DMZBUFFERTYPE {
     D3DMZB_FORCE_DWORD = 0x7fffffff
 } D3DMZBUFFERTYPE;
 
+/* ms907757: members/signature verified against this page (type-cite) */
 typedef struct _D3DMVECTOR {
     D3DMVALUE x;
     D3DMVALUE y;
@@ -425,6 +426,7 @@ typedef struct _D3DMVECTOR {
  * API, and is not compiled.                                          */
 /* ------------------------------------------------------------------ */
 
+/* ms939138: members/signature verified against this page (type-cite) */
 typedef struct _D3DMCAPS {
     D3DMDEVTYPE DeviceType;
     UINT AdapterOrdinal;
@@ -468,11 +470,13 @@ typedef struct _D3DMCAPS {
     ULONG MaxBackBuffer;
 } D3DMCAPS;
 
+/* ms939140: members/signature verified against this page (type-cite) */
 typedef struct _D3DMCLIPSTATUS {
     ULONG ClipUnion;
     ULONG ClipIntersection;
 } D3DMCLIPSTATUS;
 
+/* ms939143: members/signature verified against this page (type-cite) */
 typedef struct _D3DMCOLORVALUE {
     D3DMVALUE r;
     D3DMVALUE g;
@@ -480,6 +484,7 @@ typedef struct _D3DMCOLORVALUE {
     D3DMVALUE a;
 } D3DMCOLORVALUE;
 
+/* ms907701: members/signature verified against this page (type-cite) */
 typedef struct _D3DMDEVICE_CREATION_PARAMETERS {
     UINT AdapterOrdinal;
     D3DMDEVTYPE DeviceType;
@@ -487,6 +492,7 @@ typedef struct _D3DMDEVICE_CREATION_PARAMETERS {
     ULONG BehaviorFlags;
 } D3DMDEVICE_CREATION_PARAMETERS;
 
+/* ms907703: members/signature verified against this page (type-cite) */
 typedef struct _D3DMDISPLAYMODE {
     UINT Width;
     UINT Height;
@@ -494,6 +500,7 @@ typedef struct _D3DMDISPLAYMODE {
     D3DMFORMAT Format;
 } D3DMDISPLAYMODE;
 
+/* ms907712: members/signature verified against this page (type-cite) */
 typedef struct _D3DMINDEXBUFFER_DESC {
     D3DMFORMAT Format;
     D3DMRESOURCETYPE Type;
@@ -502,6 +509,7 @@ typedef struct _D3DMINDEXBUFFER_DESC {
     UINT Size;
 } D3DMINDEXBUFFER_DESC;
 
+/* ms907713: members/signature verified against this page (type-cite) */
 typedef struct _D3DMLIGHT {
     D3DMLIGHTTYPE Type;
     D3DMCOLORVALUE Diffuse;
@@ -515,11 +523,13 @@ typedef struct _D3DMLIGHT {
     float Attenuation2;
 } D3DMLIGHT;
 
+/* ms907716: members/signature verified against this page (type-cite) */
 typedef struct _D3DMLOCKED_RECT {
     INT Pitch;
     void* pBits;
 } D3DMLOCKED_RECT;
 
+/* ms907718: members/signature verified against this page (type-cite) */
 typedef struct _D3DMMATERIAL {
     D3DMCOLORVALUE Diffuse;
     D3DMCOLORVALUE Ambient;
@@ -527,6 +537,7 @@ typedef struct _D3DMMATERIAL {
     float Power;
 } D3DMMATERIAL;
 
+/* ms907729: members/signature verified against this page (type-cite) */
 typedef struct _D3DMPRESENT_PARAMETERS_ {
     UINT BackBufferWidth;
     UINT BackBufferHeight;
@@ -541,6 +552,7 @@ typedef struct _D3DMPRESENT_PARAMETERS_ {
     UINT FullScreen_PresentationInterval;
 } D3DMPRESENT_PARAMETERS;
 
+/* ms907743: members/signature verified against this page (type-cite) */
 typedef struct _D3DMSURFACE_DESC {
     D3DMFORMAT Format;
     D3DMRESOURCETYPE Type;
@@ -554,6 +566,7 @@ typedef struct _D3DMSURFACE_DESC {
 
 
 
+/* ms907758: members/signature verified against this page (type-cite) */
 typedef struct _D3DMVERTEXBUFFER_DESC {
     D3DMFORMAT Format;
     D3DMRESOURCETYPE Type;
@@ -563,6 +576,7 @@ typedef struct _D3DMVERTEXBUFFER_DESC {
     ULONG FVF;
 } D3DMVERTEXBUFFER_DESC;
 
+/* ms907759: members/signature verified against this page (type-cite) */
 typedef struct _D3DMVIEWPORT {
     ULONG X;
     ULONG Y;

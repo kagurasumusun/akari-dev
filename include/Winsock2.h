@@ -745,6 +745,7 @@ typedef struct _SERVICE_TYPE_VALUE_ABS {
     PVOID  lpValue;
 } SERVICE_TYPE_VALUE_ABS;
 
+/* aa450910: members/signature verified against this page (type-cite) */
 typedef struct _SERVICE_TYPE_INFO_ABS {
     LPTSTR                 lpTypeName;
     DWORD                  dwValueCount;

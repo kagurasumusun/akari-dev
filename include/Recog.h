@@ -55,6 +55,7 @@ typedef struct tagHWXGUIDE {
 /* "HWXRESULTS": print `typedef struct tagHWXRESULTS {USHORT indxBox;
  * WCHAR rgChar[1]} HWXRESULTS, *PHWXRESULTS;` (missing semicolon in
  * the print repaired -- doc typo). */
+/* ms905443: members/signature verified against this page (type-cite) */
 typedef struct tagHWXRESULTS {
     USHORT indxBox;
     WCHAR  rgChar[1];

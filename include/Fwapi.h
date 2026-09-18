@@ -21,6 +21,7 @@ typedef struct in6_addr IN6_ADDR;
 /* "FW_IP_ADDRESS": print `typedef struct _FW_IP_ADDRESS {
  * USHORT Family; union { IN6_ADDR AddressIPv6; IN_ADDR AddressIPv4;
  * }; ...` */
+/* aa450386: members/signature verified against this page (type-cite) */
 typedef struct _FW_IP_ADDRESS {
     USHORT Family;
     union {
