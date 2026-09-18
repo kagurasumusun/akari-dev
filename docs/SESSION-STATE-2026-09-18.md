@@ -178,3 +178,45 @@ match 2,036), + twin-struct-scan commit.
   git identity, use THIS file for session state.
 - Audits take the corpus ROOT (they scan docs/ themselves).
 - GitHub owner is `kagurasumusun` — `AkariOS`/`akarios-jp` do not exist.
+
+## cont.14 sweep (2026-09-18, commits d1d7fdf..HEAD)
+- twin-proto citation re-anchor: 557 twin-match rows got `twin-print:
+  <pid>` comments above the decl -> proto-audit match 2,242->2,610,
+  no-print-on-page 876->509, MISMATCH 0.
+- no-pageid backfill round 2 (struct/enum/fnptr title-page scan): 16
+  of 55 have pages; RASPROJECTION gained RASP_PppIpV6=0x8057 (CE5
+  page aa450856 prints it; older archive print lacks it); cites for
+  FW_RULE_MASKS (aa450390) + 5 PDCARD structs (ms922799-856,
+  Sockserv.h).  CHM-page names (BATTERY_STATUS etc.) left as-is.
+- twin-fnptr-scan: 50 no-print fnptrs -> 6 title pages, 1 match;
+  fnptr evidence axis EXHAUSTED.
+- absent-types-scan (tools/ + docs/absent-types-scan-2026-09-18.tsv):
+  2,663 absent names have page prints (proto 2,455 / enum 130 /
+  const 78).  Declared: 24 D3D Mobile enums in D3dmtypes.h (240
+  enumerators, page prints verbatim; D3DFORMAT MAKEFOURCC entries
+  #ifdef-guarded - macro undocumented in corpus; 260 verified by
+  make check).  HELD (out of scope / no header): csmedia camera-DDK
+  7, DirectMusic 8 (Dmusici.h not in tree), AM_* 2 (no header on
+  page), eXDI2 3, FlexiPMT 3, oak/OAL/KITL/SD/NDIS/RIL 10, Dbgapi
+  (oak) 4, RTC (oak) 3, lfapi 1, registry/BIB config consts (all 78
+  const hits: AUTOSIZE_*, DLL*ADDR*, cbNK*, dwNK* etc).
+- surface-audit BUG FIX: BOOKTAG skipped uncategorized (2,086) +
+  dotnet-compact-framework (8,985) titles.  Now declared 6,876 /
+  comment-only 2,181 / absent 2,794.  +239 new absent names ALL
+  verified managed .NET/SPOT (ComPortHandle=SPOT.Emulator, TouchInput
+  =SPOT.Touch, WsFaultType/WsPrefix=Ws.Services, crypto params) ->
+  not native candidates; dcf/misc tag in TSV col2 marks them.
+- const HELD cross-check (rebuilt /tmp/const-index.tsv value-form,
+  3,217 names): 928 name-no-value-on-page -> only 3 documented
+  elsewhere: MAX_PATH (=128 but DVD/IDL-local on UNICODE_PATH pages;
+  global 260 value-checked vs CeGCC w32api windef.h, noted in
+  Windef.h), EM_SETLIMITTEXT (ee499421 alias of EM_LIMITTEXT; already
+  0x00C5), EXCEPTION_ACCESS_VIOLATION (=STATUS_ACCESS_VIOLATION
+  alias, aa450192; already 0xC0000005L).  0 pinned blockers unblocked.
+  const no-pageid 1,583: 0 have documented values (derived tokens).
+- wayback-msdn-2010 harvest (dispatched 19:05Z, batch=200): ~3h no
+  batch push; wayback answers 302 fast from sandbox, harvest.py has
+  60s timeout x5 retries -> runner likely in Retry-After backoff.
+  Left running (6h runner cap ~01:05Z); if killed with 0 pushes,
+  re-dispatch with batch=25.  On yield: pull corpus, re-run surface/
+  proto/const audits, re-sweep B blockers on new pages, absent recheck.
