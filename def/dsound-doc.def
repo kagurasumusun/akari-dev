@@ -21,10 +21,9 @@
 ; not published by the CE documentation.
 LIBRARY dsound.dll
 EXPORTS
+EXPORTS
   DSEnumCallback
   DirectSoundCaptureCreate
   DirectSoundCaptureEnumerate
   DirectSoundCreate
-  DirectSoundEnumerate
-  DirectSoundCaptureEnumerate
   DirectSoundEnumerate

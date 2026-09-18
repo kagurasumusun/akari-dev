@@ -1,0 +1,376 @@
+# lib	action	name	evidence
+coredll	remove	CeGetCurrentTrust	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	CeGetDeviceId	move: ceutil-doc.def (documented Ceutil.lib; not a coredll component)
+coredll	remove	CeGetSelectedDeviceId	move: ceutil-doc.def (documented Ceutil.lib; not a coredll component)
+coredll	remove	CeResyncFilesys	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	CeSetThreadPriority	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	CreateEnrollmentConfigDialog	drop: documented "no link library is exposed" (LASS)
+coredll	remove	CryptMsgCalculateEncodedLength	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgClose	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgControl	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgDuplicate	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgGetParam	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgOpenToDecode	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgOpenToEncode	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptMsgUpdate	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	CryptVerifyCertificateSignature	move: crypt32-doc.def (documented crypt32.lib)
+coredll	remove	DeleteStaticMapping	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	FSDMGR_CloseFileLockState	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	FSDMGR_EmptyLockContainer	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	FSDMGR_OpenFileLockState	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	FSDMGR_ReadDiskEx	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	FSDMGR_WriteDiskEx	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	FSD_UnhookVolume	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalAllocateCommonBuffer	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalFreeCommonBuffer	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalGetBusData	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalGetBusDataByOffset	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalSetBusData	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalSetBusDataByOffset	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalTranslateBusAddress	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	HalTranslateSystemAddress	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	LoadFSDEx	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	MmMapIoSpace	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	MmUnmapIoSpace	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_PORT_BUFFER_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_PORT_BUFFER_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_PORT_BUFFER_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_PORT_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_PORT_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_PORT_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_REGISTER_BUFFER_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_REGISTER_BUFFER_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_REGISTER_BUFFER_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_REGISTER_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_REGISTER_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	READ_REGISTER_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	ReleaseMutex	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	SetThreadContext	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	TransBusAddrToStatic	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	TransBusAddrToVirtual	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	VerifyUserStart	drop: documented "no link library is exposed" (LASS)
+coredll	remove	WRITE_PORT_BUFFER_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_PORT_BUFFER_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_PORT_BUFFER_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_PORT_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_PORT_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_PORT_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_REGISTER_BUFFER_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_REGISTER_BUFFER_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_REGISTER_BUFFER_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_REGISTER_UCHAR	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_REGISTER_ULONG	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WRITE_REGISTER_USHORT	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WaitForMultipleObjects	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	remove	WriteProcessMemory	drop: OAK/driver (no Coredll.lib evidence; CEDDK/Fsdmgr/Nk/Device lib)
+coredll	add	AdjustWindowRectEx	doc title page aa452849 + R1 cegcc coredll.def cross-check
+coredll	add	AllKeys	doc title page ee501942 + R1 cegcc coredll.def cross-check
+coredll	add	BeginDeferWindowPos	doc title page aa452870 + R1 cegcc coredll.def cross-check
+coredll	add	BringWindowToTop	doc title page aa452899 + R1 cegcc coredll.def cross-check
+coredll	add	ChildWindowFromPoint	doc title page ee504384 + R1 cegcc coredll.def cross-check
+coredll	add	DeferWindowPos	doc title page ee500478 + R1 cegcc coredll.def cross-check
+coredll	add	DestroyWindow	doc title page aa452942 + R1 cegcc coredll.def cross-check
+coredll	add	EndDeferWindowPos	doc title page aa453037 + R1 cegcc coredll.def cross-check
+coredll	add	EnumDeviceInterfaces	doc title page aa447790 + R1 cegcc coredll.def cross-check
+coredll	add	EnumWindows	doc title page aa453051 + R1 cegcc coredll.def cross-check
+coredll	add	FindFirstDevice	doc title page aa447798 + R1 cegcc coredll.def cross-check
+coredll	add	FindNextDevice	doc title page aa447800 + R1 cegcc coredll.def cross-check
+coredll	add	GetClassLong	doc title page ee502892 + R1 cegcc coredll.def cross-check
+coredll	add	GetClientRect	doc title page ee499340 + R1 cegcc coredll.def cross-check
+coredll	add	GetDesktopWindow	doc title page ee504867 + R1 cegcc coredll.def cross-check
+coredll	add	GetDeviceInformationByDeviceHandle	doc title page aa447829 + R1 cegcc coredll.def cross-check
+coredll	add	GetDeviceInformationByFileHandle	doc title page aa447830 + R1 cegcc coredll.def cross-check
+coredll	add	GetForegroundInfo	doc title page ee504647 + R1 cegcc coredll.def cross-check
+coredll	add	GetForegroundKeyboardLayoutHandle	doc title page ee500141 + R1 cegcc coredll.def cross-check
+coredll	add	GetForegroundKeyboardTarget	doc title page ee502570 + R1 cegcc coredll.def cross-check
+coredll	add	GetForegroundWindow	doc title page ee503376 + R1 cegcc coredll.def cross-check
+coredll	add	GetParent	doc title page aa453152 + R1 cegcc coredll.def cross-check
+coredll	add	GetPasswordActive	doc title page ee490428 + R1 cegcc coredll.def cross-check
+coredll	add	GetWindow	doc title page aa453178 + R1 cegcc coredll.def cross-check
+coredll	add	GetWindowRect	doc title page aa453181 + R1 cegcc coredll.def cross-check
+coredll	add	GetWindowThreadProcessId	doc title page aa453185 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Add	doc title page ee502231 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_AddMasked	doc title page ee503446 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_BeginDrag	doc title page ee500766 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Copy	doc title page ee499691 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Create	doc title page ee500447 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Destroy	doc title page ee501989 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_DragEnter	doc title page ee505711 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_DragLeave	doc title page ee501729 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_DragMove	doc title page ee503204 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_DragShowNolock	doc title page ee501254 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Draw	doc title page ee502905 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_DrawEx	doc title page ee506293 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_DrawIndirect	doc title page ee504032 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Duplicate	doc title page ee502893 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_EndDrag	doc title page ee499743 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_GetBkColor	doc title page ee501730 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_GetDragImage	doc title page ee500265 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_GetIcon	doc title page ee506299 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_GetIconSize	doc title page ee503580 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_GetImageCount	doc title page ee504304 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_GetImageInfo	doc title page ee499663 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_LoadImage	doc title page ee504385 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Merge	doc title page ee503132 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Remove	doc title page ee506284 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_Replace	doc title page ee504557 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_ReplaceIcon	doc title page ee500224 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_SetBkColor	doc title page ee504889 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_SetDragCursorImage	doc title page ee503586 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_SetIconSize	doc title page ee500889 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_SetImageCount	doc title page ee501924 + R1 cegcc coredll.def cross-check
+coredll	add	ImageList_SetOverlayImage	doc title page ee506087 + R1 cegcc coredll.def cross-check
+coredll	add	IsChild	doc title page ee500846 + R1 cegcc coredll.def cross-check
+coredll	add	IsWindow	doc title page aa453233 + R1 cegcc coredll.def cross-check
+coredll	add	IsWindowVisible	doc title page aa453235 + R1 cegcc coredll.def cross-check
+coredll	add	KillTimer	doc title page aa453248 + R1 cegcc coredll.def cross-check
+coredll	add	MoveWindow	doc title page ee502616 + R1 cegcc coredll.def cross-check
+coredll	add	NKDbgPrintfW	doc title page aa451081 + R1 cegcc coredll.def cross-check
+coredll	add	ReadRegistryFromOEM	doc title page aa447021 + R1 cegcc coredll.def cross-check
+coredll	add	RegisterDbgZones	doc title page aa451083 + R1 cegcc coredll.def cross-check
+coredll	add	RegisterDesktop	doc title page ee503965 + R1 cegcc coredll.def cross-check
+coredll	add	RegisterTaskBar	doc title page ee505445 + R1 cegcc coredll.def cross-check
+coredll	add	RegisterTaskBarEx	doc title page ee503897 + R1 cegcc coredll.def cross-check
+coredll	add	SHGetFileInfo	doc title page aa453700 + R1 cegcc coredll.def cross-check
+coredll	add	SetClassLong	doc title page ee504860 + R1 cegcc coredll.def cross-check
+coredll	add	SetForegroundWindow	doc title page ee505432 + R1 cegcc coredll.def cross-check
+coredll	add	SetParent	doc title page aa453645 + R1 cegcc coredll.def cross-check
+coredll	add	SetPassword	doc title page ee490550 + R1 cegcc coredll.def cross-check
+coredll	add	SetPasswordActive	doc title page ee490208 + R1 cegcc coredll.def cross-check
+coredll	add	SetTimer	doc title page aa453657 + R1 cegcc coredll.def cross-check
+coredll	add	SetWindowPos	doc title page aa453662 + R1 cegcc coredll.def cross-check
+coredll	add	Shell_NotifyIcon	doc title page aa453686 + R1 cegcc coredll.def cross-check
+coredll	add	ShowWindow	doc title page aa453731 + R1 cegcc coredll.def cross-check
+coredll	add	SystemIdleTimerReset	doc title page ee502574 + R1 cegcc coredll.def cross-check
+coredll	add	UnregisterHotKey	doc title page ee504859 + R1 cegcc coredll.def cross-check
+coredll	add	WindowFromPoint	doc title page ee499070 + R1 cegcc coredll.def cross-check
+coredll	add	WriteRegistryToOEM	doc title page aa447038 + R1 cegcc coredll.def cross-check
+coredll	add	_CountLeadingOnes	doc title page ms864537 + R1 cegcc coredll.def cross-check
+coredll	add	_CountLeadingOnes64	doc title page ms864538 + R1 cegcc coredll.def cross-check
+coredll	add	_CountLeadingSigns	doc title page ms864539 + R1 cegcc coredll.def cross-check
+coredll	add	_CountLeadingSigns64	doc title page ms864540 + R1 cegcc coredll.def cross-check
+coredll	add	_CountLeadingZeros	doc title page ms864541 + R1 cegcc coredll.def cross-check
+coredll	add	_CountLeadingZeros64	doc title page ms864542 + R1 cegcc coredll.def cross-check
+coredll	add	_CountOneBits	doc title page ms864543 + R1 cegcc coredll.def cross-check
+coredll	add	_CountOneBits64	doc title page ms864544 + R1 cegcc coredll.def cross-check
+coredll	add	_MulHigh	doc title page ms880027 + R1 cegcc coredll.def cross-check
+coredll	add	_MulUnsignedHigh	doc title page ms880043 + R1 cegcc coredll.def cross-check
+coredll	add	_atoi64	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_byteswap_uint64	doc title page ms864528 + R1 cegcc coredll.def cross-check
+coredll	add	_byteswap_ulong	doc title page ms864529 + R1 cegcc coredll.def cross-check
+coredll	add	_byteswap_ushort	doc title page ms864530 + R1 cegcc coredll.def cross-check
+coredll	add	_fcloseall	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_fsqrt	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_getws	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_isctype	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_isnanf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_isunordered	doc title page ms879759 + R1 cegcc coredll.def cross-check
+coredll	add	_isunorderedf	doc title page ms879760 + R1 cegcc coredll.def cross-check
+coredll	add	_itoa	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_itow	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_j0	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_j1	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_jn	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_lrotr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_ltoa	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_ltow	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_putws	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_rotl	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_rotr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strdup	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_stricmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strlwr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strnicmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strnset	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strrev	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strset	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_strupr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_ultoa	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_ultow	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_vsnprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_vsnwprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsdup	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsicmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcslwr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsnicmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsnset	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsrev	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsset	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wcsupr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wfopen	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wfreopen	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_wtol	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_y0	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_y1	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	_yn	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	atan	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	atan2	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	atof	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	atoi	doc title page ee492718 + R1 cegcc coredll.def cross-check
+coredll	add	atol	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	ceilf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	cos	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	cosh	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fabsf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fclose	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fgetc	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fgets	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fgetwc	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fgetws	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	floorf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fmodf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fopen	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fputc	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fputs	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fputwc	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fputws	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	fwprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	getchar	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	gets	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	getwchar	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	log	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	log10	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	memchr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	memcmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	memcpy	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	memset	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	putchar	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	puts	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	putwchar	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	sin	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	sinh	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	sprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	sscanf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strcat	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strchr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strcmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strcpy	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strcspn	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strlen	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strncat	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strncmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strncpy	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strpbrk	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strrchr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strspn	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strstr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strtok	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	strtol	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	swprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	swscanf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	tan	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	tanh	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	ungetc	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	ungetwc	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	vfprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	vfwprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	vprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	vsprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	vswprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	vwprintf	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcscat	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcschr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcscmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcscpy	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcscspn	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcslen	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcsncat	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcsncmp	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcsncpy	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcspbrk	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcsrchr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcsspn	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcsstr	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcstod	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcstok	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcstol	doc title page  + R1 cegcc coredll.def cross-check
+coredll	add	wcstoul	doc title page  + R1 cegcc coredll.def cross-check
+rapi	remove	CeCreateDatabase	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeCreateDatabaseEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeCreateDatabaseEx2	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeDeleteDatabase	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeDeleteDatabaseEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeDeleteRecord	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeEnumDBVolumes	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeFindFirstDatabase	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeFindFirstDatabaseEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeFindNextDatabase	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeFindNextDatabaseEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeFlushDBVol	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeMountDBVol	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeOidGetInfo	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeOidGetInfoEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeOidGetInfoEx2	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeOpenDatabase	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeOpenDatabaseEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeOpenDatabaseEx2	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeReadRecordProps	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeReadRecordPropsEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeSeekDatabase	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeSeekDatabaseEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeSetDatabaseInfo	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeSetDatabaseInfoEx	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeSetDatabaseInfoEx2	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeUnmountDBVol	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	remove	CeWriteRecordProps	move: coredll-doc.def (documented Coredll.lib + Rapi.lib; R1 cegcc coredll)
+rapi	add	CeSyncStop	move from ole32-doc.def (documented rapi.lib ee496864)
+ole32	remove	CeGetDiskFreeSpaceEx	move: rapi-doc.def (documented rapi.lib)
+ole32	remove	CeSyncStop	move: rapi-doc.def (documented rapi.lib)
+iphlpapi	add	Icmp6CreateFile	move from icmplib-doc.def (CE5 Icmplib.lib / CE6 Iphlpapi.lib; R1 iphlpapi.def)
+iphlpapi	add	Icmp6ParseReplies	move from icmplib-doc.def (CE5 Icmplib.lib / CE6 Iphlpapi.lib; R1 iphlpapi.def)
+iphlpapi	add	IcmpCloseHandle	move from icmplib-doc.def (CE5 Icmplib.lib / CE6 Iphlpapi.lib; R1 iphlpapi.def)
+iphlpapi	add	IcmpCreateFile	move from icmplib-doc.def (CE5 Icmplib.lib / CE6 Iphlpapi.lib; R1 iphlpapi.def)
+iphlpapi	add	IcmpParseReplies	move from icmplib-doc.def (CE5 Icmplib.lib / CE6 Iphlpapi.lib; R1 iphlpapi.def)
+iphlpapi	add	AddIPAddress	doc title page aa450280 + R1 cegcc iphlpapi.def
+iphlpapi	add	DeleteIPAddress	doc title page ee494912 + R1 cegcc iphlpapi.def
+iphlpapi	add	GetBestInterface	doc title page aa450396 + R1 cegcc iphlpapi.def
+iphlpapi	add	GetRTTAndHopCount	doc title page aa450422 + R1 cegcc iphlpapi.def
+iphlpapi	add	Icmp6SendEcho2	doc title page ee494497 + R1 cegcc iphlpapi.def
+iphlpapi	add	IcmpSendEcho	doc title page ee494520 + R1 cegcc iphlpapi.def
+iphlpapi	add	IcmpSendEcho2	doc title page ee493861 + R1 cegcc iphlpapi.def
+iphlpapi	add	SendARP	doc title page aa450884 + R1 cegcc iphlpapi.def
+icmplib	delete-def	-	all 5 exports documented in both Icmplib.lib(CE5)/Iphlpapi.lib(CE6); single owner = iphlpapi (CE6 + R1)
+ceshell	remove	SHChangeNotifyDeregister	move: aygshell-doc.def (R1 aygshell.def; dual row)
+ceshell	remove	SHChangeNotifyFree	move: aygshell-doc.def (R1 aygshell.def; dual row)
+ceshell	remove	SHChangeNotifyRegister	move: aygshell-doc.def (R1 aygshell.def; dual row)
+wininet	add	CreateUrlCacheGroup	doc title page aa452433 + R1 cegcc wininet.def
+wininet	add	DeleteUrlCacheGroup	doc title page aa452434 + R1 cegcc wininet.def
+wininet	add	FindFirstUrlCacheGroup	doc title page aa452486 + R1 cegcc wininet.def
+wininet	add	FindNextUrlCacheGroup	doc title page aa452487 + R1 cegcc wininet.def
+wininet	add	FtpGetFileEx	doc title page aa452230 + R1 cegcc wininet.def
+wininet	add	FtpGetFileSize	doc title page aa452232 + R1 cegcc wininet.def
+wininet	add	FtpPutFileEx	doc title page aa452238 + R1 cegcc wininet.def
+wininet	add	InternetCloseHandle	doc title page ee492251 + R1 cegcc wininet.def
+wininet	add	InternetErrorDlg	doc title page ee492869 + R1 cegcc wininet.def
+wininet	add	InternetLockRequestFile	doc title page ee492208 + R1 cegcc wininet.def
+wininet	add	InternetQueryDataAvailable	doc title page ee491998 + R1 cegcc wininet.def
+wininet	add	InternetReadFile	doc title page ee491861 + R1 cegcc wininet.def
+wininet	add	InternetSetFilePointer	doc title page ee492858 + R1 cegcc wininet.def
+wininet	add	InternetSetStatusCallback	doc title page ee492013 + R1 cegcc wininet.def
+wininet	add	InternetWriteFile	doc title page ee492463 + R1 cegcc wininet.def
+wininet	add	SetUrlCacheEntryGroup	doc title page aa452491 + R1 cegcc wininet.def
+commctrl	add	CreateToolbarEx	doc title page ee501151 + R1 cegcc commctrl.def
+commctrl	add	CreateUpDownControl	doc title page ee499376 + R1 cegcc commctrl.def
+commctrl	add	DPA_GetPtr	doc title page aa452967 + R1 cegcc commctrl.def
+commctrl	add	DestroyPropertySheetPage	doc title page aa452941 + R1 cegcc commctrl.def
+commctrl	add	InvertRect	doc title page ee503209 + R1 cegcc commctrl.def
+ceshell	add	SHAddToRecentDocs	doc title page aa453667 + R1 cegcc ceshell.def
+ceshell	add	SHCreateShortcut	doc title page aa453680 + R1 cegcc ceshell.def
+ceshell	add	SHGetShortcutTarget	doc title page aa453705 + R1 cegcc ceshell.def
+ceshell	add	SHLoadDIBitmap	doc title page aa453720 + R1 cegcc ceshell.def
+msdmo	add	DMORegister	doc title page aa451608 + R1 cegcc msdmo.def
+msdmo	add	DllCanUnloadNow	doc title page ee489182 + R1 cegcc msdmo.def
+msdmo	add	DllGetClassObject	doc title page ee487927 + R1 cegcc msdmo.def
+sms	add	SmsSetMessageNotification	doc title page ee497377 + R1 cegcc sms.def
+ole32	add	OleSetMenuDescriptor	doc title page ee488661 + R1 cegcc ole32.def
+msmqrt	add	MQReceiveMessage	doc title page ee498472 + R1 cegcc msmqrt.def
+crypt32	add	CryptFindLocalizedName	doc title page aa452566 + R1 cegcc crypt32.def
+cellcore	add	ConnMgrEnumDestinations	doc title page ee496934 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	SimGetDevCaps	doc title page ee497394 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	SimReadMessage	doc title page ee497144 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	SimReadPhonebookEntry	doc title page ee498099 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	SimWriteMessage	doc title page ee498102 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	SimWritePhonebookEntry	doc title page ee496880 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	lineGetCurrentOperator	doc title page ee497180 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	lineSendUSSD	doc title page ee497597 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)
+cellcore	add	lineSetPreferredOperator	doc title page ee496856 + R1 cegcc cellcore.def (header decl HELD on unprinted MAX_LENGTH_* constants; def entry only)

@@ -17,12 +17,17 @@ EXPORTS
   DMOEnum
   DMOGetName
   DMOGetTypes
+  DMORegister
   DMORegisterFilter
   DMOUnregister
   DMOUnregisterFilter
+  DllCanUnloadNow
+  DllGetClassObject
   MoCopyMediaType
   MoCreateMediaType
   MoDeleteMediaType
   MoDuplicateMediaType
   MoFreeMediaType
   MoInitMediaType
+
+; 2026-09-19: +3 documented exports (doc title pages + R1 cegcc msdmo.def). Ledger: docs/def-restructure-2026-09-19.tsv.

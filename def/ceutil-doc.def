@@ -1,0 +1,16 @@
+; ceutil-doc.def -- ceutil.lib export surface for Windows CE.
+;
+; Copyright (c) 2026 Akari API contributors
+; SPDX-License-Identifier: MIT
+;
+; Derived exclusively from the official Microsoft CE documentation
+; (wince-docs-corpus; page ids in docs/def-restructure-2026-09-19.tsv).
+; Ceutil.lib is NOT a coredll component (Module pages ms923451/aa448387/ee482607
+; do not list it); the two CeGet*DeviceId pages document "Ceutil.lib".
+; Moved out of coredll-doc.def 2026-09-19.
+;
+; Ordinals are not published; entries are name-only.
+LIBRARY ceutil.dll
+EXPORTS
+  CeGetDeviceId
+  CeGetSelectedDeviceId

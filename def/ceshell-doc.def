@@ -14,16 +14,19 @@
 ; not published by the CE documentation.
 LIBRARY ceshell.dll
 EXPORTS
+  SHAddToRecentDocs
   SHBindToParent
   SHBrowseForFolder
+  SHCreateShortcut
   SHFileOperation
   SHGetDesktopFolder
   SHGetDocumentsFolder
   SHGetMalloc
   SHGetPathFromIDList
+  SHGetShortcutTarget
   SHGetSpecialFolderLocation
+  SHLoadDIBitmap
   StrRetToBuf
-; documented exports missing from this def (2026-09-19 def-gap audit)
-  SHChangeNotifyDeregister
-  SHChangeNotifyFree
-  SHChangeNotifyRegister
+
+; 2026-09-19: SHChangeNotify* removed (owner: aygshell-doc.def, R1 aygshell.def);
+; SHAddToRecentDocs/SHCreateShortcut/SHGetShortcutTarget/SHLoadDIBitmap added (doc + R1 ceshell.def).

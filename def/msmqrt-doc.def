@@ -27,5 +27,8 @@ EXPORTS
   MQMgmtGetInfo
   MQOpenQueue
   MQPathNameToFormatName
+  MQReceiveMessage
   MQSendMessage
   MQSetQueueProperties
+
+; 2026-09-19: +1 documented exports (doc title pages + R1 cegcc msmqrt.def). Ledger: docs/def-restructure-2026-09-19.tsv.

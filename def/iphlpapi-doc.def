@@ -14,9 +14,11 @@
 ; not published by the CE documentation.
 LIBRARY iphlpapi.dll
 EXPORTS
+  AddIPAddress
   CreateIpForwardEntry
   CreateIpNetEntry
   CreateProxyArpEntry
+  DeleteIPAddress
   DeleteIpForwardEntry
   DeleteIpNetEntry
   DeleteProxyArpEntry
@@ -24,6 +26,7 @@ EXPORTS
   GetAdapterIndex
   GetAdaptersAddresses
   GetAdaptersInfo
+  GetBestInterface
   GetBestInterfaceEx
   GetBestRoute
   GetFriendlyIfIndex
@@ -40,6 +43,7 @@ EXPORTS
   GetNetworkParams
   GetNumberOfInterfaces
   GetPerAdapterInfo
+  GetRTTAndHopCount
   GetTcpStatistics
   GetTcpStatisticsEx
   GetTcpTable
@@ -47,19 +51,26 @@ EXPORTS
   GetUdpStatisticsEx
   GetUdpTable
   GetUniDirectionalAdapterInfo
+  Icmp6CreateFile
+  Icmp6ParseReplies
+  Icmp6SendEcho2
+  IcmpCloseHandle
+  IcmpCreateFile
+  IcmpParseReplies
+  IcmpSendEcho
+  IcmpSendEcho2
   IpReleaseAddress
   IpRenewAddress
   NotifyAddrChange
   NotifyRouteChange
+  SendARP
   SetIfEntry
   SetIpForwardEntry
   SetIpNetEntry
   SetIpStatistics
   SetIpTTL
   SetTcpEntry
-; documented exports missing from this def (2026-09-19 def-gap audit)
-  Icmp6CreateFile
-  Icmp6ParseReplies
-  IcmpCloseHandle
-  IcmpCreateFile
-  IcmpParseReplies
+
+; 2026-09-19: Icmp* moved in from icmplib-doc.def (CE5 Icmplib.lib / CE6 Iphlpapi.lib dual row;
+; single owner here per CE6 + R1); IcmpSendEcho/SendEcho2/GetBestInterface/GetRTTAndHopCount/
+; AddIPAddress/DeleteIPAddress/SendARP added (doc title pages + R1). Ledger: docs/def-restructure-2026-09-19.tsv.

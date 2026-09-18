@@ -17,22 +17,13 @@ EXPORTS
   CeCheckPassword
   CeCloseHandle
   CeCopyFile
-  CeCreateDatabase
-  CeCreateDatabaseEx
   CeCreateDirectory
-  CeDeleteDatabase
-  CeDeleteDatabaseEx
   CeDeleteFile
-  CeDeleteRecord
-  CeEnumDBVolumes
   CeFindClose
-  CeFindFirstDatabase
-  CeFindFirstDatabaseEx
-  CeFindNextDatabase
-  CeFindNextDatabaseEx
   CeFindNextFile
   CeGetClassName
   CeGetDesktopDeviceCaps
+  CeGetDiskFreeSpaceEx
   CeGetFileAttributes
   CeGetFileSize
   CeGetFileTime
@@ -46,12 +37,7 @@ EXPORTS
   CeGetWindowLong
   CeGetWindowText
   CeGlobalMemoryStatus
-  CeMountDBVol
   CeMoveFile
-  CeOidGetInfo
-  CeOidGetInfoEx
-  CeOpenDatabase
-  CeOpenDatabaseEx
   CeQueryInstructionSet
   CeRapiGetError
   CeRapiInit
@@ -59,8 +45,6 @@ EXPORTS
   CeRapiInvoke
   CeRapiUninit
   CeReadFile
-  CeReadRecordProps
-  CeReadRecordPropsEx
   CeRegCloseKey
   CeRegDeleteKey
   CeRegDeleteValue
@@ -72,15 +56,11 @@ EXPORTS
   CeRemoveDirectory
   CeSHCreateShortcut
   CeSHGetShortcutTarget
-  CeSeekDatabase
-  CeSetDatabaseInfo
-  CeSetDatabaseInfoEx
   CeSetEndOfFile
   CeSetFileAttributes
   CeSetFilePointer
-  CeUnmountDBVol
+  CeSyncStop
   CeWriteFile
-  CeWriteRecordProps
-; documented exports missing from this def (2026-09-19 def-gap audit)
-  CeFlushDBVol
-  CeGetDiskFreeSpaceEx
+
+; 2026-09-19: CeSyncStop moved in from ole32-doc.def (documented rapi.lib ee496864);
+; 23 Ce*Database*/Ce*DBVol* removed (documented "Coredll.lib, Rapi.lib" -> coredll-doc.def; R1 cegcc coredll.def). Ledger: docs/def-restructure-2026-09-19.tsv.

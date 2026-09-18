@@ -16,19 +16,29 @@ LIBRARY wininet.dll
 EXPORTS
   CommitUrlCacheEntry
   CreateUrlCacheEntry
+  CreateUrlCacheGroup
   DeleteUrlCacheEntry
+  DeleteUrlCacheGroup
   FindCloseUrlCache
   FindFirstUrlCacheEntry
+  FindFirstUrlCacheGroup
   FindNextUrlCacheEntry
   FindNextUrlCacheEntryEx
+  FindNextUrlCacheGroup
+  FtpGetFileEx
+  FtpGetFileSize
+  FtpPutFileEx
   GetUrlCacheEntryInfo
   GetUrlCacheEntryInfoEx
   InternetAttemptConnect
   InternetCheckConnection
+  InternetClearAllPerSiteCookieDecisions
+  InternetCloseHandle
   InternetCombineUrl
   InternetConfirmZoneCrossing
   InternetEnumPerSiteCookieDecisionA
   InternetEnumPerSiteCookieDecisionW
+  InternetErrorDlg
   InternetGetConnectedState
   InternetGetConnectedStateEx
   InternetGetCookie
@@ -36,19 +46,26 @@ EXPORTS
   InternetGetPerSiteCookieDecisionA
   InternetGetPerSiteCookieDecisionW
   InternetGoOnline
+  InternetLockRequestFile
+  InternetQueryDataAvailable
+  InternetReadFile
   InternetSetCookie
   InternetSetCookieEx
+  InternetSetFilePointer
   InternetSetPerSiteCookieDecisionA
   InternetSetPerSiteCookieDecisionW
+  InternetSetStatusCallback
   InternetTimeFromSystemTime
   InternetTimeToSystemTime
   InternetUnlockRequestFile
+  InternetWriteFile
+  PrivacyGetZonePreferenceW
   ReadUrlCacheEntryStream
   RetrieveUrlCacheEntryFile
   RetrieveUrlCacheEntryStream
+  SetUrlCacheEntryGroup
   SetUrlCacheEntryInfo
   UnlockUrlCacheEntryFile
   UnlockUrlCacheEntryStream
-; documented exports missing from this def (2026-09-19 def-gap audit)
-  InternetClearAllPerSiteCookieDecisions
-  PrivacyGetZonePreferenceW
+
+; 2026-09-19: +16 documented exports (doc title pages + R1 cegcc wininet.def). Ledger: docs/def-restructure-2026-09-19.tsv.

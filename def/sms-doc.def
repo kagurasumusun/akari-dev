@@ -25,4 +25,7 @@ EXPORTS
   SmsReadMessage
   SmsSendMessage
   SmsSetBroadcastMsgRanges
+  SmsSetMessageNotification
   SmsSetSMSC
+
+; 2026-09-19: +1 documented exports (doc title pages + R1 cegcc sms.def). Ledger: docs/def-restructure-2026-09-19.tsv.

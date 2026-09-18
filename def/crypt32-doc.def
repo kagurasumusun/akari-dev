@@ -76,6 +76,7 @@ EXPORTS
   CryptEnumOIDInfo
   CryptExportPublicKeyInfoEx
   CryptFindCertificateKeyProvInfo
+  CryptFindLocalizedName
   CryptFindOIDInfo
   CryptFreeOIDFunctionAddress
   CryptGetDefaultOIDFunctionAddress
@@ -88,6 +89,14 @@ EXPORTS
   CryptInitOIDFunctionSet
   CryptInstallDefaultContext
   CryptInstallOIDFunctionAddress
+  CryptMsgCalculateEncodedLength
+  CryptMsgClose
+  CryptMsgControl
+  CryptMsgDuplicate
+  CryptMsgGetParam
+  CryptMsgOpenToDecode
+  CryptMsgOpenToEncode
+  CryptMsgUpdate
   CryptSetKeyIdentifierProperty
   CryptSignAndEncodeCertificate
   CryptSignCertificate
@@ -97,12 +106,5 @@ EXPORTS
   PFXImportCertStore
   PFXIsPFXBlob
   PFXVerifyPassword
-; documented exports missing from this def (2026-09-19 def-gap audit)
-  CryptMsgCalculateEncodedLength
-  CryptMsgClose
-  CryptMsgControl
-  CryptMsgDuplicate
-  CryptMsgGetParam
-  CryptMsgOpenToDecode
-  CryptMsgOpenToEncode
-  CryptMsgUpdate
+
+; 2026-09-19: +1 documented exports (doc title pages + R1 cegcc crypt32.def). Ledger: docs/def-restructure-2026-09-19.tsv.

@@ -102,6 +102,7 @@ EXPORTS
   OleSave
   OleSaveToStream
   OleSetContainedObject
+  OleSetMenuDescriptor
   ProgIDFromCLSID
   ReadClassStg
   ReadClassStm
@@ -116,5 +117,6 @@ EXPORTS
   UpdateDCOMSettings
   WriteClassStg
   WriteClassStm
-  CeGetDiskFreeSpaceEx
-  CeSyncStop
+
+; 2026-09-19: CeGetDiskFreeSpaceEx + CeSyncStop moved to rapi-doc.def (documented rapi.lib);
+; OleSetMenuDescriptor added (doc title page + R1 cegcc ole32.def). Ledger: docs/def-restructure-2026-09-19.tsv.

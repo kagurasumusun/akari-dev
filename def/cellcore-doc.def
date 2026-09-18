@@ -15,12 +15,15 @@ LIBRARY cellcore.dll
 EXPORTS
   ConnMgrApiReadyEvent
   ConnMgrConnectionStatus
+  ConnMgrEnumDestinations
   ConnMgrEstablishConnection
   ConnMgrEstablishConnectionSync
   ConnMgrMapConRef
   ConnMgrMapURL
   ConnMgrProviderMessage
+  ConnMgrQueryDetailedStatus
   ConnMgrRegisterForStatusChangeNotification
+  ConnMgrRegisterScheduledConnection
   ConnMgrReleaseConnection
   ConnMgrSetConnectionPriority
   ConnMgrUnregisterScheduledConnection
@@ -28,15 +31,22 @@ EXPORTS
   SimDeinitialize
   SimDeleteMessage
   SimDeletePhonebookEntry
+  SimGetDevCaps
   SimGetLockingStatus
   SimGetPhoneLockedState
+  SimGetPhonebookCapabilities
   SimGetPhonebookStatus
   SimGetRecordInfo
   SimGetSmsStorageStatus
+  SimInitialize
+  SimReadMessage
+  SimReadPhonebookEntry
   SimReadPhonebookTag
   SimReadRecord
   SimSetLockingStatus
   SimUnlockPhone
+  SimWriteMessage
+  SimWritePhonebookEntry
   SimWriteRecord
   lineGetCallBarringCaps
   lineGetCallBarringState
@@ -44,6 +54,7 @@ EXPORTS
   lineGetCallWaitingState
   lineGetCurrentAddressID
   lineGetCurrentHSCSDStatus
+  lineGetCurrentOperator
   lineGetCurrentSystemType
   lineGetEquipmentState
   lineGetGPRSClass
@@ -58,6 +69,7 @@ EXPORTS
   lineGetSendCallerIDState
   lineGetUSSD
   lineRegister
+  lineSendUSSD
   lineSetCallBarringPassword
   lineSetCallBarringState
   lineSetCallWaitingState
@@ -66,10 +78,9 @@ EXPORTS
   lineSetGPRSClass
   lineSetHSCSDState
   lineSetMuteState
+  lineSetPreferredOperator
   lineSetSendCallerIDState
   lineUnregister
   tapiRequestMakeCall
-  ConnMgrQueryDetailedStatus
-  ConnMgrRegisterScheduledConnection
-  SimGetPhonebookCapabilities
-  SimInitialize
+
+; 2026-09-19: +9 documented exports (doc title pages + R1 cegcc cellcore.def). Ledger: docs/def-restructure-2026-09-19.tsv.
