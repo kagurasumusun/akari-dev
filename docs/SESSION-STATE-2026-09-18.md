@@ -106,6 +106,15 @@ cellcore 3), `79bfe6d` (wsdapi 20 + urlmon 1 + rapi2 2), `5365361`
   no-pageid 42, deeper derivations, ceddk/fsdmgr/sdcardlib (driver-
   layer: OUT per oak scope).
 
+- **twin axis DONE** (`bf6a867`): tools/twin-proto-scan.py over 872
+  no-print decls -> 557 twin-match (sibling-generation print
+  evidence), 167 twin-diff ALL classified (118 ret-convword e.g.
+  WINAPI/CRYPTFUNC/WINOLEAPI/TSPIAPI in prints, 22 star-drop/extra,
+  P-alias/spelling, CE5-vs-CE6 generation deltas like CeFindNextFile
+  LPCE_FIND_DATA, NdisWriteErrorLogEntry variadic `ULONG ...` marker)
+  -> ZERO declarations changed; 108 no-twin-page + 41
+  no-print-in-twin = no further evidence.
+
 ## Environment hazards (hit 4× now)
 - Snapshot rollbacks wipe: corpus clone, .git config/identity, file
   modes, /home/user/.claude memory dir, and can roll Akari-dev back to
