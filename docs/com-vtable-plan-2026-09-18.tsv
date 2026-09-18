@@ -34,9 +34,9 @@ IStream	Objidl.h	Objbase.h	no-vtable-order	docs/mslearn/windows-ce-5.0/ms890686.
 IStreamBufferCapture	strmif.h	Dshow.h	no-vtable-order	docs/mslearn/windows-ce-5.0/aa452554.html	
 IStreamBufferPlayback	strmif.h	Dshow.h	no-vtable-order	docs/mslearn/windows-ce-5.0/aa452558.html	
 ISurrogate	Objidl.h	Objbase.h	no-vtable-order	docs/mslearn/windows-ce-5.0/ms890769.html	
-IVPBaseConfig	strmif.h	Dshow.h	sig-missing:1	docs/mslearn/windows-ce-5.0/ms931998.html	
-IVPBaseNotify	strmif.h	Dshow.h	sig-missing:1	docs/mslearn/windows-ce-5.0/ms932008.html	
-IVPConfig	strmif.h	Dshow.h	sig-missing:1	docs/mslearn/windows-ce-5.0/ms932010.html	
-IVPNotify	strmif.h	Dshow.h	sig-missing:5	docs/mslearn/windows-ce-5.0/ms932015.html	
+IVPBaseConfig	strmif.h	Dshow.h	generated	docs/mslearn/windows-ce-5.0/ms931998.html	16
+IVPBaseNotify	strmif.h	Dshow.h	generated	docs/mslearn/windows-ce-5.0/ms932008.html	4
+IVPConfig	strmif.h	Dshow.h	generated	docs/mslearn/windows-ce-5.0/ms932010.html	18
+IVPNotify	strmif.h	Dshow.h	generated	docs/mslearn/windows-ce-5.0/ms932015.html	8
 IVideoWIndow	strmif.h	Dshow.h	no-interface-page		
 IViewObjectEx	Ocidl.h	Objbase.h	no-vtable-order	docs/mslearn/windows-ce-5.0/ms891586.html	

@@ -150,7 +150,8 @@ def method_sig(path, iface, method):
     h = open(path, encoding="utf-8", errors="replace").read()
     pat = re.compile(
         r"^(?:(\w[\w \*]*?)\s+)?(?:STDMETHODIMP(?:_\((\w[\w \*]*?)\))"
-        r"\s*)?(?:\w+::)?" + re.escape(method) + r"\s*\((.*?)\)\s*;?\s*$")
+        r"\s*)?(?:\w+::)?" + re.escape(method) +
+        r"\s*\((.*?)\)\s*(?:PURE)?\s*;?\s*$")
     for blk in PRE.findall(h):
         t = _html.unescape(re.sub(r"<[^>]+>", " ", blk))
         t = re.sub(r"\s+", " ", t).strip()

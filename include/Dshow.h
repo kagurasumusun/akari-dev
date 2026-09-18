@@ -56,6 +56,7 @@
 #include "Wingdi.h"    /* COLORREF, RGBQUAD, BITMAPINFOHEADER, DIBSECTION,
                           HBITMAP */
 #include "Objbase.h"   /* IUnknown (opaque forward) */
+#include "Dvp.h"       /* LPDDVIDEOPORTCONNECT, LPDDCOLORCONTROL (IVP family) */
 #include "Ddraw.h"     /* DDCAPS, LPDIRECTDRAW (IDirectDrawVideo vtable
                           parameters -- real since M97) */
 
@@ -3227,5 +3228,122 @@ struct IStreamSample { const IStreamSampleVtbl *lpVtbl; };
 #define IStreamSample_SetSampleTimes(T,a,b) ((T)->lpVtbl->SetSampleTimes(T,a,b))
 #define IStreamSample_Update(T,a,b,c,d) ((T)->lpVtbl->Update(T,a,b,c,d))
 #define IStreamSample_CompletionStatus(T,a,b) ((T)->lpVtbl->CompletionStatus(T,a,b))
+
+
+/* ---- IVPBaseConfig: vtable order printed by ms931998.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IVPBaseConfigVtbl {
+    HRESULT (WINAPI *QueryInterface)(IVPBaseConfig*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IVPBaseConfig*);  /* (R1) */
+    ULONG (WINAPI *Release)(IVPBaseConfig*);  /* (R1) */
+    HRESULT (WINAPI *GetConnectInfo)(IVPBaseConfig*, LPDWORD pdwNumConnectInfo, LPDDVIDEOPORTCONNECT pddVPConnectInfo);  /* ms931992 */
+    HRESULT (WINAPI *SetConnectInfo)(IVPBaseConfig*, DWORD dwChosenEntry);  /* ms932001 */
+    HRESULT (WINAPI *GetVPDataInfo)(IVPBaseConfig*, LPAMVPDATAINFO pamvpDataInfo);  /* ms931996 */
+    HRESULT (WINAPI *GetMaxPixelRate)(IVPBaseConfig*, LPAMVPSIZE pamvpSize, LPDWORD pdwMaxPixelsPerSecond);  /* ms931993 */
+    HRESULT (WINAPI *InformVPInputFormats)(IVPBaseConfig*, DWORD dwNumFormats, LPDDPIXELFORMAT pDDPixelFormats);  /* ms931997 */
+    HRESULT (WINAPI *GetVideoFormats)(IVPBaseConfig*, LPDWORD pdwNumFormats, LPDDPIXELFORMAT pddPixelFormats);  /* ms931995 */
+    HRESULT (WINAPI *SetVideoFormat)(IVPBaseConfig*, DWORD dwChosenEntry);  /* ms932006 */
+    HRESULT (WINAPI *SetInvertPolarity)(IVPBaseConfig*);  /* ms932004 */
+    HRESULT (WINAPI *GetOverlaySurface)(IVPBaseConfig*, LPDIRECTDRAWSURFACE* ppddOverlaySurface);  /* ms931994 */
+    HRESULT (WINAPI *SetDirectDrawKernelHandle)(IVPBaseConfig*, DWORD dwDDKernelHandle);  /* ms932003 */
+    HRESULT (WINAPI *SetVideoPortID)(IVPBaseConfig*, DWORD dwVideoPortID);  /* ms932007 */
+    HRESULT (WINAPI *SetDDSurfaceKernelHandles)(IVPBaseConfig*, DWORD cHandles, DWORD*rgDDKernelHandles);  /* ms932002 */
+    HRESULT (WINAPI *SetSurfaceParameters)(IVPBaseConfig*, DWORD dwPitch, DWORD dwXOrigin, DWORD dwYOrigin);  /* ms932005 */
+} IVPBaseConfigVtbl;
+struct IVPBaseConfig { const IVPBaseConfigVtbl *lpVtbl; };
+#define IVPBaseConfig_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IVPBaseConfig_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IVPBaseConfig_Release(T) ((T)->lpVtbl->Release(T))
+#define IVPBaseConfig_GetConnectInfo(T,a,b) ((T)->lpVtbl->GetConnectInfo(T,a,b))
+#define IVPBaseConfig_SetConnectInfo(T,a) ((T)->lpVtbl->SetConnectInfo(T,a))
+#define IVPBaseConfig_GetVPDataInfo(T,a) ((T)->lpVtbl->GetVPDataInfo(T,a))
+#define IVPBaseConfig_GetMaxPixelRate(T,a,b) ((T)->lpVtbl->GetMaxPixelRate(T,a,b))
+#define IVPBaseConfig_InformVPInputFormats(T,a,b) ((T)->lpVtbl->InformVPInputFormats(T,a,b))
+#define IVPBaseConfig_GetVideoFormats(T,a,b) ((T)->lpVtbl->GetVideoFormats(T,a,b))
+#define IVPBaseConfig_SetVideoFormat(T,a) ((T)->lpVtbl->SetVideoFormat(T,a))
+#define IVPBaseConfig_SetInvertPolarity(T) ((T)->lpVtbl->SetInvertPolarity(T))
+#define IVPBaseConfig_GetOverlaySurface(T,a) ((T)->lpVtbl->GetOverlaySurface(T,a))
+#define IVPBaseConfig_SetDirectDrawKernelHandle(T,a) ((T)->lpVtbl->SetDirectDrawKernelHandle(T,a))
+#define IVPBaseConfig_SetVideoPortID(T,a) ((T)->lpVtbl->SetVideoPortID(T,a))
+#define IVPBaseConfig_SetDDSurfaceKernelHandles(T,a,b) ((T)->lpVtbl->SetDDSurfaceKernelHandles(T,a,b))
+#define IVPBaseConfig_SetSurfaceParameters(T,a,b,c) ((T)->lpVtbl->SetSurfaceParameters(T,a,b,c))
+
+/* ---- IVPBaseNotify: vtable order printed by ms932008.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IVPBaseNotifyVtbl {
+    HRESULT (WINAPI *QueryInterface)(IVPBaseNotify*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IVPBaseNotify*);  /* (R1) */
+    ULONG (WINAPI *Release)(IVPBaseNotify*);  /* (R1) */
+    HRESULT (WINAPI *RenegotiateVPParameters)(IVPBaseNotify*);  /* ms932009 */
+} IVPBaseNotifyVtbl;
+struct IVPBaseNotify { const IVPBaseNotifyVtbl *lpVtbl; };
+#define IVPBaseNotify_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IVPBaseNotify_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IVPBaseNotify_Release(T) ((T)->lpVtbl->Release(T))
+#define IVPBaseNotify_RenegotiateVPParameters(T) ((T)->lpVtbl->RenegotiateVPParameters(T))
+
+/* ---- IVPConfig: vtable order printed by ms932010.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IVPConfigVtbl {
+    HRESULT (WINAPI *QueryInterface)(IVPConfig*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IVPConfig*);  /* (R1) */
+    ULONG (WINAPI *Release)(IVPConfig*);  /* (R1) */
+    HRESULT (WINAPI *GetConnectInfo)(IVPConfig*, LPDWORD pdwNumConnectInfo, LPDDVIDEOPORTCONNECT pddVPConnectInfo);  /* ms931992 */
+    HRESULT (WINAPI *SetConnectInfo)(IVPConfig*, DWORD dwChosenEntry);  /* ms932001 */
+    HRESULT (WINAPI *GetVPDataInfo)(IVPConfig*, LPAMVPDATAINFO pamvpDataInfo);  /* ms931996 */
+    HRESULT (WINAPI *GetMaxPixelRate)(IVPConfig*, LPAMVPSIZE pamvpSize, LPDWORD pdwMaxPixelsPerSecond);  /* ms931993 */
+    HRESULT (WINAPI *InformVPInputFormats)(IVPConfig*, DWORD dwNumFormats, LPDDPIXELFORMAT pDDPixelFormats);  /* ms931997 */
+    HRESULT (WINAPI *GetVideoFormats)(IVPConfig*, LPDWORD pdwNumFormats, LPDDPIXELFORMAT pddPixelFormats);  /* ms931995 */
+    HRESULT (WINAPI *SetVideoFormat)(IVPConfig*, DWORD dwChosenEntry);  /* ms932006 */
+    HRESULT (WINAPI *SetInvertPolarity)(IVPConfig*);  /* ms932004 */
+    HRESULT (WINAPI *GetOverlaySurface)(IVPConfig*, LPDIRECTDRAWSURFACE* ppddOverlaySurface);  /* ms931994 */
+    HRESULT (WINAPI *SetDirectDrawKernelHandle)(IVPConfig*, DWORD dwDDKernelHandle);  /* ms932003 */
+    HRESULT (WINAPI *SetVideoPortID)(IVPConfig*, DWORD dwVideoPortID);  /* ms932007 */
+    HRESULT (WINAPI *SetDDSurfaceKernelHandles)(IVPConfig*, DWORD cHandles, DWORD*rgDDKernelHandles);  /* ms932002 */
+    HRESULT (WINAPI *SetSurfaceParameters)(IVPConfig*, DWORD dwPitch, DWORD dwXOrigin, DWORD dwYOrigin);  /* ms932005 */
+    HRESULT (WINAPI *IsVPDecimationAllowed)(IVPConfig*, LPBOOL pbIsDecimationAllowed);  /* ms932011 */
+    HRESULT (WINAPI *SetScalingFactors)(IVPConfig*, LPAMVPSIZE pamvpSize);  /* ms932012 */
+} IVPConfigVtbl;
+struct IVPConfig { const IVPConfigVtbl *lpVtbl; };
+#define IVPConfig_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IVPConfig_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IVPConfig_Release(T) ((T)->lpVtbl->Release(T))
+#define IVPConfig_GetConnectInfo(T,a,b) ((T)->lpVtbl->GetConnectInfo(T,a,b))
+#define IVPConfig_SetConnectInfo(T,a) ((T)->lpVtbl->SetConnectInfo(T,a))
+#define IVPConfig_GetVPDataInfo(T,a) ((T)->lpVtbl->GetVPDataInfo(T,a))
+#define IVPConfig_GetMaxPixelRate(T,a,b) ((T)->lpVtbl->GetMaxPixelRate(T,a,b))
+#define IVPConfig_InformVPInputFormats(T,a,b) ((T)->lpVtbl->InformVPInputFormats(T,a,b))
+#define IVPConfig_GetVideoFormats(T,a,b) ((T)->lpVtbl->GetVideoFormats(T,a,b))
+#define IVPConfig_SetVideoFormat(T,a) ((T)->lpVtbl->SetVideoFormat(T,a))
+#define IVPConfig_SetInvertPolarity(T) ((T)->lpVtbl->SetInvertPolarity(T))
+#define IVPConfig_GetOverlaySurface(T,a) ((T)->lpVtbl->GetOverlaySurface(T,a))
+#define IVPConfig_SetDirectDrawKernelHandle(T,a) ((T)->lpVtbl->SetDirectDrawKernelHandle(T,a))
+#define IVPConfig_SetVideoPortID(T,a) ((T)->lpVtbl->SetVideoPortID(T,a))
+#define IVPConfig_SetDDSurfaceKernelHandles(T,a,b) ((T)->lpVtbl->SetDDSurfaceKernelHandles(T,a,b))
+#define IVPConfig_SetSurfaceParameters(T,a,b,c) ((T)->lpVtbl->SetSurfaceParameters(T,a,b,c))
+#define IVPConfig_IsVPDecimationAllowed(T,a) ((T)->lpVtbl->IsVPDecimationAllowed(T,a))
+#define IVPConfig_SetScalingFactors(T,a) ((T)->lpVtbl->SetScalingFactors(T,a))
+
+/* ---- IVPNotify: vtable order printed by ms932015.html
+ *      ("Methods in Vtable Order" tables; method page ids per entry) ---- */
+typedef struct IVPNotifyVtbl {
+    HRESULT (WINAPI *QueryInterface)(IVPNotify*, REFIID iid, void** ppvObject);  /* (R1) */
+    ULONG (WINAPI *AddRef)(IVPNotify*);  /* (R1) */
+    ULONG (WINAPI *Release)(IVPNotify*);  /* (R1) */
+    HRESULT (WINAPI *RenegotiateVPParameters)(IVPNotify*);  /* ms932009 */
+    HRESULT (WINAPI *SetDeinterlaceMode)(IVPNotify*, AMVP_MODE mode);  /* ms932017 */
+    HRESULT (WINAPI *GetDeinterlaceMode)(IVPNotify*, AMVP_MODE* pmode);  /* ms932014 */
+    HRESULT (WINAPI *SetColorControls)(IVPNotify*, LPDDCOLORCONTROL pColorControl);  /* ms932016 */
+    HRESULT (WINAPI *GetColorControls)(IVPNotify*, LPDDCOLORCONTROL* ppColorControl);  /* ms932013 */
+} IVPNotifyVtbl;
+struct IVPNotify { const IVPNotifyVtbl *lpVtbl; };
+#define IVPNotify_QueryInterface(T) ((T)->lpVtbl->QueryInterface(T))
+#define IVPNotify_AddRef(T) ((T)->lpVtbl->AddRef(T))
+#define IVPNotify_Release(T) ((T)->lpVtbl->Release(T))
+#define IVPNotify_RenegotiateVPParameters(T) ((T)->lpVtbl->RenegotiateVPParameters(T))
+#define IVPNotify_SetDeinterlaceMode(T,a) ((T)->lpVtbl->SetDeinterlaceMode(T,a))
+#define IVPNotify_GetDeinterlaceMode(T,a) ((T)->lpVtbl->GetDeinterlaceMode(T,a))
+#define IVPNotify_SetColorControls(T,a) ((T)->lpVtbl->SetColorControls(T,a))
+#define IVPNotify_GetColorControls(T,a) ((T)->lpVtbl->GetColorControls(T,a))
 
 #endif /* AKARI_DSHOW_H */
