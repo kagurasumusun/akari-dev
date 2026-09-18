@@ -18,49 +18,66 @@ EXPORTS
   ImmAssociateContext
   ImmAssociateContextEx
   ImmConfigureIME
+  ImmConfigureIMEW
   ImmCreateContext
   ImmCreateIMCC
   ImmDestroyContext
   ImmDestroyIMCC
   ImmDisableIME
   ImmEnumRegisterWord
+  ImmEnumRegisterWordW
   ImmEscape
+  ImmEscapeW
   ImmGenerateMessage
   ImmGetCandidateList
   ImmGetCandidateListCount
+  ImmGetCandidateListCountW
+  ImmGetCandidateListW
   ImmGetCandidateWindow
   ImmGetCompositionFont
+  ImmGetCompositionFontW
   ImmGetCompositionString
+  ImmGetCompositionStringW
   ImmGetCompositionWindow
   ImmGetContext
   ImmGetConversionList
+  ImmGetConversionListW
   ImmGetConversionStatus
   ImmGetDefaultIMEWnd
   ImmGetDescription
+  ImmGetDescriptionW
   ImmGetGuideLine
+  ImmGetGuideLineW
   ImmGetHotKey
   ImmGetIMCCLockCount
   ImmGetIMCCSize
   ImmGetIMCLockCount
   ImmGetIMEFileName
+  ImmGetIMEFileNameW
   ImmGetImeMenuItems
+  ImmGetImeMenuItemsW
   ImmGetOpenStatus
   ImmGetProperty
   ImmGetRegisterWordStyle
+  ImmGetRegisterWordStyleW
   ImmGetStatusWindowPos
   ImmGetVirtualKey
   ImmIsIME
   ImmIsUIMessage
+  ImmIsUIMessageW
   ImmLockIMC
   ImmLockIMCC
   ImmNotifyIME
   ImmReSizeIMCC
   ImmRegisterWord
+  ImmRegisterWordW
   ImmReleaseContext
   ImmSIPanelState
   ImmSetCandidateWindow
   ImmSetCompositionFont
+  ImmSetCompositionFontW
   ImmSetCompositionString
+  ImmSetCompositionStringW
   ImmSetCompositionWindow
   ImmSetConversionStatus
   ImmSetHotKey
@@ -70,3 +87,4 @@ EXPORTS
   ImmUnlockIMC
   ImmUnlockIMCC
   ImmUnregisterWord
+  ImmUnregisterWordW

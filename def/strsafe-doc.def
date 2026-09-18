@@ -20,30 +20,55 @@ LIBRARY strsafe.dll
 EXPORTS
   StringCbCat              ; ms860394
   StringCbCatEx            ; ms860396
+  StringCbCatExW
   StringCbCatN             ; ms860397
   StringCbCatNEx           ; ms860398
+  StringCbCatNExW
+  StringCbCatNW
+  StringCbCatW
   StringCbCopy             ; ms860399
   StringCbCopyEx           ; ms860400
+  StringCbCopyExW
   StringCbCopyN            ; ms860401
   StringCbCopyNEx          ; ms860402
+  StringCbCopyNExW
+  StringCbCopyNW
+  StringCbCopyW
   StringCbGets             ; ms860403
   StringCbLength           ; ms860405
   StringCbPrintf           ; ms860406
   StringCbPrintfEx         ; ms860407
+  StringCbPrintfExW
+  StringCbPrintfW
   StringCbVPrintf          ; ms860408
   StringCbVPrintfEx        ; ms860409
+  StringCbVPrintfExW
+  StringCbVPrintfW
   StringCchCat             ; ms860410
   StringCchCatEx           ; ms860411
+  StringCchCatExW
   StringCchCatN            ; ms860413
   StringCchCatNEx          ; ms860415
+  StringCchCatNExW
+  StringCchCatNW
+  StringCchCatW
   StringCchCopy            ; ms860418
   StringCchCopyEx          ; ms860420
+  StringCchCopyExW
   StringCchCopyN           ; ms860422
   StringCchCopyNEx         ; ms860424
+  StringCchCopyNExW
+  StringCchCopyNW
+  StringCchCopyW
   StringCchGets            ; ms860427
   StringCchGetsEx          ; ms860429
   StringCchLength          ; ms860431
+  StringCchLengthW
   StringCchPrintf          ; ms860433
   StringCchPrintfEx        ; ms860435
+  StringCchPrintfExW
+  StringCchPrintfW
   StringCchVPrintf         ; ms860438
   StringCchVPrintfEx       ; ms860440
+  StringCchVPrintfExW
+  StringCchVPrintfW

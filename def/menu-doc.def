@@ -23,11 +23,13 @@ EXPORTS
   DrawMenuBar
   EnableMenuItem
   GetMenuItemInfo
+  GetMenuItemInfoW
   GetSubMenu
   GetSystemMenu
   InsertMenuW
   LoadMenuW
   RemoveMenu
   SetMenuItemInfo
+  SetMenuItemInfoW
   TrackPopupMenu
   TrackPopupMenuEx

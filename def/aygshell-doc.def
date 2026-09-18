@@ -14,6 +14,19 @@
 ; not published by the CE documentation.
 LIBRARY aygshell.dll
 EXPORTS
+  RegistryBatchNotification
+  RegistryCloseNotification
+  RegistryDeleteValue
+  RegistryGetDWORD
+  RegistryGetString
+  RegistryNotifyApp
+  RegistryNotifyCallback
+  RegistryNotifyMsgQueue
+  RegistryNotifyWindow
+  RegistrySetDWORD
+  RegistrySetString
+  RegistryStopNotification
+  RegistryTestExchangeDWORD
   SHChangeNotifyDeregister
   SHChangeNotifyFree
   SHChangeNotifyRegister

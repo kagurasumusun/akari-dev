@@ -28,30 +28,23 @@
 LIBRARY coredll.dll
 EXPORTS
 
-  AbortDoc
   ActivateDevice
   ActivateDeviceEx
   ActivateKeyboardLayout
   ActivateService
   AddFontResourceW
   AddVectoredExceptionHandler
-  AdjustWindowRectEx
   AdvertiseInterface
-  AllKeys
   AllocPhysMem
   AlphaBlend
-  AppendMenuW
   BatteryDrvrGetLevels
   BatteryDrvrSupportsChangeNotification
   BatteryGetLifeTimeInfo
   BatteryNotifyOfTimeChange
-  BeginDeferWindowPos
   BeginPaint
   BitBlt
-  BringWindowToTop
   CacheRangeFlush
   CacheSync
-  CallWindowProcW
   CaptureDumpFileOnDevice
   CeAllocAsynchronousBuffer
   CeAllocDuplicateBuffer
@@ -63,7 +56,6 @@ EXPORTS
   CeCreateDatabase
   CeCreateDatabaseEx
   CeCreateDatabaseEx2
-  CeCreateTokenFromAccount
   CeDeleteDatabase
   CeDeleteDatabaseEx
   CeDeleteRecord
@@ -82,12 +74,10 @@ EXPORTS
   CeFreeAsynchronousBuffer
   CeFreeDuplicateBuffer
   CeFreeNotification
-  CeFsIoControlW
   CeGenRandom
   CeGetCacheInfo
   CeGetCallerTrust
   CeGetCanonicalPathNameW
-  CeGetCurrentTrust
   CeGetDBInformationByHandle
   CeGetFileNotificationInfo
   CeGetRandomSeed
@@ -101,7 +91,6 @@ EXPORTS
   CeGetUserNotification
   CeGetUserNotificationHandles
   CeGetUserNotificationPreferences
-  CeGetVolumeInfoW
   CeHandleAppNotifications
   CeHeapCreate
   CeImpersonateCurrentProcess
@@ -129,7 +118,6 @@ EXPORTS
   CeRegisterReplNotification
   CeRemoteHeapCreate
   CeRemoteHeapTranslatePointer
-  CeResyncFilesys
   CeRunAppAtEvent
   CeRunAppAtTime
   CeSeekDatabase
@@ -143,7 +131,6 @@ EXPORTS
   CeSetReplChangeBitsEx
   CeSetReplChangeMask
   CeSetReplOtherBitsEx
-  CeSetThreadPriority
   CeSetThreadQuantum
   CeSetUserNotification
   CeSetUserNotificationEx
@@ -167,49 +154,27 @@ EXPORTS
   CeWriteRecordProps
   CeZeroPointer
   ChangeDisplaySettingsEx
-  CharLowerBuffW
-  CharLowerW
   CharNextW
-  CharPrevW
-  CharUpperBuffW
-  CharUpperW
   CheckDlgButton
-  CheckMenuItem
-  CheckMenuRadioItem
   CheckPassword
-  CheckRadioButton
   CheckRemoteDebuggerPresent
-  ChildWindowFromPoint
-  ClearCommBreak
-  ClearCommError
   ClientToScreen
-  ClipCursor
-  CloseClipboard
-  CloseGestureInfoHandle
   CloseHandle
   CloseMsgQueue
   CombineRgn
   CompareFileTime
-  CompareStringW
   ContinueDebugEvent
-  ConvertDefaultLocale
   ConvertThreadToFiber
   CopyFileExW
   CopyFileW
-  CopyRect
-  CountClipboardFormats
   CreateAPIHandle
   CreateAPISet
-  CreateAcceleratorTableW
   CreateBitmap
-  CreateCaret
   CreateCompatibleBitmap
   CreateCompatibleDC
-  CreateCursor
   CreateDCW
   CreateDIBPatternBrushPt
   CreateDIBSection
-  CreateDialogIndirectParamW
   CreateDirectoryW
   CreateEnrollmentConfigDialog
   CreateEventW
@@ -220,27 +185,20 @@ EXPORTS
   CreateFileW
   CreateFontIndirectW
   CreateHandler
-  CreateIconIndirect
-  CreateMenu
   CreateMsgQueue
   CreateMutexW
   CreatePalette
-  CreatePartition
-  CreatePartitionEx
   CreatePatternBrush
   CreatePen
   CreatePenIndirect
-  CreatePopupMenu
   CreateProcessW
   CreateRectRgn
   CreateRectRgnIndirect
-  CreateSemaphoreW
   CreateSolidBrush
   CreateStaticMapping
   CreateThread
   CreateTicket
   CreateWatchDogTimer
-  CreateWindowExW
   CredDelete
   CredFree
   CredRead
@@ -291,43 +249,25 @@ EXPORTS
   DDKReg_GetIsrInfo
   DDKReg_GetPciInfo
   DDKReg_GetWindowInfo
-  DPA_GetPtr
   DataHandler
   DeactivateDevice
   DebugActiveProcess
   DebugActiveProcessStop
   DebugBreak
-  DefDlgProcW
-  DefWindowProcW
-  DeferWindowPos
   DeinitLAP
   DeleteAndRenameFile
-  DeleteCriticalSection
   DeleteDC
   DeleteFiber
   DeleteFileW
   DeleteHandler
-  DeleteMenu
   DeleteObject
-  DeletePartition
-  DeleteStaticMapping
   DeleteTicket
   DeregisterDevice
   DeregisterService
-  DestroyAcceleratorTable
-  DestroyCaret
-  DestroyCursor
-  DestroyIcon
-  DestroyMenu
-  DestroyWindow
   DeviceIoControl
   DevicePowerNotify
-  DialogBoxIndirectParamW
-  DisableGestures
   DisableThreadLibraryCalls
   DisassociateSession
-  DismountPartition
-  DismountStore
   DispatchMessageW
   DrWatsonClear
   DrWatsonFlush
@@ -336,30 +276,13 @@ EXPORTS
   DrWatsonWriteData
   DrawEdge
   DrawFocusRect
-  DrawFrameControl
-  DrawIconEx
-  DrawMenuBar
   DrawTextW
   DuplicateHandle
   EditSession
   EditorDeregister
   EditorInitialize
   Ellipse
-  EmptyClipboard
   EnableEUDC
-  EnableGestures
-  EnableHardwareKeyboard
-  EnableMenuItem
-  EnableWindow
-  EndDeferWindowPos
-  EndDialog
-  EndDoc
-  EndPage
-  EndPaint
-  EnterCriticalSection
-  EnumCalendarInfoW
-  EnumClipboardFormats
-  EnumDeviceInterfaces
   EnumDevices
   EnumDisplayDevices
   EnumDisplayMonitors
@@ -371,19 +294,13 @@ EXPORTS
   EnumPropsEx
   EnumPropsExW
   EnumServices
-  EnumSystemCodePagesW
-  EnumUILanguagesW
-  EnumWindows
-  EqualRect
   EqualRgn
-  EscapeCommFunction
   ExcludeClipRect
   ExitProcess
   ExitThread
   ExtCreateRegion
   ExtEscape
   ExtTextOutW
-  ExtractIconExW
   FileSystemPowerFunction
   FileTimeToLocalFileTime
   FileTimeToSystemTime
@@ -391,74 +308,35 @@ EXPORTS
   FillRgn
   FindClose
   FindCloseChangeNotification
-  FindClosePartition
-  FindCloseStore
   FindFirstChangeNotificationW
-  FindFirstDevice
   FindFirstFileExW
   FindFirstFileW
-  FindFirstPartition
-  FindFirstStore
   FindNextChangeNotification
-  FindNextDevice
   FindNextFileW
-  FindNextPartition
-  FindNextStore
   FindResource
   FindResourceW
-  FindWindowW
   FlushFileBuffers
   FlushInstructionCache
   FlushViewOfFile
-  FoldStringW
   ForcePageout
-  FormatMessageW
-  FormatPartition
-  FormatPartitionEx
-  FormatStore
   ForwardDeviceIoControl
   FreeIntChainHandler
   FreeLibrary
   FreeLibraryAndExitThread
   FreePhysMem
-  Gesture
-  GetACP
-  GetActiveWindow
-  GetAnimateMessageInfo
-  GetAsyncKeyState
-  GetAsyncShiftFlags
   GetBkColor
   GetBkMode
-  GetCPInfo
   GetCallerProcess
   GetCallerVMProcessId
   GetCapture
-  GetCaretBlinkTime
-  GetCaretPos
   GetCharABCWidths
   GetCharABCWidthsI
   GetCharABCWidthsW
   GetCharWidth32
   GetCharWidth32W
-  GetClassInfoW
-  GetClassLong
-  GetClassLongW
-  GetClassNameW
-  GetClientRect
   GetClipBox
-  GetClipCursor
   GetClipRgn
-  GetClipboardData
-  GetClipboardDataAlloc
-  GetClipboardFormatNameW
-  GetClipboardOwner
-  GetCommMask
-  GetCommModemStatus
-  GetCommProperties
-  GetCommState
-  GetCommTimeouts
   GetCommandLineW
-  GetCurrencyFormatW
   GetCurrentFT
   GetCurrentFiber
   GetCurrentObject
@@ -468,25 +346,14 @@ EXPORTS
   GetCurrentProcessId
   GetCurrentThread
   GetCurrentThreadId
-  GetCursor
-  GetCursorPos
   GetDC
   GetDCEx
   GetDIBColorTable
-  GetDateFormatW
-  GetDesktopWindow
   GetDeviceCaps
-  GetDeviceInformationByDeviceHandle
-  GetDeviceInformationByFileHandle
   GetDevicePower
   GetDeviceUniqueID
-  GetDialogBaseUnits
   GetDirectCallerProcessId
   GetDiskFreeSpaceExW
-  GetDlgCtrlID
-  GetDlgItem
-  GetDlgItemInt
-  GetDlgItemTextW
   GetDllVersion
   GetDoubleClickTime
   GetEventData
@@ -500,27 +367,13 @@ EXPORTS
   GetFileTime
   GetFileVersionInfoSizeW
   GetFileVersionInfoW
-  GetFocus
   GetFontData
-  GetForegroundInfo
-  GetForegroundKeyboardLayoutHandle
-  GetForegroundKeyboardTarget
-  GetForegroundWindow
-  GetGestureExtraArguments
-  GetGestureInfo
-  GetIconInfo
   GetIdleTime
-  GetKeyState
-  GetKeyboardLayout
   GetKeyboardLayoutList
-  GetKeyboardLayoutNameW
-  GetKeyboardStatus
   GetKeyboardType
   GetLastError
   GetLayout
   GetLocalTime
-  GetLocaleInfoW
-  GetMenuItemInfoW
   GetMessagePos
   GetMessageQueueReadyTimeStamp
   GetMessageSource
@@ -533,25 +386,14 @@ EXPORTS
   GetMsgQueueInfo
   GetNearestColor
   GetNearestPaletteIndex
-  GetNextDlgGroupItem
-  GetNextDlgTabItem
-  GetNumberFormatW
-  GetOEMCP
   GetObjectType
   GetObjectW
-  GetOpenClipboardWindow
-  GetOpenFileNameW
   GetOutlineTextMetricsW
   GetOwnerProcess
   GetPaletteEntries
-  GetParent
-  GetPartitionInfo
-  GetPasswordActive
   GetPasswordStatus
   GetPixel
-  GetPriorityClipboardFormat
   GetProcAddressW
-  GetProcessHeap
   GetProcessVersion
   GetProp
   GetPropW
@@ -559,25 +401,15 @@ EXPORTS
   GetROP2
   GetRegionData
   GetRgnBox
-  GetSaveFileNameW
-  GetScrollInfo
   GetServiceHandle
   GetStdioPathW
   GetStockObject
-  GetStoreInfo
   GetStoreInformation
   GetStretchBltMode
-  GetStringTypeExW
   GetStringTypeW
-  GetSubMenu
-  GetSysColor
   GetSysColorBrush
-  GetSystemDefaultLCID
-  GetSystemDefaultLangID
-  GetSystemDefaultUILanguage
   GetSystemInfo
   GetSystemMemoryDivision
-  GetSystemMetrics
   GetSystemPaletteEntries
   GetSystemPowerState
   GetSystemPowerStatusEx
@@ -599,30 +431,19 @@ EXPORTS
   GetThreadPriority
   GetThreadTimes
   GetTickCount
-  GetTimeFormatW
   GetTimeZoneInformation
   GetUpdateRect
   GetUpdateRgn
-  GetUserDefaultLCID
-  GetUserDefaultLangID
-  GetUserDefaultUILanguage
   GetUserDirectory
   GetUserNameExW
   GetVersionEx
   GetVersionExW
   GetViewportExtEx
   GetViewportOrgEx
-  GetWindow
-  GetWindowAutoGesture
   GetWindowDC
   GetWindowExtEx
-  GetWindowLongW
   GetWindowOrgEx
-  GetWindowRect
   GetWindowRgn
-  GetWindowTextLengthW
-  GetWindowTextW
-  GetWindowThreadProcessId
   GlobalAddAtomW
   GlobalDeleteAtom
   GlobalFindAtomW
@@ -638,97 +459,7 @@ EXPORTS
   HeapReAlloc
   HeapSize
   HeapValidate
-  HideCaret
-  ImageList_Add
-  ImageList_AddMasked
-  ImageList_BeginDrag
-  ImageList_Copy
-  ImageList_Create
-  ImageList_Destroy
-  ImageList_DragEnter
-  ImageList_DragLeave
-  ImageList_DragMove
-  ImageList_DragShowNolock
-  ImageList_Draw
-  ImageList_DrawEx
-  ImageList_DrawIndirect
-  ImageList_Duplicate
-  ImageList_EndDrag
-  ImageList_GetBkColor
-  ImageList_GetDragImage
-  ImageList_GetIcon
-  ImageList_GetIconSize
-  ImageList_GetImageCount
-  ImageList_GetImageInfo
-  ImageList_LoadImage
-  ImageList_Merge
-  ImageList_Remove
-  ImageList_Replace
-  ImageList_ReplaceIcon
-  ImageList_SetBkColor
-  ImageList_SetDragCursorImage
-  ImageList_SetIconSize
-  ImageList_SetImageCount
-  ImageList_SetOverlayImage
-  ImmAssociateContext
-  ImmAssociateContextEx
-  ImmConfigureIMEW
-  ImmCreateContext
-  ImmCreateIMCC
-  ImmDestroyContext
-  ImmDestroyIMCC
-  ImmDisableIME
-  ImmEnumRegisterWordW
-  ImmEscapeW
-  ImmGenerateMessage
-  ImmGetCandidateListCountW
-  ImmGetCandidateListW
-  ImmGetCandidateWindow
-  ImmGetCompositionFontW
-  ImmGetCompositionStringW
-  ImmGetCompositionWindow
-  ImmGetContext
-  ImmGetConversionListW
-  ImmGetConversionStatus
-  ImmGetDefaultIMEWnd
-  ImmGetDescriptionW
-  ImmGetGuideLineW
-  ImmGetHotKey
-  ImmGetIMCCLockCount
-  ImmGetIMCCSize
-  ImmGetIMCLockCount
-  ImmGetIMEFileNameW
-  ImmGetImeMenuItemsW
-  ImmGetOpenStatus
-  ImmGetProperty
-  ImmGetRegisterWordStyleW
-  ImmGetStatusWindowPos
-  ImmGetVirtualKey
-  ImmIsIME
-  ImmIsUIMessageW
-  ImmLockIMC
-  ImmLockIMCC
-  ImmNotifyIME
-  ImmReSizeIMCC
-  ImmRegisterWordW
-  ImmReleaseContext
-  ImmSIPanelState
-  ImmSetCandidateWindow
-  ImmSetCompositionFontW
-  ImmSetCompositionStringW
-  ImmSetCompositionWindow
-  ImmSetConversionStatus
-  ImmSetHotKey
-  ImmSetOpenStatus
-  ImmSetStatusWindowPos
-  ImmSimulateHotKey
-  ImmUnlockIMC
-  ImmUnlockIMCC
-  ImmUnregisterWordW
   InSendMessage
-  InflateRect
-  InitializeCriticalSection
-  InsertMenuW
   InterlockedCompareExchange
   InterlockedCompareExchangePointer
   InterlockedDecrement
@@ -742,7 +473,6 @@ EXPORTS
   InterruptInitialize
   InterruptMask
   IntersectClipRect
-  IntersectRect
   InvalidateRect
   InvalidateRgn
   InvertRect
@@ -750,49 +480,25 @@ EXPORTS
   IsBadCodePtr
   IsBadReadPtr
   IsBadWritePtr
-  IsChild
-  IsClipboardFormatAvailable
   IsDBCSLeadByte
   IsDBCSLeadByteEx
-  IsDialogMessageW
   IsDlgButtonChecked
   IsNamedEventSignaled
   IsProcessorFeaturePresent
-  IsRectEmpty
-  IsValidCodePage
-  IsValidLocale
-  IsWindow
-  IsWindowEnabled
-  IsWindowVisible
   KernelIoControl
   KernelLibIoControl
   KeybdGetDeviceInfo
-  KillTimer
   LAPCreateEnrollmentConfigDialog
-  LASSClose
-  LASSGetResult
-  LASSGetValue
   LASSReloadConfig
-  LCMapStringW
-  LeaveCriticalSection
   LineTo
-  LoadAcceleratorsW
-  LoadAnimatedCursor
-  LoadBitmapW
-  LoadCursorW
   LoadDriver
   LoadFSD
-  LoadFSDEx
-  LoadIconW
-  LoadImageW
   LoadIntChainHandler
   LoadKernelLibrary
   LoadKeyboardLayoutW
   LoadLibraryExW
   LoadLibraryW
-  LoadMenuW
   LoadResource
-  LoadStringW
   LocalAlloc
   LocalFileTimeToFileTime
   LocalFree
@@ -802,45 +508,31 @@ EXPORTS
   LockPages
   LockResource
   MapCallerPtr
-  MapDialogRect
   MapPtrToProcess
   MapViewOfFile
-  MapVirtualKeyW
   MapWindowPoints
   MaskBlt
   MatchTarget
   MatchUser
-  MessageBeep
-  MessageBoxW
   MonitorFromPoint
   MonitorFromRect
   MonitorFromWindow
-  MountPartition
   MoveFileW
   MoveToEx
-  MoveWindow
-  MsgWaitForMultipleObjectsEx
-  MulDiv
   MultiByteToWideChar
   NKCreateStaticMapping
-  NKDbgPrintfW
   NKForceCleanBoot
   NLedGetDeviceInfo
   NLedSetDevice
   NotifyWinUserSystem
-  OffsetRect
   OffsetRgn
   OffsetViewportOrgEx
-  OpenClipboard
   OpenDeviceKey
   OpenEventW
   OpenMsgQueue
-  OpenPartition
   OpenProcess
-  OpenStore
   OpenThread
   OpenWatchDogTimer
-  OutputDebugStringW
   PageOutModule
   PatBlt
   PeekMessageW
@@ -851,7 +543,6 @@ EXPORTS
   PlaySoundW
   Polygon
   Polyline
-  PostKeybdMessage
   PostMessageW
   PostQuitMessage
   PostThreadMessageW
@@ -861,11 +552,8 @@ EXPORTS
   ProfileStart
   ProfileStartEx
   ProfileStop
-  PtInRect
   PtInRegion
   PulseEvent
-  PurgeComm
-  QueryGestures
   QueryInfoSession
   QueryInstructionSet
   QueryPerformanceCounter
@@ -898,7 +586,6 @@ EXPORTS
   ReadMsgQueue
   ReadMsgQueueEx
   ReadProcessMemory
-  ReadRegistryFromOEM
   RealizePalette
   RectInRegion
   RectVisible
@@ -923,46 +610,21 @@ EXPORTS
   RegSaveKey
   RegSetValueExW
   RegisterAPISet
-  RegisterClassW
-  RegisterClipboardFormatW
-  RegisterDbgZones
-  RegisterDesktop
   RegisterDevice
-  RegisterDirectMethods
   RegisterEditor
-  RegisterGesture
-  RegisterHotKey
   RegisterPowerRelationship
   RegisterService
-  RegisterTaskBar
-  RegisterTaskBarEx
   RegisterWindowMessageW
-  RegistryBatchNotification
-  RegistryCloseNotification
-  RegistryDeleteValue
-  RegistryGetDWORD
-  RegistryGetString
-  RegistryNotifyApp
-  RegistryNotifyCallback
-  RegistryNotifyMsgQueue
-  RegistryNotifyWindow
-  RegistrySetDWORD
-  RegistrySetString
-  RegistryStopNotification
-  RegistryTestExchangeDWORD
   ReleaseCapture
   ReleaseDC
-  ReleaseMutex
   ReleasePowerRelationship
   ReleasePowerRequirement
   ReleaseSemaphore
   RemoveDirectoryW
   RemoveFontResourceW
-  RemoveMenu
   RemoveProp
   RemovePropW
   RemoveVectoredExceptionHandler
-  RenamePartition
   ReplChangeSyncSettings
   ReplCheckpoint
   ReplCloseSync
@@ -976,22 +638,17 @@ EXPORTS
   RequestPowerNotifications
   ResetEvent
   ResourceCreateList
-  ResourceDestroyList
-  ResourceMarkAsShareable
   ResourceRelease
   ResourceRequest
-  ResourceRequestEx
   RestoreDC
   ResumeThread
   RoundRect
   SHAddToRecentDocs
   SHCreateShortcut
   SHCreateShortcutEx
-  SHGetFileInfo
   SHGetShortcutTarget
   SHGetSpecialFolderPath
   SHLoadDIBitmap
-  SHShowOutOfMemory
   SaveDC
   ScreenToClient
   ScrollDC
@@ -1000,8 +657,6 @@ EXPORTS
   SelectClipRgn
   SelectObject
   SelectPalette
-  SendDlgItemMessageW
-  SendInput
   SendMessageTimeout
   SendMessageW
   SendNotifyMessageW
@@ -1010,54 +665,31 @@ EXPORTS
   ServiceIoControl
   ServiceUnbindPorts
   SetAPIErrorHandler
-  SetAbortProc
-  SetActiveWindow
   SetBitmapBits
   SetBkColor
   SetBkMode
   SetBrushOrgEx
   SetCapture
-  SetCaretBlinkTime
-  SetCaretPos
-  SetClassLong
-  SetClassLongW
   SetCleanRebootFlag
-  SetClipboardData
-  SetCommBreak
-  SetCommMask
-  SetCommState
-  SetCommTimeouts
   SetCurrentUser
-  SetCursor
-  SetCursorPos
   SetDIBColorTable
   SetDIBitsToDevice
   SetDaylightTime
   SetDbgZone
   SetDevicePower
-  SetDlgItemInt
-  SetDlgItemTextW
   SetEndOfFile
   SetEvent
   SetEventData
   SetFileAttributesW
   SetFilePointer
   SetFileTime
-  SetFocus
-  SetForegroundWindow
   SetInterruptEvent
   SetKMode
   SetLastError
   SetLayout
   SetLocalTime
-  SetLocaleInfoW
-  SetMenuItemInfoW
   SetOOMEvent
   SetPaletteEntries
-  SetParent
-  SetPartitionAttributes
-  SetPassword
-  SetPasswordActive
   SetPasswordStatus
   SetPixel
   SetPowerRequirement
@@ -1065,41 +697,21 @@ EXPORTS
   SetProp
   SetPropW
   SetROP2
-  SetRect
-  SetRectEmpty
   SetRectRgn
-  SetScrollInfo
-  SetScrollPos
-  SetScrollRange
   SetStdioPathW
   SetStretchBltMode
-  SetSysColors
   SetSystemMemoryDivision
   SetSystemPowerState
   SetSystemTime
   SetTextAlign
   SetTextCharacterExtra
   SetTextColor
-  SetThreadContext
   SetThreadPriority
   SetTimeZoneInformation
-  SetTimer
   SetUserData
-  SetUserDefaultLCID
-  SetUserDefaultUILanguage
   SetViewportOrgEx
-  SetWindowAutoGesture
-  SetWindowLongW
   SetWindowOrgEx
-  SetWindowPos
-  SetWindowRgn
-  SetWindowTextW
-  SetupComm
   ShellExecuteEx
-  Shell_NotifyIcon
-  ShowCaret
-  ShowCursor
-  ShowWindow
   SignalStarted
   SipEnumIM
   SipGetCurrentIM
@@ -1113,8 +725,6 @@ EXPORTS
   SizeofResource
   Sleep
   SleepTillTick
-  StartDocW
-  StartPage
   StartWatchDogTimer
   StopBluetoothNotifications
   StopDeviceNotifications
@@ -1122,36 +732,9 @@ EXPORTS
   StopWatchDogTimer
   StretchBlt
   StretchDIBits
-  StringCbCatExW
-  StringCbCatNExW
-  StringCbCatNW
-  StringCbCatW
-  StringCbCopyExW
-  StringCbCopyNExW
-  StringCbCopyNW
-  StringCbCopyW
   StringCbLengthW
-  StringCbPrintfExW
-  StringCbPrintfW
-  StringCbVPrintfExW
-  StringCbVPrintfW
-  StringCchCatExW
-  StringCchCatNExW
-  StringCchCatNW
-  StringCchCatW
-  StringCchCopyExW
-  StringCchCopyNExW
-  StringCchCopyNW
-  StringCchCopyW
-  StringCchLengthW
-  StringCchPrintfExW
-  StringCchPrintfW
-  StringCchVPrintfExW
-  StringCchVPrintfW
-  SubtractRect
   SuspendThread
   SwitchToFiber
-  SystemIdleTimerReset
   SystemParametersInfoW
   SystemTimeToFileTime
   TSPI_lineAccept
@@ -1241,26 +824,19 @@ EXPORTS
   TlsGetValue
   TlsSetValue
   TouchCalibrate
-  TrackPopupMenuEx
-  TranslateAcceleratorW
   TranslateCharsetInfo
   TranslateMessage
-  TransmitCommChar
   TransparentBlt
   TransparentImage
   TryEnterCriticalSection
-  UnionRect
   UnlockFileEx
   UnlockPages
   UnmapViewOfFile
-  UnregisterClassW
-  UnregisterHotKey
   UpdateWindow
   ValidateRect
   ValidateRgn
   VerQueryValueW
   VerifyUser
-  VerifyUserAsync
   VerifyUserStart
   VerifyUserStop
   VerifyUserToTop
@@ -1288,31 +864,13 @@ EXPORTS
   WNetGetUniversalNameW
   WNetGetUserW
   WNetOpenEnumW
-  WaitCommEvent
   WaitForAPIReady
   WaitForDebugEvent
-  WaitForMultipleObjects
   WaitForSingleObject
   WideCharToMultiByte
-  WindowFromPoint
   WriteDebugLED
   WriteFile
   WriteMsgQueue
-  WriteProcessMemory
-  WriteRegistryToOEM
-  _CountLeadingOnes
-  _CountLeadingOnes64
-  _CountLeadingSigns
-  _CountLeadingSigns64
-  _CountLeadingZeros
-  _CountLeadingZeros64
-  _CountOneBits
-  _CountOneBits64
-  _MulHigh
-  _MulUnsignedHigh
-  _byteswap_uint64
-  _byteswap_ulong
-  _byteswap_ushort
   _cabs
   _chgsign
   _copysign
@@ -1327,8 +885,6 @@ EXPORTS
   _gcvt
   _hypot
   _isnan
-  _isunordered
-  _isunorderedf
   _logb
   _memccpy
   _memicmp
@@ -1342,7 +898,6 @@ EXPORTS
   abs
   acos
   asin
-  atoi
   calloc
   ceil
   clearerr
@@ -1362,7 +917,6 @@ EXPORTS
   fsetpos
   ftell
   fwrite
-  keybd_event
   labs
   ldexp
   ldiv
@@ -1522,5 +1076,3 @@ EXPORTS
   waveOutUnprepareHeader
   waveOutWrite
   wcstombs
-  wsprintfW
-  wvsprintfW

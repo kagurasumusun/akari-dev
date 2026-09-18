@@ -15,4 +15,6 @@
 LIBRARY fileopen.dll
 EXPORTS
   GetOpenFileName
+  GetOpenFileNameW
   GetSaveFileName
+  GetSaveFileNameW

@@ -19,4 +19,5 @@ EXPORTS
   EndPage
   SetAbortProc
   StartDoc
+  StartDocW
   StartPage

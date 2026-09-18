@@ -15,6 +15,8 @@
 LIBRARY accel.dll
 EXPORTS
   CreateAcceleratorTable
+  CreateAcceleratorTableW
   DestroyAcceleratorTable
   LoadAcceleratorsW
   TranslateAccelerator
+  TranslateAcceleratorW

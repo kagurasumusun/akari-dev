@@ -14,6 +14,9 @@
 ; not published by the CE documentation.
 LIBRARY storeapi.dll
 EXPORTS
+  CeGetVolumeInfoW
+  CreatePartition
+  CreatePartitionEx
   DeletePartition
   DismountPartition
   DismountStore

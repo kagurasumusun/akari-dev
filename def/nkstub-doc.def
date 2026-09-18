@@ -1,4 +1,4 @@
-; loadbmp-doc.def -- loadbmp.lib export surface for Windows CE.
+; nkstub-doc.def -- nkstub.lib export surface for Windows CE.
 ;
 ; Copyright (c) 2026 Akari API contributors
 ; SPDX-License-Identifier: MIT
@@ -6,13 +6,12 @@
 ; Derived exclusively from the official Microsoft CE
 ; documentation pages: each name below appears on the
 ; listed page whose Requirements row names this link
-; library (tools/ce-manifest.py + tools/ce-fetch.py
-; harvest; docs/inventory.md records every page).  No
+; library (wince-docs-corpus; page ids recorded in
+; docs/def-audit-coredll-2026-09-18.tsv).  No
 ; shared-source/device-dump/VS/PB-derived name is used.
 ; Ordinals are not published; entries are name-only.
-; LIBRARY tag = documented Link Library row (loadbmp.lib); the on-device module name is
-; not published by the CE documentation.
-LIBRARY loadbmp.dll
+; LIBRARY tag = documented Link Library row (Nkstub.lib); the on-device
+; module name is not published by the CE documentation.
+LIBRARY nkstub.dll
 EXPORTS
-  LoadBitmap
-  LoadBitmapW
+  DeleteStaticMapping

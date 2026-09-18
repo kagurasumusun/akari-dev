@@ -14,18 +14,20 @@
 ; not published by the CE documentation.
 LIBRARY coreloc.dll
 EXPORTS
-  CharLowerW
   CharLowerBuffW
+  CharLowerW
   CharPrevW
-  CharUpperW
   CharUpperBuffW
+  CharUpperW
   CompareStringW
   ConvertDefaultLocale
+  EnumCalendarInfoW
   EnumDateFormatsW
   EnumSystemCodePagesW
   EnumSystemLocalesW
   EnumTimeFormatsW
   EnumUILanguages
+  EnumUILanguagesW
   FoldStringW
   GetACP
   GetCPInfo
@@ -42,8 +44,8 @@ EXPORTS
   GetUserDefaultLCID
   GetUserDefaultLangID
   GetUserDefaultUILanguage
-  IsCharAlphaW
   IsCharAlphaNumericW
+  IsCharAlphaW
   IsCharLowerW
   IsCharUpperW
   IsValidCodePage

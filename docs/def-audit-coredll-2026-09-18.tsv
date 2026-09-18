@@ -940,541 +940,541 @@ keep	waveOutSetProperty	doc-derived (doc)
 keep	waveOutSetVolume	doc-derived (doc)
 keep	waveOutUnprepareHeader	doc-derived (doc)
 keep	waveOutWrite	doc-derived (doc)
-pending	AbortDoc	catalog title; Requirements row not yet harvested
-pending	AdjustWindowRectEx	catalog title; Requirements row not yet harvested
-pending	AllKeys	catalog title; Requirements row not yet harvested
-pending	AppendMenuW	catalog title; Requirements row not yet harvested
-pending	BeginDeferWindowPos	catalog title; Requirements row not yet harvested
-pending	BringWindowToTop	catalog title; Requirements row not yet harvested
-pending	CallWindowProcW	catalog title; Requirements row not yet harvested
-pending	CeCreateTokenFromAccount	catalog title; Requirements row not yet harvested
-pending	CeFsIoControlW	catalog title; Requirements row not yet harvested
-pending	CeGetCurrentTrust	catalog title; Requirements row not yet harvested
-pending	CeGetVolumeInfoW	catalog title; Requirements row not yet harvested
-pending	CeImpersonateCurrentProcess	catalog title; Requirements row not yet harvested
-pending	CeResyncFilesys	catalog title; Requirements row not yet harvested
-pending	CeSetThreadPriority	catalog title; Requirements row not yet harvested
-pending	CharLowerBuffW	catalog title; Requirements row not yet harvested
-pending	CharLowerW	catalog title; Requirements row not yet harvested
-pending	CharPrevW	catalog title; Requirements row not yet harvested
-pending	CharUpperBuffW	catalog title; Requirements row not yet harvested
-pending	CharUpperW	catalog title; Requirements row not yet harvested
-pending	CheckMenuItem	catalog title; Requirements row not yet harvested
-pending	CheckMenuRadioItem	catalog title; Requirements row not yet harvested
-pending	CheckPassword	catalog title; Requirements row not yet harvested
-pending	CheckRadioButton	catalog title; Requirements row not yet harvested
-pending	CheckRemoteDebuggerPresent	catalog title; Requirements row not yet harvested
-pending	ChildWindowFromPoint	catalog title; Requirements row not yet harvested
-pending	ClearCommBreak	catalog title; Requirements row not yet harvested
-pending	ClearCommError	catalog title; Requirements row not yet harvested
-pending	ClipCursor	catalog title; Requirements row not yet harvested
-pending	CloseClipboard	catalog title; Requirements row not yet harvested
-pending	CloseGestureInfoHandle	catalog title; Requirements row not yet harvested
-pending	CompareStringW	catalog title; Requirements row not yet harvested
-pending	ConvertDefaultLocale	catalog title; Requirements row not yet harvested
-pending	CopyRect	catalog title; Requirements row not yet harvested
-pending	CountClipboardFormats	catalog title; Requirements row not yet harvested
-pending	CreateAcceleratorTableW	catalog title; Requirements row not yet harvested
-pending	CreateCaret	catalog title; Requirements row not yet harvested
-pending	CreateCursor	catalog title; Requirements row not yet harvested
-pending	CreateDialogIndirectParamW	catalog title; Requirements row not yet harvested
-pending	CreateHandler	catalog title; Requirements row not yet harvested
-pending	CreateIconIndirect	catalog title; Requirements row not yet harvested
-pending	CreateMenu	catalog title; Requirements row not yet harvested
-pending	CreatePartition	catalog title; Requirements row not yet harvested
-pending	CreatePartitionEx	catalog title; Requirements row not yet harvested
-pending	CreatePopupMenu	catalog title; Requirements row not yet harvested
-pending	CreateSemaphoreW	catalog title; Requirements row not yet harvested
-pending	CreateTicket	catalog title; Requirements row not yet harvested
-pending	CreateWindowExW	catalog title; Requirements row not yet harvested
-pending	DPA_GetPtr	catalog title; Requirements row not yet harvested
-pending	DataHandler	catalog title; Requirements row not yet harvested
-pending	DefDlgProcW	catalog title; Requirements row not yet harvested
-pending	DefWindowProcW	catalog title; Requirements row not yet harvested
-pending	DeferWindowPos	catalog title; Requirements row not yet harvested
-pending	DeleteCriticalSection	catalog title; Requirements row not yet harvested
-pending	DeleteHandler	catalog title; Requirements row not yet harvested
-pending	DeleteMenu	catalog title; Requirements row not yet harvested
-pending	DeletePartition	catalog title; Requirements row not yet harvested
-pending	DeleteStaticMapping	catalog title; Requirements row not yet harvested
-pending	DeleteTicket	catalog title; Requirements row not yet harvested
-pending	DestroyAcceleratorTable	catalog title; Requirements row not yet harvested
-pending	DestroyCaret	catalog title; Requirements row not yet harvested
-pending	DestroyCursor	catalog title; Requirements row not yet harvested
-pending	DestroyIcon	catalog title; Requirements row not yet harvested
-pending	DestroyMenu	catalog title; Requirements row not yet harvested
-pending	DestroyWindow	catalog title; Requirements row not yet harvested
-pending	DialogBoxIndirectParamW	catalog title; Requirements row not yet harvested
-pending	DisableGestures	catalog title; Requirements row not yet harvested
-pending	DisassociateSession	catalog title; Requirements row not yet harvested
-pending	DismountPartition	catalog title; Requirements row not yet harvested
-pending	DismountStore	catalog title; Requirements row not yet harvested
-pending	DrawFrameControl	catalog title; Requirements row not yet harvested
-pending	DrawIconEx	catalog title; Requirements row not yet harvested
-pending	DrawMenuBar	catalog title; Requirements row not yet harvested
-pending	EditSession	catalog title; Requirements row not yet harvested
-pending	EditorDeregister	catalog title; Requirements row not yet harvested
-pending	EditorInitialize	catalog title; Requirements row not yet harvested
-pending	EmptyClipboard	catalog title; Requirements row not yet harvested
-pending	EnableGestures	catalog title; Requirements row not yet harvested
-pending	EnableHardwareKeyboard	catalog title; Requirements row not yet harvested
-pending	EnableMenuItem	catalog title; Requirements row not yet harvested
-pending	EnableWindow	catalog title; Requirements row not yet harvested
-pending	EndDeferWindowPos	catalog title; Requirements row not yet harvested
-pending	EndDialog	catalog title; Requirements row not yet harvested
-pending	EndDoc	catalog title; Requirements row not yet harvested
-pending	EndPage	catalog title; Requirements row not yet harvested
-pending	EndPaint	catalog title; Requirements row not yet harvested
-pending	EnterCriticalSection	catalog title; Requirements row not yet harvested
-pending	EnumCalendarInfoW	catalog title; Requirements row not yet harvested
-pending	EnumClipboardFormats	catalog title; Requirements row not yet harvested
-pending	EnumDeviceInterfaces	catalog title; Requirements row not yet harvested
-pending	EnumSystemCodePagesW	catalog title; Requirements row not yet harvested
-pending	EnumUILanguagesW	catalog title; Requirements row not yet harvested
-pending	EnumWindows	catalog title; Requirements row not yet harvested
-pending	EqualRect	catalog title; Requirements row not yet harvested
-pending	EscapeCommFunction	catalog title; Requirements row not yet harvested
-pending	ExtractIconExW	catalog title; Requirements row not yet harvested
-pending	FindClosePartition	catalog title; Requirements row not yet harvested
-pending	FindCloseStore	catalog title; Requirements row not yet harvested
-pending	FindFirstDevice	catalog title; Requirements row not yet harvested
-pending	FindFirstPartition	catalog title; Requirements row not yet harvested
-pending	FindFirstStore	catalog title; Requirements row not yet harvested
-pending	FindNextDevice	catalog title; Requirements row not yet harvested
-pending	FindNextPartition	catalog title; Requirements row not yet harvested
-pending	FindNextStore	catalog title; Requirements row not yet harvested
-pending	FindWindowW	catalog title; Requirements row not yet harvested
-pending	FoldStringW	catalog title; Requirements row not yet harvested
-pending	FormatMessageW	catalog title; Requirements row not yet harvested
-pending	FormatPartition	catalog title; Requirements row not yet harvested
-pending	FormatPartitionEx	catalog title; Requirements row not yet harvested
-pending	FormatStore	catalog title; Requirements row not yet harvested
-pending	FreeLibraryAndExitThread	catalog title; Requirements row not yet harvested
-pending	Gesture	catalog title; Requirements row not yet harvested
-pending	GetACP	catalog title; Requirements row not yet harvested
-pending	GetActiveWindow	catalog title; Requirements row not yet harvested
-pending	GetAnimateMessageInfo	catalog title; Requirements row not yet harvested
-pending	GetAsyncKeyState	catalog title; Requirements row not yet harvested
-pending	GetAsyncShiftFlags	catalog title; Requirements row not yet harvested
-pending	GetCPInfo	catalog title; Requirements row not yet harvested
-pending	GetCaretBlinkTime	catalog title; Requirements row not yet harvested
-pending	GetCaretPos	catalog title; Requirements row not yet harvested
-pending	GetClassInfoW	catalog title; Requirements row not yet harvested
-pending	GetClassLong	catalog title; Requirements row not yet harvested
-pending	GetClassLongW	catalog title; Requirements row not yet harvested
-pending	GetClassNameW	catalog title; Requirements row not yet harvested
-pending	GetClientRect	catalog title; Requirements row not yet harvested
-pending	GetClipCursor	catalog title; Requirements row not yet harvested
-pending	GetClipboardData	catalog title; Requirements row not yet harvested
-pending	GetClipboardDataAlloc	catalog title; Requirements row not yet harvested
-pending	GetClipboardFormatNameW	catalog title; Requirements row not yet harvested
-pending	GetClipboardOwner	catalog title; Requirements row not yet harvested
-pending	GetCommMask	catalog title; Requirements row not yet harvested
-pending	GetCommModemStatus	catalog title; Requirements row not yet harvested
-pending	GetCommProperties	catalog title; Requirements row not yet harvested
-pending	GetCommState	catalog title; Requirements row not yet harvested
-pending	GetCommTimeouts	catalog title; Requirements row not yet harvested
-pending	GetCurrencyFormatW	catalog title; Requirements row not yet harvested
-pending	GetCursor	catalog title; Requirements row not yet harvested
-pending	GetCursorPos	catalog title; Requirements row not yet harvested
-pending	GetDateFormatW	catalog title; Requirements row not yet harvested
-pending	GetDesktopWindow	catalog title; Requirements row not yet harvested
-pending	GetDeviceInformationByDeviceHandle	catalog title; Requirements row not yet harvested
-pending	GetDeviceInformationByFileHandle	catalog title; Requirements row not yet harvested
-pending	GetDialogBaseUnits	catalog title; Requirements row not yet harvested
-pending	GetDlgCtrlID	catalog title; Requirements row not yet harvested
-pending	GetDlgItem	catalog title; Requirements row not yet harvested
-pending	GetDlgItemInt	catalog title; Requirements row not yet harvested
-pending	GetDlgItemTextW	catalog title; Requirements row not yet harvested
-pending	GetFocus	catalog title; Requirements row not yet harvested
-pending	GetForegroundInfo	catalog title; Requirements row not yet harvested
-pending	GetForegroundKeyboardLayoutHandle	catalog title; Requirements row not yet harvested
-pending	GetForegroundKeyboardTarget	catalog title; Requirements row not yet harvested
-pending	GetForegroundWindow	catalog title; Requirements row not yet harvested
-pending	GetGestureExtraArguments	catalog title; Requirements row not yet harvested
-pending	GetGestureInfo	catalog title; Requirements row not yet harvested
-pending	GetIconInfo	catalog title; Requirements row not yet harvested
-pending	GetKeyState	catalog title; Requirements row not yet harvested
-pending	GetKeyboardLayout	catalog title; Requirements row not yet harvested
-pending	GetKeyboardLayoutNameW	catalog title; Requirements row not yet harvested
-pending	GetKeyboardStatus	catalog title; Requirements row not yet harvested
-pending	GetLocaleInfoW	catalog title; Requirements row not yet harvested
-pending	GetMenuItemInfoW	catalog title; Requirements row not yet harvested
-pending	GetNextDlgGroupItem	catalog title; Requirements row not yet harvested
-pending	GetNextDlgTabItem	catalog title; Requirements row not yet harvested
-pending	GetNumberFormatW	catalog title; Requirements row not yet harvested
-pending	GetOEMCP	catalog title; Requirements row not yet harvested
-pending	GetOpenClipboardWindow	catalog title; Requirements row not yet harvested
-pending	GetOpenFileNameW	catalog title; Requirements row not yet harvested
-pending	GetParent	catalog title; Requirements row not yet harvested
-pending	GetPartitionInfo	catalog title; Requirements row not yet harvested
-pending	GetPasswordActive	catalog title; Requirements row not yet harvested
-pending	GetPriorityClipboardFormat	catalog title; Requirements row not yet harvested
-pending	GetProcessHeap	catalog title; Requirements row not yet harvested
-pending	GetSaveFileNameW	catalog title; Requirements row not yet harvested
-pending	GetScrollInfo	catalog title; Requirements row not yet harvested
-pending	GetStoreInfo	catalog title; Requirements row not yet harvested
-pending	GetStringTypeExW	catalog title; Requirements row not yet harvested
-pending	GetSubMenu	catalog title; Requirements row not yet harvested
-pending	GetSysColor	catalog title; Requirements row not yet harvested
-pending	GetSystemDefaultLCID	catalog title; Requirements row not yet harvested
-pending	GetSystemDefaultLangID	catalog title; Requirements row not yet harvested
-pending	GetSystemDefaultUILanguage	catalog title; Requirements row not yet harvested
-pending	GetSystemMetrics	catalog title; Requirements row not yet harvested
-pending	GetTimeFormatW	catalog title; Requirements row not yet harvested
-pending	GetUserDefaultLCID	catalog title; Requirements row not yet harvested
-pending	GetUserDefaultLangID	catalog title; Requirements row not yet harvested
-pending	GetUserDefaultUILanguage	catalog title; Requirements row not yet harvested
-pending	GetWindow	catalog title; Requirements row not yet harvested
-pending	GetWindowAutoGesture	catalog title; Requirements row not yet harvested
-pending	GetWindowLongW	catalog title; Requirements row not yet harvested
-pending	GetWindowRect	catalog title; Requirements row not yet harvested
-pending	GetWindowTextLengthW	catalog title; Requirements row not yet harvested
-pending	GetWindowTextW	catalog title; Requirements row not yet harvested
-pending	GetWindowThreadProcessId	catalog title; Requirements row not yet harvested
-pending	HideCaret	catalog title; Requirements row not yet harvested
-pending	ImageList_Add	catalog title; Requirements row not yet harvested
-pending	ImageList_AddMasked	catalog title; Requirements row not yet harvested
-pending	ImageList_BeginDrag	catalog title; Requirements row not yet harvested
-pending	ImageList_Copy	catalog title; Requirements row not yet harvested
-pending	ImageList_Create	catalog title; Requirements row not yet harvested
-pending	ImageList_Destroy	catalog title; Requirements row not yet harvested
-pending	ImageList_DragEnter	catalog title; Requirements row not yet harvested
-pending	ImageList_DragLeave	catalog title; Requirements row not yet harvested
-pending	ImageList_DragMove	catalog title; Requirements row not yet harvested
-pending	ImageList_DragShowNolock	catalog title; Requirements row not yet harvested
-pending	ImageList_Draw	catalog title; Requirements row not yet harvested
-pending	ImageList_DrawEx	catalog title; Requirements row not yet harvested
-pending	ImageList_DrawIndirect	catalog title; Requirements row not yet harvested
-pending	ImageList_Duplicate	catalog title; Requirements row not yet harvested
-pending	ImageList_EndDrag	catalog title; Requirements row not yet harvested
-pending	ImageList_GetBkColor	catalog title; Requirements row not yet harvested
-pending	ImageList_GetDragImage	catalog title; Requirements row not yet harvested
-pending	ImageList_GetIcon	catalog title; Requirements row not yet harvested
-pending	ImageList_GetIconSize	catalog title; Requirements row not yet harvested
-pending	ImageList_GetImageCount	catalog title; Requirements row not yet harvested
-pending	ImageList_GetImageInfo	catalog title; Requirements row not yet harvested
-pending	ImageList_LoadImage	catalog title; Requirements row not yet harvested
-pending	ImageList_Merge	catalog title; Requirements row not yet harvested
-pending	ImageList_Remove	catalog title; Requirements row not yet harvested
-pending	ImageList_Replace	catalog title; Requirements row not yet harvested
-pending	ImageList_ReplaceIcon	catalog title; Requirements row not yet harvested
-pending	ImageList_SetBkColor	catalog title; Requirements row not yet harvested
-pending	ImageList_SetDragCursorImage	catalog title; Requirements row not yet harvested
-pending	ImageList_SetIconSize	catalog title; Requirements row not yet harvested
-pending	ImageList_SetImageCount	catalog title; Requirements row not yet harvested
-pending	ImageList_SetOverlayImage	catalog title; Requirements row not yet harvested
-pending	ImmAssociateContext	catalog title; Requirements row not yet harvested
-pending	ImmAssociateContextEx	catalog title; Requirements row not yet harvested
-pending	ImmConfigureIMEW	catalog title; Requirements row not yet harvested
-pending	ImmCreateContext	catalog title; Requirements row not yet harvested
-pending	ImmCreateIMCC	catalog title; Requirements row not yet harvested
-pending	ImmDestroyContext	catalog title; Requirements row not yet harvested
-pending	ImmDestroyIMCC	catalog title; Requirements row not yet harvested
-pending	ImmDisableIME	catalog title; Requirements row not yet harvested
-pending	ImmEnumRegisterWordW	catalog title; Requirements row not yet harvested
-pending	ImmEscapeW	catalog title; Requirements row not yet harvested
-pending	ImmGenerateMessage	catalog title; Requirements row not yet harvested
-pending	ImmGetCandidateListCountW	catalog title; Requirements row not yet harvested
-pending	ImmGetCandidateListW	catalog title; Requirements row not yet harvested
-pending	ImmGetCandidateWindow	catalog title; Requirements row not yet harvested
-pending	ImmGetCompositionFontW	catalog title; Requirements row not yet harvested
-pending	ImmGetCompositionStringW	catalog title; Requirements row not yet harvested
-pending	ImmGetCompositionWindow	catalog title; Requirements row not yet harvested
-pending	ImmGetContext	catalog title; Requirements row not yet harvested
-pending	ImmGetConversionListW	catalog title; Requirements row not yet harvested
-pending	ImmGetConversionStatus	catalog title; Requirements row not yet harvested
-pending	ImmGetDefaultIMEWnd	catalog title; Requirements row not yet harvested
-pending	ImmGetDescriptionW	catalog title; Requirements row not yet harvested
-pending	ImmGetGuideLineW	catalog title; Requirements row not yet harvested
-pending	ImmGetHotKey	catalog title; Requirements row not yet harvested
-pending	ImmGetIMCCLockCount	catalog title; Requirements row not yet harvested
-pending	ImmGetIMCCSize	catalog title; Requirements row not yet harvested
-pending	ImmGetIMCLockCount	catalog title; Requirements row not yet harvested
-pending	ImmGetIMEFileNameW	catalog title; Requirements row not yet harvested
-pending	ImmGetImeMenuItemsW	catalog title; Requirements row not yet harvested
-pending	ImmGetOpenStatus	catalog title; Requirements row not yet harvested
-pending	ImmGetProperty	catalog title; Requirements row not yet harvested
-pending	ImmGetRegisterWordStyleW	catalog title; Requirements row not yet harvested
-pending	ImmGetStatusWindowPos	catalog title; Requirements row not yet harvested
-pending	ImmGetVirtualKey	catalog title; Requirements row not yet harvested
-pending	ImmIsIME	catalog title; Requirements row not yet harvested
-pending	ImmIsUIMessageW	catalog title; Requirements row not yet harvested
-pending	ImmLockIMC	catalog title; Requirements row not yet harvested
-pending	ImmLockIMCC	catalog title; Requirements row not yet harvested
-pending	ImmNotifyIME	catalog title; Requirements row not yet harvested
-pending	ImmReSizeIMCC	catalog title; Requirements row not yet harvested
-pending	ImmRegisterWordW	catalog title; Requirements row not yet harvested
-pending	ImmReleaseContext	catalog title; Requirements row not yet harvested
-pending	ImmSIPanelState	catalog title; Requirements row not yet harvested
-pending	ImmSetCandidateWindow	catalog title; Requirements row not yet harvested
-pending	ImmSetCompositionFontW	catalog title; Requirements row not yet harvested
-pending	ImmSetCompositionStringW	catalog title; Requirements row not yet harvested
-pending	ImmSetCompositionWindow	catalog title; Requirements row not yet harvested
-pending	ImmSetConversionStatus	catalog title; Requirements row not yet harvested
-pending	ImmSetHotKey	catalog title; Requirements row not yet harvested
-pending	ImmSetOpenStatus	catalog title; Requirements row not yet harvested
-pending	ImmSetStatusWindowPos	catalog title; Requirements row not yet harvested
-pending	ImmSimulateHotKey	catalog title; Requirements row not yet harvested
-pending	ImmUnlockIMC	catalog title; Requirements row not yet harvested
-pending	ImmUnlockIMCC	catalog title; Requirements row not yet harvested
-pending	ImmUnregisterWordW	catalog title; Requirements row not yet harvested
-pending	InflateRect	catalog title; Requirements row not yet harvested
-pending	InitializeCriticalSection	catalog title; Requirements row not yet harvested
-pending	InsertMenuW	catalog title; Requirements row not yet harvested
-pending	IntersectRect	catalog title; Requirements row not yet harvested
-pending	IsAPIReady	catalog title; Requirements row not yet harvested
-pending	IsChild	catalog title; Requirements row not yet harvested
-pending	IsClipboardFormatAvailable	catalog title; Requirements row not yet harvested
-pending	IsDialogMessageW	catalog title; Requirements row not yet harvested
-pending	IsProcessorFeaturePresent	catalog title; Requirements row not yet harvested
-pending	IsRectEmpty	catalog title; Requirements row not yet harvested
-pending	IsValidCodePage	catalog title; Requirements row not yet harvested
-pending	IsValidLocale	catalog title; Requirements row not yet harvested
-pending	IsWindow	catalog title; Requirements row not yet harvested
-pending	IsWindowEnabled	catalog title; Requirements row not yet harvested
-pending	IsWindowVisible	catalog title; Requirements row not yet harvested
-pending	KillTimer	catalog title; Requirements row not yet harvested
-pending	LASSClose	catalog title; Requirements row not yet harvested
-pending	LASSGetResult	catalog title; Requirements row not yet harvested
-pending	LASSGetValue	catalog title; Requirements row not yet harvested
-pending	LCMapStringW	catalog title; Requirements row not yet harvested
-pending	LeaveCriticalSection	catalog title; Requirements row not yet harvested
-pending	LoadAcceleratorsW	catalog title; Requirements row not yet harvested
-pending	LoadAnimatedCursor	catalog title; Requirements row not yet harvested
-pending	LoadBitmapW	catalog title; Requirements row not yet harvested
-pending	LoadCursorW	catalog title; Requirements row not yet harvested
-pending	LoadFSDEx	catalog title; Requirements row not yet harvested
-pending	LoadIconW	catalog title; Requirements row not yet harvested
-pending	LoadImageW	catalog title; Requirements row not yet harvested
-pending	LoadMenuW	catalog title; Requirements row not yet harvested
-pending	LoadStringW	catalog title; Requirements row not yet harvested
-pending	MapDialogRect	catalog title; Requirements row not yet harvested
-pending	MapVirtualKeyW	catalog title; Requirements row not yet harvested
-pending	MessageBeep	catalog title; Requirements row not yet harvested
-pending	MessageBoxW	catalog title; Requirements row not yet harvested
-pending	MountPartition	catalog title; Requirements row not yet harvested
-pending	MoveWindow	catalog title; Requirements row not yet harvested
-pending	MsgWaitForMultipleObjectsEx	catalog title; Requirements row not yet harvested
-pending	MulDiv	catalog title; Requirements row not yet harvested
-pending	NKDbgPrintfW	catalog title; Requirements row not yet harvested
-pending	NLedGetDeviceInfo	catalog title; Requirements row not yet harvested
-pending	NLedSetDevice	catalog title; Requirements row not yet harvested
-pending	OffsetRect	catalog title; Requirements row not yet harvested
-pending	OpenClipboard	catalog title; Requirements row not yet harvested
-pending	OpenPartition	catalog title; Requirements row not yet harvested
-pending	OpenStore	catalog title; Requirements row not yet harvested
-pending	OutputDebugStringW	catalog title; Requirements row not yet harvested
-pending	PostKeybdMessage	catalog title; Requirements row not yet harvested
-pending	PtInRect	catalog title; Requirements row not yet harvested
-pending	PurgeComm	catalog title; Requirements row not yet harvested
-pending	QueryGestures	catalog title; Requirements row not yet harvested
-pending	QueryInfoSession	catalog title; Requirements row not yet harvested
-pending	ReadRegistryFromOEM	catalog title; Requirements row not yet harvested
-pending	RegisterClassW	catalog title; Requirements row not yet harvested
-pending	RegisterClipboardFormatW	catalog title; Requirements row not yet harvested
-pending	RegisterDbgZones	catalog title; Requirements row not yet harvested
-pending	RegisterDesktop	catalog title; Requirements row not yet harvested
-pending	RegisterDirectMethods	catalog title; Requirements row not yet harvested
-pending	RegisterEditor	catalog title; Requirements row not yet harvested
-pending	RegisterGesture	catalog title; Requirements row not yet harvested
-pending	RegisterHotKey	catalog title; Requirements row not yet harvested
-pending	RegisterTaskBar	catalog title; Requirements row not yet harvested
-pending	RegisterTaskBarEx	catalog title; Requirements row not yet harvested
-pending	RegistryBatchNotification	catalog title; Requirements row not yet harvested
-pending	RegistryCloseNotification	catalog title; Requirements row not yet harvested
-pending	RegistryDeleteValue	catalog title; Requirements row not yet harvested
-pending	RegistryGetDWORD	catalog title; Requirements row not yet harvested
-pending	RegistryGetString	catalog title; Requirements row not yet harvested
-pending	RegistryNotifyApp	catalog title; Requirements row not yet harvested
-pending	RegistryNotifyCallback	catalog title; Requirements row not yet harvested
-pending	RegistryNotifyMsgQueue	catalog title; Requirements row not yet harvested
-pending	RegistryNotifyWindow	catalog title; Requirements row not yet harvested
-pending	RegistrySetDWORD	catalog title; Requirements row not yet harvested
-pending	RegistrySetString	catalog title; Requirements row not yet harvested
-pending	RegistryStopNotification	catalog title; Requirements row not yet harvested
-pending	RegistryTestExchangeDWORD	catalog title; Requirements row not yet harvested
-pending	ReleaseMutex	catalog title; Requirements row not yet harvested
-pending	RemoveMenu	catalog title; Requirements row not yet harvested
-pending	RenamePartition	catalog title; Requirements row not yet harvested
-pending	ResourceDestroyList	catalog title; Requirements row not yet harvested
-pending	ResourceMarkAsShareable	catalog title; Requirements row not yet harvested
-pending	ResourceRequestEx	catalog title; Requirements row not yet harvested
-pending	SHGetFileInfo	catalog title; Requirements row not yet harvested
-pending	SHShowOutOfMemory	catalog title; Requirements row not yet harvested
-pending	SendDlgItemMessageW	catalog title; Requirements row not yet harvested
-pending	SendInput	catalog title; Requirements row not yet harvested
-pending	SetAbortProc	catalog title; Requirements row not yet harvested
-pending	SetActiveWindow	catalog title; Requirements row not yet harvested
-pending	SetCaretBlinkTime	catalog title; Requirements row not yet harvested
-pending	SetCaretPos	catalog title; Requirements row not yet harvested
-pending	SetClassLong	catalog title; Requirements row not yet harvested
-pending	SetClassLongW	catalog title; Requirements row not yet harvested
-pending	SetClipboardData	catalog title; Requirements row not yet harvested
-pending	SetCommBreak	catalog title; Requirements row not yet harvested
-pending	SetCommMask	catalog title; Requirements row not yet harvested
-pending	SetCommState	catalog title; Requirements row not yet harvested
-pending	SetCommTimeouts	catalog title; Requirements row not yet harvested
-pending	SetCursor	catalog title; Requirements row not yet harvested
-pending	SetCursorPos	catalog title; Requirements row not yet harvested
-pending	SetDlgItemInt	catalog title; Requirements row not yet harvested
-pending	SetDlgItemTextW	catalog title; Requirements row not yet harvested
-pending	SetFocus	catalog title; Requirements row not yet harvested
-pending	SetForegroundWindow	catalog title; Requirements row not yet harvested
-pending	SetLocaleInfoW	catalog title; Requirements row not yet harvested
-pending	SetMenuItemInfoW	catalog title; Requirements row not yet harvested
-pending	SetParent	catalog title; Requirements row not yet harvested
-pending	SetPartitionAttributes	catalog title; Requirements row not yet harvested
-pending	SetPassword	catalog title; Requirements row not yet harvested
-pending	SetPasswordActive	catalog title; Requirements row not yet harvested
-pending	SetRect	catalog title; Requirements row not yet harvested
-pending	SetRectEmpty	catalog title; Requirements row not yet harvested
-pending	SetScrollInfo	catalog title; Requirements row not yet harvested
-pending	SetScrollPos	catalog title; Requirements row not yet harvested
-pending	SetScrollRange	catalog title; Requirements row not yet harvested
-pending	SetSysColors	catalog title; Requirements row not yet harvested
-pending	SetThreadContext	catalog title; Requirements row not yet harvested
-pending	SetTimer	catalog title; Requirements row not yet harvested
-pending	SetUserDefaultLCID	catalog title; Requirements row not yet harvested
-pending	SetUserDefaultUILanguage	catalog title; Requirements row not yet harvested
-pending	SetWindowAutoGesture	catalog title; Requirements row not yet harvested
-pending	SetWindowLongW	catalog title; Requirements row not yet harvested
-pending	SetWindowPos	catalog title; Requirements row not yet harvested
-pending	SetWindowRgn	catalog title; Requirements row not yet harvested
-pending	SetWindowTextW	catalog title; Requirements row not yet harvested
-pending	SetupComm	catalog title; Requirements row not yet harvested
-pending	Shell_NotifyIcon	catalog title; Requirements row not yet harvested
-pending	ShowCaret	catalog title; Requirements row not yet harvested
-pending	ShowCursor	catalog title; Requirements row not yet harvested
-pending	ShowWindow	catalog title; Requirements row not yet harvested
-pending	StartDocW	catalog title; Requirements row not yet harvested
-pending	StartPage	catalog title; Requirements row not yet harvested
-pending	StringCbCatExW	catalog title; Requirements row not yet harvested
-pending	StringCbCatNExW	catalog title; Requirements row not yet harvested
-pending	StringCbCatNW	catalog title; Requirements row not yet harvested
-pending	StringCbCatW	catalog title; Requirements row not yet harvested
-pending	StringCbCopyExW	catalog title; Requirements row not yet harvested
-pending	StringCbCopyNExW	catalog title; Requirements row not yet harvested
-pending	StringCbCopyNW	catalog title; Requirements row not yet harvested
-pending	StringCbCopyW	catalog title; Requirements row not yet harvested
-pending	StringCbLengthW	catalog title; Requirements row not yet harvested
-pending	StringCbPrintfExW	catalog title; Requirements row not yet harvested
-pending	StringCbPrintfW	catalog title; Requirements row not yet harvested
-pending	StringCbVPrintfExW	catalog title; Requirements row not yet harvested
-pending	StringCbVPrintfW	catalog title; Requirements row not yet harvested
-pending	StringCchCatExW	catalog title; Requirements row not yet harvested
-pending	StringCchCatNExW	catalog title; Requirements row not yet harvested
-pending	StringCchCatNW	catalog title; Requirements row not yet harvested
-pending	StringCchCatW	catalog title; Requirements row not yet harvested
-pending	StringCchCopyExW	catalog title; Requirements row not yet harvested
-pending	StringCchCopyNExW	catalog title; Requirements row not yet harvested
-pending	StringCchCopyNW	catalog title; Requirements row not yet harvested
-pending	StringCchCopyW	catalog title; Requirements row not yet harvested
-pending	StringCchLengthW	catalog title; Requirements row not yet harvested
-pending	StringCchPrintfExW	catalog title; Requirements row not yet harvested
-pending	StringCchPrintfW	catalog title; Requirements row not yet harvested
-pending	StringCchVPrintfExW	catalog title; Requirements row not yet harvested
-pending	StringCchVPrintfW	catalog title; Requirements row not yet harvested
-pending	SubtractRect	catalog title; Requirements row not yet harvested
-pending	SystemIdleTimerReset	catalog title; Requirements row not yet harvested
-pending	TimeoutSession	catalog title; Requirements row not yet harvested
-pending	TrackPopupMenuEx	catalog title; Requirements row not yet harvested
-pending	TranslateAcceleratorW	catalog title; Requirements row not yet harvested
-pending	TransmitCommChar	catalog title; Requirements row not yet harvested
-pending	UnionRect	catalog title; Requirements row not yet harvested
-pending	UnregisterClassW	catalog title; Requirements row not yet harvested
-pending	UnregisterHotKey	catalog title; Requirements row not yet harvested
-pending	VerifyUserAsync	catalog title; Requirements row not yet harvested
-pending	WaitCommEvent	catalog title; Requirements row not yet harvested
-pending	WaitForAPIReady	catalog title; Requirements row not yet harvested
-pending	WaitForMultipleObjects	catalog title; Requirements row not yet harvested
-pending	WindowFromPoint	catalog title; Requirements row not yet harvested
-pending	WriteProcessMemory	catalog title; Requirements row not yet harvested
-pending	WriteRegistryToOEM	catalog title; Requirements row not yet harvested
-pending	_CountLeadingOnes	catalog title; Requirements row not yet harvested
-pending	_CountLeadingOnes64	catalog title; Requirements row not yet harvested
-pending	_CountLeadingSigns	catalog title; Requirements row not yet harvested
-pending	_CountLeadingSigns64	catalog title; Requirements row not yet harvested
-pending	_CountLeadingZeros	catalog title; Requirements row not yet harvested
-pending	_CountLeadingZeros64	catalog title; Requirements row not yet harvested
-pending	_CountOneBits	catalog title; Requirements row not yet harvested
-pending	_CountOneBits64	catalog title; Requirements row not yet harvested
-pending	_MulHigh	catalog title; Requirements row not yet harvested
-pending	_MulUnsignedHigh	catalog title; Requirements row not yet harvested
-pending	_byteswap_uint64	catalog title; Requirements row not yet harvested
-pending	_byteswap_ulong	catalog title; Requirements row not yet harvested
-pending	_byteswap_ushort	catalog title; Requirements row not yet harvested
-pending	_cabs	catalog title; Requirements row not yet harvested
-pending	_chgsign	catalog title; Requirements row not yet harvested
-pending	_copysign	catalog title; Requirements row not yet harvested
-pending	_ecvt	catalog title; Requirements row not yet harvested
-pending	_fcvt	catalog title; Requirements row not yet harvested
-pending	_fileno	catalog title; Requirements row not yet harvested
-pending	_finite	catalog title; Requirements row not yet harvested
-pending	_flushall	catalog title; Requirements row not yet harvested
-pending	_fpclass	catalog title; Requirements row not yet harvested
-pending	_fpieee_flt	catalog title; Requirements row not yet harvested
-pending	_fpreset	catalog title; Requirements row not yet harvested
-pending	_gcvt	catalog title; Requirements row not yet harvested
-pending	_hypot	catalog title; Requirements row not yet harvested
-pending	_isnan	catalog title; Requirements row not yet harvested
-pending	_isunordered	catalog title; Requirements row not yet harvested
-pending	_isunorderedf	catalog title; Requirements row not yet harvested
-pending	_logb	catalog title; Requirements row not yet harvested
-pending	_memccpy	catalog title; Requirements row not yet harvested
-pending	_memicmp	catalog title; Requirements row not yet harvested
-pending	_msize	catalog title; Requirements row not yet harvested
-pending	_nextafter	catalog title; Requirements row not yet harvested
-pending	_scalb	catalog title; Requirements row not yet harvested
-pending	_setmode	catalog title; Requirements row not yet harvested
-pending	_statusfp	catalog title; Requirements row not yet harvested
-pending	_swab	catalog title; Requirements row not yet harvested
-pending	_wfdopen	catalog title; Requirements row not yet harvested
-pending	abs	catalog title; Requirements row not yet harvested
-pending	acos	catalog title; Requirements row not yet harvested
-pending	asin	catalog title; Requirements row not yet harvested
-pending	atoi	catalog title; Requirements row not yet harvested
-pending	calloc	catalog title; Requirements row not yet harvested
-pending	ceil	catalog title; Requirements row not yet harvested
-pending	clearerr	catalog title; Requirements row not yet harvested
-pending	div	catalog title; Requirements row not yet harvested
-pending	exp	catalog title; Requirements row not yet harvested
-pending	fabs	catalog title; Requirements row not yet harvested
-pending	feof	catalog title; Requirements row not yet harvested
-pending	ferror	catalog title; Requirements row not yet harvested
-pending	fflush	catalog title; Requirements row not yet harvested
-pending	fgetpos	catalog title; Requirements row not yet harvested
-pending	floor	catalog title; Requirements row not yet harvested
-pending	fmod	catalog title; Requirements row not yet harvested
-pending	fread	catalog title; Requirements row not yet harvested
-pending	free	catalog title; Requirements row not yet harvested
-pending	frexp	catalog title; Requirements row not yet harvested
-pending	fseek	catalog title; Requirements row not yet harvested
-pending	fsetpos	catalog title; Requirements row not yet harvested
-pending	ftell	catalog title; Requirements row not yet harvested
-pending	fwrite	catalog title; Requirements row not yet harvested
-pending	keybd_event	catalog title; Requirements row not yet harvested
-pending	labs	catalog title; Requirements row not yet harvested
-pending	ldexp	catalog title; Requirements row not yet harvested
-pending	ldiv	catalog title; Requirements row not yet harvested
-pending	longjmp	catalog title; Requirements row not yet harvested
-pending	malloc	catalog title; Requirements row not yet harvested
-pending	mbstowcs	catalog title; Requirements row not yet harvested
-pending	memmove	catalog title; Requirements row not yet harvested
-pending	modf	catalog title; Requirements row not yet harvested
-pending	pow	catalog title; Requirements row not yet harvested
-pending	qsort	catalog title; Requirements row not yet harvested
-pending	rand	catalog title; Requirements row not yet harvested
-pending	realloc	catalog title; Requirements row not yet harvested
-pending	setjmp	catalog title; Requirements row not yet harvested
-pending	setvbuf	catalog title; Requirements row not yet harvested
-pending	sqrt	catalog title; Requirements row not yet harvested
-pending	srand	catalog title; Requirements row not yet harvested
-pending	towlower	catalog title; Requirements row not yet harvested
-pending	towupper	catalog title; Requirements row not yet harvested
-pending	wcstombs	catalog title; Requirements row not yet harvested
-pending	wsprintfW	catalog title; Requirements row not yet harvested
-pending	wvsprintfW	catalog title; Requirements row not yet harvested
+drop	AbortDoc	Requirements name ?, Mgprint.lib, Mgprint.lib.
+drop	AdjustWindowRectEx	Requirements name ?
+drop	AllKeys	Requirements name ?
+drop	AppendMenuW	Requirements name ?
+drop	BeginDeferWindowPos	Requirements name ?
+drop	BringWindowToTop	Requirements name ?
+drop	CallWindowProcW	Requirements name ?
+drop	CeCreateTokenFromAccount	Requirements name ?
+drop	CeFsIoControlW	Requirements name Device.lib, Device.lib.
+drop	CeGetCurrentTrust	Requirements name ?, Nk.lib, Nk.lib.
+drop	CeGetVolumeInfoW	Requirements name Storeapi.lib
+keep	CeImpersonateCurrentProcess	doc-derived (ee482962(v=winembedded.60))
+drop	CeResyncFilesys	Requirements name ?, Device.lib, Device.lib.
+drop	CeSetThreadPriority	Requirements name ?, Nk.lib, Nk.lib.
+drop	CharLowerBuffW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	CharLowerW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	CharPrevW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	CharUpperBuffW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	CharUpperW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	CheckMenuItem	Requirements name ?, Menu.lib, Menu.lib.
+drop	CheckMenuRadioItem	Requirements name ?, Menu.lib, Menu.lib.
+keep	CheckPassword	doc-derived (_wcesdk_CheckPassword)
+drop	CheckRadioButton	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+keep	CheckRemoteDebuggerPresent	doc-derived (ee488625(v=winembedded.60))
+drop	ChildWindowFromPoint	Requirements name ?
+drop	ClearCommBreak	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	ClearCommError	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	ClipCursor	Requirements name ?, Cursor.lib
+drop	CloseClipboard	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	CloseGestureInfoHandle	Requirements name TouchGesture.lib
+drop	CompareStringW	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	ConvertDefaultLocale	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	CopyRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	CountClipboardFormats	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	CreateAcceleratorTableW	Requirements name Accel.lib, Accel.lib.
+drop	CreateCaret	Requirements name ?, Caret.lib, Caret.lib.
+drop	CreateCursor	Requirements name ?, Iconcurs.lib, Iconcurs.lib.
+drop	CreateDialogIndirectParamW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+keep	CreateHandler	doc-derived (ms885179)
+drop	CreateIconIndirect	Requirements name ?, Icon.lib, Icon.lib.
+drop	CreateMenu	Requirements name ?, Menu.lib, Menu.lib.
+drop	CreatePartition	Requirements name Storeapi.lib
+drop	CreatePartitionEx	Requirements name Storeapi.lib
+drop	CreatePopupMenu	Requirements name ?, Menu.lib, Menu.lib.
+drop	CreateSemaphoreW	Requirements name Nk.lib, Nk.lib.
+keep	CreateTicket	doc-derived (ms885188)
+drop	CreateWindowExW	Requirements name ?
+drop	DPA_GetPtr	Requirements name ?
+keep	DataHandler	doc-derived (ms885191)
+drop	DefDlgProcW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+drop	DefWindowProcW	Requirements name ?
+drop	DeferWindowPos	Requirements name ?
+drop	DeleteCriticalSection	Requirements name ?, Coremain.lib, Coremain.lib.
+keep	DeleteHandler	doc-derived (ms885198)
+drop	DeleteMenu	Requirements name ?, Menu.lib, Menu.lib.
+drop	DeletePartition	Requirements name Storeapi.lib
+drop	DeleteStaticMapping	Requirements name Nkstub.lib
+keep	DeleteTicket	doc-derived (ms885199)
+drop	DestroyAcceleratorTable	Requirements name ?, Accel.lib, Accel.lib.
+drop	DestroyCaret	Requirements name ?, Caret.lib, Caret.lib.
+drop	DestroyCursor	Requirements name ?, Iconcurs.lib, Iconcurs.lib.
+drop	DestroyIcon	Requirements name ?, Icon.lib, Icon.lib.
+drop	DestroyMenu	Requirements name ?, Menu.lib, Menu.lib.
+drop	DestroyWindow	Requirements name ?
+drop	DialogBoxIndirectParamW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+drop	DisableGestures	Requirements name TouchGesture.lib
+keep	DisassociateSession	doc-derived (ms885201)
+drop	DismountPartition	Requirements name Storeapi.lib
+drop	DismountStore	Requirements name Storeapi.lib
+drop	DrawFrameControl	Requirements name ?, Nclient.lib, Nclient.lib.
+drop	DrawIconEx	Requirements name ?, Icon.lib, Icon.lib.
+drop	DrawMenuBar	Requirements name ?, Drawmbar.lib, Drawmbar.lib.
+keep	EditSession	doc-derived (ms885211)
+keep	EditorDeregister	doc-derived (ms885209)
+keep	EditorInitialize	doc-derived (ms885210)
+drop	EmptyClipboard	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	EnableGestures	Requirements name TouchGesture.lib
+drop	EnableHardwareKeyboard	Requirements name ?, Kbdui.lib, Kbdui.lib.
+drop	EnableMenuItem	Requirements name ?, Menu.lib, Menu.lib.
+drop	EnableWindow	Requirements name ?, Wmgr_c.lib, Wmgr_c.lib.
+drop	EndDeferWindowPos	Requirements name ?
+drop	EndDialog	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	EndDoc	Requirements name ?, Mgprint.lib, Mgprint.lib.
+drop	EndPage	Requirements name ?, Mgprint.lib, Mgprint.lib.
+drop	EndPaint	Requirements name ?, Winmgr.lib, Winmgr.lib.
+drop	EnterCriticalSection	Requirements name ?, Coremain.lib, Coremain.lib.
+drop	EnumCalendarInfoW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	EnumClipboardFormats	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	EnumDeviceInterfaces	Requirements name ?
+drop	EnumSystemCodePagesW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	EnumUILanguagesW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	EnumWindows	Requirements name ?
+drop	EqualRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	EscapeCommFunction	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	ExtractIconExW	Requirements name ?
+drop	FindClosePartition	Requirements name Storeapi.lib
+drop	FindCloseStore	Requirements name Storeapi.lib
+drop	FindFirstDevice	Requirements name ?
+drop	FindFirstPartition	Requirements name Storeapi.lib
+drop	FindFirstStore	Requirements name Storeapi.lib
+drop	FindNextDevice	Requirements name ?
+drop	FindNextPartition	Requirements name Storeapi.lib
+drop	FindNextStore	Requirements name Storeapi.lib
+drop	FindWindowW	Requirements name ?
+drop	FoldStringW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	FormatMessageW	Requirements name Fmtmsg.lib, Fmtmsg.lib.
+drop	FormatPartition	Requirements name Storeapi.lib
+drop	FormatPartitionEx	Requirements name Storeapi.lib
+drop	FormatStore	Requirements name Storeapi.lib
+keep	FreeLibraryAndExitThread	doc-derived (ms885602)
+drop	Gesture	Requirements name TouchGesture.lib
+drop	GetACP	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetActiveWindow	Requirements name ?, Caret.lib
+drop	GetAnimateMessageInfo	Requirements name ?
+drop	GetAsyncKeyState	Requirements name ?, Kbdui.lib, Kbdui.lib.
+drop	GetAsyncShiftFlags	Requirements name Kbdui.lib, Kbdui.lib.
+drop	GetCPInfo	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetCaretBlinkTime	Requirements name ?, Caret.lib, Caret.lib.
+drop	GetCaretPos	Requirements name ?, Caret.lib, Caret.lib.
+drop	GetClassInfoW	Requirements name ?
+drop	GetClassLong	Requirements name ?
+drop	GetClassLongW	Requirements name ?
+drop	GetClassNameW	Requirements name ?
+drop	GetClientRect	Requirements name ?
+drop	GetClipCursor	Requirements name ?, Cursor.lib
+drop	GetClipboardData	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	GetClipboardDataAlloc	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	GetClipboardFormatNameW	Requirements name Clipbd.lib, Clipbd.lib.
+drop	GetClipboardOwner	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	GetCommMask	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	GetCommModemStatus	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	GetCommProperties	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	GetCommState	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	GetCommTimeouts	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	GetCurrencyFormatW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	GetCursor	Requirements name ?, Cursor.lib
+drop	GetCursorPos	Requirements name ?, Cursor.lib
+drop	GetDateFormatW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	GetDesktopWindow	Requirements name ?
+drop	GetDeviceInformationByDeviceHandle	Requirements name ?
+drop	GetDeviceInformationByFileHandle	Requirements name ?
+drop	GetDialogBaseUnits	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	GetDlgCtrlID	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	GetDlgItem	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	GetDlgItemInt	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	GetDlgItemTextW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+drop	GetFocus	Requirements name ?, Caret.lib
+drop	GetForegroundInfo	Requirements name ?, Linked
+drop	GetForegroundKeyboardLayoutHandle	Requirements name ?, Linked
+drop	GetForegroundKeyboardTarget	Requirements name ?, Linked
+drop	GetForegroundWindow	Requirements name ?
+drop	GetGestureExtraArguments	Requirements name TouchGesture.lib
+drop	GetGestureInfo	Requirements name TouchGesture.lib
+drop	GetIconInfo	Requirements name Icon.lib, Icon.lib.
+drop	GetKeyState	Requirements name ?, Kbdui.lib, Kbdui.lib.
+drop	GetKeyboardLayout	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	GetKeyboardLayoutNameW	Requirements name Kbdui.lib, Kbdui.lib.
+drop	GetKeyboardStatus	Requirements name ?, Kbdui.lib, Kbdui.lib.
+drop	GetLocaleInfoW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	GetMenuItemInfoW	Requirements name Menu.lib, Menu.lib.
+drop	GetNextDlgGroupItem	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	GetNextDlgTabItem	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	GetNumberFormatW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	GetOEMCP	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetOpenClipboardWindow	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	GetOpenFileNameW	Requirements name Fileopen.lib, Fileopen.lib.
+drop	GetParent	Requirements name ?
+drop	GetPartitionInfo	Requirements name Storeapi.lib
+drop	GetPasswordActive	Requirements name ?
+drop	GetPriorityClipboardFormat	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	GetProcessHeap	Requirements name ?, Lmem.lib, Lmem.lib.
+drop	GetSaveFileNameW	Requirements name Fileopen.lib, Fileopen.lib.
+drop	GetScrollInfo	Requirements name ?, Sbcmn.lib, Sbcmn.lib.
+drop	GetStoreInfo	Requirements name Storeapi.lib
+drop	GetStringTypeExW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	GetSubMenu	Requirements name ?, Menu.lib, Menu.lib.
+drop	GetSysColor	Requirements name ?, Wmgr_c.lib, Wmgr_c.lib.
+drop	GetSystemDefaultLCID	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetSystemDefaultLangID	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetSystemDefaultUILanguage	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetSystemMetrics	Requirements name ?, Wmbase.lib, Wmbase.lib.
+drop	GetTimeFormatW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	GetUserDefaultLCID	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetUserDefaultLangID	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetUserDefaultUILanguage	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	GetWindow	Requirements name ?
+drop	GetWindowAutoGesture	Requirements name ?
+drop	GetWindowLongW	Requirements name ?
+drop	GetWindowRect	Requirements name ?
+drop	GetWindowTextLengthW	Requirements name ?
+drop	GetWindowTextW	Requirements name ?
+drop	GetWindowThreadProcessId	Requirements name ?
+drop	HideCaret	Requirements name ?, Caret.lib, Caret.lib.
+drop	ImageList_Add	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_AddMasked	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_BeginDrag	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Copy	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Create	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Destroy	Requirements name ?
+drop	ImageList_DragEnter	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_DragLeave	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_DragMove	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_DragShowNolock	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Draw	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_DrawEx	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_DrawIndirect	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Duplicate	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_EndDrag	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_GetBkColor	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_GetDragImage	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_GetIcon	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_GetIconSize	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_GetImageCount	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_GetImageInfo	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_LoadImage	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Merge	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Remove	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_Replace	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_ReplaceIcon	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_SetBkColor	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_SetDragCursorImage	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_SetIconSize	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_SetImageCount	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImageList_SetOverlayImage	Requirements name ?, Commctrl.lib, commctrl.lib
+drop	ImmAssociateContext	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmAssociateContextEx	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmConfigureIMEW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmCreateContext	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmCreateIMCC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmDestroyContext	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmDestroyIMCC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmDisableIME	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmEnumRegisterWordW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmEscapeW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGenerateMessage	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetCandidateListCountW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetCandidateListW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetCandidateWindow	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetCompositionFontW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetCompositionStringW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetCompositionWindow	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetContext	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetConversionListW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetConversionStatus	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetDefaultIMEWnd	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetDescriptionW	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetGuideLineW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetHotKey	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetIMCCLockCount	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetIMCCSize	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetIMCLockCount	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetIMEFileNameW	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetImeMenuItemsW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetOpenStatus	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetProperty	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetRegisterWordStyleW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmGetStatusWindowPos	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmGetVirtualKey	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmIsIME	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmIsUIMessageW	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmLockIMC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmLockIMCC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmNotifyIME	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmReSizeIMCC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmRegisterWordW	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmReleaseContext	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSIPanelState	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSetCandidateWindow	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSetCompositionFontW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmSetCompositionStringW	Requirements name Coreimm.lib, Coreimm.lib.
+drop	ImmSetCompositionWindow	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSetConversionStatus	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSetHotKey	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSetOpenStatus	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSetStatusWindowPos	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmSimulateHotKey	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmUnlockIMC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmUnlockIMCC	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	ImmUnregisterWordW	Requirements name ?, Coreimm.lib, Coreimm.lib.
+drop	InflateRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	InitializeCriticalSection	Requirements name ?, Coremain.lib, Coremain.lib.
+drop	InsertMenuW	Requirements name Menu.lib, Menu.lib.
+drop	IntersectRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+keep	IsAPIReady	doc-derived (ms885686(v=msdn.10))
+drop	IsChild	Requirements name ?
+drop	IsClipboardFormatAvailable	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	IsDialogMessageW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+keep	IsProcessorFeaturePresent	doc-derived (ms886726)
+drop	IsRectEmpty	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	IsValidCodePage	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	IsValidLocale	Requirements name ?, Coreloc.lib, Coreloc.lib.
+drop	IsWindow	Requirements name ?
+drop	IsWindowEnabled	Requirements name ?, Wmgr_c.lib, Wmgr_c.lib.
+drop	IsWindowVisible	Requirements name ?
+drop	KillTimer	Requirements name ?
+drop	LASSClose	Requirements name ?
+drop	LASSGetResult	Requirements name ?
+drop	LASSGetValue	Requirements name ?
+drop	LCMapStringW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	LeaveCriticalSection	Requirements name ?, Coremain.lib, Coremain.lib.
+drop	LoadAcceleratorsW	Requirements name Accel.lib, Accel.lib.
+drop	LoadAnimatedCursor	Requirements name Cursor.lib
+drop	LoadBitmapW	Requirements name Loadbmp.lib, Loadbmp.lib.
+drop	LoadCursorW	Requirements name Cursor.lib
+drop	LoadFSDEx	Requirements name ?, Device.lib, Device.lib.
+drop	LoadIconW	Requirements name Icon.lib, Icon.lib.
+drop	LoadImageW	Requirements name Loadimg.lib, Loadimg.lib.
+drop	LoadMenuW	Requirements name Menu.lib, Menu.lib.
+drop	LoadStringW	Requirements name Loadstr.lib, Loadstr.lib.
+drop	MapDialogRect	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	MapVirtualKeyW	Requirements name Kbdui.lib, Kbdui.lib.
+drop	MessageBeep	Requirements name ?, Msgbeep.lib, Msgbeep.lib.
+drop	MessageBoxW	Requirements name Msgbox.lib, Msgbox.lib.
+drop	MountPartition	Requirements name Storeapi.lib
+drop	MoveWindow	Requirements name ?
+drop	MsgWaitForMultipleObjectsEx	Requirements name ?, Msgque.lib, Msgque.lib.
+drop	MulDiv	Requirements name ?
+drop	NKDbgPrintfW	Requirements name None, none
+keep	NLedGetDeviceInfo	doc-derived (ms905318)
+keep	NLedSetDevice	doc-derived (ms905321)
+drop	OffsetRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	OpenClipboard	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	OpenPartition	Requirements name Storeapi.lib
+drop	OpenStore	Requirements name Storeapi.lib
+drop	OutputDebugStringW	Requirements name Nk.lib, Nk.lib.
+drop	PostKeybdMessage	Requirements name ?, Kbdui.lib, Kbdui.lib.
+drop	PtInRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	PurgeComm	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	QueryGestures	Requirements name TouchGesture.lib
+keep	QueryInfoSession	doc-derived (ms886786)
+drop	ReadRegistryFromOEM	Requirements name ?, Nk.lib., OEMMain.lib
+drop	RegisterClassW	Requirements name ?
+drop	RegisterClipboardFormatW	Requirements name Clipbd.lib, Clipbd.lib.
+drop	RegisterDbgZones	Requirements name None, none
+drop	RegisterDesktop	Requirements name ?
+drop	RegisterDirectMethods	Requirements name ?
+keep	RegisterEditor	doc-derived (ms886796)
+drop	RegisterGesture	Requirements name TouchGesture.lib
+drop	RegisterHotKey	Requirements name ?, Hotkey.lib, Hotkey.lib.
+drop	RegisterTaskBar	Requirements name ?
+drop	RegisterTaskBarEx	Requirements name ?
+drop	RegistryBatchNotification	Requirements name aygshell.lib
+drop	RegistryCloseNotification	Requirements name aygshell.lib
+drop	RegistryDeleteValue	Requirements name aygshell.lib
+drop	RegistryGetDWORD	Requirements name aygshell.lib
+drop	RegistryGetString	Requirements name aygshell.lib
+drop	RegistryNotifyApp	Requirements name aygshell.lib
+drop	RegistryNotifyCallback	Requirements name aygshell.lib
+drop	RegistryNotifyMsgQueue	Requirements name aygshell.lib
+drop	RegistryNotifyWindow	Requirements name aygshell.lib
+drop	RegistrySetDWORD	Requirements name aygshell.lib
+drop	RegistrySetString	Requirements name aygshell.lib
+drop	RegistryStopNotification	Requirements name aygshell.lib
+drop	RegistryTestExchangeDWORD	Requirements name aygshell.lib
+drop	ReleaseMutex	Requirements name ?, Nk.lib, Nk.lib.
+drop	RemoveMenu	Requirements name ?, Menu.lib, Menu.lib.
+drop	RenamePartition	Requirements name Storeapi.lib
+drop	ResourceDestroyList	Requirements name ?
+drop	ResourceMarkAsShareable	Requirements name ?
+drop	ResourceRequestEx	Requirements name ?
+drop	SHGetFileInfo	Requirements name ?
+drop	SHShowOutOfMemory	Requirements name ?, Shmisc.lib, Shmisc.lib.
+drop	SendDlgItemMessageW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+drop	SendInput	Requirements name ?, Uibase.lib, Wmgr_c.lib
+drop	SetAbortProc	Requirements name ?, Mgprint.lib, Mgprint.lib.
+drop	SetActiveWindow	Requirements name ?, Caret.lib, Caret.lib.
+drop	SetCaretBlinkTime	Requirements name ?, Caret.lib, Caret.lib.
+drop	SetCaretPos	Requirements name ?, Caret.lib, Caret.lib.
+drop	SetClassLong	Requirements name ?
+drop	SetClassLongW	Requirements name ?
+drop	SetClipboardData	Requirements name ?, Clipbd.lib, Clipbd.lib.
+drop	SetCommBreak	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	SetCommMask	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	SetCommState	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	SetCommTimeouts	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	SetCursor	Requirements name ?, Cursor.lib
+drop	SetCursorPos	Requirements name ?, Cursor.lib
+drop	SetDlgItemInt	Requirements name ?, Dlgmgr.lib, Dlgmgr.lib.
+drop	SetDlgItemTextW	Requirements name Dlgmgr.lib, Dlgmgr.lib.
+drop	SetFocus	Requirements name ?, Caret.lib
+drop	SetForegroundWindow	Requirements name ?
+drop	SetLocaleInfoW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	SetMenuItemInfoW	Requirements name Menu.lib, Menu.lib.
+drop	SetParent	Requirements name ?
+drop	SetPartitionAttributes	Requirements name Storeapi.lib
+drop	SetPassword	Requirements name ?
+drop	SetPasswordActive	Requirements name ?
+drop	SetRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	SetRectEmpty	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	SetScrollInfo	Requirements name ?, Sbcmn.lib, Sbcmn.lib.
+drop	SetScrollPos	Requirements name ?, Sbcmn.lib, Sbcmn.lib.
+drop	SetScrollRange	Requirements name ?, Sbcmn.lib, Sbcmn.lib.
+drop	SetSysColors	Requirements name ?, Winmgr.lib, Winmgr.lib.
+drop	SetThreadContext	Requirements name ?, Nk.lib, Nk.lib.
+drop	SetTimer	Requirements name ?
+drop	SetUserDefaultLCID	Requirements name Coreloc.lib, Coreloc.lib.
+drop	SetUserDefaultUILanguage	Requirements name Coreloc.lib, Coreloc.lib.
+drop	SetWindowAutoGesture	Requirements name ?
+drop	SetWindowLongW	Requirements name ?
+drop	SetWindowPos	Requirements name ?
+drop	SetWindowRgn	Requirements name ?, Winmgr.lib, Winmgr.lib.
+drop	SetWindowTextW	Requirements name ?
+drop	SetupComm	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	Shell_NotifyIcon	Requirements name ?
+drop	ShowCaret	Requirements name ?, Caret.lib, Caret.lib.
+drop	ShowCursor	Requirements name ?, Cursor.lib
+drop	ShowWindow	Requirements name ?
+drop	StartDocW	Requirements name Mgprint.lib, Mgprint.lib.
+drop	StartPage	Requirements name ?, Mgprint.lib, Mgprint.lib.
+drop	StringCbCatExW	Requirements name ?, strsafe.lib.
+drop	StringCbCatNExW	Requirements name ?, strsafe.lib.
+drop	StringCbCatNW	Requirements name ?, strsafe.lib.
+drop	StringCbCatW	Requirements name ?, strsafe.lib.
+drop	StringCbCopyExW	Requirements name ?, strsafe.lib.
+drop	StringCbCopyNExW	Requirements name ?, strsafe.lib.
+drop	StringCbCopyNW	Requirements name ?, strsafe.lib.
+drop	StringCbCopyW	Requirements name ?, strsafe.lib.
+keep	StringCbLengthW	doc-derived (ee479694(v=winembedded.60))
+drop	StringCbPrintfExW	Requirements name ?, strsafe.lib.
+drop	StringCbPrintfW	Requirements name ?, strsafe.lib.
+drop	StringCbVPrintfExW	Requirements name ?, strsafe.lib.
+drop	StringCbVPrintfW	Requirements name ?, strsafe.lib.
+drop	StringCchCatExW	Requirements name ?, strsafe.lib.
+drop	StringCchCatNExW	Requirements name ?, strsafe.lib.
+drop	StringCchCatNW	Requirements name ?, strsafe.lib.
+drop	StringCchCatW	Requirements name ?, strsafe.lib.
+drop	StringCchCopyExW	Requirements name ?, strsafe.lib.
+drop	StringCchCopyNExW	Requirements name ?, strsafe.lib.
+drop	StringCchCopyNW	Requirements name ?, strsafe.lib.
+drop	StringCchCopyW	Requirements name ?, strsafe.lib.
+drop	StringCchLengthW	Requirements name ?, strsafe.lib.
+drop	StringCchPrintfExW	Requirements name ?, strsafe.lib.
+drop	StringCchPrintfW	Requirements name ?, strsafe.lib.
+drop	StringCchVPrintfExW	Requirements name ?, strsafe.lib.
+drop	StringCchVPrintfW	Requirements name ?, strsafe.lib.
+drop	SubtractRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	SystemIdleTimerReset	Requirements name ?
+keep	TimeoutSession	doc-derived (aa450941)
+drop	TrackPopupMenuEx	Requirements name ?, Menu.lib, Menu.lib.
+drop	TranslateAcceleratorW	Requirements name Accel.lib, Accel.lib.
+drop	TransmitCommChar	Requirements name ?, Serdev.lib, Serdev.lib.
+drop	UnionRect	Requirements name ?, Rectapi.lib, Rectapi.lib.
+drop	UnregisterClassW	Requirements name ?
+drop	UnregisterHotKey	Requirements name ?
+drop	VerifyUserAsync	Requirements name ?
+drop	WaitCommEvent	Requirements name ?, Serdev.lib, Serdev.lib.
+keep	WaitForAPIReady	doc-derived (ee482994(v=winembedded.60))
+drop	WaitForMultipleObjects	Requirements name ?, Nk.lib, Nk.lib.
+drop	WindowFromPoint	Requirements name ?
+drop	WriteProcessMemory	Requirements name ?, Nk.lib, Nk.lib.
+drop	WriteRegistryToOEM	Requirements name ?, Nk.lib., OEMMain.lib
+drop	_CountLeadingOnes	Requirements name ?
+drop	_CountLeadingOnes64	Requirements name ?
+drop	_CountLeadingSigns	Requirements name ?
+drop	_CountLeadingSigns64	Requirements name ?
+drop	_CountLeadingZeros	Requirements name ?
+drop	_CountLeadingZeros64	Requirements name ?
+drop	_CountOneBits	Requirements name ?
+drop	_CountOneBits64	Requirements name ?
+drop	_MulHigh	Requirements name ?
+drop	_MulUnsignedHigh	Requirements name ?
+drop	_byteswap_uint64	Requirements name ?
+drop	_byteswap_ulong	Requirements name ?
+drop	_byteswap_ushort	Requirements name ?
+keep	_cabs	doc-derived (ms860481(v=msdn.10))
+keep	_chgsign	doc-derived (ms860483(v=msdn.10))
+keep	_copysign	doc-derived (ms860486(v=msdn.10))
+keep	_ecvt	doc-derived (ms860488(v=msdn.10))
+keep	_fcvt	doc-derived (ms860490(v=msdn.10))
+keep	_fileno	doc-derived (ms860492(v=msdn.10))
+keep	_finite	doc-derived (ms860495(v=msdn.10))
+keep	_flushall	doc-derived (ms860498(v=msdn.10))
+keep	_fpclass	doc-derived (ms860506(v=msdn.10))
+keep	_fpieee_flt	doc-derived (ms860509(v=msdn.10))
+keep	_fpreset	doc-derived (ms860513(v=msdn.10))
+keep	_gcvt	doc-derived (ms860516(v=msdn.10))
+keep	_hypot	doc-derived (ms860519(v=msdn.10))
+keep	_isnan	doc-derived (ms860526(v=msdn.10))
+drop	_isunordered	Requirements name ?
+drop	_isunorderedf	Requirements name ?
+keep	_logb	doc-derived (ms860535(v=msdn.10))
+keep	_memccpy	doc-derived (ms860546(v=msdn.10))
+keep	_memicmp	doc-derived (ms860871(v=msdn.10))
+keep	_msize	doc-derived (ms860937(v=msdn.10))
+keep	_nextafter	doc-derived (ms861004(v=msdn.10))
+keep	_scalb	doc-derived (ms861134(v=msdn.10))
+keep	_setmode	doc-derived (ms861138(v=msdn.10))
+keep	_statusfp	doc-derived (ms861151(v=msdn.10))
+keep	_swab	doc-derived (ms861247(v=msdn.10))
+keep	_wfdopen	doc-derived (ms861280(v=msdn.10))
+keep	abs	doc-derived (ms859602(v=msdn.10))
+keep	acos	doc-derived (ms859603(v=msdn.10))
+keep	asin	doc-derived (ms859604(v=msdn.10))
+drop	atoi	Requirements name ?, requirements
+keep	calloc	doc-derived (ms859607(v=msdn.10))
+keep	ceil	doc-derived (ms859608(v=msdn.10))
+keep	clearerr	doc-derived (ms859609(v=msdn.10))
+keep	div	doc-derived (ms859616(v=msdn.10))
+keep	exp	doc-derived (ms859618(v=msdn.10))
+keep	fabs	doc-derived (ms859619(v=msdn.10))
+keep	feof	doc-derived (ms859621(v=msdn.10))
+keep	ferror	doc-derived (ms859622(v=msdn.10))
+keep	fflush	doc-derived (ms859623(v=msdn.10))
+keep	fgetpos	doc-derived (ms859625(v=msdn.10))
+keep	floor	doc-derived (ms859629(v=msdn.10))
+keep	fmod	doc-derived (ms859630(v=msdn.10))
+keep	fread	doc-derived (ms859637(v=msdn.10))
+keep	free	doc-derived (ms859638(v=msdn.10))
+keep	frexp	doc-derived (ms859639(v=msdn.10))
+keep	fseek	doc-derived (ms859641(v=msdn.10))
+keep	fsetpos	doc-derived (ms859643(v=msdn.10))
+keep	ftell	doc-derived (ms859644(v=msdn.10))
+keep	fwrite	doc-derived (ms859645(v=msdn.10))
+drop	keybd_event	Requirements name ?, Uibase.lib, Uibase.lib.
+keep	labs	doc-derived (ms859660(v=msdn.10))
+keep	ldexp	doc-derived (ms859661(v=msdn.10))
+keep	ldiv	doc-derived (ms859662(v=msdn.10))
+keep	longjmp	doc-derived (ms859664(v=msdn.10))
+keep	malloc	doc-derived (ms859665(v=msdn.10))
+keep	mbstowcs	doc-derived (ms859667(v=msdn.10))
+keep	memmove	doc-derived (ms859671(v=msdn.10))
+keep	modf	doc-derived (ms859743(v=msdn.10))
+keep	pow	doc-derived (ms859860(v=msdn.10))
+keep	qsort	doc-derived (ms860352(v=msdn.10))
+keep	rand	doc-derived (ms860353(v=msdn.10))
+keep	realloc	doc-derived (ms860357(v=msdn.10))
+keep	setjmp	doc-derived (ms860366(v=msdn.10))
+keep	setvbuf	doc-derived (ms860368(v=msdn.10))
+keep	sqrt	doc-derived (ms860375(v=msdn.10))
+keep	srand	doc-derived (ms860377(v=msdn.10))
+keep	towlower	doc-derived (ms860473(v=msdn.10))
+keep	towupper	doc-derived (ms860474(v=msdn.10))
+keep	wcstombs	doc-derived (ms861432(v=msdn.10))
+drop	wsprintfW	Requirements name Coreloc.lib, Coreloc.lib.
+drop	wvsprintfW	Requirements name Coreloc.lib, Coreloc.lib.
 add	CeGetCacheInfo	doc-derived (APILocation=Coredll.lib); was missing from the def
 add	CeSetMemoryAttributes	doc-derived (APILocation=Coredll.lib); was missing from the def
 add	CeSvcClose	doc-derived (APILocation=Coredll.lib); was missing from the def

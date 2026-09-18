@@ -17,8 +17,11 @@ EXPORTS
   CheckRadioButton
   CreateDialogIndirect
   CreateDialogIndirectParam
+  CreateDialogIndirectParamW
   DefDlgProc
+  DefDlgProcW
   DialogBoxIndirectParam
+  DialogBoxIndirectParamW
   EndDialog
   GetDialogBaseUnits
   GetDlgCtrlID
@@ -28,7 +31,9 @@ EXPORTS
   GetNextDlgGroupItem
   GetNextDlgTabItem
   IsDialogMessage
+  IsDialogMessageW
   MapDialogRect
   SendDlgItemMessage
+  SendDlgItemMessageW
   SetDlgItemInt
   SetDlgItemTextW

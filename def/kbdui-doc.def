@@ -21,4 +21,5 @@ EXPORTS
   GetKeyboardLayoutNameW
   GetKeyboardStatus
   MapVirtualKey
+  MapVirtualKeyW
   PostKeybdMessage

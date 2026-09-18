@@ -1,0 +1,24 @@
+; touchgesture-doc.def -- touchgesture.lib export surface for Windows CE.
+;
+; Copyright (c) 2026 Akari API contributors
+; SPDX-License-Identifier: MIT
+;
+; Derived exclusively from the official Microsoft CE
+; documentation pages: each name below appears on the
+; listed page whose Requirements row names this link
+; library (wince-docs-corpus; page ids recorded in
+; docs/def-audit-coredll-2026-09-18.tsv).  No
+; shared-source/device-dump/VS/PB-derived name is used.
+; Ordinals are not published; entries are name-only.
+; LIBRARY tag = documented Link Library row (TouchGesture.lib); the on-device
+; module name is not published by the CE documentation.
+LIBRARY touchgesture.dll
+EXPORTS
+  CloseGestureInfoHandle
+  DisableGestures
+  EnableGestures
+  Gesture
+  GetGestureExtraArguments
+  GetGestureInfo
+  QueryGestures
+  RegisterGesture
