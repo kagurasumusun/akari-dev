@@ -153,8 +153,8 @@ include/Celog.h	CeLogMsg	aa450825	match
 include/Celog.h	CeLogQueryZones	aa450826	match	
 include/Celog.h	CeLogReSync	aa450827	match	
 include/Celog.h	CeLogSetZones	aa450828	match	
-include/Cesync.h	OnSSPDisable	ee484753	match	
-include/Cesync.h	OnSSPEnable	ee485570	match	
+include/Cesync.h	OnSSPDisable	ee484753	skip-complex-page	
+include/Cesync.h	OnSSPEnable	ee485570	skip-complex-page	
 include/Ceutil.h	CeSvcAdd	aa513818	match	
 include/Ceutil.h	CeSvcQueryInfo	aa513837	match	
 include/Ceutil.h	CeSvcRemove	aa513840	match	
@@ -793,7 +793,7 @@ include/Objbase.h	CreateFileMoniker	ms886950	match
 include/Objbase.h	CreateGenericComposite	ms886951	match	
 include/Objbase.h	CreateItemMoniker	ms886952	match	
 include/Objbase.h	CreatePointerMoniker	ms886954	match	
-include/Objbase.h	DllGetClassObject	ms886973	match	
+include/Objbase.h	DllGetClassObject	ms886973	skip-complex-page	
 include/Objbase.h	GetClassFile	ms886988	match	
 include/Objbase.h	GetRunningObjectTable	ms886991	match	
 include/Objbase.h	IIDFromString	ms887797	match	
@@ -1090,6 +1090,13 @@ include/Pwinuser.h	TouchCalibrate	aa448196	match
 include/Pwinuser.h	GwesPowerOffSystem	ms902923	match	
 include/Pwinuser.h	NotifyWinUserSystem		no-pageid	
 include/Pwinuser.h	RegisterTaskBar	ms919550	match	
+include/Pwinuser.h	CloseGestureInfoHandle	ee504292	match	
+include/Pwinuser.h	DisableGestures	ee504053	match	
+include/Pwinuser.h	EnableGestures	ee499762	match	
+include/Pwinuser.h	GetGestureExtraArguments	ee505235	annotated-deviation	arg1: page='UNIT' hdr='UINT'
+include/Pwinuser.h	GetGestureInfo	ee503217	annotated-deviation	argc: page=1 hdr=2
+include/Pwinuser.h	QueryGestures	ee503597	match	
+include/Pwinuser.h	RegisterGesture	ee505707	match	
 include/Rapi.h	CeCheckPassword	aa513323	no-print-on-page	
 include/Rapi.h	CeCloseHandle	aa513324	no-print-on-page	
 include/Rapi.h	CeCopyFile	aa513325	no-print-on-page	
@@ -1178,6 +1185,8 @@ include/Regext.h	RegistryNotifyApp	ee488776	match
 include/Regext.h	RegistryNotifyWindow	ee488231	match	
 include/Regext.h	RegistryNotifyMsgQueue	ee488614	match	
 include/Regext.h	RegistryCloseNotification	ee488922	match	
+include/Regext.h	RegistryDeleteValue	ee488640	annotated-deviation	argc: page=2 hdr=3
+include/Regext.h	RegistryNotifyCallback	ee487978	match	
 include/Scandisk.h	ScanVolumeUI	ms891864	match	
 include/Service.h	RegisterService	aa450871	match	
 include/Service.h	DeregisterService	aa450329	match	
@@ -2226,14 +2235,14 @@ include/Wingdi.h	AddFontResourceW	ms901109	no-print-on-page
 include/Wingdi.h	CreateFontIndirectW	ms901120	no-print-on-page	
 include/Wingdi.h	DrawTextW	ms901121	no-print-on-page	
 include/Wingdi.h	EnumFontFamiliesW	ms901123	no-print-on-page	
-include/Wingdi.h	EnumFontFamiliesExW	ms901124	no-print-on-page	
+include/Wingdi.h	EnumFontFamiliesExW	ms901124	argc-page-short	argc: page=1 hdr=5 (page print missing comma?)
 include/Wingdi.h	EnumFontsW	ms901126	no-print-on-page	
 include/Wingdi.h	ExtTextOutW	ms901129	no-print-on-page	
 include/Wingdi.h	GetCharABCWidthsW	ms901130	match	
 include/Wingdi.h	GetCharWidth32W	ms901131	match	
 include/Wingdi.h	GetFontData	aa520325	match	
 include/Wingdi.h	GetTextAlign	ms901132	match	
-include/Wingdi.h	GetTextCharacterExtra	ms901133	no-print-on-page	
+include/Wingdi.h	GetTextCharacterExtra	ms901133	match	
 include/Wingdi.h	GetTextColor	ms901134	no-print-on-page	
 include/Wingdi.h	GetTextExtentExPointW	ms901135	no-print-on-page	
 include/Wingdi.h	GetTextExtentPointW	ms901136	match	
@@ -2242,7 +2251,7 @@ include/Wingdi.h	GetTextFaceW	ms901138	no-print-on-page
 include/Wingdi.h	GetTextMetricsW	ms901139	no-print-on-page	
 include/Wingdi.h	RemoveFontResourceW	ms901142	no-print-on-page	
 include/Wingdi.h	SetTextAlign	ms901143	match	
-include/Wingdi.h	SetTextCharacterExtra	ms901144	no-print-on-page	
+include/Wingdi.h	SetTextCharacterExtra	ms901144	argc-page-short	argc: page=1 hdr=2 (page print missing comma?)
 include/Wingdi.h	SetTextColor	ms901145	no-print-on-page	
 include/Wingdi.h	EnumDisplayMonitors	ms932091	no-print-on-page	
 include/Wingdi.h	GetMonitorInfo	ms932091	no-print-on-page	
@@ -2460,6 +2469,7 @@ include/Winreg.h	CeFindNextRegChange	aa517123	match
 include/Winreg.h	CeFindCloseRegChange	aa517103	match	
 include/Winreg.h	CeRegGetNotificationInfo	ee490197	skip-complex-page	
 include/Winreg.h	CeRegTestSetValueW	ee490635	no-print-on-page	
+include/Winreg.h	CeRegGetInfo	ee490230	match	
 include/Winscard.h	SCardBeginTransaction		no-pageid	
 include/Winscard.h	SCardCancel		no-pageid	
 include/Winscard.h	SCardConnect		no-pageid	
@@ -2862,7 +2872,7 @@ include/oak/Fsdmgr.h	FSDMGR_WriteDiskEx		no-pageid
 include/oak/Fsdmgr.h	FSD_UnhookVolume		no-pageid	
 include/oak/Fsdmgr.h	FSDMGR_EmptyLockContainer	aa517921	no-print-on-page	
 include/oak/Hiddi.h	HIDDeviceNotifications	ms899395	match	
-include/oak/Led_drvr.h	NLedDriverGetDeviceInfo	ms905300	match	
+include/oak/Led_drvr.h	NLedDriverGetDeviceInfo	ms905300	skip-complex-page	
 include/oak/Led_drvr.h	NLedDriverInitialize	ms905305	match	
 include/oak/Led_drvr.h	NLedDriverPowerDown	ms905309	match	
 include/oak/Led_drvr.h	NLedDriverSetDevice	ms905313	match	

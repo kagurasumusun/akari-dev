@@ -146,4 +146,57 @@ AKARI_CE_IMPORT void NotifyWinUserSystem(UINT uEvent) AKARI_CE_NAME(NotifyWinUse
 /* ms919550: page-printed prototype (Windows CE 2.10 and later.). */
 AKARI_CE_IMPORT BOOL RegisterTaskBar(HWND hwndTaskbar) AKARI_CE_NAME(RegisterTaskBar);
 
+
+/* --- absent-surface pass 2026-09-18: touch-gesture surface
+ * (def/touchgesture-doc.def; pages print "Link Library:
+ * touchgesture.lib", Header: pwinuser.h). -------------------- */
+
+/* ee503892 GESTUREINFO: page print
+ * typedef struct tagGESTUREINFO { UINT cbSize; DWORD dwFlags; DWORD dwID;
+ * HWND hwndTarget; POINTS ptsLocation; DWORD dwInstanceID;
+ * DWORD dwSequenceID; ULONGLONG ullArguments; UINT cbExtraArguments;
+ * } GESTUREINFO, *PGESTUREINFO; */
+typedef struct tagGESTUREINFO {
+    UINT      cbSize;
+    DWORD     dwFlags;
+    DWORD     dwID;
+    HWND      hwndTarget;
+    POINTS    ptsLocation;
+    DWORD     dwInstanceID;
+    DWORD     dwSequenceID;
+    ULONGLONG ullArguments;
+    UINT      cbExtraArguments;
+} GESTUREINFO, *PGESTUREINFO;
+
+/* HGESTUREINFO: no CE page prints the typedef (corpus-wide search
+ * 2026-09-18); the gesture pages pass it as an opaque handle, so it
+ * ships as the tree's handle convention (cf. HWAVEIN, Mmsystem.h). */
+typedef void *HGESTUREINFO;
+
+/* ee504292 CloseGestureInfoHandle: print `BOOL CloseGestureInfoHandle ( HGESTUREINFO hGestureInfo );` (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL CloseGestureInfoHandle(HGESTUREINFO hGestureInfo) AKARI_CE_NAME(CloseGestureInfoHandle);
+
+/* ee504053 DisableGestures: print `BOOL DisableGestures( HWND hwnd, ULONGLONG ullFlags, UINT uScope );` (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL DisableGestures(HWND hwnd, ULONGLONG ullFlags, UINT uScope) AKARI_CE_NAME(DisableGestures);
+
+/* ee499762 EnableGestures: print `BOOL EnableGestures( HWND hwnd, ULONGLONG ullFlags, UINT uScope );` (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL EnableGestures(HWND hwnd, ULONGLONG ullFlags, UINT uScope) AKARI_CE_NAME(EnableGestures);
+
+/* ee505235 GetGestureExtraArguments: print `BOOL GetGestureExtraArguments ( HGESTUREINFO hGestureInfo, UNIT cbExtraArguments, PBYTE pbExtraArguments );`
+ * -- the page prints "UNIT" for the evidently intended UINT (page
+ * typo, same class as proto-audit's PAGE_TYPO records).
+ * (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL GetGestureExtraArguments(HGESTUREINFO hGestureInfo, UINT cbExtraArguments, PBYTE pbExtraArguments) AKARI_CE_NAME(GetGestureExtraArguments);
+
+/* ee503217 GetGestureInfo: print `BOOL GetGestureInfo( HGESTUREINFO hGestureInfo PGESTUREINFO pGestureInfo );`
+ * -- the print drops the comma between the parameters (page print
+ * artifact; boundary restored).  (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL GetGestureInfo(HGESTUREINFO hGestureInfo, PGESTUREINFO pGestureInfo) AKARI_CE_NAME(GetGestureInfo);
+
+/* ee503597 QueryGestures: print `BOOL QueryGestures ( HWND hwnd, UINT uScope, PULONGLONG pullFlags );` (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL QueryGestures(HWND hwnd, UINT uScope, PULONGLONG pullFlags) AKARI_CE_NAME(QueryGestures);
+
+/* ee505707 RegisterGesture: print `BOOL RegisterGesture ( LPCWSTR pszName, PDWORD_PTR pdwID );` (Link Library: touchgesture.lib) */
+AKARI_CE_IMPORT BOOL RegisterGesture(LPCWSTR pszName, PDWORD_PTR pdwID) AKARI_CE_NAME(RegisterGesture);
+
 #endif /* AKARI_PWINUSER_H */

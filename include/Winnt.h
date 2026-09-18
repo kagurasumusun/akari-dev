@@ -40,6 +40,7 @@ extern "C" {
 
 typedef long long          LONGLONG;
 typedef unsigned long long ULONGLONG;
+typedef ULONGLONG           *PULONGLONG;  /* QueryGestures ee503597 */
 
 /* FLOAT: single-precision IEEE-754, 4 bytes (fixed Win32 ABI).  Used
  * by the GDI XFORM structure (ExtCreateRegion aa453061); like desktop

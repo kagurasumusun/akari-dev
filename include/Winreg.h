@@ -250,4 +250,29 @@ DWORD dwFlags
  * (Windows CE 5.0 and later; Link Library: coredll.lib) */
 AKARI_CE_IMPORT LONG CeRegTestSetValueW(HKEY hKey, LPCWSTR lpValueName, DWORD dwType, const BYTE *lpOldData, DWORD cbOldData, const BYTE *lpNewData, DWORD cbNewData, DWORD dwFlags) AKARI_CE_NAME(CeRegTestSetValueW);
 
+
+/* --- absent-surface pass 2026-09-18 (def/coredll-doc.def) ------ */
+
+/* aa517289 CE_REGISTRY_INFO: page print
+ * typedef struct _CE_REGISTRY_INFO{DWORD cbSize;HKEY hRootKey;
+ * DWORD dwFlags; TCHAR *pszFullKeyName; LPDWORD pdwKeyNameLen;}
+ * CE_REGISTRY_INFO, *PCE_REGISTRY_INFO; */
+typedef struct _CE_REGISTRY_INFO {
+    DWORD   cbSize;
+    HKEY    hRootKey;
+    DWORD   dwFlags;
+    TCHAR  *pszFullKeyName;
+    LPDWORD pdwKeyNameLen;
+} CE_REGISTRY_INFO, *PCE_REGISTRY_INFO;
+
+/* ee490230 CeRegGetInfo: print `LONG CeRegGetInfo( __in HKEY hKey, __inout PCE_REGISTRY_INFO pInfo );`
+ * (Windows Embedded CE 6.0; Link Library: Coredll.lib; Header: winreg.h) */
+AKARI_CE_IMPORT LONG CeRegGetInfo(HKEY hKey, PCE_REGISTRY_INFO pInfo) AKARI_CE_NAME(CeRegGetInfo);
+
+/* AddVectoredExceptionHandler (winbase.h, ee488606, Coredll.lib, in
+ * coredll-doc.def) stays HELD: its second parameter type
+ * PVECTORED_EXCEPTION_HANDLER is printed on no page (corpus-wide
+ * search 2026-09-18); declaring it would require inventing the
+ * handler signature. */
+
 #endif /* AKARI_WINREG_H */

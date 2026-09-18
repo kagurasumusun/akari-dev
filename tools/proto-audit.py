@@ -230,7 +230,9 @@ def page_protos(path, name):
         t = re.sub(r"\s+", " ", t).strip()
         if not re.match(r"^[A-Za-z_][A-Za-z0-9_ \t\*]*?\b%s\s*\(" % re.escape(name), t):
             continue
-        m = re.match(r"^(.*?)\b(%s)\s*\((.*?)\)\s*;?\s*$" % re.escape(name), t)
+        # mslearn HTML splits the syntax block so the closing ");" can fall
+        # outside the <pre><code> text; accept a print that ends without it.
+        m = re.match(r"^(.*?)\b(%s)\s*\((.*?)(?:\)\s*;?\s*)?$" % re.escape(name), t)
         if not m:
             continue
         ret = re.sub(r"\s+", " ", m.group(1)).strip()

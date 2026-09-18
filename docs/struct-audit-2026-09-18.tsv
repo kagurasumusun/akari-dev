@@ -473,6 +473,7 @@ include/Pwinreg.h	RegSecureKey	ms903548	match
 include/Pwinreg.h	HiveRAMInfo	ms903012	match	
 include/Pwinreg.h	RegSecureKeyList	ms903549	match	
 include/Pwinuser.h	GET_FOREGROUND_INFO	aa453186	match	
+include/Pwinuser.h	GESTUREINFO	ee503892	match	
 include/Rapi.h	CE_FIND_DATA	aa513350	match	
 include/Rapi.h	CEOSVERSIONINFO	aa513381	match	
 include/Rapi.h	RAPIINIT	aa514430	match	
@@ -895,6 +896,7 @@ include/Winnt.h	MEMORY_BASIC_INFORMATION	ms906230	no-print-on-page
 include/Winnt.h	EXCEPTION_RECORD		no-pageid	
 include/Winnt.h	IMAGE_DATA_DIRECTORY	ms904424	match	
 include/Winreg.h	REG_NOTIFY_INFORMATION	ee489649	match	
+include/Winreg.h	CE_REGISTRY_INFO	aa517289	match	
 include/Winscard.h	SCARD_IO_REQUEST	ms926417	match	
 include/Winscard.h	SCARD_READERSTATE	ms926425	match	
 include/Winscard.h	SCARD_ATRMASK	ms938473	match	
@@ -1051,6 +1053,8 @@ include/oak/Ntddndis.h	NDIS_TAPI_SET_DEV_CONFIG	ms905020	match
 include/oak/PCIReg.h	BUSDATA_PARMS	ms896150	match	
 include/oak/Pkfuncs.h	PHYSICAL_BASIC_INFORMATION	ms919253	match	
 include/oak/Pkfuncs.h	CacheInfo	aa450786	match	
+include/oak/Profiler.h	Kernel	ms886778	match	
+include/oak/Profiler.h	OEMProfilerData	ms886763	match	
 include/oak/Rndis.h	RNDIS_DIAGNOSTIC_INFO	ms919870	match	
 include/oak/Rndis.h	RNDIS_OOBD	ms919877	match	
 include/oak/Rndis.h	RNDIS_PER_PACKET_INFO	ms919884	match	

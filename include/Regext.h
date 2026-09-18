@@ -190,5 +190,25 @@ HREGNOTIFY hNotify
  * (generation not stated; Link Library: aygshell.lib) */
 AKARI_CE_IMPORT HRESULT RegistryCloseNotification(HREGNOTIFY hNotify) AKARI_CE_NAME(RegistryCloseNotification);
 
+
+/* --- absent-surface pass 2026-09-18 (def/aygshell-doc.def; pages
+ * print "Link Library: aygshell.lib", Header: Regext.h) --------- */
+
+/* ee488033 REGISTRYNOTIFYCALLBACK: page print
+ * typedef void REGISTRYNOTIFYCALLBACK( HREGNOTIFY hNotify,
+ * DWORD dwUserData, const PBYTE pData, const UINT cbData ); */
+typedef void REGISTRYNOTIFYCALLBACK(HREGNOTIFY hNotify, DWORD dwUserData,
+                                    const PBYTE pData, const UINT cbData);
+
+/* ee488640 RegistryDeleteValue: print `HRESULT WINAPI RegistryDeleteValue( HKEY hKey
+ * LPCTSTR pszSubKey, LPCTSTR pszValueName );` -- the print drops the
+ * comma after hKey (page print artifact; boundary restored).
+ * (Link Library: aygshell.lib) */
+AKARI_CE_IMPORT HRESULT WINAPI RegistryDeleteValue(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName) AKARI_CE_NAME(RegistryDeleteValue);
+
+/* ee487978 RegistryNotifyCallback: print `HRESULT WINAPI RegistryNotifyCallback( HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, REGISTRYNOTIFYCALLBACK pfnRegistryNotifyCallback, DWORD dwUserData, NOTIFICATIONCONDITION * pCondition, HREGNOTIFY * phNotify );`
+ * (Link Library: aygshell.lib) */
+AKARI_CE_IMPORT HRESULT WINAPI RegistryNotifyCallback(HKEY hKey, LPCTSTR pszSubKey, LPCTSTR pszValueName, REGISTRYNOTIFYCALLBACK pfnRegistryNotifyCallback, DWORD dwUserData, NOTIFICATIONCONDITION *pCondition, HREGNOTIFY *phNotify) AKARI_CE_NAME(RegistryNotifyCallback);
+
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_REGEXT_H */
