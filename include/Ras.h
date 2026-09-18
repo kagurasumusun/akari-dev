@@ -602,4 +602,16 @@ typedef DWORD (APIENTRY *PFNRASSENDBUFFER)(HANDLE hPort, PBYTE pBuffer, PDWORD d
 typedef DWORD (APIENTRY *PFNRASRECEIVEBUFFER)(HANDLE hPort, PBYTE pBuffer, PDWORD pdwSize, DWORD dwTimeOut, HANDLE hEvent);
 typedef DWORD (APIENTRY *PFNRASRETRIEVEBUFFER)(HANDLE hPort, PBYTE pBuffer, PDWORD pdwSize);
 
+
+/* aa450844 "RasGetDispPhoneNum" (Windows CE .NET 4.0 and later) page
+ * print (Header: Ras.h, Link Library: Coredll.lib).  The archive
+ * print runs the parameter spellings together (LPCWSTRszPhonebook,
+ * ...); spacing restored.  Retrieves the displayable phone number
+ * for a phonebook entry. */
+AKARI_CE_IMPORT BOOL WINAPI RasGetDispPhoneNum(
+    LPCWSTR szPhonebook,
+    LPCWSTR szEntry,
+    LPWSTR szPhoneNum,
+    DWORD dwPhoneNumLen) AKARI_CE_NAME(RasGetDispPhoneNum);
+
 #endif /* AKARI_RAS_H */
