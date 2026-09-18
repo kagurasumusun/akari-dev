@@ -3,11 +3,11 @@ com-guid	av_upnp	100	IRenderingControl::GetBlueVideoBlackLeve;IRenderingControl:
 driver-static	blcommon	16	BootloaderMain;OEMCheckSignature	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	cardserv	6	CardPowerOff;CardPowerOn	Platform Builder / OAL static library (driver-internal); no application import surface
 resolved	ceutil	2	CeGetSelectedDeviceId;CeGetDeviceId	RESOLVED: def/ceutil-doc.def (2 names; pages name Ceutil.lib)
-needs-investigation	commctl	22	CommandBands_AddAdornments;CommandBands_AddBands	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	commctl	22	CommandBands_AddAdornments;CommandBands_AddBands	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 resolved	commctrlview	1	CommCtrlView_t::Init	CLOSED: the only page (CommCtrlView_t::Init) is a C++ class method -- no free-function export surface
 resolved	coremain	15	DeleteCriticalSection;EnterCriticalSection	RESOLVED (prior pass): def/coremain-doc.def (4 CriticalSection names)
-needs-investigation	coresip	10	SipEnumIM;SipEnumIMProc	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	cryptapi	31	CryptAcquireContext;CryptContextAddRef	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	coresip	10	SipEnumIM;SipEnumIMProc	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	cryptapi	31	CryptAcquireContext;CryptContextAddRef	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 resource-lib	cursor	17	ClipCursor;GetClipCursor	resource archive lib (cursors/icons), not an export surface
 driver-static	ddgpe	31	SurfaceHeap::Alloc;SurfaceHeap Constructor	Platform Builder / OAL static library (driver-internal); no application import surface
 resolved	device	6	CeFsIoControl;CeResyncFilesys	RESOLVED (prior pass): def/device-doc.def (3 names)
@@ -18,18 +18,18 @@ driver-static	fsmain	16	DeleteAndRenameFile;CopyFile	Platform Builder / OAL stat
 driver-static	fspass	1	CheckPassword	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	fsreg	11	RegCloseKey;RegCreateKeyEx	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	gdcfg	10	ConfigInit;ConfigRsrc	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	getpower	2	GetSystemPowerStatusEx;GetSystemPowerStatusEx2	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	getpower	2	GetSystemPowerStatusEx;GetSystemPowerStatusEx2	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 driver-static	gpe_lib	12	GetGPE;GPE::AllocSurface	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	hal	5	CallEdbgDeregisterClient;CallEdbgRecv	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	hidparse_lib	26	HidP_FreeCollectionDescription;HidP_GetButtonCaps	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	httpextn	2	ReadClient;WriteClient	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	httpfilt	8	AddHeader;AllocMem	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	httpextn	2	ReadClient;WriteClient	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	httpfilt	8	AddHeader;AllocMem	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 resource-lib	iconcurs	4	CreateCursor;DestroyCursor	resource archive lib (cursors/icons), not an export surface
 com-guid	imaging	54	IImageDecoder::GetFrameCount;IImageDecoder::GetFrameDimensionsCount	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
 driver-static	kitl	15	KitlInit;KITLOutputDebugString	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	layoutmanager	16	PFN_KEYBD_DRIVER_GET_INFO;PFN_KEYBD_DRIVER_INITIALIZE	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	loadauth	4	CertifyModule;CertifyModuleFinal	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	locusa	2	CharNext;GetStringType	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	locusa	2	CharNext;GetStringType	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 resource-lib	mcursor	17	ClipCursor;GetClipCursor	resource archive lib (cursors/icons), not an export surface
 driver-static	mgbase	14	DeleteObject;GetBkColor	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	mgbitmap	2	CreateBitmap;CreateCompatibleBitmap	Platform Builder / OAL static library (driver-internal); no application import surface
@@ -46,20 +46,20 @@ driver-static	mgrast2	3	EnumFontFamilies;GetTextFace	Platform Builder / OAL stat
 driver-static	mgrgn	14	CombineRgn;CreateRectRgn	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	mgtt	8	EnableEUDC;CreateFontIndirect	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	mgwinmgr	1	ScrollDC	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	mixerapi	10	mixerClose;mixerGetControlDetails	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	mixerapi	10	mixerClose;mixerGetControlDetails	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 com-guid	mqoa	60	MSMQEvent.Arrived;MSMQEvent.ArrivedError	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
 driver-static	ndislib	184	ProtocolBindAdapter;ProtocolCloseAdapterComplete	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	nk	94	SetThreadContext;WaitForDebugEvent	Platform Builder / OAL static library (driver-internal); no application import surface
 driver-static	nkprof	2	OEMProfileTimerDisable;OEMProfileTimerEnable	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	notify	9	CeClearUserNotification;CeGetUserNotification	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	ole232	82	CreateOleAdviseHolder;OleCreate	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	notify	9	CeClearUserNotification;CeGetUserNotification	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	ole232	82	CreateOleAdviseHolder;OleCreate	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 com-guid	owaexchangeclient	29	IExchangeClientContactInformation::GetDi;IExchangeClientContactInformation::GetEm	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
 driver-static	pcireg	4	PCIInitInfo;PCIReg	Platform Builder / OAL static library (driver-internal); no application import surface
 resolved	ppp	20	RasDeleteEntry;RasDial	RESOLVED: def/ppp-doc.def (5 Ras*Buffer names; pages name Ppp.lib)
-needs-investigation	redir	11	WNetCancelConnection2;WNetCloseEnum	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	schannel	14	AcquireCredentialsHandle;CompleteAuthToken	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	shortcut	2	SHCreateShortcut;SHGetShortcutTarget	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	user32	5	EnumDisplayMonitors;GetMonitorInfo	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, 70,663 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	redir	11	WNetCancelConnection2;WNetCloseEnum	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	schannel	14	AcquireCredentialsHandle;CompleteAuthToken	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	shortcut	2	SHCreateShortcut;SHGetShortcutTarget	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
+needs-investigation	user32	5	EnumDisplayMonitors;GetMonitorInfo	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
 driver-static	wavelib	37	PlaySound;sndPlaySound	Platform Builder / OAL static library (driver-internal); no application import surface
 com-guid	d3dmguid	87	IDirect3DMobileBaseTexture::SetLOD;IDirect3DMobile::CheckDepthStencilMatch	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
 com-guid	ddvdids	304	IDVDDataSearchInfo/IDVDDataSearchInfo::G;IDVDDataSearchInfo/IDVDDataSearchInfo::G	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
