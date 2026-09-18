@@ -159,106 +159,13 @@ typedef enum  {
     CEL_NUM_MAPFLUSH_TYPES
 } CEL_MAPFLUSH_TYPE;
 #endif /* _WIN32_WCE >= 0x0500 */
-/* ms885146 CEL_CRITSEC_DELETE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_CRITSEC_DELETE { ... } CEL_CRITSEC_DELETE, *PCEL_CRITSEC_DELETE; */
-/* aa450798 CEL_CRITSEC_ENTER -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_CRITSEC_ENTER { ... } CEL_CRITSEC_ENTER, *PCEL_CRITSEC_ENTER; */
-/* ms885147 CEL_CRITSEC_INIT -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_CRITSEC_INIT { ... } CEL_CRITSEC_INIT, *PCEL_CRITSEC_INIT; */
-/* aa450799 CEL_CRITSEC_LEAVE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_CRITSEC_LEAVE { ... } CEL_CRITSEC_LEAVE, *PCEL_CRITSEC_LEAVE; */
-/* aa450800 CEL_DATA_LOSS -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_DATA_LOSS { ... } CEL_DATA_LOSS, *PCEL_DATA_LOSS; */
-/* aa451045 CEL_DEBUG_MSG -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_DEBUG_MSG { ... } CEL_CEL_DEBUG_MSG, *PCEL_CEL_DEBUG_MSG; */
-/* aa450801 CEL_EVENT_CLOSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EVENT_CLOSE { ... } CEL_EVENT_CLOSE, *PCEL_EVENT_CLOSE; */
-/* aa450803 CEL_EVENT_DELETE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EVENT_DELETE { ... } CEL_EVENT_DELETE, *PCEL_EVENT_DELETE; */
-/* aa450804 CEL_EVENT_PULSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EVENT_PULSE { ... } CEL_EVENT_PULSE, *PCEL_EVENT_PULSE; */
-/* aa450805 CEL_EVENT_RESET -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EVENT_RESET { ... } CEL_EVENT_RESET, *PCEL_EVENT_RESET; */
-/* aa450806 CEL_EVENT_SET -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EVENT_SET { ... } CEL_EVENT_SET, *PCEL_EVENT_SET; */
-/* ms885148 CEL_EXTRA_MODULE_INFO -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EXTRA_MODULE_INFO { ... } CEL_EXTRA_MODULE_INFO, *PCEL_EXTRA_MODULE_INFO; */
-/* ms885149 CEL_EXTRA_PROCESS_INFO -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_EXTRA_PROCESS_INFO { ... } CEL_EXTRA_PROCESS_INFO, *PCEL_EXTRA_PROCESS_INFO; */
-/* aa450808 CEL_HEAP_ALLOC -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_HEAP_ALLOC { ... } CEL_HEAP_ALLOC, *PCEL_HEAP_ALLOC; */
-/* aa450809 CEL_HEAP_CREATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_HEAP_CREATE { ... } CEL_HEAP_CREATE, *PCEL_HEAP_CREATE; */
-/* aa450810 CEL_HEAP_DESTROY -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_HEAP_DESTROY { ... } CEL_HEAP_DESTROY, *PCEL_HEAP_DESTROY; */
-/* aa450811 CEL_HEAP_FREE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_HEAP_FREE { ... } CEL_HEAP_FREE, *PCEL_HEAP_FREE; */
-/* aa450812 CEL_HEAP_REALLOC -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_HEAP_REALLOC { ... } CEL_HEAP_REALLOC, *PCEL_HEAP_REALLOC; */
-/* aa450814 CEL_INTERRUPTS -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_INTERRUPTS { ... } CEL_INTERRUPTS, *PCEL_INTERRUPTS; */
-/* aa450815 CEL_LOG_MARKER -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_LOG_MARKER { ... } CEL_LOG_MARKER, *PCEL_LOG_MARKER; */
-/* aa451047 CEL_MAPFILE_CREATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MAPFILE_CREATE { ... } CEL_MAPFILE_CREATE, *PCEL_MAPFILE_CREATE; */
-/* aa451049 CEL_MAPFILE_DESTROY -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MAPFILE_DESTROY { ... } CEL_MAPFILE_DESTROY, *PCEL_MAPFILE_DESTROY; */
-/* aa451051 CEL_MAPFILE_FLUSH -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MAPFILE_FLUSH { ... } CEL_MAPFILE_FLUSH, *PCEL_MAPFILE_FLUSH; */
-/* aa451053 CEL_MAPFILE_VIEW_CLOSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MAPFILE_VIEW_CLOSE { ... } CEL_MAPFILE_VIEW_CLOSE, *CEL_MAPFILE_VIEW_CLOSE; */
-/* aa450816 CEL_MEMTRACK_BASELINE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MEMTRACK_BASELINE { ... } CEL_MEMTRACK_BASELINE, *PCEL_MEMTRACK_BASELINE; */
-/* ms885150 CEL_MODULE_REFERENCES -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MODULE_REFERENCES { ... } CEL_MODULE_REFERENCES, *PCEL_MODULE_REFERENCES; */
-/* aa450819 CEL_MUTEX_CLOSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MUTEX_CLOSE { ... } CEL_MUTEX_CLOSE, *PCEL_MUTEX_CLOSE; */
-/* aa450820 CEL_MUTEX_CREATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MUTEX_CREATE { ... } CEL_MUTEX_CREATE, *PCEL_MUTEX_CREATE; */
-/* aa450821 CEL_MUTEX_DELETE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_MUTEX_DELETE { ... } CEL_MUTEX_DELETE, *PCEL_MUTEX_DELETE; */
-/* aa450829 CEL_PROCESS_CLOSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_PROCESS_CLOSE { ... } CEL_PROCESS_CLOSE, *PCEL_PROCESS_CLOSE; */
-/* aa450830 CEL_PROCESS_CREATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_PROCESS_CREATE { ... } CEL_PROCESS_CREATE, *PCEL_PROCESS_CREATE; */
-/* ms884894 CEL_PROCESS_DELETE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_PROCESS_DELETE { ... } CEL_PROCESS_DELETE, *PCEL_PROCESS_DELETE; */
-/* ms885151 CEL_PROCESS_REFCOUNT -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_PROCESS_REFCOUNT { ... } CEL_PROCESS_REFCOUNT, *PCEL_PROCESS_REFCOUNT; */
-/* ms884998 CEL_PROCESS_TERMINATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_PROCESS_TERMINATE { ... } CEL_PROCESS_TERMINATE, *PCEL_PROCESS_TERMINATE; */
-/* ms885107 CEL_SEM_CLOSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_SEM_CLOSE { ... } CEL_SEM_CLOSE, *PCEL_SEM_CLOSE; */
-/* ms885117 CEL_SEM_CREATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_SEM_CREATE { ... } CEL_SEM_CREATE, *PCEL_SEM_CREATE; */
-/* ms885125 CEL_SEM_DELETE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_SEM_DELETE { ... } CEL_SEM_DELETE, *PCEL_SEM_DELETE; */
-/* ms885126 CEL_SEM_RELEASE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_SEM_RELEASE { ... } CEL_SEM_RELEASE, *PCEL_SEM_RELEASE; */
-/* ms885127 CEL_SLEEP -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_SLEEP { ... } CEL_SLEEP, *PCEL_SLEEP; */
-/* ms885131 CEL_THREAD_CLOSE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_CLOSE { ... } CEL_THREAD_CLOSE, *PCEL_THREAD_CLOSE; */
-/* ms885132 CEL_THREAD_CREATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_CREATE { ... } CEL_THREAD_CREATE, *PCEL_THREAD_CREATE; */
-/* ms885133 CEL_THREAD_DELETE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_DELETE { ... } CEL_THREAD_DELETE, *PCEL_THREAD_DELETE; */
-/* ms885137 CEL_THREAD_RESUME -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_RESUME { ... } CEL_THREAD_RESUME, *PCEL_THREAD_RESUME; */
-/* ms885138 CEL_THREAD_SUSPEND -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_SUSPEND { ... } CEL_THREAD_SUSPEND, *PCEL_THREAD_SUSPEND; */
-/* ms885139 CEL_THREAD_SWITCH -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_SWITCH { ... } CEL_THREAD_SWITCH, *PCEL_THREAD_SWITCH; */
-/* ms885140 CEL_THREAD_TERMINATE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_THREAD_TERMINATE { ... } CEL_THREAD_TERMINATE, *PCEL_THREAD_TERMINATE; */
-/* ms885141 CEL_VIRTUAL_ALLOC -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_VIRTUAL_ALLOC { ... } CEL_VIRTUAL_ALLOC, *PCEL_VIRTUAL_ALLOC; */
-/* ms885142 CEL_VIRTUAL_COPY -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_VIRTUAL_COPY { ... } CEL_VIRTUAL_COPY, *PCEL_VIRTUAL_COPY; */
-/* ms885143 CEL_VIRTUAL_FREE -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_VIRTUAL_FREE { ... } CEL_VIRTUAL_FREE, *PCEL_VIRTUAL_FREE; */
-/* ms885145 CEL_WAIT_MULTI -- HELD (page print; member types unpublished):
- *   typedef struct __CEL_WAIT_MULTI { ... } CEL_WAIT_MULTI, *PCEL_WAIT_MULTI; */
+/* aa451053 "CEL_MAPFILE_VIEW_CLOSE" page print; the print repeats the
+ * same name for the pointer alias (`*CEL_MAPFILE_VIEW_CLOSE`) --
+ * documented artifact, only the struct alias is declared. */
+typedef struct __CEL_MAPFILE_VIEW_CLOSE {
+    HANDLE hMap;
+    LPVOID lpBaseAddress;
+} CEL_MAPFILE_VIEW_CLOSE;
 /* aa450817 CEL_MODULE_FREE: documented name-only (no value published; held) */
 /* aa450818 CEL_MODULE_LOAD: documented name-only (no value published; held) */
 /* aa450822 CEL_MUTEX_RELEASE: documented name-only (no value published; held) */
@@ -282,5 +189,332 @@ typedef enum  {
 #ifdef __cplusplus
 }
 #endif
+
+/* ms885146 "CEL_CRITSEC_DELETE" page print (fused tokens split). */
+typedef struct __CEL_CRITSEC_DELETE {
+    HANDLE hCS;
+} CEL_CRITSEC_DELETE, *PCEL_CRITSEC_DELETE;
+
+/* aa450798 "CEL_CRITSEC_ENTER" page print (fused tokens split). */
+typedef struct __CEL_CRITSEC_ENTER {
+    HANDLE hCS;
+    HANDLE hOwnerThread;
+} CEL_CRITSEC_ENTER, *PCEL_CRITSEC_ENTER;
+
+/* ms885147 "CEL_CRITSEC_INIT" page print (fused tokens split). */
+typedef struct __CEL_CRITSEC_INIT {
+    HANDLE hCS;
+} CEL_CRITSEC_INIT, *PCEL_CRITSEC_INIT;
+
+/* aa450799 "CEL_CRITSEC_LEAVE" page print (fused tokens split). */
+typedef struct __CEL_CRITSEC_LEAVE {
+    HANDLE hCS;
+    HANDLE hOwnerThread;
+} CEL_CRITSEC_LEAVE, *PCEL_CRITSEC_LEAVE;
+
+/* aa450800 "CEL_DATA_LOSS" page print (fused tokens split). */
+typedef struct __CEL_DATA_LOSS {
+    DWORD dwBytes;
+} CEL_DATA_LOSS, *PCEL_DATA_LOSS;
+
+/* aa451045 "CEL_CEL_DEBUG_MSG" page print (fused tokens split). */
+typedef struct __CEL_DEBUG_MSG {
+    DWORD pid;
+    DWORD tid;
+    WCHAR szMessage[0];
+} CEL_CEL_DEBUG_MSG, *PCEL_CEL_DEBUG_MSG;
+
+/* aa450801 "CEL_EVENT_CLOSE" page print (fused tokens split). */
+typedef struct __CEL_EVENT_CLOSE {
+    HANDLE hEvent;
+} CEL_EVENT_CLOSE, *PCEL_EVENT_CLOSE;
+
+/* aa450803 "CEL_EVENT_DELETE" page print (fused tokens split). */
+typedef struct __CEL_EVENT_DELETE {
+    HANDLE hEvent;
+} CEL_EVENT_DELETE, *PCEL_EVENT_DELETE;
+
+/* aa450804 "CEL_EVENT_PULSE" page print (fused tokens split). */
+typedef struct __CEL_EVENT_PULSE {
+    HANDLE hEvent;
+} CEL_EVENT_PULSE, *PCEL_EVENT_PULSE;
+
+/* aa450805 "CEL_EVENT_RESET" page print (fused tokens split). */
+typedef struct __CEL_EVENT_RESET {
+    HANDLE hEvent;
+} CEL_EVENT_RESET, *PCEL_EVENT_RESET;
+
+/* aa450806 "CEL_EVENT_SET" page print (fused tokens split). */
+typedef struct __CEL_EVENT_SET {
+    HANDLE hEvent;
+} CEL_EVENT_SET, *PCEL_EVENT_SET;
+
+/* ms885148 "CEL_EXTRA_MODULE_INFO" page print (fused tokens split). */
+typedef struct __CEL_EXTRA_MODULE_INFO {
+    HANDLE hModule;
+    DWORD dwVMLen;
+    DWORD dwModuleFlags;
+    DWORD dwOID;
+    WCHAR szFullPath[0];
+} CEL_EXTRA_MODULE_INFO, *PCEL_EXTRA_MODULE_INFO;
+
+/* ms885149 "CEL_EXTRA_PROCESS_INFO" page print (fused tokens split). */
+typedef struct __CEL_EXTRA_PROCESS_INFO {
+    HANDLE hProcess;
+    DWORD dwCodeBaseDWORDdwVMLen;
+    DWORD dwOID;
+    WCHAR szFullPath[0];
+} CEL_EXTRA_PROCESS_INFO, *PCEL_EXTRA_PROCESS_INFO;
+
+/* aa450808 "CEL_HEAP_ALLOC" page print (fused tokens split). */
+typedef struct __CEL_HEAP_ALLOC {
+    HANDLE hHeap;
+    DWORD dwFlags;
+    DWORD dwBytes;
+    DWORD lpMem;
+    DWORD dwTID;
+    DWORD dwPID;
+    DWORD dwCallerPID;
+    DWORD adwStackTrace[0];
+} CEL_HEAP_ALLOC, *PCEL_HEAP_ALLOC;
+
+/* aa450809 "CEL_HEAP_CREATE" page print (fused tokens split). */
+typedef struct __CEL_HEAP_CREATE {
+    DWORD dwOptions;
+    DWORD dwInitSize;
+    DWORD dwMaxSize;
+    HANDLE hHeap;
+    DWORD dwTID;
+    DWORD dwPID;
+} CEL_HEAP_CREATE, *PCEL_HEAP_CREATE;
+
+/* aa450810 "CEL_HEAP_DESTROY" page print (fused tokens split). */
+typedef struct __CEL_HEAP_DESTROY {
+    HANDLE hHeap;
+    DWORD dwTID;
+    DWORD dwPID;
+} CEL_HEAP_DESTROY, *PCEL_HEAP_DESTROY;
+
+/* aa450811 "CEL_HEAP_FREE" page print (fused tokens split). */
+typedef struct __CEL_HEAP_FREE {
+    HANDLE hHeap;
+    DWORD dwFlags;
+    DWORD lpMem;
+    DWORD dwTID;
+    DWORD dwPID;
+    DWORD dwCallerPID;
+    DWORD adwStackTrace[0];
+} CEL_HEAP_FREE, *PCEL_HEAP_FREE;
+
+/* aa450812 "CEL_HEAP_REALLOC" page print (fused tokens split). */
+typedef struct __CEL_HEAP_REALLOC {
+    HANDLE hHeap;
+    DWORD dwFlags;
+    DWORD dwBytes;
+    DWORD lpMemOld;
+    DWORD lpMem;
+    DWORD dwTID;
+    DWORD dwPID;
+    DWORD dwCallerPID;
+    DWORD adwStackTrace[0];
+} CEL_HEAP_REALLOC, *PCEL_HEAP_REALLOC;
+
+/* CHM page "_wcepb_CEL_INT_DATA" (Windows CE 3.0, retired content)
+ * prints `typedef __CEL_INT_DATA { DWORD dwTimeStamp ; WORD wSysIntr
+ * ; WORD wNestingLevel ; } CEL_INT_DATA, *PCEL_INT_DATA;` (the CHM
+ * conversion drops the `struct` keyword after typedef; restored). */
+typedef struct __CEL_INT_DATA {
+    DWORD dwTimeStamp;
+    WORD wSysIntr;
+    WORD wNestingLevel;
+} CEL_INT_DATA, *PCEL_INT_DATA;
+
+/* aa450814 "CEL_INTERRUPTS" page print (fused tokens split). */
+typedef struct __CEL_INTERRUPTS {
+    DWORD dwDiscarded;
+    CEL_INT_DATA IntData[0];   /* page print fused CEL_INT_DATAIntData */
+} CEL_INTERRUPTS, *PCEL_INTERRUPTS;
+
+/* aa450815 "CEL_LOG_MARKER" page print (fused tokens split). */
+typedef struct __CEL_LOG_MARKER {
+    DWORD dwFrequency;
+    DWORD dwDefaultQuantum;
+    DWORD dwVersion;
+} CEL_LOG_MARKER, *PCEL_LOG_MARKER;
+
+/* aa451047 "CEL_MAPFILE_CREATE" page print (fused tokens split). */
+typedef struct __CEL_MAPFILE_CREATE {
+    HANDLE hMap;
+    DWORD flProtect;
+    DWORD dwMapFlags;
+    DWORD dwMaxSize;
+    WCHAR szName[0];
+} CEL_MAPFILE_CREATE, *PCEL_MAPFILE_CREATE;
+
+/* aa451049 "CEL_MAPFILE_DESTROY" page print (fused tokens split). */
+typedef struct __CEL_MAPFILE_DESTROY {
+    HANDLE hMap;
+} CEL_MAPFILE_DESTROY, *PCEL_MAPFILE_DESTROY;
+
+/* aa451051 "CEL_MAPFILE_FLUSH" page print (fused tokens split). */
+typedef struct __CEL_MAPFILE_FLUSH {
+    LPVOID lpBaseAddress;
+    DWORD dwLen;
+    WORD wFlushFlags;
+    WORD wNumPages;
+} CEL_MAPFILE_FLUSH, *PCEL_MAPFILE_FLUSH;
+
+/* aa450816 "CEL_MEMTRACK_BASELINE" page print (fused tokens split). */
+typedef struct __CEL_MEMTRACK_BASELINE {
+    DWORD dwReserved;
+} CEL_MEMTRACK_BASELINE, *PCEL_MEMTRACK_BASELINE;
+
+/* aa450819 "CEL_MUTEX_CLOSE" page print (fused tokens split). */
+typedef struct __CEL_MUTEX_CLOSE {
+    HANDLE hMutex;
+} CEL_MUTEX_CLOSE, *PCEL_MUTEX_CLOSE;
+
+/* aa450820 "CEL_MUTEX_CREATE" page print (fused tokens split). */
+typedef struct __CEL_MUTEX_CREATE {
+    HANDLE hMutex;
+    WCHAR szName[0];
+} CEL_MUTEX_CREATE, *PCEL_MUTEX_CREATE;
+
+/* aa450821 "CEL_MUTEX_DELETE" page print (fused tokens split). */
+typedef struct __CEL_MUTEX_DELETE {
+    HANDLE hMutex;
+} CEL_MUTEX_DELETE, *PCEL_MUTEX_DELETE;
+
+/* aa450829 "CEL_PROCESS_CLOSE" page print (fused tokens split). */
+typedef struct __CEL_PROCESS_CLOSE {
+    HANDLE hProcess;
+} CEL_PROCESS_CLOSE, *PCEL_PROCESS_CLOSE;
+
+/* aa450830 "CEL_PROCESS_CREATE" page print (fused tokens split). */
+typedef struct __CEL_PROCESS_CREATE {
+    HANDLE hProcess;
+    DWORD dwVMBase;
+    WCHAR szName[0];
+} CEL_PROCESS_CREATE, *PCEL_PROCESS_CREATE;
+
+/* ms884894 "CEL_PROCESS_DELETE" page print (fused tokens split). */
+typedef struct __CEL_PROCESS_DELETE {
+    HANDLE hProcess;
+} CEL_PROCESS_DELETE, *PCEL_PROCESS_DELETE;
+
+/* ms885151 "CEL_PROCESS_REFCOUNT" page print (fused tokens split). */
+typedef struct __CEL_PROCESS_REFCOUNT {
+    HANDLE hProcess;
+    DWORD dwRefCount;
+} CEL_PROCESS_REFCOUNT, *PCEL_PROCESS_REFCOUNT;
+
+/* ms884998 "CEL_PROCESS_TERMINATE" page print (fused tokens split). */
+typedef struct __CEL_PROCESS_TERMINATE {
+    HANDLE hProcess;
+} CEL_PROCESS_TERMINATE, *PCEL_PROCESS_TERMINATE;
+
+/* ms885107 "CEL_SEM_CLOSE" page print (fused tokens split). */
+typedef struct __CEL_SEM_CLOSE {
+    HANDLE hSem;
+} CEL_SEM_CLOSE, *PCEL_SEM_CLOSE;
+
+/* ms885117 "CEL_SEM_CREATE" page print (fused tokens split). */
+typedef struct __CEL_SEM_CREATE {
+    HANDLE hSem;
+    DWORD dwInitCount;
+    DWORD dwMaxCount;
+    WCHAR szName[0];
+} CEL_SEM_CREATE, *PCEL_SEM_CREATE;
+
+/* ms885125 "CEL_SEM_DELETE" page print (fused tokens split). */
+typedef struct __CEL_SEM_DELETE {
+    HANDLE hSem;
+} CEL_SEM_DELETE, *PCEL_SEM_DELETE;
+
+/* ms885126 "CEL_SEM_RELEASE" page print (fused tokens split). */
+typedef struct __CEL_SEM_RELEASE {
+    HANDLE hSem;
+    DWORD dwReleaseCount;
+    DWORD dwPreviousCount;
+} CEL_SEM_RELEASE, *PCEL_SEM_RELEASE;
+
+/* ms885127 "CEL_SLEEP" page print (fused tokens split). */
+typedef struct __CEL_SLEEP {
+    DWORD dwTimeout;
+} CEL_SLEEP, *PCEL_SLEEP;
+
+/* ms885131 "CEL_THREAD_CLOSE" page print (fused tokens split). */
+typedef struct __CEL_THREAD_CLOSE {
+    HANDLE hThread;
+} CEL_THREAD_CLOSE, *PCEL_THREAD_CLOSE;
+
+/* ms885132 "CEL_THREAD_CREATE" page print (fused tokens split). */
+typedef struct __CEL_THREAD_CREATE {
+    HANDLE hThread;
+    HANDLE hProcess;
+    HANDLE hModule;
+    DWORD dwStartAddr;
+    int nPriority;
+    WCHAR szName[0];
+} CEL_THREAD_CREATE, *PCEL_THREAD_CREATE;
+
+/* ms885133 "CEL_THREAD_DELETE" page print (fused tokens split). */
+typedef struct __CEL_THREAD_DELETE {
+    HANDLE hThread;
+} CEL_THREAD_DELETE, *PCEL_THREAD_DELETE;
+
+/* ms885137 "CEL_THREAD_RESUME" page print (fused tokens split). */
+typedef struct __CEL_THREAD_RESUME {
+    HANDLE hThread;
+} CEL_THREAD_RESUME, *PCEL_THREAD_RESUME;
+
+/* ms885138 "CEL_THREAD_SUSPEND" page print (fused tokens split). */
+typedef struct __CEL_THREAD_SUSPEND {
+    HANDLE hThread;
+} CEL_THREAD_SUSPEND, *PCEL_THREAD_SUSPEND;
+
+/* ms885139 "CEL_THREAD_SWITCH" page print (fused tokens split). */
+typedef struct __CEL_THREAD_SWITCH {
+    HANDLE hThread;
+} CEL_THREAD_SWITCH, *PCEL_THREAD_SWITCH;
+
+/* ms885140 "CEL_THREAD_TERMINATE" page print (fused tokens split). */
+typedef struct __CEL_THREAD_TERMINATE {
+    HANDLE hThread;
+} CEL_THREAD_TERMINATE, *PCEL_THREAD_TERMINATE;
+
+/* ms885141 "CEL_VIRTUAL_ALLOC" page print (fused tokens split). */
+typedef struct __CEL_VIRTUAL_ALLOC {
+    DWORD dwResult;
+    DWORD dwAddress;
+    DWORD dwSize;
+    DWORD dwType;
+    DWORD dwProtect;
+    BYTE bReserved[0];
+} CEL_VIRTUAL_ALLOC, *PCEL_VIRTUAL_ALLOC;
+
+/* ms885142 "CEL_VIRTUAL_COPY" page print (fused tokens split). */
+typedef struct __CEL_VIRTUAL_COPY {
+    DWORD dwDest;
+    DWORD dwSource;
+    DWORD dwSize;
+    DWORD dwProtect;
+} CEL_VIRTUAL_COPY, *PCEL_VIRTUAL_COPY;
+
+/* ms885143 "CEL_VIRTUAL_FREE" page print (fused tokens split). */
+typedef struct __CEL_VIRTUAL_FREE {
+    DWORD dwAddress;
+    DWORD dwSize;
+    DWORD dwType;
+    BYTE bReserved[0];
+} CEL_VIRTUAL_FREE, *PCEL_VIRTUAL_FREE;
+
+/* ms885145 "CEL_WAIT_MULTI" page print (fused tokens split). */
+typedef struct __CEL_WAIT_MULTI {
+    DWORD dwTimeout;
+    DWORD fWaitAll:1;
+    DWORD dwReserved:31;
+    HANDLE hHandles[0];
+} CEL_WAIT_MULTI, *PCEL_WAIT_MULTI;
 
 #endif /* AKARI_CELOG_H */
