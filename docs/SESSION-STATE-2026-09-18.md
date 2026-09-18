@@ -152,6 +152,23 @@ match 2,036), + twin-struct-scan commit.
   .git wiped): recovered via PAT remote + reset --mixed + re-clone.
   core.fileMode=false set.
 
+- **Add_Share defect FIXED** (`8e0275c`): decl had 3 params + cited
+  aa450328 = the Del_Share page; real page aa450283 prints 7 params
+  (pACL/pROACL/pDriver/pComment were missing).  tu_compile.c test
+  call updated.  Found via the no-pageid pid-backfill sweep.
+- **pid backfill**: 37 of 42 proto no-pageid decls have title-page
+  prints; 34 verified identical -> pid comments inserted.
+  proto-audit now: match 2,242 / no-pageid 13 / MISMATCH 0.
+- twin-enum-scan (`391a912`): 69 no-print enums -> 2 match, 1 CE5/CE6
+  delta (SPSTREAMFORMAT), 61 no-print-in-twin.
+- Harvest findings: urls/msdn-live.txt is NOT fetchable (harvest.py
+  has no live-MSDN URL parser; run completed stored=0) -- the
+  wayback-msdn-2010.txt queue (31,388 archive URLs, same pages) is
+  the fetchable form; dispatched 2026-09-18T10:51Z (1.5s delay,
+  500-page batch pushes; runner will persist partial progress on
+  timeout).  mslearn-embedded.txt queue was already exhausted
+  (+2 pages only).
+
 ## Environment hazards (hit 4× now)
 - Snapshot rollbacks wipe: corpus clone, .git config/identity, file
   modes, /home/user/.claude memory dir, and can roll Akari-dev back to
