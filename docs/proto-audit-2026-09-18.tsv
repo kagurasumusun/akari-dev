@@ -241,6 +241,8 @@ include/Connmgr.h	ConnMgrReleaseConnection	ee497660	match
 include/Connmgr.h	ConnMgrMapConRef	ee497804	match	
 include/Connmgr.h	ConnMgrMapURL	ee497810	match	
 include/Connmgr.h	ConnMgrEstablishConnectionSync	ee498273	match	
+include/Connmgr.h	ConnMgrRegisterScheduledConnection	ee498068	match	
+include/Connmgr.h	ConnMgrQueryDetailedStatus	ee497106	match	
 include/Connmgr_status.h	ConnMgrRegisterForStatusChangeNotification	ee497299	match	
 include/Controldefinitions.h	PHRegisterSingletonApplication	ee499558	match	
 include/Controldefinitions.h	PHDrawBackground	ee499853	match	
@@ -430,8 +432,10 @@ include/Fwapi.h	FirewallLogPacket	aa450377	match
 include/Fwapi.h	FirewallSetInterface	aa450380	match	
 include/Fwapi.h	IsFirewallEnabled	aa450624	match	
 include/Fwapi.h	IsInterfaceFirewalled	aa450625	match	
+include/Gpsapi.h	GPSGetDeviceState	ee483702	match	
 include/Gpsapi.h	GPSCloseDevice	ee483557	match	
 include/Gpsapi.h	GPSOpenDevice	ee485975	match	
+include/Gpsapi.h	GPSGetPosition	ee483312	match	
 include/Gwebypasscoredllthunk.hpp	DestroyIcon_I		no-pageid	
 include/Gwebypasscoredllthunk.hpp	DrawIconEx_I	aa452973	match	
 include/Gwebypasscoredllthunk.hpp	KillTimer_I	aa453249	match	
@@ -1143,6 +1147,8 @@ include/Rapi.h	CeSHCreateShortcut	aa513814	no-print-on-page
 include/Rapi.h	CeSHGetShortcutTarget	aa513816	no-print-on-page	
 include/Rapi.h	CeWriteFile	aa513847	no-print-on-page	
 include/Rapi.h	CeSyncStart	ee497258	match	
+include/Rapi.h	CeSyncStop	ee496440	match	
+include/Rapi.h	CeGetDiskFreeSpaceEx	ee496409	match	
 include/Ras.h	RasDial	ee496966	match	
 include/Ras.h	RasEnumConnections	ee496203	match	
 include/Ras.h	RasEnumDevicesW	ee497423	match	
@@ -1241,6 +1247,7 @@ include/Simmgr.h	SimDeinitialize	ee498206	match
 include/Simmgr.h	SimSetLockingStatus	ee498240	match	
 include/Simmgr.h	SimUnlockPhone	ee498242	match	
 include/Simmgr.h	SimGetRecordInfo	ee498259	match	
+include/Simmgr.h	SimGetPhonebookCapabilities	ee497617	match	
 include/Sipapi.h	SipEnumIM	aa453742	match	
 include/Sipapi.h	SipGetCurrentIM	aa453744	match	
 include/Sipapi.h	SipGetInfo	aa453745	match	
@@ -1259,6 +1266,15 @@ include/Sms.h	SmsGetTime	ee497060	match
 include/Sms.h	SmsClearMessageNotification	ee497339	match	
 include/Sms.h	SmsClose	ee497862	match	
 include/Sms.h	SmsOpen	ee498029	match	
+include/Sms.h	SmsGetBroadcastMsgRanges	ee498021	match	
+include/Sms.h	SmsGetMessageSize	ee496906	match	
+include/Sms.h	SmsGetMessageStatus	ee497508	match	
+include/Sms.h	SmsGetPhoneNumber	ee498284	match	
+include/Sms.h	SmsGetSMSC	ee497367	match	
+include/Sms.h	SmsReadMessage	ee496912	skip-complex-page	
+include/Sms.h	SmsSendMessage	ee498244	match	
+include/Sms.h	SmsSetBroadcastMsgRanges	ee497819	match	
+include/Sms.h	SmsSetSMSC	ee497839	match	
 include/Snmp.h	SnmpExtensionClose	ms896018	match	
 include/Snmp.h	SnmpExtensionInit	ms896019	page-drops-star	args [1, 2]: page print omits pointer
 include/Snmp.h	SnmpExtensionInitEx	ms896020	match	
@@ -1632,6 +1648,7 @@ include/Urlmon.h	URLOpenStream	ms918873	match
 include/Urlmon.h	UrlMkGetSessionOption	ms918868	match	
 include/Urlmon.h	UrlMkSetSessionOption	ms918869	match	
 include/Urlmon.h	WriteHitLogging	ms918878	no-print-on-page	
+include/Urlmon.h	CoInternetCreateSecurityManager	ee491853	match	
 include/Urlmonui.h	IsDialogBoxHandled	ms918806	match	
 include/Usp10.h	ScriptApplyDigitSubstitution	ms906233	match-const-diff	
 include/Usp10.h	ScriptApplyLogicalWidth	ms906234	match-const-diff	
@@ -2772,6 +2789,26 @@ include/Wsdapi.h	WSDAttachLinkedMemory	ee499826	match
 include/Wsdapi.h	WSDSetConfigurationOption	ee500770	match	
 include/Wsdapi.h	WSDGetConfigurationOption	ee500826	match	
 include/Wsdapi.h	WSDAllocateLinkedMemory	ee501098	match	
+include/Wsdapi.h	WSDCreateDeviceHost	ee499213	match	
+include/Wsdapi.h	WSDCreateDeviceHostAdvanced	ee500217	match	
+include/Wsdapi.h	WSDCreateDeviceProxy	ee499802	match	
+include/Wsdapi.h	WSDCreateDiscoveryProvider	ee500750	match	
+include/Wsdapi.h	WSDCreateDiscoveryPublisher	ee500819	match	
+include/Wsdapi.h	WSDCreateHttpAddress	ee499018	match	
+include/Wsdapi.h	WSDCreateHttpMessageParameters	ee498662	match	
+include/Wsdapi.h	WSDCreateOutboundAttachment	ee501103	match	
+include/Wsdapi.h	WSDCreateUdpAddress	ee498998	match	
+include/Wsdapi.h	WSDCreateUdpMessageParameters	ee499481	match	
+include/Wsdapi.h	WSDGenerateFault	ee498805	match	
+include/Wsdapi.h	WSDGenerateFaultEx	ee498654	match	
+include/Wsdapi.h	WSDRegisterNamespaces	ee499484	match	
+include/Wsdapi.h	WSDXMLAddChild	ee498632	annotated-deviation	ret: page='HRESULT STDAPI' hdr='HRESULT'
+include/Wsdapi.h	WSDXMLAddSibling	ee499225	annotated-deviation	ret: page='HRESULT STDAPI' hdr='HRESULT'
+include/Wsdapi.h	WSDXMLBuildAnyForSingleElement	ee498989	annotated-deviation	ret: page='HRESULT STDAPI' hdr='HRESULT'
+include/Wsdapi.h	WSDXMLCleanupElement	ee500847	match	
+include/Wsdapi.h	WSDXMLCreateContext	ee498635	match	
+include/Wsdapi.h	WSDXMLGetNameFromBuiltinNamespace	ee498682	match	
+include/Wsdapi.h	WSDXMLGetValueFromAny	ee499228	annotated-deviation	ret: page='HRESULT STDAPI' hdr='HRESULT'
 include/Wzcsapi.h	WZCDeleteIntfObj	ms923684	match	
 include/Wzcsapi.h	WZCEnumInterfaces	ms923686	match	
 include/Wzcsapi.h	WZCPassword2Key	ms923687	match	
@@ -2780,6 +2817,10 @@ include/Wzcsapi.h	WZCQueryInterface	ms923689	match
 include/Wzcsapi.h	WZCRefreshInterface	ms923690	match	
 include/Wzcsapi.h	WZCSetContext	ms923691	match	
 include/Wzcsapi.h	WZCSetInterface	ms923692	match	
+include/Wzcsapi.h	WZCDeleteIntfObjEx	ee481708	match	
+include/Wzcsapi.h	WZCQueryInterfaceEx	ee483427	match	
+include/Wzcsapi.h	WZCRefreshInterfaceEx	ee482278	match	
+include/Wzcsapi.h	WZCSetInterfaceEx	ee481704	match	
 include/aygshell.h	SHChangeNotifyDeregister		no-pageid	
 include/aygshell.h	SHChangeNotifyFree	aa453672	match	
 include/aygshell.h	SHChangeNotifyRegister	aa453673	match	

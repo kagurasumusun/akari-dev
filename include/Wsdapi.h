@@ -347,15 +347,15 @@ AKARI_CE_IMPORT HRESULT WSDGenerateFaultEx(WSDXML_NAME *pCode, WSDXML_NAME *pSub
 /* ee499484 WSDRegisterNamespaces (Link Library: wsdapi.lib). */
 AKARI_CE_IMPORT void WSDRegisterNamespaces(IWSDXMLContext *pContext) AKARI_CE_NAME(WSDRegisterNamespaces);
 
-/* ee498632 WSDXMLAddChild; page prints `HRESULT STDAPI` -- STDAPI
- * already spells the HRESULT convention, kept once (Link Library:
- * wsdapi.lib). */
+/* ee498632 WSDXMLAddChild; the print `HRESULT STDAPI` is an
+ * artifact -- STDAPI already spells the HRESULT convention, kept
+ * once (Link Library: wsdapi.lib). */
 AKARI_CE_IMPORT HRESULT WSDXMLAddChild(WSDXML_ELEMENT *pParent, WSDXML_ELEMENT *pChild) AKARI_CE_NAME(WSDXMLAddChild);
 
-/* ee499225 WSDXMLAddSibling (same STDAPI note; wsdapi.lib). */
+/* ee499225 WSDXMLAddSibling (same STDAPI print artifact; wsdapi.lib). */
 AKARI_CE_IMPORT HRESULT WSDXMLAddSibling(WSDXML_ELEMENT *pFirst, WSDXML_ELEMENT *pSecond) AKARI_CE_NAME(WSDXMLAddSibling);
 
-/* ee498989 WSDXMLBuildAnyForSingleElement (STDAPI note; wsdapi.lib). */
+/* ee498989 WSDXMLBuildAnyForSingleElement (STDAPI print artifact; wsdapi.lib). */
 AKARI_CE_IMPORT HRESULT WSDXMLBuildAnyForSingleElement(WSDXML_NAME *pElementName, const LPCWSTR *pszText, WSDXML_ELEMENT **ppAny) AKARI_CE_NAME(WSDXMLBuildAnyForSingleElement);
 
 /* ee500847 WSDXMLCleanupElement (Link Library: wsdapi.lib). */
@@ -367,7 +367,7 @@ AKARI_CE_IMPORT HRESULT WSDXMLCreateContext(IWSDXMLContext **ppContext) AKARI_CE
 /* ee498682 WSDXMLGetNameFromBuiltinNamespace (wsdapi.lib). */
 AKARI_CE_IMPORT HRESULT WSDXMLGetNameFromBuiltinNamespace(LPCWSTR pszNamespace, LPCWSTR pszName, WSDXML_NAME **ppName) AKARI_CE_NAME(WSDXMLGetNameFromBuiltinNamespace);
 
-/* ee499228 WSDXMLGetValueFromAny (STDAPI note; wsdapi.lib). */
+/* ee499228 WSDXMLGetValueFromAny (STDAPI print artifact; wsdapi.lib). */
 AKARI_CE_IMPORT HRESULT WSDXMLGetValueFromAny(const WCHAR *pszNamespace, const WCHAR *pszName, WSDXML_ELEMENT *pAny, const LPCWSTR **ppszValue) AKARI_CE_NAME(WSDXMLGetValueFromAny);
 
 #endif /* _WIN32_WCE >= 0x0600 */
