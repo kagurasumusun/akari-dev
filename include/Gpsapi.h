@@ -26,6 +26,7 @@
 
 #include "Windef.h"    /* base Win32 types */
 #include "Winnt.h"     /* HRESULT, LARGE_INTEGER, GUID */
+#include "Winbase.h"   /* SYSTEMTIME (Winbase.h declares it) */
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,6 +65,51 @@ typedef enum {
 } GPS_FIX_SELECTION;
 
 
+/* ee483540 "GPS_MAX_..." (Windows Embedded CE 6.0 and later):
+ * GPS_MAX_SATELLITES = 12 */
+#define GPS_MAX_SATELLITES 12
+
+/* ee484992 "GPS_POSITION" (Windows Embedded CE 6.0 and later) prints
+ * the full struct; the GPS_FIX_* enums above are its member types. */
+typedef struct _GPS_POSITION {
+  DWORD dwVersion;
+  DWORD dwSize;
+  DWORD dwValidFields;
+  DWORD dwFlags;
+  SYSTEMTIME stUTCTime;
+  double dblLatitude;
+  double dblLongitude;
+  float  flSpeed;
+  float  flHeading;
+  double dblMagneticVariation;
+  float  flAltitudeWRTSeaLevel;
+  float  flAltitudeWRTEllipsoid;
+  GPS_FIX_QUALITY     FixQuality;
+  GPS_FIX_TYPE        FixType;
+  GPS_FIX_SELECTION   SelectionType;
+  float flPositionDilutionOfPrecision;
+  float flHorizontalDilutionOfPrecision;
+  float flVerticalDilutionOfPrecision;
+  DWORD dwSatelliteCount;
+  DWORD rgdwSatellitesUsedPRNs[GPS_MAX_SATELLITES];
+  DWORD dwSatellitesInView;
+  DWORD rgdwSatellitesInViewPRNs[GPS_MAX_SATELLITES];
+  DWORD rgdwSatellitesInViewElevation[GPS_MAX_SATELLITES];
+  DWORD rgdwSatellitesInViewAzimuth[GPS_MAX_SATELLITES];
+  DWORD rgdwSatellitesInViewSignalToNoiseRatio[GPS_MAX_SATELLITES];
+} GPS_POSITION, *PGPS_POSITION;
+
+/* GPS_DEVICE: no "GPS_DEVICE Structure" page prints the members
+ * anywhere in the corpus (checked 2026-09-18); carried opaque so the
+ * GPSGetDeviceState print can be declared verbatim. */
+typedef struct _GPS_DEVICE GPS_DEVICE, *PGPS_DEVICE;
+
+/* ee483702 GPSGetDeviceState: print `DWORD GPSGetDeviceState(
+GPS_DEVICE *pGPSDevice
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: Gpsapi.lib) */
+AKARI_CE_IMPORT DWORD GPSGetDeviceState(GPS_DEVICE *pGPSDevice) AKARI_CE_NAME(GPSGetDeviceState);
+
 /* ee483557 GPSCloseDevice: print `DWORD GPSCloseDevice(
 HANDLE hGPSDevice
 );`
@@ -78,6 +124,15 @@ DWORD dwFlags
 );`
  * (Windows Embedded CE 6.0 and later; Link Library: Gpsapi.lib) */
 AKARI_CE_IMPORT HANDLE GPSOpenDevice(HANDLE hNewLocationData, HANDLE hDeviceStateChange, const WCHAR *szDeviceName, DWORD dwFlags) AKARI_CE_NAME(GPSOpenDevice);
+
+/* ee483312 GPSGetPosition: print `DWORD GPSGetPosition(
+HANDLE hGPSDevice,
+GPS_POSITION *pGPSPosition,
+DWORD dwMaximumAge,
+DWORD dwFlags
+);`
+ * (Windows Embedded CE 6.0 and later; Link Library: Gpsapi.lib) */
+AKARI_CE_IMPORT DWORD GPSGetPosition(HANDLE hGPSDevice, GPS_POSITION *pGPSPosition, DWORD dwMaximumAge, DWORD dwFlags) AKARI_CE_NAME(GPSGetPosition);
 
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_GPSAPI_H */

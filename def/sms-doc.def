@@ -15,5 +15,14 @@ LIBRARY sms.dll
 EXPORTS
   SmsClearMessageNotification
   SmsClose
+  SmsGetBroadcastMsgRanges
+  SmsGetMessageSize
+  SmsGetMessageStatus
+  SmsGetPhoneNumber
+  SmsGetSMSC
   SmsGetTime
   SmsOpen
+  SmsReadMessage
+  SmsSendMessage
+  SmsSetBroadcastMsgRanges
+  SmsSetSMSC

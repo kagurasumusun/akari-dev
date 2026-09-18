@@ -98,6 +98,45 @@ typedef struct sms_range_tag {
     DWORD dwMaximum;
 } SMS_RANGE, *LPSMS_RANGE;
 
+/* SMS_MAX_ADDRESS_LENGTH: no corpus page prints the value (checked
+ * 2026-09-18); 256 per the permitted CeGCC w32api value check
+ * (their sms.h marks it "??").  Replace on an official print. */
+#define SMS_MAX_ADDRESS_LENGTH 256
+
+/* ee498006 "SMS_ADDRESS" (Windows Embedded CE 6.0 and later) page
+ * print. */
+typedef struct sms_address_tag {
+    SMS_ADDRESS_TYPE smsatAddressType;
+    TCHAR ptsAddress[SMS_MAX_ADDRESS_LENGTH];
+} SMS_ADDRESS, *LPSMS_ADDRESS;
+/* SMS_MESSAGE_ID: no corpus page prints the definition (checked
+ * 2026-09-18; the SmsGetMessageStatus/SmsSendMessage/SMS_STATUS_
+ * INFORMATION prints only use it).  Derived as the standard WinCE
+ * 128-bit identifier; replace on an official print. */
+typedef GUID SMS_MESSAGE_ID;
+
+/* ee497110 "SMS_STATUS_INFORMATION" (Windows Embedded CE 6.0 and
+ * later) page print. */
+typedef struct sms_status_information_tag {
+    SMS_MESSAGE_ID smsmidMessageID;
+    DWORD dwMessageStatus0;
+    DWORD dwMessageStatus1;
+    SMS_ADDRESS smsaRecipientAddress;
+    SYSTEMTIME stServiceCenterTimeStamp;
+    SYSTEMTIME stDischargeTime;
+} SMS_STATUS_INFORMATION, *LPSMS_STATUS_INFORMATION;
+
+/* ee497131 "SMS_BROADCAST_RANGES" (Windows Embedded CE 6.0 and
+ * later) page print. */
+typedef struct sms_broadcast_ranges_tag {
+    DWORD cbSize;
+    DWORD dwParams;
+    DWORD dwNumRanges;
+    DWORD dwBroadcastMsgLangs;
+    BOOL bAccept;
+    SMS_RANGE smsrBroadcastRanges[];
+} SMS_BROADCAST_RANGES, *LPSMS_BROADCAST_RANGES;
+
 /* ee497445 SMS_DATA_ENCODING: page print
  * enum SMS_DATA_ENCODING { SMSDE_OPTIMAL=0, SMSDE_GSM, SMSDE_UCS2, };
  * (Windows Embedded CE 6.0 and later) */
@@ -217,6 +256,51 @@ const SMS_HANDLE* psmshHandle,
 const HANDLE* phMessageAvailableEvent);`
  * (generation not stated; Link Library: sms.lib) */
 AKARI_CE_IMPORT HRESULT SmsOpen(const LPCTSTR ptsMessageProtocol, const DWORD dwMessageModes, const SMS_HANDLE *psmshHandle, const HANDLE *phMessageAvailableEvent) AKARI_CE_NAME(SmsOpen);
+
+/* ee498021 SmsGetBroadcastMsgRanges: print `HRESULT
+ * SmsGetBroadcastMsgRanges ( const SMS_BROADCAST_RANGES*
+ * psmsbrBroadcastRanges );` (Link Library: Sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsGetBroadcastMsgRanges(const SMS_BROADCAST_RANGES *psmsbrBroadcastRanges) AKARI_CE_NAME(SmsGetBroadcastMsgRanges);
+
+/* ee496906 SmsGetMessageSize: print `HRESULT SmsGetMessageSize (
+ * const SMS_HANDLE smshHandle, DWORD* const pdwDataSize );`
+ * (Link Library: Sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsGetMessageSize(const SMS_HANDLE smshHandle, DWORD *const pdwDataSize) AKARI_CE_NAME(SmsGetMessageSize);
+
+/* ee497508 SmsGetMessageStatus: print `HRESULT SmsGetMessageStatus
+ * ( const SMS_HANDLE smshHandle, SMS_MESSAGE_ID smsmidMessageID,
+ * SMS_STATUS_INFORMATION* psmssiStatusInformation, const DWORD
+ * dwTimeout );` (Link Library: Sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsGetMessageStatus(const SMS_HANDLE smshHandle, SMS_MESSAGE_ID smsmidMessageID, SMS_STATUS_INFORMATION *psmssiStatusInformation, const DWORD dwTimeout) AKARI_CE_NAME(SmsGetMessageStatus);
+
+/* ee498284 SmsGetPhoneNumber: print `HRESULT SmsGetPhoneNumber (
+ * const SMS_ADDRESS* psmsaAddress );` (Link Library: Sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsGetPhoneNumber(const SMS_ADDRESS *psmsaAddress) AKARI_CE_NAME(SmsGetPhoneNumber);
+
+/* ee497367 SmsGetSMSC: print `HRESULT SmsGetSMSC ( SMS_ADDRESS*
+ * psmsaSMSCAddress );` (Link Library: Sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsGetSMSC(SMS_ADDRESS *psmsaSMSCAddress) AKARI_CE_NAME(SmsGetSMSC);
+
+/* ee496912 SmsReadMessage: page print carries SAL `bcount(...)`
+ * annotations; declared without them (same parameters).
+ * (Link Library: Sms.lib) */
+AKARI_CE_IMPORT HRESULT SmsReadMessage(const SMS_HANDLE smshHandle, SMS_ADDRESS *const psmsaSMSCAddress, SMS_ADDRESS *const psmsaSourceAddress, SYSTEMTIME *const pstReceiveTime, BYTE *pbBuffer, DWORD dwBufferSize, BYTE *pbProviderSpecificBuffer, DWORD dwProviderSpecificDataBuffer, DWORD *pdwBytesRead) AKARI_CE_NAME(SmsReadMessage);
+
+/* ee498244 SmsSendMessage page print (Link Library: Sms.lib). */
+AKARI_CE_IMPORT HRESULT SmsSendMessage(const SMS_HANDLE smshHandle, const SMS_ADDRESS *psmsaSMSCAddress, const SMS_ADDRESS *psmsaDestinationAddress, const SYSTEMTIME *pstValidityPeriod, const BYTE *pbData, const DWORD dwDataSize, const BYTE *pbProviderSpecificData, const DWORD dwProviderSpecificDataSize, const SMS_DATA_ENCODING smsdeDataEncoding, const DWORD dwOptions, SMS_MESSAGE_ID *psmsmidMessageID) AKARI_CE_NAME(SmsSendMessage);
+
+/* ee497819 SmsSetBroadcastMsgRanges page print
+ * (Link Library: Sms.lib). */
+AKARI_CE_IMPORT HRESULT SmsSetBroadcastMsgRanges(const SMS_BROADCAST_RANGES *psmsbrBroadcastRanges) AKARI_CE_NAME(SmsSetBroadcastMsgRanges);
+
+/* ee497839 SmsSetSMSC page print (Link Library: Sms.lib). */
+AKARI_CE_IMPORT HRESULT SmsSetSMSC(const SMS_ADDRESS *psmsaSMSCAddress) AKARI_CE_NAME(SmsSetSMSC);
+
+/* SmsSetMessageNotification HELD: its SMSREGISTRATIONDATA members
+ * are sized by SMS_MAX_APPNAME_LENGTH / SMS_MAX_PARAMS_LENGTH /
+ * SMS_MAX_PROTOCOLNAME_LENGTH, and no corpus page prints those
+ * values (checked 2026-09-18). */
+
 
 #endif /* _WIN32_WCE >= 0x0600 */
 #endif /* AKARI_SMS_H */
