@@ -224,12 +224,16 @@ typedef UINT (CALLBACK *REGISTERWORDENUMPROC)(LPCTSTR lpszReading,
 /* ms906003: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HIMC ImmGetContext(HWND hWnd)
     AKARI_CE_NAME(ImmGetContext);                       /* ms906003 */
+/* twin-print: ms906027 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906003 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmReleaseContext(HWND hWnd, HIMC hIMC)
     AKARI_CE_NAME(ImmReleaseContext);                   /* ms906027 */
+/* twin-print: ms905987 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906027 lacks the print. */
 AKARI_CE_IMPORT HIMC ImmCreateContext(void)
     AKARI_CE_NAME(ImmCreateContext);                    /* ms905987 */
+/* twin-print: ms905989 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905987 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmDestroyContext(HIMC hIMC)
     AKARI_CE_NAME(ImmDestroyContext);                   /* ms905989 */
+/* twin-print: ms905984 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905989 lacks the print. */
 AKARI_CE_IMPORT HIMC ImmAssociateContext(HWND hWnd, HIMC hIMC)
     AKARI_CE_NAME(ImmAssociateContext);                 /* ms905984 */
 AKARI_CE_IMPORT BOOL ImmAssociateContextEx(HWND hWnd, HIMC hIMC,
@@ -237,10 +241,13 @@ AKARI_CE_IMPORT BOOL ImmAssociateContextEx(HWND hWnd, HIMC hIMC,
     AKARI_CE_NAME(ImmAssociateContextEx);               /* ms905985: the
     archive prints the second parameter type as HINC; the page's own
     parameter text documents an input-method-context handle (HIMC) */
+/* twin-print: ms906023 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905985 lacks the print. */
 AKARI_CE_IMPORT LPINPUTCONTEXT WINAPI ImmLockIMC(HIMC hIMC)
     AKARI_CE_NAME(ImmLockIMC);                          /* ms906023 */
+/* twin-print: ms906039 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906023 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI ImmUnlockIMC(HIMC hIMC)
     AKARI_CE_NAME(ImmUnlockIMC);                        /* ms906039 */
+/* twin-print: ms906013 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906039 lacks the print. */
 AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCLockCount(HIMC hIMC)
     AKARI_CE_NAME(ImmGetIMCLockCount);                  /* ms906013 */
 
@@ -249,16 +256,22 @@ AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCLockCount(HIMC hIMC)
 /* ms905988: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HIMCC WINAPI ImmCreateIMCC(DWORD dwSize)
     AKARI_CE_NAME(ImmCreateIMCC);                       /* ms905988 */
+/* twin-print: ms905990 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905988 lacks the print. */
 AKARI_CE_IMPORT HIMCC WINAPI ImmDestroyIMCC(HIMCC hIMCC)
     AKARI_CE_NAME(ImmDestroyIMCC);                      /* ms905990 */
+/* twin-print: ms906028 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905990 lacks the print. */
 AKARI_CE_IMPORT HIMCC WINAPI ImmReSizeIMCC(HIMCC hIMCC, DWORD dwSize)
     AKARI_CE_NAME(ImmReSizeIMCC);                       /* ms906028 */
+/* twin-print: ms906024 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906028 lacks the print. */
 AKARI_CE_IMPORT LPVOID WINAPI ImmLockIMCC(HIMCC hIMCC)
     AKARI_CE_NAME(ImmLockIMCC);                         /* ms906024 */
+/* twin-print: ms906040 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906024 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI ImmUnlockIMCC(HIMCC hIMCC)
     AKARI_CE_NAME(ImmUnlockIMCC);                       /* ms906040 */
+/* twin-print: ms906012 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906040 lacks the print. */
 AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCCSize(HIMCC hIMCC)
     AKARI_CE_NAME(ImmGetIMCCSize);                      /* ms906012 */
+/* twin-print: ms906011 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906012 lacks the print. */
 AKARI_CE_IMPORT DWORD WINAPI ImmGetIMCCLockCount(HIMCC hIMCC)
     AKARI_CE_NAME(ImmGetIMCCLockCount);                 /* ms906011 */
 
@@ -279,9 +292,11 @@ AKARI_CE_IMPORT DWORD ImmGetCandidateListCountW(HIMC hIMC,
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define ImmGetCandidateListCount ImmGetCandidateListCountW            /* ms905996 */
+/* twin-print: ms905997 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905996 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmGetCandidateWindow(HIMC hIMC, DWORD dwIndex,
     LPCANDIDATEFORM lpCandidate)
     AKARI_CE_NAME(ImmGetCandidateWindow);               /* ms905997 */
+/* twin-print: ms906029 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905997 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSetCandidateWindow(HIMC hIMC,
     LPCANDIDATEFORM lpCandidate)
     AKARI_CE_NAME(ImmSetCandidateWindow);               /* ms906029 */
@@ -303,9 +318,11 @@ AKARI_CE_IMPORT BOOL ImmSetCompositionStringW(HIMC hIMC, DWORD dwIndex,
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define ImmSetCompositionString ImmSetCompositionStringW             /* ms906031 */
+/* twin-print: ms906002 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906031 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmGetCompositionWindow(HIMC hIMC,
     LPCOMPOSITIONFORM lpCompForm)
     AKARI_CE_NAME(ImmGetCompositionWindow);             /* ms906002 */
+/* twin-print: ms906032 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906002 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSetCompositionWindow(HIMC hIMC,
     LPCOMPOSITIONFORM lpCompForm)
     AKARI_CE_NAME(ImmSetCompositionWindow);             /* ms906032 */
@@ -328,6 +345,7 @@ AKARI_CE_IMPORT BOOL ImmSetCompositionFontW(HIMC hIMC, LPLOGFONT lplf)
 AKARI_CE_IMPORT BOOL ImmGetConversionStatus(HIMC hIMC,
     LPDWORD lpfdwConversion, LPDWORD lpfdwSentence)
     AKARI_CE_NAME(ImmGetConversionStatus);              /* ms906005 */
+/* twin-print: ms906033 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906005 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSetConversionStatus(HIMC hIMC,
     DWORD fdwConversion, DWORD fdwSentence)
     AKARI_CE_NAME(ImmSetConversionStatus);              /* ms906033 */
@@ -344,14 +362,19 @@ AKARI_CE_IMPORT UINT ImmGetConversionListW(HKL hKL, HIMC hIMC,
 /* ms906016: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL ImmGetOpenStatus(HIMC hIMC)
     AKARI_CE_NAME(ImmGetOpenStatus);                    /* ms906016 */
+/* twin-print: ms906035 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906016 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSetOpenStatus(HIMC hIMC, BOOL fOpen)
     AKARI_CE_NAME(ImmSetOpenStatus);                    /* ms906035 */
+/* twin-print: ms906019 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906035 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmGetStatusWindowPos(HIMC hIMC, LPPOINT lpptPos)
     AKARI_CE_NAME(ImmGetStatusWindowPos);               /* ms906019 */
+/* twin-print: ms906036 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906019 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSetStatusWindowPos(HIMC hIMC, LPPOINT lpptPos)
     AKARI_CE_NAME(ImmSetStatusWindowPos);               /* ms906036 */
+/* twin-print: ms906007 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906036 lacks the print. */
 AKARI_CE_IMPORT HWND ImmGetDefaultIMEWnd(HWND hWnd)
     AKARI_CE_NAME(ImmGetDefaultIMEWnd);                 /* ms906007 */
+/* twin-print: ms906017 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906007 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmGetProperty(HKL hKL, DWORD fdwIndex)
     AKARI_CE_NAME(ImmGetProperty);                      /* ms906017 */
 AKARI_CE_IMPORT DWORD ImmGetGuideLineW(HIMC hIMC, DWORD dwIndex,
@@ -410,8 +433,10 @@ AKARI_CE_IMPORT BOOL ImmIsUIMessageW(HWND hWndIME, UINT msg,
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define ImmIsUIMessage ImmIsUIMessageW                      /* ms906022 */
+/* twin-print: ms905994 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906022 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI ImmGenerateMessage(HIMC hIMC)
     AKARI_CE_NAME(ImmGenerateMessage);                  /* ms905994 */
+/* twin-print: ms906020 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905994 lacks the print. */
 AKARI_CE_IMPORT UINT ImmGetVirtualKey(HWND hWnd)
     AKARI_CE_NAME(ImmGetVirtualKey);                    /* ms906020 */
 
@@ -421,9 +446,11 @@ AKARI_CE_IMPORT UINT ImmGetVirtualKey(HWND hWnd)
 AKARI_CE_IMPORT BOOL WINAPI ImmGetHotKey(DWORD dwHotKeyID,
     LPUINT lpuModifiers, LPUINT lpuVKey, LPHKL lphKL)
     AKARI_CE_NAME(ImmGetHotKey);                        /* ms906010 */
+/* twin-print: ms906034 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906010 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI ImmSetHotKey(DWORD dwHotKeyID,
     UINT uModifiers, UINT uVKey, HKL hKL)
     AKARI_CE_NAME(ImmSetHotKey);                        /* ms906034 */
+/* twin-print: ms906037 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906034 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSimulateHotKey(HWND hWnd, DWORD dwHotKeyID)
     AKARI_CE_NAME(ImmSimulateHotKey);                   /* ms906037 */
 
@@ -467,8 +494,10 @@ AKARI_CE_IMPORT UINT ImmGetRegisterWordStyleW(HKL hKL, UINT nItem,
 AKARI_CE_IMPORT BOOL ImmNotifyIME(HIMC hIMC, DWORD dwAction,
     DWORD dwIndex, DWORD dwValue)
     AKARI_CE_NAME(ImmNotifyIME);                        /* ms906025 */
+/* twin-print: ms905991 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906025 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmDisableIME(DWORD idThread)
     AKARI_CE_NAME(ImmDisableIME);                       /* ms905991 */
+/* twin-print: ms906038 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905991 lacks the print. */
 AKARI_CE_IMPORT BOOL ImmSIPanelState(UINT dwCmd, LPVOID pValue)
     AKARI_CE_NAME(ImmSIPanelState);                     /* ms906038: the
     CE-specific software input panel state helper */

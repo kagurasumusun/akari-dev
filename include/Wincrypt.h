@@ -903,10 +903,12 @@ AKARI_CE_IMPORT BOOL WINAPI CryptGetKeyParam(HCRYPTKEY hKey, DWORD dwParam, BYTE
                                DWORD *pdwDataLen,
                                DWORD dwFlags) AKARI_CE_NAME(CryptGetKeyParam);
 
+/* twin-print: ms938119 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms938096 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CryptGetProvParam(HCRYPTPROV hProv, DWORD dwParam,
                                 BYTE *pbData, DWORD *pdwDataLen,
                                 DWORD dwFlags) AKARI_CE_NAME(CryptGetProvParam);
 
+/* twin-print: ms938123 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms938096 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CryptGetUserKey(HCRYPTPROV hProv, DWORD dwKeySpec,
                               HCRYPTKEY *phUserKey) AKARI_CE_NAME(CryptGetUserKey);
 
@@ -1107,6 +1109,7 @@ AKARI_CE_IMPORT BOOL WINAPI CertComparePublicKeyInfo(DWORD dwCertEncodingType,
                                        PCERT_PUBLIC_KEY_INFO pPublicKey1,
                                        PCERT_PUBLIC_KEY_INFO pPublicKey2) AKARI_CE_NAME(CertComparePublicKeyInfo);
 
+/* twin-print: ms937042 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937039 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertControlStore(HCERTSTORE hCertStore, DWORD dwFlags,
                                DWORD dwCtrlType,
                                const void *pvCtrlPara) AKARI_CE_NAME(CertControlStore);
@@ -1176,8 +1179,10 @@ AKARI_CE_IMPORT PCERT_RDN_ATTR WINAPI CertFindRDNAttr(LPCSTR pszObjId,
 /* ms937658 prints a void return. */
 AKARI_CE_IMPORT void WINAPI CertFreeCertificateChain(PCCERT_CHAIN_CONTEXT pChainContext) AKARI_CE_NAME(CertFreeCertificateChain);
 
+/* twin-print: ms937659 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937658 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertFreeCertificateContext(PCCERT_CONTEXT pCertContext) AKARI_CE_NAME(CertFreeCertificateContext);
 
+/* twin-print: ms937660 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937658 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertGetCertificateChain(HCERTCHAINENGINE hChainEngine,
                                       PCCERT_CONTEXT pCertContext,
                                       LPFILETIME pTime,
@@ -1186,6 +1191,7 @@ AKARI_CE_IMPORT BOOL WINAPI CertGetCertificateChain(HCERTCHAINENGINE hChainEngin
                                       DWORD dwFlags, LPVOID pvReserved,
                                       PCCERT_CHAIN_CONTEXT *ppChainContext) AKARI_CE_NAME(CertGetCertificateChain);
 
+/* twin-print: ms937661 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937658 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertGetCertificateContextProperty(PCCERT_CONTEXT pCertContext,
                                                 DWORD dwPropId,
                                                 void *pvData,
@@ -1226,10 +1232,12 @@ AKARI_CE_IMPORT BOOL WINAPI CertGetStoreProperty(HCERTSTORE hCertStore, DWORD dw
                                    void *pvData,
                                    DWORD *pcbData) AKARI_CE_NAME(CertGetStoreProperty);
 
+/* twin-print: ms937670 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937668 lacks the print. */
 AKARI_CE_IMPORT PCCERT_CONTEXT WINAPI CertGetSubjectCertificateFromStore(HCERTSTORE hCertStore,
                                                                          DWORD dwCertEncodingType,
                                                                          PCERT_INFO pCertId) AKARI_CE_NAME(CertGetSubjectCertificateFromStore);
 
+/* twin-print: aa452565 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937668 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertGetValidUsages(DWORD cCerts, PCCERT_CONTEXT *rghCerts,
                                  int *cNumOIDs, LPSTR *rghOIDs,
                                  DWORD *pcbOIDs) AKARI_CE_NAME(CertGetValidUsages);
@@ -1296,15 +1304,18 @@ AKARI_CE_IMPORT BOOL WINAPI CertSetStoreProperty(HCERTSTORE hCertStore, DWORD dw
                                    DWORD dwFlags,
                                    const void *pvData) AKARI_CE_NAME(CertSetStoreProperty);
 
+/* twin-print: ms937703 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937700 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertStrToName(DWORD dwCertEncodingType, LPCTSTR pszX500,
                             DWORD dwStrType, void *pvReserved,
                             BYTE *pbEncoded, DWORD *pcbEncoded,
                             LPCTSTR *ppszError) AKARI_CE_NAME(CertStrToName);
 
+/* twin-print: ms937709 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937700 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CertVerifySubjectCertificateContext(PCCERT_CONTEXT pSubject,
                                                   PCCERT_CONTEXT pIssuer,
                                                   DWORD *pdwFlags) AKARI_CE_NAME(CertVerifySubjectCertificateContext);
 
+/* twin-print: ms937710 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms937700 lacks the print. */
 AKARI_CE_IMPORT LONG WINAPI CertVerifyTimeValidity(LPFILETIME pTimeToVerify,
                                                    PCERT_INFO pCertInfo) AKARI_CE_NAME(CertVerifyTimeValidity);
 
@@ -1488,6 +1499,7 @@ AKARI_CE_IMPORT BOOL WINAPI CryptVerifyCertificateSignature(HCRYPTPROV hCryptPro
                                               DWORD cbEncoded,
                                               PCERT_PUBLIC_KEY_INFO pPublicKey) AKARI_CE_NAME(CryptVerifyCertificateSignature);
 
+/* twin-print: ms938372 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452567 lacks the print. */
 AKARI_CE_IMPORT BOOL WINAPI CryptUninstallDefaultContext(HCRYPTDEFAULTCONTEXT hDefaultContext,
                                            DWORD dwFlags,
                                            void *pvReserved) AKARI_CE_NAME(CryptUninstallDefaultContext);

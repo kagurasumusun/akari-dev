@@ -39,20 +39,32 @@ extern "C" {
 #define LBER_USE_DER     0x01
 
 AKARI_CE_IMPORT BerElement* ber_alloc_t(INT iOptions) AKARI_CE_NAME(ber_alloc_t);                    /* ms863718 */
+/* twin-print: ms863725 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863718 lacks the print. */
 AKARI_CE_IMPORT BERVAL*     ber_bvdup(BERVAL *pBerVal) AKARI_CE_NAME(ber_bvdup);                   /* ms863725 */
+/* twin-print: ms863730 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863725 lacks the print. */
 AKARI_CE_IMPORT void        ber_bvecfree(BERVAL **pBerVal) AKARI_CE_NAME(ber_bvecfree);               /* ms863730 */
+/* twin-print: ms863737 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863730 lacks the print. */
 AKARI_CE_IMPORT void        ber_bvfree(BERVAL *pBerVal) AKARI_CE_NAME(ber_bvfree);                  /* ms863737 */
+/* twin-print: ms863754 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863737 lacks the print. */
 AKARI_CE_IMPORT ULONG       ber_first_element(BerElement *pBerElement, ULONG *pLen,
                               CHAR **ppOpaque) AKARI_CE_NAME(ber_first_element);           /* ms863754 */
+/* twin-print: ms863761 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863754 lacks the print. */
 AKARI_CE_IMPORT INT         ber_flatten(BerElement *pBerElement,
                         BERVAL **pBerVal) AKARI_CE_NAME(ber_flatten);                /* ms863761 */
+/* twin-print: ms863769 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863761 lacks the print. */
 AKARI_CE_IMPORT void        ber_free(BerElement *pBerElement, INT fbuf) AKARI_CE_NAME(ber_free);  /* ms863769 */
+/* twin-print: ms863775 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863769 lacks the print. */
 AKARI_CE_IMPORT BerElement* ber_init(BERVAL *pBerVal) AKARI_CE_NAME(ber_init);                    /* ms863775 */
+/* twin-print: ms863786 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863775 lacks the print. */
 AKARI_CE_IMPORT ULONG       ber_next_element(BerElement *pBerElement, ULONG *pLen,
                              CHAR *pOpaque) AKARI_CE_NAME(ber_next_element);              /* ms863786 */
+/* twin-print: ms863791 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863786 lacks the print. */
 AKARI_CE_IMPORT ULONG       ber_peek_tag(BerElement *pBerElement, ULONG *pLen) AKARI_CE_NAME(ber_peek_tag); /* ms863791 */
+/* twin-print: ms863798 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863791 lacks the print. */
 AKARI_CE_IMPORT INT         ber_printf(BerElement *pBerElement, PTCHAR fmt, ...) AKARI_CE_NAME(ber_printf); /* ms863798 */
+/* twin-print: ms863810 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863798 lacks the print. */
 AKARI_CE_IMPORT INT         ber_scanf(BerElement *pBerElement, PTCHAR fmt, ...) AKARI_CE_NAME(ber_scanf);  /* ms863810 */
+/* twin-print: ms863817 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863810 lacks the print. */
 AKARI_CE_IMPORT ULONG       ber_skip_tag(BerElement *pBerElement, ULONG *pLen) AKARI_CE_NAME(ber_skip_tag);   /* ms863817 */
 
 #ifdef __cplusplus

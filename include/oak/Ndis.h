@@ -666,6 +666,7 @@ AKARI_CE_IMPORT VOID  NdisDestroyLookaheadBufferFromSharedMemory(PVOID pLookahea
                     AKARI_CE_NAME(NdisDestroyLookaheadBufferFromSharedMemory);
 
 /* "NdisDprAcquireSpinLock" (aa447937): print `VOIDNdisDprAcquireSpinLock(PNDIS_SPIN_LOCK SpinLock)` */
+/* twin-print: ms921046 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa447937 lacks the print. */
 AKARI_CE_IMPORT VOID NdisDprAcquireSpinLock(PNDIS_SPIN_LOCK SpinLock)
                     AKARI_CE_NAME(NdisDprAcquireSpinLock);
 
@@ -686,6 +687,7 @@ AKARI_CE_IMPORT VOID  NdisDprFreePacketNonInterlocked(PNDIS_PACKET Packet)
                     AKARI_CE_NAME(NdisDprFreePacketNonInterlocked);
 
 /* "NdisDprReleaseSpinLock" (aa447942): print `VOIDNdisDprReleaseSpinLock(PNDIS_SPIN_LOCKSpinLock)` */
+/* twin-print: ms921052 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa447942 lacks the print. */
 AKARI_CE_IMPORT VOID NdisDprReleaseSpinLock(PNDIS_SPIN_LOCK SpinLock)
                     AKARI_CE_NAME(NdisDprReleaseSpinLock);
 
@@ -698,6 +700,7 @@ AKARI_CE_IMPORT ULONG  NdisEqualMemory(CONST VOID*Source1, CONST VOID*Source2, U
                     AKARI_CE_NAME(NdisEqualMemory);
 
 /* "NdisEqualString" (aa447946): print `BOOLEANNdisEqualString(PNDIS_STRINGString1,PNDIS_STRINGString2,BOOLEANCaseInsensitive)` */
+/* twin-print: ms921055 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa447946 lacks the print. */
 AKARI_CE_IMPORT BOOLEAN NdisEqualString(PNDIS_STRING String1, PNDIS_STRING String2, BOOLEAN CaseInsensitive)
                     AKARI_CE_NAME(NdisEqualString);
 
@@ -726,6 +729,7 @@ AKARI_CE_IMPORT VOID  NdisFreeEvent(PNDIS_EVENT Event)
                     AKARI_CE_NAME(NdisFreeEvent);
 
 /* "NdisFreeMemory" (aa447954): print `VOIDNdisFreeMemory(PVOIDVirtualAddress,UINTLength,UINTMemoryFlags)` */
+/* twin-print: ms921061 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa447954 lacks the print. */
 AKARI_CE_IMPORT VOID NdisFreeMemory(PVOID VirtualAddress, UINT Length, UINT MemoryFlags)
                     AKARI_CE_NAME(NdisFreeMemory);
 
@@ -774,6 +778,7 @@ AKARI_CE_IMPORT VOID  NdisGetDriverHandle(PNDIS_HANDLE NdisBindingHandle, PNDIS_
                     AKARI_CE_NAME(NdisGetDriverHandle);
 
 /* "NdisGetFirstBufferFromPacket" (aa447966): print `VOIDNdisGetFirstBufferFromPacket(PNDIS_PACKETPacket,PNDIS_BUFFER* FirstBuffer,PVOID* FirstBufferVA,PUINTFirstBufferLength,PUINTTotalBufferLength)` */
+/* twin-print: ms921070 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa447966 lacks the print. */
 AKARI_CE_IMPORT VOID NdisGetFirstBufferFromPacket(PNDIS_PACKET Packet, PNDIS_BUFFER*FirstBuffer, PVOID*FirstBufferVA, PUINT FirstBufferLength, PUINT TotalBufferLength)
                     AKARI_CE_NAME(NdisGetFirstBufferFromPacket);
 
@@ -866,6 +871,7 @@ AKARI_CE_IMPORT NDIS_STATUS  NdisIMRegisterLayeredMiniport(NDIS_HANDLE NdisWrapp
                     AKARI_CE_NAME(NdisIMRegisterLayeredMiniport);
 
 /* "NdisInitAnsiString" (aa448002): print `VOIDNdisInitAnsiString(PNDIS_ANSI_STRINGDestinationString,PCSTRSourceString)` */
+/* twin-print: ms921091 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa448002 lacks the print. */
 AKARI_CE_IMPORT VOID NdisInitAnsiString(PNDIS_ANSI_STRING DestinationString, PCSTR SourceString)
                     AKARI_CE_NAME(NdisInitAnsiString);
 
@@ -878,6 +884,7 @@ AKARI_CE_IMPORT VOID  NdisInitializeReadWriteLock(PNDIS_RW_LOCK Lock)
                     AKARI_CE_NAME(NdisInitializeReadWriteLock);
 
 /* "NdisInitializeString" (aa448007): print `VOIDNdisInitializeString(PNDIS_STRINGDestinationString,PUCHARSourceString)` */
+/* twin-print: ms921095 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa448007 lacks the print. */
 AKARI_CE_IMPORT VOID NdisInitializeString(PNDIS_STRING DestinationString, PUCHAR SourceString)
                     AKARI_CE_NAME(NdisInitializeString);
 
@@ -891,6 +898,7 @@ AKARI_CE_IMPORT VOID  NdisInitializeWorkItem(PNDIS_WORK_ITEM WorkItem, NDIS_PROC
                     AKARI_CE_NAME(NdisInitializeWorkItem);
 
 /* "NdisInitUnicodeString" (aa448010): print `VOIDNdisInitUnicodeString(PNDIS_STRINGDestinationString,PCWSTRSourceString)` */
+/* twin-print: ms921098 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa448010 lacks the print. */
 AKARI_CE_IMPORT VOID NdisInitUnicodeString(PNDIS_STRING DestinationString, PCWSTR SourceString)
                     AKARI_CE_NAME(NdisInitUnicodeString);
 
@@ -963,6 +971,7 @@ AKARI_CE_IMPORT VOID  NdisMFreeSharedMemory(NDIS_HANDLE MiniportAdapterHandle, U
                     AKARI_CE_NAME(NdisMFreeSharedMemory);
 
 /* "NdisMIndicateReceivePacket" (aa448038): print `VOIDNdisMIndicateReceivePacket(NDIS_HANDLEMiniportAdapterHandle,PPNDIS_PACKETReceivePackets,UINTNumberOfPackets)` */
+/* twin-print: ms921126 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa448038 lacks the print. */
 AKARI_CE_IMPORT VOID NdisMIndicateReceivePacket(NDIS_HANDLE MiniportAdapterHandle, PPNDIS_PACKET ReceivePackets, UINT NumberOfPackets)
                     AKARI_CE_NAME(NdisMIndicateReceivePacket);
 
@@ -1018,10 +1027,12 @@ AKARI_CE_IMPORT VOID  NdisMoveMappedMemory(PVOID Destination, PVOID Source, ULON
                     AKARI_CE_NAME(NdisMoveMappedMemory);
 
 /* "NdisMoveMemory" (ms904040): print `VOIDNdisMoveMemory(PVOIDDestination,PVOIDSource,ULONGLength)` */
+/* twin-print: ms921134 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904040 lacks the print. */
 AKARI_CE_IMPORT VOID NdisMoveMemory(PVOID Destination, PVOID Source, ULONG Length)
                     AKARI_CE_NAME(NdisMoveMemory);
 
 /* "NdisMoveToMappedMemory" (ms904041): print `VOIDNdisMoveToMappedMemory(PVOIDDestination,PVOIDSource,ULONGLength)` */
+/* twin-print: ms921135 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904041 lacks the print. */
 AKARI_CE_IMPORT VOID NdisMoveToMappedMemory(PVOID Destination, PVOID Source, ULONG Length)
                     AKARI_CE_NAME(NdisMoveToMappedMemory);
 
@@ -1102,6 +1113,7 @@ AKARI_CE_IMPORT VOID  NdisMSetTimer(PNDIS_MINIPORT_TIMER Timer, UINT Millisecond
                     AKARI_CE_NAME(NdisMSetTimer);
 
 /* "NdisMSleep" (ms904064): print `VOIDNdisMSleep(ULONGMicrosecondsToSleep)` */
+/* twin-print: ee481464 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904064 lacks the print. */
 AKARI_CE_IMPORT VOID NdisMSleep(ULONG MicrosecondsToSleep)
                     AKARI_CE_NAME(NdisMSleep);
 
@@ -1146,6 +1158,7 @@ AKARI_CE_IMPORT NDIS_STATUS  NdisMWriteLogData(NDIS_HANDLE LogHandle, PVOID LogB
                     AKARI_CE_NAME(NdisMWriteLogData);
 
 /* "NdisOpenConfiguration" (ms904079): print `VOIDNdisOpenConfiguration(PNDIS_STATUSStatus,PNDIS_HANDLEConfigurationHandle,NDIS_HANDLEWrapperConfigurationContext)` */
+/* twin-print: ee483022 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904079 lacks the print. */
 AKARI_CE_IMPORT VOID NdisOpenConfiguration(PNDIS_STATUS Status, PNDIS_HANDLE ConfigurationHandle, NDIS_HANDLE WrapperConfigurationContext)
                     AKARI_CE_NAME(NdisOpenConfiguration);
 
@@ -1162,6 +1175,7 @@ AKARI_CE_IMPORT VOID  NdisOpenFile(PNDIS_STATUS Status, PNDIS_HANDLE FileHandle,
                     AKARI_CE_NAME(NdisOpenFile);
 
 /* "NdisOpenProtocolConfiguration" (ms904083): print `VOIDNdisOpenProtocolConfiguration(PNDIS_STATUSStatus,PNDIS_HANDLEConfigurationHandle,PNDIS_STRINGProtocolSection)` */
+/* twin-print: ee486292 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904083 lacks the print. */
 AKARI_CE_IMPORT VOID NdisOpenProtocolConfiguration(PNDIS_STATUS Status, PNDIS_HANDLE ConfigurationHandle, PNDIS_STRING ProtocolSection)
                     AKARI_CE_NAME(NdisOpenProtocolConfiguration);
 
@@ -1174,6 +1188,7 @@ AKARI_CE_IMPORT NDIS_STATUS  NdisQueryAdapterInstanceName(PNDIS_STRING AdapterIn
                     AKARI_CE_NAME(NdisQueryAdapterInstanceName);
 
 /* "NdisQueryBuffer" (ms904101): print `VOIDNdisQueryBuffer(PNDIS_BUFFERBuffer,PVOID* VirtualAddressOPTIONAL,PUINTLength)` */
+/* twin-print: ee485061 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904101 lacks the print. */
 AKARI_CE_IMPORT VOID NdisQueryBuffer(PNDIS_BUFFER Buffer, PVOID*VirtualAddress, PUINT Length)
                     AKARI_CE_NAME(NdisQueryBuffer);
 
@@ -1242,6 +1257,7 @@ AKARI_CE_IMPORT VOID  NdisReadConfiguration(PNDIS_STATUS Status, PNDIS_CONFIGURA
                     AKARI_CE_NAME(NdisReadConfiguration);
 
 /* "NdisReadNetworkAddress" (ms904121): print `VOIDNdisReadNetworkAddress(PNDIS_STATUSStatus,PVOID* NetworkAddress,PUINTNetworkAddressLength,NDIS_HANDLEConfigurationHandle)` */
+/* twin-print: ee486110 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904121 lacks the print. */
 AKARI_CE_IMPORT VOID NdisReadNetworkAddress(PNDIS_STATUS Status, PVOID*NetworkAddress, PUINT NetworkAddressLength, NDIS_HANDLE ConfigurationHandle)
                     AKARI_CE_NAME(NdisReadNetworkAddress);
 
@@ -1264,6 +1280,7 @@ AKARI_CE_IMPORT VOID  NdisReadPortUlong(NDIS_HANDLE NdisAdapterHandle, ULONG Por
                     AKARI_CE_NAME(NdisReadPortUlong);
 
 /* "NdisReadPortUshort" (ms904126): print `VOIDNdisReadPortUshort(NDIS_HANDLE NdisAdapterHandle,ULONG Port,PUSHORTData)` */
+/* twin-print: ee486084 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904126 lacks the print. */
 AKARI_CE_IMPORT VOID NdisReadPortUshort(NDIS_HANDLE NdisAdapterHandle, ULONG Port, PUSHORT Data)
                     AKARI_CE_NAME(NdisReadPortUshort);
 
@@ -1296,6 +1313,7 @@ AKARI_CE_IMPORT VOID  NdisRegisterAdapter(PNDIS_STATUS Status, PWSTR MiniportDri
                     AKARI_CE_NAME(NdisRegisterAdapter);
 
 /* "NdisRegisterProtocol" (ms904134): print `VOIDNdisRegisterProtocol(PNDIS_STATUSStatus,PNDIS_HANDLENdisProtocolHandle,PNDIS_PROTOCOL_CHARACTERISTICSProtocolCharacteristics,UINTCharacteristicsLength)` */
+/* twin-print: ee484055 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904134 lacks the print. */
 AKARI_CE_IMPORT VOID NdisRegisterProtocol(PNDIS_STATUS Status, PNDIS_HANDLE NdisProtocolHandle, PNDIS_PROTOCOL_CHARACTERISTICS ProtocolCharacteristics, UINT CharacteristicsLength)
                     AKARI_CE_NAME(NdisRegisterProtocol);
 
@@ -1380,6 +1398,7 @@ AKARI_CE_IMPORT CCHAR  NdisSystemProcessorCount(void)
                     AKARI_CE_NAME(NdisSystemProcessorCount);
 
 /* "NdisTerminateWrapper" (ms905028): print `VOIDNdisTerminateWrapper(NDIS_HANDLENdisWrapperHandle,PVOIDSystemSpecific)` */
+/* twin-print: ee482637 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905028 lacks the print. */
 AKARI_CE_IMPORT VOID NdisTerminateWrapper(NDIS_HANDLE NdisWrapperHandle, PVOID SystemSpecific)
                     AKARI_CE_NAME(NdisTerminateWrapper);
 
@@ -1462,6 +1481,7 @@ AKARI_CE_IMPORT VOID  NdisZeroMappedMemory(PVOID Destination, ULONG Length)
                     AKARI_CE_NAME(NdisZeroMappedMemory);
 
 /* "NdisZeroMemory" (ms905279): print `VOIDNdisZeroMemory(PVOIDDestination,ULONGLength)` */
+/* twin-print: ee482714 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905279 lacks the print. */
 AKARI_CE_IMPORT VOID NdisZeroMemory(PVOID Destination, ULONG Length)
                     AKARI_CE_NAME(NdisZeroMemory);
 

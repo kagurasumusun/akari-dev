@@ -404,12 +404,19 @@ void SystemIdleTimerReset(void);
 /* ee502564: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL CreateCaret(HWND hWnd, HBITMAP hBitmap, int nWidth,  /* ms908164 */
                  int nHeight) AKARI_CE_NAME(CreateCaret);
+/* twin-print: ee499400 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908164 lacks the print. */
 AKARI_CE_IMPORT BOOL DestroyCaret(void) AKARI_CE_NAME(DestroyCaret);                                  /* aa452936 */
+/* twin-print: ee505236 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452936 lacks the print. */
 AKARI_CE_IMPORT UINT GetCaretBlinkTime(void) AKARI_CE_NAME(GetCaretBlinkTime);                             /* ms929209 */
+/* twin-print: ee501385 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929209 lacks the print. */
 AKARI_CE_IMPORT BOOL GetCaretPos(LPPOINT lpPoint) AKARI_CE_NAME(GetCaretPos);                        /* ms929210 */
+/* twin-print: ee503185 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929210 lacks the print. */
 AKARI_CE_IMPORT BOOL HideCaret(HWND hWnd) AKARI_CE_NAME(HideCaret);                                /* ms929930 */
+/* twin-print: ee505058 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929930 lacks the print. */
 AKARI_CE_IMPORT BOOL SetCaretBlinkTime(UINT uMSeconds) AKARI_CE_NAME(SetCaretBlinkTime);                   /* ms940012 */
+/* twin-print: ee502546 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940012 lacks the print. */
 AKARI_CE_IMPORT BOOL SetCaretPos(int X, int Y) AKARI_CE_NAME(SetCaretPos);                           /* ms940013 */
+/* twin-print: ee502542 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940013 lacks the print. */
 AKARI_CE_IMPORT BOOL ShowCaret(HWND hWnd) AKARI_CE_NAME(ShowCaret);                                /* aa453729 */
 
 /* ------------------------------------------------------------------ */
@@ -432,6 +439,8 @@ AKARI_CE_IMPORT BOOL GetMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,    
  * Unicode-only). */
 #define GetMessage GetMessageW
 /* ee502843: page print verified (proto-cite) */
+/* twin-print: ee501159 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911790 lacks the print. */
+/* twin-print: ee501159 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911790 lacks the print. */
 AKARI_CE_IMPORT BOOL PeekMessageW(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin,   /* ms911928 */
                   UINT wMsgFilterMax, UINT wRemoveMsg) AKARI_CE_NAME(PeekMessageW);
 /* the verified coredll surface exports only the W form;
@@ -460,6 +469,7 @@ AKARI_CE_IMPORT LONG DispatchMessageW(const MSG *lpmsg) AKARI_CE_NAME(DispatchMe
 
 /* aa453776 "TranslateMessage": translates virtual-key messages into
  * character messages. */
+/* twin-print: ee502837 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453776 lacks the print. */
 AKARI_CE_IMPORT BOOL TranslateMessage(const MSG *lpMsg) AKARI_CE_NAME(TranslateMessage);
 
 /* ms911937 "PostMessage" / ms911939 "PostThreadMessage" /
@@ -491,6 +501,7 @@ AKARI_CE_IMPORT BOOL SendNotifyMessageW(HWND hWnd, UINT Msg, WPARAM wParam,
 #define SendNotifyMessage SendNotifyMessageW
 
 /* ms911938 "PostQuitMessage": posts WM_QUIT (wParam = nExitCode). */
+/* twin-print: ee504315 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911938 lacks the print. */
 AKARI_CE_IMPORT void PostQuitMessage(int nExitCode) AKARI_CE_NAME(PostQuitMessage);
 
 /* ms939737 "RegisterWindowMessage": registers a unique message number
@@ -500,6 +511,7 @@ AKARI_CE_IMPORT UINT RegisterWindowMessageW(LPCTSTR lpString) AKARI_CE_NAME(Regi
 
 /* aa453136 "GetMessagePos": cursor position packed into a DWORD
  * (x = low word, y = high word) at the last message read. */
+/* twin-print: ee501753 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453136 lacks the print. */
 AKARI_CE_IMPORT DWORD GetMessagePos(void) AKARI_CE_NAME(GetMessagePos);
 
 /* aa453137 "GetMessageQueueReadyTimeStamp": the page prints Header:
@@ -532,22 +544,33 @@ AKARI_CE_IMPORT BOOL InSendMessage(VOID) AKARI_CE_NAME(InSendMessage);
 
 /* ee503615: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT SHORT GetKeyState(int nVirtKey) AKARI_CE_NAME(GetKeyState);                       /* aa453132 */
+/* twin-print: ee504378 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453132 lacks the print. */
 AKARI_CE_IMPORT SHORT GetAsyncKeyState(int vKey) AKARI_CE_NAME(GetAsyncKeyState);                      /* ms929204 */
+/* twin-print: ee502865 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929204 lacks the print. */
 AKARI_CE_IMPORT HWND  GetFocus(void) AKARI_CE_NAME(GetFocus);                                  /* ms929240 */
+/* twin-print: ee501059 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929240 lacks the print. */
 AKARI_CE_IMPORT HWND  SetFocus(HWND hWnd) AKARI_CE_NAME(SetFocus);                             /* ms940023 */
+/* twin-print: ee505710 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940023 lacks the print. */
 AKARI_CE_IMPORT HWND  GetActiveWindow(void) AKARI_CE_NAME(GetActiveWindow);                           /* ms929203 */
+/* twin-print: ee504615 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929203 lacks the print. */
 AKARI_CE_IMPORT HWND  SetActiveWindow(HWND hWnd) AKARI_CE_NAME(SetActiveWindow);                      /* ms939986 */
+/* twin-print: ee504109 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms939986 lacks the print. */
 AKARI_CE_IMPORT BOOL  EnableWindow(HWND hWnd, BOOL bEnable) AKARI_CE_NAME(EnableWindow);           /* aa453035 */
+/* twin-print: ee505428 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453035 lacks the print. */
 AKARI_CE_IMPORT BOOL  IsWindowEnabled(HWND hWnd) AKARI_CE_NAME(IsWindowEnabled);                      /* aa453234 */
 
 /* Keyboard layout (HKL). */
 /* aa452845: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HKL   ActivateKeyboardLayout(HKL hkl, UINT Flags) AKARI_CE_NAME(ActivateKeyboardLayout);     /* aa452845 */
+/* twin-print: ms929249 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452845 lacks the print. */
 AKARI_CE_IMPORT HKL   GetKeyboardLayout(DWORD idThread) AKARI_CE_NAME(GetKeyboardLayout);               /* ms929249 */
+/* twin-print: ms929250 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929249 lacks the print. */
 AKARI_CE_IMPORT UINT  GetKeyboardLayoutList(int nBuff, HKL *lpList) AKARI_CE_NAME(GetKeyboardLayoutList);   /* ms929250 */
 AKARI_CE_IMPORT BOOL  GetKeyboardLayoutNameW(LPTSTR pwszKLID) AKARI_CE_NAME(GetKeyboardLayoutNameW);         /* ms929252 */
 #define GetKeyboardLayoutName GetKeyboardLayoutNameW
+/* twin-print: ms929253 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929252 lacks the print. */
 AKARI_CE_IMPORT DWORD GetKeyboardStatus(VOID) AKARI_CE_NAME(GetKeyboardStatus);                         /* ms929253 */
+/* twin-print: ms929254 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929253 lacks the print. */
 AKARI_CE_IMPORT int   GetKeyboardType(int nTypeFlag) AKARI_CE_NAME(GetKeyboardType);                  /* ms929254 */
 
 /* ms911789 "MapVirtualKey". */
@@ -851,6 +874,7 @@ AKARI_CE_IMPORT HACCEL CreateAcceleratorTableW(LPACCEL lpaccl, int cEntries) AKA
 AKARI_CE_IMPORT HACCEL LoadAcceleratorsW(HINSTANCE hInstance,                /* aa453407 */
                          LPCTSTR lpTableName) AKARI_CE_NAME(LoadAcceleratorsW);
 #define LoadAccelerators LoadAcceleratorsW
+/* twin-print: ee500521 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453407 lacks the print. */
 AKARI_CE_IMPORT BOOL   DestroyAcceleratorTable(HACCEL hAccel) AKARI_CE_NAME(DestroyAcceleratorTable);              /* aa452935 */
 AKARI_CE_IMPORT int    TranslateAcceleratorW(HWND hWnd, HACCEL hAccTable,    /* aa453775 */
                             LPMSG lpMsg) AKARI_CE_NAME(TranslateAcceleratorW);
@@ -870,6 +894,7 @@ AKARI_CE_IMPORT UINT SendInput(UINT nInputs, LPINPUT pInputs, int cbSize) AKARI_
 AKARI_CE_IMPORT BOOL GetScrollInfo(HWND hwnd, int fnBar, LPSCROLLINFO lpsi) AKARI_CE_NAME(GetScrollInfo); /* aa453163 */
 AKARI_CE_IMPORT int  SetScrollInfo(HWND hwnd, int fnBar, LPSCROLLINFO lpsi,  /* aa453652 */
                    BOOL fRedraw) AKARI_CE_NAME(SetScrollInfo);
+/* twin-print: ee503730 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453652 lacks the print. */
 AKARI_CE_IMPORT int  SetScrollPos(HWND hWnd, int nBar, int nPos, BOOL bRedraw) AKARI_CE_NAME(SetScrollPos); /* aa453653 */
 AKARI_CE_IMPORT BOOL SetScrollRange(HWND hWnd, int nBar, int nMinPos,          /* aa453654 */
                     int nMaxPos, BOOL bRedraw) AKARI_CE_NAME(SetScrollRange);
@@ -915,33 +940,44 @@ typedef struct tagPAINTSTRUCT {
 /* aa452871 "BeginPaint" */
 AKARI_CE_IMPORT HDC BeginPaint(HWND hwnd, LPPAINTSTRUCT lpPaint) AKARI_CE_NAME(BeginPaint);
 /* ms928584 "ClientToScreen" */
+/* twin-print: ee505933 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms928584 lacks the print. */
 AKARI_CE_IMPORT BOOL ClientToScreen(HWND hWnd, LPPOINT lpPoint) AKARI_CE_NAME(ClientToScreen);
 /* ms908152 "CopyRect" */
+/* twin-print: ee500892 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908152 lacks the print. */
 AKARI_CE_IMPORT BOOL CopyRect(LPRECT lprcDst, const RECT* lprcSrc) AKARI_CE_NAME(CopyRect);
 /* aa452970 "DrawFrameControl" */
 AKARI_CE_IMPORT BOOL DrawFrameControl(HDC hdc, LPRECT lprc, UINT uType, UINT uState) AKARI_CE_NAME(DrawFrameControl);
 /* aa453041 "EndPaint" */
+/* twin-print: ee499422 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453041 lacks the print. */
 AKARI_CE_IMPORT BOOL EndPaint(HWND hWnd, CONST PAINTSTRUCT* lpPaint) AKARI_CE_NAME(EndPaint);
 /* aa453055 "EqualRect" */
+/* twin-print: ee500525 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453055 lacks the print. */
 AKARI_CE_IMPORT BOOL EqualRect(const RECT* lprc1, const RECT* lprc2) AKARI_CE_NAME(EqualRect);
 /* ms929227 "GetDC" */
+/* twin-print: ee499088 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929227 lacks the print. */
 AKARI_CE_IMPORT HDC GetDC(HWND hWnd) AKARI_CE_NAME(GetDC);
 /* ms929228 "GetDCEx" */
 AKARI_CE_IMPORT HDC GetDCEx(HWND hWnd, HRGN hrgnClip, DWORD flags) AKARI_CE_NAME(GetDCEx);
 /* aa453174 "GetUpdateRect" */
+/* twin-print: ee501189 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453174 lacks the print. */
 AKARI_CE_IMPORT BOOL GetUpdateRect(HWND hWnd, LPRECT lpRect, BOOL bErase) AKARI_CE_NAME(GetUpdateRect);
 /* aa453175 "GetUpdateRgn" */
+/* twin-print: ee500868 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453175 lacks the print. */
 AKARI_CE_IMPORT int GetUpdateRgn(HWND hWnd, HRGN hRgn, BOOL bErase) AKARI_CE_NAME(GetUpdateRgn);
 /* aa453179 "GetWindowDC" */
+/* twin-print: ee500451 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453179 lacks the print. */
 AKARI_CE_IMPORT HDC GetWindowDC(HWND hWnd) AKARI_CE_NAME(GetWindowDC);
 /* aa453182 "GetWindowRgn" */
 AKARI_CE_IMPORT int GetWindowRgn(HWND hWnd, HRGN hRgn) AKARI_CE_NAME(GetWindowRgn);
 /* ms909856 "IntersectRect" */
+/* twin-print: ee500197 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909856 lacks the print. */
 AKARI_CE_IMPORT BOOL IntersectRect(LPRECT lprcDst, const RECT* lprcSrc1,
     const RECT* lprcSrc2) AKARI_CE_NAME(IntersectRect);
 /* ms909857 "InvalidateRect" */
+/* twin-print: ee505051 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909857 lacks the print. */
 AKARI_CE_IMPORT BOOL InvalidateRect(HWND hWnd, const RECT* lpRect, BOOL bErase) AKARI_CE_NAME(InvalidateRect);
 /* ms909894 "IsRectEmpty" */
+/* twin-print: ee506063 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909894 lacks the print. */
 AKARI_CE_IMPORT BOOL IsRectEmpty(const RECT* lprc) AKARI_CE_NAME(IsRectEmpty);
 /* aa453409 "LoadBitmap" */
 AKARI_CE_IMPORT HBITMAP LoadBitmapW(HINSTANCE hInstance, LPCTSTR lpBitmapName) AKARI_CE_NAME(LoadBitmapW);
@@ -953,24 +989,34 @@ AKARI_CE_IMPORT HBITMAP LoadBitmapW(HINSTANCE hInstance, LPCTSTR lpBitmapName) A
 AKARI_CE_IMPORT int MapWindowPoints(HWND hWndFrom, HWND hWndTo, LPPOINT lpPoints,
     UINT cPoints) AKARI_CE_NAME(MapWindowPoints);
 /* ms911891 "OffsetRect" */
+/* twin-print: ee504901 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911891 lacks the print. */
 AKARI_CE_IMPORT BOOL OffsetRect(LPRECT lprc, int dx, int dy) AKARI_CE_NAME(OffsetRect);
 /* aa453601 "PtInRect" */
+/* twin-print: ee505698 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453601 lacks the print. */
 AKARI_CE_IMPORT BOOL PtInRect(const RECT* lprc, POINT pt) AKARI_CE_NAME(PtInRect);
 /* ms939760 "ReleaseDC" */
+/* twin-print: ee500245 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms939760 lacks the print. */
 AKARI_CE_IMPORT int ReleaseDC(HWND hWnd, HDC hDC) AKARI_CE_NAME(ReleaseDC);
 /* ms932582 "ScreenToClient" */
+/* twin-print: ee503589 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932582 lacks the print. */
 AKARI_CE_IMPORT BOOL ScreenToClient(HWND hWnd, LPPOINT lpPoint) AKARI_CE_NAME(ScreenToClient);
 /* aa453649 "SetRectEmpty" */
+/* twin-print: ee504846 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453649 lacks the print. */
 AKARI_CE_IMPORT BOOL SetRectEmpty(LPRECT lprc) AKARI_CE_NAME(SetRectEmpty);
 /* aa453663 "SetWindowRgn" */
 AKARI_CE_IMPORT int SetWindowRgn(HWND hWnd, HRGN hRgn, BOOL bRedraw) AKARI_CE_NAME(SetWindowRgn);
 /* ms940381 "SubtractRect" */
+/* twin-print: ee504025 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940381 lacks the print. */
 AKARI_CE_IMPORT BOOL SubtractRect(LPRECT lprcDst, const RECT* lprcSrc1, const RECT* lprcSrc2) AKARI_CE_NAME(SubtractRect);
 /* ms914081 "UnionRect" */
+/* twin-print: ee499433 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms914081 lacks the print. */
 AKARI_CE_IMPORT BOOL UnionRect(LPRECT lprcDst, const RECT* lprcSrc1, const RECT* lprcSrc2) AKARI_CE_NAME(UnionRect);
 /* ms914085 "UpdateWindow" */
+/* twin-print: ee501696 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms914085 lacks the print. */
 AKARI_CE_IMPORT BOOL UpdateWindow(HWND hWnd) AKARI_CE_NAME(UpdateWindow);
 /* ms914091 "ValidateRect" */
+/* twin-print: ee502605 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms914091 lacks the print. */
+/* twin-print: ms929247 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452972 lacks the print. */
 AKARI_CE_IMPORT BOOL ValidateRect(HWND hWnd, const RECT* lpRect) AKARI_CE_NAME(ValidateRect);
 
 /* ------------------------------------------------------------------ */
@@ -1102,11 +1148,17 @@ BOOL  AppendMenuW(HMENU hMenu, UINT uFlags, UINT uIDNewItem,
 AKARI_CE_IMPORT BOOL  CheckMenuItem(HMENU hmenu, UINT uIDCheckItem, UINT uCheck) AKARI_CE_NAME(CheckMenuItem); /* ms928575 */
 AKARI_CE_IMPORT BOOL  CheckMenuRadioItem(HMENU hmenu, UINT idFirst, UINT idLast,  /* ms928576 */
                          UINT idCheck, UINT uFlags) AKARI_CE_NAME(CheckMenuRadioItem);
+/* twin-print: ee503486 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms928576 lacks the print. */
 AKARI_CE_IMPORT HMENU CreateMenu(void) AKARI_CE_NAME(CreateMenu);                               /* ms908177 */
+/* twin-print: ee502545 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908177 lacks the print. */
 AKARI_CE_IMPORT HMENU CreatePopupMenu(void) AKARI_CE_NAME(CreatePopupMenu);                          /* ms908182 */
+/* twin-print: ee504306 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908182 lacks the print. */
 AKARI_CE_IMPORT BOOL  DeleteMenu(HMENU hMenu, UINT uPosition, UINT uFlags) AKARI_CE_NAME(DeleteMenu);       /* aa452932 */
+/* twin-print: ee505063 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452932 lacks the print. */
 AKARI_CE_IMPORT BOOL  DestroyMenu(HMENU hMenu) AKARI_CE_NAME(DestroyMenu);                       /* aa452940 */
+/* twin-print: aa452975 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452940 lacks the print. */
 AKARI_CE_IMPORT BOOL  DrawMenuBar(HWND hWnd) AKARI_CE_NAME(DrawMenuBar);                         /* aa452975 */
+/* twin-print: ee501426 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452975 lacks the print. */
 AKARI_CE_IMPORT BOOL  EnableMenuItem(HMENU hMenu, UINT uIDEnableItem, UINT uEnable) AKARI_CE_NAME(EnableMenuItem); /* aa453034 */
 AKARI_CE_IMPORT BOOL  GetMenuItemInfoW(HMENU hMenu, UINT uItem, BOOL fByPosition,
                       LPMENUITEMINFO lpmii) AKARI_CE_NAME(GetMenuItemInfoW);
@@ -1114,13 +1166,16 @@ AKARI_CE_IMPORT BOOL  GetMenuItemInfoW(HMENU hMenu, UINT uItem, BOOL fByPosition
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define GetMenuItemInfo GetMenuItemInfoW          /* aa453134 */
+/* twin-print: ee505084 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453134 lacks the print. */
 AKARI_CE_IMPORT HMENU GetSubMenu(HMENU hMenu, int nPos) AKARI_CE_NAME(GetSubMenu);              /* aa453166 */
+/* twin-print: aa453169 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453166 lacks the print. */
 AKARI_CE_IMPORT HMENU GetSystemMenu(HWND hWnd, BOOL bRevert) AKARI_CE_NAME(GetSystemMenu);         /* aa453169 */
 AKARI_CE_IMPORT BOOL  InsertMenuW(HMENU hMenu, UINT uPosition, UINT uFlags,
                   UINT uIDNewItem, LPCTSTR lpNewItem) AKARI_CE_NAME(InsertMenuW);             /* ms909853 */
 #define InsertMenu InsertMenuW
 AKARI_CE_IMPORT HMENU LoadMenuW(HINSTANCE hInstance, LPCTSTR lpMenuName) AKARI_CE_NAME(LoadMenuW);          /* aa453415 */
 #define LoadMenu LoadMenuW
+/* twin-print: ee503476 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453415 lacks the print. */
 AKARI_CE_IMPORT BOOL  RemoveMenu(HMENU hMenu, UINT uPosition, UINT uFlags) AKARI_CE_NAME(RemoveMenu);        /* ms939775 */
 AKARI_CE_IMPORT BOOL  SetMenuItemInfoW(HMENU hMenu, UINT uItem, BOOL fByPosition,
                       LPCMENUITEMINFO lpmii) AKARI_CE_NAME(SetMenuItemInfoW);
@@ -1128,6 +1183,7 @@ AKARI_CE_IMPORT BOOL  SetMenuItemInfoW(HMENU hMenu, UINT uItem, BOOL fByPosition
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define SetMenuItemInfo SetMenuItemInfoW        /* ms940027 */
+/* twin-print: ee503594 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940027 lacks the print. */
 AKARI_CE_IMPORT BOOL  TrackPopupMenu(HMENU hMenu, UINT uFlags, int x, int y,
                      int nReserved, HWND hWnd, const RECT* prcRect) AKARI_CE_NAME(TrackPopupMenu); /* aa453773 */
 AKARI_CE_IMPORT BOOL  TrackPopupMenuEx(HMENU hmenu, UINT uFlags, int x, int y,     /* aa453774 */
@@ -1178,22 +1234,30 @@ AKARI_CE_IMPORT int    DialogBoxIndirectParamW(HINSTANCE hInstance,             
 int    DialogBoxParamW(HINSTANCE hInstance, LPCTSTR lpTemplateName, /* aa452950 */
                        HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
 #define DialogBoxParam DialogBoxParamW
+/* twin-print: ee506301 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452950 lacks the print. */
 AKARI_CE_IMPORT BOOL   EndDialog(HWND hDlg, int nResult) AKARI_CE_NAME(EndDialog);                         /* aa453038 */
+/* twin-print: ms929231 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453038 lacks the print. */
 AKARI_CE_IMPORT LONG   GetDialogBaseUnits(void) AKARI_CE_NAME(GetDialogBaseUnits);                                  /* ms929231 */
+/* twin-print: ee505952 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929231 lacks the print. */
 AKARI_CE_IMPORT int    GetDlgCtrlID(HWND hwndCtl) AKARI_CE_NAME(GetDlgCtrlID);                                /* ms929233 */
+/* twin-print: ee500513 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929233 lacks the print. */
 AKARI_CE_IMPORT HWND   GetDlgItem(HWND hDlg, int nIDDlgItem) AKARI_CE_NAME(GetDlgItem);                     /* ms929234 */
+/* twin-print: ee500607 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929234 lacks the print. */
 AKARI_CE_IMPORT UINT   GetDlgItemInt(HWND hDlg, int nIDDlgItem, BOOL* lpTranslated,
                      BOOL bSigned) AKARI_CE_NAME(GetDlgItemInt);                               /* ms929235 */
 AKARI_CE_IMPORT UINT   GetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPTSTR lpString,
                        int nMaxCount) AKARI_CE_NAME(GetDlgItemTextW);                            /* ms929236 */
 #define GetDlgItemText GetDlgItemTextW
+/* twin-print: ee505040 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929236 lacks the print. */
 AKARI_CE_IMPORT HWND   GetNextDlgGroupItem(HWND hDlg, HWND hCtl, BOOL bPrevious) AKARI_CE_NAME(GetNextDlgGroupItem);  /* aa453145 */
+/* twin-print: ee499080 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453145 lacks the print. */
 AKARI_CE_IMPORT HWND   GetNextDlgTabItem(HWND hDlg, HWND hCtl, BOOL bPrevious) AKARI_CE_NAME(GetNextDlgTabItem);    /* aa453146 */
 AKARI_CE_IMPORT BOOL   IsDialogMessageW(HWND hDlg, LPMSG lpMsg) AKARI_CE_NAME(IsDialogMessageW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define IsDialogMessage IsDialogMessageW                   /* ms909864 */
+/* twin-print: ms911788 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909864 lacks the print. */
 AKARI_CE_IMPORT BOOL   MapDialogRect(HWND hDlg, LPRECT lpRect) AKARI_CE_NAME(MapDialogRect);                   /* ms911788 */
 AKARI_CE_IMPORT LONG   SendDlgItemMessageW(HWND hDlg, int nIDDlgItem, UINT Msg,    /* ms932717 */
                           WPARAM wParam, LPARAM lParam) AKARI_CE_NAME(SendDlgItemMessageW);
@@ -1211,6 +1275,7 @@ AKARI_CE_IMPORT BOOL   SetDlgItemTextW(HWND hDlg, int nIDDlgItem, LPCTSTR lpStri
 /* declared in windows.h (their pages list Header Windows.h).           */
 
 /* Buttons Reference: ms928577 "CheckRadioButton" (Header Winuser.h).   */
+/* twin-print: ee500159 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms928577 lacks the print. */
 AKARI_CE_IMPORT BOOL CheckRadioButton(HWND hDlg, int nIDFirstButton, int nIDLastButton,
                       int nIDCheckButton) AKARI_CE_NAME(CheckRadioButton);
 
@@ -1220,24 +1285,35 @@ AKARI_CE_IMPORT BOOL CheckRadioButton(HWND hDlg, int nIDFirstButton, int nIDLast
 
 /* ee499346: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL   CloseClipboard(void) AKARI_CE_NAME(CloseClipboard);                       /* ms928586 */
+/* twin-print: ee499055 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms928586 lacks the print. */
 AKARI_CE_IMPORT int    CountClipboardFormats(void) AKARI_CE_NAME(CountClipboardFormats);                /* ms908153 */
+/* twin-print: ee505658 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908153 lacks the print. */
 AKARI_CE_IMPORT BOOL   EmptyClipboard(void) AKARI_CE_NAME(EmptyClipboard);                       /* aa453019 */
+/* twin-print: ee505881 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453019 lacks the print. */
 AKARI_CE_IMPORT UINT   EnumClipboardFormats(UINT format) AKARI_CE_NAME(EnumClipboardFormats);          /* aa453047 */
+/* twin-print: ee500850 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453047 lacks the print. */
 AKARI_CE_IMPORT HANDLE GetClipboardData(UINT uFormat) AKARI_CE_NAME(GetClipboardData);             /* ms929215 */
+/* twin-print: ee501066 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929215 lacks the print. */
 AKARI_CE_IMPORT HANDLE GetClipboardDataAlloc(UINT uFormat) AKARI_CE_NAME(GetClipboardDataAlloc);        /* ms929216 */
 AKARI_CE_IMPORT int    GetClipboardFormatNameW(UINT format, LPTSTR lpszFormatName,
                                int cchMaxCount) AKARI_CE_NAME(GetClipboardFormatNameW);   /* ms929217 */
 #define GetClipboardFormatName GetClipboardFormatNameW
+/* twin-print: ee501914 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929217 lacks the print. */
 AKARI_CE_IMPORT HWND   GetClipboardOwner(void) AKARI_CE_NAME(GetClipboardOwner);                    /* ms929218 */
+/* twin-print: ee503207 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929218 lacks the print. */
 AKARI_CE_IMPORT HWND   GetOpenClipboardWindow(void) AKARI_CE_NAME(GetOpenClipboardWindow);               /* aa453149 */
+/* twin-print: ee505514 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453149 lacks the print. */
 AKARI_CE_IMPORT int    GetPriorityClipboardFormat(UINT* paFormatPriorityList,
                                   int cFormats) AKARI_CE_NAME(GetPriorityClipboardFormat);   /* aa453154 */
+/* twin-print: ee501144 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453154 lacks the print. */
 AKARI_CE_IMPORT BOOL   IsClipboardFormatAvailable(UINT format) AKARI_CE_NAME(IsClipboardFormatAvailable);    /* ms909863 */
+/* twin-print: ee503328 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909863 lacks the print. */
 AKARI_CE_IMPORT BOOL   OpenClipboard(HWND hWndNewOwner) AKARI_CE_NAME(OpenClipboard);           /* ms911905 */
 AKARI_CE_IMPORT UINT   RegisterClipboardFormatW(LPCWSTR lpszFormat) AKARI_CE_NAME(RegisterClipboardFormatW); /* ms913094; the page
                                                       * states only the
                                                       * Unicode version */
 #define RegisterClipboardFormat RegisterClipboardFormatW
+/* twin-print: ee504536 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms913094 lacks the print. */
 AKARI_CE_IMPORT HANDLE SetClipboardData(UINT uFormat, HANDLE hMem) AKARI_CE_NAME(SetClipboardData); /* ms940015 */
 
 /* ------------------------------------------------------------------ */
@@ -1246,7 +1322,9 @@ AKARI_CE_IMPORT HANDLE SetClipboardData(UINT uFormat, HANDLE hMem) AKARI_CE_NAME
 
 /* ms924843: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HICON  CreateIconIndirect(PICONINFO piconinfo) AKARI_CE_NAME(CreateIconIndirect);     /* ms908175 */
+/* twin-print: ms924844 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908175 lacks the print. */
 AKARI_CE_IMPORT BOOL   DestroyIcon(HICON hIcon) AKARI_CE_NAME(DestroyIcon);                    /* aa452938 */
+/* twin-print: ms924846 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452938 lacks the print. */
 AKARI_CE_IMPORT BOOL   DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon,
                   int cxWidth, int cyWidth, UINT istepIfAniCur,
                   HBRUSH hbrFlickerFreeDraw, UINT diFlags) AKARI_CE_NAME(DrawIconEx);   /* aa452972 */
@@ -1263,7 +1341,9 @@ AKARI_CE_IMPORT HANDLE LoadImageW(HINSTANCE hinst, LPCTSTR lpszName, UINT uType,
 
 /* aa453033: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL  EnableHardwareKeyboard(BOOL bEnable) AKARI_CE_NAME(EnableHardwareKeyboard);          /* aa453033 */
+/* twin-print: ee505488 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453033 lacks the print. */
 AKARI_CE_IMPORT DWORD GetSysColor(int nIndex) AKARI_CE_NAME(GetSysColor);                       /* aa453167 */
+/* twin-print: ee499415 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453167 lacks the print. */
 AKARI_CE_IMPORT int   GetSystemMetrics(int nIndex) AKARI_CE_NAME(GetSystemMetrics);                  /* aa453170 */
 AKARI_CE_IMPORT BOOL  SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID pvParam,
                             UINT fWinIni) AKARI_CE_NAME(SystemParametersInfoW);           /* ms940383; the page
@@ -1285,27 +1365,40 @@ AKARI_CE_IMPORT BOOL  SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID p
 
 /* ee504320: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL     ClipCursor(CONST RECT *lpRect) AKARI_CE_NAME(ClipCursor);        /* ms928585 */
+/* twin-print: ms929220 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms928585 lacks the print. */
 AKARI_CE_IMPORT BOOL     GetClipCursor(LPRECT lpRect) AKARI_CE_NAME(GetClipCursor);       /* ms929220 */
+/* twin-print: ms929225 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929220 lacks the print. */
 AKARI_CE_IMPORT HCURSOR  GetCursor(void) AKARI_CE_NAME(GetCursor);                        /* ms929225 */
+/* twin-print: ms929226 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929225 lacks the print. */
 AKARI_CE_IMPORT BOOL     GetCursorPos(LPPOINT lpPoint) AKARI_CE_NAME(GetCursorPos);       /* ms929226 */
+/* twin-print: ms924859 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929226 lacks the print. */
 AKARI_CE_IMPORT HCURSOR  SetCursor(HCURSOR hCursor) AKARI_CE_NAME(SetCursor);             /* ms940016 */
+/* twin-print: aa453730 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940016 lacks the print. */
 AKARI_CE_IMPORT int      ShowCursor(BOOL bShow) AKARI_CE_NAME(ShowCursor);                /* aa453730 */
 AKARI_CE_IMPORT HCURSOR  LoadCursorW(HINSTANCE hInstance, LPCTSTR lpCursorName) AKARI_CE_NAME(LoadCursorW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define LoadCursor LoadCursorW   /* aa453410 */
+/* twin-print: ms908167 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453410 lacks the print. */
 AKARI_CE_IMPORT HCURSOR  CreateCursor(HINSTANCE hInst, int xHotSpot, int yHotSpot,
                                       int nWidth, int nHeight, CONST VOID *pvANDPlane,
                                       CONST VOID *pvXORPlane) AKARI_CE_NAME(CreateCursor); /* ms908167 */
+/* twin-print: aa452937 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908167 lacks the print. */
 AKARI_CE_IMPORT BOOL     DestroyCursor(HCURSOR hCursor) AKARI_CE_NAME(DestroyCursor);     /* aa452937 */
+/* twin-print: ms924845 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452937 lacks the print. */
 AKARI_CE_IMPORT BOOL     DrawIcon(HDC hDC, int X, int Y, HICON hIcon) AKARI_CE_NAME(DrawIcon); /* aa452971 */
+/* twin-print: ms924858 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452971 lacks the print. */
 AKARI_CE_IMPORT HWND     SetCapture(HWND hWnd) AKARI_CE_NAME(SetCapture);                 /* ms940011 */
+/* twin-print: ms924857 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940011 lacks the print. */
 AKARI_CE_IMPORT BOOL     ReleaseCapture(void) AKARI_CE_NAME(ReleaseCapture);              /* ms939750 */
+/* twin-print: ms924848 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms939750 lacks the print. */
 AKARI_CE_IMPORT HWND     GetCapture(void) AKARI_CE_NAME(GetCapture);                      /* ms929208 */
+/* twin-print: ms929237 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929208 lacks the print. */
 AKARI_CE_IMPORT UINT     GetDoubleClickTime(void) AKARI_CE_NAME(GetDoubleClickTime);      /* ms929237 */
 AKARI_CE_IMPORT BOOL     GetMouseMovePoints(PPOINT pptBuf, UINT nBufPoints,
                                             UINT *pnPointsRetrieved) AKARI_CE_NAME(GetMouseMovePoints); /* aa453139 */
+/* twin-print: ms931453 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453139 lacks the print. */
 AKARI_CE_IMPORT VOID     mouse_event(DWORD dwFlags, DWORD dx, DWORD dy, DWORD dwData,
                                      DWORD dwExtraInfo) AKARI_CE_NAME(mouse_event);       /* ms931453 */
 

@@ -193,6 +193,7 @@ AKARI_CE_IMPORT INT BthNsLookupServiceNext(HANDLE hLookup, DWORD dwFlags,
 
 /* ms887870 "BthNsSetService": CE 5.0 page prints no signature; the
  * CE 6.0 twin ee495417 prints the full prototype. */
+/* twin-print: ee495417 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms887870 lacks the print. */
 AKARI_CE_IMPORT INT BthNsSetService(LPWSAQUERYSET lpqsRegInfo,
                                     WSAESETSERVICEOP essoperation,
                                     DWORD dwControlFlags) AKARI_CE_NAME(BthNsSetService);

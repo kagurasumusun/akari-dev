@@ -74,6 +74,7 @@ AKARI_CE_IMPORT BOOL IsDBCSLeadByte(BYTE TestChar) AKARI_CE_NAME(IsDBCSLeadByte)
 /* ms886608 "IsDBCSLeadByteEx (Windows CE 5.0)":
  * BOOL IsDBCSLeadByteEx(UINT, BYTE).  CE 1.01+; Winnls.h;
  * Coredll.lib. */
+/* twin-print: ms921460 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms906219 lacks the print. */
 AKARI_CE_IMPORT BOOL IsDBCSLeadByteEx(UINT CodePage, BYTE TestChar) AKARI_CE_NAME(IsDBCSLeadByteEx);
 
 /* ------------------------------------------------------------------ */
@@ -118,6 +119,7 @@ AKARI_CE_IMPORT UINT GetACP(void) AKARI_CE_NAME(GetACP);
 /* ms905256 "GetOEMCP (Windows CE 5.0)": UINT GetOEMCP(void).  Returns
  * the current OEM code-page identifier.  CE .NET 4.0+; Winnls.h;
  * Coreloc.lib. */
+/* twin-print: ms919344 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905298 lacks the print. */
 AKARI_CE_IMPORT UINT GetOEMCP(void) AKARI_CE_NAME(GetOEMCP);
 
 /* ms905298 "GetSystemDefaultLCID (Windows CE 5.0)":
@@ -127,6 +129,7 @@ AKARI_CE_IMPORT LCID GetSystemDefaultLCID(void) AKARI_CE_NAME(GetSystemDefaultLC
 
 /* ms905323 "GetUserDefaultLCID (Windows CE 5.0)":
  * LCID GetUserDefaultLCID(void).  CE .NET 4.0+; Winnls.h; Coreloc.lib. */
+/* twin-print: ms919336 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905289 lacks the print. */
 AKARI_CE_IMPORT LCID GetUserDefaultLCID(void) AKARI_CE_NAME(GetUserDefaultLCID);
 
 /* ms905289 "GetSystemDefaultLangID (Windows CE 5.0)":
@@ -155,6 +158,7 @@ AKARI_CE_IMPORT BOOL IsValidLocale(LCID Locale, DWORD dwFlags) AKARI_CE_NAME(IsV
  * locale; returns CSTR_LESS_THAN/EQUAL/GREATER_THAN (0 on failure).
  * cchCount -1 means null-terminated.  Fastest at dwCmpFlags 0 or
  * NORM_IGNORECASE with -1 counts (page note). */
+/* twin-print: ms919133 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms904716 lacks the print. */
 AKARI_CE_IMPORT int CompareStringW(LCID Locale, DWORD dwCmpFlags,
                    LPCWSTR lpString1, int cchCount1,
                    LPCWSTR lpString2, int cchCount2) AKARI_CE_NAME(CompareStringW);

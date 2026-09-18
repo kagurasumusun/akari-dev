@@ -56,15 +56,20 @@ typedef struct _RAPIINIT {
     HRESULT hrRapiInit;
 } RAPIINIT;
 /* aa513323 CeCheckPassword (RAPI): print `` */
+/* twin-print: ee496436 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513324 lacks the print. */
+/* twin-print: ee496632 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513323 lacks the print. */
 AKARI_CE_IMPORT BOOL CeCheckPassword(LPWSTR lpszPassword)
     AKARI_CE_NAME(CeCheckPassword);
 /* aa513324 CeCloseHandle (RAPI): print `` */
+/* twin-print: ee496602 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513325 lacks the print. */
 AKARI_CE_IMPORT BOOL CeCloseHandle(HANDLE hObject)
     AKARI_CE_NAME(CeCloseHandle);
 /* aa513325 CeCopyFile (RAPI): print `` */
+/* twin-print: ee497470 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513328 lacks the print. */
 AKARI_CE_IMPORT BOOL CeCopyFile(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName, BOOL bFailIfExists)
     AKARI_CE_NAME(CeCopyFile);
 /* aa513328 CeCreateDirectory (RAPI): print `` */
+/* twin-print: ee496815 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513344 lacks the print. */
 AKARI_CE_IMPORT BOOL CeCreateDirectory(LPCWSTR lpPathName, LPSECURITY_ATTRIBUTES lpSecurityAttributes)
     AKARI_CE_NAME(CeCreateDirectory);
 /* aa513329 CeCreateFile (RAPI): print `` */
@@ -72,6 +77,7 @@ AKARI_CE_IMPORT BOOL CeCreateDirectory(LPCWSTR lpPathName, LPSECURITY_ATTRIBUTES
 /* aa513340 CeCreateProcess (RAPI): print `` */
 /* (record-only: parameter or return type unpublished) */
 /* aa513344 CeDeleteFile (RAPI): print `` */
+/* twin-print: ee496194 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513349 lacks the print. */
 AKARI_CE_IMPORT BOOL CeDeleteFile(LPCWSTR lpFileName)
     AKARI_CE_NAME(CeDeleteFile);
 /* aa513347 CeFindAllDatabases (RAPI): print `` -- recorded verbatim (no compiled prototype) */
@@ -81,52 +87,65 @@ AKARI_CE_IMPORT BOOL CeFindClose(HANDLE hFindFile)
     AKARI_CE_NAME(CeFindClose);
 /* aa513353 CeFindFirstFile (RAPI): print `` -- recorded verbatim (no compiled prototype) */
 /* aa513356 CeFindNextFile (RAPI): print `` */
+/* twin-print: ee496373 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513357 lacks the print. */
 AKARI_CE_IMPORT BOOL CeFindNextFile(HANDLE hFindFile, LPWIN32_FIND_DATA lpFindFileData)
     AKARI_CE_NAME(CeFindNextFile);
 /* aa513357 CeGetClassName (RAPI): print `` */
+/* twin-print: ee497528 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513358 lacks the print. */
 AKARI_CE_IMPORT int CeGetClassName(HWND hWnd, LPTSTR lpClassName, int nMaxCount)
     AKARI_CE_NAME(CeGetClassName);
 /* aa513358 CeGetDesktopDeviceCaps (RAPI): print `` */
+/* twin-print: ee497216 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513359 lacks the print. */
 AKARI_CE_IMPORT INT CeGetDesktopDeviceCaps(INT nIndex)
     AKARI_CE_NAME(CeGetDesktopDeviceCaps);
 /* aa513359 CeGetFileAttributes (RAPI): print `` */
+/* twin-print: ee496424 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513360 lacks the print. */
 AKARI_CE_IMPORT DWORD CeGetFileAttributes(LPCWSTR lpFileName)
     AKARI_CE_NAME(CeGetFileAttributes);
 /* aa513360 CeGetFileSize (RAPI): print `` */
+/* twin-print: ee497530 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513361 lacks the print. */
 AKARI_CE_IMPORT DWORD CeGetFileSize(HANDLE hFile, LPDWORD lpFileSizeHigh)
     AKARI_CE_NAME(CeGetFileSize);
 /* aa513361 CeGetFileTime (RAPI): print `` */
+/* twin-print: ee496760 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513362 lacks the print. */
 AKARI_CE_IMPORT BOOL CeGetFileTime(HANDLE hFile, LPFILETIME lpCreationTime, LPFILETIME lpLastAccessTime, LPFILETIME lpLastWriteTime)
     AKARI_CE_NAME(CeGetFileTime);
 /* aa513362 CeGetLastError (RAPI): print `` */
 AKARI_CE_IMPORT DWORD CeGetLastError(void)
     AKARI_CE_NAME(CeGetLastError);
 /* aa513364 CeGetSpecialFolderPath (RAPI): print `` */
+/* twin-print: ee497593 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513365 lacks the print. */
 AKARI_CE_IMPORT DWORD CeGetSpecialFolderPath(int nFolder, DWORD nBufferLength, LPWSTR lpBuffer)
     AKARI_CE_NAME(CeGetSpecialFolderPath);
 /* aa513365 CeGetStoreInformation (RAPI): print `` */
 AKARI_CE_IMPORT BOOL CeGetStoreInformation(LPSTORE_INFORMATION lpsi)
     AKARI_CE_NAME(CeGetStoreInformation);
 /* aa513367 CeGetSystemMetrics (RAPI): print `` */
+/* twin-print: ee496824 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513368 lacks the print. */
 AKARI_CE_IMPORT int CeGetSystemMetrics(int nIndex)
     AKARI_CE_NAME(CeGetSystemMetrics);
 /* aa513368 CeGetSystemPowerStatusEx (RAPI): print `` */
 AKARI_CE_IMPORT BOOL CeGetSystemPowerStatusEx(PSYSTEM_POWER_STATUS_EX pstatus, BOOL fUpdate)
     AKARI_CE_NAME(CeGetSystemPowerStatusEx);
 /* aa513369 CeGetTempPath (RAPI): print `` */
+/* twin-print: ee496227 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513372 lacks the print. */
 AKARI_CE_IMPORT DWORD CeGetTempPath(DWORD nBufferLength, LPWSTR lpBuffer)
     AKARI_CE_NAME(CeGetTempPath);
 /* aa513370 CeGetVersionEx (RAPI): print `` -- recorded verbatim (no compiled prototype) */
 /* aa513372 CeGetWindow (RAPI): print `` */
+/* twin-print: ee496775 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513371 lacks the print. */
 AKARI_CE_IMPORT HWND CeGetWindow(HWND hWnd, UINT uCmd)
     AKARI_CE_NAME(CeGetWindow);
 /* aa513371 CeGetWindowLong (RAPI): print `` */
+/* twin-print: ee496160 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513373 lacks the print. */
 AKARI_CE_IMPORT LONG CeGetWindowLong(HWND hWnd, int nIndex)
     AKARI_CE_NAME(CeGetWindowLong);
 /* aa513373 CeGetWindowText (RAPI): print `` */
+/* twin-print: ee496627 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513374 lacks the print. */
 AKARI_CE_IMPORT int CeGetWindowText(HWND hWnd, LPWSTR lpString, int nMaxCount)
     AKARI_CE_NAME(CeGetWindowText);
 /* aa513374 CeGlobalMemoryStatus (RAPI): print `` */
+/* twin-print: ee497524 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513376 lacks the print. */
 AKARI_CE_IMPORT void CeGlobalMemoryStatus(LPMEMORYSTATUS lpmst)
     AKARI_CE_NAME(CeGlobalMemoryStatus);
 /* aa513376 CeMoveFile (RAPI): print `` */
@@ -142,64 +161,83 @@ AKARI_CE_IMPORT BOOL CeQueryInstructionSet(DWORD dwInstructionSet, LPDWORD lpdwC
 AKARI_CE_IMPORT HRESULT CeRapiGetError(void)
     AKARI_CE_NAME(CeRapiGetError);
 /* aa513384 CeRapiInit: print `` */
+/* twin-print: ee496569 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513384 lacks the print. */
 AKARI_CE_IMPORT HRESULT CeRapiInit(void)
     AKARI_CE_NAME(CeRapiInit);
 /* aa513385 CeRapiInitEx: print `` */
+/* twin-print: ee496193 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513385 lacks the print. */
 AKARI_CE_IMPORT HRESULT CeRapiInitEx(RAPIINIT* pRapiInit)
     AKARI_CE_NAME(CeRapiInitEx);
 /* aa513386 CeRapiInvoke: print `HRESULT CeRapiInvoke( LPCWSTRpDllPath,LPCWSTRpFunctionName,DWORDcbInput, BYTE* pInput,DWORD* pcbOutput,BYTE** ppOutput,IRAPIStream** ppIRAPIStream,DWORD dwReserved);` */
 AKARI_CE_IMPORT HRESULT CeRapiInvoke(LPCWSTR pDllPath, LPCWSTR pFunctionName, DWORD cbInput, BYTE* pInput, DWORD* pcbOutput, BYTE** ppOutput, IRAPIStream** ppIRAPIStream, DWORD dwReserved)
     AKARI_CE_NAME(CeRapiInvoke);
 /* aa513387 CeRapiUninit: print `` */
+/* twin-print: ee496378 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513387 lacks the print. */
+/* twin-print: ee497567 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513388 lacks the print. */
 AKARI_CE_IMPORT HRESULT CeRapiUninit(void)
     AKARI_CE_NAME(CeRapiUninit);
 /* aa513388 CeReadFile (RAPI): print `` */
+/* twin-print: ee497318 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513391 lacks the print. */
 AKARI_CE_IMPORT BOOL CeReadFile(HANDLE hFile, LPVOID lpBuffer, DWORD nNumberOfBytesToRead, LPDWORD lpNumberOfBytesRead, LPOVERLAPPED lpOverlapped)
     AKARI_CE_NAME(CeReadFile);
 /* aa513391 CeRegCloseKey (RAPI): print `` */
+/* twin-print: ee497306 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513393 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegCloseKey(HKEY hKey)
     AKARI_CE_NAME(CeRegCloseKey);
 /* aa513392 CeRegCreateKeyEx (RAPI): print `` -- recorded verbatim (no compiled prototype) */
 /* aa513393 CeRegDeleteKey (RAPI): print `` */
+/* twin-print: ee496223 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513394 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegDeleteKey(HKEY hKey, LPCWSTR lpszSubKey)
     AKARI_CE_NAME(CeRegDeleteKey);
 /* aa513394 CeRegDeleteValue (RAPI): print `` */
+/* twin-print: ee497283 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513395 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegDeleteValue(HKEY hKey, LPCWSTR lpszValueName)
     AKARI_CE_NAME(CeRegDeleteValue);
 /* aa513395 CeRegEnumKeyEx (RAPI): print `` */
+/* twin-print: ee496771 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513396 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegEnumKeyEx(HKEY hKey, DWORD dwIndex, LPWSTR lpName, LPDWORD lpcbName, LPDWORD lpReserved, LPWSTR lpClass, LPDWORD lpcbClass, PFILETIME lpftLastWriteTime)
     AKARI_CE_NAME(CeRegEnumKeyEx);
 /* aa513396 CeRegEnumValue (RAPI): print `` */
+/* twin-print: ee496804 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513397 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegEnumValue(HKEY hKey, DWORD dwIndex, LPWSTR lpszValueName, LPDWORD lpcbValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData)
     AKARI_CE_NAME(CeRegEnumValue);
 /* aa513397 CeRegOpenKeyEx (RAPI): print `` */
+/* twin-print: ee496652 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513398 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegOpenKeyEx(HKEY hKey, LPCWSTR lpszSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult)
     AKARI_CE_NAME(CeRegOpenKeyEx);
 /* aa513398 CeRegQueryInfoKey (RAPI): print `` */
+/* twin-print: ee496398 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513399 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegQueryInfoKey(HKEY hKey, LPWSTR lpClass, LPDWORD lpcbClass, LPDWORD lpReserved, LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen, LPDWORD lpcbMaxClassLen, LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen, LPDWORD lpcbMaxValueLen, LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime)
     AKARI_CE_NAME(CeRegQueryInfoKey);
 /* aa513399 CeRegQueryValueEx (RAPI): print `` */
+/* twin-print: ee496604 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513401 lacks the print. */
 AKARI_CE_IMPORT LONG CeRegQueryValueEx(HKEY hKey, LPCWSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData)
     AKARI_CE_NAME(CeRegQueryValueEx);
 /* aa513400 CeRegSetValueEx (RAPI): print `` -- recorded verbatim (no compiled prototype) */
 /* aa513401 CeRemoveDirectory (RAPI): print `` */
+/* twin-print: ee496656 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513405 lacks the print. */
 AKARI_CE_IMPORT BOOL CeRemoveDirectory(LPCWSTR lpPathName)
     AKARI_CE_NAME(CeRemoveDirectory);
 /* aa513405 CeSetEndOfFile (RAPI): print `` */
+/* twin-print: ee496984 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513406 lacks the print. */
 AKARI_CE_IMPORT BOOL CeSetEndOfFile(HANDLE hFile)
     AKARI_CE_NAME(CeSetEndOfFile);
 /* aa513406 CeSetFileAttributes (RAPI): print `` */
+/* twin-print: ee497032 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513810 lacks the print. */
 AKARI_CE_IMPORT BOOL CeSetFileAttributes(LPCWSTR lpFileName, DWORD dwFileAttributes)
     AKARI_CE_NAME(CeSetFileAttributes);
 /* aa513810 CeSetFilePointer (RAPI): print `` */
+/* twin-print: ee496828 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513814 lacks the print. */
 AKARI_CE_IMPORT DWORD CeSetFilePointer(HANDLE hFile, LONG lDistanceToMove, PLONG lpDistanceToMoveHigh, DWORD dwMoveMethod)
     AKARI_CE_NAME(CeSetFilePointer);
 /* aa513813 CeSetFileTime (RAPI): print `` */
 /* (record-only: parameter or return type unpublished) */
 /* aa513814 CeSHCreateShortcut (RAPI): print `` */
+/* twin-print: ee496841 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513816 lacks the print. */
 AKARI_CE_IMPORT BOOL CeSHCreateShortcut(LPWSTR lpszShortcut, LPWSTR lpszTarget)
     AKARI_CE_NAME(CeSHCreateShortcut);
 /* aa513816 CeSHGetShortcutTarget (RAPI): print `` */
+/* twin-print: ee497515 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa513847 lacks the print. */
 AKARI_CE_IMPORT BOOL CeSHGetShortcutTarget(LPWSTR lpszShortcut, LPWSTR lpszTarget, int cbMax)
     AKARI_CE_NAME(CeSHGetShortcutTarget);
 /* aa513847 CeWriteFile (RAPI): print `` */

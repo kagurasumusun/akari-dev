@@ -82,6 +82,7 @@ BOOL CALLBACK PropEnumProcEx(HWND hwnd, LPTSTR lpszString,
 /* aa453188: page print verified (proto-cite) */
 AKARI_CE_IMPORT ATOM GlobalAddAtomW(LPCTSTR lpString) AKARI_CE_NAME(GlobalAddAtomW);      /* aa453188 */
 #define GlobalAddAtom GlobalAddAtomW
+/* twin-print: aa453189 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453188 lacks the print. */
 AKARI_CE_IMPORT ATOM GlobalDeleteAtom(ATOM nAtom) AKARI_CE_NAME(GlobalDeleteAtom);          /* aa453189 */
 AKARI_CE_IMPORT ATOM GlobalFindAtomW(LPCTSTR lpString) AKARI_CE_NAME(GlobalFindAtomW);     /* aa453190 */
 #define GlobalFindAtom GlobalFindAtomW
@@ -94,6 +95,7 @@ AKARI_CE_IMPORT DWORD GetMessageQueueReadyTimeStamp(HWND hWnd) AKARI_CE_NAME(Get
 /* ms939981 "SendMessageTimeout (Windows CE 5.0)":
  * LRESULT SendMessageTimeout(HWND, UINT, WPARAM, LPARAM, UINT, UINT,
  * PDWORD_PTR).  CE .NET 4.0+; Windows.h; Coredll.lib. */
+/* twin-print: ee499718 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932696 lacks the print. */
 AKARI_CE_IMPORT LRESULT SendMessageTimeout(HWND hWnd, UINT Msg, WPARAM wParam,
                             LPARAM lParam, UINT fuFlags, UINT uTimeout,
                             PDWORD_PTR lpdwResult) AKARI_CE_NAME(SendMessageTimeout);

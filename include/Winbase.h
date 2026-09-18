@@ -46,6 +46,8 @@ extern "C" {
  * Coredll.lib.  Unconditionally ends the process; the exit path of
  * the companion CRT (wince-crt) uses it with the current-process
  * pseudo-handle. */
+/* twin-print: ee488378 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450927 lacks the print. */
+/* twin-print: ee488591 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885219 lacks the print. */
 AKARI_CE_IMPORT BOOL TerminateProcess(HANDLE hProcess, DWORD uExitCode) AKARI_CE_NAME(TerminateProcess);
 
 /* ms885219 "ExitThread (Windows CE 5.0)": VOID ExitThread(DWORD).
@@ -98,6 +100,7 @@ AKARI_CE_IMPORT LPWSTR GetCommandLineW(void) AKARI_CE_NAME(GetCommandLineW);
  * later, the ASCII version of this function, GetProcAddressA, is
  * supported."  Both exports are present in the CE 4/5/6 import
  * libraries (verified).  Base name maps to the W form. */
+/* twin-print: ee487963 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886742 lacks the print. */
 AKARI_CE_IMPORT FARPROC GetProcAddressW(HMODULE hModule, LPCWSTR lpProcName) AKARI_CE_NAME(GetProcAddressW);
 FARPROC GetProcAddressA(HMODULE hModule, LPCSTR lpProcName);
 #define GetProcAddress GetProcAddressW
@@ -125,12 +128,14 @@ FARPROC GetProcAddressA(HMODULE hModule, LPCSTR lpProcName);
 #define LMEM_MODIFY    0x0080u
 #define LPTR           (LMEM_FIXED | LMEM_ZEROINIT)
 
+/* twin-print: ee488030 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886741 lacks the print. */
 AKARI_CE_IMPORT HLOCAL LocalAlloc(UINT uFlags, UINT uBytes) AKARI_CE_NAME(LocalAlloc);
 
 /* ms886741 "LocalFree (Windows CE 5.0)": HLOCAL LocalFree(HLOCAL).
  * CE 1.0+; Winbase.h; Coredll.lib.  Page notes: return value NULL
  * indicates success (a handle indicates failure); freeing NULL is
  * ignored and returns NULL. */
+/* twin-print: ee488182 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885627 lacks the print. */
 AKARI_CE_IMPORT HLOCAL LocalFree(HLOCAL hMem) AKARI_CE_NAME(LocalFree);
 
 /* ------------------------------------------------------------------ */
@@ -144,6 +149,7 @@ AKARI_CE_IMPORT HLOCAL LocalFree(HLOCAL hMem) AKARI_CE_NAME(LocalFree);
  * (aa450740) and the SDK header WINERROR.H for the code list; those
  * constants land in a later batch (winerror.h) transcribed from
  * aa450740. */
+/* twin-print: ee488162 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885186 lacks the print. */
 AKARI_CE_IMPORT DWORD GetLastError(void) AKARI_CE_NAME(GetLastError);
 
 /* ------------------------------------------------------------------ */
@@ -229,6 +235,7 @@ AKARI_CE_IMPORT BOOL CreateProcessW(LPCWSTR pszImageName, LPCWSTR pszCmdLine,
  * explicit path, .exe launch directory, \windows, ROM, OEM path;
  * registry HKEY_LOCAL_MACHINE\Loader\SystemPath (<= 260 chars) adds
  * search paths; not safe from DllMain.  Export is LoadLibraryW. */
+/* twin-print: ee488241 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885601 lacks the print. */
 AKARI_CE_IMPORT HINSTANCE LoadLibraryW(LPCWSTR lpLibFileName) AKARI_CE_NAME(LoadLibraryW);
 #define LoadLibrary LoadLibraryW
 
@@ -236,6 +243,7 @@ AKARI_CE_IMPORT HINSTANCE LoadLibraryW(LPCWSTR lpLibFileName) AKARI_CE_NAME(Load
  * CE 1.0+; Winbase.h; Coredll.lib.  Decrements the per-process
  * reference count; at zero the system calls DllMain with
  * DLL_PROCESS_DETACH before unmapping; not safe from DllMain. */
+/* twin-print: ms923946 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517300 lacks the print. */
 AKARI_CE_IMPORT BOOL FreeLibrary(HMODULE hLibModule) AKARI_CE_NAME(FreeLibrary);
 
 /* ------------------------------------------------------------------ */
@@ -266,6 +274,7 @@ AKARI_CE_IMPORT BOOL GetExitCodeProcess(HANDLE hProcess, LPDWORD lpExitCode) AKA
  * SetLastError(DWORD).  CE 1.0+; Winbase.h; Coredll.lib.  Last-error
  * code is per-thread (thread local storage); error codes are 32-bit,
  * bit 29 reserved for application-defined codes. */
+/* twin-print: ee488373 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450913 lacks the print. */
 AKARI_CE_IMPORT VOID SetLastError(DWORD dwErrCode) AKARI_CE_NAME(SetLastError);
 
 /* ------------------------------------------------------------------ */
@@ -278,6 +287,7 @@ AKARI_CE_IMPORT VOID SetLastError(DWORD dwErrCode) AKARI_CE_NAME(SetLastError);
  * MAXIMUM_SUSPEND_COUNT); previous suspend count is returned,
  * 0xFFFFFFFF on failure.  CE note: suspending a thread that is
  * making a kernel call fails -- the call may need to be repeated. */
+/* twin-print: ee488648 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886801 lacks the print. */
 AKARI_CE_IMPORT DWORD SuspendThread(HANDLE hThread) AKARI_CE_NAME(SuspendThread);
 
 /* ms886801 "ResumeThread (Windows CE 5.0)": DWORD
@@ -285,6 +295,7 @@ AKARI_CE_IMPORT DWORD SuspendThread(HANDLE hThread) AKARI_CE_NAME(SuspendThread)
  * Decrements the suspend count; resumes execution when it reaches
  * zero.  Return: previous suspend count; 0xFFFFFFFF on failure;
  * 0 = the thread was not suspended; 1 = suspended, now running. */
+/* twin-print: ee488756 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885623 lacks the print. */
 AKARI_CE_IMPORT DWORD ResumeThread(HANDLE hThread) AKARI_CE_NAME(ResumeThread);
 
 /* ms885623 "GetExitCodeThread (Windows CE 5.0)":
@@ -301,6 +312,7 @@ AKARI_CE_IMPORT BOOL GetExitCodeThread(HANDLE hThread, LPDWORD lpExitCode) AKARI
  * the rest of the time slice; INFINITE delays forever.  CE note:
  * Sleep(INFINITE) equals SuspendThread(GetCurrentThread()) -- the
  * thread remains resumable via ResumeThread, unlike on desktop. */
+/* twin-print: ee488168 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885643 lacks the print. */
 AKARI_CE_IMPORT VOID Sleep(DWORD dwMilliseconds) AKARI_CE_NAME(Sleep);
 
 /* INFINITE: infinite-delay constant, cited by the CE Sleep page
@@ -341,6 +353,7 @@ AKARI_CE_IMPORT VOID Sleep(DWORD dwMilliseconds) AKARI_CE_NAME(Sleep);
  * RETURN on failure.  CE has no priority classes; scheduling order
  * is determined by thread priority alone.  For real-time priorities
  * (0-247) use CeGetThreadPriority (aa450795) -- later batch. */
+/* twin-print: ee488350 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450891 lacks the print. */
 AKARI_CE_IMPORT int GetThreadPriority(HANDLE hThread) AKARI_CE_NAME(GetThreadPriority);
 
 /* aa450891 "SetThreadPriority (Windows CE 5.0)":
@@ -361,12 +374,14 @@ AKARI_CE_IMPORT BOOL SetThreadPriority(HANDLE hThread, int nPriority) AKARI_CE_N
  * TLS indexes are not valid across process boundaries; typical use:
  * allocate at process/DLL attach, TlsSetValue per thread, TlsFree at
  * process detach.  TLS_MINIMUM_AVAILABLE is guaranteed at least 64. */
+/* twin-print: ee488903 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450947 lacks the print. */
 AKARI_CE_IMPORT DWORD TlsAlloc(void) AKARI_CE_NAME(TlsAlloc);
 
 /* aa450947 "TlsFree (Windows CE 5.0)": BOOL TlsFree(DWORD).
  * CE 1.0+; Winbase.h; Coredll.lib.  Releases a TLS index for reuse;
  * does NOT free dynamic storage stored in the slot (free it first);
  * DLLs are expected to call it from their process-detach routine. */
+/* twin-print: ee488026 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450951 lacks the print. */
 AKARI_CE_IMPORT BOOL TlsFree(DWORD dwTlsIndex) AKARI_CE_NAME(TlsFree);
 
 /* aa450951 "TlsSetValue (Windows CE 5.0)":
@@ -374,6 +389,7 @@ AKARI_CE_IMPORT BOOL TlsFree(DWORD dwTlsIndex) AKARI_CE_NAME(TlsFree);
  * Stores a value in the calling thread's TLS slot; slots are
  * initialized to NULL.  Minimal parameter validation: succeeds for
  * index 0 .. TLS_MINIMUM_AVAILABLE-1. */
+/* twin-print: ee488590 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450949 lacks the print. */
 AKARI_CE_IMPORT BOOL TlsSetValue(DWORD dwTlsIndex, LPVOID lpTlsValue) AKARI_CE_NAME(TlsSetValue);
 
 /* aa450949 "TlsGetValue (Windows CE 5.0)":
@@ -550,12 +566,15 @@ AKARI_CE_IMPORT HANDLE FindFirstFileW(LPCWSTR lpFileName, LPWIN32_FIND_DATAW lpF
  * Coredll.lib.  Continues the search from FindFirstFile; when no
  * more files match, fails and GetLastError returns
  * ERROR_NO_MORE_FILES.  Export is FindNextFileW. */
+/* twin-print: ms923963 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms889619 lacks the print. */
 AKARI_CE_IMPORT BOOL FindNextFileW(HANDLE hFindFile, LPWIN32_FIND_DATAW lpFindFileData) AKARI_CE_NAME(FindNextFileW);
 #define FindNextFile FindNextFileW
 
 /* ms889619 "FindClose (Windows CE 5.0)": BOOL FindClose(HANDLE).
  * CE 1.0+; Winbase.h; Coredll.lib.  Closes a search handle opened
  * by FindFirstFile; the handle must not be used afterwards. */
+/* twin-print: ee489594 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891445 lacks the print. */
+/* twin-print: ee490774 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892380 lacks the print. */
 AKARI_CE_IMPORT BOOL FindClose(HANDLE hFindFile) AKARI_CE_NAME(FindClose);
 
 /* INVALID_HANDLE_VALUE: failure return of handle-opening functions
@@ -614,6 +633,7 @@ AKARI_CE_IMPORT BOOL ReadFile(HANDLE hFile, LPVOID lpBuffer,
  * A zero byte count is a "null write": no bytes are written but the
  * file time stamp changes.  WriteFile never truncates -- use
  * SetEndOfFile.  lpOverlapped is unsupported -- set to NULL. */
+/* twin-print: ee490353 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms890939 lacks the print. */
 AKARI_CE_IMPORT BOOL WriteFile(HANDLE hFile, LPCVOID lpBuffer,
                DWORD nNumberOfBytesToWrite,
                LPDWORD lpNumberOfBytesWritten, LPOVERLAPPED lpOverlapped) AKARI_CE_NAME(WriteFile);
@@ -624,6 +644,7 @@ AKARI_CE_IMPORT BOOL WriteFile(HANDLE hFile, LPCVOID lpBuffer,
  * lpFileSizeHigh is non-NULL it receives the high 32 bits.  A return
  * of 0xFFFFFFFF signals failure -- call GetLastError to distinguish
  * it from a legitimate 32-bit size. */
+/* twin-print: ee490790 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891933 lacks the print. */
 AKARI_CE_IMPORT DWORD GetFileSize(HANDLE hFile, LPDWORD lpFileSizeHigh) AKARI_CE_NAME(GetFileSize);
 
 /* ms891933 "SetFilePointer (Windows CE 5.0)":
@@ -637,6 +658,7 @@ AKARI_CE_IMPORT DWORD GetFileSize(HANDLE hFile, LPDWORD lpFileSizeHigh) AKARI_CE
  * also a valid position), so failure must be confirmed with
  * GetLastError.  Not usable on non-seeking devices such as
  * communications devices. */
+/* twin-print: ee490369 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891916 lacks the print. */
 AKARI_CE_IMPORT DWORD SetFilePointer(HANDLE hFile, LONG lDistanceToMove,
                      PLONG lpDistanceToMoveHigh, DWORD dwMoveMethod) AKARI_CE_NAME(SetFilePointer);
 
@@ -821,6 +843,7 @@ AKARI_CE_IMPORT HANDLE CreateEventW(LPSECURITY_ATTRIBUTES lpEventAttributes,
  * existing named event object; dwDesiredAccess must be
  * EVENT_ALL_ACCESS and bInheritHandle must be FALSE.  Name
  * comparison is case sensitive.  Export is OpenEventW. */
+/* twin-print: ee488785 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886810 lacks the print. */
 AKARI_CE_IMPORT HANDLE OpenEventW(DWORD dwDesiredAccess, BOOL bInheritHandle,
                   LPCWSTR lpName) AKARI_CE_NAME(OpenEventW);
 #define OpenEvent OpenEventW
@@ -832,12 +855,14 @@ AKARI_CE_IMPORT HANDLE OpenEventW(DWORD dwDesiredAccess, BOOL bInheritHandle,
  * the signaled state; the event stays signaled until a waiting
  * thread is released (auto-reset) or ResetEvent is called
  * (manual-reset). */
+/* twin-print: ee487974 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886800 lacks the print. */
 AKARI_CE_IMPORT BOOL SetEvent(HANDLE hEvent) AKARI_CE_NAME(SetEvent);
 
 /* ms886800 "ResetEvent (Windows CE 5.0)":
  * BOOL ResetEvent(HANDLE).  CE 1.0+; Header: Kfuncs.h per page;
  * Coredll.lib (see SetEvent note).  Sets the event object to the
  * nonsignaled state. */
+/* twin-print: ee488021 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886784 lacks the print. */
 AKARI_CE_IMPORT BOOL ResetEvent(HANDLE hEvent) AKARI_CE_NAME(ResetEvent);
 
 /* ms886784 "PulseEvent (Windows CE 5.0)":
@@ -893,6 +918,7 @@ AKARI_CE_IMPORT BOOL ReleaseSemaphore(HANDLE hSemaphore, LONG lReleaseCount,
  * NULL; dwDesiredAccess is currently ignored; bInheritHandle must be
  * FALSE.  dwOptions may be DUPLICATE_CLOSE_SOURCE and/or
  * DUPLICATE_SAME_ACCESS. */
+/* twin-print: ee488762 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450988 lacks the print. */
 AKARI_CE_IMPORT BOOL DuplicateHandle(HANDLE hSourceProcessHandle, HANDLE hSourceHandle,
                      HANDLE hTargetProcessHandle,
                      LPHANDLE lpTargetHandle, DWORD dwDesiredAccess,
@@ -979,6 +1005,7 @@ VOID DeleteCriticalSection(LPCRITICAL_SECTION lpCriticalSection);
  * Winbase.h; Coredll.lib.  Attempts to enter the critical section
  * without blocking: nonzero if ownership was obtained, zero if
  * another thread owns it. */
+/* twin-print: ee488427 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885670 lacks the print. */
 AKARI_CE_IMPORT BOOL TryEnterCriticalSection(LPCRITICAL_SECTION lpCriticalSection) AKARI_CE_NAME(TryEnterCriticalSection);
 
 /* Interlocked operations.  The CE pages (ms885667..ms885674) declare
@@ -989,10 +1016,12 @@ AKARI_CE_IMPORT BOOL TryEnterCriticalSection(LPCRITICAL_SECTION lpCriticalSectio
 
 /* ms885670 "InterlockedExchange": LONG
  * InterlockedExchange(LPLONG Target, LONG Value). */
+/* twin-print: ee488178 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885673 lacks the print. */
 AKARI_CE_IMPORT LONG InterlockedExchange(LPLONG Target, LONG Value) AKARI_CE_NAME(InterlockedExchange);
 
 /* ms885673 "InterlockedIncrement": LONG InterlockedIncrement(LPLONG
  * Addend).  Returns the resulting value. */
+/* twin-print: ee488204 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885669 lacks the print. */
 AKARI_CE_IMPORT LONG InterlockedIncrement(LPLONG Addend) AKARI_CE_NAME(InterlockedIncrement);
 
 /* ms885669 "InterlockedDecrement": LONG InterlockedDecrement(LPLONG
@@ -1064,6 +1093,7 @@ typedef struct _MEMORYSTATUS {
  * Link Library: Lmem.lib (recorded row; the process-heap handle is
  * used by the heap functions below).  Returns a handle usable in
  * HeapAlloc/HeapReAlloc/HeapFree/HeapSize; not to be destroyed. */
+/* twin-print: ee488381 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885656 lacks the print. */
 AKARI_CE_IMPORT HANDLE GetProcessHeap(void) AKARI_CE_NAME(GetProcessHeap);
 
 /* ms885656 "HeapCreate (Windows CE 5.0)":
@@ -1073,6 +1103,7 @@ AKARI_CE_IMPORT HANDLE GetProcessHeap(void) AKARI_CE_NAME(GetProcessHeap);
  * nongrowable).  Heap functions then allocate from the reserved
  * memory.  HEAP_SHARED_READONLY requires kernel mode; the flag is
  * otherwise documented per page. */
+/* twin-print: ee488651 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885657 lacks the print. */
 AKARI_CE_IMPORT HANDLE HeapCreate(DWORD flOptions, DWORD dwInitialSize,
                   DWORD dwMaximumSize) AKARI_CE_NAME(HeapCreate);
 
@@ -1089,11 +1120,13 @@ AKARI_CE_IMPORT BOOL HeapDestroy(HANDLE hHeap) AKARI_CE_NAME(HeapDestroy);
  * ignored (heaps are always serialized); HEAP_ZERO_MEMORY zero
  * initializes.  NULL indicates failure and no extended error is
  * recorded. */
+/* twin-print: ee488228 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885659 lacks the print. */
 AKARI_CE_IMPORT LPVOID HeapAlloc(HANDLE hHeap, DWORD dwFlags, DWORD dwBytes) AKARI_CE_NAME(HeapAlloc);
 
 /* ms885659 "HeapFree (Windows CE 5.0)":
  * BOOL HeapFree(HANDLE, DWORD, LPVOID).  CE 1.0+; Winbase.h;
  * Coredll.lib.  Frees a block allocated by HeapAlloc/HeapReAlloc. */
+/* twin-print: ee488385 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885661 lacks the print. */
 AKARI_CE_IMPORT BOOL HeapFree(HANDLE hHeap, DWORD dwFlags, LPVOID lpMem) AKARI_CE_NAME(HeapFree);
 
 /* ms885661 "HeapReAlloc (Windows CE 5.0)":
@@ -1120,6 +1153,7 @@ AKARI_CE_IMPORT BOOL HeapValidate(HANDLE hHeap, DWORD dwFlags, LPCVOID lpMem) AK
  * UINT HeapCompact(HANDLE, DWORD).  CE 5.0 and later; Winbase.h;
  * Coredll.lib.  Coalesces adjacent free blocks and decommits large
  * free blocks; returns the largest committed free block size. */
+/* twin-print: ee488426 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886742 lacks the print. */
 AKARI_CE_IMPORT UINT HeapCompact(HANDLE hHeap, DWORD dwFlags) AKARI_CE_NAME(HeapCompact);
 
 #endif /* _WIN32_WCE >= 0x0500 (HeapCompact) */
@@ -1129,6 +1163,7 @@ AKARI_CE_IMPORT UINT HeapCompact(HANDLE hHeap, DWORD dwFlags) AKARI_CE_NAME(Heap
  * HLOCAL LocalReAlloc(HLOCAL, UINT, UINT).  CE 1.0+; Winbase.h;
  * Coredll.lib.  Changes the size of a local memory object (see
  * LocalAlloc/LocalFree above). */
+/* twin-print: ee488019 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886743 lacks the print. */
 AKARI_CE_IMPORT HLOCAL LocalReAlloc(HLOCAL hMem, UINT uBytes, UINT fuFlags) AKARI_CE_NAME(LocalReAlloc);
 
 /* ms886743 "LocalSize (Windows CE 5.0)":
@@ -1148,15 +1183,18 @@ AKARI_CE_IMPORT VOID GlobalMemoryStatus(LPMEMORYSTATUS lpBuffer) AKARI_CE_NAME(G
 
 /* ms885687 "IsBadCodePtr (Windows CE 5.0)":
  * BOOL IsBadCodePtr(FARPROC).  CE 1.0+; Winbase.h; Coredll.lib. */
+/* twin-print: ee488585 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885688 lacks the print. */
 AKARI_CE_IMPORT BOOL IsBadCodePtr(FARPROC lpfn) AKARI_CE_NAME(IsBadCodePtr);
 
 /* ms885688 "IsBadReadPtr (Windows CE 5.0)":
  * BOOL IsBadReadPtr(const void*, UINT).  CE 1.0+; Winbase.h;
  * Coredll.lib.  A zero block size returns zero (valid). */
+/* twin-print: ee488361 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885689 lacks the print. */
 AKARI_CE_IMPORT BOOL IsBadReadPtr(const void *lp, UINT ucb) AKARI_CE_NAME(IsBadReadPtr);
 
 /* ms885689 "IsBadWritePtr (Windows CE 5.0)":
  * BOOL IsBadWritePtr(LPVOID, UINT).  CE 1.0+; Winbase.h; Coredll.lib. */
+/* twin-print: ee487966 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885628 lacks the print. */
 AKARI_CE_IMPORT BOOL IsBadWritePtr(LPVOID lp, UINT ucb) AKARI_CE_NAME(IsBadWritePtr);
 
 /* MAXDWORD: 32-bit unsigned maximum; cited by the GetIdleTime page
@@ -1194,17 +1232,20 @@ AKARI_CE_IMPORT void GetLocalTime(LPSYSTEMTIME lpSystemTime) AKARI_CE_NAME(GetLo
 /* ms885640 "GetSystemTime (Windows CE 5.0)": fills lpSystemTime with
  * the current system date/time expressed in UTC.  CE 1.0+; Winbase.h;
  * Coredll.lib. */
+/* twin-print: ee488183 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886818 lacks the print. */
 AKARI_CE_IMPORT void GetSystemTime(LPSYSTEMTIME lpSystemTime) AKARI_CE_NAME(GetSystemTime);
 
 /* ms886818 "SetLocalTime (Windows CE 5.0)": sets the current local
  * time/date; the caller needs the appropriate privilege.  wDayOfWeek
  * is ignored; nonzero success / zero failure (GetLastError).  CE
  * 1.0+; Winbase.h; Coredll.lib. */
+/* twin-print: ee488615 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450867 lacks the print. */
 AKARI_CE_IMPORT BOOL SetLocalTime(const SYSTEMTIME *lpSystemTime) AKARI_CE_NAME(SetLocalTime);
 
 /* aa450867 "SetSystemTime (Windows CE 5.0)": sets the current system
  * time/date in UTC; nonzero success / zero failure (GetLastError).
  * CE 1.0+; Winbase.h; Coredll.lib. */
+/* twin-print: ee488768 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885589 lacks the print. */
 AKARI_CE_IMPORT BOOL SetSystemTime(const SYSTEMTIME *lpSystemTime) AKARI_CE_NAME(SetSystemTime);
 
 /* ms885589 "FileTimeToLocalFileTime (Windows CE 5.0)": converts a
@@ -1212,6 +1253,7 @@ AKARI_CE_IMPORT BOOL SetSystemTime(const SYSTEMTIME *lpSystemTime) AKARI_CE_NAME
  * settings; lpLocalFileTime must not alias lpFileTime.  Nonzero
  * success / zero failure (GetLastError).  CE 1.0+; Winbase.h;
  * Coredll.lib. */
+/* twin-print: ee487989 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886740 lacks the print. */
 AKARI_CE_IMPORT BOOL FileTimeToLocalFileTime(const FILETIME *lpFileTime,
                              LPFILETIME lpLocalFileTime) AKARI_CE_NAME(FileTimeToLocalFileTime);
 
@@ -1219,6 +1261,7 @@ AKARI_CE_IMPORT BOOL FileTimeToLocalFileTime(const FILETIME *lpFileTime,
  * local file time to a UTC file time; lpFileTime must not alias
  * lpLocalFileTime.  Nonzero success / zero failure (GetLastError).
  * CE 1.0+; Winbase.h; Coredll.lib. */
+/* twin-print: ee488551 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885593 lacks the print. */
 AKARI_CE_IMPORT BOOL LocalFileTimeToFileTime(const FILETIME *lpLocalFileTime,
                              LPFILETIME lpFileTime) AKARI_CE_NAME(LocalFileTimeToFileTime);
 
@@ -1226,6 +1269,7 @@ AKARI_CE_IMPORT BOOL LocalFileTimeToFileTime(const FILETIME *lpLocalFileTime,
  * file time to SYSTEMTIME; only valid for FILETIME values below
  * 0x8000000000000000 (larger values fail).  Nonzero success / zero
  * failure (GetLastError).  CE 1.0+; Winbase.h; Coredll.lib. */
+/* twin-print: ee488792 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450925 lacks the print. */
 AKARI_CE_IMPORT BOOL FileTimeToSystemTime(const FILETIME *lpFileTime,
                           LPSYSTEMTIME lpSystemTime) AKARI_CE_NAME(FileTimeToSystemTime);
 
@@ -1233,6 +1277,7 @@ AKARI_CE_IMPORT BOOL FileTimeToSystemTime(const FILETIME *lpFileTime,
  * SYSTEMTIME to a 64-bit file time; the wDayOfWeek member is ignored.
  * Nonzero success / zero failure (GetLastError).  CE 1.0+; Winbase.h;
  * Coredll.lib. */
+/* twin-print: ee487985 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885645 lacks the print. */
 AKARI_CE_IMPORT BOOL SystemTimeToFileTime(const SYSTEMTIME *lpSystemTime,
                           LPFILETIME lpFileTime) AKARI_CE_NAME(SystemTimeToFileTime);
 
@@ -1243,6 +1288,7 @@ AKARI_CE_IMPORT BOOL SystemTimeToFileTime(const SYSTEMTIME *lpSystemTime,
 /* ms885645 "GetTickCount (Windows CE 5.0)":
  * DWORD GetTickCount(void).  CE 1.0+; Winbase.h; Coredll.lib.
  * Returns the number of milliseconds since the system started. */
+/* twin-print: ee487950 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885625 lacks the print. */
 AKARI_CE_IMPORT DWORD GetTickCount(void) AKARI_CE_NAME(GetTickCount);
 
 /* ms885625 "GetFileTime (Windows CE 5.0)":
@@ -1251,6 +1297,7 @@ AKARI_CE_IMPORT DWORD GetTickCount(void) AKARI_CE_NAME(GetTickCount);
  * access and last write times of a file (handle opened with
  * GENERIC_READ).  Any of the three pointers may be NULL when that
  * time is not needed. */
+/* twin-print: ee488233 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886812 lacks the print. */
 AKARI_CE_IMPORT BOOL GetFileTime(HANDLE hFile, LPFILETIME lpCreationTime,
                  LPFILETIME lpLastAccessTime,
                  LPFILETIME lpLastWriteTime) AKARI_CE_NAME(GetFileTime);
@@ -1261,6 +1308,7 @@ AKARI_CE_IMPORT BOOL GetFileTime(HANDLE hFile, LPFILETIME lpCreationTime,
  * last access and last write times of a file (handle opened with
  * GENERIC_WRITE); NULL pointers leave the corresponding time
  * unchanged. */
+/* twin-print: ee488173 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885172 lacks the print. */
 AKARI_CE_IMPORT BOOL SetFileTime(HANDLE hFile, const FILETIME *lpCreationTime,
                  const FILETIME *lpLastAccessTime,
                  const FILETIME *lpLastWriteTime) AKARI_CE_NAME(SetFileTime);
@@ -1304,6 +1352,7 @@ AKARI_CE_IMPORT BOOL QueryPerformanceCounter(LARGE_INTEGER *lpPerformanceCount) 
  * BOOL QueryPerformanceFrequency(LARGE_INTEGER*).  CE 2.0+;
  * Winbase.h; Coredll.lib.  Fills the value with the performance
  * counter frequency, in counts per second. */
+/* twin-print: ee488900 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885638 lacks the print. */
 AKARI_CE_IMPORT BOOL QueryPerformanceFrequency(LARGE_INTEGER *lpFrequency) AKARI_CE_NAME(QueryPerformanceFrequency);
 
 /* ------------------------------------------------------------------ */
@@ -1357,6 +1406,7 @@ typedef struct _SYSTEM_INFO {
 /* ms885638 "GetSystemInfo (Windows CE 5.0)":
  * VOID GetSystemInfo(LPSYSTEM_INFO).  CE 1.0+; Winbase.h; Coredll.lib.
  * Fills lpSystemInfo; CeGetSystemInfo is the RAPI equivalent. */
+/* twin-print: ee488165 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885648 lacks the print. */
 AKARI_CE_IMPORT VOID GetSystemInfo(LPSYSTEM_INFO lpSystemInfo) AKARI_CE_NAME(GetSystemInfo);
 
 /* ms886768 "OSVERSIONINFO (Windows CE 5.0)": OS version report filled
@@ -1386,6 +1436,7 @@ typedef struct _OSVERSIONINFO {
  * BOOL GetVersionEx(LPOSVERSIONINFO).  CE 1.0+; Winbase.h; Coredll.lib.
  * Fills the OSVERSIONINFO the caller sized up front; failure (e.g.
  * bad dwOSVersionInfoSize) sets the last error. */
+/* twin-print: ee488242 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450898 lacks the print. */
 AKARI_CE_IMPORT BOOL GetVersionEx(LPOSVERSIONINFO lpVersionInformation) AKARI_CE_NAME(GetVersionEx);
 
 /* aa450898 "SignalStarted (Windows CE 5.0)":
@@ -1393,6 +1444,7 @@ AKARI_CE_IMPORT BOOL GetVersionEx(LPOSVERSIONINFO lpVersionInformation) AKARI_CE
  * Called by applications the kernel starts via HKEY_LOCAL_MACHINE\
  * \Init once initialization is complete; dw is the sequence number
  * passed on the command line. */
+/* twin-print: ee488564 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450975 lacks the print. */
 AKARI_CE_IMPORT VOID SignalStarted(DWORD dw) AKARI_CE_NAME(SignalStarted);
 
 /* ------------------------------------------------------------------ */
@@ -1435,6 +1487,7 @@ AKARI_CE_IMPORT VOID SignalStarted(DWORD dw) AKARI_CE_NAME(SignalStarted);
  * Winbase.h; Coredll.lib.  Reserves/commits pages; dwSize 0 is an
  * error; NULL address lets the system choose; regions reserved by
  * VirtualAlloc must be released whole via VirtualFree MEM_RELEASE. */
+/* twin-print: ee488784 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450979 lacks the print. */
 AKARI_CE_IMPORT LPVOID VirtualAlloc(LPVOID lpAddress, DWORD dwSize,
                     DWORD flAllocationType, DWORD flProtect) AKARI_CE_NAME(VirtualAlloc);
 
@@ -1442,12 +1495,14 @@ AKARI_CE_IMPORT LPVOID VirtualAlloc(LPVOID lpAddress, DWORD dwSize,
  * BOOL VirtualFree(LPVOID, DWORD, DWORD).  CE 1.0+; Winbase.h;
  * Coredll.lib.  Decommits (MEM_DECOMMIT) or releases (MEM_RELEASE,
  * dwSize must be 0). */
+/* twin-print: ee488353 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450980 lacks the print. */
 AKARI_CE_IMPORT BOOL VirtualFree(LPVOID lpAddress, DWORD dwSize, DWORD dwFreeType) AKARI_CE_NAME(VirtualFree);
 
 /* aa450980 "VirtualProtect (Windows CE 5.0)":
  * BOOL VirtualProtect(LPVOID, DWORD, DWORD, PDWORD).  CE 1.0+;
  * Winbase.h; Coredll.lib.  Changes protection on committed pages;
  * pages must come from one VirtualAlloc region. */
+/* twin-print: ee488918 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450981 lacks the print. */
 AKARI_CE_IMPORT BOOL VirtualProtect(LPVOID lpAddress, DWORD dwSize, DWORD flNewProtect,
                     PDWORD lpflOldProtect) AKARI_CE_NAME(VirtualProtect);
 
@@ -1463,6 +1518,7 @@ AKARI_CE_IMPORT DWORD VirtualQuery(LPCVOID lpAddress,
  * BOOL FlushInstructionCache(HANDLE, LPCVOID, DWORD).  CE 2.0+;
  * Winbase.h; Coredll.lib.  Flushes the instruction cache for the
  * specified process (see also the process-and-thread book). */
+/* twin-print: ee488575 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885636 lacks the print. */
 AKARI_CE_IMPORT BOOL FlushInstructionCache(HANDLE hProcess, LPCVOID lpBaseAddress,
                            DWORD dwSize) AKARI_CE_NAME(FlushInstructionCache);
 
@@ -1470,6 +1526,7 @@ AKARI_CE_IMPORT BOOL FlushInstructionCache(HANDLE hProcess, LPCVOID lpBaseAddres
  * DWORD GetProcessVersion(DWORD).  CE 3.0+; Winbase.h; Coredll.lib.
  * Version of the system the process expects to run on: high word
  * major, low word minor; 0 + GetLastError on failure. */
+/* twin-print: ee488161 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885617 lacks the print. */
 AKARI_CE_IMPORT DWORD GetProcessVersion(DWORD ProcessId) AKARI_CE_NAME(GetProcessVersion);
 
 #if _WIN32_WCE >= 0x0500   /* GetDllVersion: documented from CE 5.0 (docs/generation-audit.md) */
@@ -1484,6 +1541,7 @@ AKARI_CE_IMPORT DWORD GetDllVersion(HMODULE hMod) AKARI_CE_NAME(GetDllVersion);
  * BOOL GetThreadTimes(HANDLE, LPFILETIME, LPFILETIME, LPFILETIME,
  * LPFILETIME).  CE 2.10+; Winbase.h; Coredll.lib.  Creation, exit,
  * kernel and user time of a thread (FILETIME = 100 ns units). */
+/* twin-print: ee488172 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885646 lacks the print. */
 AKARI_CE_IMPORT BOOL GetThreadTimes(HANDLE hThread, LPFILETIME lpCreationTime,
                     LPFILETIME lpExitTime, LPFILETIME lpKernelTime,
                     LPFILETIME lpUserTime) AKARI_CE_NAME(GetThreadTimes);
@@ -1515,6 +1573,7 @@ typedef struct _TIME_ZONE_INFORMATION {
  * DWORD GetTimeZoneInformation(LPTIME_ZONE_INFORMATION).  CE 1.0+;
  * Winbase.h; Coredll.lib.  Returns TIME_ZONE_ID_* (UTC = local +
  * Bias, Bias in minutes). */
+/* twin-print: ee488386 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450893 lacks the print. */
 AKARI_CE_IMPORT DWORD GetTimeZoneInformation(LPTIME_ZONE_INFORMATION
                              lpTimeZoneInformation) AKARI_CE_NAME(GetTimeZoneInformation);
 
@@ -1677,6 +1736,7 @@ AKARI_CE_IMPORT BOOL GetFileAttributesExW(LPCTSTR lpFileName,
  * BOOL GetDiskFreeSpaceEx(LPCWSTR, PULARGE_INTEGER, PULARGE_INTEGER,
  * PULARGE_INTEGER).  CE 2.0+; Winbase.h; Coredll.lib.  Free/total
  * bytes on the volume; any of the three out pointers may be NULL. */
+/* twin-print: ee489735 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms890926 lacks the print. */
 AKARI_CE_IMPORT BOOL GetDiskFreeSpaceExW(LPCWSTR lpDirectoryName,
                           PULARGE_INTEGER lpFreeBytesAvailableToCaller,
                           PULARGE_INTEGER lpTotalNumberOfBytes,
@@ -1754,6 +1814,7 @@ BOOL DeleteAndRenameFileW(LPCWSTR lpszDestFile, LPCWSTR lpszSourceFile);
  * is too small.  The documented signature is reproduced as-is. */
 AKARI_CE_IMPORT DWORD GetFileVersionInfoSizeW(LPTSTR lptstrFilename, LPDWORD lpdwHandle) AKARI_CE_NAME(GetFileVersionInfoSizeW);
 #define GetFileVersionInfoSize GetFileVersionInfoSizeW
+/* twin-print: ee490015 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891023 lacks the print. */
 AKARI_CE_IMPORT BOOL GetFileVersionInfoW(LPTSTR lptstrFilename, DWORD dwHandle,
                          DWORD dwLen, LPVOID lpData) AKARI_CE_NAME(GetFileVersionInfoW);
 #define GetFileVersionInfo GetFileVersionInfoW
@@ -1790,6 +1851,7 @@ AKARI_CE_IMPORT BOOL CeGenRandom(DWORD dwLen, BYTE *pbBuffer) AKARI_CE_NAME(CeGe
  * canonical form of the path (0 + ERROR_INVALID_PARAMETER for NULL
  * input, ERROR_INSUFFICIENT_BUFFER when the output buffer is small);
  * the canonical string is written when the buffer is non-NULL. */
+/* twin-print: ms923919 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517158 lacks the print. */
 AKARI_CE_IMPORT DWORD CeGetCanonicalPathNameW(LPCWSTR lpPathName,
                              LPWSTR lpCanonicalPathName,
                              DWORD cchCanonicalPathName,
@@ -1970,6 +2032,7 @@ AKARI_CE_IMPORT int wsprintfW(LPTSTR lpOut, LPCTSTR lpFmt, ...) AKARI_CE_NAME(ws
 /* aa450994 "wvsprintf (Windows CE 5.0)":
  * int wvsprintf(LPTSTR, LPCTSTR, va_list).  CE 1.0+; Winbase.h;
  * Coreloc.lib.  Unicode-only per page. */
+/* twin-print: ee488216 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885166 lacks the print. */
 AKARI_CE_IMPORT int wvsprintfW(LPTSTR lpOutput, LPCTSTR lpFormat, va_list arglist) AKARI_CE_NAME(wvsprintfW);
 #define wvsprintf wvsprintfW
 
@@ -2082,24 +2145,29 @@ typedef COMMPROP *LPCOMMPROP;
 
 /* ms885166: BOOL ClearCommBreak(HANDLE).  Restores character
  * transmission (leaves the break state).  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488605 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885167 lacks the print. */
 AKARI_CE_IMPORT BOOL ClearCommBreak(HANDLE hFile) AKARI_CE_NAME(ClearCommBreak);
 
 /* ms885167: BOOL ClearCommError(HANDLE, LPDWORD, LPCOMSTAT).
  * Retrieves error mask + current status.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488402 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885213 lacks the print. */
 AKARI_CE_IMPORT BOOL ClearCommError(HANDLE hFile, LPDWORD lpErrors, LPCOMSTAT lpStat) AKARI_CE_NAME(ClearCommError);
 
 /* ms885213: BOOL EscapeCommFunction(HANDLE, DWORD).  Directs the
  * device to perform an extended function (CLRDTR/SETDTR, CLRRTS/
  * SETRTS, SETXOFF/SETXON, CLRBREAK/SETBREAK codes).  CE 2.10+;
  * Serdev.lib. */
+/* twin-print: ee488193 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885606 lacks the print. */
 AKARI_CE_IMPORT BOOL EscapeCommFunction(HANDLE hFile, DWORD dwFunc) AKARI_CE_NAME(EscapeCommFunction);
 
 /* ms885606: BOOL GetCommMask(HANDLE, LPDWORD).  Returns the event
  * mask currently enabled for the device.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488617 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885607 lacks the print. */
 AKARI_CE_IMPORT BOOL GetCommMask(HANDLE hFile, LPDWORD lpEvtMask) AKARI_CE_NAME(GetCommMask);
 
 /* ms885607: BOOL GetCommModemStatus(HANDLE, LPDWORD).  Returns the
  * modem control-register values.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488603 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885608 lacks the print. */
 AKARI_CE_IMPORT BOOL GetCommModemStatus(HANDLE hFile, LPDWORD lpModemStat) AKARI_CE_NAME(GetCommModemStatus);
 
 /* ms885608: BOOL GetCommProperties(HANDLE, LPCOMMPROP).  Fills a
@@ -2108,6 +2176,7 @@ AKARI_CE_IMPORT BOOL GetCommProperties(HANDLE hFile, LPCOMMPROP lpCommProp) AKAR
 
 /* ms885609: BOOL GetCommState(HANDLE, LPDCB).  Fills a DCB with the
  * current control settings.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488240 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885610 lacks the print. */
 AKARI_CE_IMPORT BOOL GetCommState(HANDLE hFile, LPDCB lpDCB) AKARI_CE_NAME(GetCommState);
 
 /* ms885610: BOOL GetCommTimeouts(HANDLE, LPCOMMTIMEOUTS).  Returns
@@ -2117,32 +2186,39 @@ AKARI_CE_IMPORT BOOL GetCommTimeouts(HANDLE hFile, LPCOMMTIMEOUTS lpCommTimeouts
 /* ms886785: BOOL PurgeComm(HANDLE, DWORD).  Discards characters in
  * the output/input buffer (PURGE_TXABORT, PURGE_RXABORT, PURGE_TXCLEAR,
  * PURGE_RXCLEAR actions).  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488578 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886804 lacks the print. */
 AKARI_CE_IMPORT BOOL PurgeComm(HANDLE hFile, DWORD dwFlags) AKARI_CE_NAME(PurgeComm);
 
 /* ms886804: BOOL SetCommBreak(HANDLE).  Suspends character
  * transmission (break state) until ClearCommBreak.  CE 1.0+;
  * Serdev.lib. */
+/* twin-print: ee488916 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886805 lacks the print. */
 AKARI_CE_IMPORT BOOL SetCommBreak(HANDLE hFile) AKARI_CE_NAME(SetCommBreak);
 
 /* ms886805: BOOL SetCommMask(HANDLE, DWORD).  Sets the monitored
  * event mask; zero disables all events.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee487991 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886806 lacks the print. */
 AKARI_CE_IMPORT BOOL SetCommMask(HANDLE hFile, DWORD dwEvtMask) AKARI_CE_NAME(SetCommMask);
 
 /* ms886806: BOOL SetCommState(HANDLE, LPDCB).  Configures the device
  * from a DCB.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488388 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886807 lacks the print. */
 AKARI_CE_IMPORT BOOL SetCommState(HANDLE hFile, LPDCB lpDCB) AKARI_CE_NAME(SetCommState);
 
 /* ms886807: BOOL SetCommTimeouts(HANDLE, LPCOMMTIMEOUTS).  Sets the
  * read/write time-out parameters.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488358 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450896 lacks the print. */
 AKARI_CE_IMPORT BOOL SetCommTimeouts(HANDLE hFile, LPCOMMTIMEOUTS lpCommTimeouts) AKARI_CE_NAME(SetCommTimeouts);
 
 /* aa450896: BOOL SetupComm(HANDLE, DWORD, DWORD).  Initializes the
  * communications parameters (recommended input/output buffer sizes).
  * CE 1.0+; Serdev.lib. */
+/* twin-print: ee488400 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450957 lacks the print. */
 AKARI_CE_IMPORT BOOL SetupComm(HANDLE hFile, DWORD dwInQueue, DWORD dwOutQueue) AKARI_CE_NAME(SetupComm);
 
 /* aa450957: BOOL TransmitCommChar(HANDLE, char).  Transmits one
  * character ahead of pending output.  CE 1.0+; Serdev.lib. */
+/* twin-print: ee488449 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450985 lacks the print. */
 AKARI_CE_IMPORT BOOL TransmitCommChar(HANDLE hFile, char cChar) AKARI_CE_NAME(TransmitCommChar);
 
 /* aa450985: BOOL WaitCommEvent(HANDLE, LPDWORD, LPOVERLAPPED).
@@ -2162,6 +2238,7 @@ AKARI_CE_IMPORT BOOL WaitCommEvent(HANDLE hFile, LPDWORD lpEvtMask,
  * the system clears bit 28 of dwExceptionCode; nNumberOfArguments
  * must not exceed EXCEPTION_MAXIMUM_PARAMETERS (ignored if the
  * argument pointer is NULL). */
+/* twin-print: ee488413 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885194 lacks the print. */
 AKARI_CE_IMPORT void RaiseException(DWORD dwExceptionCode, DWORD dwExceptionFlags,
                     DWORD nNumberOfArguments,
                     const DWORD *lpArguments) AKARI_CE_NAME(RaiseException);
@@ -2371,6 +2448,7 @@ BOOL KillTimer(HWND hWnd, UINT uIDEvent);
 AKARI_CE_IMPORT DWORD MsgWaitForMultipleObjects(DWORD nCount, LPHANDLE pHandles,
                                 BOOL fWaitAll, DWORD dwMilliseconds,
                                 DWORD dwWakeMask) AKARI_CE_NAME(MsgWaitForMultipleObjects);
+/* twin-print: ms931461 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms931460 lacks the print. */
 AKARI_CE_IMPORT DWORD MsgWaitForMultipleObjectsEx(DWORD nCount, LPHANDLE pHandles,
                                   DWORD dwMilliseconds, DWORD dwWakeMask,
                                   DWORD dwFlags) AKARI_CE_NAME(MsgWaitForMultipleObjectsEx);
@@ -2383,8 +2461,11 @@ AKARI_CE_IMPORT DWORD MsgWaitForMultipleObjectsEx(DWORD nCount, LPHANDLE pHandle
 /* ------------------------------------------------------------------ */
 
 /* ms909847 "InflateRect" */
+/* twin-print: ee501937 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909847 lacks the print. */
 AKARI_CE_IMPORT BOOL InflateRect(LPRECT lprc, int dx, int dy) AKARI_CE_NAME(InflateRect);
 /* aa453648 "SetRect" */
+/* twin-print: aa453173 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453172 lacks the print. */
+/* twin-print: ee502266 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453648 lacks the print. */
 AKARI_CE_IMPORT BOOL SetRect(LPRECT lprc, int xLeft, int yTop, int xRight, int yBottom) AKARI_CE_NAME(SetRect);
 
 /* ------------------------------------------------------------------ */
@@ -2439,6 +2520,7 @@ typedef struct _SYSTEM_POWER_STATUS_EX2 {
 
 /* aa453172 "GetSystemPowerStatusEx" (CE 2.12+), aa453173
  * "GetSystemPowerStatusEx2" (CE 2.12+). */
+/* twin-print: ee500626 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453172 lacks the print. */
 AKARI_CE_IMPORT BOOL   GetSystemPowerStatusEx(PSYSTEM_POWER_STATUS_EX pstatus,
                               BOOL fUpdate) AKARI_CE_NAME(GetSystemPowerStatusEx);
 AKARI_CE_IMPORT DWORD  GetSystemPowerStatusEx2(PSYSTEM_POWER_STATUS_EX2
@@ -2447,6 +2529,7 @@ AKARI_CE_IMPORT DWORD  GetSystemPowerStatusEx2(PSYSTEM_POWER_STATUS_EX2
 
 /* ms911826 "MessageBeep": plays a sound for uType.  CE 1.0+; Header
  * Winbase.h; Link Library Msgbeep.lib (def/msgbeep-doc.def). */
+/* twin-print: ee506099 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911826 lacks the print. */
 AKARI_CE_IMPORT BOOL MessageBeep(UINT uType) AKARI_CE_NAME(MessageBeep);
 
 /* Resources Reference - module/image resource access (CE 1.0+; Header
@@ -2458,7 +2541,9 @@ AKARI_CE_IMPORT HRSRC  FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lp
 #define FindResource FindResourceW
 /* ee505293: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HGLOBAL LoadResource(HMODULE hModule, HRSRC hResInfo) AKARI_CE_NAME(LoadResource);  /* aa453416 */
+/* twin-print: aa453417 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453416 lacks the print. */
 AKARI_CE_IMPORT LPVOID  LockResource(HGLOBAL hResData) AKARI_CE_NAME(LockResource);                  /* aa453417 */
+/* twin-print: ms940346 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453417 lacks the print. */
 AKARI_CE_IMPORT DWORD   SizeofResource(HMODULE hModule, HRSRC hResInfo) AKARI_CE_NAME(SizeofResource); /* ms940346 */
 
 /* ------------------------------------------------------------------ */
@@ -2537,6 +2622,7 @@ AKARI_CE_IMPORT BOOL VerQueryValueW(const LPVOID pBlock, LPTSTR lpSubBlock,
  * pages do not publish (incomplete type recorded at M24); Nk.lib is
  * kernel scope and stays out of the import def. */
 AKARI_CE_IMPORT BOOL GetThreadContext(HANDLE hThread, LPCONTEXT lpContext) AKARI_CE_NAME(GetThreadContext);
+/* twin-print: ms886794 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885642 lacks the print. */
 AKARI_CE_IMPORT BOOL ReadProcessMemory(HANDLE hProcess, LPCVOID lpBaseAddress,
                        LPVOID lpBuffer, DWORD nSize,
                        LPDWORD lpNumberOfBytesRead) AKARI_CE_NAME(ReadProcessMemory);
@@ -2993,6 +3079,7 @@ AKARI_CE_IMPORT BOOL DebugActiveProcessStop(DWORD dwProcessId) AKARI_CE_NAME(Deb
 LPFILETIME lpSystemTimeAsFileTime
 );`
  * (Windows Embedded CE 6.0 and later; Link Library: coredll.lib) */
+/* twin-print: ee482753 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885639 lacks the print. */
 AKARI_CE_IMPORT void GetSystemTimeAsFileTime(LPFILETIME lpSystemTimeAsFileTime) AKARI_CE_NAME(GetSystemTimeAsFileTime);
 
 /* ms885639 GetSystemMemoryDivision: print

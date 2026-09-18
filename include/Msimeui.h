@@ -25,6 +25,7 @@ extern "C" {
 /* ms905977 / ms905978 "ImeGetUIClassName": print
  * `voidImeGetUIClassName( LPTSTRlpszImeUIClassName);` (glued tokens
  * split; called by the Chinese Pocket IME to load the UI module). */
+/* twin-print: ee490992 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms905977 lacks the print. */
 AKARI_CE_IMPORT void ImeGetUIClassName(LPTSTR lpszImeUIClassName)
                     AKARI_CE_NAME(ImeGetUIClassName);
 

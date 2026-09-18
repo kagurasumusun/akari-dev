@@ -545,10 +545,12 @@ AKARI_CE_IMPORT MMRESULT waveOutWrite(HWAVEOUT hwo, LPWAVEHDR pwh,
 /* ------------------------------------------------------------------ */
 
 /* ms932037 "mixerClose". */
+/* twin-print: ee487381 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932037 lacks the print. */
 AKARI_CE_IMPORT MMRESULT mixerClose(HMIXER hmx)
     AKARI_CE_NAME(mixerClose);
 
 /* ms932044 "mixerGetControlDetails". */
+/* twin-print: ee487387 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932044 lacks the print. */
 AKARI_CE_IMPORT MMRESULT mixerGetControlDetails(HMIXEROBJ hmxobj,
     LPMIXERCONTROLDETAILS pmxcd, DWORD fdwDetails)
     AKARI_CE_NAME(mixerGetControlDetails);
@@ -558,6 +560,7 @@ AKARI_CE_IMPORT MMRESULT mixerGetDevCaps(UINT uMxId,
     LPMIXERCAPS pmxcaps, UINT cbmxcaps) AKARI_CE_NAME(mixerGetDevCaps);
 
 /* ms932046 "mixerGetID". */
+/* twin-print: ee487524 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932046 lacks the print. */
 AKARI_CE_IMPORT MMRESULT mixerGetID(HMIXEROBJ hmxobj, UINT* puMxId,
     DWORD fdwId) AKARI_CE_NAME(mixerGetID);
 

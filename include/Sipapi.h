@@ -142,6 +142,7 @@ AKARI_CE_IMPORT BOOL SipSetCurrentIM(CLSID *pClsid) AKARI_CE_NAME(SipSetCurrentI
 /* ms940340: sets the default size and position of the panel window;
  * takes effect when a new IM is loaded.  Does not initialize the SIP
  * environment. */
+/* twin-print: ee504359 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940340 lacks the print. */
 AKARI_CE_IMPORT BOOL SipSetDefaultRect(RECT *pRect) AKARI_CE_NAME(SipSetDefaultRect);
 
 /* ms940341: sets the panel state / desktop area / rectangle and

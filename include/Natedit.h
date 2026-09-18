@@ -100,6 +100,7 @@ AKARI_CE_IMPORT NTSTATUS EditorInitialize(PNAT_REGISTER_EDITOR RegisterEditor) A
 /* ms886796 "RegisterEditor (Windows CE 5.0)":
  * NTSTATUS RegisterEditor(PIP_NAT_REGISTER_EDITOR).  Registers a NAT
  * editor with the NAT driver. */
+/* twin-print: ee488445 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885179 lacks the print. */
 AKARI_CE_IMPORT NTSTATUS RegisterEditor(PIP_NAT_REGISTER_EDITOR RegisterContext) AKARI_CE_NAME(RegisterEditor);
 
 /* --- Editor-implemented callback prototypes (pages publish them in
@@ -107,6 +108,7 @@ AKARI_CE_IMPORT NTSTATUS RegisterEditor(PIP_NAT_REGISTER_EDITOR RegisterContext)
 
 /* ms885179 "CreateHandler (Windows CE 5.0)": called by the NAT driver
  * when a mapping associated with a registered editor is created. */
+/* twin-print: ee488191 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885191 lacks the print. */
 AKARI_CE_IMPORT NTSTATUS CreateHandler(PVOID EditorContext, ULONG PrivateAddress,
                        USHORT PrivatePort, ULONG PublicAddress,
                        USHORT PublicPort, ULONG RemoteAddress,
@@ -114,6 +116,7 @@ AKARI_CE_IMPORT NTSTATUS CreateHandler(PVOID EditorContext, ULONG PrivateAddress
 
 /* ms885191 "DataHandler (Windows CE 5.0)": called by the NAT driver
  * for each packet received during an editor-controlled session. */
+/* twin-print: ee488399 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885198 lacks the print. */
 AKARI_CE_IMPORT NTSTATUS DataHandler(PVOID InterfaceHandle, PVOID SessionHandle,
                      PVOID DataHandle, PVOID EditorContext,
                      PVOID EditorSessionContext, PIPRCVBUF RecvBuffer,

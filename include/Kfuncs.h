@@ -23,9 +23,11 @@
 AKARI_CE_IMPORT DWORD CeGetCallerTrust(void)
     AKARI_CE_NAME(CeGetCallerTrust);
 /* ms885614 GetCurrentProcessId: print `` */
+/* twin-print: ee488631 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885614 lacks the print. */
 AKARI_CE_IMPORT DWORD GetCurrentProcessId(void)
     AKARI_CE_NAME(GetCurrentProcessId);
 /* ms885616 GetCurrentThreadId: print `` */
+/* twin-print: ee488409 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885616 lacks the print. */
 AKARI_CE_IMPORT DWORD GetCurrentThreadId(void)
     AKARI_CE_NAME(GetCurrentThreadId);
 

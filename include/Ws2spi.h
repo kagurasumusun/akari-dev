@@ -280,6 +280,7 @@ AKARI_CE_IMPORT int WSPStartup(WORD wVersionRequested,
                                const WSPUPCALLTABLE *UpcallTable,
                                LPWSPPROC_TABLE lpProcTable)
     AKARI_CE_NAME(WSPStartup);
+/* twin-print: ms898915 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898913 lacks the print. */
 AKARI_CE_IMPORT int WSPStringToAddress(LPWSTR AddressString,
                                        INT AddressFamily,
                                        LPWSAPROTOCOL_INFOW lpProtocolInfo,
@@ -327,9 +328,11 @@ AKARI_CE_IMPORT int NSPLookupServiceNext(HANDLE hLookup,
                                          LPDWORD lpdwBufferLength,
                                          LPWSAQUERYSET lpqsResults)
     AKARI_CE_NAME(NSPLookupServiceNext);
+/* twin-print: ms895758 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms895756 lacks the print. */
 AKARI_CE_IMPORT int NSPRemoveServiceClass(LPGUID lpProviderId,
                                           LPGUID lpServiceClassId)
     AKARI_CE_NAME(NSPRemoveServiceClass);
+/* twin-print: ms895766 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms895756 lacks the print. */
 AKARI_CE_IMPORT int NSPSetService(LPGUID lpProviderId,
                                   LPWSASERVICECLASSINFOW lpServiceClassInfo,
                                   LPWSAQUERYSETW lpqsRegInfo,

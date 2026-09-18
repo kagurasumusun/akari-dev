@@ -307,6 +307,7 @@ typedef BY_HANDLE_DB_INFORMATION *LPBY_HANDLE_DB_INFORMATION;
  * the exports). */
 
 /* aa516985 "CeCreateDatabase (Windows CE 5.0)": CE 1.01+. */
+/* twin-print: ms923898 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa516985 lacks the print. */
 AKARI_CE_IMPORT CEOID CeCreateDatabase(LPWSTR lpszName, DWORD dwDbaseType,
                     WORD wNumSortOrder,
                     SORTORDERSPEC *rgSortSpecs) AKARI_CE_NAME(CeCreateDatabase);
@@ -324,6 +325,7 @@ AKARI_CE_IMPORT CEOID CeCreateDatabaseEx2(PCEGUID pguid,
  * include/Pwindbas.h alias).  The CEDB print's second parameter is
  * `DWORDLCID` (capitalised by the archive); the EDB twin aa516983
  * prints the same shape as `DWORDlcid`. */
+/* twin-print: aa516995 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa516994 lacks the print. */
 AKARI_CE_IMPORT VOID CeChangeDatabaseLCID(PCEGUID pceguid,
                     DWORD lcid) AKARI_CE_NAME(CeChangeDatabaseLCID);
 
@@ -331,6 +333,7 @@ AKARI_CE_IMPORT VOID CeChangeDatabaseLCID(PCEGUID pceguid,
 AKARI_CE_IMPORT BOOL CeDeleteDatabase(CEOID oidDbase) AKARI_CE_NAME(CeDeleteDatabase);
 
 /* aa516996 "CeDeleteDatabaseEx (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: aa516998 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa516997 lacks the print. */
 AKARI_CE_IMPORT BOOL CeDeleteDatabaseEx(PCEGUID pguid,
                     CEOID oid) AKARI_CE_NAME(CeDeleteDatabaseEx);
 
@@ -339,6 +342,7 @@ AKARI_CE_IMPORT BOOL CeDeleteRecord(HANDLE hDatabase,
                     CEOID oidRecord) AKARI_CE_NAME(CeDeleteRecord);
 
 /* aa517003 "CeEnumDBVolumes (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: ms923911 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517106 lacks the print. */
 AKARI_CE_IMPORT BOOL CeEnumDBVolumes(PCEGUID pceguid, LPWSTR lpBuf,
                     DWORD dwNumChars) AKARI_CE_NAME(CeEnumDBVolumes);
 
@@ -346,6 +350,7 @@ AKARI_CE_IMPORT BOOL CeEnumDBVolumes(PCEGUID pceguid, LPWSTR lpBuf,
 AKARI_CE_IMPORT HANDLE CeFindFirstDatabase(DWORD dwDbaseType) AKARI_CE_NAME(CeFindFirstDatabase);
 
 /* aa517109 "CeFindFirstDatabaseEx (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: ms923913 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517118 lacks the print. */
 AKARI_CE_IMPORT HANDLE CeFindFirstDatabaseEx(PCEGUID pceguid,
                     DWORD dwDbaseType) AKARI_CE_NAME(CeFindFirstDatabaseEx);
 
@@ -360,6 +365,7 @@ AKARI_CE_IMPORT CEOID CeFindNextDatabaseEx(HANDLE hEnum,
 AKARI_CE_IMPORT BOOL CeFlushDBVol(PCEGUID pceguid) AKARI_CE_NAME(CeFlushDBVol);
 
 /* aa517132 "CeFreeNotification (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: aa517155 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517152 lacks the print. */
 AKARI_CE_IMPORT BOOL CeFreeNotification(PCENOTIFYREQUEST pRequest,
                     PCENOTIFICATION pNotify) AKARI_CE_NAME(CeFreeNotification);
 
@@ -370,6 +376,7 @@ AKARI_CE_IMPORT BOOL CeGetDBInformationByHandle(HANDLE hDbase,
                     LPBY_HANDLE_DB_INFORMATION lpDBInfo) AKARI_CE_NAME(CeGetDBInformationByHandle);
 
 /* aa517177 "CeMountDBVol (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: ms923923 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517194 lacks the print. */
 AKARI_CE_IMPORT BOOL CeMountDBVol(PCEGUID pceguid, LPWSTR lpszDBVol,
                     DWORD dwFlags) AKARI_CE_NAME(CeMountDBVol);
 
@@ -388,6 +395,7 @@ AKARI_CE_IMPORT BOOL CeOidGetInfoEx(PCEGUID pceguid, CEOID oid,
  * third parameter as `CEOIDINFO* poidInfo` while this CEDB page
  * prints `CEOIDINFOEX*`; the declaring prototype follows the CEDB
  * page (the name's origin, CE .NET 4.0) and both are recorded. */
+/* twin-print: ms923928 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517213 lacks the print. */
 AKARI_CE_IMPORT BOOL CeOidGetInfoEx2(PCEGUID pceguid, CEOID oid,
                     CEOIDINFOEX *poidInfo) AKARI_CE_NAME(CeOidGetInfoEx2);
 
@@ -402,6 +410,7 @@ AKARI_CE_IMPORT HANDLE CeOpenDatabaseEx(PCEGUID pceguid, PCEOID poid,
                     CENOTIFYREQUEST *pReq) AKARI_CE_NAME(CeOpenDatabaseEx);
 
 /* aa517218 "CeOpenDatabaseEx2 (CEDB) (Windows CE 5.0)": CE .NET 4.0+. */
+/* twin-print: aa517232 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517229 lacks the print. */
 AKARI_CE_IMPORT HANDLE CeOpenDatabaseEx2(PCEGUID pguid, PCEOID poid,
                     LPWSTR lpszName, SORTORDERSPECEX *psort, DWORD dwFlags,
                     CENOTIFYREQUEST *pRequest) AKARI_CE_NAME(CeOpenDatabaseEx2);
@@ -412,6 +421,7 @@ AKARI_CE_IMPORT CEOID CeReadRecordProps(HANDLE hDbase, DWORD dwFlags,
                     LPDWORD lpcbBuffer) AKARI_CE_NAME(CeReadRecordProps);
 
 /* aa517235 "CeReadRecordPropsEx (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: aa517250 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517246 lacks the print. */
 AKARI_CE_IMPORT CEOID CeReadRecordPropsEx(HANDLE hDbase, DWORD dwFlags,
                     LPWORD lpcPropID, CEPROPID *rgPropID, LPBYTE *lplpBuffer,
                     LPDWORD lpcbBuffer,
@@ -420,11 +430,13 @@ AKARI_CE_IMPORT CEOID CeReadRecordPropsEx(HANDLE hDbase, DWORD dwFlags,
 /* aa517246 "CeSeekDatabase (CEDB) (Windows CE 5.0)": CE 1.01+.
  * dwSeekType takes the CEDB_SEEK_* constants (names recorded below,
  * values unpublished). */
+/* twin-print: aa517253 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517251 lacks the print. */
 AKARI_CE_IMPORT CEOID CeSeekDatabase(HANDLE hDatabase, DWORD dwSeekType,
                     DWORD dwValue,
                     LPDWORD lpdwIndex) AKARI_CE_NAME(CeSeekDatabase);
 
 /* aa517251 "CeSeekDatabaseEx (CEDB) (Windows CE 5.0)": CE .NET 4.0+. */
+/* twin-print: aa517256 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517254 lacks the print. */
 AKARI_CE_IMPORT CEOID CeSeekDatabaseEx(HANDLE hDatabase, DWORD dwSeekType,
                     DWORD dwValue, WORD wNumVals,
                     LPDWORD lpdwIndex) AKARI_CE_NAME(CeSeekDatabaseEx);
@@ -443,6 +455,7 @@ AKARI_CE_IMPORT BOOL CeSetDatabaseInfoEx2(PCEGUID pguid, CEOID oidDbase,
                     CEDBASEINFOEX *pNewInfo) AKARI_CE_NAME(CeSetDatabaseInfoEx2);
 
 /* aa517280 "CeUnmountDBVol (CEDB) (Windows CE 5.0)": CE 2.10+. */
+/* twin-print: aa517288 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa517285 lacks the print. */
 AKARI_CE_IMPORT BOOL CeUnmountDBVol(PCEGUID pceguid) AKARI_CE_NAME(CeUnmountDBVol);
 
 /* aa517285 "CeWriteRecordProps (CEDB) (Windows CE 5.0)": CE 1.01+. */

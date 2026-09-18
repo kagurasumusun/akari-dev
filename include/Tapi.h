@@ -1546,8 +1546,10 @@ AKARI_CE_IMPORT LONG lineInitializeEx(LPHLINEAPP lphLineApp,
     LPDWORD lpdwAPIVersion,
     LPLINEINITIALIZEEXPARAMS lpLineInitializeExParams)
     AKARI_CE_NAME(lineInitializeEx);                        /* ms894370, CE 3.0+  */
+/* twin-print: ms928052 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894370 lacks the print. */
 AKARI_CE_IMPORT LONG lineShutdown(HLINEAPP hLineApp)
     AKARI_CE_NAME(lineShutdown);                            /* ms894517, CE 1.0+  */
+/* twin-print: ms928030 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894517 lacks the print. */
 AKARI_CE_IMPORT LONG lineNegotiateAPIVersion(HLINEAPP hLineApp,
     DWORD dwDeviceID, DWORD dwAPILowVersion,
     DWORD dwAPIHighVersion, LPDWORD lpdwAPIVersion,
@@ -1561,9 +1563,11 @@ AKARI_CE_IMPORT LONG lineNegotiateExtVersion(HLINEAPP hLineApp,
 AKARI_CE_IMPORT LONG lineGetMessage(HLINEAPP hLineApp,
     LPLINEMESSAGE lpMessage, DWORD dwTimeout)
     AKARI_CE_NAME(lineGetMessage);                          /* ms894338, CE 3.0+  */
+/* twin-print: ms928042 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894338 lacks the print. */
 AKARI_CE_IMPORT LONG lineSetCurrentLocation(HLINEAPP hLineApp,
     DWORD dwLocation)
     AKARI_CE_NAME(lineSetCurrentLocation);                  /* ms894481, CE 2.10+ */
+/* twin-print: ms927977 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894481 lacks the print. */
 AKARI_CE_IMPORT LONG lineAddProvider(LPCWSTR lpszProviderFilename,
     HWND hwndOwner, LPDWORD lpdwPermanentProviderID)
     AKARI_CE_NAME(lineAddProvider);                         /* ms893340, CE 2.0+  */
@@ -1579,8 +1583,10 @@ AKARI_CE_IMPORT LONG lineOpen(HLINEAPP hLineApp, DWORD dwDeviceID,
     DWORD dwCallbackInstance, DWORD dwPrivileges,
     DWORD dwMediaModes, LPLINECALLPARAMS const lpCallParams)
     AKARI_CE_NAME(lineOpen);                                /* ms894420, CE 1.0+  */
+/* twin-print: ms927985 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894420 lacks the print. */
 AKARI_CE_IMPORT LONG lineClose(HLINE hLine)
     AKARI_CE_NAME(lineClose);                               /* ms894118, CE 1.0+  */
+/* twin-print: ms928009 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894118 lacks the print. */
 AKARI_CE_IMPORT LONG lineGetDevCaps(HLINEAPP hLineApp,
     DWORD dwDeviceID, DWORD dwAPIVersion, DWORD dwExtVersion,
     LPLINEDEVCAPS lpLineDevCaps)
@@ -1599,6 +1605,7 @@ AKARI_CE_IMPORT LONG lineGetAddressID(HLINE hLine,
     LPDWORD lpdwAddressID, DWORD dwAddressMode,
     LPCWSTR lpsAddress, DWORD dwSize)
     AKARI_CE_NAME(lineGetAddressID);                        /* ms894159, CE 1.0+  */
+/* twin-print: ms928012 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894159 lacks the print. */
 AKARI_CE_IMPORT LONG lineGetID(HLINE hLine, DWORD dwAddressID,
     HCALL hCall, DWORD dwSelect, LPVARSTRING lpDeviceID,
     LPCWSTR lpszDeviceClass)
@@ -1609,6 +1616,7 @@ AKARI_CE_IMPORT LONG lineGetIcon(DWORD dwDeviceID,
 AKARI_CE_IMPORT LONG lineGetStatusMessages(HLINE hLine,
     LPDWORD lpdwLineStates, LPDWORD lpdwAddressStates)
     AKARI_CE_NAME(lineGetStatusMessages);                   /* ms894356, CE 1.0+  */
+/* twin-print: ms928046 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894356 lacks the print. */
 AKARI_CE_IMPORT LONG lineSetStatusMessages(HLINE hLine,
     DWORD dwLineStates, DWORD dwAddressStates)
     AKARI_CE_NAME(lineSetStatusMessages);                   /* ms894500, CE 1.0+  */
@@ -1636,8 +1644,10 @@ AKARI_CE_IMPORT LONG lineAnswer(HCALL hCall,
 AKARI_CE_IMPORT LONG lineAccept(HCALL hCall,
     LPCSTR lpsUserUserInfo, DWORD dwSize)
     AKARI_CE_NAME(lineAccept);                              /* ms893325, CE 1.0+  */
+/* twin-print: ms927988 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms893325 lacks the print. */
 AKARI_CE_IMPORT LONG lineDeallocateCall(HCALL hCall)
     AKARI_CE_NAME(lineDeallocateCall);                      /* ms894128, CE 1.0+  */
+/* twin-print: ms927994 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894128 lacks the print. */
 AKARI_CE_IMPORT LONG lineDrop(HCALL hCall,
     LPCTSTR lpsUserUserInfo, DWORD dwSize)
     AKARI_CE_NAME(lineDrop);                                /* ms894142, CE 1.0+  */
@@ -1750,23 +1760,28 @@ AKARI_CE_IMPORT LONG lineBlindTransfer(HCALL hCall,
 AKARI_CE_IMPORT LONG lineGetDevConfig(DWORD dwDeviceID,
     LPVARSTRING lpDeviceConfig, LPCSTR lpszDeviceClass)
     AKARI_CE_NAME(lineGetDevConfig);                        /* ms894177, CE 1.0+  */
+/* twin-print: ms928043 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894177 lacks the print. */
 AKARI_CE_IMPORT LONG lineSetDevConfig(DWORD dwDeviceID,
     LPVOID const lpDeviceConfig, DWORD dwSize,
     LPCTSTR lpszDeviceClass)
     AKARI_CE_NAME(lineSetDevConfig);                        /* ms894488, CE 1.0+  */
+/* twin-print: ms927987 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894488 lacks the print. */
 AKARI_CE_IMPORT LONG lineConfigDialogEdit(DWORD dwDeviceID,
     HWND hwndOwner, LPCWSTR lpszDeviceClass,
     LPVOID const lpDeviceConfigIn, DWORD dwSize,
     LPVARSTRING lpDeviceConfigOut)
     AKARI_CE_NAME(lineConfigDialogEdit);                    /* ms894123, CE 1.0+  */
+/* twin-print: ms928019 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894123 lacks the print. */
 AKARI_CE_IMPORT LONG lineGetTranslateCaps(HLINEAPP hLineApp,
     DWORD dwAPIVersion, LPLINETRANSLATECAPS lpTranslateCaps)
     AKARI_CE_NAME(lineGetTranslateCaps);                    /* ms894361, CE 1.0+  */
+/* twin-print: ms938808 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894361 lacks the print. */
 AKARI_CE_IMPORT LONG lineTranslateAddress(HLINEAPP hLineApp,
     DWORD dwDeviceID, DWORD dwAPIVersion, LPCWSTR lpszAddressIn,
     DWORD dwCard, DWORD dwTranslateOptions,
     LPLINETRANSLATEOUTPUT lpTranslateOutput)
     AKARI_CE_NAME(lineTranslateAddress);                    /* ms894539, CE 1.0+  */
+/* twin-print: ms939041 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms894539 lacks the print. */
 AKARI_CE_IMPORT LONG lineTranslateDialog(HLINEAPP hLineApp,
     DWORD dwDeviceID, DWORD dwAPIVersion, HWND hwndOwner,
     LPCWSTR lpszAddressIn)

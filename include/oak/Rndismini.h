@@ -66,6 +66,7 @@ typedef BOOL (*PFN_PDD_GET)(UINT uiRequestId, PVOID pvData,
 /* --- MDD/PDD functions (printed; no Link Library row). -------- */
 /* ms902178 "MDDAllocDataWrapper": `PDATA_WRAPPER
  * MDDAllocDataWrapper(void);` */
+/* twin-print: ms902179 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms902181 lacks the print. */
 AKARI_CE_IMPORT PDATA_WRAPPER MDDAllocDataWrapper(void)
                     AKARI_CE_NAME(MDDAllocDataWrapper);
 

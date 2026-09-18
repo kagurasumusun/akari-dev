@@ -770,10 +770,12 @@ typedef enum _WSAESETSERVICEOP {
 /* aa450276: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT SOCKET accept(SOCKET s, struct sockaddr *addr,
                               int *addrlen) AKARI_CE_NAME(accept);
+/* twin-print: aa450300 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa450276 lacks the print. */
 AKARI_CE_IMPORT int bind(SOCKET s, const struct sockaddr *name,
                          int namelen) AKARI_CE_NAME(bind);
 /* ms887908: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int closesocket(SOCKET s) AKARI_CE_NAME(closesocket);
+/* twin-print: ms887909 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms887908 lacks the print. */
 AKARI_CE_IMPORT int connect(SOCKET s, const struct sockaddr *name,
                             int namelen) AKARI_CE_NAME(connect);
 AKARI_CE_IMPORT struct hostent *gethostbyaddr(const char *addr, int len,
@@ -782,8 +784,10 @@ AKARI_CE_IMPORT struct hostent *gethostbyname(const char *name)
     AKARI_CE_NAME(gethostbyname);
 AKARI_CE_IMPORT int gethostname(char *name, int namelen)
     AKARI_CE_NAME(gethostname);
+/* twin-print: aa450419 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms887908 lacks the print. */
 AKARI_CE_IMPORT int getpeername(SOCKET s, struct sockaddr *name,
                                 int *namelen) AKARI_CE_NAME(getpeername);
+/* twin-print: ms890233 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms887908 lacks the print. */
 AKARI_CE_IMPORT int getsockname(SOCKET s, struct sockaddr *name,
                                 int *namelen) AKARI_CE_NAME(getsockname);
 /* ms890301: param-list verified against this page (proto-cite) */
@@ -847,21 +851,25 @@ AKARI_CE_IMPORT SOCKET socket(int af, int type, int protocol)
  * the CE 6.0 twin pages (ee493507/ee495252/ee494648/ee493103); all
  * other prototypes from the CE 5.0 pages.  WSA* extensions require
  * Windows CE .NET 4.0 and later except where noted. */
+/* twin-print: ms898727 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ee493507 lacks the print. */
 AKARI_CE_IMPORT SOCKET WSAAccept(SOCKET s, struct sockaddr *addr,
                                  int *addrlen,
                                  LPCONDITIONPROC lpfnCondition,
                                  DWORD dwCallbackData)
     AKARI_CE_NAME(WSAAccept);
+/* twin-print: ms898728 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ee493507 lacks the print. */
 AKARI_CE_IMPORT INT WSAAddressToString(LPSOCKADDR lpsaAddress,
                                        DWORD dwAddressLength,
                                        LPWSAPROTOCOL_INFO lpProtocolInfo,
                                        LPTSTR lpszAddressString,
                                        LPDWORD lpdwAddressStringLength)
     AKARI_CE_NAME(WSAAddressToString);
+/* twin-print: ms898730 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ee493507 lacks the print. */
 AKARI_CE_IMPORT int WSACleanup(void) AKARI_CE_NAME(WSACleanup);
 /* ms898731: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL WSACloseEvent(WSAEVENT hEvent)
     AKARI_CE_NAME(WSACloseEvent);
+/* twin-print: ms898733 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898731 lacks the print. */
 AKARI_CE_IMPORT int WSAConnect(SOCKET s, const struct sockaddr *name,
                                int namelen, LPWSABUF lpCallerData,
                                LPWSABUF lpCalleeData, LPQOS lpSQOS,
@@ -883,10 +891,13 @@ AKARI_CE_IMPORT int WSAEnumProtocols(LPINT lpiProtocols,
                                      LPWSAPROTOCOL_INFO lpProtocolBuffer,
                                      LPDWORD lpdwBufferLength)
     AKARI_CE_NAME(WSAEnumProtocols);
+/* twin-print: ms898740 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898737 lacks the print. */
 AKARI_CE_IMPORT int WSAEventSelect(SOCKET s, WSAEVENT hEventObject,
                                    long lNetworkEvents)
     AKARI_CE_NAME(WSAEventSelect);
+/* twin-print: ms898741 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898737 lacks the print. */
 AKARI_CE_IMPORT int WSAGetLastError(void) AKARI_CE_NAME(WSAGetLastError);
+/* twin-print: ms898742 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898737 lacks the print. */
 AKARI_CE_IMPORT BOOL WSAGetOverlappedResult(SOCKET s,
                                             LPWSAOVERLAPPED lpOverlapped,
                                             LPDWORD lpcbTransfer,
@@ -907,6 +918,7 @@ AKARI_CE_IMPORT int WSAIoctl(SOCKET s, DWORD dwIoControlCode,
                              LPWSAOVERLAPPED_COMPLETION_ROUTINE
                                  lpCompletionRoutine)
     AKARI_CE_NAME(WSAIoctl);
+/* twin-print: ms898746 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898745 lacks the print. */
 AKARI_CE_IMPORT SOCKET WSAJoinLeaf(SOCKET s, const struct sockaddr *name,
                                    int namelen, LPWSABUF lpCallerData,
                                    LPWSABUF lpCalleeData, LPQOS lpSQOS,
@@ -939,10 +951,13 @@ AKARI_CE_IMPORT INT WSALookupServiceNext(HANDLE hLookup,
                                          LPDWORD lpdwBufferLength,
                                          LPWSAQUERYSET lpqsResults)
     AKARI_CE_NAME(WSALookupServiceNext);
+/* twin-print: ms898756 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898752 lacks the print. */
 AKARI_CE_IMPORT int WSANtohl(SOCKET s, u_long netlong, u_long *lphostlong)
     AKARI_CE_NAME(WSANtohl);
+/* twin-print: ms898757 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898752 lacks the print. */
 AKARI_CE_IMPORT int WSANtohs(SOCKET s, u_short netshort,
                              u_short *lphostshort) AKARI_CE_NAME(WSANtohs);
+/* twin-print: ms898763 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898752 lacks the print. */
 AKARI_CE_IMPORT int WSARecv(SOCKET s, LPWSABUF lpBuffers,
                             DWORD dwBufferCount,
                             LPDWORD lpNumberOfBytesRecvd, LPDWORD lpFlags,
@@ -991,17 +1006,21 @@ AKARI_CE_IMPORT void WSASetLastError(int iError)
  * service instance within one or more name spaces."  Not supported by
  * the default DNS/WINS namespace provider (Nspm.dll) in CE; supported
  * by the PNRP provider. */
+/* twin-print: ms863409 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898772 lacks the print. */
 AKARI_CE_IMPORT INT WSASetService(LPWSAQUERYSET lpqsRegInfo,
                                   WSAESETSERVICEOP essOperation,
                                   DWORD dwControlFlags)
     AKARI_CE_NAME(WSASetService);
+/* twin-print: ms911776 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898772 lacks the print. */
 AKARI_CE_IMPORT SOCKET WSASocket(int af, int type, int protocol,
                                  LPWSAPROTOCOL_INFO lpProtocolInfo,
                                  GROUP g, DWORD dwFlags)
     AKARI_CE_NAME(WSASocket);
+/* twin-print: ms911778 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898772 lacks the print. */
 AKARI_CE_IMPORT int WSAStartup(WORD wVersionRequested,
                                LPWSADATA lpWSAData)
     AKARI_CE_NAME(WSAStartup);
+/* twin-print: ms898775 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms898772 lacks the print. */
 AKARI_CE_IMPORT INT WSAStringToAddress(LPTSTR AddressString,
                                        INT AddressFamily,
                                        LPWSAPROTOCOL_INFO lpProtocolInfo,

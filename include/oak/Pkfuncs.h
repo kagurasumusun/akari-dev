@@ -228,6 +228,7 @@ AKARI_CE_IMPORT BOOL CeGetCacheInfo(DWORD cbSize, PCacheInfo pCacheInfo) AKARI_C
  * Pkfuncs.h; Coredll.lib.  (The VirtualSetAttributesEx page ee488757
  * reprints this same prototype -- archive artifact, recorded in
  * Mkfuncs.h.) */
+/* twin-print: ee482840 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885152 lacks the print. */
 AKARI_CE_IMPORT BOOL VirtualSetAttributes(LPVOID lpvAddress, DWORD cbSize,
                     DWORD dwNewFlags, DWORD dwMask, LPDWORD lpdwOldFlags)
                     AKARI_CE_NAME(VirtualSetAttributes);
@@ -237,25 +238,30 @@ AKARI_CE_IMPORT BOOL VirtualSetAttributes(LPVOID lpvAddress, DWORD cbSize,
  * prototype `BOOL CeSetMemoryAttributes(LPVOID pVirtualAddr, LPVOID
  * pShiftedPhysAddr, DWORD cbSize, DWORD dwAttributes);` (glued tokens
  * split).  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+/* twin-print: ee482942 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885203 lacks the print. */
 AKARI_CE_IMPORT BOOL CeSetMemoryAttributes(LPVOID pVirtualAddr,
                     LPVOID pShiftedPhysAddr, DWORD cbSize, DWORD dwAttributes)
                     AKARI_CE_NAME(CeSetMemoryAttributes);
 
 /* ms885203 "DrWatsonClear (Windows CE 5.0)": page-printed prototype
  * `BOOL DrWatsonClear(void);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+/* twin-print: ee483034 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885204 lacks the print. */
 AKARI_CE_IMPORT BOOL DrWatsonClear(void) AKARI_CE_NAME(DrWatsonClear);
 
 /* ms885204 "DrWatsonFlush (Windows CE 5.0)": page-printed prototype
  * `BOOL DrWatsonFlush(void);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+/* twin-print: ee482837 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885205 lacks the print. */
 AKARI_CE_IMPORT BOOL DrWatsonFlush(void) AKARI_CE_NAME(DrWatsonFlush);
 
 /* ms885205 "DrWatsonGetSize (Windows CE 5.0)": page-printed prototype
  * `DWORD DrWatsonGetSize(void);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+/* twin-print: ee482790 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885206 lacks the print. */
 AKARI_CE_IMPORT DWORD DrWatsonGetSize(void) AKARI_CE_NAME(DrWatsonGetSize);
 
 /* ms885206 "DrWatsonReadData (Windows CE 5.0)": page-printed
  * prototype `DWORD DrWatsonReadData(DWORD dwOffset, LPVOID pData,
  * DWORD cbSize);`.  CE 5.0+; Pkfuncs.h; Coredll.lib. */
+/* twin-print: ee482758 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms885207 lacks the print. */
 AKARI_CE_IMPORT DWORD DrWatsonReadData(DWORD dwOffset, LPVOID pData,
                     DWORD cbSize) AKARI_CE_NAME(DrWatsonReadData);
 

@@ -124,6 +124,7 @@ typedef PCRITICAL_SECTION LPCRITICAL_SECTION;
  * of the desktop headers is NOT the CE surface and was removed on
  * 2026-09-18 (policy v3 section 3: desktop analogy is no CE
  * evidence).  SIZE_T per the Windef.h note (pointer-sized). */
+/* twin-print: ee488421 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms886803 lacks the print. */
 AKARI_CE_IMPORT PVOID SecureZeroMemory(PVOID ptr, SIZE_T cnt) AKARI_CE_NAME(SecureZeroMemory);
 
 #endif /* _WIN32_WCE >= 0x0410 (SecureZeroMemory) */

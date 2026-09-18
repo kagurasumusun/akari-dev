@@ -324,73 +324,104 @@ typedef struct LdapReferralCallback {
 /* --- Session functions --- */
 /* ms863877: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT LDAP*    cldap_open(PTCHAR HostName, ULONG PortNumber) AKARI_CE_NAME(cldap_open);            /* ms863877 */
+/* twin-print: ms891743 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms863877 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_abandon(LDAP *ld, ULONG msgid) AKARI_CE_NAME(ldap_abandon);                      /* ms891743 */
+/* twin-print: ms891748 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891743 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_bind(LDAP *ld, PTCHAR dn, PTCHAR cred, ULONG method) AKARI_CE_NAME(ldap_bind);/* ms891748 */
+/* twin-print: ms891749 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891748 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_bind_s(LDAP *ld, PTCHAR dn, PTCHAR cred, ULONG method) AKARI_CE_NAME(ldap_bind_s); /* ms891749 */
 /* ms891756 ldap_connect: both the CE 5.0 page and its CE 6.0 twin
  * ee485147 print "PLDAP_TIMEVAL* timeout" (pointer to PLDAP_TIMEVAL)
  * -- kept verbatim. */
 AKARI_CE_IMPORT ULONG    ldap_connect(LDAP *ld, PLDAP_TIMEVAL *timeout) AKARI_CE_NAME(ldap_connect);           /* ms891756 */
+/* twin-print: ms892271 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891756 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_get_option(LDAP *ld, int option, void *outvalue) AKARI_CE_NAME(ldap_get_option);    /* ms892271 */
+/* twin-print: ms892275 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892271 lacks the print. */
 AKARI_CE_IMPORT LDAP*    ldap_init(PTCHAR HostName, ULONG PortNumber) AKARI_CE_NAME(ldap_init);             /* ms892275 */
+/* twin-print: ms892288 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892275 lacks the print. */
 AKARI_CE_IMPORT LDAP*    ldap_open(PTCHAR HostName, ULONG PortNumber) AKARI_CE_NAME(ldap_open);             /* ms892288 */
+/* twin-print: ms892310 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892288 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_set_option(LDAP *ld, int option, void *invalue) AKARI_CE_NAME(ldap_set_option);     /* ms892310 */
+/* twin-print: ms892311 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892310 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_simple_bind(LDAP *ld, PTCHAR dn, PTCHAR passwd) AKARI_CE_NAME(ldap_simple_bind);     /* ms892311 */
+/* twin-print: ms892312 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892311 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_simple_bind_s(LDAP *ld, PTCHAR dn, PTCHAR passwd) AKARI_CE_NAME(ldap_simple_bind_s);   /* ms892312 */
+/* twin-print: ms892314 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892312 lacks the print. */
 AKARI_CE_IMPORT LDAP*    ldap_sslinit(PTCHAR HostName, ULONG PortNumber, int secure) AKARI_CE_NAME(ldap_sslinit); /* ms892314 */
+/* twin-print: ms892317 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892314 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_unbind(LDAP *ld) AKARI_CE_NAME(ldap_unbind);                                    /* ms892317 */
+/* twin-print: ms892318 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892317 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_unbind_s(LDAP *ld) AKARI_CE_NAME(ldap_unbind_s);                                  /* ms892318 */
 
 /* --- Directory entry functions --- */
 /* ms891744: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT ULONG    ldap_add(LDAP *ld, PTCHAR dn, LDAPMod *attrs[]) AKARI_CE_NAME(ldap_add);          /* ms891744 */
+/* twin-print: ms891745 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891744 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_add_ext(LDAP *ld, PTCHAR dn, LDAPMod *attrs[],
                       LDAPControl **ServerControls,
                       LDAPControl **ClientControls,
                       ULONG *MessageNumber) AKARI_CE_NAME(ldap_add_ext);                       /* ms891745 */
+/* twin-print: ms891746 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891745 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_add_ext_s(LDAP *ld, PTCHAR dn, LDAPMod *attrs[],
                         LDAPControl **ServerControls,
                         LDAPControl **ClientControls) AKARI_CE_NAME(ldap_add_ext_s);             /* ms891746 */
+/* twin-print: ms891747 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891746 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_add_s(LDAP *ld, PTCHAR dn, LDAPMod *attrs[]) AKARI_CE_NAME(ldap_add_s);        /* ms891747 */
+/* twin-print: ms891751 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891747 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_close_extended_op(LDAP *ld, ULONG MessageNumber) AKARI_CE_NAME(ldap_close_extended_op);    /* ms891751 */
+/* twin-print: ms891752 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891751 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_compare(LDAP *ld, PTCHAR dn, PTCHAR attr, PTCHAR value) AKARI_CE_NAME(ldap_compare); /* ms891752 */
+/* twin-print: ms891753 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891752 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_compare_ext(LDAP *ld, PTCHAR dn, PTCHAR Attr, PTCHAR Value,
                           struct berval *Data,
                           LDAPControl **ServerControls,
                           LDAPControl **ClientControls,
                           ULONG *MessageNumber) AKARI_CE_NAME(ldap_compare_ext);                   /* ms891753 */
+/* twin-print: ms891754 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891753 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_compare_ext_s(LDAP *ld, PTCHAR dn, PTCHAR Attr, PTCHAR Value,
                             struct berval *Data,
                             LDAPControl **ServerControls,
                             LDAPControl **ClientControls) AKARI_CE_NAME(ldap_compare_ext_s);         /* ms891754 */
+/* twin-print: ms891755 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891754 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_compare_s(LDAP *ld, PTCHAR dn, PTCHAR attr, PTCHAR value) AKARI_CE_NAME(ldap_compare_s); /* ms891755 */
+/* twin-print: ms891766 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891755 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_delete(LDAP *ld, PTCHAR dn) AKARI_CE_NAME(ldap_delete);                         /* ms891766 */
+/* twin-print: ms891767 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891766 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_delete_ext(LDAP *ld, PTCHAR dn,
                          LDAPControl **ServerControls,
                          LDAPControl **ClientControls,
                          ULONG *MessageNumber) AKARI_CE_NAME(ldap_delete_ext);                    /* ms891767 */
+/* twin-print: ms891768 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891767 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_delete_ext_s(LDAP *ld, PTCHAR dn,
                            LDAPControl **ServerControls,
                            LDAPControl **ClientControls) AKARI_CE_NAME(ldap_delete_ext_s);          /* ms891768 */
+/* twin-print: ms891769 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891768 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_delete_s(LDAP *ld, PTCHAR dn) AKARI_CE_NAME(ldap_delete_s);                       /* ms891769 */
+/* twin-print: ms892280 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891769 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_modify(LDAP *ld, PTCHAR dn, LDAPMod *mods[]) AKARI_CE_NAME(ldap_modify);        /* ms892280 */
+/* twin-print: ms892281 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892280 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_modify_ext(LDAP *ld, PTCHAR dn, LDAPMod *mods[],
                          LDAPControl **ServerControls,
                          LDAPControl **ClientControls,
                          ULONG *MessageNumber) AKARI_CE_NAME(ldap_modify_ext);                    /* ms892281 */
+/* twin-print: ms892282 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892281 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_modify_ext_s(LDAP *ld, PTCHAR dn, LDAPMod *mods[],
                            LDAPControl **ServerControls,
                            LDAPControl **ClientControls) AKARI_CE_NAME(ldap_modify_ext_s);          /* ms892282 */
+/* twin-print: ms892283 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892282 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_modify_s(LDAP *ld, PTCHAR dn, LDAPMod *mods[]) AKARI_CE_NAME(ldap_modify_s);      /* ms892283 */
+/* twin-print: ms892295 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892283 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_rename_ext(LDAP *ld, PTCHAR dn, PTCHAR NewRDN,
                          PTCHAR NewParent, INT DeleteOldRdn,
                          LDAPControl **ServerControls,
                          LDAPControl **ClientControls,
                          ULONG *MessageNumber) AKARI_CE_NAME(ldap_rename_ext);                    /* ms892295 */
+/* twin-print: ms892296 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892295 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_rename_ext_s(LDAP *ld, PTCHAR dn, PTCHAR NewRDN,
                            PTCHAR NewParent, INT DeleteOldRdn,
                            LDAPControl **ServerControls,
                            LDAPControl **ClientControls) AKARI_CE_NAME(ldap_rename_ext_s);          /* ms892296 */
+/* twin-print: ms892261 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892296 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_extended_operation(LDAP *ld, PTCHAR Oid,
                                  struct berval *Data,
                                  LDAPControl **ServerControls,
@@ -400,53 +431,69 @@ AKARI_CE_IMPORT ULONG    ldap_extended_operation(LDAP *ld, PTCHAR Oid,
 /* --- Search functions --- */
 /* ms891750: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT ULONG    ldap_check_filter(LDAP *ld, PTCHAR SearchFilter) AKARI_CE_NAME(ldap_check_filter);         /* ms891750 */
+/* twin-print: ms891760 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891750 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_count_entries(LDAP *ld, LDAPMessage *res) AKARI_CE_NAME(ldap_count_entries);           /* ms891760 */
+/* twin-print: ms891761 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891760 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_count_references(LDAP *ld, LDAPMessage *res) AKARI_CE_NAME(ldap_count_references);        /* ms891761 */
+/* twin-print: ms892136 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891761 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_escape_filter_element(PTCHAR sourceFilterElement,
                                     ULONG sourceLength,
                                     PTCHAR destFilterElement,
                                     ULONG destLength) AKARI_CE_NAME(ldap_escape_filter_element);             /* ms892136 */
 AKARI_CE_IMPORT PTCHAR   ldap_first_attribute(LDAP *ld, LDAPMessage *entry,
                               BerElement **ptr) AKARI_CE_NAME(ldap_first_attribute);                   /* ms892263 */
+/* twin-print: ms892264 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892263 lacks the print. */
 AKARI_CE_IMPORT LDAPMessage* ldap_first_entry(LDAP *ld, LDAPMessage *res) AKARI_CE_NAME(ldap_first_entry);         /* ms892264 */
+/* twin-print: ms892265 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892264 lacks the print. */
 AKARI_CE_IMPORT LDAPMessage* ldap_first_reference(LDAP *ld, LDAPMessage *res) AKARI_CE_NAME(ldap_first_reference);     /* ms892265 */
 AKARI_CE_IMPORT PTCHAR   ldap_get_dn(LDAP *ld, LDAPMessage *entry) AKARI_CE_NAME(ldap_get_dn);                /* ms892266 */
+/* twin-print: ms892268 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892266 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_get_next_page(LDAP *ExternalHandle,
                             LDAPSearch *SearchHandle, ULONG PageSize,
                             ULONG *MessageNumber) AKARI_CE_NAME(ldap_get_next_page);                 /* ms892268 */
+/* twin-print: ms892269 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892268 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_get_next_page_s(LDAP *ExternalHandle,
                               LDAPSearch *SearchHandle,
                               LDAP_TIMEVAL *timeout, ULONG PageSize,
                               ULONG *TotalCount,
                               LDAPMessage **Results) AKARI_CE_NAME(ldap_get_next_page_s);              /* ms892269 */
+/* twin-print: ms892272 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892269 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_get_paged_count(LDAP *ExternalHandle,
                               LDAPSearch *SearchBlock,
                               ULONG *TotalCount,
                               LDAPMessage *Results) AKARI_CE_NAME(ldap_get_paged_count);               /* ms892272 */
 AKARI_CE_IMPORT PTCHAR*  ldap_get_values(LDAP *ld, LDAPMessage *entry, PTCHAR attr) AKARI_CE_NAME(ldap_get_values); /* ms892273 */
+/* twin-print: ms892274 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892273 lacks the print. */
 AKARI_CE_IMPORT struct berval** ldap_get_values_len(LDAP *ExternalHandle,
                                     LDAPMessage *Message,
                                     PTCHAR attr) AKARI_CE_NAME(ldap_get_values_len);                  /* ms892274 */
 AKARI_CE_IMPORT PTCHAR   ldap_next_attribute(LDAP *ld, LDAPMessage *entry,
                              BerElement *ptr) AKARI_CE_NAME(ldap_next_attribute);                     /* ms892285 */
+/* twin-print: ms892286 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892285 lacks the print. */
 AKARI_CE_IMPORT LDAPMessage* ldap_next_entry(LDAP *ld, LDAPMessage *entry) AKARI_CE_NAME(ldap_next_entry);        /* ms892286 */
+/* twin-print: ms892287 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892286 lacks the print. */
 AKARI_CE_IMPORT LDAPMessage* ldap_next_reference(LDAP *ld, LDAPMessage *entry) AKARI_CE_NAME(ldap_next_reference);    /* ms892287 */
+/* twin-print: ms892302 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892287 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_search(LDAP *ld, PTCHAR base, ULONG scope, PTCHAR filter,
                      PTCHAR attrs[], ULONG attrsonly) AKARI_CE_NAME(ldap_search);             /* ms892302 */
+/* twin-print: ms892303 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892302 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_search_abandon_page(LDAP *ExternalHandle,
                                   LDAPSearch *SearchBlock) AKARI_CE_NAME(ldap_search_abandon_page);        /* ms892303 */
+/* twin-print: ms892304 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892303 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_search_ext(LDAP *ld, PTCHAR base, ULONG scope,
                          PTCHAR filter, PTCHAR attrs[], ULONG attrsonly,
                          LDAPControl **ServerControls,
                          LDAPControl **ClientControls,
                          ULONG TimeLimit, ULONG SizeLimit,
                          ULONG *MessageNumber) AKARI_CE_NAME(ldap_search_ext);                    /* ms892304 */
+/* twin-print: ms892305 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892304 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_search_ext_s(LDAP *ld, PTCHAR base, ULONG scope,
                            PTCHAR filter, PTCHAR attrs[], ULONG attrsonly,
                            LDAPControl **ServerControls,
                            LDAPControl **ClientControls,
                            struct l_timeval *timeout, ULONG SizeLimit,
                            LDAPMessage **res) AKARI_CE_NAME(ldap_search_ext_s);                     /* ms892305 */
+/* twin-print: ms892306 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892305 lacks the print. */
 AKARI_CE_IMPORT PLDAPSearch ldap_search_init_page(LDAP *ExternalHandle,
                                   PTCHAR DistinguishedName,
                                   ULONG ScopeOfSearch, PTCHAR SearchFilter,
@@ -456,30 +503,41 @@ AKARI_CE_IMPORT PLDAPSearch ldap_search_init_page(LDAP *ExternalHandle,
                                   LDAPControl **ClientControls,
                                   ULONG PageTimeLimit, ULONG TotalSizeLimit,
                                   LDAPSortKey **SortKeys) AKARI_CE_NAME(ldap_search_init_page);         /* ms892306 */
+/* twin-print: ms892307 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892306 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_search_s(LDAP *ld, PTCHAR base, ULONG scope, PTCHAR filter,
                        PTCHAR attrs[], ULONG attrsonly,
                        LDAPMessage **res) AKARI_CE_NAME(ldap_search_s);                         /* ms892307 */
+/* twin-print: ms892308 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892307 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_search_st(LDAP *ld, PTCHAR base, ULONG scope, PTCHAR filter,
                         PTCHAR attrs[], ULONG attrsonly,
                         struct l_timeval *timeout,
                         LDAPMessage **res) AKARI_CE_NAME(ldap_search_st);                        /* ms892308 */
+/* twin-print: ms892297 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892308 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_result(LDAP *ld, ULONG msgid, ULONG all,
                      LDAP_TIMEVAL *timeout, LDAPMessage **res) AKARI_CE_NAME(ldap_result);    /* ms892297 */
 
 /* --- Error handling functions --- */
 /* ms892105: param-list verified against this page; the print shows the UNICODE-decorated return form (proto-cite) */
 AKARI_CE_IMPORT PTCHAR   ldap_err2string(ULONG err) AKARI_CE_NAME(ldap_err2string);                               /* ms892105 */
+/* twin-print: ms892298 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892105 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_result2error(LDAP *ld, LDAPMessage *res, ULONG freeit) AKARI_CE_NAME(ldap_result2error); /* ms892298 */
+/* twin-print: ms892267 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892298 lacks the print. */
 AKARI_CE_IMPORT ULONG    LdapGetLastError(void) AKARI_CE_NAME(LdapGetLastError);                                   /* ms892267 */
+/* twin-print: ms892276 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892267 lacks the print. */
 AKARI_CE_IMPORT ULONG    LdapMapErrorToWin32(ULONG LdapError) AKARI_CE_NAME(LdapMapErrorToWin32);                     /* ms892276 */
 
 /* --- Memory management functions --- */
 /* ms891758: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT ULONG    ldap_control_free(LDAPControl *Control) AKARI_CE_NAME(ldap_control_free);                  /* ms891758 */
+/* twin-print: ms891759 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891758 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_controls_free(LDAPControl **Controls) AKARI_CE_NAME(ldap_controls_free);               /* ms891759 */
+/* twin-print: ms892277 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891759 lacks the print. */
 AKARI_CE_IMPORT VOID     ldap_memfree(PTCHAR Block) AKARI_CE_NAME(ldap_memfree);                               /* ms892277 */
+/* twin-print: ms892284 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892277 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_msgfree(LDAPMessage *res) AKARI_CE_NAME(ldap_msgfree);                           /* ms892284 */
+/* twin-print: ms892321 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892284 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_value_free(PTCHAR *vals) AKARI_CE_NAME(ldap_value_free);                            /* ms892321 */
+/* twin-print: ms892322 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892321 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_value_free_len(struct berval **vals) AKARI_CE_NAME(ldap_value_free_len);                /* ms892322 */
 
 /* --- Parse functions (LDAP Search book) --- */
@@ -500,6 +558,7 @@ AKARI_CE_IMPORT ULONG    ldap_parse_page_control(LDAP *ExternalHandle,
                                  LDAPControl **ServerControls,
                                  ULONG *TotalCount,
                                  struct berval **Cookie) AKARI_CE_NAME(ldap_parse_page_control);          /* ms892290 */
+/* twin-print: ms892291 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892290 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_parse_reference(LDAP *Connection, LDAPMessage *ResultMessage,
                               PTCHAR **Referrals) AKARI_CE_NAME(ldap_parse_reference);                 /* ms892291 */
 AKARI_CE_IMPORT ULONG    ldap_parse_result(LDAP *Connection, LDAPMessage *ResultMessage,
@@ -509,24 +568,31 @@ AKARI_CE_IMPORT ULONG    ldap_parse_result(LDAP *Connection, LDAPMessage *Result
                            PTCHAR **Referrals,         /* OPTIONAL */
                            LDAPControl ***ServerControls, /* OPTIONAL */
                            BOOLEAN Freeit) AKARI_CE_NAME(ldap_parse_result);            /* ms892292 */
+/* twin-print: ms892293 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892292 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_parse_sort_control(LDAP *ExternalHandle,
                                  LDAPControl **Control, ULONG *Result,
                                  PTCHAR *Attribute) AKARI_CE_NAME(ldap_parse_sort_control);               /* ms892293 */
+/* twin-print: ms891764 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892293 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_create_page_control(LDAP *ExternalHandle, ULONG PageSize,
                                   struct berval *Cookie, UCHAR IsCritical,
                                   LDAPControl **Control) AKARI_CE_NAME(ldap_create_page_control);          /* ms891764 */
+/* twin-print: ms891765 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891764 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_create_sort_control(LDAP *ExternalHandle,
                                   LDAPSortKey **SortKeys,
                                   UCHAR IsCritical,
                                   LDAPControl **Control) AKARI_CE_NAME(ldap_create_sort_control);          /* ms891765 */
+/* twin-print: ms891762 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891765 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_count_values(PTCHAR *vals) AKARI_CE_NAME(ldap_count_values);                          /* ms891762 */
+/* twin-print: ms891763 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891762 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_count_values_len(struct berval **vals) AKARI_CE_NAME(ldap_count_values_len);              /* ms891763 */
+/* twin-print: ms892316 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms891763 lacks the print. */
 AKARI_CE_IMPORT ULONG    ldap_ufn2dn(PTCHAR ufn, PTCHAR *pDn) AKARI_CE_NAME(ldap_ufn2dn);                     /* ms892316 */
 
 /* --- Other LDAP functions --- */
 /* ms892319: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int      LdapUnicodeToUTF8(LPCWSTR lpSrcStr, int cchSrc,
                            LPSTR lpDestStr, int cchDest) AKARI_CE_NAME(LdapUnicodeToUTF8);          /* ms892319 */
+/* twin-print: ms892320 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892319 lacks the print. */
 AKARI_CE_IMPORT int      LdapUTF8ToUnicode(LPCSTR lpSrcStr, int cchSrc,
                            LPWSTR lpDestStr, int cchDest) AKARI_CE_NAME(LdapUTF8ToUnicode);         /* ms892320 */
 

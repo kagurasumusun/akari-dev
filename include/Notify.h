@@ -73,8 +73,11 @@ AKARI_CE_IMPORT BOOL   CeGetUserNotificationHandles(HANDLE* rghNotifications,   
 AKARI_CE_IMPORT BOOL   CeGetUserNotificationPreferences(HWND hWndParent,           /* ms908078 */
                                         PCE_USER_NOTIFICATION
                                             lpNotification) AKARI_CE_NAME(CeGetUserNotificationPreferences);
+/* twin-print: ee499110 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908078 lacks the print. */
 AKARI_CE_IMPORT BOOL   CeHandleAppNotifications(TCHAR* pwszAppName) AKARI_CE_NAME(CeHandleAppNotifications);               /* ms908079 */
+/* twin-print: ee504578 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908079 lacks the print. */
 AKARI_CE_IMPORT BOOL   CeRunAppAtEvent(TCHAR* pwszAppName, LONG lWhichEvent) AKARI_CE_NAME(CeRunAppAtEvent);      /* ms908102 */
+/* twin-print: ee506251 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908102 lacks the print. */
 AKARI_CE_IMPORT BOOL   CeRunAppAtTime(TCHAR* pwszAppName, SYSTEMTIME* lpTime) AKARI_CE_NAME(CeRunAppAtTime);     /* ms908103 */
 AKARI_CE_IMPORT HANDLE CeSetUserNotification(HANDLE hNotification, TCHAR* pwszAppName,
                              SYSTEMTIME* lpTime,                   /* ms908104 */

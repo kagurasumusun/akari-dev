@@ -163,17 +163,20 @@ AKARI_CE_IMPORT LONG SCardIntroduceReader(SCARDCONTEXT hContext,
 /* ms926418 (CE .NET 4.1+). */
 AKARI_CE_IMPORT LONG SCardIsValidContext(SCARDCONTEXT hContext) AKARI_CE_NAME(SCardIsValidContext);
 
+/* twin-print: ms926419 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms926418 lacks the print. */
 AKARI_CE_IMPORT LONG SCardListCards(SCARDCONTEXT hContext, LPCBYTE pbAtr,
                                     LPCGUID rgguidInterfaces,
                                     DWORD cguidInterfaceCount,
                                     LPTSTR mszCards,
                                     LPDWORD pcchCards) AKARI_CE_NAME(SCardListCards);
 
+/* twin-print: ms926420 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms926418 lacks the print. */
 AKARI_CE_IMPORT LONG SCardListInterfaces(SCARDCONTEXT hContext,
                                          LPCTSTR szCard,
                                          LPGUID pguidInterfaces,
                                          LPDWORD pcguidInterfaces) AKARI_CE_NAME(SCardListInterfaces);
 
+/* twin-print: ms926422 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms926418 lacks the print. */
 AKARI_CE_IMPORT LONG SCardListReaders(SCARDCONTEXT hContext,
                                       LPCTSTR mszGroups, LPTSTR mszReaders,
                                       LPDWORD pcchReaders) AKARI_CE_NAME(SCardListReaders);
@@ -192,13 +195,16 @@ AKARI_CE_IMPORT LONG SCardLocateCardsByATR(SCARDCONTEXT hContext,
                                            LPSCARD_READERSTATE rgReaderStates,
                                            DWORD cReaders) AKARI_CE_NAME(SCardLocateCardsByATR);
 
+/* twin-print: ms926426 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms926424 lacks the print. */
 AKARI_CE_IMPORT LONG SCardReconnect(SCARDHANDLE hCard, DWORD dwShareMode,
                                     DWORD dwPreferredProtocols,
                                     DWORD dwInitialization,
                                     LPDWORD pdwActiveProtocol) AKARI_CE_NAME(SCardReconnect);
 
+/* twin-print: ms926427 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms926424 lacks the print. */
 AKARI_CE_IMPORT LONG SCardReleaseContext(SCARDCONTEXT hContext) AKARI_CE_NAME(SCardReleaseContext);
 
+/* twin-print: ms926428 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms926424 lacks the print. */
 AKARI_CE_IMPORT LONG SCardSetAttrib(SCARDHANDLE hCard, DWORD dwAttrId,
                                     LPCBYTE pbAttr,
                                     DWORD cbAttrLen) AKARI_CE_NAME(SCardSetAttrib);

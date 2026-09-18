@@ -414,14 +414,19 @@ AKARI_CE_IMPORT BOOL AlphaBlend(HDC hdcDest, int nXOriginDest, int nYOriginDest,
 AKARI_CE_IMPORT BOOL BitBlt(HDC hdcDest, int nXDest, int nYDest, int nWidth, int nHeight,
     HDC hdcSrc, int nXSrc, int nYSrc, DWORD dwRop) AKARI_CE_NAME(BitBlt);
 /* aa452930 "DeleteDC" */
+/* twin-print: ee502851 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452930 lacks the print. */
 AKARI_CE_IMPORT BOOL DeleteDC(HDC hdc) AKARI_CE_NAME(DeleteDC);
 /* aa452933 "DeleteObject" */
+/* twin-print: ee503315 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452933 lacks the print. */
 AKARI_CE_IMPORT BOOL DeleteObject(HGDIOBJ hObject) AKARI_CE_NAME(DeleteObject);
 /* aa452968 "DrawEdge" */
+/* twin-print: ee501983 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452968 lacks the print. */
 AKARI_CE_IMPORT BOOL DrawEdge(HDC hdc, LPRECT qrc, UINT edge, UINT grfFlags) AKARI_CE_NAME(DrawEdge);
 /* aa452969 "DrawFocusRect" */
+/* twin-print: ee500893 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452969 lacks the print. */
 AKARI_CE_IMPORT BOOL DrawFocusRect(HDC hDC, const RECT* lprc) AKARI_CE_NAME(DrawFocusRect);
 /* aa452997 "Ellipse" */
+/* twin-print: ee502230 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452997 lacks the print. */
 AKARI_CE_IMPORT BOOL Ellipse(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,
     int nBottomRect) AKARI_CE_NAME(Ellipse);
 /* aa453048 "EnumDisplayDevices" */
@@ -431,8 +436,10 @@ AKARI_CE_IMPORT BOOL EnumDisplayDevices(LPCTSTR lpDevice, DWORD iDevNum,
 AKARI_CE_IMPORT BOOL EnumDisplaySettings(LPCTSTR lpszDeviceName, DWORD iModeNum,
     LPDEVMODE lpDevMode) AKARI_CE_NAME(EnumDisplaySettings);
 /* aa453056 "EqualRgn" */
+/* twin-print: ee504300 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453056 lacks the print. */
 AKARI_CE_IMPORT BOOL EqualRgn(HRGN hSrcRgn1, HRGN hSrcRgn2) AKARI_CE_NAME(EqualRgn);
 /* aa453058 "ExcludeClipRect" */
+/* twin-print: ee505422 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453058 lacks the print. */
 AKARI_CE_IMPORT int ExcludeClipRect(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,
     int nBottomRect) AKARI_CE_NAME(ExcludeClipRect);
 /* aa453061 "ExtCreateRegion" */
@@ -442,6 +449,7 @@ AKARI_CE_IMPORT HRGN ExtCreateRegion(CONST XFORM* lpXform, DWORD nCount,
 AKARI_CE_IMPORT int ExtEscape(HDC hdc, int nEscape, int cbInput, LPCSTR lpszInData,
     int cbOutput, LPSTR lpszOutData) AKARI_CE_NAME(ExtEscape);
 /* aa453067 "FillRect" */
+/* twin-print: ee499094 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453067 lacks the print. */
 AKARI_CE_IMPORT int FillRect(HDC hDC, CONST RECT* lprc, HBRUSH hbr) AKARI_CE_NAME(FillRect);
 /* aa453068 "FillRgn" */
 AKARI_CE_IMPORT BOOL FillRgn(HDC hdc, HRGN hrgn, HBRUSH hbr) AKARI_CE_NAME(FillRgn);
@@ -450,6 +458,7 @@ AKARI_CE_IMPORT BOOL FillRgn(HDC hdc, HRGN hrgn, HBRUSH hbr) AKARI_CE_NAME(FillR
 AKARI_CE_IMPORT DWORD GetLayout(HDC hdc) AKARI_CE_NAME(GetLayout);
 #endif /* _WIN32_WCE >= 0x0500 (GetLayout) */
 /* aa453140 "GetNearestColor" */
+/* twin-print: ee506255 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453140 lacks the print. */
 AKARI_CE_IMPORT COLORREF GetNearestColor(HDC hdc, COLORREF crColor) AKARI_CE_NAME(GetNearestColor);
 /* aa453141 "GetNearestPaletteIndex" */
 AKARI_CE_IMPORT UINT GetNearestPaletteIndex(HPALETTE hpal, COLORREF crColor) AKARI_CE_NAME(GetNearestPaletteIndex);
@@ -460,25 +469,31 @@ AKARI_CE_IMPORT int GetObjectW(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject) 
  * Unicode-only). */
 #define GetObject GetObjectW
 /* aa453148 "GetObjectType" */
+/* twin-print: ee499386 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453148 lacks the print. */
 AKARI_CE_IMPORT DWORD GetObjectType(HGDIOBJ h) AKARI_CE_NAME(GetObjectType);
 /* aa453151 "GetPaletteEntries" */
 AKARI_CE_IMPORT UINT GetPaletteEntries(HPALETTE hpal, UINT iStartIndex, UINT nEntries,
     LPPALETTEENTRY lppe) AKARI_CE_NAME(GetPaletteEntries);
 /* aa453153 "GetPixel" */
+/* twin-print: ee504020 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453153 lacks the print. */
 AKARI_CE_IMPORT COLORREF GetPixel(HDC hdc, int nXPos, int nYPos) AKARI_CE_NAME(GetPixel);
 /* aa453157 "GetRegionData" */
+/* twin-print: ee505860 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453157 lacks the print. */
 AKARI_CE_IMPORT DWORD GetRegionData(HRGN hRgn, DWORD dwCount, LPRGNDATA lpRgnData) AKARI_CE_NAME(GetRegionData);
 /* aa453159 "GetRgnBox" */
+/* twin-print: ee504142 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453159 lacks the print. */
 AKARI_CE_IMPORT int GetRgnBox(HRGN hrgn, LPRECT lprc) AKARI_CE_NAME(GetRgnBox);
 /* aa453160 "GetROP2" */
 AKARI_CE_IMPORT int GetROP2(HDC hdc) AKARI_CE_NAME(GetROP2);
 /* aa453164 "GetStockObject" */
+/* twin-print: ee505070 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453164 lacks the print. */
 AKARI_CE_IMPORT HGDIOBJ GetStockObject(int fnObject) AKARI_CE_NAME(GetStockObject);
 #if _WIN32_WCE >= 0x0500   /* GetStretchBltMode: documented from CE 5.0 (docs/generation-audit.md) */
 /* aa453165 "GetStretchBltMode" */
 AKARI_CE_IMPORT int GetStretchBltMode(HDC hdc) AKARI_CE_NAME(GetStretchBltMode);
 #endif /* _WIN32_WCE >= 0x0500 (GetStretchBltMode) */
 /* aa453168 "GetSysColorBrush" */
+/* twin-print: ee501395 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453168 lacks the print. */
 AKARI_CE_IMPORT HBRUSH GetSysColorBrush(int nIndex) AKARI_CE_NAME(GetSysColorBrush);
 /* aa453656 "SetSysColors": its prototype takes CONST COLORREF*, so it is
  * declared with the GDI types here even though the official page prints
@@ -496,10 +511,12 @@ AKARI_CE_IMPORT BOOL GradientFill(HDC hdc, PTRIVERTEX pVertex, ULONG nVertex, PV
 /* aa453296 "LineTo" (CE6 page renders "WINGDIAPI BOOL WINAPI"; CE ABI is __cdecl) */
 AKARI_CE_IMPORT BOOL LineTo(HDC hdc, int nXEnd, int nYEnd) AKARI_CE_NAME(LineTo);
 /* aa453602 "PtInRegion" */
+/* twin-print: ee503452 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453602 lacks the print. */
 AKARI_CE_IMPORT BOOL PtInRegion(HRGN hrgn, int X, int Y) AKARI_CE_NAME(PtInRegion);
 /* aa453638 "RealizePalette" */
 AKARI_CE_IMPORT UINT RealizePalette(HDC hdc) AKARI_CE_NAME(RealizePalette);
 /* aa453646 "SetPixel" */
+/* twin-print: ee503104 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453646 lacks the print. */
 AKARI_CE_IMPORT COLORREF SetPixel(HDC hdc, int X, int Y, COLORREF crColor) AKARI_CE_NAME(SetPixel);
 /* aa453650 "SetRectRgn" */
 AKARI_CE_IMPORT BOOL SetRectRgn(HRGN hrgn, int nLeftRect, int nTopRect, int nRightRect,
@@ -549,11 +566,14 @@ AKARI_CE_IMPORT BOOL SetWindowOrgEx(HDC hdc, int X, int Y, LPPOINT lpPoint) AKAR
 AKARI_CE_IMPORT LONG ChangeDisplaySettingsEx(LPCTSTR lpszDeviceName, LPDEVMODE lpDevMode,
     HWND hwnd, DWORD dwflags, LPVOID lParam) AKARI_CE_NAME(ChangeDisplaySettingsEx);
 /* ms908163 "CreateBitmap" */
+/* twin-print: ee505308 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908163 lacks the print. */
 AKARI_CE_IMPORT HBITMAP CreateBitmap(int nWidth, int nHeight, UINT cPlanes, UINT cBitsPerPel,
     CONST VOID* lpvBits) AKARI_CE_NAME(CreateBitmap);
 /* ms908165 "CreateCompatibleBitmap" */
+/* twin-print: ee505724 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908165 lacks the print. */
 AKARI_CE_IMPORT HBITMAP CreateCompatibleBitmap(HDC hdc, int nWidth, int nHeight) AKARI_CE_NAME(CreateCompatibleBitmap);
 /* ms908166 "CreateCompatibleDC" */
+/* twin-print: ee504853 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908166 lacks the print. */
 AKARI_CE_IMPORT HDC CreateCompatibleDC(HDC hdc) AKARI_CE_NAME(CreateCompatibleDC);
 /* ms908168 "CreateDC" */
 AKARI_CE_IMPORT HDC CreateDCW(LPCTSTR lpszDriver, LPCTSTR lpszDevice, LPCTSTR lpszOutput,
@@ -563,8 +583,10 @@ AKARI_CE_IMPORT HDC CreateDCW(LPCTSTR lpszDriver, LPCTSTR lpszDevice, LPCTSTR lp
  * Unicode-only). */
 #define CreateDC CreateDCW
 /* ms908173 "CreateDIBPatternBrushPt" */
+/* twin-print: ee501785 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908173 lacks the print. */
 AKARI_CE_IMPORT HBRUSH CreateDIBPatternBrushPt(const void* lpPackedDIB, UINT iUsage) AKARI_CE_NAME(CreateDIBPatternBrushPt);
 /* ms908174 "CreateDIBSection" */
+/* twin-print: ee502255 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908174 lacks the print. */
 AKARI_CE_IMPORT HBITMAP CreateDIBSection(HDC hdc, const BITMAPINFO* pbmi, UINT iUsage,
     void** ppvBits, HANDLE hSection, DWORD dwOffset) AKARI_CE_NAME(CreateDIBSection);
 /* ms908178 "CreatePalette (GDI)" */
@@ -574,15 +596,18 @@ AKARI_CE_IMPORT HBRUSH CreatePatternBrush(HBITMAP hbmp) AKARI_CE_NAME(CreatePatt
 /* ms908180 "CreatePen" */
 AKARI_CE_IMPORT HPEN CreatePen(int fnPenStyle, int nWidth, COLORREF crColor) AKARI_CE_NAME(CreatePen);
 /* ms908181 "CreatePenIndirect" */
+/* twin-print: ee500189 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908181 lacks the print. */
 AKARI_CE_IMPORT HPEN CreatePenIndirect(const LOGPEN* lplgpn) AKARI_CE_NAME(CreatePenIndirect);
 /* ms908184 "CreateRectRgn" */
 AKARI_CE_IMPORT HRGN CreateRectRgn(int nLeftRect, int nTopRect, int nRightRect,
     int nBottomRect) AKARI_CE_NAME(CreateRectRgn);
 /* ms908185 "CreateRectRgnIndirect" */
+/* twin-print: ee505867 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908185 lacks the print. */
 AKARI_CE_IMPORT HRGN CreateRectRgnIndirect(const RECT* lprc) AKARI_CE_NAME(CreateRectRgnIndirect);
 /* ms908187 "CreateSolidBrush" */
 AKARI_CE_IMPORT HBRUSH CreateSolidBrush(COLORREF crColor) AKARI_CE_NAME(CreateSolidBrush);
 /* ms909855 "IntersectClipRect" */
+/* twin-print: ee502890 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909855 lacks the print. */
 AKARI_CE_IMPORT int IntersectClipRect(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,
     int nBottomRect) AKARI_CE_NAME(IntersectClipRect);
 /* ms909858 "InvalidateRgn" (CE6 page renders "BOOL WINAPI"; CE ABI is __cdecl) */
@@ -590,22 +615,29 @@ AKARI_CE_IMPORT BOOL InvalidateRgn(HWND hWnd, HRGN hRgn, BOOL fErase) AKARI_CE_N
 /* ms909859 "InvertRect" */
 AKARI_CE_IMPORT BOOL InvertRect(HDC hDC, CONST RECT* lprc) AKARI_CE_NAME(InvertRect);
 /* ms911792 "MaskBlt" */
+/* twin-print: ee505239 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911792 lacks the print. */
 AKARI_CE_IMPORT BOOL MaskBlt(HDC hdcDest, int nXDest, int nYDest, int nWidth, int nHeight,
     HDC hdcSrc, int nXSrc, int nYSrc, HBITMAP hbmMask, int xMask, int yMask,
     DWORD dwRop) AKARI_CE_NAME(MaskBlt);
 /* ms911892 "OffsetRgn" */
+/* twin-print: ee501910 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911892 lacks the print. */
 AKARI_CE_IMPORT int OffsetRgn(HRGN hrgn, int nXOffset, int nYOffset) AKARI_CE_NAME(OffsetRgn);
 /* ms911916 "PatBlt" */
+/* twin-print: ee503352 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911916 lacks the print. */
 AKARI_CE_IMPORT BOOL PatBlt(HDC hdc, int nXLeft, int nYLeft, int nWidth, int nHeight,
     DWORD dwRop) AKARI_CE_NAME(PatBlt);
 /* ms911933 "Polygon" */
+/* twin-print: ee505249 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911933 lacks the print. */
 AKARI_CE_IMPORT BOOL Polygon(HDC hdc, const POINT* lpPoints, int nCount) AKARI_CE_NAME(Polygon);
 /* ms911934 "Polyline" */
+/* twin-print: ee501424 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms911934 lacks the print. */
 AKARI_CE_IMPORT BOOL Polyline(HDC hdc, const POINT* lppt, int cPoints) AKARI_CE_NAME(Polyline);
 /* ms912947 "Rectangle" */
+/* twin-print: ee505883 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms912947 lacks the print. */
 AKARI_CE_IMPORT BOOL Rectangle(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,
     int nBottomRect) AKARI_CE_NAME(Rectangle);
 /* ms913051 "RectInRegion" */
+/* twin-print: ee505688 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms913051 lacks the print. */
 AKARI_CE_IMPORT BOOL RectInRegion(HRGN hrgn, const RECT* lprc) AKARI_CE_NAME(RectInRegion);
 /* ms913070 "RectVisible" */
 AKARI_CE_IMPORT BOOL RectVisible(HDC hdc, CONST RECT* lprc) AKARI_CE_NAME(RectVisible);
@@ -615,21 +647,28 @@ AKARI_CE_IMPORT BOOL RedrawWindow(HWND hwnd, CONST RECT* lprcUpdate, HRGN hrgnUp
 /* ms914092 "ValidateRgn" (CE6 page renders "BOOL WINAPI"; CE ABI is __cdecl) */
 AKARI_CE_IMPORT BOOL ValidateRgn(HWND hWnd, HRGN hRgn) AKARI_CE_NAME(ValidateRgn);
 /* ms928608 "CombineRgn" */
+/* twin-print: ee504827 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms928608 lacks the print. */
 AKARI_CE_IMPORT int CombineRgn(HRGN hrgnDest, HRGN hrgnSrc1, HRGN hrgnSrc2,
     int fnCombineMode) AKARI_CE_NAME(CombineRgn);
 /* ms929205 "GetBkColor" */
+/* twin-print: ee499127 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929205 lacks the print. */
 AKARI_CE_IMPORT COLORREF GetBkColor(HDC hdc) AKARI_CE_NAME(GetBkColor);
 /* ms929206 "GetBkMode" */
+/* twin-print: ee502613 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929206 lacks the print. */
 AKARI_CE_IMPORT int GetBkMode(HDC hdc) AKARI_CE_NAME(GetBkMode);
 /* ms929219 "GetClipBox" */
+/* twin-print: ee501949 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929219 lacks the print. */
 AKARI_CE_IMPORT int GetClipBox(HDC hdc, LPRECT lprc) AKARI_CE_NAME(GetClipBox);
 /* ms929221 "GetClipRgn" */
+/* twin-print: ee504572 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929221 lacks the print. */
 AKARI_CE_IMPORT int GetClipRgn(HDC hdc, HRGN hrgn) AKARI_CE_NAME(GetClipRgn);
 /* ms929223 "GetCurrentObject" */
+/* twin-print: ee505940 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929223 lacks the print. */
 AKARI_CE_IMPORT HGDIOBJ GetCurrentObject(HDC hdc, UINT uObjectType) AKARI_CE_NAME(GetCurrentObject);
 /* ms929224 "GetCurrentPositionEx" (CE6 page renders "WINGDIAPI BOOL WINAPI"; CE ABI is __cdecl, so no decoration) */
 AKARI_CE_IMPORT BOOL GetCurrentPositionEx(HDC hdc, LPPOINT lpPoint) AKARI_CE_NAME(GetCurrentPositionEx);
 /* ms929230 "GetDeviceCaps" */
+/* twin-print: ee503230 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms929230 lacks the print. */
 AKARI_CE_IMPORT int GetDeviceCaps(HDC hdc, int nIndex) AKARI_CE_NAME(GetDeviceCaps);
 /* ms929232 "GetDIBColorTable" (CE6 page renders "WINGDIAPI UINT WINAPI"; CE ABI is __cdecl) */
 AKARI_CE_IMPORT UINT GetDIBColorTable(HDC hdc, UINT uStartIndex, UINT cEntries,
@@ -637,8 +676,10 @@ AKARI_CE_IMPORT UINT GetDIBColorTable(HDC hdc, UINT uStartIndex, UINT cEntries,
 /* ms931457 "MoveToEx" (CE6 page renders "WINGDIAPI BOOL WINAPI"; CE ABI is __cdecl) */
 AKARI_CE_IMPORT BOOL MoveToEx(HDC hdc, int X, int Y, LPPOINT lpPoint) AKARI_CE_NAME(MoveToEx);
 /* ms932714 "SelectClipRgn" */
+/* twin-print: ee502828 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932714 lacks the print. */
 AKARI_CE_IMPORT int SelectClipRgn(HDC hdc, HRGN hrgn) AKARI_CE_NAME(SelectClipRgn);
 /* ms932715 "SelectObject" */
+/* twin-print: ee506271 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932715 lacks the print. */
 AKARI_CE_IMPORT HGDIOBJ SelectObject(HDC hdc, HGDIOBJ hgdiobj) AKARI_CE_NAME(SelectObject);
 /* ms932716 "SelectPalette" */
 AKARI_CE_IMPORT HPALETTE SelectPalette(HDC hdc, HPALETTE hpal, BOOL bForceBackground) AKARI_CE_NAME(SelectPalette);
@@ -654,6 +695,7 @@ AKARI_CE_IMPORT UINT GetOutlineTextMetricsW(HDC hdc, UINT cbData, LPOUTLINETEXTM
 /* ee500251: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT BOOL RestoreDC(HDC hdc, int nSavedDC) AKARI_CE_NAME(RestoreDC);
 /* ms939867 "RoundRect" */
+/* twin-print: ee500905 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms939867 lacks the print. */
 AKARI_CE_IMPORT BOOL RoundRect(HDC hdc, int nLeftRect, int nTopRect, int nRightRect,
     int nBottomRect, int nWidth, int nHeight) AKARI_CE_NAME(RoundRect);
 /* ms939894 "SaveDC" */
@@ -661,10 +703,13 @@ AKARI_CE_IMPORT int SaveDC(HDC hdc) AKARI_CE_NAME(SaveDC);
 /* ms939987 "SetBitmapBits" */
 AKARI_CE_IMPORT LONG SetBitmapBits(HBITMAP hbmp, DWORD cBytes, CONST VOID *lpBits) AKARI_CE_NAME(SetBitmapBits);
 /* ms939988 "SetBkColor" */
+/* twin-print: ee506089 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms939988 lacks the print. */
 AKARI_CE_IMPORT COLORREF SetBkColor(HDC hdc, COLORREF crColor) AKARI_CE_NAME(SetBkColor);
 /* ms939989 "SetBkMode" */
+/* twin-print: ee499678 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms939989 lacks the print. */
 AKARI_CE_IMPORT int SetBkMode(HDC hdc, int iBkMode) AKARI_CE_NAME(SetBkMode);
 /* ms940010 "SetBrushOrgEx" */
+/* twin-print: ee505889 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940010 lacks the print. */
 AKARI_CE_IMPORT BOOL SetBrushOrgEx(HDC hdc, int nXOrg, int nYOrg, LPPOINT lppt) AKARI_CE_NAME(SetBrushOrgEx);
 /* ms940018 "SetDIBColorTable" (CE6 page renders "WINGDIAPI UINT WINAPI"; CE ABI is __cdecl) */
 AKARI_CE_IMPORT UINT SetDIBColorTable(HDC hdc, UINT uStartIndex, UINT cEntries,
@@ -681,6 +726,7 @@ AKARI_CE_IMPORT DWORD SetLayout(HDC hdc, DWORD dwLayout) AKARI_CE_NAME(SetLayout
 AKARI_CE_IMPORT UINT SetPaletteEntries(HPALETTE hpal, UINT iStart, UINT cEntries,
     CONST PALETTEENTRY* lppe) AKARI_CE_NAME(SetPaletteEntries);
 /* ms940373 "StretchBlt" */
+/* twin-print: ee504535 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940373 lacks the print. */
 AKARI_CE_IMPORT BOOL StretchBlt(HDC hdcDest, int nXOriginDest, int nYOriginDest,
     int nWidthDest, int nHeightDest, HDC hdcSrc, int nXOriginSrc,
     int nYOriginSrc, int nWidthSrc, int nHeightSrc, DWORD dwRop) AKARI_CE_NAME(StretchBlt);
@@ -713,14 +759,18 @@ typedef BOOL (CALLBACK *ABORTPROC)(HDC hdc, int iError);
 /* Printing functions (CE 2.0+; Wingdi.h; Mgprint.lib). */
 /* aa452835: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT int  AbortDoc(HDC hdc) AKARI_CE_NAME(AbortDoc);                          /* aa452835 */
+/* twin-print: aa453039 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452835 lacks the print. */
 AKARI_CE_IMPORT int  EndDoc(HDC hdc) AKARI_CE_NAME(EndDoc);                            /* aa453039 */
+/* twin-print: aa453040 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453039 lacks the print. */
 AKARI_CE_IMPORT int  EndPage(HDC hdc) AKARI_CE_NAME(EndPage);                           /* aa453040 */
+/* twin-print: ms939985 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453040 lacks the print. */
 AKARI_CE_IMPORT int  SetAbortProc(HDC hdc, ABORTPROC lpAbortProc) AKARI_CE_NAME(SetAbortProc); /* ms939985 */
 AKARI_CE_IMPORT int  StartDocW(HDC hdc, CONST DOCINFO* lpdi) AKARI_CE_NAME(StartDocW);
 /* the verified coredll surface exports only the W form;
  * the documented generic name is its alias (CE is
  * Unicode-only). */
 #define StartDoc StartDocW     /* ms940349 */
+/* twin-print: ms940350 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms940349 lacks the print. */
 AKARI_CE_IMPORT int  StartPage(HDC hDC) AKARI_CE_NAME(StartPage);                         /* ms940350 */
 
 /* aa452959 "DLGITEMTEMPLATEEX" / aa452961 "DLGTEMPLATEEX": the extended
@@ -1075,6 +1125,7 @@ AKARI_CE_IMPORT UINT GetTextAlign(HDC hdc) AKARI_CE_NAME(GetTextAlign);
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms901133) */
 /* ms901133 "GetTextCharacterExtra" (ee489907): int
  * GetTextCharacterExtra(HDC).  OS CE 5.0+; Wingdi.h. */
+/* twin-print: ee489912 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms901134 lacks the print. */
 AKARI_CE_IMPORT int GetTextCharacterExtra(HDC hdc) AKARI_CE_NAME(GetTextCharacterExtra);
 #endif /* _WIN32_WCE >= 0x0500 */
 
@@ -1129,6 +1180,7 @@ AKARI_CE_IMPORT UINT SetTextAlign(HDC hdc, UINT fmode) AKARI_CE_NAME(SetTextAlig
 #if _WIN32_WCE >= 0x0500   /* Windows CE 5.0 and later. (ms901144) */
 /* ms901144 "SetTextCharacterExtra" (ee489860): int
  * SetTextCharacterExtra(HDC, int nCharExtra).  OS CE 5.0+; Wingdi.h. */
+/* twin-print: ee489887 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms901145 lacks the print. */
 AKARI_CE_IMPORT int SetTextCharacterExtra(HDC hdc, int nCharExtra) AKARI_CE_NAME(SetTextCharacterExtra);
 #endif /* _WIN32_WCE >= 0x0500 */
 
@@ -1189,11 +1241,16 @@ typedef BOOL (CALLBACK *MONITORENUMPROC)(HMONITOR hMonitor,
                                          LPRECT lprcMonitor,
                                          LPARAM dwData);
 
+/* twin-print: aa451688 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932091 lacks the print. */
 AKARI_CE_IMPORT BOOL EnumDisplayMonitors(HDC hdc, LPCRECT lprcClip,
                          MONITORENUMPROC lpfnEnum, LPARAM dwData) AKARI_CE_NAME(EnumDisplayMonitors);
+/* twin-print: aa451738 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932091 lacks the print. */
 AKARI_CE_IMPORT BOOL GetMonitorInfo(HMONITOR hMonitor, LPMONITORINFO lpmi) AKARI_CE_NAME(GetMonitorInfo);
+/* twin-print: ms932198 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932091 lacks the print. */
 AKARI_CE_IMPORT HMONITOR MonitorFromPoint(POINT pt, DWORD dwFlags) AKARI_CE_NAME(MonitorFromPoint);
+/* twin-print: ms932208 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932091 lacks the print. */
 AKARI_CE_IMPORT HMONITOR MonitorFromRect(LPCRECT lprc, DWORD dwFlags) AKARI_CE_NAME(MonitorFromRect);
+/* twin-print: ms932212 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms932091 lacks the print. */
 AKARI_CE_IMPORT HMONITOR MonitorFromWindow(HWND hwnd, DWORD dwFlags) AKARI_CE_NAME(MonitorFromWindow);
 
 /* ------------------------------------------------------------------

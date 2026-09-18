@@ -1055,6 +1055,7 @@ AKARI_CE_IMPORT HRESULT CreateOleAdviseHolder(
 AKARI_CE_IMPORT HRESULT OleRun(LPUNKNOWN pUnknown) AKARI_CE_NAME(OleRun);
 
 /* ms892593 "OleIsRunning": print `BOOLOleIsRunning(LPOLEOBJECTpObject);` */
+/* twin-print: ee489723 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms892593 lacks the print. */
 AKARI_CE_IMPORT BOOL OleIsRunning(
                     LPOLEOBJECT pObject) AKARI_CE_NAME(OleIsRunning);
 

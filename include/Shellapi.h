@@ -251,6 +251,7 @@ AKARI_CE_IMPORT BOOL WINAPI SHGetPathFromIDList(LPCITEMIDLIST pidl,
 /* aa453705 "SHGetShortcutTarget" (Windows CE 1.0 and later;
  * Shellapi.h; Coredll.lib).  Retrieves a shortcut's target path
  * (buffer at least cbMax characters). */
+/* twin-print: ee505315 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453705 lacks the print. */
 AKARI_CE_IMPORT BOOL SHGetShortcutTarget(LPTSTR szShortcut, LPTSTR szTarget,
                                          int cbMax) AKARI_CE_NAME(SHGetShortcutTarget);
 
@@ -260,6 +261,7 @@ AKARI_CE_IMPORT BOOL SHGetShortcutTarget(LPTSTR szShortcut, LPTSTR szTarget,
  * at least MAX_PATH characters.  In the standard shell returns TRUE
  * on success; with the AYGShell extensions the page documents a FALSE
  * return even on success (Pocket PC 2002 era). */
+/* twin-print: ee506084 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453680 lacks the print. */
 AKARI_CE_IMPORT BOOL SHGetSpecialFolderPath(HWND hwndOwner, LPTSTR lpszPath,
                                             int nFolder,
                                             BOOL fCreate) AKARI_CE_NAME(SHGetSpecialFolderPath);
@@ -297,11 +299,13 @@ AKARI_CE_IMPORT void WINAPI SHAddToRecentDocs(UINT uFlags, LPCVOID pv) AKARI_CE_
 /* aa453720 "SHLoadDIBitmap" (Windows CE 1.0 and later; Shellapi.h;
  * Coredll.lib).  Loads a device-independent bitmap from a file;
  * the caller deletes it with DeleteObject. */
+/* twin-print: ee505632 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453720 lacks the print. */
 AKARI_CE_IMPORT HBITMAP SHLoadDIBitmap(LPCTSTR szFileName) AKARI_CE_NAME(SHLoadDIBitmap);
 
 /* aa453739 "SHShowOutOfMemory" (Windows CE 1.0 and later; Shellapi.h;
  * Shmisc.lib).  Displays the system-defined out-of-memory dialog box
  * (OEM helper); grfFlags is reserved and must be zero. */
+/* twin-print: ee499745 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453739 lacks the print. */
 AKARI_CE_IMPORT int SHShowOutOfMemory(HWND hwndOwner, UINT grfFlags) AKARI_CE_NAME(SHShowOutOfMemory);
 
 #ifdef __cplusplus

@@ -485,6 +485,7 @@ AKARI_CE_IMPORT BOOL InternetCheckConnection(LPCTSTR lpszUrl, DWORD dwFlags, DWO
 
 /* ms918350 "InternetConfirmZoneCrossing": print `DWORDInternetConfirmZoneCrossing(HWNDhWnd,LPTSTRszUrlPrev,LPTSTRszUrlNew,BOOLbPost);`
  *. */
+/* twin-print: ee492166 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms918350 lacks the print. */
 AKARI_CE_IMPORT DWORD InternetConfirmZoneCrossing(HWND hWnd, LPTSTR szUrlPrev, LPTSTR szUrlNew, BOOL bPost)
                         AKARI_CE_NAME(InternetConfirmZoneCrossing);
 
@@ -522,6 +523,7 @@ AKARI_CE_IMPORT BOOL InternetGetConnectedState(LPDWORD lpdwFlags, DWORD dwReserv
 
 /* ms918361 "InternetGetConnectedStateEx": print `BOOLInternetGetConnectedStateEx(LPDWORDlpdwFlags,LPTSTRlpszConnectionName,DWORDdwNameLen,DWORDdwReserved);`
  * (glued "BOOLInternetGetConnectedStateEx" split). */
+/* twin-print: ee491815 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms918361 lacks the print. */
 AKARI_CE_IMPORT BOOL InternetGetConnectedStateEx(LPDWORD lpdwFlags, LPTSTR lpszConnectionName, DWORD dwNameLen, DWORD dwReserved)
                         AKARI_CE_NAME(InternetGetConnectedStateEx);
 
@@ -938,16 +940,19 @@ AKARI_CE_IMPORT HANDLE RetrieveUrlCacheEntryStream(LPCTSTR lpszUrlName, LPINTERN
 
 /* ms918849 "RetrieveUrlCacheEntryFile": print `BOOLRetrieveUrlCacheEntryFile(LPCTSTRlpszUrlName, LPINTERNET_CACHE_ENTRY_INFOlpCacheEntryInfo,LPDWORDlpdwCacheEntryInfoBufferSize, DWORDdwReserved);`
  * (glued "BOOLRetrieveUrlCacheEntryFile" split). */
+/* twin-print: ee492063 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms918849 lacks the print. */
 AKARI_CE_IMPORT BOOL RetrieveUrlCacheEntryFile(LPCTSTR lpszUrlName, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, LPDWORD lpdwCacheEntryInfoBufferSize, DWORD dwReserved)
                         AKARI_CE_NAME(RetrieveUrlCacheEntryFile);
 
 /* ms918858 "SetUrlCacheEntryInfo": print `BOOLSetUrlCacheEntryInfo(LPCSTRlpszUrlName,LPINTERNET_CACHE_ENTRY_INFOlpCacheEntryInfo,DWORDdwFieldControl);`
  * (glued "BOOLSetUrlCacheEntryInfo" split). */
+/* twin-print: ee492792 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms918858 lacks the print. */
 AKARI_CE_IMPORT BOOL SetUrlCacheEntryInfo(LPCSTR lpszUrlName, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, DWORD dwFieldControl)
                         AKARI_CE_NAME(SetUrlCacheEntryInfo);
 
 /* ms918862 "UnlockUrlCacheEntryFile": print `BOOLUnlockUrlCacheEntryFile(LPCSTRlpszUrlName,DWORDdwReserved);`
  * (glued "BOOLUnlockUrlCacheEntryFile" split). */
+/* twin-print: ee492887 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms918862 lacks the print. */
 AKARI_CE_IMPORT BOOL UnlockUrlCacheEntryFile(LPCSTR lpszUrlName, DWORD dwReserved)
                         AKARI_CE_NAME(UnlockUrlCacheEntryFile);
 

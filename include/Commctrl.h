@@ -134,6 +134,7 @@ AKARI_CE_IMPORT int      ImageList_AddMasked(HIMAGELIST himl, HBITMAP hbmImage,
                              COLORREF crMask) AKARI_CE_NAME(ImageList_AddMasked);                 /* ms909795 */
 AKARI_CE_IMPORT BOOL     ImageList_BeginDrag(HIMAGELIST himlTrack, int iTrack,
                              int dxHotspot, int dyHotspot) AKARI_CE_NAME(ImageList_BeginDrag);    /* ms909799 */
+/* twin-print: ms909805 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909799 lacks the print. */
 AKARI_CE_IMPORT BOOL     ImageList_Copy(HIMAGELIST himlDst, int iDst,
                         HIMAGELIST himlSrc, int iSrc,
                         UINT uFlags) AKARI_CE_NAME(ImageList_Copy);                          /* ms909805 */
@@ -150,7 +151,9 @@ AKARI_CE_IMPORT BOOL     ImageList_DrawEx(HIMAGELIST himl, int i, HDC hdcDst,  /
                           int x, int y, int dx, int dy,
                           COLORREF rgbBk, COLORREF rgbFg,
                           UINT fStyle) AKARI_CE_NAME(ImageList_DrawEx);
+/* twin-print: ms909818 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909817 lacks the print. */
 AKARI_CE_IMPORT BOOL     ImageList_DrawIndirect(IMAGELISTDRAWPARAMS *pimldp) AKARI_CE_NAME(ImageList_DrawIndirect);  /* ms909818 */
+/* twin-print: ms909820 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909818 lacks the print. */
 AKARI_CE_IMPORT HIMAGELIST ImageList_Duplicate(HIMAGELIST himl) AKARI_CE_NAME(ImageList_Duplicate);               /* ms909820 */
 AKARI_CE_IMPORT BOOL     ImageList_EndDrag(void) AKARI_CE_NAME(ImageList_EndDrag);                              /* ms909821 */
 AKARI_CE_IMPORT COLORREF ImageList_GetBkColor(HIMAGELIST himl) AKARI_CE_NAME(ImageList_GetBkColor);                /* ms909823 */
@@ -179,6 +182,7 @@ AKARI_CE_IMPORT BOOL     ImageList_SetDragCursorImage(HIMAGELIST himlDrag,     /
 AKARI_CE_IMPORT BOOL     ImageList_SetIconSize(HIMAGELIST himl, int cx, int cy) AKARI_CE_NAME(ImageList_SetIconSize); /* ms909838 */
 AKARI_CE_IMPORT BOOL     ImageList_SetImageCount(HIMAGELIST himl,              /* ms909839 */
                                  UINT uNewCount) AKARI_CE_NAME(ImageList_SetImageCount);
+/* twin-print: ee501415 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms909848 lacks the print. */
 AKARI_CE_IMPORT BOOL     ImageList_SetOverlayImage(HIMAGELIST himl, int iImage,
                                    int iOverlay) AKARI_CE_NAME(ImageList_SetOverlayImage);              /* ms909840 */
 
@@ -537,25 +541,35 @@ AKARI_CE_IMPORT BOOL     InitCommonControlsEx(LPINITCOMMONCONTROLSEX lpInitCtrls
 /* ee504517: param-list verified against this page (proto-cite) */
 AKARI_CE_IMPORT HWND     CommandBar_Create(HINSTANCE hInst, HWND hwndParent,
                            int idCmdBar) AKARI_CE_NAME(CommandBar_Create);                     /* ms908131 */
+/* twin-print: ee501392 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908131 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBar_AddAdornments(HWND hwndCB, DWORD dwFlags,
                                   DWORD dwReserved) AKARI_CE_NAME(CommandBar_AddAdornments);          /* ms908127 */
+/* twin-print: ee504155 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908127 lacks the print. */
 AKARI_CE_IMPORT int      CommandBar_AddBitmap(HWND hwndCB, HINSTANCE hInst,
                               int idBitmap, int iNumImages,
                               int iImageWidth,
                               int iImageHeight) AKARI_CE_NAME(CommandBar_AddBitmap);              /* ms908128 */
+/* twin-print: ee501797 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908128 lacks the print. */
 AKARI_CE_IMPORT void     CommandBar_AlignAdornments(HWND hwndCB) AKARI_CE_NAME(CommandBar_AlignAdornments);             /* aa453948 (CE 4.0+) */
+/* twin-print: ee505864 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa453948 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBar_DrawMenuBar(HWND hwndCB, WORD iButton) AKARI_CE_NAME(CommandBar_DrawMenuBar);   /* ms908133 */
+/* twin-print: ee500487 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908133 lacks the print. */
 AKARI_CE_IMPORT HMENU    CommandBar_GetMenu(HWND hwndCB, WORD iButton) AKARI_CE_NAME(CommandBar_GetMenu);       /* ms908134 */
+/* twin-print: ee500881 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908134 lacks the print. */
 AKARI_CE_IMPORT int      CommandBar_Height(HWND hwndCB) AKARI_CE_NAME(CommandBar_Height);                      /* ms908135 */
+/* twin-print: ee503989 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908135 lacks the print. */
 AKARI_CE_IMPORT HWND     CommandBar_InsertComboBox(HWND hwndCB, HINSTANCE hInst,
                                    int iWidth, UINT dwStyle,
                                    WORD idComboBox,
                                    WORD iButton) AKARI_CE_NAME(CommandBar_InsertComboBox);             /* ms908137 */
+/* twin-print: ee505113 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908137 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBar_InsertMenubar(HWND hwndCB, HINSTANCE hInst,
                                   WORD idMenu, WORD iButton) AKARI_CE_NAME(CommandBar_InsertMenubar); /* ms908138 */
+/* twin-print: ee501421 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908138 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBar_InsertMenubarEx(HWND hwndCB, HINSTANCE hInst,
                                     LPTSTR pszMenu,
                                     WORD iButton) AKARI_CE_NAME(CommandBar_InsertMenubarEx);            /* ms908139 */
+/* twin-print: ee502524 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908139 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBar_Show(HWND hwndCB, BOOL fShow) AKARI_CE_NAME(CommandBar_Show);            /* ms908141 */
 
 /* Command Bars Macros (ms907216 sub-book): the CE macro pages print
@@ -578,17 +592,21 @@ AKARI_CE_IMPORT BOOL     CommandBar_Show(HWND hwndCB, BOOL fShow) AKARI_CE_NAME(
 AKARI_CE_IMPORT HWND     CommandBands_Create(HINSTANCE hinst, HWND hwndParent, UINT wID,
                              DWORD dwStyles,
                              HIMAGELIST himl) AKARI_CE_NAME(CommandBands_Create);                /* ms908121 */
+/* twin-print: ms908118 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908121 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBands_AddAdornments(HWND hwndCmdBands, HINSTANCE hinst,
                                     DWORD dwFlags,
                                     LPREBARBANDINFO prbbi) AKARI_CE_NAME(CommandBands_AddAdornments);   /* ms908118 */
+/* twin-print: ms908120 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908118 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBands_AddBands(HWND hwndCmdBands, HINSTANCE hinst,
                                UINT cBands,
                                LPREBARBANDINFO prbbi) AKARI_CE_NAME(CommandBands_AddBands);        /* ms908120 */
+/* twin-print: ms908122 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908120 lacks the print. */
 AKARI_CE_IMPORT HWND     CommandBands_GetCommandBar(HWND hwndCmdBands,
                                     UINT uBand) AKARI_CE_NAME(CommandBands_GetCommandBar);              /* ms908122 */
 AKARI_CE_IMPORT BOOL     CommandBands_GetRestoreInformation(HWND hwndCmdBands, UINT uBand,
                                             LPCOMMANDBANDSRESTOREINFO
                                             pcbri) AKARI_CE_NAME(CommandBands_GetRestoreInformation);            /* ms908123 */
+/* twin-print: ee500873 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page ms908188 lacks the print. */
 AKARI_CE_IMPORT BOOL     CommandBands_Show(HWND hwndCmdBands, BOOL fShow) AKARI_CE_NAME(CommandBands_Show);    /* ms908126 */
 
 /* Command Bands Macros: CommandBands_Height(HWND hwndCmdBands)
@@ -602,6 +620,7 @@ AKARI_CE_IMPORT BOOL     CommandBands_Show(HWND hwndCmdBands, BOOL fShow) AKARI_
  * LPSTR lpszText, HWND hwndParent, WORD wID );" -- the text parameter
  * is printed LPSTR [as printed; the DrawStatusText twin prints
  * LPCWSTR]. */
+/* twin-print: ee505247 -- sibling-generation page prints this prototype identically (verified 2026-09-18); cited page aa452976 lacks the print. */
 AKARI_CE_IMPORT HWND     CreateStatusWindow(LONG style, LPSTR lpszText,
                             HWND hwndParent, WORD wID) AKARI_CE_NAME(CreateStatusWindow);       /* ms908188 */
 
