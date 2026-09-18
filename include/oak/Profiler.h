@@ -34,4 +34,51 @@ AKARI_CE_IMPORT VOID ProfileStart(DWORD dwUSecInterval, DWORD dwOptions) AKARI_C
 /* _wcepb_ProfileStop: page-printed prototype (Windows CE OS). */
 AKARI_CE_IMPORT VOID ProfileStop(void) AKARI_CE_NAME(ProfileStop);
 
+
+/* --- absent-surface pass 2026-09-18: coredll-exported functions
+ * whose pages print "Link Library: Coredll.lib" (docs/absent-funcprints
+ * -2026-09-18.tsv). ------------------------------------------- */
+
+/* ms886778 ProfilerControl: page print
+ * typedef struct ProfilerControl {DWORD dwVersion;DWORD dwOptions;
+ * DWORD dwReserved; union { struct { DWORD dwUSecInterval; } Kernel;
+ * struct { DWORD dwProcessorType; DWORD dwControlSize;
+ * BYTE bHardwareSpecificSettings[0]; } OEM; };} ProfilerControl; */
+typedef struct ProfilerControl {
+    DWORD dwVersion;
+    DWORD dwOptions;
+    DWORD dwReserved;
+    union {
+        struct {
+            DWORD dwUSecInterval;
+        } Kernel;
+        struct {
+            DWORD dwProcessorType;
+            DWORD dwControlSize;
+            BYTE  bHardwareSpecificSettings[0];
+        } OEM;
+    };
+} ProfilerControl;
+
+/* ms886763 OEMProfilerData: page print
+ * typedef struct OEMProfilerData {DWORD ra;DWORD dwBufSize;
+ * BYTE buf[0];} OEMProfilerData; */
+typedef struct OEMProfilerData {
+    DWORD ra;
+    DWORD dwBufSize;
+    BYTE  buf[0];
+} OEMProfilerData;
+
+/* ms886776(v=msdn.10) ProfileCaptureStatus: page print `VOID ProfileCaptureStatus();`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT VOID ProfileCaptureStatus(void) AKARI_CE_NAME(ProfileCaptureStatus);
+
+/* ms886782(v=msdn.10) ProfileStartEx: page print `VOID ProfileStartEx( ProfilerControl* pControl );`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT VOID ProfileStartEx(ProfilerControl*pControl) AKARI_CE_NAME(ProfileStartEx);
+
+/* ms886780(v=msdn.10) ProfilerHitEx: page print `VOID ProfilerHitEx( OEMProfilerData* pData);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT VOID ProfilerHitEx(OEMProfilerData*pData) AKARI_CE_NAME(ProfilerHitEx);
+
 #endif /* AKARI_PROFILER_H_ */

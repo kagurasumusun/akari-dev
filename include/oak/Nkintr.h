@@ -98,4 +98,13 @@ BOOL OEMSetRealTime(LPSYSTEMTIME lpst);
 /* _wcepb_KFileTimeToSystemTime: page-printed prototype (Windows CE OS). */
 BOOL KFileTimeToSystemTime(const FILETIME* lpft, LPSYSTEMTIME lpst);
 
+
+/* --- absent-surface pass 2026-09-18: coredll-exported functions
+ * whose pages print "Link Library: Coredll.lib" (docs/absent-funcprints
+ * -2026-09-18.tsv). ------------------------------------------- */
+
+/* ms885153(v=msdn.10) CeSetPowerOnEvent: page print `BOOL CeSetPowerOnEvent(HANDLE hEvt);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL CeSetPowerOnEvent(HANDLE hEvt) AKARI_CE_NAME(CeSetPowerOnEvent);
+
 #endif /* AKARI_NKINTR_H_ */

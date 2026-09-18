@@ -19,6 +19,8 @@
 #define AKARI_PKFUNCS_H
 
 #include "Windef.h"    /* BOOL, DWORD, LPCWSTR */
+#include "Winreg.h"   /* HKEY, REGSAM, PHKEY (NKReg* declarations) */
+#include "Dbgapi.h"    /* LPDBGPARAM (SetDbgZone) */
 #include "Windbase.h"   /* 1 declaration(s) whose official pages print
                     * "Header: Pkfuncs.h" are carried there, so including it
                     * makes <Pkfuncs.h> provide them as those pages promise
@@ -263,5 +265,94 @@ AKARI_CE_IMPORT BOOL NKVirtualSetAttributes(LPVOID lpvAddress, DWORD cbSize,
  * so the declaration stays recorded, not shipped. */
 
 #endif /* _WIN32_WCE >= 0x0500 (CeSetMemoryAttributes / DrWatson*) */
+
+
+/* --- absent-surface pass 2026-09-18: coredll-exported functions
+ * whose pages print "Link Library: Coredll.lib" (docs/absent-funcprints
+ * -2026-09-18.tsv). ------------------------------------------- */
+
+/* aa450785(v=msdn.10) AllocPhysMem: page print `LPVOID AllocPhysMem(DWORD cbSize,DWORD fdwProtect,DWORD dwAlignmentMask,DWORD dwFlags,PULONG pPhysicalAddress);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LPVOID AllocPhysMem(DWORD cbSize, DWORD fdwProtect, DWORD dwAlignmentMask, DWORD dwFlags, PULONG pPhysicalAddress) AKARI_CE_NAME(AllocPhysMem);
+
+/* aa450787(v=msdn.10) CacheRangeFlush: page print `void CacheRangeFlush(LPVOIDpAddr,DWORDdwLength,DWORDdwFlags );`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT void CacheRangeFlush(LPVOID pAddr, DWORD dwLength, DWORD dwFlags) AKARI_CE_NAME(CacheRangeFlush);
+
+/* ms885185(v=msdn.10) CreateStaticMapping: page print `LPVOID CreateStaticMapping(DWORDdwPhysBase,DWORDdwSize);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LPVOID CreateStaticMapping(DWORD dwPhysBase, DWORD dwSize) AKARI_CE_NAME(CreateStaticMapping);
+
+/* ms885603(v=msdn.10) FreePhysMem: page print `BOOL FreePhysMem(LPVOID lpvAddress);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL FreePhysMem(LPVOID lpvAddress) AKARI_CE_NAME(FreePhysMem);
+
+/* ms885637(v=msdn.10) GetStdioPathW: page print `BOOL GetStdioPathW(DWORDid,PWSTRpwszBuf,LPDWORDlpdwLen );`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL GetStdioPathW(DWORD id, PWSTR pwszBuf, LPDWORD lpdwLen) AKARI_CE_NAME(GetStdioPathW);
+
+/* ms885678(v=msdn.10) InterruptMask: page print `VOID InterruptMask(DWORD idInt, BOOL fDisable);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT VOID InterruptMask(DWORD idInt, BOOL fDisable) AKARI_CE_NAME(InterruptMask);
+
+/* ms886725(v=msdn.10) IsNamedEventSignaled: page print `BOOL IsNamedEventSignaled( LPCWSTR pszName, DWORD dwFlags);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL IsNamedEventSignaled(LPCWSTR pszName, DWORD dwFlags) AKARI_CE_NAME(IsNamedEventSignaled);
+
+/* ms904841(v=msdn.10) KLibAllocShareMem: page print `BOOL KLibAllocShareMem(DWORD nPages,BOOL fNoCache,LPVOID* pVa,LPVOID* pPa);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL KLibAllocShareMem(DWORD nPages, BOOL fNoCache, LPVOID*pVa, LPVOID*pPa) AKARI_CE_NAME(KLibAllocShareMem);
+
+/* ms904850(v=msdn.10) KLibFreeShareMem: page print `BOOL KLibFreeShareMem(DWORD nPages,LPVOID pVa,LPVOID pPa);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL KLibFreeShareMem(DWORD nPages, LPVOID pVa, LPVOID pPa) AKARI_CE_NAME(KLibFreeShareMem);
+
+/* ms886730(v=msdn.10) KernelLibIoControl: page print `BOOL KernelLibIoControl(HANDLEhModule,DWORDdwIoControlCode,LPVOIDlpInBuf,DWORDnInBufSize,LPVOIDlpOutBuf,DWORDnOutBufSize,LPDWORDlpBytesReturned);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL KernelLibIoControl(HANDLE hModule, DWORD dwIoControlCode, LPVOID lpInBuf, DWORD nInBufSize, LPVOID lpOutBuf, DWORD nOutBufSize, LPDWORD lpBytesReturned) AKARI_CE_NAME(KernelLibIoControl);
+
+/* ms904854(v=msdn.10) LoadIntChainHandler: page print `HANDLE LoadIntChainHandler(LPCWSTR lpFilename,LPCWSTR lpszFunctionName,BYTE bIRQ);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT HANDLE LoadIntChainHandler(LPCWSTR lpFilename, LPCWSTR lpszFunctionName, BYTE bIRQ) AKARI_CE_NAME(LoadIntChainHandler);
+
+/* ms886749(v=msdn.10) MapCallerPtr: page print `LPVOID MapCallerPtr( LPVOID ptr, DWORD dwLen);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LPVOID MapCallerPtr(LPVOID ptr, DWORD dwLen) AKARI_CE_NAME(MapCallerPtr);
+
+/* ms904868(v=msdn.10) NKRegCloseKey: page print `LONG NKRegCloseKey(HKEYhKey);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LONG NKRegCloseKey(HKEY hKey) AKARI_CE_NAME(NKRegCloseKey);
+
+/* ms904869(v=msdn.10) NKRegCreateKeyEx: page print `LONG NKRegCreateKeyEx(HKEYhKey,LPCWSTRlpSubKey, DWORDReserved,LPWSTRlpClass,DWORDdwOptions, REGSAMsamDesired,LPSECURITY_ATTRIBUTESlpSecurityAttributes,PHKEYphkResult, LPDWORDlpdwDisposition);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LONG NKRegCreateKeyEx(HKEY hKey, LPCWSTR lpSubKey, DWORD Reserved, LPWSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition) AKARI_CE_NAME(NKRegCreateKeyEx);
+
+/* ms904870(v=msdn.10) NKRegOpenKeyEx: page print `LONG NKRegOpenKeyEx(HKEYhKey,LPCWSTRlpSubKey, DWORDulOptions, REGSAMsamDesired,PHKEYphkResult);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LONG NKRegOpenKeyEx(HKEY hKey, LPCWSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult) AKARI_CE_NAME(NKRegOpenKeyEx);
+
+/* ms904871(v=msdn.10) NKRegQueryValueEx: page print `LONG NKRegQueryValueEx(HKEYhKey,LPCWSTRlpValueName, LPDWORDlpReserved,LPDWORDlpType,LPBYTElpData, LPDWORDlpcbData);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LONG NKRegQueryValueEx(HKEY hKey, LPCWSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) AKARI_CE_NAME(NKRegQueryValueEx);
+
+/* ms904872(v=msdn.10) NKRegSetValueEx: page print `LONG NKRegSetValueEx(HKEYhKey,LPCWSTRlpValueName, DWORDdwReserved,DWORDdwType,LPBYTElpData, DWORDcbData);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT LONG NKRegSetValueEx(HKEY hKey, LPCWSTR lpValueName, DWORD dwReserved, DWORD dwType, LPBYTE lpData, DWORD cbData) AKARI_CE_NAME(NKRegSetValueEx);
+
+/* ms886771(v=msdn.10) PageOutModule: page print `BOOL PageOutModule(HANDLEhModule,DWORDdwFlags);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL PageOutModule(HANDLE hModule, DWORD dwFlags) AKARI_CE_NAME(PageOutModule);
+
+/* ms886809(v=msdn.10) SetDbgZone: page print `BOOL SetDbgZone(DWORDdwProcid,LPVOIDlpvMod, LPVOIDbaseptr,DWORDzone,LPDBGPARAMlpdbgTgt);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL SetDbgZone(DWORD dwProcid, LPVOID lpvMod, LPVOID baseptr, DWORD zone, LPDBGPARAM lpdbgTgt) AKARI_CE_NAME(SetDbgZone);
+
+/* ms886820(v=msdn.10) SetStdioPathW: page print `BOOL SetStdioPathW(DWORDid,PWSTRpwszPath );`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL SetStdioPathW(DWORD id, PWSTR pwszPath) AKARI_CE_NAME(SetStdioPathW);
+
+/* aa450901(v=msdn.10) SleepTillTick: page print `void SleepTillTick();`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT void SleepTillTick(void) AKARI_CE_NAME(SleepTillTick);
 
 #endif /* AKARI_PKFUNCS_H */

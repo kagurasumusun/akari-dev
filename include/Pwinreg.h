@@ -79,4 +79,29 @@ AKARI_CE_IMPORT LONG RegReplaceKey(HKEY hKey, LPCTSTR lpSubKey,
 AKARI_CE_IMPORT LONG RegSaveKey(HKEY hKey, LPCTSTR lpFile,
     LPSECURITY_ATTRIBUTES lpSecurityAttributes) AKARI_CE_NAME(RegSaveKey);
 
+
+/* --- absent-surface pass 2026-09-18: coredll-exported functions
+ * whose pages print "Header: Pwinreg.h" + "Link Library: Coredll.lib"
+ * (docs/absent-funcprints-2026-09-18.tsv). --------------------- */
+
+/* ms891226(v=msdn.10) GetUserDirectory: page print `BOOL GetUserDirectory( LPWSTRlpszBuffer, LPDWORDlpdwSize);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL GetUserDirectory(LPWSTR lpszBuffer, LPDWORD lpdwSize) AKARI_CE_NAME(GetUserDirectory);
+
+/* ms891446(v=msdn.10) ReadGenericData: page print `BOOL ReadGenericData(WORDdwId,DWORDdwIndex,DWORDdwFlags, LPBYTE pBuf,DWORD dwLength,DWORD pdwBytesReturned);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL ReadGenericData(WORD dwId, DWORD dwIndex, DWORD dwFlags, LPBYTE pBuf, DWORD dwLength, DWORD pdwBytesReturned) AKARI_CE_NAME(ReadGenericData);
+
+/* ms891447(v=msdn.10) ReadRegData: page print `DWORD ReadRegData(DWORDdwFlags,LPBYTEpBuf,DWORDlen );`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT DWORD ReadRegData(DWORD dwFlags, LPBYTE pBuf, DWORD len) AKARI_CE_NAME(ReadRegData);
+
+/* ms891457(v=msdn.10) RegistryOperation: page print `BOOL RegistryOperation(DWORDdwOp);`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL RegistryOperation(DWORD dwOp) AKARI_CE_NAME(RegistryOperation);
+
+/* ms892382(v=msdn.10) WriteRegData: page print `BOOL WriteRegData( DWORDdwFlags,LPBYTElpBuf,DWORDlen );`
+ * (Link Library: Coredll.lib) */
+AKARI_CE_IMPORT BOOL WriteRegData(DWORD dwFlags, LPBYTE lpBuf, DWORD len) AKARI_CE_NAME(WriteRegData);
+
 #endif /* AKARI_PWINREG_H_ */

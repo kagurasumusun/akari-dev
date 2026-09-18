@@ -391,6 +391,7 @@ include/oak/Partdrv.h \
 include/oak/PCIbus.h \
 include/oak/PCIReg.h \
 include/oak/PCIrsrc.h \
+include/oak/Msr.h \
 include/oak/Pkfuncs.h \
 include/oak/Pmimpl.h \
 include/oak/Pmpolicy.h \

@@ -1063,10 +1063,22 @@ include/Pwinbase.h	FileSystemPowerFunction	ms902891	match
 include/Pwinbase.h	GetPasswordStatus	ms891004	match	
 include/Pwinbase.h	SetPasswordStatus	ms891976	match	
 include/Pwindbas.h	SetSystemMemoryDivision		no-pageid	
+include/Pwindbas.h	ReplChangeSyncSettings	ms891473	match	
+include/Pwindbas.h	ReplCheckpoint	ms891474	match	
+include/Pwindbas.h	ReplCloseSync	ms891698	match	
+include/Pwindbas.h	ReplFindNextChange	ms891775	match	
+include/Pwindbas.h	ReplGetOidStatus	ms891783	match	
+include/Pwindbas.h	ReplGetSyncState	ms891797	match	
+include/Pwindbas.h	ReplOpenSync	ms891805	match	
 include/Pwinreg.h	RegCopyFile		no-pageid	
 include/Pwinreg.h	RegRestoreFile		no-pageid	
 include/Pwinreg.h	RegReplaceKey	ee489789	match	
 include/Pwinreg.h	RegSaveKey	ee489766	match	
+include/Pwinreg.h	GetUserDirectory	ms891226	match	
+include/Pwinreg.h	ReadGenericData	ms891446	match	
+include/Pwinreg.h	ReadRegData	ms891447	match	
+include/Pwinreg.h	RegistryOperation	ms891457	match	
+include/Pwinreg.h	WriteRegData	ms892382	match	
 include/Pwinuser.h	GetForegroundInfo	ms929241	match	
 include/Pwinuser.h	GetForegroundKeyboardLayoutHandle	ms929242	match	
 include/Pwinuser.h	GetForegroundKeyboardTarget	ms929243	match	
@@ -2856,6 +2868,8 @@ include/oak/Led_drvr.h	NLedDriverPowerDown	ms905309	match
 include/oak/Led_drvr.h	NLedDriverSetDevice	ms905313	match	
 include/oak/Lockmgrhelp.h	FSDMGR_OpenFileLockState		no-pageid	
 include/oak/Lockmgrhelp.h	FSDMGR_CloseFileLockState		no-pageid	
+include/oak/Msr.h	NKrdmsr	ms904867	match	
+include/oak/Msr.h	NKwrmsr	ms904875	match	
 include/oak/Ndis.h	NdisAcquireReadWriteLock	aa447900	match	
 include/oak/Ndis.h	NdisAcquireSpinLock	aa447901	match	
 include/oak/Ndis.h	NdisAdjustBufferLength	aa447902	match	
@@ -3084,6 +3098,7 @@ include/oak/Ndis.h	NdisWriteRegisterUshort	ms905271	match
 include/oak/Ndis.h	NdisZeroMappedMemory	ms905277	match	
 include/oak/Ndis.h	NdisZeroMemory	ms905279	no-print-on-page	
 include/oak/Nkintr.h	SetInterruptEvent		no-pageid	
+include/oak/Nkintr.h	CeSetPowerOnEvent	ms885153	match	
 include/oak/Nled.h	NLedGetDeviceInfo	ms905318	match	
 include/oak/Nled.h	NLedSetDevice	ms905321	match	
 include/oak/Pkfuncs.h	CaptureDumpFileOnDevice	ms939622	match	
@@ -3127,6 +3142,27 @@ include/oak/Pkfuncs.h	DrWatsonGetSize	ms885205	no-print-on-page
 include/oak/Pkfuncs.h	DrWatsonReadData	ms885206	no-print-on-page	
 include/oak/Pkfuncs.h	DrWatsonWriteData	ms885207	no-print-on-page	
 include/oak/Pkfuncs.h	NKVirtualSetAttributes	ee478212	match	
+include/oak/Pkfuncs.h	AllocPhysMem	aa450785	match	
+include/oak/Pkfuncs.h	CacheRangeFlush	aa450787	match	
+include/oak/Pkfuncs.h	CreateStaticMapping	ms885185	match	
+include/oak/Pkfuncs.h	FreePhysMem	ms885603	match	
+include/oak/Pkfuncs.h	GetStdioPathW	ms885637	match	
+include/oak/Pkfuncs.h	InterruptMask	ms885678	match	
+include/oak/Pkfuncs.h	IsNamedEventSignaled	ms886725	match	
+include/oak/Pkfuncs.h	KLibAllocShareMem	ms904841	match	
+include/oak/Pkfuncs.h	KLibFreeShareMem	ms904850	match	
+include/oak/Pkfuncs.h	KernelLibIoControl	ms886730	match	
+include/oak/Pkfuncs.h	LoadIntChainHandler	ms904854	match	
+include/oak/Pkfuncs.h	MapCallerPtr	ms886749	match	
+include/oak/Pkfuncs.h	NKRegCloseKey	ms904868	match	
+include/oak/Pkfuncs.h	NKRegCreateKeyEx	ms904869	match	
+include/oak/Pkfuncs.h	NKRegOpenKeyEx	ms904870	match	
+include/oak/Pkfuncs.h	NKRegQueryValueEx	ms904871	match	
+include/oak/Pkfuncs.h	NKRegSetValueEx	ms904872	match	
+include/oak/Pkfuncs.h	PageOutModule	ms886771	match	
+include/oak/Pkfuncs.h	SetDbgZone	ms886809	match	
+include/oak/Pkfuncs.h	SetStdioPathW	ms886820	match	
+include/oak/Pkfuncs.h	SleepTillTick	aa450901	match	
 include/oak/Pmimpl.h	PlatformManageSystemPower	ms919406	match	
 include/oak/Pmimpl.h	PlatformMapPowerStateHint	ms919407	match	
 include/oak/Pmimpl.h	PlatformResumeSystem	ms919408	match	
@@ -3134,6 +3170,9 @@ include/oak/Pmimpl.h	PlatformValidatePMRegistry	ms919660	match
 include/oak/Pmpolicy.h	PowerPolicyNotify	ms919677	match	
 include/oak/Profiler.h	ProfileStart		no-pageid	
 include/oak/Profiler.h	ProfileStop		no-pageid	
+include/oak/Profiler.h	ProfileCaptureStatus	ms886776	match	
+include/oak/Profiler.h	ProfileStartEx	ms886782	match	
+include/oak/Profiler.h	ProfilerHitEx	ms886780	match	
 include/oak/Rndismini.h	MDDAllocDataWrapper	ms902178	match	
 include/oak/Rndismini.h	MDDFreeDataWrapper	ms902181	skip-complex-page	
 include/oak/Rndismini.h	MDDAllocMem	ms902181	no-print-on-page	

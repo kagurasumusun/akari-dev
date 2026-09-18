@@ -115,9 +115,24 @@ typedef struct tagDevInfo {
  * Book surface: activesync (tools/gen-book.py; page ids per record)
  * ------------------------------------------------------------------ */
 /* aa513866 GetObjTypeInfo: documented name-only (no value published; held) */
-/* aa513869 HREPLFLD: documented name-only (no value published; held) */
-/* aa513871 HREPLITEM: documented name-only (no value published; held) */
-/* aa513872 HREPLOBJ: documented name-only (no value published; held) */
+/* aa513869 HREPLFLD: page print `typedef struct _REPLFLD FAR* HREPLFLD;`
+ * (CE 6.0 twin ee486238 identical) */
+typedef struct _REPLFLD FAR *HREPLFLD;
+
+/* aa513871 HREPLITEM: page print `typedef struct _REPLITEM FAR* HREPLITEM;`
+ * (CE 6.0 twin ee484299 identical) */
+typedef struct _REPLITEM FAR *HREPLITEM;
+
+/* aa513872 HREPLOBJ: page print `typedef struct _REPLOBJ FAR* HREPLOBJ;`
+ * (CE 6.0 twin ee483355 identical) */
+typedef struct _REPLOBJ FAR *HREPLOBJ;
+
+/* HREPL: no CE page prints its definition (corpus-wide search
+ * 2026-09-18); the Repl* pages (ms891473..ms891478, Link Library:
+ * Coredll.lib, Header: Pwindbas.h) pass it by value as an opaque
+ * handle, so it ships as the tree's handle convention (cf. HWAVEIN
+ * in Mmsystem.h), not as an invented struct. */
+typedef void *HREPL;
 /* aa514309 InitObjType: documented name-only (no value published; held) */
 /* ms861001 ReplDialogs: documented name-only (no value published; held) */
 /* aa513895 IEnumReplItem::Clone (Header: Cesync.h.) */

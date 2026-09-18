@@ -1,0 +1,5 @@
+# class	count	note
+declared-this-pass	39	Pkfuncs.h 21, Pwindbas.h 7 (Repl*), Pwinreg.h 5, Profiler.h 3 (+ProfilerControl ms886778 / OEMProfilerData ms886763 spliced), Msr.h 2 (new oak header), Nkintr.h 1; HREPL added to Cesync.h as void* handle convention (definition not printed), HREPLFLD/ITEM/OBJ typedefs shipped from prints (aa513869/71/72)
+crt-wince-crt-split	63	stdlib/stdio/malloc/float/new/conio functions; coredll exports but CRT headers are the wince-crt provider responsibility (Makefile "Scope"); names already carried in coredll-doc.def
+held-tux	1	ShellProc (Tux.h): SHELLPROCAPI/SPPARAMS not printed on any page; Tux is the Platform Builder test harness -- record-only
+no-link-library	905	pages print a prototype but no Link Library row (OAK/BSP/internal); re-check per module when their libraries are triaged
