@@ -60,11 +60,10 @@ def main():
     a = ap.parse_args()
 
     libs = collections.Counter()
-    for d in sorted(os.listdir(a.corpus)):
-        p = os.path.join(a.corpus, d)
-        if not os.path.isdir(p) or d in ("catalogs", ".git"):
-            continue
-        for f in os.listdir(p):
+    # recursive walk: corpus layout is docs/<source>/<generation>/*.html
+    for p, dirs, files in os.walk(a.corpus):
+        dirs[:] = [x for x in dirs if x not in ("catalogs", ".git")]
+        for f in sorted(files):
             if not f.endswith(".html"):
                 continue
             raw = open(os.path.join(p, f), encoding="utf-8",

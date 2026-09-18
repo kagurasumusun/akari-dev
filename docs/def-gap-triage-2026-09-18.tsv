@@ -1,72 +1,49 @@
 # class	lib	function_pages_seen	example_pages	note
-com-guid	av_upnp	100	IRenderingControl::GetBlueVideoBlackLeve;IRenderingControl::GetBlueVideoGain	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-driver-static	blcommon	16	BootloaderMain;OEMCheckSignature	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	cardserv	6	CardPowerOff;CardPowerOn	Platform Builder / OAL static library (driver-internal); no application import surface
-resolved	ceutil	2	CeGetSelectedDeviceId;CeGetDeviceId	RESOLVED: def/ceutil-doc.def (2 names; pages name Ceutil.lib)
-needs-investigation	commctl	22	CommandBands_AddAdornments;CommandBands_AddBands	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-resolved	commctrlview	1	CommCtrlView_t::Init	CLOSED: the only page (CommCtrlView_t::Init) is a C++ class method -- no free-function export surface
-resolved	coremain	15	DeleteCriticalSection;EnterCriticalSection	RESOLVED (prior pass): def/coremain-doc.def (4 CriticalSection names)
-needs-investigation	coresip	10	SipEnumIM;SipEnumIMProc	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	cryptapi	31	CryptAcquireContext;CryptContextAddRef	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-resource-lib	cursor	17	ClipCursor;GetClipCursor	resource archive lib (cursors/icons), not an export surface
-driver-static	ddgpe	31	SurfaceHeap::Alloc;SurfaceHeap Constructor	Platform Builder / OAL static library (driver-internal); no application import surface
-resolved	device	6	CeFsIoControl;CeResyncFilesys	RESOLVED (prior pass): def/device-doc.def (3 names)
-resolved	dnsapi	4	DnsModifyRecordsInSet_W;DnsQuery_W	RESOLVED: def/dnsapi-doc.def (4 names; pages name Dnsapi.lib)
-driver-static	ethdbg	5	EdbgDeregisterClient;EdbgRecv	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	fsdbase	26	CHECK_SYSTEMGUID;CREATE_INVALIDGUID	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	fsmain	16	DeleteAndRenameFile;CopyFile	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	fspass	1	CheckPassword	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	fsreg	11	RegCloseKey;RegCreateKeyEx	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	gdcfg	10	ConfigInit;ConfigRsrc	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	getpower	2	GetSystemPowerStatusEx;GetSystemPowerStatusEx2	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-driver-static	gpe_lib	12	GetGPE;GPE::AllocSurface	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	hal	5	CallEdbgDeregisterClient;CallEdbgRecv	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	hidparse_lib	26	HidP_FreeCollectionDescription;HidP_GetButtonCaps	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	httpextn	2	ReadClient;WriteClient	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	httpfilt	8	AddHeader;AllocMem	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-resource-lib	iconcurs	4	CreateCursor;DestroyCursor	resource archive lib (cursors/icons), not an export surface
-com-guid	imaging	54	IImageDecoder::GetFrameCount;IImageDecoder::GetFrameDimensionsCount	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-driver-static	kitl	15	KitlInit;KITLOutputDebugString	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	layoutmanager	16	PFN_KEYBD_DRIVER_GET_INFO;PFN_KEYBD_DRIVER_INITIALIZE	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	loadauth	4	CertifyModule;CertifyModuleFinal	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	locusa	2	CharNext;GetStringType	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-resource-lib	mcursor	17	ClipCursor;GetClipCursor	resource archive lib (cursors/icons), not an export surface
-driver-static	mgbase	14	DeleteObject;GetBkColor	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgbitmap	2	CreateBitmap;CreateCompatibleBitmap	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgblt	1	BitBlt	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgblt2	3	MaskBlt;PatBlt	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgdc	4	CreateDC;ExtEscape	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgdi_c	2	CreateDIBSection;EqualRgn	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgdibsec	1	CreateDIBSection	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgdraw	20	CreateDIBPatternBrushPt;CreatePatternBrush	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgdrwtxt	1	DrawText	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgpal	7	CreatePalette;GetNearestColor	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgrast	6	CreateFontIndirect;GetTextExtentExPoint	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgrast2	3	EnumFontFamilies;GetTextFace	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgrgn	14	CombineRgn;CreateRectRgn	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgtt	8	EnableEUDC;CreateFontIndirect	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	mgwinmgr	1	ScrollDC	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	mixerapi	10	mixerClose;mixerGetControlDetails	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-com-guid	mqoa	60	MSMQEvent.Arrived;MSMQEvent.ArrivedError	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-driver-static	ndislib	184	ProtocolBindAdapter;ProtocolCloseAdapterComplete	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	nk	94	SetThreadContext;WaitForDebugEvent	Platform Builder / OAL static library (driver-internal); no application import surface
-driver-static	nkprof	2	OEMProfileTimerDisable;OEMProfileTimerEnable	Platform Builder / OAL static library (driver-internal); no application import surface
-needs-investigation	notify	9	CeClearUserNotification;CeGetUserNotification	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	ole232	82	CreateOleAdviseHolder;OleCreate	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-com-guid	owaexchangeclient	29	IExchangeClientContactInformation::GetDi;IExchangeClientContactInformation::GetEm	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-driver-static	pcireg	4	PCIInitInfo;PCIReg	Platform Builder / OAL static library (driver-internal); no application import surface
-resolved	ppp	20	RasDeleteEntry;RasDial	RESOLVED: def/ppp-doc.def (5 Ras*Buffer names; pages name Ppp.lib)
-needs-investigation	redir	11	WNetCancelConnection2;WNetCloseEnum	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	schannel	14	AcquireCredentialsHandle;CompleteAuthToken	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	shortcut	2	SHCreateShortcut;SHGetShortcutTarget	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-needs-investigation	user32	5	EnumDisplayMonitors;GetMonitorInfo	no harvested page names this library in its Requirements row (corpus scan 2026-09-18, re-checked at 77,316 pages); no doc-derived def possible yet -- re-check as the harvest grows
-driver-static	wavelib	37	PlaySound;sndPlaySound	Platform Builder / OAL static library (driver-internal); no application import surface
-com-guid	d3dmguid	87	IDirect3DMobileBaseTexture::SetLOD;IDirect3DMobile::CheckDepthStencilMatch	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	ddvdids	304	IDVDDataSearchInfo/IDVDDataSearchInfo::G;IDVDDataSearchInfo/IDVDDataSearchInfo::G	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	ddvduuid	2	IDVDROM/IDVDROM::Bind;IDVDROM::Bind	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	dmoguid	69	DMO_MEDIA_TYPE;IDMOQualityControl::GetStatus	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	dmoguids	1	IDMOWrapperFilter::Init	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	uuid	1425	IRemoteUIModule::Get;IRemoteUIModule::Init	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	voipguid	100	IVoIPMediaMgr::ConferenceSessions;IVoIPMediaMgr::OnSessionOperationComplet	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-com-guid	wvuuid	62	_DPIEWebBrowserEvents2::BeforeNavigate2;_DPIEWebBrowserEvents2::CommandStateChan	COM interfaces / GUID data; a def would carry GUID/class-factory data entries only
-driver-static	dvdmptxt	0		Platform Builder / OAL static library (driver-internal); no application import surface
+# --- re-checked at corpus 171adda42 (85,816 pages) after def-gap.py
+# --- recursive-walk fix; documented libs 153, shipped 127, no-def 49.
+# old 14 needs-investigation libs: STILL zero "Link Library" evidence.
+needs-investigation	commctl	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	coresip	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	cryptapi	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	getpower	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	httpextn	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	httpfilt	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	locusa	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	mixerapi	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	notify	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	ole232	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	redir	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	schannel	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	shortcut	0	-	no Link Library row anywhere in 85,816 pages
+needs-investigation	user32	0	-	no Link Library row anywhere in 85,816 pages
+# --- new DLL-backed no-def libs found by the fixed scan (30 total):
+app-candidate	av_upnp	136	UPnP OS Design Development	UPnP framework; check for non-COM exports before def
+app-candidate	cellcore	148	ConnMgrProviderMessage	Cell Core / connection-manager provider API
+app-candidate	commctrlview	2	Customizing Common Controls	shell common-control customization
+app-candidate	gpsapi	8	(GPS Intermediate Driver client)	app-callable GPS API
+app-candidate	imaging	72	(Imaging API)	mostly COM; check for exported functions
+app-candidate	mqelib	92	(Message Queuing)	MSMQ on CE
+app-candidate	mqoa	68	Using Message Queuing COM Components	MSMQ COM automation
+app-candidate	owaexchangeclient	33	(OWA Exchange client)	mobile Exchange client API
+app-candidate	shdocvw	132	IWebBrowser2::ClientToWindow	HTML/DHTML control host
+app-candidate	sms	28	SmsGetMessageSize	SMS API
+app-candidate	wap	12	(WAP)	WAP push / services
+app-candidate	wsdapi	472	IWSDDeviceProxy::BeginGetMetadata	Web Services for Devices; COM-proxy heavy
+oak-excluded	blcommon	32	OEMWriteFlash	bootloader common library
+oak-excluded	bootpart	7	(boot partition)	bootloader
+oak-excluded	bthutil	4	(bluetooth util)	driver utility
+oak-excluded	cardserv	6	(card services)	driver-side card services
+oak-excluded	cecap	16	ResumeProfile	power-management driver/BSP
+oak-excluded	d3dmx	96	(D3DM driver)	display driver layer
+oak-excluded	ddgpe	73	DirectDraw HAL Implementation	display driver
+oak-excluded	ddvduuid	4	(display GUIDs)	driver GUID library
+oak-excluded	drm_nd_oem	2	DRM_ND_GetPrivateKey	OEM DRM module
+oak-excluded	hal	18	EbootInitEtherTransport	HAL/EBOOT
+oak-excluded	kato	66	KatoSetServer	kernel logging/test framework
+oak-excluded	kitldll	14	KITLDeRegisterClient	KITL debug transport
+oak-excluded	loadauth	8	CertifyModuleFinal	OS module certification
+oak-excluded	osaxsc	152	(OS AX)	kernel AX library
+oak-excluded	ril	322	(Radio Interface Layer)	driver-side radio layer
+oak-excluded	stressutils	20	LogComment	stress-test utilities
+oak-excluded	tileenginerenderplugin	8	(render plugin)	engine plugin component
+oak-excluded	wmdrm10nd	16	DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS	DRM network-device side
