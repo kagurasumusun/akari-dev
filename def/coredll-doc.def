@@ -1092,3 +1092,401 @@ EXPORTS
   _statusfp
   _swab
   _wfdopen
+
+; ---------------------------------------------------------------
+; Component-library exports merged 2026-09-19.  The CE "gwes Module"
+; (ms923451) and "coredll Module" (aa448387) pages document these as
+; static components linked into coredll.dll; the per-component link
+; library tokens below are the CE 1.0-era import libraries named by
+; the function pages Requirements rows.  No separate module (DLL) of
+; these names is published by the CE documentation.
+; ---------------------------------------------------------------
+; from accel.lib (component of coredll.dll)
+  CreateAcceleratorTable
+  CreateAcceleratorTableW
+  DestroyAcceleratorTable
+  LoadAcceleratorsW
+  TranslateAccelerator
+  TranslateAcceleratorW
+; from caret.lib (component of coredll.dll)
+  CreateCaret
+  DestroyCaret
+  GetActiveWindow
+  GetCaretBlinkTime
+  GetCaretPos
+  GetFocus
+  HideCaret
+  SetActiveWindow
+  SetCaretBlinkTime
+  SetCaretPos
+  SetFocus
+  ShowCaret
+; from clipbd.lib (component of coredll.dll)
+  CloseClipboard
+  CountClipboardFormats
+  EmptyClipboard
+  EnumClipboardFormats
+  GetClipboardData
+  GetClipboardDataAlloc
+  GetClipboardFormatNameW
+  GetClipboardOwner
+  GetOpenClipboardWindow
+  GetPriorityClipboardFormat
+  IsClipboardFormatAvailable
+  OpenClipboard
+  RegisterClipboardFormatW
+  SetClipboardData
+; from coreimm.lib (component of coredll.dll)
+  GetKeyboardLayout
+  ImmAssociateContext
+  ImmAssociateContextEx
+  ImmConfigureIME
+  ImmConfigureIMEW
+  ImmCreateContext
+  ImmCreateIMCC
+  ImmDestroyContext
+  ImmDestroyIMCC
+  ImmDisableIME
+  ImmEnumRegisterWord
+  ImmEnumRegisterWordW
+  ImmEscape
+  ImmEscapeW
+  ImmGenerateMessage
+  ImmGetCandidateList
+  ImmGetCandidateListCount
+  ImmGetCandidateListCountW
+  ImmGetCandidateListW
+  ImmGetCandidateWindow
+  ImmGetCompositionFont
+  ImmGetCompositionFontW
+  ImmGetCompositionString
+  ImmGetCompositionStringW
+  ImmGetCompositionWindow
+  ImmGetContext
+  ImmGetConversionList
+  ImmGetConversionListW
+  ImmGetConversionStatus
+  ImmGetDefaultIMEWnd
+  ImmGetDescription
+  ImmGetDescriptionW
+  ImmGetGuideLine
+  ImmGetGuideLineW
+  ImmGetHotKey
+  ImmGetIMCCLockCount
+  ImmGetIMCCSize
+  ImmGetIMCLockCount
+  ImmGetIMEFileName
+  ImmGetIMEFileNameW
+  ImmGetImeMenuItems
+  ImmGetImeMenuItemsW
+  ImmGetOpenStatus
+  ImmGetProperty
+  ImmGetRegisterWordStyle
+  ImmGetRegisterWordStyleW
+  ImmGetStatusWindowPos
+  ImmGetVirtualKey
+  ImmIsIME
+  ImmIsUIMessage
+  ImmIsUIMessageW
+  ImmLockIMC
+  ImmLockIMCC
+  ImmNotifyIME
+  ImmReSizeIMCC
+  ImmRegisterWord
+  ImmRegisterWordW
+  ImmReleaseContext
+  ImmSIPanelState
+  ImmSetCandidateWindow
+  ImmSetCompositionFont
+  ImmSetCompositionFontW
+  ImmSetCompositionString
+  ImmSetCompositionStringW
+  ImmSetCompositionWindow
+  ImmSetConversionStatus
+  ImmSetHotKey
+  ImmSetOpenStatus
+  ImmSetStatusWindowPos
+  ImmSimulateHotKey
+  ImmUnlockIMC
+  ImmUnlockIMCC
+  ImmUnregisterWord
+  ImmUnregisterWordW
+; from coreloc.lib (component of coredll.dll)
+  CharLowerBuffW
+  CharLowerW
+  CharPrevW
+  CharUpperBuffW
+  CharUpperW
+  CompareStringW
+  ConvertDefaultLocale
+  EnumCalendarInfoW
+  EnumDateFormatsW
+  EnumSystemCodePagesW
+  EnumSystemLocalesW
+  EnumTimeFormatsW
+  EnumUILanguages
+  EnumUILanguagesW
+  FoldStringW
+  GetACP
+  GetCPInfo
+  GetCurrencyFormatW
+  GetDateFormatW
+  GetLocaleInfoW
+  GetNumberFormatW
+  GetOEMCP
+  GetStringTypeExW
+  GetSystemDefaultLCID
+  GetSystemDefaultLangID
+  GetSystemDefaultUILanguage
+  GetTimeFormatW
+  GetUserDefaultLCID
+  GetUserDefaultLangID
+  GetUserDefaultUILanguage
+  IsCharAlphaNumericW
+  IsCharAlphaW
+  IsCharLowerW
+  IsCharUpperW
+  IsValidCodePage
+  IsValidLocale
+  LCMapStringW
+  SetLocaleInfoW
+  SetUserDefaultLCID
+  SetUserDefaultUILanguage
+  wsprintfW
+  wvsprintfW
+; from coremain.lib (component of coredll.dll)
+  DeleteCriticalSection
+  EnterCriticalSection
+  InitializeCriticalSection
+  LeaveCriticalSection
+; from cursor.lib (component of coredll.dll)
+  ClipCursor
+  GetClipCursor
+  GetCursor
+  GetCursorPos
+  LoadAnimatedCursor
+  LoadCursorW
+  SetCursor
+  SetCursorPos
+  ShowCursor
+; from dlgmgr.lib (component of coredll.dll)
+  CheckRadioButton
+  CreateDialogIndirect
+  CreateDialogIndirectParam
+  CreateDialogIndirectParamW
+  DefDlgProc
+  DefDlgProcW
+  DialogBoxIndirectParam
+  DialogBoxIndirectParamW
+  EndDialog
+  GetDialogBaseUnits
+  GetDlgCtrlID
+  GetDlgItem
+  GetDlgItemInt
+  GetDlgItemTextW
+  GetNextDlgGroupItem
+  GetNextDlgTabItem
+  IsDialogMessage
+  IsDialogMessageW
+  MapDialogRect
+  SendDlgItemMessage
+  SendDlgItemMessageW
+  SetDlgItemInt
+  SetDlgItemTextW
+; from drawmbar.lib (component of coredll.dll)
+  DrawMenuBar
+; from fileopen.lib (component of coredll.dll)
+  GetOpenFileName
+  GetOpenFileNameW
+  GetSaveFileName
+  GetSaveFileNameW
+; from fmtmsg.lib (component of coredll.dll)
+  FormatMessageW
+; from hotkey.lib (component of coredll.dll)
+  RegisterHotKey
+; from icon.lib (component of coredll.dll)
+  CreateIconIndirect
+  DestroyIcon
+  DrawIcon
+  DrawIconEx
+  GetIconInfo
+  LoadIconW
+; from iconcurs.lib (component of coredll.dll)
+  CreateCursor
+  DestroyCursor
+; from kbdui.lib (component of coredll.dll)
+  EnableHardwareKeyboard
+  GetAsyncKeyState
+  GetAsyncShiftFlags
+  GetKeyState
+  GetKeyboardLayoutNameW
+  GetKeyboardStatus
+  MapVirtualKey
+  MapVirtualKeyW
+  PostKeybdMessage
+; from loadbmp.lib (component of coredll.dll)
+  LoadBitmap
+  LoadBitmapW
+; from loadimg.lib (component of coredll.dll)
+  LoadImageW
+; from loadstr.lib (component of coredll.dll)
+  LoadStringW
+; from lmem.lib (component of coredll.dll)
+  GetProcessHeap
+; from menu.lib (component of coredll.dll)
+  CheckMenuItem
+  CheckMenuRadioItem
+  CreateMenu
+  CreatePopupMenu
+  DeleteMenu
+  DestroyMenu
+  EnableMenuItem
+  GetMenuItemInfo
+  GetMenuItemInfoW
+  GetSubMenu
+  GetSystemMenu
+  InsertMenuW
+  LoadMenuW
+  RemoveMenu
+  SetMenuItemInfo
+  SetMenuItemInfoW
+  TrackPopupMenu
+  TrackPopupMenuEx
+; from mgprint.lib (component of coredll.dll)
+  AbortDoc
+  EndDoc
+  EndPage
+  SetAbortProc
+  StartDoc
+  StartDocW
+  StartPage
+; from msgbeep.lib (component of coredll.dll)
+  MessageBeep
+; from msgbox.lib (component of coredll.dll)
+  MessageBoxW
+; from msgque.lib (component of coredll.dll)
+  MsgWaitForMultipleObjects
+  MsgWaitForMultipleObjectsEx
+; from nclient.lib (component of coredll.dll)
+  DrawFrameControl
+; from rectapi.lib (component of coredll.dll)
+  CopyRect
+  EqualRect
+  InflateRect
+  IntersectRect
+  IsRectEmpty
+  OffsetRect
+  PtInRect
+  SetRect
+  SetRectEmpty
+  SubtractRect
+  UnionRect
+; from sbcmn.lib (component of coredll.dll)
+  GetScrollInfo
+  SetScrollInfo
+  SetScrollPos
+  SetScrollRange
+; from serdev.lib (component of coredll.dll)
+  ClearCommBreak
+  ClearCommError
+  EscapeCommFunction
+  GetCommMask
+  GetCommModemStatus
+  GetCommProperties
+  GetCommState
+  GetCommTimeouts
+  PurgeComm
+  SetCommBreak
+  SetCommMask
+  SetCommState
+  SetCommTimeouts
+  SetupComm
+  TransmitCommChar
+  WaitCommEvent
+; from shmisc.lib (component of coredll.dll)
+  SHShowOutOfMemory
+; from uibase.lib (component of coredll.dll)
+  SendInput
+  keybd_event
+; from winmgr.lib (component of coredll.dll)
+  EndPaint
+  SetSysColors
+  SetWindowRgn
+; from wmbase.lib (component of coredll.dll)
+  GetSystemMetrics
+; from wmgr_c.lib (component of coredll.dll)
+  EnableWindow
+  GetSysColor
+  IsWindowEnabled
+; from nk.lib (component of coredll.dll)
+  CeGetCurrentTrust
+  CeSetThreadPriority
+  CreateSemaphoreW
+  OutputDebugStringW
+  ReleaseMutex
+  SetThreadContext
+  WaitForMultipleObjects
+  WriteProcessMemory
+; from nkstub.lib (component of coredll.dll)
+  DeleteStaticMapping
+; from ceddk.lib (component of coredll.dll)
+  HalAllocateCommonBuffer
+  HalFreeCommonBuffer
+  HalGetBusData
+  HalGetBusDataByOffset
+  HalSetBusData
+  HalSetBusDataByOffset
+  HalTranslateBusAddress
+  HalTranslateSystemAddress
+  MmMapIoSpace
+  MmUnmapIoSpace
+  READ_PORT_BUFFER_UCHAR
+  READ_PORT_BUFFER_ULONG
+  READ_PORT_BUFFER_USHORT
+  READ_PORT_UCHAR
+  READ_PORT_ULONG
+  READ_PORT_USHORT
+  READ_REGISTER_BUFFER_UCHAR
+  READ_REGISTER_BUFFER_ULONG
+  READ_REGISTER_BUFFER_USHORT
+  READ_REGISTER_UCHAR
+  READ_REGISTER_ULONG
+  READ_REGISTER_USHORT
+  TransBusAddrToStatic
+  TransBusAddrToVirtual
+  WRITE_PORT_BUFFER_UCHAR
+  WRITE_PORT_BUFFER_ULONG
+  WRITE_PORT_BUFFER_USHORT
+  WRITE_PORT_UCHAR
+  WRITE_PORT_ULONG
+  WRITE_PORT_USHORT
+  WRITE_REGISTER_BUFFER_UCHAR
+  WRITE_REGISTER_BUFFER_ULONG
+  WRITE_REGISTER_BUFFER_USHORT
+  WRITE_REGISTER_UCHAR
+  WRITE_REGISTER_ULONG
+  WRITE_REGISTER_USHORT
+; from ceutil.lib (component of coredll.dll)
+  CeGetDeviceId
+  CeGetSelectedDeviceId
+; from device.lib (component of coredll.dll)
+  CeFsIoControlW
+  CeResyncFilesys
+  LoadFSDEx
+; from fsdmgr.lib (component of coredll.dll)
+  FSDMGR_CloseFileLockState
+  FSDMGR_EmptyLockContainer
+  FSDMGR_OpenFileLockState
+  FSDMGR_ReadDiskEx
+  FSDMGR_WriteDiskEx
+  FSD_UnhookVolume
+; from mmtimer.lib (component of coredll.dll)
+  timeBeginPeriod
+  timeEndPeriod
+  timeGetDevCaps
+  timeGetHardwareFrequency
+  timeGetSystemTime
+  timeGetTime
+  timeGetTimeSinceInterrupt
+  timeKillEvent
+  timeSetEvent

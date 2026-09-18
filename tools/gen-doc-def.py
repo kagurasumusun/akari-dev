@@ -372,7 +372,62 @@ def main():
     # kept out of import defs (documented conflict model, inventory).
     # The remaining tokens are user-mode import libraries whose rows
     # the official pages publish.
-    KERNEL_TOKENS = {"nk.lib", "coremain.lib"}
+    KERNEL_TOKENS = set()
+
+    # 2026-09-19 structural fix: the CE "gwes Module" (ms923451) and
+    # "coredll Module" (aa448387) pages document the tokens below as
+    # static components linked into coredll.dll; their Link Library
+    # rows are CE 1.0-era import-library spellings, not separate
+    # modules.  Their exports belong in coredll-doc.def, and no
+    # <token>-doc.def may be generated for them (the previous
+    # one-def-per-token output invented ~40 non-existent DLLs).
+    COREDLL_COMPONENTS = {
+        # gwes Module components (ms923451)
+        "accel.lib", "caret.lib", "clipbd.lib", "cursor.lib",
+        "dlgmgr.lib", "drawmbar.lib", "foregnd.lib", "hotkey.lib",
+        "icon.lib", "iconcurs.lib", "imgctl.lib", "kbdui.lib",
+        "loadbmp.lib", "loadimg.lib", "loadstr.lib", "menu.lib",
+        "mgprint.lib", "msgbeep.lib", "msgbox.lib", "msgque.lib",
+        "nclient.lib", "sbcmn.lib", "uibase.lib", "winmgr.lib",
+        "wmbase.lib",
+        # coredll Module components (aa448387)
+        "coreimm.lib", "coreloc.lib", "coremain.lib", "fileopen.lib",
+        "fmtmsg.lib", "lmem.lib", "rectapi.lib", "serdev.lib",
+        "shmisc.lib", "wmgr_c.lib",
+        # tokens with no module page of their own whose exports are
+        # coredll.dll surface (Nk.lib/Nkstub.lib/Ceddk.lib/Ceutil.lib
+        # /Device.lib/Fsdmgr.lib/Mmtimer.lib rows; nk is nk.exe, the
+        # kernel image - not an import target)
+        "nk.lib", "nkstub.lib", "ceddk.lib", "ceutil.lib",
+        "device.lib", "fsdmgr.lib", "mmtimer.lib",
+    }
+
+    # Tokens that must never produce a def: driver/BSP static libraries
+    # (oak scope is out of bounds for this API-surface tree), fully
+    # duplicated surfaces, and tokens no CE page documents.
+    FORBIDDEN_TOKENS = {
+        "ddi_ati_lib.lib", "ddi_flat_lib.lib", "ddi_gx_lib.lib",
+        "ddi_mq200_lib.lib", "ddi_nop_lib.lib", "ddi_rflat_lib.lib",
+        "ddi_rgx_lib.lib", "ddi_tvia5_lib.lib",
+        "kbdhid_lib.lib", "mouhid_lib.lib", "conshid_lib.lib",
+        "avc_unit.lib", "tch_cal.lib", "tchmain.lib", "tchmdd.lib",
+        "nleddrv.lib", "ufnclientlibbase.lib", "ppp.lib",
+        "imgctl.lib",           # ImageList_*: commctrl.lib co-row;
+                                # exports already in commctrl-doc.def
+        "msimeuic.lib", "urlmonui.lib", "wininetui.lib",
+    }
+
+    for token in COREDLL_COMPONENTS | FORBIDDEN_TOKENS:
+        pages = bylib.pop(token, None)
+        if token in COREDLL_COMPONENTS and pages:
+            bylib.setdefault("coredll.lib", {}).update(pages)
+        # remove any stale per-token def left by the old generator
+        stale = os.path.join(
+            DEFDIR, f"{token.replace('.lib', '')}-doc.def")
+        if write and os.path.exists(stale):
+            os.remove(stale)
+            print(f"{stale}: removed (component/forbidden token)")
+
     os.makedirs(DEFDIR, exist_ok=True)
     for token, pages in sorted(bylib.items()):
         if token in KERNEL_TOKENS:
