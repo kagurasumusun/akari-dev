@@ -62,6 +62,50 @@ Unresolved remainders: docs/{proto,type,enum}-cite-unresolved.tsv.
 5. Harvest re-sweeps (msdn-live 31,388 / mslearn-embedded 38,726
    queues not dispatched).
 
+## Continuation (cont. 12) -- 95,439-page corpus sweeps + printed-absent declarations
+Commits: `38d3a10` (const sweep +9 dvddrvr citations; conflict verdicts
+file docs/const-cite-conflict-verdicts-2026-09-18.tsv: 10 'differs' =
+mispairings/context prints, decls stand), `1019f1d` (audits refreshed,
+0 MISMATCH), `1a19174` (gpsapi 2 + sms 9), `5862d52` (wzcsapi Ex 4 +
+cellcore 3), `79bfe6d` (wsdapi 20 + urlmon 1 + rapi2 2), `5365361`
+(STDAPI wording; audits: surface declared 6,780 / absent 2,577; proto
+2,212 match / 0 MISMATCH).
+- **35 corpus-printed previously-absent functions declared** (found via
+  absent-prints rescan 1,062 prints -> page Link Library vs shipped
+  defs): gpsapi 2, sms 9, wzcsapi Ex 4, cellcore 3 (ConnMgr 2 +
+  SimGetPhonebookCapabilities), wsdapi 20, urlmon 1, rapi2 2.
+- Types added with page cites: GPS_POSITION (ee484992 full print;
+  earlier `} NAME;` regex missed `*PGPS_POSITION` aliases!),
+  GPS_MAX_SATELLITES=12, SMS_ADDRESS (ee498006; SMS_MAX_ADDRESS_LENGTH
+  =256 via permitted CeGCC value check, noted), SMS_MESSAGE_ID (no
+  print; derived GUID, noted), SMS_STATUS_INFORMATION, SMS_BROADCAST_
+  RANGES, SCHEDULEDCONNECTIONINFO, CONNMGR_CONNECTION_DETAILED_STATUS,
+  12 WSD XML/SOAP structs, LPSIMPHONEBOOKCAPS alias, UINT64=ULONGLONG.
+- Opaque (pointer-only) where print chain dead-ends: GPS_DEVICE,
+  INTF_ENTRY_EX (needs RAW_DATA - no page), CONNMGR_CONNECTION_IPADDR
+  (needs unprintable _SS_PAD sizes), 11 IWSD* + IServiceProvider
+  (no vtable-order pages).
+- HELD (unprintable array-size constants, noted in headers):
+  SmsSetMessageNotification (SMS_MAX_APPNAME/PARAMS/PROTOCOLNAME),
+  ConnMgrEnumDestinations (CONNMGR_MAX_DESC), SimGetDevCaps
+  (SIM_NUMLOCKFACILITIES), SimReadMessage/SimWriteMessage
+  (MAX_LENGTH_*), Sim*PhonebookEntry* (MAX_LENGTH_*/MAX_NUM_GROUPS),
+  WZCEnumEapExtensions (no EAP_EXTENSION_INFO page). CeGCC lacks all
+  these constants too (checked simmgr.h/sms.h).
+- proto-audit 'annotated' trigger needs comment words
+  (artifact|print `|printed|...): `HRESULT STDAPI` prints resolved by
+  wording, not code.
+- const sweep on new corpus: const-index 19/2,501 gap names have
+  prints; const-cite +9 (dvddrvr.h); absent-prints rescan: 1,062
+  prints / in-def exhausted (88 coredll = oak/CRT + nkstub 1).
+- NOTE: docs/absent-funcprints-2026-09-18.tsv is now stale (31 of its
+  rows declared after the scan); re-run tools/absent-prints.py before
+  reusing it.
+- Remaining axes: thin-header fills (mostly done: 14 empty headers are
+  cited aliases with real carriers), proto no-print 873 twins,
+  no-pageid 42, deeper derivations, ceddk/fsdmgr/sdcardlib (driver-
+  layer: OUT per oak scope).
+
 ## Environment hazards (hit 4× now)
 - Snapshot rollbacks wipe: corpus clone, .git config/identity, file
   modes, /home/user/.claude memory dir, and can roll Akari-dev back to
