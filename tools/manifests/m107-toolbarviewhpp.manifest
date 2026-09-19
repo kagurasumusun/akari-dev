@@ -1,7 +1,0 @@
-ms905061	BitmapType
-ms919671	ToolBarView_t::CalcOffset
-ms919676	ToolBarView_t::DrawButtonBorder
-ms919678	ToolBarView_t::DrawDropdownArrow
-ms919682	ToolBarView_t::FaceRect
-ms919685	ToolBarView_t::InitializeButtonSlopValue
-ms920018	ToolBarView_t::LoadSystemBitmap
