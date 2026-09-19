@@ -1,7 +1,0 @@
-# Generated artifacts (kept out of the tree; see README)
-build/
-*.pyc
-__pycache__/
-a.out
-*.exe
-*.dll
