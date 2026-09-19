@@ -1,0 +1,124 @@
+このリポジトリにおいて守るべき行動指針は
+第三者のコードをコピー、取り込み、しないこと。
+すべてクリーンルームの自前実装をすること。
+第三者のコードは参考や比較のみにとどめること。
+SDK/BSP/OSの再実装はしない
+
+目的としては
+WinCE 上に存在する API を、コンパイラ・リンカから参照できるように宣言するためのdevelopment interfaceを作成することでありBSP/OAK/SDKの実装ではない、またOSの再実装でもない。
+
+
+
+API 名・型・定数・関数 prototype などの個々の事実
+と、
+Microsoft の header source text をコピーすること
+は別問題である。
+だから、
+Microsoft header を変形して使うのではなく、公開仕様から独自に記述するというのを守ること。
+
+
+
+
+作成に当たり必要な情報を集めるが情報の扱いとして
+MSLearn/MSDN/MSignite/wayback/archive/を収集する情報の第一層の情報とする。
+
+古い CE技術書・MCTS資料も情報の第一層として扱うがMicrosoft の内部実装をコピーする目的では読まないこと。
+読む目的は、
+どの DLL があるか
+どの API がどの DLL に属するか
+どの .lib をリンクするか
+どのバージョンで何が変わったか
+を知るためである。
+
+サードパーティの WinCE 技術資料を準第一層の情報とする。
+Toradexやその他大手の信頼できる情報のみを扱うこと。
+
+
+
+
+
+
+
+候補とする情報範囲
+
+Microsoft Learn
+Microsoft MSDN archive
+Microsoft technical articles
+Microsoft CE documentation
+OEM vendor documentation
+public books / manuals
+public CE development examples
+CeGCC
+w32api
+open-source projects
+GitHub source
+mailing-list archives
+Stack Overflow
+reverse-engineering reports
+
+
+情報の特性
+
+Microsoft の API reference は、
+「この関数は存在する」という情報に強い。
+一方 OEM 資料は、「実際に CE アプリケーションからどう使われているか」という情報に強い。
+
+情報の扱い規約
+公式の情報については公式の公開情報は収集を許可する、ただしshared source/Platform Builder/vsstudioの情報については実際のソースコードの収集は許可しない、付属している開発資料のみ収集を許可する。ただし、Microsoft の内部実装をコピーする目的では読まないこと。
+
+
+また情報の整理にあたり、Windows CE の API reference を「DLL 単位」で整理すること。
+API を関数単位で調べるだけではなく、DLL → export → API という逆方向から整理し、CEでは API の配置自体が 前世代と変化しており、Microsoft の CE解説でも構成変更が説明されていたりするのでWinCEの世代差分を管理すること。
+
+CeGCC / mingw32ce は「仕様」ではなく「比較対象」として使うこと。
+CeGCC の w32apiを、コピーする元として使わない。
+代わりに、「自分の API database が漏れていないか確認するための比較対象」として使うこと。
+
+
+GitHubにあふれている情報は「実装」ではなく「差分検証」に使うこと。
+
+GitHub repository
+    ↓
+そのままコピー
+ではなく、
+GitHub implementation
+       ↓
+API name / ABI / ordinal の発見
+       ↓
+一次資料へ戻る
+       ↓
+自前実装
+という流れをすること。
+
+
+ReactOS/Wine/mingw-w64/mingw-w32/w32api/w64api/はWinCEのdevelopment interface作成とは別の切り離した補助資料として扱うこと。
+
+ReactOS/Wine/mingw-w64/mingw-w32/w32api/w64api/はWindows CEとは別物なので WinCE API の資料として直接使うものではありません。
+
+development-interface の設計、構造の参考として扱うこと。
+
+あくまで、「clean-room compatibility project をどう構造化するか」の参考です。
+
+大まかな活動手順としては
+第一に「機械可読なAPI database」と「API availability matrix」を作ること。
+さらに、CE世代情報を持たせること。
+
+Microsoft の API reference は OS Versions を API ごとに提示しているので、この matrixを作成する際にはその第一根拠として使う。
+
+またこのプロジェクトはSDKやBSP/OAK/とは明確に分けるため
+Windows CE target API headers and import librariesとする。
+
+root構成は
+Akari-dev
+├── include/
+├── def/
+├── lib/
+├── docs/
+└── tools/
+で、
+include = declarations
+def     = ABI/export contract
+lib     = linker interface
+docs    = provenance / verification
+tools   = generators
+とし、OS implementation は含めない。
