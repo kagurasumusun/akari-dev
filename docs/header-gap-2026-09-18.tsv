@@ -1,9 +1,0 @@
-# header	note
-afdfunc.h	re-checked on 70,816-page corpus (2026-09-18): 14 pages mention it, 0 print a "Header: afdfunc.h" Requirements row -- still follow-on
-efilter.h	re-checked on 70,816-page corpus (2026-09-18): 47 substring hits, still 0 "Header: efilter.h" Requirements rows -- closed unless harvest grows
-mkfuncs.h	SHIPPED as record-only header (include/oak/Mkfuncs.h): RegisterDirectMethods blocked by ungrounded PFNVOID; VirtualSetAttributesEx page reprints the non-Ex prototype
-notifext.h	RESOLVED: real header name is Notifext.hxx (C++ OAK header); shipped as include/Notifext.hxx. 2026-09-18: completed to the full printed surface -- 18 functions (added CeNotifyPrivate_TranslateOID ms908090, CeNotifyPublic_DisposeOfPacket ms908092), struct NotifyPacket (ms911890), fixed CeNotifyPublic_Initialize to the printed void signature (splice had copied InitializeUI params). No page states a Link Library (108 pages checked) -- no def entries apply
-ntddk.h	re-checked: only aa447688 (CONTAINING_RECORD) says "Header: Wdm.h or Ntddk.h"; carried in include/oak/Wdm.h -- closed
-osaxsflexi.h	re-checked: only ms939639 (_CEDUMP_FIELD_INFO, "Header: DwCeDump.h, OsAxsFlexi.h", Link Library: none); the type ships in include/oak/DwCeDump.h -- closed
-rtcerr.h	SHIPPED: include/oak/Rtcerr.h carries the 183 RTC_E_/RTC_S_ constants (ms931795/ms912578/ee499276/ee500988); 7 glued-name defines repaired, 15 missing constants added
-tspi.h	CLOSED: no CE page prints "Header: tspi.h"; the 289 TSPI_* function pages print "Header: Tapicomn.h", whose surface ships in include/Tapicomn.h
