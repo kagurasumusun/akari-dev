@@ -1,0 +1,161 @@
+AGENTS.md workspace-repo
+このリポジトリはワークスペースリポです。
+リポジトリの構造は
+repogitory
+├── Akari-dev/
+└── wince-docs-corpus/
+となっておりAkari-devとwince-docs-corpusはそれぞれサブモジュールである。
+
+それぞれの説明
+
+Akari-devは
+Windows CEのDevelopment API Surface kitを構築するリポジトリです。
+詳しくはAkari-devのAGENTS.mdを読んでください。
+
+wince-docs-corpusはWin CEの資料を収集するリポジトリです。
+こちらもAGENTS.mdを読んでください。
+
+このリポジトリの役割は
+Win CEの情報をwince-docs-corpusに収集しその収集した情報をもとにAkari-devへWindows CEのDevelopment API Surface kitを構築する作業場です。
+
+それぞれのサブモジュールをpushする際GITHUB_PATへ保存されているpatを使用しkagurasumusunでpushしてください。
+push後サブモジュールのポイントを更新してください。
+更新時意図したポイントに更新されているか確認してください。
+もし壊れていたり、更新できていない場合は再設定してください。
+
+----------------------------------------------------------------------------------------------
+
+AGENTS.md Akari-dev
+
+このリポジトリはWindows CEのDevelopment API Surface kitを構築するリポジトリです。
+
+SDK/BSP/OAKではありません。
+OSの再実装ではありません。
+
+
+# このリポジトリでの基本ワークフロー
+
+1,既存Akari-dev確認
+↓
+2,wince-docs-corpus確認
+↓
+3,Win CE公開情報を調査
+↓
+4,CE仕様を確認
+↓
+5,既存実装をコードレベルで調査
+↓
+6,独自実装・修正
+↓
+7,ビルド・コード検証
+↓
+*8,資料との照合
+↓
+9.git diff確認
+↓
+*10,検証
+↓
+*11,クリーンルーム確認
+↓
+*12,目的逸脱確認
+↓
+#13,監査自体の内容、方法、に問題がないかを確認
+↓
+14,commit / push
+↓
+1へ戻り次の作業へ継続。
+
+*の付いた段階で問題があれば
+
+*の問題時ワークフローの手順を実行
+
+---- *の問題時ワークフロー -----
+
+1,問題場所確認
+↓
+2,原因と情報確認
+↓
+3,問題個所とその原因の因果関係を調査
+↓
+4,根本原因と問題個所修正
+↓
+5,「*」の検査を再実行
+↓
+6,問題があれば1へ戻る。問題がなければ再度「*」の調査条件を見直して問題がなければ、基本ワークフロー「*」の次へ続行
+-------------------------------------
+
+#で問題発生時のワークフロー
+
+1,監査の内容と方法、使用したスクリプトなどをcleamroom.mdやcheck.mdの内容に沿っているかを照らし合わせる
+↓
+2,問題個所&原因特定
+↓
+3,問題個所をcleamroom.mdやcheck.mdの内容に合わせて修正
+↓
+4,妥当性と逸脱確認
+↓
+5,問題があれば1へ戻る、なければ基本ワークフローへ戻る。
+
+
+-------------------------------------
+
+問題発生時にその原因と問題がwince-docs-corpusの資料にあればwince-docs-corpusの問題発生時手順に従うこと。
+
+-------------------------------------
+これを繰り返すこと。
+
+また、リポジトリのrootの構造は
+
+Akari-dev
+├── include/
+├── def/
+├── lib/
+└── tools/
+で構築してください。
+
+include = declarations
+def     = ABI/export contract
+lib     = linker interface
+tools   = generators/tools
+とする。
+
+-------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+AGENTS.md wince-docs-corpus
+
+
+
+
+このリポジトリはWinceの資料、情報を集めるリポジトリである。
+
+部分リポ構造概要
+
+
+Akari-dev
+├──.github/
+├──AGENTS/
+├──archive/
+├──data/
+├── docs/
+├── pagesmap/
+├── supplementary/
+├── tools/
+├──analys/
+└── urls/
+
+docs配下にはサイトの大まかな種類ごとにフォルダ分けをして資料を収集している。
+urls配下にはサイトの種類ごとにurlをまとめている。
+tools配下には使うスクリプトなどを配置する。
+
+基本的にはtools/urls/docs/analys/を使う。
