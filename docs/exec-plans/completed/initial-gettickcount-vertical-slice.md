@@ -6,7 +6,7 @@ Establish a reproducible evidence-to-artifact path for a native Windows CE API g
 
 ## Completed work
 
-1. Normalized the public CE 3.0, CE 5.0, and CE 6.0 GetTickCount and Sleep documentation into `wince-docs-corpus/data/api/{gettickcount,sleep}.json` and committed it as `ba3e2be949deaf8e7deb2c07b36047d7a4274dcc`.
+1. Normalized the public CE 3.0 and CE 5.0 GetTickCount and Sleep (plus CE 6.0 corroboration for GetTickCount) documentation into `wince-docs-corpus/data/api/{gettickcount,sleep}.json` and committed it as `79d0c1100300f3b239181e634295a2b343f73d8d`.
 2. Added an Akari-local group source record that pins that corpus revision.
 3. Generated `winbase.h` for both declarations and linker-requirement metadata from the local record.
 4. Added stale-output, metadata, 32-bit-width, and C syntax checks.
