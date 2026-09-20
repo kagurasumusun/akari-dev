@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "name": "GetTickCount",
+  "header": "winbase.h",
+  "prototype": {"return_type": "DWORD", "parameters": []},
+  "types": {
+    "DWORD": {
+      "width_bits": 32,
+      "c_spelling": "uint32_t",
+      "decision": "Use the standard fixed-width type so this independently authored header preserves the observed 32-bit ABI without reproducing a vendor typedef."
+    }
+  },
+  "availability": "Windows CE 1.0 and later",
+  "link_library": "Coredll.lib",
+  "unknowns": ["calling convention", "DLL module", "export name and ordinal", "CE 6 user-mode linker contract"],
+  "corpus": {
+    "repository": "wince-docs-corpus",
+    "commit": "ba3e2be949deaf8e7deb2c07b36047d7a4274dcc",
+    "record": "data/api/gettickcount.json"
+  }
+}
