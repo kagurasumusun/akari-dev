@@ -1,0 +1,29 @@
+{
+  "apis": [
+    {
+      "availability": "Windows CE 1.0 and later",
+      "link_library": "Coredll.lib",
+      "name": "GetTickCount"
+    },
+    {
+      "availability": "Windows CE 1.0 and later",
+      "link_library": "Coredll.lib",
+      "name": "Sleep"
+    }
+  ],
+  "corpus": {
+    "commit": "79d0c1100300f3b239181e634295a2b343f73d8d",
+    "repository": "wince-docs-corpus"
+  },
+  "dll_module": null,
+  "export_name": null,
+  "header": "winbase.h",
+  "ordinal": null,
+  "schema_version": 1,
+  "unknowns": [
+    "calling convention",
+    "DLL module",
+    "export name and ordinal",
+    "CE 6 user-mode linker contract"
+  ]
+}
