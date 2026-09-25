@@ -1,0 +1,7 @@
+; Akari WinCE API surface — public imports for netapi32.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY netapi32.dll
+EXPORTS
+  DsGetDcNameW
+  NetApiBufferFree

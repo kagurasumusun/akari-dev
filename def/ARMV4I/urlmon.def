@@ -1,0 +1,53 @@
+; Akari WinCE API surface — public imports for urlmon.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY urlmon.dll
+EXPORTS
+  UrlMkBuildVersion
+  CreateURLMoniker
+  CreateURLMonikerEx
+  GetClassURL
+  MkParseDisplayNameEx
+  BindAsyncMoniker
+  RegisterBindStatusCallback
+  RevokeBindStatusCallback
+  CreateFormatEnumerator
+  RegisterFormatEnumerator
+  RevokeFormatEnumerator
+  RegisterMediaTypes
+  FindMediaType
+  RegisterMediaTypeClass
+  FindMediaTypeClass
+  CreateAsyncBindCtx
+  IsAsyncMoniker
+  GetClassFileOrMime
+  IsValidURL
+  UrlMkSetSessionOption
+  UrlMkGetSessionOption
+  CoGetClassObjectFromURL
+  CreateAsyncBindCtxEx
+  FindMimeFromData
+  ObtainUserAgentString
+  CompareSecurityIds
+  CoInternetGetSession
+  CoInternetParseUrl
+  CoInternetCombineUrl
+  CoInternetCompareUrl
+  CoInternetGetSecurityUrl
+  CoInternetQueryInfo
+  CoInternetCreateSecurityManager
+  CoInternetCreateZoneManager
+  CoInternetGetProtocolFlags
+  URLOpenPullStreamA
+  URLOpenPullStreamW
+  URLDownloadToFileA
+  URLDownloadToFileW
+  URLDownloadToCacheFileA
+  URLDownloadToCacheFileW
+  URLOpenBlockingStreamA
+  URLOpenBlockingStreamW
+  URLOpenStreamA
+  URLOpenStreamW
+  CopyBindInfo
+  CopyStgMedium
+  ReleaseBindInfo

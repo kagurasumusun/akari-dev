@@ -1,0 +1,41 @@
+; Akari WinCE API surface — public imports for aygshell.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY aygshell.dll
+EXPORTS
+  SHGetAppKeyAssoc @2
+  SHSetAppKeyWndAssoc @3
+  SHSipInfo @4
+  SHInitExtraControls @9
+  SHCloseApps @10
+  SHSipPreference @21
+  SHCreateMenuBar @34
+  SHInputDialog @39
+  SHRecognizeGesture @40
+  SHCreateMainWindow @43
+  SubClassThisWindow @47
+  SHInitDialog @56
+  SHFullScreen @65
+  SHDoneButton @69
+  SHHandleWMSettingChange @83
+  SHHandleWMActivate @84
+  SHSetNavBarText @88
+  SHGetAutoRunPath @90
+  SHEnumPropSheetHandlers @98
+  SHLoadContextMenuExtensions @100
+  SHInvokeContextMenuCommand @101
+  SHFreeContextMenuExtensions @102
+  SHCreateNewItem @108
+  SHChangeNotifyRegister @113
+  SHChangeNotifyDeregister @114
+  SHChangeNotifyFree @115
+  SHGetEmergencyCallList @128
+  SHNotificationAdd @155
+  SHNotificationUpdate @156
+  SHNotificationRemove @157
+  SHNotificationGetData @173
+  SHNavigateBack @183
+  SHSetBack @184
+  SHFindMenuBar @188
+  SHSetInputContext @231
+  SHGetInputContext @232

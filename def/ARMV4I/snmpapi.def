@@ -1,0 +1,38 @@
+; Akari WinCE API surface — public imports for snmpapi.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY snmpapi.dll
+EXPORTS
+  SnmpTfxOpen
+  SnmpTfxClose
+  SnmpTfxQuery
+  SnmpUtilOidAppend
+  SnmpUtilOidNCmp
+  SnmpUtilOidCmp
+  SnmpUtilOidCpy
+  SnmpUtilOidFree
+  SnmpUtilOctetsNCmp
+  SnmpUtilOctetsCmp
+  SnmpUtilOctetsCpy
+  SnmpUtilOctetsFree
+  SnmpUtilAsnAnyCpy
+  SnmpUtilAsnAnyFree
+  SnmpUtilVarBindCpy
+  SnmpUtilVarBindFree
+  SnmpUtilVarBindListCpy
+  SnmpUtilVarBindListFree
+  SnmpUtilMemFree
+  SnmpUtilMemAlloc
+  SnmpUtilMemReAlloc
+  SnmpUtilDbgPrint
+  SnmpUtilOidToW
+  SnmpUtilIdsToW
+  SnmpUtilOidToA
+  SnmpUtilIdsToA
+  SnmpUtilPrintToStrAsnAny
+  SnmpUtilPrintToStrOid
+  SnmpSvcInitUptime
+  SnmpSvcGetUptime
+  SnmpSvcGetEnterpriseOID
+  SnmpSvcSetLogLevel
+  SnmpSvcSetLogType

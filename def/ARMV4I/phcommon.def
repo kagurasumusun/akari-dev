@@ -1,0 +1,45 @@
+; Akari WinCE API surface — public imports for phcommon.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY phcommon.dll
+EXPORTS
+  PHInitCommonControls @1
+  PHUnInitCommonControls @2
+  PHDrawBackground @3
+  PHMenuScreen @4
+  PHMessageBox @5
+  PHCreateTextDisplayItem @6
+  PHDialogScreen @7
+  PHRegisterSingletonApplication @8
+  PHCreateLabeledEditDisplayItem @9
+  PHGetColor @10
+  PHGetFont @11
+  PHProcessProvisionXML @12
+  PHValidateProvisionXML @13
+  PHInitCallLogDB @14
+  PHInitCallerInfoDB @15
+  PHMakePhoneCall @16
+  PHOnHookDialing @17
+  PHAddSpeedDialEntry @18
+  PHGetSetting @19
+  PHSetValue @20
+  PHGetVolumeSetting @21
+  PHSetVolume @22
+  PHGetActiveVolume @23
+  PHSetActiveVolume @24
+  PHGetAppWindow @25
+  PHLaunchProcess @26
+  PHSendCommandLine @27
+  PHAuthenticateUser @28
+  PHCancelAuthenticationRequest @29
+  PHWritePIN @30
+  PHReadPIN @31
+  Input_GetInputPanelTop
+  Input_HandleEvent
+  Input_HideInputPanel
+  Input_IsInputPanelVisible
+  Input_SetInputMode
+  Input_ShouldDispatchHotkey
+  Input_ShouldDispatchKey
+  Input_ShowInputPanel
+  Input_ToggleInputPanel

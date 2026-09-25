@@ -1,0 +1,30 @@
+; Akari WinCE API surface — public imports for secur32.dll (X86).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY secur32.dll
+EXPORTS
+  InitSecurityInterfaceW
+  QuerySecurityPackageInfoW
+  EnumerateSecurityPackagesW
+  AcquireCredentialsHandleW
+  QueryCredentialsAttributesW
+  FreeCredentialsHandle
+  InitializeSecurityContextW
+  AcceptSecurityContext
+  DeleteSecurityContext
+  QueryContextAttributesW
+  ApplyControlToken
+  MakeSignature
+  VerifySignature
+  ImpersonateSecurityContext
+  RevertSecurityContext
+  FreeContextBuffer
+  SealMessage
+  UnsealMessage
+  InitSecurityInterfaceA
+  CeCredRead
+  CeCredWrite
+  CeCredFree
+  EncryptMessage
+  DecryptMessage
+  CompleteAuthToken

@@ -1,0 +1,24 @@
+; Akari WinCE API surface — public imports for ntlmssp.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY ntlmssp.dll
+EXPORTS
+  InitSecurityInterfaceW
+  InitSecurityInterfaceA
+  NTLMSetUserInfo
+  NTLMEnumUser
+  NTLMDeleteUser
+  NTLMGetUserInfo
+  NTLMSavePassword
+  NTLMAddGroup
+  NTLMRemoveGroup
+  NTLMEnumGroups
+  NTLMAddUserToGroup
+  NTLMRemoveUserFromGroup
+  NTLMGetUserList
+  NTLMGetGroupList
+  HandleBlob
+  MatchTarget
+  MatchUser
+  Load
+  UnLoad

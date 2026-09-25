@@ -1,0 +1,10 @@
+; Akari WinCE API surface — public imports for commdlg.dll (X86).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY commdlg.dll
+EXPORTS
+  ChooseColor
+  PrintDlg
+  PageSetupDlgW
+  CommDlgExtendedError
+  ChooseFontW

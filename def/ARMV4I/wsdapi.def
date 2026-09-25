@@ -1,0 +1,34 @@
+; Akari WinCE API surface — public imports for wsdapi.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY wsdapi.dll
+EXPORTS
+  WSDAllocateLinkedMemory
+  WSDAttachLinkedMemory
+  WSDDetachLinkedMemory
+  WSDFreeLinkedMemory
+  WSDCreateDeviceProxy
+  WSDCreateDeviceProxyAdvanced
+  WSDCreateDeviceHost
+  WSDCreateDeviceHostAdvanced
+  WSDCreateDiscoveryProvider
+  WSDCreateDiscoveryPublisher
+  WSDCreateOutboundAttachment
+  WSDXMLCreateContext
+  WSDXMLGetNameFromBuiltinNamespace
+  WSDXMLGetValueFromAny
+  WSDXMLBuildAnyForSingleElement
+  WSDXMLAddSibling
+  WSDXMLAddChild
+  WSDXMLCleanupElement
+  WSDCreateUdpAddress
+  WSDCreateUdpMessageParameters
+  WSDCreateHttpAddress
+  WSDCreateHttpAddressAdvanced
+  WSDCreateHttpMessageParameters
+  WSDGenerateFault
+  WSDGenerateFaultEx
+  WSDProcessFault
+  WSDGenerateRandomDelay
+  WSDCreateUdpTransport
+  WSDCreateHttpTransport

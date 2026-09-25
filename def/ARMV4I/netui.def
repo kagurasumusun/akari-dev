@@ -1,0 +1,54 @@
+; Akari WinCE API surface — public imports for netui.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY netui.dll
+EXPORTS
+  RegisterIPClass
+  UnregisterIPClass
+  GetIPAddress
+  GetUsernamePassword
+  GetUsernamePasswordEx
+  GetNewPassword
+  GetNewPasswordEx
+  CloseUsernamePasswordDialog
+  LineConfigEdit
+  LineTranslateDialog
+  GetNetString
+  ConnectionDialog
+  DisconnectDialog
+  NetMsgBox
+  GetResourcePassword
+  AdapterIPProperties
+  GetDriverName
+  PickCertificate
+  AddNetUISystrayIcon
+  RemoveNetUISystrayIcon
+  IsPropSheetDialogMessage
+  ClosePropSheetDialogIfReady
+  UpdateConnectionStatus
+  ShowCertificate
+  ShowCertificateEx
+  CreateScanDevice
+  RasEapInvokeConfigUI
+  RasEapInvokeInteractiveUI
+  RasEapFreeMemory
+  MsgWaitForMultipleObjectsExt
+  PeekMessageWExt
+  TranslateMessageExt
+  DispatchMessageExt
+  GetNetStringSizeExt
+  GetNetStringExt
+  NetMsgBoxExt
+  GetUsernamePasswordExExt
+  GetNewPasswordExExt
+  CloseUsernamePasswordDialogExt
+  GetResourcePasswordExt
+  ConnectionDialogExt
+  DisconnectDialogExt
+  GetIPAddressExt
+  LoadLibraryExt
+  FreeLibraryExt
+  LineConfigEditExt
+  LineTranslateDialogExt
+  AdapterIPPropertiesExt
+  GetDriverNameExt

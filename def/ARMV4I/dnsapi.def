@@ -1,0 +1,9 @@
+; Akari WinCE API surface — public imports for dnsapi.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY dnsapi.dll
+EXPORTS
+  DnsModifyRecordsInSet_W
+  DnsReplaceRecordSetW
+  DnsRecordListFree
+  DnsQuery_W

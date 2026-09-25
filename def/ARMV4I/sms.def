@@ -1,0 +1,20 @@
+; Akari WinCE API surface — public imports for sms.dll (ARMV4I).
+; Names and ordinals were recorded from a CE 6.0 export survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY sms.dll
+EXPORTS
+  SmsSetMessageNotification
+  SmsClearMessageNotification
+  SmsOpen
+  SmsClose
+  SmsSendMessage
+  SmsGetMessageSize
+  SmsReadMessage
+  SmsGetMessageStatus
+  SmsSetSMSC
+  SmsGetSMSC
+  SmsGetBroadcastMsgRanges
+  SmsSetBroadcastMsgRanges
+  SmsGetTime
+  SmsReceiveAllMessagesFromSIM @20
+  SmsGetPhoneNumber
