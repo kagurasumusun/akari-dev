@@ -1,0 +1,21 @@
+; Public import surface for msimepy.dll (CE500, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY msimepy.dll
+EXPORTS
+  ImeConversionList
+  ImeConfigure
+  ImeDestroy
+  ImeEscape
+  ImeInquire
+  ImeProcessKey
+  ImeSelect
+  ImeSetActiveContext
+  ImeSetCompositionString
+  ImeToAsciiEx
+  NotifyIME
+  ImeRegisterWord
+  ImeUnregisterWord
+  ImeGetRegisterWordStyle
+  ImeEnumRegisterWord
+  ImeGetImeMenuItems

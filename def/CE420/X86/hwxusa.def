@@ -1,0 +1,28 @@
+; Public import surface for hwxusa.dll (CE420, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY hwxusa.dll
+EXPORTS
+  HwxConfig
+  HwxCreate
+  HwxSetContext
+  HwxSetGuide
+  HwxALCValid
+  HwxALCPriority
+  HwxInput
+  HwxEndInput
+  HwxProcess
+  HwxResultsAvailable
+  HwxSetAbort
+  HwxSetPartial
+  HwxGetResults
+  HwxDestroy
+  AddPenInputHRC
+  CreateCompatibleHRC
+  DestroyHRC
+  EndPenInputHRC
+  ProcessHRC
+  SetGuideHRC
+  GetBoxResultsHRC
+  SetAlphabetHRC
+  SetMaxResultsHRC

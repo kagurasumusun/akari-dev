@@ -1,0 +1,19 @@
+; Public import surface for ntlmssp.dll (CE420, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY ntlmssp.dll
+EXPORTS
+  InitSecurityInterfaceW
+  InitSecurityInterfaceA
+  NTLMSetUserInfo
+  NTLMEnumUser
+  NTLMDeleteUser
+  NTLMGetUserInfo
+  NTLMSavePassword
+  NTLMAddGroup
+  NTLMRemoveGroup
+  NTLMEnumGroups
+  NTLMAddUserToGroup
+  NTLMRemoveUserFromGroup
+  NTLMGetUserList
+  NTLMGetGroupList

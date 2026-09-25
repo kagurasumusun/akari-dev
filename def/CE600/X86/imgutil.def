@@ -1,0 +1,13 @@
+; Public import surface for imgutil.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY imgutil.dll
+EXPORTS
+  SniffStream
+  DecodeImage
+  CreateMIMEMap
+  IdentifyMIMEType
+  GetMaxMIMEIDBytes
+  ComputeInvCMAP
+  DitherTo8
+  CreateDDrawSurfaceOnDIB

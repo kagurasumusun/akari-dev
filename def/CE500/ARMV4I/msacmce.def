@@ -1,0 +1,18 @@
+; Public import surface for msacmce.dll (CE500, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY msacmce.dll
+EXPORTS
+  acmGetVersion
+  acmInitialize
+  acmDriverDetails
+  acmFormatTagDetails
+  acmFormatDetails
+  acmFormatEnum
+  acmFormatSuggest
+  acmStreamOpen
+  acmStreamClose
+  acmStreamSize
+  acmStreamConvert
+  acmStreamPrepareHeader
+  acmStreamUnprepareHeader

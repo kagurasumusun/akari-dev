@@ -1,19 +1,15 @@
-/* Akari WinCE Development API Surface
- * Independently authored declarations for linking Windows CE 6.0 programs.
- * This is an API surface only: not an OS, BSP, OAK, SDK component, or
- * Platform Builder redistribution, and not a copy of upstream source.
- * CE calling convention: stdcall is cdecl, and DLL export names are
- * undecorated. TCHAR is a 16-bit WCHAR. Layouts that differ from desktop
- * Win32 (CRITICAL_SECTION, WIN32_FIND_DATAW, BY_HANDLE_FILE_INFORMATION,
- * OVERLAPPED) follow the CE 6.0 ABI.
+/* WinCE development API surface.
+ * Original declarations written from a survey of CE 4.2, 5.0, and 6.0
+ * public interface facts (names, types, layouts, constants, exports).
+ * Not an OS, BSP, OAK, or Platform Builder component, and not a copy
+ * of upstream source.
  */
 
-#ifndef AKARI_WINDEF_H
-#define AKARI_WINDEF_H
-#include "sdkddkver.h"
+#ifndef WCE_WINDEF_H
+#define WCE_WINDEF_H
+#include "wcever.h"
 #include <stddef.h>
 #include <stdint.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -24,15 +20,12 @@ extern "C" {
 #ifndef __stdcall
 #define __stdcall
 #endif
-/* Windows CE public headers define stdcall as cdecl outside emulation,
- * so export names carry no @n decoration on x86 or ARM. */
+/* Surveyed fact: outside emulation, CE headers define stdcall as cdecl.
+   DLL export names are undecorated on ARM and x86. */
 #ifndef _WIN32_WCE_EMULATION
 #undef __stdcall
 #define __stdcall __cdecl
-#undef _stdcall
-#define _stdcall __cdecl
 #endif
-
 #ifndef WINAPI
 #define WINAPI __stdcall
 #endif
@@ -45,10 +38,18 @@ extern "C" {
 #ifndef CALLBACK
 #define CALLBACK WINAPI
 #endif
-#ifndef APIPRIVATE
-#define APIPRIVATE WINAPI
+#ifndef WSAAPI
+#define WSAAPI WINAPI
 #endif
-
+#ifndef PASCAL
+#define PASCAL WINAPI
+#endif
+#ifndef FAR
+#define FAR
+#endif
+#ifndef NEAR
+#define NEAR
+#endif
 #ifndef CONST
 #define CONST const
 #endif
@@ -61,35 +62,31 @@ extern "C" {
 #ifndef OPTIONAL
 #define OPTIONAL
 #endif
-#ifndef FAR
-#define FAR
-#endif
-#ifndef NEAR
-#define NEAR
-#endif
-
-/* x86 CE import names are undecorated. Pin them so a stock cdecl compiler
- * does not look up a leading-underscore or @n spelling. ARM names already
- * match the import library, so the attributes are empty there. */
-#if defined(_M_IX86) || defined(__i386__)
-#define AKARI_IMPORT __declspec(dllimport)
-#define AKARI_NAME(n) __asm__(#n)
+#ifndef EXTERN_C
+#ifdef __cplusplus
+#define EXTERN_C extern "C"
 #else
-#define AKARI_IMPORT
-#define AKARI_NAME(n)
+#define EXTERN_C extern
+#endif
 #endif
 
-#ifndef _WIN32
-#define _WIN32
+/* x86 CE import names have no leading underscore and no @n suffix. */
+#if defined(__i386__) || defined(_M_IX86)
+#define WCE_IMPORT __declspec(dllimport)
+#define WCE_LINK(name) __asm__(#name)
+#else
+#define WCE_IMPORT
+#define WCE_LINK(name)
 #endif
-#ifndef WIN32
-#define WIN32
-#endif
+
 #ifndef UNICODE
 #define UNICODE 1
 #endif
 #ifndef _UNICODE
 #define _UNICODE 1
+#endif
+#ifndef _WIN32
+#define _WIN32
 #endif
 
 typedef void VOID;
@@ -108,42 +105,34 @@ typedef int INT;
 typedef unsigned int UINT;
 typedef int16_t SHORT;
 typedef uint16_t USHORT;
+typedef int BOOL;
 typedef float FLOAT;
 typedef double DOUBLE;
 typedef int64_t LONGLONG;
 typedef uint64_t ULONGLONG;
-typedef int64_t INT64;
-typedef uint64_t UINT64;
-typedef int32_t INT32;
-typedef uint32_t UINT32;
-typedef int BOOL;
-typedef uint32_t UINT_PTR;
-typedef int32_t LONG_PTR;
 typedef uint32_t ULONG_PTR;
+typedef int32_t LONG_PTR;
 typedef int32_t INT_PTR;
+typedef uint32_t UINT_PTR;
 typedef uint32_t DWORD_PTR;
 typedef ULONG_PTR SIZE_T;
-typedef LONG_PTR SSIZE_T;
 typedef LONG_PTR LPARAM;
 typedef UINT_PTR WPARAM;
 typedef LONG_PTR LRESULT;
 typedef LONG HRESULT;
+typedef DWORD COLORREF;
 typedef DWORD LCID;
 typedef WORD LANGID;
-typedef BYTE BOOLEAN;
-typedef DWORD COLORREF;
-typedef DWORD *LPCOLORREF;
 typedef WORD ATOM;
+typedef BYTE BOOLEAN;
 typedef int HFILE;
-
 typedef void *HANDLE;
+typedef void *PVOID;
 typedef void *LPVOID;
 typedef const void *LPCVOID;
-typedef void *PVOID;
 #define DECLARE_HANDLE(name) struct name##__ { int unused; }; typedef struct name##__ *name
 DECLARE_HANDLE(HWND);
 DECLARE_HANDLE(HHOOK);
-DECLARE_HANDLE(HEVENT);
 DECLARE_HANDLE(HKEY);
 typedef HKEY *PHKEY;
 DECLARE_HANDLE(HACCEL);
@@ -159,14 +148,10 @@ DECLARE_HANDLE(HPALETTE);
 DECLARE_HANDLE(HPEN);
 DECLARE_HANDLE(HRGN);
 DECLARE_HANDLE(HRSRC);
-DECLARE_HANDLE(HKL);
-DECLARE_HANDLE(HMONITOR);
 typedef void *HGDIOBJ;
 typedef HICON HCURSOR;
 typedef HANDLE HGLOBAL;
 typedef HANDLE HLOCAL;
-typedef HANDLE HDWP;
-
 typedef CHAR *LPSTR;
 typedef const CHAR *LPCSTR;
 typedef WCHAR *LPWSTR;
@@ -176,20 +161,22 @@ typedef WCHAR *LPTSTR;
 typedef const WCHAR *LPCTSTR;
 typedef BYTE *PBYTE;
 typedef BYTE *LPBYTE;
-typedef WORD *PWORD;
 typedef WORD *LPWORD;
 typedef DWORD *PDWORD;
 typedef DWORD *LPDWORD;
-typedef UINT *PUINT;
-typedef BOOL *LPBOOL;
 typedef LONG *PLONG;
 typedef LONG *LPLONG;
+typedef BOOL *LPBOOL;
 typedef HANDLE *LPHANDLE;
 typedef INT *PINT;
-typedef INT *LPINT;
-
+typedef UINT *PUINT;
+typedef DWORD REGSAM;
 #ifndef NULL
+#ifdef __cplusplus
+#define NULL 0
+#else
 #define NULL ((void *)0)
+#endif
 #endif
 #ifndef FALSE
 #define FALSE 0
@@ -200,44 +187,22 @@ typedef INT *LPINT;
 #ifndef MAX_PATH
 #define MAX_PATH 260
 #endif
-
 #define MAKEWORD(a, b) ((WORD)(((BYTE)(a)) | ((WORD)((BYTE)(b))) << 8))
 #define MAKELONG(a, b) ((LONG)(((WORD)(a)) | ((DWORD)((WORD)(b))) << 16))
 #define LOWORD(l) ((WORD)(l))
 #define HIWORD(l) ((WORD)(((DWORD)(l) >> 16) & 0xFFFF))
 #define LOBYTE(w) ((BYTE)(w))
 #define HIBYTE(w) ((BYTE)(((WORD)(w) >> 8) & 0xFF))
-
-typedef struct tagRECT {
-    LONG left;
-    LONG top;
-    LONG right;
-    LONG bottom;
-} RECT, *PRECT, *NPRECT, *LPRECT;
+typedef struct tagRECT { LONG left; LONG top; LONG right; LONG bottom; } RECT, *PRECT, *LPRECT;
 typedef const RECT *LPCRECT;
-
-typedef struct tagPOINT {
-    LONG x;
-    LONG y;
-} POINT, *PPOINT, *NPPOINT, *LPPOINT;
-
-typedef struct tagSIZE {
-    LONG cx;
-    LONG cy;
-} SIZE, *PSIZE, *LPSIZE;
-typedef SIZE SIZEL;
-
-typedef struct tagPOINTS {
-    SHORT x;
-    SHORT y;
-} POINTS, *PPOINTS, *LPPOINTS;
-
-#define HFILE_ERROR ((HFILE)-1)
-
-typedef INT_PTR (FAR WINAPI *FARPROC)(void);
-typedef INT_PTR (NEAR WINAPI *NEARPROC)(void);
+typedef struct tagPOINT { LONG x; LONG y; } POINT, *PPOINT, *LPPOINT;
+typedef struct tagSIZE { LONG cx; LONG cy; } SIZE, *PSIZE, *LPSIZE;
+typedef struct tagPOINTS { SHORT x; SHORT y; } POINTS, *PPOINTS, *LPPOINTS;
+typedef INT_PTR (WINAPI *FARPROC)(void);
 typedef INT_PTR (WINAPI *PROC)(void);
-
+#define HFILE_ERROR ((HFILE)-1)
+#define TEXT(lit) L##lit
+#define _T(lit) L##lit
 #ifdef __cplusplus
 }
 #endif

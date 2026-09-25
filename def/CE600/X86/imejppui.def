@@ -1,0 +1,24 @@
+; Public import surface for imejppui.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY imejppui.dll
+EXPORTS
+  DllMain
+  IME100WndProc
+  Ime100Configure
+  ImeConversionList
+  ImeConfigure
+  ImeDestroy
+  ImeEscape
+  ImeInquire
+  ImeProcessKey
+  ImeSelect
+  ImeSetActiveContext
+  ImeToAsciiEx
+  NotifyIME
+  ImeRegisterWord
+  ImeUnregisterWord
+  ImeGetRegisterWordStyle
+  ImeEnumRegisterWord
+  ImeSetCompositionString
+  ImeGetImeMenuItems

@@ -1,0 +1,19 @@
+; Public import surface for hwxcht.dll (CE420, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY hwxcht.dll
+EXPORTS
+  HwxConfig
+  HwxCreate
+  HwxSetContext
+  HwxSetGuide
+  HwxALCValid
+  HwxALCPriority
+  HwxSetPartial
+  HwxSetAbort
+  HwxInput
+  HwxEndInput
+  HwxProcess
+  HwxResultsAvailable
+  HwxGetResults
+  HwxDestroy

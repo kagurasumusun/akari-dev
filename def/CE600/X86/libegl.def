@@ -1,0 +1,39 @@
+; Public import surface for libegl.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY libegl.dll
+EXPORTS
+  eglGetError @1
+  eglGetDisplay @2
+  eglInitialize @3
+  eglTerminate @4
+  eglQueryString @5
+  eglGetConfigs @6
+  eglChooseConfig @7
+  eglGetConfigAttrib @8
+  eglCreateWindowSurface @9
+  eglCreatePbufferSurface @10
+  eglCreatePixmapSurface @11
+  eglDestroySurface @12
+  eglQuerySurface @13
+  eglBindAPI @14
+  eglQueryAPI @15
+  eglWaitClient @16
+  eglReleaseThread @17
+  eglCreatePbufferFromClientBuffer @18
+  eglSurfaceAttrib @19
+  eglBindTexImage @20
+  eglReleaseTexImage @21
+  eglSwapInterval @22
+  eglCreateContext @23
+  eglDestroyContext @24
+  eglMakeCurrent @25
+  eglGetCurrentContext @26
+  eglGetCurrentSurface @27
+  eglGetCurrentDisplay @28
+  eglQueryContext @29
+  eglWaitGL @30
+  eglWaitNative @31
+  eglSwapBuffers @32
+  eglCopyBuffers @33
+  eglGetProcAddress @34

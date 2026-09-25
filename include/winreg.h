@@ -1,60 +1,60 @@
-/* Akari WinCE Development API Surface
- * Independently authored declarations for linking Windows CE 6.0 programs.
- * This is an API surface only: not an OS, BSP, OAK, SDK component, or
- * Platform Builder redistribution, and not a copy of upstream source.
- * CE calling convention: stdcall is cdecl, and DLL export names are
- * undecorated. TCHAR is a 16-bit WCHAR. Layouts that differ from desktop
- * Win32 (CRITICAL_SECTION, WIN32_FIND_DATAW, BY_HANDLE_FILE_INFORMATION,
- * OVERLAPPED) follow the CE 6.0 ABI.
+/* WinCE development API surface.
+ * Original declarations written from a survey of CE 4.2, 5.0, and 6.0
+ * public interface facts (names, types, layouts, constants, exports).
+ * Not an OS, BSP, OAK, or Platform Builder component, and not a copy
+ * of upstream source.
  */
 
-#ifndef AKARI_WINREG_H
-#define AKARI_WINREG_H
+#ifndef WCE_WINREG_H
+#define WCE_WINREG_H
 #include "windef.h"
-#include "winbase.h"
-
+#include "winnt.h"
+#include "wceunk.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define HKEY_CLASSES_ROOT ((HKEY)(ULONG_PTR)0x80000000)
-#define HKEY_CURRENT_USER ((HKEY)(ULONG_PTR)0x80000001)
-#define HKEY_LOCAL_MACHINE ((HKEY)(ULONG_PTR)0x80000002)
-#define HKEY_USERS ((HKEY)(ULONG_PTR)0x80000003)
-#define REG_NONE (0)
-#define REG_SZ (1)
-#define REG_EXPAND_SZ (2)
-#define REG_BINARY (3)
-#define REG_DWORD (4)
-#define REG_DWORD_LITTLE_ENDIAN (4)
-#define REG_MULTI_SZ (7)
-#define KEY_QUERY_VALUE (0x0001)
-#define KEY_SET_VALUE (0x0002)
-#define KEY_CREATE_SUB_KEY (0x0004)
-#define KEY_ENUMERATE_SUB_KEYS (0x0008)
-#define KEY_NOTIFY (0x0010)
-#define KEY_CREATE_LINK (0x0020)
-#define KEY_READ ((STANDARD_RIGHTS_READ | KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY) & (~SYNCHRONIZE))
-#define KEY_WRITE ((STANDARD_RIGHTS_WRITE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY) & (~SYNCHRONIZE))
-#define KEY_ALL_ACCESS ((STANDARD_RIGHTS_ALL | KEY_QUERY_VALUE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY | KEY_CREATE_LINK) & (~SYNCHRONIZE))
-AKARI_IMPORT LONG WINAPI RegCloseKey(HKEY hKey) AKARI_NAME(RegCloseKey);
-AKARI_IMPORT LONG WINAPI RegCreateKeyExW(HKEY hKey, LPCWSTR lpSubKey, DWORD Reserved, LPWSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition) AKARI_NAME(RegCreateKeyExW);
-AKARI_IMPORT LONG WINAPI RegDeleteKeyW(HKEY hKey, LPCWSTR lpSubKey) AKARI_NAME(RegDeleteKeyW);
-AKARI_IMPORT LONG WINAPI RegDeleteValueW(HKEY hKey, LPCWSTR lpValueName) AKARI_NAME(RegDeleteValueW);
-AKARI_IMPORT LONG WINAPI RegEnumKeyExW(HKEY hKey, DWORD dwIndex, LPWSTR lpName, LPDWORD lpcchName, LPDWORD lpReserved, LPWSTR lpClass, LPDWORD lpcchClass, PFILETIME lpftLastWriteTime) AKARI_NAME(RegEnumKeyExW);
-AKARI_IMPORT LONG WINAPI RegEnumValueW(HKEY hKey, DWORD dwIndex, LPWSTR lpValueName, LPDWORD lpcchValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) AKARI_NAME(RegEnumValueW);
-AKARI_IMPORT LONG WINAPI RegFlushKey(HKEY hKey) AKARI_NAME(RegFlushKey);
-AKARI_IMPORT LONG WINAPI RegOpenKeyExW(HKEY hKey, LPCWSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult) AKARI_NAME(RegOpenKeyExW);
-AKARI_IMPORT LONG WINAPI RegQueryInfoKeyW(HKEY hKey, LPWSTR lpClass, LPDWORD lpcchClass, LPDWORD lpReserved, LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen, LPDWORD lpcbMaxClassLen, LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen, LPDWORD lpcbMaxValueLen, LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime) AKARI_NAME(RegQueryInfoKeyW);
-AKARI_IMPORT LONG WINAPI RegQueryValueExW(HKEY hKey, LPCWSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) AKARI_NAME(RegQueryValueExW);
-AKARI_IMPORT LONG WINAPI RegSetValueExW(HKEY hKey, LPCWSTR lpValueName, DWORD Reserved, DWORD dwType, CONST BYTE* lpData, DWORD cbData) AKARI_NAME(RegSetValueExW);
-AKARI_IMPORT HANDLE WINAPI CeFindFirstRegChange(HKEY hKey, BOOL bWatchSubTree, DWORD dwNotifyFilter) AKARI_NAME(CeFindFirstRegChange);
-AKARI_IMPORT BOOL WINAPI CeFindNextRegChange(HANDLE hNotify) AKARI_NAME(CeFindNextRegChange);
-AKARI_IMPORT BOOL WINAPI CeFindCloseRegChange(HANDLE hNotify) AKARI_NAME(CeFindCloseRegChange);
-AKARI_IMPORT LONG WINAPI CeRegTestSetValueW(HKEY hKey, LPCWSTR lpValueName, DWORD dwType, CONST BYTE* lpOldData, DWORD cbOldData, CONST BYTE* lpNewData, DWORD cbNewData, DWORD dwFlags) AKARI_NAME(CeRegTestSetValueW);
-AKARI_IMPORT LONG WINAPI CeRegGetNotificationInfo(HANDLE hChangeHandle, DWORD dwFlags, LPVOID lpBuffer, DWORD nBufferLength, LPDWORD lpBytesReturned, LPDWORD lpBytesAvailable) AKARI_NAME(CeRegGetNotificationInfo);
+typedef struct tagREG_NOTIFY_INFORMATION { DWORD NextEntryOffset; DWORD Action; DWORD RegNameLength; WCHAR RegName[1]; } REG_NOTIFY_INFORMATION, *PREG_NOTIFY_INFORMATION, *LPREG_NOTIFY_INFORMATION;
 
-#define CeRegTestSetValue CeRegTestSetValueW
+WCE_IMPORT LONG WINAPI RegCloseKey(HKEY hKey) WCE_LINK(RegCloseKey);
+WCE_IMPORT LONG WINAPI RegCreateKeyExA(HKEY hKey, LPCSTR lpSubKey, DWORD Reserved, LPSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition) WCE_LINK(RegCreateKeyExA);
+WCE_IMPORT LONG WINAPI RegCreateKeyExW(HKEY hKey, LPCWSTR lpSubKey, DWORD Reserved, LPWSTR lpClass, DWORD dwOptions, REGSAM samDesired, LPSECURITY_ATTRIBUTES lpSecurityAttributes, PHKEY phkResult, LPDWORD lpdwDisposition) WCE_LINK(RegCreateKeyExW);
+WCE_IMPORT LONG WINAPI RegDeleteKeyA(HKEY hKey, LPCSTR lpSubKey) WCE_LINK(RegDeleteKeyA);
+WCE_IMPORT LONG WINAPI RegDeleteKeyW(HKEY hKey, LPCWSTR lpSubKey) WCE_LINK(RegDeleteKeyW);
+WCE_IMPORT LONG WINAPI RegDeleteValueA(HKEY hKey, LPCSTR lpValueName) WCE_LINK(RegDeleteValueA);
+WCE_IMPORT LONG WINAPI RegDeleteValueW(HKEY hKey, LPCWSTR lpValueName) WCE_LINK(RegDeleteValueW);
+WCE_IMPORT LONG WINAPI RegEnumKeyExA(HKEY hKey, DWORD dwIndex, LPSTR lpName, LPDWORD lpcchName, LPDWORD lpReserved, LPSTR lpClass, LPDWORD lpcchClass, PFILETIME lpftLastWriteTime) WCE_LINK(RegEnumKeyExA);
+WCE_IMPORT LONG WINAPI RegEnumKeyExW(HKEY hKey, DWORD dwIndex, LPWSTR lpName, LPDWORD lpcchName, LPDWORD lpReserved, LPWSTR lpClass, LPDWORD lpcchClass, PFILETIME lpftLastWriteTime) WCE_LINK(RegEnumKeyExW);
+WCE_IMPORT LONG WINAPI RegEnumValueA(HKEY hKey, DWORD dwIndex, LPSTR lpValueName, LPDWORD lpcchValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) WCE_LINK(RegEnumValueA);
+WCE_IMPORT LONG WINAPI RegEnumValueW(HKEY hKey, DWORD dwIndex, LPWSTR lpValueName, LPDWORD lpcchValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) WCE_LINK(RegEnumValueW);
+WCE_IMPORT LONG WINAPI RegFlushKey(HKEY hKey) WCE_LINK(RegFlushKey);
+WCE_IMPORT LONG WINAPI RegOpenKeyExA(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult) WCE_LINK(RegOpenKeyExA);
+WCE_IMPORT LONG WINAPI RegOpenKeyExW(HKEY hKey, LPCWSTR lpSubKey, DWORD ulOptions, REGSAM samDesired, PHKEY phkResult) WCE_LINK(RegOpenKeyExW);
+WCE_IMPORT LONG WINAPI RegQueryInfoKeyA(HKEY hKey, LPSTR lpClass, LPDWORD lpcchClass, LPDWORD lpReserved, LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen, LPDWORD lpcbMaxClassLen, LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen, LPDWORD lpcbMaxValueLen, LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime) WCE_LINK(RegQueryInfoKeyA);
+WCE_IMPORT LONG WINAPI RegQueryInfoKeyW(HKEY hKey, LPWSTR lpClass, LPDWORD lpcchClass, LPDWORD lpReserved, LPDWORD lpcSubKeys, LPDWORD lpcbMaxSubKeyLen, LPDWORD lpcbMaxClassLen, LPDWORD lpcValues, LPDWORD lpcbMaxValueNameLen, LPDWORD lpcbMaxValueLen, LPDWORD lpcbSecurityDescriptor, PFILETIME lpftLastWriteTime) WCE_LINK(RegQueryInfoKeyW);
+WCE_IMPORT LONG WINAPI RegQueryValueExA(HKEY hKey, LPCSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) WCE_LINK(RegQueryValueExA);
+WCE_IMPORT LONG WINAPI RegQueryValueExW(HKEY hKey, LPCWSTR lpValueName, LPDWORD lpReserved, LPDWORD lpType, LPBYTE lpData, LPDWORD lpcbData) WCE_LINK(RegQueryValueExW);
+WCE_IMPORT LONG WINAPI RegSetValueExA(HKEY hKey, LPCSTR lpValueName, DWORD Reserved, DWORD dwType, CONST BYTE* lpData, DWORD cbData) WCE_LINK(RegSetValueExA);
+WCE_IMPORT LONG WINAPI RegSetValueExW(HKEY hKey, LPCWSTR lpValueName, DWORD Reserved, DWORD dwType, CONST BYTE* lpData, DWORD cbData) WCE_LINK(RegSetValueExW);
+#if (_WIN32_WCE >= 0x500)
+WCE_IMPORT HANDLE WINAPI CeFindFirstRegChange(HKEY hKey, BOOL bWatchSubTree, DWORD dwNotifyFilter) WCE_LINK(CeFindFirstRegChange);
+#endif
+#if (_WIN32_WCE >= 0x500)
+WCE_IMPORT BOOL WINAPI CeFindNextRegChange(HANDLE hNotify) WCE_LINK(CeFindNextRegChange);
+#endif
+#if (_WIN32_WCE >= 0x500)
+WCE_IMPORT BOOL WINAPI CeFindCloseRegChange(HANDLE hNotify) WCE_LINK(CeFindCloseRegChange);
+#endif
+#if (_WIN32_WCE >= 0x600)
+WCE_IMPORT LONG WINAPI CeRegTestSetValueW(HKEY hKey, LPCWSTR lpValueName, DWORD dwType, CONST BYTE* lpOldData, DWORD cbOldData, CONST BYTE* lpNewData, DWORD cbNewData, DWORD dwFlags) WCE_LINK(CeRegTestSetValueW);
+#endif
+#if (_WIN32_WCE >= 0x600)
+WCE_IMPORT LONG WINAPI CeRegGetInfo(HKEY hKey, PCE_REGISTRY_INFO pInfo) WCE_LINK(CeRegGetInfo);
+#endif
+#if (_WIN32_WCE >= 0x600)
+WCE_IMPORT LONG WINAPI CeRegGetNotificationInfo(HANDLE hChangeHandle, DWORD dwFlags, LPVOID lpBuffer, DWORD nBufferLength, LPDWORD lpBytesReturned, LPDWORD lpBytesAvailable) WCE_LINK(CeRegGetNotificationInfo);
+#endif
+
 #define RegCreateKeyEx RegCreateKeyExW
 #define RegDeleteKey RegDeleteKeyW
 #define RegDeleteValue RegDeleteValueW
@@ -64,8 +64,9 @@ AKARI_IMPORT LONG WINAPI CeRegGetNotificationInfo(HANDLE hChangeHandle, DWORD dw
 #define RegQueryInfoKey RegQueryInfoKeyW
 #define RegQueryValueEx RegQueryValueExW
 #define RegSetValueEx RegSetValueExW
-
+#define CeRegTestSetValue CeRegTestSetValueW
 #ifdef __cplusplus
 }
 #endif
 #endif
+

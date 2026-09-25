@@ -1,0 +1,7 @@
+; Public import surface for httpadmext.dll (CE420, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY httpadmext.dll
+EXPORTS
+  GetExtensionVersion
+  HttpExtensionProc

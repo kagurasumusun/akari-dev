@@ -1,0 +1,42 @@
+; Public import surface for schannel.dll (CE500, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY schannel.dll
+EXPORTS
+  InitSecurityInterfaceA
+  InitSecurityInterfaceW
+  SecurityPackageControl
+  QuerySecurityPackageInfoW
+  QuerySecurityPackageInfoA
+  EnumerateSecurityPackagesW
+  EnumerateSecurityPackagesA
+  AcquireCredentialsHandleW
+  AcquireCredentialsHandleA
+  QueryCredentialsAttributesA
+  QueryCredentialsAttributesW
+  FreeCredentialsHandle
+  InitializeSecurityContextW
+  InitializeSecurityContextA
+  AcceptSecurityContext
+  DeleteSecurityContext
+  ApplyControlToken
+  CompleteAuthToken
+  QueryContextAttributesW
+  QueryContextAttributesA
+  MakeSignature
+  VerifySignature
+  SealMessage
+  UnsealMessage
+  ImpersonateSecurityContext
+  RevertSecurityContext
+  QuerySecurityContextToken
+  FreeContextBuffer
+  SslCrackCertificate
+  SslFreeCertificate
+  SslGetMaximumKeySize
+  SslGetDefaultIssuers
+  SslEmptyCache
+  SslGetProtocols
+  SslSetProtocols
+  SPReInit
+  IsSSLServerName

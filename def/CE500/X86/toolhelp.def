@@ -1,0 +1,19 @@
+; Public import surface for toolhelp.dll (CE500, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY toolhelp.dll
+EXPORTS
+  DllMain
+  CreateToolhelp32Snapshot
+  Heap32First
+  Heap32Next
+  Heap32ListFirst
+  Heap32ListNext
+  Toolhelp32ReadProcessMemory
+  Process32First
+  Process32Next
+  Thread32First
+  Thread32Next
+  Module32First
+  Module32Next
+  CloseToolhelp32Snapshot

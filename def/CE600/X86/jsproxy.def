@@ -1,0 +1,9 @@
+; Public import surface for jsproxy.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY jsproxy.dll
+EXPORTS
+  DllMain @12
+  InternetInitializeAutoProxyDll @101
+  InternetDeInitializeAutoProxyDll @102
+  InternetGetProxyInfo @103

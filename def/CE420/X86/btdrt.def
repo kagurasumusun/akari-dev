@@ -1,0 +1,55 @@
+; Public import surface for btdrt.dll (CE420, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY btdrt.dll
+EXPORTS
+  BthWriteScanEnableMask
+  BthReadScanEnableMask
+  BthWritePageTimeout
+  BthReadPageTimeout
+  BthWriteCOD
+  BthReadCOD
+  BthWriteAuthenticationEnable
+  BthReadAuthenticationEnable
+  BthWriteLinkPolicySettings
+  BthReadLinkPolicySettings
+  BthEnterHoldMode
+  BthEnterSniffMode
+  BthExitSniffMode
+  BthEnterParkMode
+  BthExitParkMode
+  BthGetCurrentMode
+  BthGetBasebandHandles
+  BthGetBasebandConnections
+  BthReadLocalVersion
+  BthReadRemoteVersion
+  BthPerformInquiry
+  BthCancelInquiry
+  BthRemoteNameQuery
+  BthReadLocalAddr
+  BthGetHardwareStatus
+  BthTerminateIdleConnections
+  BthSetPIN
+  BthRevokePIN
+  BthSetLinkKey
+  BthGetLinkKey
+  BthRevokeLinkKey
+  BthAuthenticate
+  BthSetEncryption
+  BthSetSecurityUI
+  BthGetPINRequest
+  BthRefusePINRequest
+  BthNsSetService
+  BthNsLookupServiceBegin
+  BthNsLookupServiceNext
+  BthNsLookupServiceEnd
+  BthGetAddress
+  BthSetInquiryFilter
+  BthClearInquiryFilter
+  BthCreateACLConnection
+  BthCreateSCOConnection
+  BthCloseConnection
+  BthAcceptSCOConnections
+  BthGetRemoteCOD
+  DllMain
+  NSPStartup

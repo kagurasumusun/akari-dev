@@ -1,0 +1,9 @@
+; Public import surface for gpsapi.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY gpsapi.dll
+EXPORTS
+  GPSOpenDevice
+  GPSCloseDevice
+  GPSGetPosition
+  GPSGetDeviceState

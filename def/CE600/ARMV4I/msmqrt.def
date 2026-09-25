@@ -1,0 +1,30 @@
+; Public import surface for msmqrt.dll (CE600, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY msmqrt.dll
+EXPORTS
+  MQCreateQueue
+  MQDeleteQueue
+  MQGetMachineProperties
+  MQGetQueueProperties
+  MQSetQueueProperties
+  MQOpenQueue
+  MQCloseQueue
+  MQCreateCursor
+  MQCloseCursor
+  MQHandleToFormatName
+  MQPathNameToFormatName
+  MQFreeMemory
+  MQSendMessage
+  MQReceiveMessage
+  MQBeginTransaction
+  MQGetQueueSecurity
+  MQSetQueueSecurity
+  MQGetSecurityContext
+  MQFreeSecurityContext
+  MQInstanceToFormatName
+  MQLocateBegin
+  MQLocateNext
+  MQLocateEnd
+  MQMgmtGetInfo
+  MQMgmtAction

@@ -1,0 +1,9 @@
+; Public import surface for dmsdk.dll (CE600, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY dmsdk.dll
+EXPORTS
+  CeSetDevMgmtTask
+  CeGetDevMgmtPackageList
+  CeSetDevMgmtPackageList
+  CeStartDevMgmtService

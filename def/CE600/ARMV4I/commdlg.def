@@ -1,0 +1,10 @@
+; Public import surface for commdlg.dll (CE600, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY commdlg.dll
+EXPORTS
+  ChooseColor
+  PrintDlg
+  PageSetupDlgW
+  CommDlgExtendedError
+  ChooseFontW

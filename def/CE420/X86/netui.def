@@ -1,0 +1,33 @@
+; Public import surface for netui.dll (CE420, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY netui.dll
+EXPORTS
+  RegisterIPClass
+  UnregisterIPClass
+  GetIPAddress
+  GetUsernamePassword
+  GetUsernamePasswordEx
+  CloseUsernamePasswordDialog
+  LineConfigEdit
+  LineTranslateDialog
+  GetNetString
+  ConnectionDialog
+  DisconnectDialog
+  NetMsgBox
+  GetResourcePassword
+  AdapterIPProperties
+  GetDriverName
+  PickCertificate
+  AddNetUISystrayIcon
+  RemoveNetUISystrayIcon
+  IsPropSheetDialogMessage
+  ClosePropSheetDialogIfReady
+  UpdateConnectionStatus
+  ShowCertificate
+  CreateScanDevice
+  RasEapInvokeConfigUI
+  RasEapInvokeInteractiveUI
+  RasEapFreeMemory
+  LoadSecurityLib
+  UnloadSecurityLib

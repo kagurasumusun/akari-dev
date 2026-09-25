@@ -1,0 +1,9 @@
+; Public import surface for lap_pw.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY lap_pw.dll
+EXPORTS
+  VerifyUser
+  LAPCreateEnrollmentConfigDialog
+  InitLAP
+  DeinitLAP

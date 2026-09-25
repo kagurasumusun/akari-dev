@@ -1,0 +1,22 @@
+; Public import surface for phoneime.dll (CE600, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY phoneime.dll
+EXPORTS
+  ImeConversionList
+  ImeConfigure
+  ImeDestroy
+  ImeEscape
+  ImeInquire
+  ImeProcessKey
+  ImeSelect
+  ImeSetActiveContext
+  ImeToAsciiEx
+  NotifyIME
+  ImeRegisterWord
+  ImeUnregisterWord
+  ImeGetRegisterWordStyle
+  ImeEnumRegisterWord
+  ImeSetCompositionString
+  ImeGetImeMenuItems
+  PhoneIMEWndProc

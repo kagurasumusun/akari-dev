@@ -1,0 +1,176 @@
+; Public import surface for shlwapi.dll (CE500, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY shlwapi.dll
+EXPORTS
+  StrChrA
+  StrChrW
+  StrRChrA
+  StrRChrW
+  StrCmpNA
+  StrCmpNW
+  StrCmpNIA
+  StrCmpNIW
+  StrStrA
+  StrStrW
+  StrStrIA
+  StrStrIW
+  StrToIntA
+  StrToIntW
+  StrChrIW
+  StrPBrkW
+  StrCpyW
+  StrCpyNW
+  StrCatW
+  StrNCatA
+  StrCatBuffA
+  StrCatBuffW
+  StrDupA
+  StrDupW
+  StrCmpW
+  StrCmpIW
+  StrFormatByteSizeW
+  StrTrimW
+  StrRetToBufW
+  SHStrDupW
+  PathGetArgsW
+  PathRemoveArgsW
+  PathFileExistsA
+  PathFileExistsW
+  PathFindExtensionA
+  PathFindExtensionW
+  PathRemoveExtensionW
+  PathRenameExtensionW
+  PathCommonPrefixW
+  PathRemoveBackslashA
+  PathRemoveBackslashW
+  PathCanonicalizeW
+  PathCombineW
+  PathRemoveFileSpecA
+  PathRemoveFileSpecW
+  PathAddBackslashW
+  PathFindFileNameW
+  PathIsUNCW
+  PathUnquoteSpacesW
+  PathQuoteSpacesW
+  PathIsURLW
+  PathIsUNCServerA
+  PathUndecorateW
+  RegEnumValueA
+  RegEnumKeyExA
+  RegDeleteKeyA
+  RegCreateKeyExA
+  RegDeleteValueA
+  RegEnumKeyW
+  RegEnumKeyA
+  RegSetValueExA
+  RegOpenKeyExA
+  RegQueryValueExA
+  RegQueryValueA
+  SHDeleteValueW
+  SHGetValueA
+  SHGetValueW
+  SHSetValueA
+  SHSetValueW
+  SHQueryValueExA
+  SHQueryValueExW
+  SHRegOpenUSKeyW
+  SHRegGetUSValueW
+  UrlCompareW
+  UrlCombineA
+  UrlCombineW
+  UrlCanonicalizeA
+  UrlCanonicalizeW
+  UrlIsOpaqueW
+  UrlIsNoHistoryW
+  UrlIsW
+  UrlGetLocationA
+  UrlGetLocationW
+  UrlUnescapeA
+  UrlUnescapeW
+  UrlEscapeW
+  UrlCreateFromPathW
+  PathCreateFromUrlA
+  PathCreateFromUrlW
+  UrlGetPartW
+  UrlApplySchemeW
+  SHGetInverseCMAP
+  StrFromTimeIntervalW
+  wnsprintfA
+  wvnsprintfA
+  wnsprintfW
+  SHSkipJunction
+  ParseURLA @1
+  ParseURLW @2
+  RegisterDefaultAcceptHeaders @13
+  GetAcceptLanguagesW @15
+  SHStringFromGUIDW @24
+  IsCharSpaceW @29
+  IsCharBlankW @30
+  IsCharCntrlW @32
+  IsCharDigitW @33
+  IsCharXDigitW @34
+  StrCmpNCA @151
+  StrCmpNICA @153
+  StrCmpNICW @154
+  StrCmpCA @155
+  StrCmpCW @156
+  StrCmpICW @158
+  IUnknown_QueryStatus @163
+  IUnknown_Exec @164
+  SHSetParentHwnd @167
+  ConnectToConnectionPoint @168
+  IUnknown_AtomicRelease @169
+  SHIsSameObject @171
+  IUnknown_GetWindow @172
+  IUnknown_SetOwner @173
+  IUnknown_SetSite @174
+  IUnknown_GetClassID @175
+  IUnknown_QueryService @176
+  SHPropagateMessage @178
+  IStream_Read @184
+  SHSimulateDrop @186
+  IUnknown_TranslateAcceleratorOCS @188
+  IUnknown_OnFocusOCS @189
+  SHSearchMapInt @198
+  IUnknown_Set @199
+  SHIsChildOrSelf @204
+  IStream_Write @212
+  SHAnsiToUnicode @215
+  SHAnsiToUnicodeCP @216
+  SHUnicodeToAnsi @217
+  SHUnicodeToAnsiCP @218
+  QISearch @219
+  SHSetDefaultDialogFont @220
+  SHRemoveDefaultDialogFont @221
+  ZoneCheckUrlExW @231
+  ZoneCheckHost @234
+  SHRegisterClassW @237
+  SHUnregisterClassesW @239
+  SHDefWindowProc @240
+  SHRestrictionLookup @266
+  GUIDFromStringA @269
+  GUIDFromStringW @270
+  WhichPlatform @276
+  SHPackDispParamsV @281
+  SHPackDispParams @282
+  IConnectionPoint_InvokeWithCancel @283
+  IConnectionPoint_SimpleInvoke @284
+  IUnknown_CPContainerInvokeParam @286
+  IUnknown_CPContainerOnChanged @287
+  MIME_GetExtensionW @331
+  SHGetPathFromIDListWrapW @334
+  SHInterlockedCompareExchange @342
+  SHUnicodeToUnicode @346
+  IUnknown_EnableModless @355
+  CreateAllAccessSecurityAttributes @356
+  MLLoadLibraryW @378
+  ZoneComputePaneSize @382
+  ZoneConfigureW @383
+  SHRestrictedMessageBox @384
+  SHChangeNotifyWrap @394
+  MLBuildResURLW @406
+  MLFreeLibrary @418
+  UrlFixupW @462
+  UrlCrackW @480
+  SHGetObjectCompatFlags @476

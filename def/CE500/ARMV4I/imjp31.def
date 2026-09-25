@@ -1,0 +1,21 @@
+; Public import surface for imjp31.dll (CE500, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY imjp31.dll
+EXPORTS
+  ImeConversionList @2
+  ImeConfigure @3
+  ImeDestroy @4
+  ImeEnumRegisterWord @5
+  ImeEscape @6
+  ImeGetRegisterWordStyle @7
+  ImeInquire @8
+  ImeProcessKey @9
+  ImeRegisterWord @10
+  ImeSelect @11
+  ImeSetActiveContext @12
+  ImeToAsciiEx @13
+  ImeUnregisterWord @14
+  NotifyIME @15
+  ImeSetCompositionString @16
+  ImeGetImeMenuItems @17

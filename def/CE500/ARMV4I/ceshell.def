@@ -1,0 +1,24 @@
+; Public import surface for ceshell.dll (CE500, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY ceshell.dll
+EXPORTS
+  DoDragDrop @6
+  RegisterDragDrop @7
+  RevokeDragDrop @8
+  SHAddToRecentDocs @19
+  SHBindToParent @82
+  SHBrowseForFolder @83
+  SHCreateShortcut @17
+  SHCreateShortcutEx @85
+  SHFileOperationW @14
+  SHGetDocumentsFolder @75
+  SHGetFileInfo @13
+  SHGetMalloc @12
+  SHGetPathFromIDList @11
+  SHGetShortcutTarget @18
+  SHGetSpecialFolderLocation @10
+  SHLoadDIBitmap @16
+  SHShowOutOfMemory @86
+  StrRetToBufW @84
+  SHGetDesktopFolder @9

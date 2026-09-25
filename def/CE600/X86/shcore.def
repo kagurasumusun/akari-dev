@@ -1,0 +1,36 @@
+; Public import surface for shcore.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY shcore.dll
+EXPORTS
+  PathCompactPathW
+  PathCompactSlashes
+  PathFileExistsW
+  PathFindExtensionW
+  PathFindFileNameW
+  PathFindRootDevice
+  PathGetArgsW
+  PathGetAssociation
+  PathIsDatabase
+  PathIsDirectoryW
+  PathIsExe
+  PathIsExtension
+  PathIsGUID
+  PathIsLink
+  PathIsRemovableDevice
+  PathIsSameDevice
+  PathIsURLW
+  PathIsValidFileName
+  PathIsValidPath
+  PathMakePrettyW
+  PathMakeUniqueName
+  PathMakeUniqueNameEx
+  PathMatchSpecW
+  PathRemoveArgsW
+  PathRemoveBlanksW
+  PathRemoveExtensionW
+  PathRemoveFileSpecW
+  PathRemoveQuotes
+  PathRemoveQuotesAndArgs
+  PathRemoveTrailingSlashes
+  PathStripPathW

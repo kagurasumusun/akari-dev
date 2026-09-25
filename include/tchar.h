@@ -1,19 +1,11 @@
-/* Akari WinCE Development API Surface
- * Independently authored declarations for linking Windows CE 6.0 programs.
- * This is an API surface only: not an OS, BSP, OAK, SDK component, or
- * Platform Builder redistribution, and not a copy of upstream source.
- * CE calling convention: stdcall is cdecl, and DLL export names are
- * undecorated. TCHAR is a 16-bit WCHAR. Layouts that differ from desktop
- * Win32 (CRITICAL_SECTION, WIN32_FIND_DATAW, BY_HANDLE_FILE_INFORMATION,
- * OVERLAPPED) follow the CE 6.0 ABI.
+/* WinCE development API surface.
+ * Original declarations written from a survey of CE 4.2, 5.0, and 6.0
+ * public interface facts (names, types, layouts, constants, exports).
+ * Not an OS, BSP, OAK, or Platform Builder component, and not a copy
+ * of upstream source.
  */
 
-#ifndef AKARI_TCHAR_H
-#define AKARI_TCHAR_H
+#ifndef WCE_TCHAR_H
+#define WCE_TCHAR_H
 #include "windef.h"
-/* Windows CE is Unicode-only. Generic text names are the wide names. */
-#define TEXT(lit) L##lit
-#define _T(lit) L##lit
-#define __TEXT(lit) L##lit
-#define _TEOF WEOF
 #endif

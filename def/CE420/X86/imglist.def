@@ -1,0 +1,10 @@
+; Public import surface for imglist.dll (CE420, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY imglist.dll
+EXPORTS
+  ImageList_AddMasked
+  ImageList_Create
+  ImageList_Destroy
+  ImageList_Draw
+  ImageList_Remove

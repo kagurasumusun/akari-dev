@@ -1,0 +1,17 @@
+; Public import surface for lfapi.dll (CE600, X86).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY lfapi.dll
+EXPORTS
+  LocationOpen
+  LocationClose
+  LocationRegisterForReport
+  LocationUnRegisterForReport
+  LocationGetReport
+  LocationGetServiceState
+  LocationGetPluginInfoForReport
+  LocationGetProvidersInfo
+  LocationGetResolversInfo
+  LocationPluginOpen
+  LocationPluginClose
+  LocationPluginIOCTL

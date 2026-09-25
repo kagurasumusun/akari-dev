@@ -1,0 +1,23 @@
+; Public import surface for upnpcapi.dll (CE420, ARMV4I).
+; Export names and ordinals recorded from the CE module survey.
+; Non-import-library exports are omitted. This text is original.
+LIBRARY upnpcapi.dll
+EXPORTS
+  UpnpAddDevice
+  UpnpRemoveDevice
+  UpnpPublishDevice
+  UpnpUnpublishDevice
+  UpnpSubmitPropertyEvent
+  UpnpSetRawControlResponse
+  UpnpSetControlResponse
+  UpnpSetErrorResponse
+  UpnpGetSCPDPath
+  UpnpGetUDN
+  RegisterNotification
+  DeregisterNotification
+  FindServicesCallback
+  FindServices
+  GetFirstService
+  GetNextService
+  FindServicesClose
+  CleanupCache
