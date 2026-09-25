@@ -1,7 +1,0 @@
-; Public import surface for netapi32.dll (CE500, ARMV4I).
-; Export names and ordinals recorded from the CE module survey.
-; Non-import-library exports are omitted. This text is original.
-LIBRARY netapi32.dll
-EXPORTS
-  DsGetDcNameW
-  NetApiBufferFree

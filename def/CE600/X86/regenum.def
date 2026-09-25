@@ -1,8 +1,0 @@
-; Public import surface for regenum.dll (CE600, X86).
-; Export names and ordinals recorded from the CE module survey.
-; Non-import-library exports are omitted. This text is original.
-LIBRARY regenum.dll
-EXPORTS
-  Init
-  Deinit
-  Enum

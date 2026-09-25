@@ -1,8 +1,0 @@
-; Public import surface for eapchap.dll (CE500, X86).
-; Export names and ordinals recorded from the CE module survey.
-; Non-import-library exports are omitted. This text is original.
-LIBRARY eapchap.dll
-EXPORTS
-  RasEapGetInfo
-  RasEapInvokeInteractiveUI
-  RasEapFreeMemory

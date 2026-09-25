@@ -1,9 +1,0 @@
-; Public import surface for eapsim.dll (CE600, X86).
-; Export names and ordinals recorded from the CE module survey.
-; Non-import-library exports are omitted. This text is original.
-LIBRARY eapsim.dll
-EXPORTS
-  DllEntry
-  RasEapGetInfo
-  RasEapFreeMemory
-  RasEapGetIdentity
