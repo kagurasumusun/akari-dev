@@ -152,13 +152,13 @@ typedef struct akari_SYSTEM_POWER_STATUS {
 #define FILE_MAP_READ    0x0004
 #define FILE_MAP_ALL_ACCESS 0x000F
 
-#define THREAD_PRIORITY_LOWEST      (-2)
-#define THREAD_PRIORITY_BELOW_NORMAL (-1)
-#define THREAD_PRIORITY_NORMAL      0
-#define THREAD_PRIORITY_ABOVE_NORMAL 1
-#define THREAD_PRIORITY_HIGHEST     2
-#define THREAD_PRIORITY_TIME_CRITICAL 3
-#define THREAD_PRIORITY_IDLE        255
+#define THREAD_PRIORITY_LOWEST 5
+#define THREAD_PRIORITY_BELOW_NORMAL 4
+#define THREAD_PRIORITY_NORMAL 3
+#define THREAD_PRIORITY_ABOVE_NORMAL 2
+#define THREAD_PRIORITY_HIGHEST 1
+#define THREAD_PRIORITY_TIME_CRITICAL 0
+#define THREAD_PRIORITY_IDLE 7
 
 #define DUPLICATE_CLOSE_SOURCE 0x00000001
 #define DUPLICATE_SAME_ACCESS  0x00000002
@@ -262,7 +262,7 @@ WINBASEAPI UINT WINAPI LocalSize(HLOCAL hMem);
  * exports plus trivial pointer conversions.
  */
 #define LocalLock(hMem)      ((LPVOID)(hMem))
-#define LocalUnlock(hMem)    ((BOOL)TRUE)
+#define LocalUnlock(hMem) (0)
 #define GlobalAlloc(uFlags, dwBytes)      LocalAlloc((uFlags), (dwBytes))
 #define GlobalReAlloc(hMem, dwBytes, uFlags) LocalReAlloc((hMem), (dwBytes), (uFlags))
 #define GlobalFree(hMem)     LocalFree(hMem)

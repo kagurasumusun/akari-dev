@@ -22,7 +22,7 @@ extern "C" {
 #define KEY_NOTIFY             0x0010
 #define KEY_ALL_ACCESS         0xF003F
 #define KEY_READ               0x20019
-#define KEY_WRITE              0x20006
+#define KEY_WRITE ((STANDARD_RIGHTS_WRITE | KEY_SET_VALUE | KEY_CREATE_SUB_KEY) & (~SYNCHRONIZE))
 
 #define REG_OPTION_NON_VOLATILE   0x00000000
 #define REG_OPTION_VOLATILE       0x00000001
