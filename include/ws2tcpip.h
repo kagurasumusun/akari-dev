@@ -115,13 +115,23 @@ typedef struct _INTERFACE_INFO INTERFACE_INFO, FAR *LPINTERFACE_INFO;
 #define IFF_POINTTOPOINT  0x00000008
 #define IFF_MULTICAST     0x00000010
 
-#define IP_UNICAST_IF      0x28
-#define IP_RECVIF          0x29
-#define IP_ADD_MEMBERSHIP  0x20
-#define IP_DROP_MEMBERSHIP 0x21
-#define IP_MULTICAST_IF    0x24
-#define IP_MULTICAST_TTL   0x25
-#define IP_MULTICAST_LOOP  0x26
+/* Socket option numbers, from the CE branch of the conditional at
+ * ws2tcpip.h:83.  The reference has two sets: one under #ifndef UNDER_CE with
+ * the familiar BSD numbering, and one in the #else arm with CE's own.  UNDER_CE
+ * is defined on CE, so the #else arm is the one that applies -- IP_MULTICAST_IF
+ * is 2 there, not 9, and not the 0x24 a desktop header would give.  These were
+ * originally written from desktop values and were all wrong.
+ *
+ * IP_OPTIONS is outside the conditional, so it is 1 on both. */
+#define IP_OPTIONS         1
+#define IP_MULTICAST_IF    2
+#define IP_MULTICAST_TTL   3
+#define IP_MULTICAST_LOOP  4
+#define IP_ADD_MEMBERSHIP  5
+#define IP_DROP_MEMBERSHIP 6
+#define IP_TTL             7
+#define IP_TOS             8
+#define IP_HDRINCL         9
 
 /* ------------------------------------------------------- prototypes */
 
