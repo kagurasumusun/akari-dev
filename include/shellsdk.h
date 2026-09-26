@@ -45,7 +45,13 @@ extern "C" {
 #define SHRG_LONGDELAY         0x0008
 #define SHRG_NOANIMATION       0x0010
 
-#define SIP_UP                 0x00000001
+typedef enum akari_SIPSTATE {
+    SIP_UP = 0,
+    SIP_DOWN,
+    SIP_FORCEDOWN,
+    SIP_UNCHANGED,
+    SIP_INPUTDIALOG
+} SIPSTATE;
 #define SIPF_ON                0x00000001
 #define SIPF_OFF               0x00000000
 #define SIPF_DOCKED 0x00000002
@@ -87,6 +93,7 @@ extern "C" {
 typedef struct akari_SHINITDLGINFO {
     DWORD dwMask;
     HWND hDlg;
+    DWORD dwFlags;
 } SHINITDLGINFO, *PSHINITDLGINFO;
 
 typedef struct akari_SHMENUBARINFO {
@@ -98,18 +105,18 @@ typedef struct akari_SHMENUBARINFO {
     int nBmpId;
     int cBmpImages;
     HWND hwndMB;
+    COLORREF clrBk;
 } SHMENUBARINFO, *PSHMENUBARINFO;
 
 typedef struct akari_SHRGINFO {
     DWORD cbSize;
-    HWND hwndParent;
-    UINT nMenuId;
-    HMENU hmenu;
-    POINT pt;
+    HWND hwndClient;
+    POINT ptDown;
     DWORD dwFlags;
 } SHRGINFO, *PSHRGINFO;
 
 typedef struct akari_SIPINFO {
+    DWORD cbSize;
     DWORD fdwFlags;
     RECT rcVisibleDesktop;
     RECT rcSipRect;
@@ -120,15 +127,34 @@ typedef struct akari_SIPINFO {
 typedef struct akari_SHACTIVATEINFO {
     DWORD cbSize;
     HWND hwndLastFocus;
-    BOOL fSipUp;
-    BOOL fSipOnSpecialHover;
-    BOOL fReserved1;
-    BOOL fReserved2;
+    UINT fSipUp :1;
+    UINT fSipOnDeactivation :1;
+    UINT fActive :1;
+    UINT fReserved :29;
 } SHACTIVATEINFO, *PSHACTIVATEINFO;
 
+typedef struct akari_FILECHANGEINFO {
+    DWORD    cbSize;
+    LONG     wEventId;
+    ULONG    uFlags;
+    DWORD    dwItem1;
+    DWORD    dwItem2;
+    DWORD    dwAttributes;
+    FILETIME ftModified;
+    ULONG    nFileSize;
+} FILECHANGEINFO, *LPFILECHANGEINFO;
+
+typedef FILECHANGEINFO const *LPCFILECHANGEINFO;
+
+typedef struct akari_FILECHANGENOTIFY {
+    DWORD          dwRefCount;
+    FILECHANGEINFO fci;
+} FILECHANGENOTIFY;
+
 typedef struct akari_SHCHANGENOTIFYENTRY {
-    void *pvData;
-    void *pvData2;
+    DWORD  dwEventMask;
+    LPWSTR pszWatchDir;
+    BOOL   fRecursive;
 } SHCHANGENOTIFYENTRY, *PSHCHANGENOTIFYENTRY;
 
 SHELLAPI BOOL WINAPI SHInitDialog(PSHINITDLGINFO pshidi);
@@ -136,20 +162,19 @@ SHELLAPI BOOL WINAPI SHCreateMenuBar(PSHMENUBARINFO pmbi);
 SHELLAPI HWND WINAPI SHFindMenuBar(HWND hwnd);
 SHELLAPI BOOL WINAPI SHFullScreen(HWND hwndRequester, DWORD dwState);
 SHELLAPI BOOL WINAPI SHDoneButton(HWND hwndRequester, DWORD dwState);
-SHELLAPI BOOL WINAPI SHSipInfo(PSIPINFO pSipInfo);
-SHELLAPI BOOL WINAPI SHSipPreference(HWND hWnd, WORD wType);
+SHELLAPI BOOL WINAPI SHSipInfo(UINT uiAction, UINT uiParam, PVOID pvParam, UINT fWinIni);
+SHELLAPI BOOL WINAPI SHSipPreference(HWND hwnd, SIPSTATE st);
 SHELLAPI BOOL WINAPI SHSetNavBarText(HWND hWnd, LPCWSTR lpszNewText);
-SHELLAPI BOOL WINAPI SHRecognizeGesture(PSHRGINFO prgi);
-SHELLAPI BOOL WINAPI SHInputDialog(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-SHELLAPI BOOL WINAPI SHInitExtraControls(HWND hDlg);
-SHELLAPI void WINAPI SHSetAppKeyWndAssoc(DWORD dwKey, HWND hWnd);
-SHELLAPI HWND WINAPI SHGetAppKeyAssoc(DWORD dwKey);
+SHELLAPI DWORD WINAPI SHRecognizeGesture(PSHRGINFO shrg);
+SHELLAPI void WINAPI SHInputDialog(HWND hwnd, UINT uMsg, WPARAM wParam);
+SHELLAPI BOOL WINAPI SHInitExtraControls(VOID);
+SHELLAPI BOOL WINAPI SHSetAppKeyWndAssoc(BYTE bVk, HWND hwnd);
+SHELLAPI BYTE WINAPI SHGetAppKeyAssoc(LPCWSTR ptszApp);
 SHELLAPI BOOL WINAPI SHGetAutoRunPath(LPWSTR pwzPath);
-SHELLAPI void *WINAPI SHCreateNewItem(HWND hwndOwner, const void *pclsid);
-SHELLAPI ULONG WINAPI SHChangeNotifyRegister(HWND hWnd, LONG lEvents,
-    LONG lSources, UINT uID, int cEntries, const SHCHANGENOTIFYENTRY *rgshcne);
-SHELLAPI BOOL WINAPI SHChangeNotifyDeregister(ULONG ulID);
-SHELLAPI void WINAPI SHChangeNotifyFree(ULONG ulID);
+SHELLAPI HRESULT WINAPI SHCreateNewItem(HWND hwndOwner, const CLSID *const clsid);
+SHELLAPI BOOL WINAPI SHChangeNotifyRegister(HWND hwnd, SHCHANGENOTIFYENTRY *pshcne);
+SHELLAPI BOOL WINAPI SHChangeNotifyDeregister(HWND hwnd);
+SHELLAPI void WINAPI SHChangeNotifyFree(FILECHANGENOTIFY *pfcn);
 SHELLAPI BOOL WINAPI SHGetInputContext(HWND hWnd, void *pImInfo);
 SHELLAPI BOOL WINAPI SHSetInputContext(HWND hWnd, const void *pImInfo);
 
