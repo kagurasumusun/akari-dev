@@ -166,11 +166,50 @@ typedef struct akari_SYSTEM_POWER_STATUS {
 
 #define DEBUG_PROCESS 0x00000001
 
-#define GPTR 0x0040
-#define GHND 0x0042
-#define LMEM_FIXED 0x0000
-#define LMEM_MOVEABLE 0x0002
-#define LMEM_ZEROINIT 0x0040
+/* Local and global heap flags.  CE defines the full 16-bit set at
+ * winbase.h:709 and aliases every GMEM_* name onto its LMEM_* equivalent at
+ * winbase.h:735, because on CE GlobalAlloc is LocalAlloc.  The kit previously
+ * carried only three LMEM_* flags and no GMEM_* names at all, so ordinary code
+ * such as GlobalAlloc(GMEM_MOVEABLE, n) would not compile.
+ */
+#define LMEM_FIXED          0x0000
+#define LMEM_MOVEABLE       0x0002
+#define LMEM_NOCOMPACT      0x0010      /* used for moveable memory */
+#define LMEM_NODISCARD      0x0020      /* ignored */
+#define LMEM_ZEROINIT       0x0040
+#define LMEM_MODIFY         0x0080      /* used only in LocalReAlloc() */
+#define LMEM_DISCARDABLE    0x0F00      /* ignored */
+#define LMEM_VALID_FLAGS    0x0F72
+#define LMEM_INVALID_HANDLE 0x8000
+#define LMEM_DDESHARE       0x0000      /* ignored */
+#define LMEM_LOWER          0x0000      /* ignored */
+#define LMEM_NOT_BANKED     0x0000      /* ignored */
+#define LMEM_NOTIFY         0x0000      /* ignored */
+#define LMEM_SHARE          0x0000      /* ignored */
+
+#define LHND                (LMEM_MOVEABLE | LMEM_ZEROINIT)
+#define LPTR                (LMEM_FIXED | LMEM_ZEROINIT)
+#define NONZEROLHND         (LMEM_MOVEABLE)
+#define NONZEROLPTR         (LMEM_FIXED)
+
+#define LMEM_DISCARDED      0x4000
+#define LMEM_LOCKCOUNT      0x00FF
+
+#define GMEM_FIXED          LMEM_FIXED
+#define GMEM_MOVEABLE       LMEM_MOVEABLE
+#define GPTR                LPTR
+#define GHND                LHND
+#define GMEM_DDESHARE       LMEM_DDESHARE
+#define GMEM_DISCARDABLE    LMEM_DISCARDABLE
+#define GMEM_LOWER          LMEM_LOWER
+#define GMEM_NOCOMPACT      LMEM_NOCOMPACT
+#define GMEM_NODISCARD      LMEM_NODISCARD
+#define GMEM_NOT_BANKED     LMEM_NOT_BANKED
+#define GMEM_NOTIFY         LMEM_NOTIFY
+#define GMEM_SHARE          LMEM_SHARE
+#define GMEM_ZEROINIT       LMEM_ZEROINIT
+#define GMEM_VALID_FLAGS    LMEM_VALID_FLAGS
+#define GMEM_INVALID_HANDLE LMEM_INVALID_HANDLE
 #define LPTR (LMEM_FIXED | LMEM_ZEROINIT)
 
 /* Files. */

@@ -126,28 +126,28 @@ WINOLEAPI CreateClassMoniker(REFCLSID rclsid, LPMONIKER * ppmk);
 WINOLEAPI CreateFileMoniker(LPCOLESTR lpszPathName, LPMONIKER * ppmk);
 WINOLEAPI CreateGenericComposite(LPMONIKER pmkFirst, LPMONIKER pmkRest, LPMONIKER * ppmkComposite);
 WINOLEAPI CreateItemMoniker(LPCOLESTR lpszDelim, LPCOLESTR lpszItem, LPMONIKER * ppmk);
-WINOLEAPI CreateOleAdviseHolder(LPOLEADVISEHOLDER * ppOAHolder);
+
 WINOLEAPI CreatePointerMoniker(LPUNKNOWN punk, LPMONIKER * ppmk);
-WINOLEAPI CreateStreamOnHGlobal(HGLOBAL hGlobal, BOOL fDeleteOnRelease, LPSTREAM * ppstm);
+
 WINOLEAPI GetClassFile(LPCOLESTR szFilename, CLSID * pclsid);
-WINOLEAPI GetHGlobalFromStream(LPSTREAM pstm, HGLOBAL * phglobal);
+
 WINOLEAPI GetRunningObjectTable(DWORD reserved, LPRUNNINGOBJECTTABLE * pprot);
 WINOLEAPI IIDFromString(LPOLESTR lpsz, LPIID lpiid);
 WINOLEAPI MkParseDisplayName(LPBC pbc, LPCOLESTR szUserName, ULONG * pchEaten, LPMONIKER * ppmk);
 WINOLEAPI MonikerCommonPrefixWith(LPMONIKER pmkThis, LPMONIKER pmkOther, LPMONIKER * ppmkCommon);
 WINOLEAPI MonikerRelativePathTo(LPMONIKER pmkSrc, LPMONIKER pmkDest, LPMONIKER * ppmkRelPath, BOOL dwReserved);
-WINOLEAPI OleCreate(REFCLSID rclsid, REFIID riid, DWORD renderopt, LPFORMATETC pFormatEtc, LPOLECLIENTSITE pClientSite, LPSTORAGE pStg, LPVOID * ppvObj);
-WINOLEAPI OleDraw(LPUNKNOWN pUnknown, DWORD dwAspect, HDC hdcDraw, LPCRECT lprcBounds);
+
+
 WINOLEAPI_(BOOL) OleIsRunning(LPOLEOBJECT pObject);
-WINOLEAPI OleLoadFromStream(LPSTREAM pStm, REFIID iidInterface, LPVOID * ppvObj);
-WINOLEAPI OleRun(LPUNKNOWN pUnknown);
-WINOLEAPI OleSave(LPPERSISTSTORAGE pPS, LPSTORAGE pStg, BOOL fSameAsLoad);
-WINOLEAPI OleSaveToStream(LPPERSISTSTREAM pPStm, LPSTREAM pStm);
-WINOLEAPI OleSetContainedObject(LPUNKNOWN pUnknown, BOOL fContained);
-WINOLEAPI OleSetMenuDescriptor(HOLEMENU holemenu, HWND hwndFrame, HWND hwndActiveObject, LPOLEINPLACEFRAME lpFrame, LPOLEINPLACEACTIVEOBJECT lpActiveObj);
+
+
+
+
+
+
 WINOLEAPI ProgIDFromCLSID(REFCLSID clsid, LPOLESTR * lplpszProgID);
-WINOLEAPI ReadClassStg(LPSTORAGE pStg, CLSID * pclsid);
-WINOLEAPI ReadClassStm(LPSTREAM pStm, CLSID * pclsid);
+
+
 WINOLEAPI_(void) ReleaseStgMedium(LPSTGMEDIUM);
 WINOLEAPI StgCreateDocfile(const OLECHAR * pwcsName, DWORD grfMode, DWORD reserved, IStorage * *ppstgOpen);
 WINOLEAPI StgCreateDocfileOnILockBytes(ILockBytes *plkbyt, DWORD grfMode, DWORD reserved, IStorage * *ppstgOpen);
@@ -157,8 +157,7 @@ WINOLEAPI StringFromCLSID(REFCLSID rclsid, LPOLESTR * lplpsz);
 WINOLEAPI_(int) StringFromGUID2(REFGUID rguid, LPOLESTR lpsz, int cbMax);
 WINOLEAPI StringFromIID(REFIID rclsid, LPOLESTR * lplpsz);
 WINOLEAPI_(void) UpdateDCOMSettings(void);
-WINOLEAPI WriteClassStg(LPSTORAGE pStg, REFCLSID rclsid);
-WINOLEAPI WriteClassStm(LPSTREAM pStm, REFCLSID rclsid);
+
 
 #ifdef __cplusplus
 }
