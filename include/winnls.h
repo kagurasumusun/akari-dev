@@ -105,10 +105,15 @@ WINBASEAPI LANGID WINAPI GetUserDefaultLangID(VOID);
 WINBASEAPI UINT WINAPI GetACP(VOID);
 WINBASEAPI UINT WINAPI GetOEMCP(VOID);
 #define MAX_LEADBYTES 12
+/* Two, not twelve.  CE defines MAX_DEFAULTCHAR separately at winnls.h:52 --
+ * "single or double byte" -- and _cpinfo sizes DefaultChar with it, not with
+ * MAX_LEADBYTES.  Using MAX_LEADBYTES for both made CPINFO ten bytes too large
+ * and pushed LeadByte to the wrong offset. */
+#define MAX_DEFAULTCHAR 2
 
 typedef struct akari_CPINFO {
     UINT MaxCharSize;
-    BYTE DefaultChar[MAX_LEADBYTES];
+    BYTE DefaultChar[MAX_DEFAULTCHAR];
     BYTE LeadByte[MAX_LEADBYTES];
 } CPINFO, *LPCPINFO;
 
