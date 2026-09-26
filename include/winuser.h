@@ -52,7 +52,6 @@ extern "C" {
 #define WM_VSCROLL          0x0115
 #define WM_INITMENU         0x0116
 #define WM_MENUSELECT       0x011F
-#define WM_GESTURE          0x0119
 #define WM_MOUSEMOVE        0x0200
 #define WM_LBUTTONDOWN      0x0201
 #define WM_LBUTTONUP        0x0202
