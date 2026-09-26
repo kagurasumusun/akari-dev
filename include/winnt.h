@@ -45,6 +45,13 @@ typedef struct akari_SECURITY_ATTRIBUTES {
 
 typedef struct akari_LUID { DWORD LowPart; LONG HighPart; } LUID, *PLUID;
 
+/* Locale and language identifiers.  Every automation and national-language
+   entry point takes an LCID. */
+typedef DWORD  LCID;
+typedef PDWORD PLCID;
+typedef WORD   LANGID;
+typedef WORD  *PLANGID;
+
 typedef struct akari_FILETIME { DWORD dwLowDateTime; DWORD dwHighDateTime; }
     FILETIME, *PFILETIME, *LPFILETIME;
 

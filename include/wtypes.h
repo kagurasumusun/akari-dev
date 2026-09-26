@@ -197,6 +197,12 @@ typedef OLECHAR **SNB;
 /* Security descriptor, used by the DCOM entry points. */
 typedef void *PSECURITY_DESCRIPTOR;
 
+/* BLOB, as used by the property system and by PROPVARIANT. */
+typedef struct akari_tagBLOB {
+    ULONG cbSize;
+    BYTE *pBlobData;
+} BLOB, *LPBLOB;
+
 #ifdef __cplusplus
 }
 #endif
