@@ -112,11 +112,14 @@ typedef struct akari_FILETIME { DWORD dwLowDateTime; DWORD dwHighDateTime; }
 #define STANDARD_RIGHTS_REQUIRED 0x000F0000
 #define SECTION_QUERY        0x0001
 #define SECTION_MAP_WRITE    0x0002
+#define SECTION_EXTEND_SIZE  0x0010
 #define SECTION_MAP_READ     0x0004
 #define SECTION_MAP_EXECUTE  0x0008
 #define SECTION_ALL_ACCESS   (STANDARD_RIGHTS_REQUIRED | SECTION_QUERY | \
-                              SECTION_MAP_READ | SECTION_MAP_WRITE | \
-                              SECTION_MAP_EXECUTE)
+                              SECTION_MAP_WRITE | \
+                              SECTION_MAP_READ | \
+                              SECTION_MAP_EXECUTE | \
+                              SECTION_EXTEND_SIZE)
 
 #define STANDARD_RIGHTS_READ (READ_CONTROL)
 #define STANDARD_RIGHTS_WRITE (READ_CONTROL)
