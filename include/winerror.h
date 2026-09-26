@@ -1454,6 +1454,94 @@ typedef LONG HRESULT;
 #define ERROR_SUCCESS_REBOOT_REQUIRED                             3010L
 #define ERROR_SUCCESS_RESTART_REQUIRED                            3011L
 #define ERROR_SWAPERROR                                           999L
+/* The ERROR_SXS_* codes are renumbered between CE releases: CE 4.0 puts them at
+ * 12000L and up, CE 5.0 and CE 6.0 at 14000L and up, with the same offsets.  The
+ * values below for CE 4.2 are taken individually from the CE 4.0 winerror.h,
+ * not derived by arithmetic, so a code CE 4.0 does not have keeps its later
+ * value rather than being invented. */
+#if (_WIN32_WCE < 0x500)
+#define ERROR_SXS_ACTIVATION_CONTEXT_DISABLED                    12006L
+#define ERROR_SXS_ASSEMBLY_NOT_FOUND                             12003L
+#define ERROR_SXS_CANT_GEN_ACTCTX                                12001L
+#define ERROR_SXS_DUPLICATE_ASSEMBLY_NAME                        12027L
+#define ERROR_SXS_DUPLICATE_CLSID                                12023L
+#define ERROR_SXS_DUPLICATE_DLL_NAME                             12021L
+#define ERROR_SXS_DUPLICATE_IID                                  12024L
+#define ERROR_SXS_DUPLICATE_PROGID                               12026L
+#define ERROR_SXS_DUPLICATE_TLBID                                12025L
+#define ERROR_SXS_DUPLICATE_WINDOWCLASS_NAME                     12022L
+#define ERROR_SXS_FILE_HASH_MISMATCH                             12028L
+#define ERROR_SXS_INVALID_ACTCTXDATA_FORMAT                      12002L
+#define ERROR_SXS_INVALID_ASSEMBLY_IDENTITY_ATTRIBUTE            12017L
+#define ERROR_SXS_INVALID_ASSEMBLY_IDENTITY_ATTRIBUTE_NAME       12080L
+#define ERROR_SXS_INVALID_XML_NAMESPACE_URI                      12014L
+#define ERROR_SXS_KEY_NOT_FOUND                                  12007L
+#define ERROR_SXS_LEAF_MANIFEST_DEPENDENCY_NOT_INSTALLED         12016L
+#define ERROR_SXS_MANIFEST_FORMAT_ERROR                          12004L
+#define ERROR_SXS_MANIFEST_INVALID_REQUIRED_DEFAULT_NAMESPACE    12019L
+#define ERROR_SXS_MANIFEST_MISSING_REQUIRED_DEFAULT_NAMESPACE    12018L
+#define ERROR_SXS_MANIFEST_PARSE_ERROR                           12005L
+#define ERROR_SXS_MISSING_ASSEMBLY_IDENTITY_ATTRIBUTE            12079L
+#define ERROR_SXS_POLICY_PARSE_ERROR                             12029L
+#define ERROR_SXS_PRIVATE_MANIFEST_CROSS_PATH_WITH_REPARSE_POINT 12020L
+#define ERROR_SXS_PROCESS_DEFAULT_ALREADY_SET                    12011L
+#define ERROR_SXS_PROTECTION_CATALOG_FILE_MISSING                12078L
+#define ERROR_SXS_PROTECTION_CATALOG_NOT_VALID                   12076L
+#define ERROR_SXS_PROTECTION_PUBLIC_KEY_TOO_SHORT                12075L
+#define ERROR_SXS_PROTECTION_RECOVERY_FAILED                     12074L
+#define ERROR_SXS_ROOT_MANIFEST_DEPENDENCY_NOT_INSTALLED         12015L
+#define ERROR_SXS_SECTION_NOT_FOUND                              12000L
+#define ERROR_SXS_THREAD_QUERIES_DISABLED                        12010L
+#define ERROR_SXS_UNKNOWN_ENCODING                               12013L
+#define ERROR_SXS_UNKNOWN_ENCODING_GROUP                         12012L
+#define ERROR_SXS_UNTRANSLATABLE_HRESULT                         12077L
+#define ERROR_SXS_VERSION_CONFLICT                               12008L
+#define ERROR_SXS_WRONG_SECTION_TYPE                             12009L
+#define ERROR_SXS_XML_E_BADCHARDATA                              12036L
+#define ERROR_SXS_XML_E_BADCHARINSTRING                          12034L
+#define ERROR_SXS_XML_E_BADNAMECHAR                              12033L
+#define ERROR_SXS_XML_E_BADPEREFINSUBSET                         12059L
+#define ERROR_SXS_XML_E_BADSTARTNAMECHAR                         12032L
+#define ERROR_SXS_XML_E_BADXMLCASE                               12069L
+#define ERROR_SXS_XML_E_BADXMLDECL                               12056L
+#define ERROR_SXS_XML_E_COMMENTSYNTAX                            12031L
+#define ERROR_SXS_XML_E_DUPLICATEATTRIBUTE                       12053L
+#define ERROR_SXS_XML_E_EXPECTINGCLOSEQUOTE                      12045L
+#define ERROR_SXS_XML_E_EXPECTINGTAGEND                          12038L
+#define ERROR_SXS_XML_E_INCOMPLETE_ENCODING                      12043L
+#define ERROR_SXS_XML_E_INTERNALERROR                            12041L
+#define ERROR_SXS_XML_E_INVALIDATROOTLEVEL                       12055L
+#define ERROR_SXS_XML_E_INVALIDENCODING                          12067L
+#define ERROR_SXS_XML_E_INVALIDSWITCH                            12068L
+#define ERROR_SXS_XML_E_INVALID_DECIMAL                          12047L
+#define ERROR_SXS_XML_E_INVALID_HEXIDECIMAL                      12048L
+#define ERROR_SXS_XML_E_INVALID_STANDALONE                       12070L
+#define ERROR_SXS_XML_E_INVALID_UNICODE                          12049L
+#define ERROR_SXS_XML_E_INVALID_VERSION                          12072L
+#define ERROR_SXS_XML_E_MISSINGEQUALS                            12073L
+#define ERROR_SXS_XML_E_MISSINGQUOTE                             12030L
+#define ERROR_SXS_XML_E_MISSINGROOT                              12057L
+#define ERROR_SXS_XML_E_MISSINGSEMICOLON                         12039L
+#define ERROR_SXS_XML_E_MISSINGWHITESPACE                        12037L
+#define ERROR_SXS_XML_E_MISSING_PAREN                            12044L
+#define ERROR_SXS_XML_E_MULTIPLEROOTS                            12054L
+#define ERROR_SXS_XML_E_MULTIPLE_COLONS                          12046L
+#define ERROR_SXS_XML_E_RESERVEDNAMESPACE                        12066L
+#define ERROR_SXS_XML_E_UNBALANCEDPAREN                          12040L
+#define ERROR_SXS_XML_E_UNCLOSEDCDATA                            12065L
+#define ERROR_SXS_XML_E_UNCLOSEDCOMMENT                          12063L
+#define ERROR_SXS_XML_E_UNCLOSEDDECL                             12064L
+#define ERROR_SXS_XML_E_UNCLOSEDENDTAG                           12061L
+#define ERROR_SXS_XML_E_UNCLOSEDSTARTTAG                         12060L
+#define ERROR_SXS_XML_E_UNCLOSEDSTRING                           12062L
+#define ERROR_SXS_XML_E_UNCLOSEDTAG                              12052L
+#define ERROR_SXS_XML_E_UNEXPECTEDENDTAG                         12051L
+#define ERROR_SXS_XML_E_UNEXPECTEDEOF                            12058L
+#define ERROR_SXS_XML_E_UNEXPECTED_STANDALONE                    12071L
+#define ERROR_SXS_XML_E_UNEXPECTED_WHITESPACE                    12042L
+#define ERROR_SXS_XML_E_WHITESPACEORQUESTIONMARK                 12050L
+#define ERROR_SXS_XML_E_XMLDECLSYNTAX                            12035L
+#else
 #define ERROR_SXS_ACTIVATION_CONTEXT_DISABLED                     14006L
 #define ERROR_SXS_ASSEMBLY_NOT_FOUND                              14003L
 #define ERROR_SXS_CANT_GEN_ACTCTX                                 14001L
@@ -1535,6 +1623,7 @@ typedef LONG HRESULT;
 #define ERROR_SXS_XML_E_UNEXPECTED_WHITESPACE                     14042L
 #define ERROR_SXS_XML_E_WHITESPACEORQUESTIONMARK                  14050L
 #define ERROR_SXS_XML_E_XMLDECLSYNTAX                             14035L
+#endif /* _WIN32_WCE < 0x500 */
 #define ERROR_SYNC_FOREGROUND_REFRESH_REQUIRED                    1274L
 #define ERROR_SYSTEM_TRACE                                        150L
 #define ERROR_TAG_NOT_FOUND                                       2012L

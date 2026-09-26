@@ -120,11 +120,23 @@ struct wsacrypt { DWORD dwVersion; DWORD dwProviderId; };
 #define AF_INET     2
 #define AF_IMPLINK  3
 #define AF_APPLETALK 16
-#define AF_IRDA     22
 #define AF_INET6    23
 #define AF_12844    25
+/* AF_IRDA and AF_ATM are swapped on CE 5.0 alone, and that is not a matter of
+ * reading the header carefully -- the three releases genuinely differ.
+ *
+ * CE 4.2 and CE 6.0 both wrap the pair in #ifdef UNDER_CE, with AF_IRDA 22 and
+ * AF_ATM 26 in the CE arm (winsock2.h:536 and :544).  CE 5.0 has no conditional
+ * at all: a single flat list that gives AF_ATM 22 and AF_IRDA 26.  So the CE 5.0
+ * target really does use the opposite numbers, and one value cannot serve all
+ * three. */
+#if (_WIN32_WCE >= 0x500) && (_WIN32_WCE < 0x600)
+#define AF_ATM      22
+#define AF_IRDA     26
+#else
+#define AF_IRDA     22
 #define AF_ATM      26
-#define AF_INET6    23
+#endif
 
 #define PF_INET     AF_INET
 #define PF_INET6    AF_INET6
