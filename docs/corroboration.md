@@ -956,8 +956,16 @@ class of defect the per-header matrix structurally cannot.
 
 ### What the 475 remaining differences are
 
-After the fixes there are **zero** numeric value differences and **zero**
-prototype differences across the whole CE6 set.  The remainder is struct-layout
+After the fixes there are **zero** numeric value differences across the whole
+CE6 set.
+
+> **Correction.** This section originally also claimed zero *prototype*
+> differences.  That was wrong, and it was wrong because of how it was checked:
+> the count came from grepping for a `proto` keyword, which is not the keyword
+> verify3 uses.  The real categories are `params` and `ret`, and there were 350
+> of the former and 16 of the latter.  Counting parameters per function instead
+> of trusting the keyword found three genuine bugs -- see below -- and cleared
+> the rest.  The remainder is struct-layout
 rendering -- `verify3` expanding a kit typedef into an inline struct where the
 reference names it -- the kit's own import-macro spelling against
 `DECLSPEC_IMPORT`, and at least one outright false positive (`WS_OVERLAPPED`
@@ -965,3 +973,47 @@ renders identically on both sides and is still listed, because the differ cannot
 compare a macro whose value is an expression).  The number is not a measure of
 remaining error; the useful signals in it were the numeric ones, and those are
 now all zero.
+
+### Correcting a false claim, and the three truncated prototypes it hid
+
+An earlier section of this record stated that there were **zero prototype
+differences** left in the CE6 set.  That was false.  The number came from
+grepping verify3's output for a `proto` keyword, which is not the keyword
+verify3 uses -- the real categories are `params` and `ret`, and there were 350
+and 16 of them.  The claim was not measured, it was an artifact of the wrong
+grep, and it was published anyway.
+
+Counting parameters per function, rather than trusting a keyword, found three
+real bugs.  `CoCreateInstanceEx`, `CoGetInstanceFromFile` and
+`CoGetInstanceFromIStorage` were declared in `objbase.h` with only their first
+two or three parameters:
+
+    CoCreateInstanceEx(REFCLSID Clsid, IUnknown * punkOuter);
+
+CE declares six, eight and seven.  The kit was missing `dwClsCtx`,
+`pServerInfo`, `dwCount` and `pResults` from the first; `grfMode`, `pwszName`,
+`dwCount` and `pResults` from the second; and `pstg`, `dwCount` and `pResults`
+from the third.  A caller could not have compiled a correct call to any of them.
+All three are now declared as the reference declares them.
+
+The same check cleared the other sixteen functions that report a differing
+parameter count.  They are the differ expanding `CY` or `PROPVARIANT` into an
+inline struct whose commas it then counts as separators.  `PropVariantCopy`,
+`VarBoolFromCy`, `VarDateFromCy` and `VarR8FromCy` were each checked against the
+reference source and match it exactly, two parameters apiece.
+
+**What the corrected position is.** 350 `params` and 16 `ret` lines are reported.
+Of the 350, 168 are equivalent once inline-struct renderings and the
+`LONG`/`INT`/`UINT` spellings are normalised, 8 are outright parser garbage from
+COM vtbl macros, and the rest are dominated by the kit spelling an interface
+pointer as its vtbl struct where the reference writes `IUnknown *` -- the same
+pointer, differently named.  Three were real and are fixed.  There are now zero
+numeric value differences and, as far as a parameter count can establish, no
+remaining truncated prototypes.
+
+The lesson is the same one this record already carries twice: **a count taken
+from a keyword is not a measurement.**  `grep -c '@'` was once used to count
+exports and reported 133 empty `.def` files where the true number was zero.  A
+grep for `proto` reported zero prototype differences where there were 350 lines
+and three bugs.  Both times the check was cheap to do properly and expensive to
+do wrongly.
