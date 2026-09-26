@@ -1,0 +1,104 @@
+; Module definition for shlwapi.dll - Windows CE 5.0, MIPSIV target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 5.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY shlwapi.dll
+
+EXPORTS
+    IStream_Read @184
+    IStream_Write @212
+    PathAddBackslashW
+    PathCanonicalizeW
+    PathCombineW
+    PathCommonPrefixW
+    PathCreateFromUrlA
+    PathCreateFromUrlW
+    PathFileExistsA
+    PathFileExistsW
+    PathFindExtensionA
+    PathFindExtensionW
+    PathFindFileNameW
+    PathGetArgsW
+    PathIsUNCServerA
+    PathIsUNCW
+    PathIsURLW
+    PathQuoteSpacesW
+    PathRemoveArgsW
+    PathRemoveBackslashA
+    PathRemoveBackslashW
+    PathRemoveExtensionW
+    PathRemoveFileSpecA
+    PathRemoveFileSpecW
+    PathRenameExtensionW
+    PathUndecorateW
+    PathUnquoteSpacesW
+    RegCreateKeyExA
+    RegDeleteKeyA
+    RegDeleteValueA
+    RegEnumKeyExA
+    RegEnumValueA
+    RegOpenKeyExA
+    RegQueryValueExA
+    RegSetValueExA
+    SHDeleteValueW
+    SHGetValueA
+    SHGetValueW
+    SHQueryValueExA
+    SHQueryValueExW
+    SHRegGetUSValueW
+    SHRegOpenUSKeyW
+    SHSetValueA
+    SHSetValueW
+    SHSkipJunction
+    SHStrDupW
+    StrCatBuffA
+    StrCatBuffW
+    StrCatW
+    StrChrA
+    StrChrIW
+    StrChrW
+    StrCmpIW
+    StrCmpNA
+    StrCmpNIA
+    StrCmpNIW
+    StrCmpNW
+    StrCmpW
+    StrCpyNW
+    StrCpyW
+    StrDupA
+    StrDupW
+    StrFormatByteSizeW
+    StrFromTimeIntervalW
+    StrNCatA
+    StrPBrkW
+    StrRChrA
+    StrRChrW
+    StrRetToBufW
+    StrStrA
+    StrStrIA
+    StrStrIW
+    StrStrW
+    StrToIntA
+    StrToIntW
+    StrTrimW
+    UrlApplySchemeW
+    UrlCanonicalizeA
+    UrlCanonicalizeW
+    UrlCombineA
+    UrlCombineW
+    UrlCompareW
+    UrlCreateFromPathW
+    UrlEscapeW
+    UrlGetLocationA
+    UrlGetLocationW
+    UrlGetPartW
+    UrlIsNoHistoryW
+    UrlIsOpaqueW
+    UrlIsW
+    UrlUnescapeA
+    UrlUnescapeW
+    wnsprintfA
+    wnsprintfW
+    wvnsprintfA

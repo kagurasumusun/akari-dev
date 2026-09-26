@@ -1,0 +1,46 @@
+; Module definition for btdrt.dll - Windows CE .NET 4.2, ARMV4T target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE .NET 4.2 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY btdrt.dll
+
+EXPORTS
+    BthAuthenticate
+    BthEnterHoldMode
+    BthEnterParkMode
+    BthEnterSniffMode
+    BthExitParkMode
+    BthExitSniffMode
+    BthGetBasebandHandles
+    BthGetCurrentMode
+    BthGetLinkKey
+    BthGetPINRequest
+    BthNsLookupServiceBegin
+    BthNsLookupServiceEnd
+    BthNsLookupServiceNext
+    BthNsSetService
+    BthPerformInquiry
+    BthReadAuthenticationEnable
+    BthReadCOD
+    BthReadLinkPolicySettings
+    BthReadLocalAddr
+    BthReadLocalVersion
+    BthReadPageTimeout
+    BthReadRemoteVersion
+    BthReadScanEnableMask
+    BthRefusePINRequest
+    BthRemoteNameQuery
+    BthRevokeLinkKey
+    BthRevokePIN
+    BthSetEncryption
+    BthSetLinkKey
+    BthSetPIN
+    BthSetSecurityUI
+    BthWriteAuthenticationEnable
+    BthWriteCOD
+    BthWriteLinkPolicySettings
+    BthWritePageTimeout
+    BthWriteScanEnableMask
+    DllMain

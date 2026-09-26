@@ -1,0 +1,40 @@
+; Module definition for winsock.dll - Windows CE .NET 4.2, MIPSIV target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE .NET 4.2 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY winsock.dll
+
+EXPORTS
+    __WSAFDIsSet
+    accept
+    bind
+    closesocket
+    connect
+    gethostbyaddr
+    gethostbyname
+    gethostname
+    getpeername
+    getsockname
+    getsockopt
+    htonl
+    htons
+    inet_addr
+    inet_ntoa
+    ioctlsocket
+    listen
+    ntohl
+    ntohs
+    recv
+    recvfrom
+    select
+    send
+    sendto
+    sethostname
+    setsockopt
+    shutdown
+    socket
+    WSACleanup
+    WSAIoctl
+    WSAStartup

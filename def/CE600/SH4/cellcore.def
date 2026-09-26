@@ -1,0 +1,43 @@
+; Module definition for cellcore.dll - Windows CE 6.0, SH4 target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY cellcore.dll
+
+EXPORTS
+    ConnMgrApiReadyEvent @129
+    ConnMgrConnectionStatus @121
+    ConnMgrEnumDestinations @125
+    ConnMgrEstablishConnection @120
+    ConnMgrEstablishConnectionSync @130
+    ConnMgrMapConRef @133
+    ConnMgrMapURL @128
+    ConnMgrProviderMessage @124
+    ConnMgrQueryDetailedStatus @131
+    ConnMgrRegisterForStatusChangeNotification @132
+    ConnMgrRegisterScheduledConnection @126
+    ConnMgrReleaseConnection @122
+    ConnMgrSetConnectionPriority @123
+    ConnMgrUnregisterScheduledConnection @127
+    SimChangeLockingPassword @12
+    SimDeinitialize @2
+    SimDeleteMessage @16
+    SimDeletePhonebookEntry @7
+    SimGetDevCaps @3
+    SimGetLockingStatus @10
+    SimGetPhonebookStatus @5
+    SimGetPhoneLockedState @8
+    SimGetRecordInfo @19
+    SimGetSmsStorageStatus @13
+    SimInitialize @1
+    SimReadMessage @14
+    SimReadPhonebookEntry @4
+    SimReadRecord @17
+    SimSetLockingStatus @11
+    SimUnlockPhone @9
+    SimWriteMessage @15
+    SimWritePhonebookEntry @6
+    SimWriteRecord @18
+    tapiRequestMakeCallW @110

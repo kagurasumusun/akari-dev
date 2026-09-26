@@ -1,0 +1,53 @@
+; Module definition for iphlpapi.dll - Windows CE .NET 4.2, MIPSII_FP target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE .NET 4.2 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY iphlpapi.dll
+
+EXPORTS
+    AddIPAddress
+    CreateIpForwardEntry
+    CreateIpNetEntry
+    CreateProxyArpEntry
+    DeleteIPAddress
+    DeleteIpForwardEntry
+    DeleteIpNetEntry
+    DeleteProxyArpEntry
+    EnableRouter
+    FlushIpNetTable
+    GetAdapterIndex
+    GetAdaptersInfo
+    GetBestInterface
+    GetBestRoute
+    GetFriendlyIfIndex
+    GetIcmpStatistics
+    GetIfEntry
+    GetIfTable
+    GetInterfaceInfo
+    GetIpAddrTable
+    GetIpForwardTable
+    GetIpNetTable
+    GetIpStatistics
+    GetNetworkParams
+    GetNumberOfInterfaces
+    GetPerAdapterInfo
+    GetRTTAndHopCount
+    GetTcpStatistics
+    GetTcpTable
+    GetUdpStatistics
+    GetUdpTable
+    GetUniDirectionalAdapterInfo
+    IpReleaseAddress
+    IpRenewAddress
+    NotifyAddrChange
+    NotifyRouteChange
+    SendARP
+    SetIfEntry
+    SetIpForwardEntry
+    SetIpNetEntry
+    SetIpStatistics
+    SetIpTTL
+    SetTcpEntry
+    UnenableRouter

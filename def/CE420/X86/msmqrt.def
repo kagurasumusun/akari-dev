@@ -1,0 +1,34 @@
+; Module definition for msmqrt.dll - Windows CE .NET 4.2, X86 target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE .NET 4.2 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY msmqrt.dll
+
+EXPORTS
+    MQBeginTransaction
+    MQCloseCursor
+    MQCloseQueue
+    MQCreateCursor
+    MQCreateQueue
+    MQDeleteQueue
+    MQFreeMemory
+    MQFreeSecurityContext
+    MQGetMachineProperties
+    MQGetQueueProperties
+    MQGetQueueSecurity
+    MQGetSecurityContext
+    MQHandleToFormatName
+    MQInstanceToFormatName
+    MQLocateBegin
+    MQLocateEnd
+    MQLocateNext
+    MQMgmtAction
+    MQMgmtGetInfo
+    MQOpenQueue
+    MQPathNameToFormatName
+    MQReceiveMessage
+    MQSendMessage
+    MQSetQueueProperties
+    MQSetQueueSecurity

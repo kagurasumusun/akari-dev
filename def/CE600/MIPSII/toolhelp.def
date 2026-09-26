@@ -1,0 +1,23 @@
+; Module definition for toolhelp.dll - Windows CE 6.0, MIPSII target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY toolhelp.dll
+
+EXPORTS
+    CloseToolhelp32Snapshot
+    CreateToolhelp32Snapshot
+    DllMain
+    Heap32First
+    Heap32ListFirst
+    Heap32ListNext
+    Heap32Next
+    Module32First
+    Module32Next
+    Process32First
+    Process32Next
+    Thread32First
+    Thread32Next
+    Toolhelp32ReadProcessMemory

@@ -1,0 +1,40 @@
+; Module definition for uspce.dll - Windows CE 6.0, X86 target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY uspce.dll
+
+EXPORTS
+    ScriptApplyDigitSubstitution
+    ScriptApplyLogicalWidth
+    ScriptBreak
+    ScriptCacheGetHeight
+    ScriptCPtoX
+    ScriptFreeCache
+    ScriptGetCMap
+    ScriptGetFontProperties
+    ScriptGetGlyphABCWidth
+    ScriptGetLogicalWidths
+    ScriptGetProperties
+    ScriptIsComplex
+    ScriptItemize
+    ScriptJustify
+    ScriptLayout
+    ScriptPlace
+    ScriptRecordDigitSubstitution
+    ScriptShape
+    ScriptString_pcOutChars
+    ScriptString_pLogAttr
+    ScriptString_pSize
+    ScriptStringAnalyse
+    ScriptStringCPtoX
+    ScriptStringFree
+    ScriptStringGetLogicalWidths
+    ScriptStringGetOrder
+    ScriptStringOut
+    ScriptStringValidate
+    ScriptStringXtoCP
+    ScriptTextOut
+    ScriptXtoCP

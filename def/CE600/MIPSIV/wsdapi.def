@@ -1,0 +1,35 @@
+; Module definition for wsdapi.dll - Windows CE 6.0, MIPSIV target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY wsdapi.dll
+
+EXPORTS
+    WSDAllocateLinkedMemory
+    WSDAttachLinkedMemory
+    WSDCreateDeviceHost
+    WSDCreateDeviceHostAdvanced
+    WSDCreateDeviceProxy
+    WSDCreateDeviceProxyAdvanced
+    WSDCreateDiscoveryProvider
+    WSDCreateDiscoveryPublisher
+    WSDCreateHttpAddress
+    WSDCreateHttpMessageParameters
+    WSDCreateOutboundAttachment
+    WSDCreateUdpAddress
+    WSDCreateUdpMessageParameters
+    WSDDetachLinkedMemory
+    WSDFreeLinkedMemory
+    WSDGenerateFault
+    WSDGenerateFaultEx
+    WSDGetConfigurationOption
+    WSDSetConfigurationOption
+    WSDXMLAddChild
+    WSDXMLAddSibling
+    WSDXMLBuildAnyForSingleElement
+    WSDXMLCleanupElement
+    WSDXMLCreateContext
+    WSDXMLGetNameFromBuiltinNamespace
+    WSDXMLGetValueFromAny

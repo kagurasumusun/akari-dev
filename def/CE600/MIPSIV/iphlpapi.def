@@ -1,0 +1,67 @@
+; Module definition for iphlpapi.dll - Windows CE 6.0, MIPSIV target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY iphlpapi.dll
+
+EXPORTS
+    AddIPAddress
+    CreateIpForwardEntry
+    CreateIpNetEntry
+    CreateProxyArpEntry
+    DeleteIPAddress
+    DeleteIpForwardEntry
+    DeleteIpNetEntry
+    DeleteProxyArpEntry
+    EnableRouter
+    FlushIpNetTable
+    GetAdapterIndex
+    GetAdaptersAddresses
+    GetAdaptersInfo
+    GetBestInterface
+    GetBestInterfaceEx
+    GetBestRoute
+    GetFriendlyIfIndex
+    GetIcmpStatistics
+    GetIcmpStatisticsEx
+    GetIfEntry
+    GetIfTable
+    GetInterfaceInfo
+    GetIpAddrTable
+    GetIpForwardTable
+    GetIpNetTable
+    GetIpStatistics
+    GetIpStatisticsEx
+    GetNetworkParams
+    GetNumberOfInterfaces
+    GetPerAdapterInfo
+    GetRTTAndHopCount
+    GetTcpStatistics
+    GetTcpStatisticsEx
+    GetTcpTable
+    GetUdpStatistics
+    GetUdpStatisticsEx
+    GetUdpTable
+    GetUniDirectionalAdapterInfo
+    Icmp6CreateFile
+    Icmp6ParseReplies
+    Icmp6SendEcho2
+    IcmpCloseHandle
+    IcmpCreateFile
+    IcmpParseReplies
+    IcmpSendEcho
+    IcmpSendEcho2
+    IpReleaseAddress
+    IpRenewAddress
+    NotifyAddrChange
+    NotifyRouteChange
+    SendARP
+    SetIfEntry
+    SetIpForwardEntry
+    SetIpNetEntry
+    SetIpStatistics
+    SetIpTTL
+    SetTcpEntry
+    UnenableRouter

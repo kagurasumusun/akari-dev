@@ -1,0 +1,28 @@
+; Module definition for ceshell.dll - Windows CE 6.0, MIPSII_FP target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY ceshell.dll
+
+EXPORTS
+    DoDragDrop @6
+    RegisterDragDrop @7
+    RevokeDragDrop @8
+    SHAddToRecentDocs @19
+    SHBindToParent @82
+    SHBrowseForFolder @83
+    SHCreateShortcut @17
+    SHCreateShortcutEx @85
+    SHFileOperationW @14
+    SHGetDesktopFolder @9
+    SHGetDocumentsFolder @75
+    SHGetFileInfo @13
+    SHGetMalloc @12
+    SHGetPathFromIDList @11
+    SHGetShortcutTarget @18
+    SHGetSpecialFolderLocation @10
+    SHLoadDIBitmap @16
+    SHShowOutOfMemory @86
+    StrRetToBufW @84

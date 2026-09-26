@@ -1,0 +1,36 @@
+; Module definition for winscard.dll - Windows CE .NET 4.2, X86 target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE .NET 4.2 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY winscard.dll
+
+EXPORTS
+    SCardBeginTransaction @25
+    SCardCancel @21
+    SCardConnectW @22
+    SCardControl @30
+    SCardDisconnect @24
+    SCardEndTransaction @26
+    SCardEstablishContext @1
+    SCardForgetCardTypeW @17
+    SCardForgetReaderW @12
+    SCardGetAttrib @31
+    SCardGetCardTypeProviderNameW @8
+    SCardGetProviderIdW @7
+    SCardGetStatusChangeW @20
+    SCardIntroduceCardTypeW @15
+    SCardIntroduceReaderW @11
+    SCardIsValidContext @3
+    SCardListCardsW @5
+    SCardListInterfacesW @6
+    SCardListReadersW @4
+    SCardLocateCardsByATRW @18
+    SCardLocateCardsW @19
+    SCardReconnect @23
+    SCardReleaseContext @2
+    SCardSetAttrib @32
+    SCardSetCardTypeProviderNameW @16
+    SCardStatusW @28
+    SCardTransmit @29

@@ -1,0 +1,64 @@
+; Module definition for btdrt.dll - Windows CE 6.0, MIPSII target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY btdrt.dll
+
+EXPORTS
+    BthAcceptSCOConnections
+    BthActivatePAN
+    BthAnswerPairRequest
+    BthAuthenticate
+    BthCancelInquiry
+    BthClearInquiryFilter
+    BthCloseConnection
+    BthCreateACLConnection
+    BthCreateSCOConnection
+    BthEnterHoldMode
+    BthEnterParkMode
+    BthEnterSniffMode
+    BthExitParkMode
+    BthExitSniffMode
+    BthGetAddress
+    BthGetBasebandConnections
+    BthGetBasebandHandles
+    BthGetCurrentMode
+    BthGetHardwareStatus
+    BthGetLinkKey
+    BthGetPINRequest
+    BthGetRemoteCOD
+    BthGetRole
+    BthNsLookupServiceBegin
+    BthNsLookupServiceEnd
+    BthNsLookupServiceNext
+    BthNsSetService
+    BthPairRequest
+    BthPerformInquiry
+    BthReadAuthenticationEnable
+    BthReadCOD
+    BthReadLinkPolicySettings
+    BthReadLocalAddr
+    BthReadLocalVersion
+    BthReadPageTimeout
+    BthReadRemoteVersion
+    BthReadRSSI
+    BthReadScanEnableMask
+    BthRefusePINRequest
+    BthRemoteNameQuery
+    BthRevokeLinkKey
+    BthRevokePIN
+    BthSetEncryption
+    BthSetInquiryFilter
+    BthSetLinkKey
+    BthSetPIN
+    BthSetSecurityUI
+    BthSwitchRole
+    BthTerminateIdleConnections
+    BthWriteAuthenticationEnable
+    BthWriteCOD
+    BthWriteLinkPolicySettings
+    BthWritePageTimeout
+    BthWriteScanEnableMask
+    DllMain

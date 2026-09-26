@@ -1,0 +1,30 @@
+; Module definition for aygshell.dll - Windows CE 6.0, MIPSII_FP target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY aygshell.dll
+
+EXPORTS
+    SHChangeNotifyDeregister @114
+    SHChangeNotifyFree @115
+    SHChangeNotifyRegister @113
+    SHCloseApps @10
+    SHCreateMenuBar @34
+    SHCreateNewItem @108
+    SHDoneButton @69
+    SHFindMenuBar @188
+    SHFullScreen @65
+    SHGetAppKeyAssoc @2
+    SHGetAutoRunPath @90
+    SHGetInputContext @232
+    SHInitDialog @56
+    SHInitExtraControls @9
+    SHInputDialog @39
+    SHRecognizeGesture @40
+    SHSetAppKeyWndAssoc @3
+    SHSetInputContext @231
+    SHSetNavBarText @88
+    SHSipInfo @4
+    SHSipPreference @21

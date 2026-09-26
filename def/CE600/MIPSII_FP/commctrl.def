@@ -1,0 +1,37 @@
+; Module definition for commctrl.dll - Windows CE 6.0, MIPSII_FP target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 6.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY commctrl.dll
+
+EXPORTS
+    CommandBands_AddAdornments @39
+    CommandBands_AddBands @37
+    CommandBands_Create @36
+    CommandBands_GetCommandBar @38
+    CommandBands_GetRestoreInformation @41
+    CommandBands_Show @40
+    CommandBar_AddAdornments @10
+    CommandBar_AddBitmap @5
+    CommandBar_AlignAdornments @44
+    CommandBar_Create @3
+    CommandBar_DrawMenuBar @43
+    CommandBar_GetMenu @9
+    CommandBar_Height @12
+    CommandBar_InsertComboBox @6
+    CommandBar_InsertMenubar @8
+    CommandBar_InsertMenubarEx @42
+    CommandBar_Show @4
+    CreatePropertySheetPageW @19
+    CreateStatusWindowW @17
+    CreateToolbarEx @16
+    CreateUpDownControl @14
+    DestroyPropertySheetPage @20
+    DrawStatusTextW @21
+    InitCommonControls @1
+    InitCommonControlsEx @2
+    InvertRect @22
+    IsCommandBarMessage @13
+    PropertySheetW @18

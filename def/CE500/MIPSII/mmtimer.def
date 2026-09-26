@@ -1,0 +1,17 @@
+; Module definition for mmtimer.dll - Windows CE 5.0, MIPSII target.
+; Names and ordinals are the application-facing import surface recorded from
+; the Windows CE 5.0 module survey: exports that are declared in a public SDK header
+; and are not marked PRIVATE or NONAME. Driver entry points, kernel-only
+; exports and internal aliases are not part of this file.
+; This file is original text; it contains no upstream source text.
+LIBRARY mmtimer.dll
+
+EXPORTS
+    timeBeginPeriod
+    timeEndPeriod
+    timeGetDevCaps
+    timeGetHardwareFrequency
+    timeGetTime
+    timeGetTimeSinceInterrupt
+    timeKillEvent
+    timeSetEvent
