@@ -229,6 +229,13 @@ typedef BOOL (WINAPI *PFN_CRYPT_ENUM_KEYID_PROP)(
 typedef BOOL (WINAPI *PFN_CRYPT_ENUM_OID_INFO)(
     void *pInfo, void *pvReserved, void *pvArg);
 
+/* Values below follow the CE 6.0 reference, not the desktop SDK.  Ten of them
+ * differ: CE renumbers the extended property identifiers (8/9/10/14 here are
+ * 28/29/30/19 there), swaps the two close-store flags, uses 0x1/0x2 for the two
+ * enhanced-key-usage find flags where the desktop uses 0x10/0x40, puts
+ * CERT_STORE_MAXIMUM_ALLOWED_FLAG at 0x00001000 rather than 0x00010000, and
+ * gives X509_NDR_ENCODING 0x00000002 rather than 0x00000020. */
+
 /* ----------------------------------------------------- store flags */
 
 #define CERT_STORE_PROV_MSG             ((LPCSTR)1)
@@ -249,7 +256,7 @@ typedef BOOL (WINAPI *PFN_CRYPT_ENUM_OID_INFO)(
 #define CERT_STORE_MANIFOLD_FLAG            0x00000100
 #define CERT_STORE_ENUM_ARCHIVED_FLAG       0x00000200
 #define CERT_STORE_UPDATE_KEYID_FLAG        0x00000400
-#define CERT_STORE_MAXIMUM_ALLOWED_FLAG     0x00010000
+#define CERT_STORE_MAXIMUM_ALLOWED_FLAG     0x00001000
 #define CERT_STORE_CREATE_NEW_FLAG          0x00002000
 #define CERT_STORE_OPEN_EXISTING_FLAG       0x00004000
 #define CERT_STORE_BACKUP_RESTORE_FLAG      0x00000800
@@ -286,12 +293,12 @@ typedef BOOL (WINAPI *PFN_CRYPT_ENUM_OID_INFO)(
 #define CERT_FIND_SUBJECT_NAME          196612
 #define CERT_FIND_SUBJECT_STR_A         458756
 #define CERT_FIND_SUBJECT_STR_W         524292
-#define CERT_FIND_OPTIONAL_ENHKEY_USAGE_FLAG 0x10
+#define CERT_FIND_OPTIONAL_ENHKEY_USAGE_FLAG 0x1
 #define CERT_FIND_NO_ENHKEY_USAGE_FLAG  0x08
-#define CERT_FIND_EXT_ONLY_ENHKEY_USAGE_FLAG 0x40
+#define CERT_FIND_EXT_ONLY_ENHKEY_USAGE_FLAG 0x2
 
-#define CERT_CLOSE_STORE_CHECK_FLAG     0x00000001
-#define CERT_CLOSE_STORE_FORCE_FLAG     0x00000002
+#define CERT_CLOSE_STORE_CHECK_FLAG     0x00000002
+#define CERT_CLOSE_STORE_FORCE_FLAG     0x00000001
 
 #define CERT_NAME_EMAIL_TYPE            1
 #define CERT_NAME_RDN_TYPE              2
@@ -315,7 +322,7 @@ typedef BOOL (WINAPI *PFN_CRYPT_ENUM_OID_INFO)(
 
 #define PKCS_7_ASN_ENCODING         0x00010000
 #define X509_ASN_ENCODING           0x00000001
-#define X509_NDR_ENCODING           0x00000020
+#define X509_NDR_ENCODING           0x00000002
 
 #define CERT_CHAIN_CACHE_END_CERT   0x00000001
 #define CERT_CHAIN_THREAD_CHAINING  0x00000002
@@ -358,12 +365,12 @@ typedef BOOL (WINAPI *PFN_CRYPT_ENUM_OID_INFO)(
 #define CERT_MD5_HASH_PROP_ID               4
 #define CERT_KEY_CONTEXT_PROP_ID            5
 #define CERT_KEY_SPEC_PROP_ID               6
-#define CERT_ISSUER_SERIAL_NUMBER_MD5_HASH_PROP_ID 8
-#define CERT_SUBJECT_NAME_MD5_HASH_PROP_ID  9
-#define CERT_EXTENDED_ERROR_INFO_PROP_ID    10
+#define CERT_ISSUER_SERIAL_NUMBER_MD5_HASH_PROP_ID 28
+#define CERT_SUBJECT_NAME_MD5_HASH_PROP_ID  29
+#define CERT_EXTENDED_ERROR_INFO_PROP_ID    30
 #define CERT_FRIENDLY_NAME_PROP_ID          11
 #define CERT_PVK_FILE_PROP_ID               12
-#define CERT_ARCHIVED_PROP_ID               14
+#define CERT_ARCHIVED_PROP_ID               19
 
 #define CRYPT_E_NOT_FOUND   ((HRESULT)0x80092004L)
 #define CRYPT_E_EXISTS      ((HRESULT)0x80092005L)
