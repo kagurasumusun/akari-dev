@@ -1017,3 +1017,61 @@ exports and reported 133 empty `.def` files where the true number was zero.  A
 grep for `proto` reported zero prototype differences where there were 350 lines
 and three bugs.  Both times the check was cheap to do properly and expensive to
 do wrongly.
+
+### The third conditional-branch bug, and the rule it settles
+
+Checking the `ret` category -- which had not been examined -- turned up nothing
+in return types: all 16 lines report the same type on both sides.  But
+classifying every `macro` difference numerically, rather than grepping for the
+`0x..`-against-`0x..` shape, found five more real value bugs and four missing
+constants, all in `ws2tcpip.h`.
+
+CE's `ws2tcpip.h` carries the `IP_*` socket option numbers twice, behind a
+conditional at line 83.  The `#ifndef UNDER_CE` arm has the familiar BSD
+numbering; the `#else` arm has CE's own.  `UNDER_CE` is defined on CE, so the
+`#else` arm applies.  The kit had the desktop numbers:
+
+| constant | kit | CE |
+|---|---|---|
+| `IP_MULTICAST_IF` | `0x24` | `2` |
+| `IP_MULTICAST_TTL` | `0x25` | `3` |
+| `IP_MULTICAST_LOOP` | `0x26` | `4` |
+| `IP_ADD_MEMBERSHIP` | `0x20` | `5` |
+| `IP_DROP_MEMBERSHIP` | `0x21` | `6` |
+
+`IP_OPTIONS` (1), `IP_TTL` (7), `IP_TOS` (8) and `IP_HDRINCL` (9) were not
+declared at all and are now added.  Every one of the nine was then cross-checked
+individually against the reference's `#else` arm.
+
+**This is the third time a CE header held the same name twice, once per side of a
+conditional, and the wrong side read as authoritative.**
+
+1. `WS_OVERLAPPED`: `0x00000000L` under `UNDER_NT`, `WS_BORDER | WS_CAPTION` in
+   the `#else`.  A fix based on the first match was wrong and was reverted.
+2. `Interlocked*`: declared only in the non-x86 arm, because the x86 build of CE
+   resolves them in the compiler and `coredll` does not export them there.
+   Moving them out of the conditional broke that.
+3. `IP_*`: the `UNDER_CE` arm, above.
+
+All three were found by a grep taking the first textual match.  The rule is now
+settled rather than incidental: **when a CE header defines a name more than
+once, the conditional has to be read before the value is trusted, and the branch
+has to be identified by what the CE build actually defines -- not by which line
+appears first.**  `grep -m1` is the wrong tool for this, and it produced a wrong
+fix once already.
+
+### Where the numbers stand
+
+`verify3` CE6 is at 470, down from 90 before the checker was widened -- and that
+inversion is the point.  Widening it exposed fourteen real bugs across
+`winldap.h`, `wincrypt.h`, `winnls.h`, `objbase.h` and `ws2tcpip.h`: three wrong
+LDAP constants, eleven wrong CryptoAPI constants, a `CPINFO` layout ten bytes
+out, three truncated COM prototypes, and five wrong socket option numbers plus
+four missing ones.  Every one is fixed.
+
+There are now **zero** numeric value differences and **zero** return-type
+differences anywhere in the set, and a per-function parameter count finds no
+remaining truncated prototype.  What is left is inline-struct rendering, the
+kit's own import-macro spelling, COM vtbl macro garbage, and at least one
+outright false positive in the differ.  The remaining figure is not a measure of
+error.
