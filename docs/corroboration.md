@@ -1075,3 +1075,48 @@ remaining truncated prototype.  What is left is inline-struct rendering, the
 kit's own import-macro spelling, COM vtbl macro garbage, and at least one
 outright false positive in the differ.  The remaining figure is not a measure of
 error.
+
+### Checking the other two releases, which had never been checked
+
+Every figure quoted so far was the CE 6.0 slice.  The CE 4.2 and CE 5.0 slices
+had been produced by the same tool run but never read.  Reading them found two
+constant families where the kit used one value for all three releases and the
+releases genuinely differ -- neither is a conditional-branch mistake this time,
+both are real version differences.
+
+**`AF_IRDA` and `AF_ATM` are swapped on CE 5.0 alone.** CE 4.2 and CE 6.0 both
+wrap the pair in `#ifdef UNDER_CE`, giving `AF_IRDA` 22 and `AF_ATM` 26 in the CE
+arm (`winsock2.h:536` and `:544`).  CE 5.0 has no conditional at all -- a single
+flat list giving `AF_ATM` 22 and `AF_IRDA` 26.  The kit carried the 4.2/6.0
+pairing everywhere, so on a CE 5.0 target the two address families were
+exchanged.  Now gated, and each version checked by preprocessing against the
+reference: 22/26 on 4.2, 26/22 on 5.0, 22/26 on 6.0.
+
+**The 81 `ERROR_SXS_*` codes are renumbered between releases.** CE 4.0 puts them
+at `12000L` and up; CE 5.0 and CE 6.0 at `14000L` and up, with the same offsets.
+The kit carried the later numbering unconditionally, so all 81 were wrong on CE
+4.2.  Each one was looked up individually in the CE 4.0 reference rather than
+derived by subtracting 2000 -- all 81 are present there, so none had to be
+invented.  Deriving them arithmetically would have produced plausible values for
+codes CE 4.0 does not have at all.
+
+### Where all three slices stand
+
+| slice | before this session's checks | now |
+|---|---|---|
+| CE 4.2 | 536 | 455 |
+| CE 5.0 | 472 | 470 |
+| CE 6.0 | 90 unchecked, then 488 once widened | 470 |
+
+All three now report **zero numeric value differences and zero return-type
+differences**, and a per-function parameter count finds no truncated prototype on
+any of them.  The remaining counts are inline-struct rendering, the kit's own
+import-macro spelling, COM vtbl macro garbage, and known false positives in the
+differ.
+
+The general point, which applies to more than these two families: **a kit that
+targets three releases has to be checked against three references.**  Checking
+one and generalising is the same error as grepping the first match of a
+conditional -- it produces a confident number that describes less than it appears
+to.  Both CE 4.2 bugs sat in plain sight in output that had been generated all
+along and never read.
