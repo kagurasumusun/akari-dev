@@ -49,6 +49,7 @@ typedef struct akari_BY_HANDLE_FILE_INFORMATION {
     DWORD nNumberOfLinks;
     DWORD nFileIndexHigh;
     DWORD nFileIndexLow;
+    DWORD dwOID;
 } BY_HANDLE_FILE_INFORMATION, *LPBY_HANDLE_FILE_INFORMATION;
 
 typedef struct akari_MEMORYSTATUS {
@@ -150,7 +151,7 @@ typedef struct akari_SYSTEM_POWER_STATUS {
 #define FILE_MAP_COPY    0x0001
 #define FILE_MAP_WRITE   0x0002
 #define FILE_MAP_READ    0x0004
-#define FILE_MAP_ALL_ACCESS 0x000F
+#define FILE_MAP_ALL_ACCESS SECTION_ALL_ACCESS
 
 #define THREAD_PRIORITY_LOWEST 5
 #define THREAD_PRIORITY_BELOW_NORMAL 4
@@ -232,7 +233,7 @@ WINBASEAPI HANDLE WINAPI CreateFileMappingW(HANDLE hFile,
 WINBASEAPI LPVOID WINAPI MapViewOfFile(HANDLE hFileMappingObject,
     DWORD dwDesiredAccess, DWORD dwFileOffsetHigh, DWORD dwFileOffsetLow,
     DWORD dwNumberOfBytesToMap);
-WINBASEAPI BOOL WINAPI UnmapViewOfFile(LPVOID lpBaseAddress);
+WINBASEAPI BOOL WINAPI UnmapViewOfFile(LPCVOID lpBaseAddress);
 WINBASEAPI BOOL WINAPI FlushViewOfFile(LPCVOID lpBaseAddress, DWORD dwNumberOfBytesToFlush);
 #endif
 
@@ -240,7 +241,7 @@ WINBASEAPI BOOL WINAPI FlushViewOfFile(LPCVOID lpBaseAddress, DWORD dwNumberOfBy
 WINBASEAPI DWORD WINAPI GetLastError(VOID);
 WINBASEAPI VOID WINAPI SetLastError(DWORD dwErrCode);
 WINBASEAPI DWORD WINAPI FormatMessageW(DWORD dwFlags, LPCVOID lpSource, DWORD dwMessageId,
-    DWORD dwLanguageId, LPWSTR lpBuffer, DWORD nSize, void *Arguments);
+    DWORD dwLanguageId, LPWSTR lpBuffer, DWORD nSize, va_list *Arguments);
 /* SetErrorMode does not exist on Windows CE: hard faults always raise. */
 
 #define FORMAT_MESSAGE_ALLOCATE_BUFFER 0x00000100
@@ -264,7 +265,7 @@ WINBASEAPI UINT WINAPI LocalSize(HLOCAL hMem);
 #define LocalLock(hMem)      ((LPVOID)(hMem))
 #define LocalUnlock(hMem) (0)
 #define GlobalAlloc(uFlags, dwBytes)      LocalAlloc((uFlags), (dwBytes))
-#define GlobalReAlloc(hMem, dwBytes, uFlags) LocalReAlloc((hMem), (dwBytes), (uFlags))
+#define GlobalReAlloc(handle, cb, uFlags) LocalReAlloc(handle, cb, LMEM_MOVEABLE)
 #define GlobalFree(hMem)     LocalFree(hMem)
 #define GlobalSize(hMem)     LocalSize(hMem)
 #define GlobalLock(hMem)     LocalLock(hMem)
@@ -300,7 +301,7 @@ WINBASEAPI HANDLE WINAPI CreateThread(LPSECURITY_ATTRIBUTES lpThreadAttributes,
 WINBASEAPI HANDLE WINAPI CreateProcessW(LPCWSTR lpApplicationName, LPWSTR lpCommandLine,
     LPSECURITY_ATTRIBUTES lpProcessAttributes,
     LPSECURITY_ATTRIBUTES lpThreadAttributes, BOOL bInheritHandles, DWORD dwCreationFlags,
-    LPVOID lpEnvironment, LPCWSTR lpCurrentDirectory, LPSTARTUPINFOW lpStartupInfo,
+    LPVOID lpEnvironment, LPWSTR lpCurrentDirectory, LPSTARTUPINFOW lpStartupInfo,
     LPPROCESS_INFORMATION lpProcessInformation);
 WINBASEAPI VOID WINAPI ExitThread(DWORD dwExitCode);
 WINBASEAPI BOOL WINAPI TerminateThread(HANDLE hThread, DWORD dwExitCode);
@@ -418,10 +419,10 @@ WINBASEAPI BOOL WINAPI QueryPerformanceFrequency(LARGE_INTEGER *lpFrequency);
  * exports while the length, copy and concatenate forms map onto the wide string
  * functions in the same module.
  */
-#define lstrlenW(lpString)              ((int)wcslen(lpString))
+#define lstrlenW(lpString)              wcslen(lpString)
 #define lstrlenA(lpString)              ((int)strlen(lpString))
-#define lstrcpyW(lpString1, lpString2)  wcscpy((lpString1), (lpString2))
-#define lstrcatW(lpString1, lpString2)  wcscat((lpString1), (lpString2))
+#define lstrcpyW(lpString1, lpString2)  wcscpy(lpString1, lpString2)
+#define lstrcatW(lpString1, lpString2)  wcscat(lpString1, lpString2)
 WINBASEAPI int WINAPI lstrcmpW(LPCWSTR lpString1, LPCWSTR lpString2);
 WINBASEAPI int WINAPI lstrcmpiW(LPCWSTR lpString1, LPCWSTR lpString2);
 WINBASEAPI int WINAPI MultiByteToWideChar(UINT CodePage, DWORD dwFlags, LPCSTR lpMultiByteStr,
