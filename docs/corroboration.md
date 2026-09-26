@@ -745,3 +745,50 @@ of reach of the checker.  `oaidl.h`, `oleauto.h`, `prsht.h`, `icmpapi.h` and
 `ws2tcpip.h` are all headers verify3 cannot preprocess, so the placement work
 that put declarations into them necessarily *reduces* the reported figure.  A
 falling number here means less is being checked, not that less is wrong.
+
+### ole2.h, and the forty-seven prototypes CE declares but does not export
+
+The last of the placement faults.  CE declares the OLE object and stream helpers
+in `ole2.h`, separate from `objbase.h`, though `ole32.dll` exports both sets.
+Fifteen were in the kit's `objbase.h` and are declared in `ole2.h` now.
+
+The interesting part is what was *not* moved.  CE's own `ole2.h` declares 62
+prototypes.  Checked against `def/CE600/X86/ole32.def` before anything was
+written:
+
+| | count |
+|---|---|
+| prototypes CE declares in `ole2.h` | 62 |
+| already in the kit | 15 |
+| missing from the kit | 47 |
+| **of those 47, real `ole32.dll` exports** | **0** |
+
+Every one of the 47 -- the `OleCreateEx` and `OleCreateLink` families,
+`DoDragDrop`, the `OLESTREAM` converters, the clipboard functions -- is declared
+in the header CE inherited from the desktop SDK and none is exported by the CE
+library.  They were not added.  This is the same failure mode measured earlier
+for the desktop `shlwapi` and `urlmon` headers, seen from the other side: a
+header that over-declares produces code that compiles and then fails to link.
+
+It is worth recording that CE's own public SDK header is wrong in this way.  A
+declaration being present in a CE SDK header is not evidence that the target
+exports it; the `.def` list is the only reliable check.
+
+### A gap found by testing, not by the audit
+
+Writing a link test for `ole2.h` needed `GlobalAlloc(GMEM_MOVEABLE, n)` and it
+did not compile.  That was a genuine kit gap rather than a bad test.  CE defines
+11 `GMEM_` names at `winbase.h:735`, each aliased onto its `LMEM_` equivalent
+because on CE `GlobalAlloc` *is* `LocalAlloc`, and a 14-member `LMEM_` set at
+`winbase.h:709`.  The kit carried three `LMEM_` flags and no `GMEM_` name at
+all, so the most ordinary allocation call in Win32 would not build.  The full
+set is now declared as CE declares it.
+
+That in turn exposed a hardcoded `GPTR 0x0040` / `GHND 0x0042` pair the kit
+already had.  Those two values are exactly `LPTR` and `LHND`, so the hardcoded
+pair was removed rather than left alongside the aliases.
+
+The audit did not find this one.  Neither did verify3, xcheck or the standalone
+matrix, because none of them compiles a call site -- they only preprocess.  The
+link test did.  It is a reminder that a clean matrix says the headers parse, not
+that they are usable.
