@@ -792,3 +792,51 @@ The audit did not find this one.  Neither did verify3, xcheck or the standalone
 matrix, because none of them compiles a call site -- they only preprocess.  The
 link test did.  It is a reminder that a clean matrix says the headers parse, not
 that they are usable.
+
+### Placement audit completed, and the two mistakes it produced
+
+The remaining fifteen misplaced declarations were moved, each checked against
+the CE 6.0 reference first.  CE declares every one of them in exactly one
+header, so none was a case of CE declaring a name in two places:
+
+| from | to | symbols |
+|---|---|---|
+| `pm.h` | `winbase.h` | `GetIdleTime`, `GetSystemPowerStatusEx`, `GetSystemPowerStatusEx2` |
+| `winbase.h` | `winuser.h` | `MsgWaitForMultipleObjectsEx` |
+| `winbase.h` | `winnls.h` | `MultiByteToWideChar`, `WideCharToMultiByte` |
+| `wingdi.h` | `winuser.h` | `GetDC`, `GetWindowDC`, `ReleaseDC` |
+| `winuser.h` | `winbase.h` | `CharLowerW`, `CharUpperW`, `FindResourceW` |
+| `winuser.h` | `wingdi.h` | `CreateRectRgn`, `DrawFocusRect`, `GetSysColorBrush` |
+
+`SYSTEM_POWER_STATUS_EX` and `SYSTEM_POWER_STATUS_EX2` had to move with them --
+CE defines both structures in `winbase.h`, at `:3770` and `:3849`, beside the
+prototypes that use them.  Moving the prototypes alone left the types behind and
+broke the build.
+
+`EventModify` and `TlsCall` were deliberately left in `winbase.h`.  CE declares
+them in `kfuncs.h`, an internal `NON_APP_HEADERS` header that is not part of the
+development surface, so the kit's placement is the correct one for a kit.
+
+**Two mistakes, both caught by checks and not by review.**
+
+The `Interlocked*` helpers were moved as well, and that was wrong.  The kit
+declares them inside the non-x86 arm of a CPU conditional, because the x86 build
+of CE resolves them in the compiler -- `#pragma intrinsic` under MSVC, `__sync_*`
+inlines under GCC -- and `coredll` does not export them on that CPU, while every
+other CPU imports them.  Declaring them unconditionally in `winbase.h` destroyed
+that distinction, and `xcheck` reported it as five extra declarations with no
+export on x86 only, which is the signature of a broken CPU gate.  They are back
+where they were.
+
+`GetIdleTime` is a CE 5.0 and later export, gated on `_WIN32_WCE >= 0x500`.  The
+move dropped the gate and `xcheck` caught it immediately as a declaration with no
+matching export on CE 4.2.  The gate is restored.
+
+The lesson is worth stating plainly, because it contradicts the instinct that a
+mechanical move between headers is safe.  A declaration carries its guards with
+it -- version gates, CPU gates -- and a script that lifts the text out of one
+file and appends it to another silently strips them.  The standalone matrix did
+not catch either mistake, because both produce perfectly valid C; it was
+`xcheck`, which cross-references declarations against the `.def` export lists,
+that found them.  A move like this has to be followed by `xcheck`, not just by a
+compile.
