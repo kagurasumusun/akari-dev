@@ -160,12 +160,17 @@ static __inline long InterlockedCompareExchange(long volatile *p, long ex, long 
     { return __sync_val_compare_and_swap(p, cmp, ex); }
 #endif
 #else
-WINBASEAPI LONG WINAPI InterlockedIncrement(LONG volatile *lpAddend);
+/* On every CPU other than x86 these are imported from coredll, which is where
+ * the CE SDK declares them (winbase.h).  They are declared here, inside the
+ * non-x86 arm of the conditional, because the declaration has to be absent on
+ * x86 -- see the comment above.
+ */
+WINBASEAPI LONG WINAPI InterlockedCompareExchange(LONG volatile *Destination,
+                                                  LONG Exchange, LONG Comparand);
 WINBASEAPI LONG WINAPI InterlockedDecrement(LONG volatile *lpAddend);
 WINBASEAPI LONG WINAPI InterlockedExchange(LONG volatile *Target, LONG Value);
 WINBASEAPI LONG WINAPI InterlockedExchangeAdd(LONG volatile *Addend, LONG Value);
-WINBASEAPI LONG WINAPI InterlockedCompareExchange(LONG volatile *Destination,
-                                                  LONG Exchange, LONG Comparand);
+WINBASEAPI LONG WINAPI InterlockedIncrement(LONG volatile *lpAddend);
 #endif
 
 #ifdef __cplusplus

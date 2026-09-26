@@ -351,7 +351,6 @@ WINUSERAPI int WINAPI MapWindowPoints(HWND hWndFrom, HWND hWndTo, LPPOINT lpPoin
 WINUSERAPI BOOL WINAPI SetForegroundWindow(HWND hWnd);
 WINUSERAPI HWND WINAPI GetForegroundWindow(VOID);
 WINUSERAPI COLORREF WINAPI GetSysColor(int nIndex);
-WINUSERAPI HBRUSH WINAPI GetSysColorBrush(int nIndex);
 WINUSERAPI LRESULT WINAPI DefWindowProcW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 WINUSERAPI LRESULT WINAPI CallWindowProcW(WNDPROC lpPrevWndFunc, HWND hWnd, UINT Msg,
     WPARAM wParam, LPARAM lParam);
@@ -370,11 +369,8 @@ WINUSERAPI BOOL WINAPI IsRectEmpty(const RECT *lprc);
 WINUSERAPI BOOL WINAPI InflateRect(LPRECT lprc, int dx, int dy);
 WINUSERAPI BOOL WINAPI EqualRect(const RECT *lprc1, const RECT *lprc2);
 WINUSERAPI BOOL WINAPI CopyRect(LPRECT lprcDst, const RECT *lprcSrc);
-WINUSERAPI BOOL WINAPI DrawFocusRect(HDC hDC, const RECT *lprc);
 WINUSERAPI BOOL WINAPI DrawIconEx(HDC hdc, int xLeft, int yTop, HICON hIcon, int cxWidth,
     int cyWidth, UINT istepIfAniCur, HBRUSH hbrFlickerFreeDraw, UINT diFlags);
-WINUSERAPI HRGN WINAPI CreateRectRgn(int nLeftRect, int nTopRect, int nRightRect,
-    int nBottomRect);
 WINUSERAPI int WINAPI SetWindowRgn(HWND hWnd, HRGN hRgn, BOOL bRedraw);
 WINUSERAPI SHORT WINAPI GetAsyncKeyState(int vKey);
 WINUSERAPI SHORT WINAPI GetKeyState(int nVirtKey);
@@ -385,8 +381,6 @@ WINUSERAPI BOOL WINAPI SystemParametersInfoW(UINT uiAction, UINT uiParam, PVOID 
 WINUSERAPI BOOL WINAPI GetCursorPos(LPPOINT lpPoint);
 WINUSERAPI BOOL WINAPI SetCursorPos(int X, int Y);
 WINUSERAPI HCURSOR WINAPI SetCursor(HCURSOR hCursor);
-WINUSERAPI LPWSTR WINAPI CharUpperW(LPWSTR lpsz);
-WINUSERAPI LPWSTR WINAPI CharLowerW(LPWSTR lpsz);
 /* Windows CE only exposes the indirect dialog forms: the template has to be a
  * resource already loaded into memory. */
 WINUSERAPI INT_PTR WINAPI DialogBoxIndirectParamW(HINSTANCE hInstance,
@@ -398,7 +392,6 @@ WINUSERAPI int WINAPI LoadStringW(HINSTANCE hInstance, UINT uID, LPWSTR lpBuffer
 WINUSERAPI HICON WINAPI LoadIconW(HINSTANCE hInstance, LPCWSTR lpIconName);
 WINUSERAPI HCURSOR WINAPI LoadCursorW(HINSTANCE hInstance, LPCWSTR lpCursorName);
 WINUSERAPI HBITMAP WINAPI LoadBitmapW(HINSTANCE hInstance, LPCWSTR lpBitmapName);
-WINUSERAPI HRSRC WINAPI FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lpType);
 WINBASEAPI HGLOBAL WINAPI LoadResource(HMODULE hModule, HRSRC hResInfo);
 WINBASEAPI DWORD WINAPI SizeofResource(HMODULE hModule, HRSRC hResInfo);
 /* Resource data is not moveable on Windows CE, so locking is a no-op. */
@@ -415,6 +408,14 @@ WINBASEAPI DWORD WINAPI SizeofResource(HMODULE hModule, HRSRC hResInfo);
 #define SWP_NOACTIVATE 0x0010
 #define SWP_SHOWWINDOW 0x0040
 #define SWP_HIDEWINDOW 0x0080
+
+
+/* Moved here from GetDC, GetWindowDC, MsgWaitForMultipleObjectsEx, ReleaseDC: the CE SDK declares these entry points in this header. */
+WINBASEAPI DWORD WINAPI MsgWaitForMultipleObjectsEx(DWORD nCount,
+    const HANDLE *pHandles, DWORD dwMilliseconds, DWORD dwWakeMask, DWORD dwFlags);
+WINBASEAPI HDC WINAPI GetDC(HWND hWnd);
+WINBASEAPI HDC WINAPI GetWindowDC(HWND hWnd);
+WINBASEAPI int WINAPI ReleaseDC(HWND hWnd, HDC hDC);
 
 #ifdef __cplusplus
 }

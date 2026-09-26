@@ -402,8 +402,6 @@ WINBASEAPI BOOL WINAPI ReleaseSemaphore(HANDLE hSemaphore, LONG lReleaseCount,
 WINBASEAPI DWORD WINAPI WaitForSingleObject(HANDLE hHandle, DWORD dwMilliseconds);
 WINBASEAPI DWORD WINAPI WaitForMultipleObjects(DWORD nCount, const HANDLE *lpHandles,
     BOOL bWaitAll, DWORD dwMilliseconds);
-WINBASEAPI DWORD WINAPI MsgWaitForMultipleObjectsEx(DWORD nCount,
-    const HANDLE *pHandles, DWORD dwMilliseconds, DWORD dwWakeMask, DWORD dwFlags);
 WINBASEAPI VOID WINAPI Sleep(DWORD dwMilliseconds);
 
 typedef struct akari_OSVERSIONINFOW {
@@ -469,11 +467,6 @@ WINBASEAPI BOOL WINAPI QueryPerformanceFrequency(LARGE_INTEGER *lpFrequency);
 #define lstrcatW(lpString1, lpString2)  wcscat(lpString1, lpString2)
 WINBASEAPI int WINAPI lstrcmpW(LPCWSTR lpString1, LPCWSTR lpString2);
 WINBASEAPI int WINAPI lstrcmpiW(LPCWSTR lpString1, LPCWSTR lpString2);
-WINBASEAPI int WINAPI MultiByteToWideChar(UINT CodePage, DWORD dwFlags, LPCSTR lpMultiByteStr,
-    int cbMultiByte, LPWSTR lpWideCharStr, int cchWideChar);
-WINBASEAPI int WINAPI WideCharToMultiByte(UINT CodePage, DWORD dwFlags, LPCWSTR lpWideCharStr,
-    int cchWideChar, LPSTR lpMultiByteStr, int cbMultiByte, LPCSTR lpDefaultChar,
-    LPBOOL lpUsedDefaultChar);
 WINBASEAPI int WINAPI wsprintfW(LPWSTR lpOut, LPCWSTR lpFmt, ...);
 WINBASEAPI int WINAPI wvsprintfW(LPWSTR lpOutput, LPCWSTR lpFmt, void *arglist);
 
@@ -491,6 +484,67 @@ WINBASEAPI int WINAPI wvsprintfW(LPWSTR lpOutput, LPCWSTR lpFmt, void *arglist);
 #ifdef AKARI_HAVE_STORE_MANAGER
 #include "storemgr.h"
 #endif
+
+
+/* SYSTEM_POWER_STATUS_EX and SYSTEM_POWER_STATUS_EX2 are declared here, not in
+ * pm.h, because that is where the CE SDK defines them -- winbase.h:3770 and
+ * :3849 -- alongside the GetSystemPowerStatusEx prototypes that use them.
+ */
+typedef struct akari_SYSTEM_POWER_STATUS_EX {
+    BYTE ACLineStatus;
+    BYTE BatteryFlag;
+    BYTE BatteryLifePercent;
+    BYTE Reserved1;
+    DWORD BatteryLifeTime;
+    DWORD BatteryFullLifeTime;
+    BYTE Reserved2;
+    BYTE BackupBatteryFlag;
+    BYTE BackupBatteryLifePercent;
+    BYTE Reserved3;
+    DWORD BackupBatteryLifeTime;
+    DWORD BackupBatteryFullLifeTime;
+} SYSTEM_POWER_STATUS_EX, *PSYSTEM_POWER_STATUS_EX;
+
+typedef struct akari_SYSTEM_POWER_STATUS_EX2 {
+    BYTE ACLineStatus;
+    BYTE BatteryFlag;
+    BYTE BatteryLifePercent;
+    BYTE Reserved1;
+    DWORD BatteryLifeTime;
+    DWORD BatteryFullLifeTime;
+    BYTE Reserved2;
+    BYTE BackupBatteryFlag;
+    BYTE BackupBatteryLifePercent;
+    BYTE Reserved3;
+    DWORD BackupBatteryLifeTime;
+    DWORD BackupBatteryFullLifeTime;
+    DWORD BatteryVoltage;
+    DWORD BatteryCurrent;
+    DWORD BatteryAverageCurrent;
+    DWORD BatteryAverageInterval;
+    DWORD BatterymAHourConsumed;
+    DWORD BatteryTemperature;
+    DWORD BackupBatteryVoltage;
+    BYTE BatteryChemistry;
+} SYSTEM_POWER_STATUS_EX2, *PSYSTEM_POWER_STATUS_EX2;
+
+/* Moved here from pm.h and winuser.h: the CE SDK declares these entry points
+ * in winbase.h.  The Interlocked* helpers are NOT here -- they are declared
+ * in winnt.h inside the non-x86 arm of a CPU conditional, because the x86
+ * build of CE resolves them in the compiler and coredll does not export them
+ * on that CPU.  Declaring them unconditionally here broke that.
+ */
+#if (_WIN32_WCE >= 0x500)
+PMAPI DWORD WINAPI GetIdleTime(VOID);   /* CE 5.0 and later */
+#endif
+PMAPI BOOL WINAPI GetSystemPowerStatusEx(PSYSTEM_POWER_STATUS_EX pSystemPowerStatus,
+    BOOL fUpdate);
+PMAPI DWORD WINAPI GetSystemPowerStatusEx2(PSYSTEM_POWER_STATUS_EX2 pSystemPowerStatus,
+    DWORD dwLen, BOOL fUpdate);
+WINUSERAPI LPWSTR WINAPI CharLowerW(LPWSTR lpsz);
+WINUSERAPI LPWSTR WINAPI CharUpperW(LPWSTR lpsz);
+WINUSERAPI HRSRC WINAPI FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lpType);
+
 
 #ifdef __cplusplus
 }

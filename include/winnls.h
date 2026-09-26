@@ -138,6 +138,14 @@ WINBASEAPI BOOL WINAPI EnumSystemLocalesW(void *lpLocaleEnumProc, DWORD dwFlags)
 #define TIME_NOTIMEMARKER       0x00000004
 #define TIME_FORCE24HOURFORMAT  0x00000008
 
+
+/* Moved here from MultiByteToWideChar, WideCharToMultiByte: the CE SDK declares these entry points in this header. */
+WINBASEAPI int WINAPI MultiByteToWideChar(UINT CodePage, DWORD dwFlags, LPCSTR lpMultiByteStr,
+    int cbMultiByte, LPWSTR lpWideCharStr, int cchWideChar);
+WINBASEAPI int WINAPI WideCharToMultiByte(UINT CodePage, DWORD dwFlags, LPCWSTR lpWideCharStr,
+    int cchWideChar, LPSTR lpMultiByteStr, int cbMultiByte, LPCSTR lpDefaultChar,
+    LPBOOL lpUsedDefaultChar);
+
 #ifdef __cplusplus
 }
 #endif

@@ -171,9 +171,6 @@ typedef struct akari_BITMAP {
 #define DT_SINGLELINE   0x00000020
 #define DT_NOPREFIX     0x00000800
 
-WINBASEAPI HDC WINAPI GetDC(HWND hWnd);
-WINBASEAPI HDC WINAPI GetWindowDC(HWND hWnd);
-WINBASEAPI int WINAPI ReleaseDC(HWND hWnd, HDC hDC);
 WINBASEAPI HDC WINAPI CreateCompatibleDC(HDC hdc);
 WINBASEAPI BOOL WINAPI DeleteDC(HDC hdc);
 WINBASEAPI HGDIOBJ WINAPI SelectObject(HDC hdc, HGDIOBJ hgdiobj);
@@ -252,6 +249,13 @@ WINBASEAPI int WINAPI MulDiv(int nNumber, int nNumerator, int nDenominator);
 #endif
 WINBASEAPI BOOL WINAPI GetObjectW(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject);
 WINBASEAPI int WINAPI SetROP2(HDC hdc, int fnDrawMode);
+
+
+/* Moved here from CreateRectRgn, DrawFocusRect, GetSysColorBrush: the CE SDK declares these entry points in this header. */
+WINUSERAPI HRGN WINAPI CreateRectRgn(int nLeftRect, int nTopRect, int nRightRect,
+    int nBottomRect);
+WINUSERAPI BOOL WINAPI DrawFocusRect(HDC hDC, const RECT *lprc);
+WINUSERAPI HBRUSH WINAPI GetSysColorBrush(int nIndex);
 
 #ifdef __cplusplus
 }
