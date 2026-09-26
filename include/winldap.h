@@ -34,8 +34,16 @@ extern "C" {
 #define LDAPCALL __cdecl
 #endif
 
+/* Whether the undecorated names map to the wide entry points.  CE derives this
+ * from UNICODE rather than fixing it, so a UNICODE build -- the normal CE
+ * build -- gets the W forms.  Hardcoding it to 0 mapped LDAPControl, LDAPMod
+ * and LDAPSortKey onto their A forms instead, which is the wrong type. */
 #ifndef LDAP_UNICODE
+#ifdef UNICODE
+#define LDAP_UNICODE 1
+#else
 #define LDAP_UNICODE 0
+#endif
 #endif
 
 /* The session and result handles.  Their layouts are internal to wldap32. */
@@ -194,8 +202,8 @@ typedef struct akari_ldapmodA {
 #define LDAP_OPT_REFERRAL_HOP_LIMIT  0x10
 #define LDAP_OPT_PROTOCOL_VERSION    0x11
 #define LDAP_OPT_VERSION             0x11
-#define LDAP_OPT_API_INFO            0x12
-#define LDAP_OPT_GETDSNAME_FLAGS     0x14
+#define LDAP_OPT_API_INFO            0x00
+#define LDAP_OPT_GETDSNAME_FLAGS     0x3D
 #define LDAP_OPT_HOST_NAME           0x30
 #define LDAP_OPT_ERROR_NUMBER        0x31
 #define LDAP_OPT_ERROR_STRING        0x32
