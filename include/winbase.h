@@ -546,6 +546,11 @@ WINUSERAPI LPWSTR WINAPI CharUpperW(LPWSTR lpsz);
 WINUSERAPI HRSRC WINAPI FindResourceW(HMODULE hModule, LPCWSTR lpName, LPCWSTR lpType);
 
 
+/* Moved here from winuser.h: the CE SDK declares these in winbase.h. */
+WINUSERAPI ATOM WINAPI GlobalAddAtomW(LPCWSTR lpAtomName);
+WINUSERAPI int WINAPI LoadStringW(HINSTANCE hInstance, UINT uID, LPWSTR lpBuffer, int cchBufferMax);
+WINBASEAPI DWORD WINAPI SizeofResource(HMODULE hModule, HRSRC hResInfo);
+
 #ifdef __cplusplus
 }
 #endif

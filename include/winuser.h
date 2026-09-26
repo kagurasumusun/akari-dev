@@ -337,7 +337,7 @@ WINUSERAPI ATOM WINAPI RegisterClassW(const WNDCLASSW *lpWndClass);
 WINUSERAPI BOOL WINAPI UnregisterClassW(LPCWSTR lpClassName, HINSTANCE hInstance);
 WINUSERAPI BOOL WINAPI GetClassInfoW(HINSTANCE hInstance, LPCWSTR lpClassName,
     LPWNDCLASSW lpWndClass);
-WINUSERAPI ATOM WINAPI GlobalAddAtomW(LPCWSTR lpAtomName);
+
 WINUSERAPI HWND WINAPI SetCapture(HWND hWnd);
 WINUSERAPI BOOL WINAPI ReleaseCapture(VOID);
 WINUSERAPI HWND WINAPI GetCapture(VOID);
@@ -388,12 +388,12 @@ WINUSERAPI INT_PTR WINAPI DialogBoxIndirectParamW(HINSTANCE hInstance,
 WINUSERAPI HWND WINAPI CreateDialogIndirectParamW(HINSTANCE hInstance,
     const void *lpTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
 WINUSERAPI BOOL WINAPI EndDialog(HWND hDlg, INT_PTR nResult);
-WINUSERAPI int WINAPI LoadStringW(HINSTANCE hInstance, UINT uID, LPWSTR lpBuffer, int cchBufferMax);
+
 WINUSERAPI HICON WINAPI LoadIconW(HINSTANCE hInstance, LPCWSTR lpIconName);
 WINUSERAPI HCURSOR WINAPI LoadCursorW(HINSTANCE hInstance, LPCWSTR lpCursorName);
 WINUSERAPI HBITMAP WINAPI LoadBitmapW(HINSTANCE hInstance, LPCWSTR lpBitmapName);
 WINBASEAPI HGLOBAL WINAPI LoadResource(HMODULE hModule, HRSRC hResInfo);
-WINBASEAPI DWORD WINAPI SizeofResource(HMODULE hModule, HRSRC hResInfo);
+
 /* Resource data is not moveable on Windows CE, so locking is a no-op. */
 #define LockResource(hResData) ((LPVOID)(hResData))
 
