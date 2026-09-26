@@ -300,6 +300,7 @@ DECLARE_INTERFACE_(IBindCtx, IUnknown)
 };
 
 typedef IBindCtx *LPBC;
+typedef IBindCtx *LPBINDCTX;
 
 /* ------------------------------------------------------------ IPersistStorage */
 
