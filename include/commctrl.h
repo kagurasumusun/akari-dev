@@ -75,7 +75,7 @@ typedef struct akari_INITCOMMONCONTROLSEX {
 #define LVM_SCROLL              (LVM_FIRST + 20)
 #define LVM_SETCOLUMNWIDTH      (LVM_FIRST + 30)
 #define LVM_SETIMAGELIST        (LVM_FIRST + 3)
-#define LVM_GETIMAGELIST        (LVM_FIRST + 1)
+#define LVM_GETIMAGELIST        (LVM_FIRST + 2)
 
 #define LVIF_TEXT        0x00000001
 #define LVIF_IMAGE       0x00000002
@@ -129,6 +129,8 @@ typedef struct akari_LVITEMW {
     int cchTextMax;
     int iImage;
     LPARAM lParam;
+    int iIndent;
+    int iGroupId;
 } LVITEMW, *LPLVITEMW;
 
 typedef struct akari_LVCOLUMNW {
@@ -138,6 +140,8 @@ typedef struct akari_LVCOLUMNW {
     LPWSTR pszText;
     int cchTextMax;
     int iSubItem;
+    int iImage;
+    int iOrder;
 } LVCOLUMNW, *LPLVCOLUMNW;
 
 typedef struct akari_NMLISTVIEW {
@@ -222,8 +226,8 @@ typedef struct akari_NMLVFINDITEMW {
 
 typedef struct akari_TCITEMW {
     UINT mask;
-    UINT lpReserved1;
-    UINT lpReserved2;
+    DWORD dwState;
+    DWORD dwStateMask;
     LPWSTR pszText;
     int cchTextMax;
     int iImage;
@@ -278,9 +282,9 @@ typedef struct akari_NMTCKEYDOWN {
 #define PBM_STEPIT         (WM_USER + 5)
 
 #define SBARS_SIZEGRIP     0x0100
-#define SB_SETTEXTW        (WM_USER + 1)
-#define SB_GETTEXTW        (WM_USER + 2)
-#define SB_GETTEXTLENGTHW  (WM_USER + 3)
+#define SB_SETTEXTW        (WM_USER + 11)
+#define SB_GETTEXTW        (WM_USER + 13)
+#define SB_GETTEXTLENGTHW  (WM_USER + 12)
 #define SB_SETPARTS        (WM_USER + 4)
 #define SB_GETPARTS        (WM_USER + 6)
 #define SB_SIMPLE          (WM_USER + 9)
@@ -306,7 +310,7 @@ typedef struct akari_NMTCKEYDOWN {
 #define TBSTATE_ENABLED       0x04
 #define TBSTATE_HIDDEN        0x08
 
-#define TBIF_TEXT        0x0001
+#define TBIF_TEXT        0x00000002
 #define TBIF_STATE       0x0004
 #define TBIF_STYLE       0x0008
 #define TBIF_COMMAND     0x0020
@@ -365,9 +369,9 @@ typedef struct akari_TBADDBITMAP {
 #define PSH_PROPTITLE      0x00000001
 #define PSH_USEICONID      0x00000004
 #define PSH_PROPSHEETPAGE  0x00000008
-#define PSH_HASHELP        0x00000020
+#define PSH_HASHELP        0x0200
 #define PSH_NOAPPLYNOW     0x00000080
-#define PSH_USECALLBACK    0x00000040
+#define PSH_USECALLBACK    0x0100
 
 #define PSP_DEFAULT        0x00000000
 #define PSP_DLGINDIRECT    0x00000001
@@ -402,7 +406,7 @@ typedef struct akari_TBADDBITMAP {
 #define PSM_QUERYSIBLINGS   (WM_USER + 108)
 #define PSM_UNCHANGED       (WM_USER + 109)
 #define PSM_APPLY           (WM_USER + 110)
-#define PSM_PRESSBUTTON     (WM_USER + 112)
+#define PSM_PRESSBUTTON     (WM_USER + 113)
 #define PSBTN_BACK    0
 #define PSBTN_NEXT    1
 #define PSBTN_FINISH  2
@@ -441,7 +445,7 @@ typedef struct akari_PROPSHEETHEADERW {
     PFNPROPSHEETCALLBACK pfnCallback;
 } PROPSHEETHEADERW, *LPPROPSHEETHEADERW;
 
-WINBASEAPI BOOL WINAPI InitCommonControls(VOID);
+WINBASEAPI void WINAPI InitCommonControls(VOID);
 WINBASEAPI BOOL WINAPI InitCommonControlsEx(const INITCOMMONCONTROLSEX *);
 WINBASEAPI HWND WINAPI CreateToolbarEx(HWND hwnd, DWORD ws, UINT wID, int nBitmaps,
     HINSTANCE hBMInst, UINT_PTR wBMID, const TBBUTTON *lpButtons, int iNumButtons,
@@ -466,7 +470,7 @@ WINBASEAPI HMENU WINAPI CommandBar_GetMenu(HWND hwndCB, UINT uIndex);
 WINBASEAPI HWND WINAPI CommandBar_InsertComboBox(HWND hwndCB, HINSTANCE hInst, UINT uIndex,
     UINT uWidth, UINT uID, UINT uPosition);
 WINBASEAPI BOOL WINAPI CommandBar_DrawMenuBar(HWND hwndCB, UINT uIndex);
-WINBASEAPI BOOL WINAPI CommandBar_AlignAdornments(HWND hwndCB);
+WINBASEAPI void WINAPI CommandBar_AlignAdornments(HWND hwndCB);
 WINBASEAPI HWND WINAPI CommandBands_Create(HINSTANCE hInstance, HWND hwndParent, UINT uID,
     DWORD dwFlags, HMENU hmenu, const void *prb, HIMAGELIST himlLarge, HIMAGELIST himlSmall,
     UINT nBtnTextLen);
@@ -481,7 +485,7 @@ WINBASEAPI BOOL WINAPI IsCommandBarMessage(HWND hwndCB, MSG *pMsg);
 WINBASEAPI HPROPSHEETPAGE WINAPI CreatePropertySheetPageW(const PROPSHEETPAGEW *pPSPage);
 WINBASEAPI BOOL WINAPI DestroyPropertySheetPage(HPROPSHEETPAGE hPSPage);
 WINBASEAPI INT_PTR WINAPI PropertySheetW(const PROPSHEETHEADERW *pPSHead);
-WINBASEAPI void WINAPI ImageList_SetImageCount(HIMAGELIST himl, UINT uNewCount);
+WINBASEAPI BOOL WINAPI ImageList_SetImageCount(HIMAGELIST himl, UINT uNewCount);
 WINBASEAPI int WINAPI ImageList_Add(HIMAGELIST himl, HBITMAP hbmImage, HBITMAP hbmMask);
 WINBASEAPI int WINAPI ImageList_AddMasked(HIMAGELIST himl, HBITMAP hbmImage, COLORREF crMask);
 WINBASEAPI HIMAGELIST WINAPI ImageList_Create(int cx, int cy, UINT flags, int cInitial,
