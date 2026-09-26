@@ -109,6 +109,7 @@ struct fd_set {
     SOCKET fd_array[64];
 };
 typedef struct fd_set FD_SET;
+typedef FD_SET fd_set;
 
 struct wsacrypt { DWORD dwVersion; DWORD dwProviderId; };
 
@@ -119,7 +120,10 @@ struct wsacrypt { DWORD dwVersion; DWORD dwProviderId; };
 #define AF_INET     2
 #define AF_IMPLINK  3
 #define AF_APPLETALK 16
-#define AF_IRDA     26
+#define AF_IRDA     22
+#define AF_INET6    23
+#define AF_12844    25
+#define AF_ATM      26
 #define AF_INET6    23
 
 #define PF_INET     AF_INET
@@ -179,26 +183,58 @@ struct wsacrypt { DWORD dwVersion; DWORD dwProviderId; };
 #define FD_CONNECT   0x10
 #define FD_CLOSE     0x20
 #define FD_QOS       0x40
-#define FD_ALL_EVENTS 0x7f
+#define FD_MAX_EVENTS 10
+#define FD_ALL_EVENTS ((1 << FD_MAX_EVENTS) - 1)
 
 #define IOCPARM_MASK 0x7f
 #define IOC_VOID     0x20000000
 #define IOC_OUT      0x40000000
 #define IOC_IN       0x80000000
-#define IOC_INOUT    (IOC_IN | IOC_OUT)
-#define FIONBIO      0x5427
-#define FIONREAD     0x4004667f
-#define FIOASYNC     0x5280
-#define SIOCATMARK   0x40047307
-#define SIOCGHIWAT   0x40047301
-#define SIOCGLOWAT   0x40047303
-#define SIOCSHIWAT   0x80047300
-#define SIOCSLOWAT   0x80047302
-#define SIO_GET_EXTENSION_FUNCTION_POINTER 0xC8000006
+#define IOC_INOUT    (IOC_IN|IOC_OUT)
+#define _IO(x,y)     (IOC_VOID|((x)<<8)|(y))
+#define _IOR(x,y,t)  (IOC_OUT|(((long)sizeof(t)&IOCPARM_MASK)<<16)|((x)<<8)|(y))
+#define _IOW(x,y,t)  (IOC_IN|(((long)sizeof(t)&IOCPARM_MASK)<<16)|((x)<<8)|(y))
+
+#define FIONREAD    _IOR('f', 127, u_long)
+#define FIONBIO     _IOW('f', 126, u_long)
+#define FIOASYNC    _IOW('f', 125, u_long)
+
+#define SIOCSHIWAT  _IOW('s',  0, u_long)
+#define SIOCGHIWAT  _IOR('s',  1, u_long)
+#define SIOCSLOWAT  _IOW('s',  2, u_long)
+#define SIOCGLOWAT  _IOR('s',  3, u_long)
+#define SIOCATMARK  _IOR('s',  7, u_long)
+
+#define IOC_UNIX     0x00000000
+#define IOC_WS2      0x08000000
+#define IOC_PROTOCOL 0x10000000
+#define IOC_VENDOR   0x18000000
+#define _WSAIO(x,y)     (IOC_VOID|(x)|(y))
+#define _WSAIOR(x,y)    (IOC_OUT|(x)|(y))
+#define _WSAIOW(x,y)    (IOC_IN|(x)|(y))
+#define _WSAIORW(x,y)   (IOC_INOUT|(x)|(y))
+
+#define SIO_ASSOCIATE_HANDLE                 _WSAIOW(IOC_WS2,1)
+#define SIO_ENABLE_CIRCULAR_QUEUEING         _WSAIO(IOC_WS2,2)
+#define SIO_FIND_ROUTE                       _WSAIOR(IOC_WS2,3)
+#define SIO_FLUSH                            _WSAIO(IOC_WS2,4)
+#define SIO_GET_BROADCAST_ADDRESS            _WSAIOR(IOC_WS2,5)
+#define SIO_GET_EXTENSION_FUNCTION_POINTER   _WSAIORW(IOC_WS2,6)
+#define SIO_GET_QOS                          _WSAIORW(IOC_WS2,7)
+#define SIO_GET_GROUP_QOS                    _WSAIORW(IOC_WS2,8)
+#define SIO_MULTIPOINT_LOOPBACK              _WSAIOW(IOC_WS2,9)
+#define SIO_MULTICAST_SCOPE                  _WSAIOW(IOC_WS2,10)
+#define SIO_SET_QOS                          _WSAIOW(IOC_WS2,11)
+#define SIO_SET_GROUP_QOS                    _WSAIOW(IOC_WS2,12)
+#define SIO_TRANSLATE_HANDLE                 _WSAIORW(IOC_WS2,13)
+#define SIO_NSP_NOTIFY_CHANGE                _WSAIOW(IOC_WS2,25)
 
 #define SD_RECEIVE 0x00
 #define SD_SEND    0x01
 #define SD_BOTH    0x02
+
+#define WSADESCRIPTION_LEN 256
+#define WSASYS_STATUS_LEN  128
 
 #define WSABASEERR 10000
 #define WSAEINTR             (WSABASEERR + 4)
@@ -255,8 +291,8 @@ struct wsacrypt { DWORD dwVersion; DWORD dwProviderId; };
 typedef struct WSAData {
     WORD wVersion;
     WORD wHighVersion;
-    CHAR szDescription[257];
-    CHAR szSystemStatus[129];
+    CHAR szDescription[WSADESCRIPTION_LEN + 1];
+    CHAR szSystemStatus[WSASYS_STATUS_LEN + 1];
     USHORT iMaxSockets;
     USHORT iMaxUdpDg;
     CHAR *lpVendorInfo;
@@ -266,6 +302,139 @@ typedef struct _WSABUF {
     ULONG len;
     CHAR *buf;
 } WSABUF, *LPWSABUF;
+
+typedef ULONG SERVICETYPE;
+
+#define SERVICETYPE_NOTRAFFIC      0x00000000
+#define SERVICETYPE_BESTEFFORT     0x00000001
+#define SERVICETYPE_CONTROLLEDLOAD 0x00000002
+#define SERVICETYPE_GUARANTEED     0x00000003
+#define QOS_NOT_SPECIFIED          0xFFFFFFFF
+#define POSITIVE_INFINITY_RATE     0xFFFFFFFE
+
+typedef struct akari_flowspec {
+    ULONG       TokenRate;
+    ULONG       TokenBucketSize;
+    ULONG       PeakBandwidth;
+    ULONG       Latency;
+    ULONG       DelayVariation;
+    SERVICETYPE ServiceType;
+    ULONG       MaxSduSize;
+    ULONG       MinimumPolicedSize;
+} FLOWSPEC, *PFLOWSPEC, *LPFLOWSPEC;
+
+typedef struct akari_qos {
+    FLOWSPEC SendingFlowspec;
+    FLOWSPEC ReceivingFlowspec;
+    WSABUF   ProviderSpecific;
+} QOS, *LPQOS;
+
+#define CF_ACCEPT 0x0000
+#define CF_REJECT 0x0001
+#define CF_DEFER  0x0002
+
+typedef unsigned long GROUP;
+typedef DWORD WSAEVENT, *LPWSAEVENT;
+
+typedef struct akari_wsaoverlapped {
+    ULONG_PTR Internal;
+    ULONG_PTR InternalHigh;
+    DWORD     Offset;
+    DWORD     OffsetHigh;
+    WSAEVENT  hEvent;
+} WSAOVERLAPPED, *LPWSAOVERLAPPED;
+
+typedef struct akari_socket_address {
+    LPSOCKADDR lpSockaddr;
+    INT        iSockaddrLength;
+} SOCKET_ADDRESS, *PSOCKET_ADDRESS, *LPSOCKET_ADDRESS;
+
+typedef struct akari_csaddr_info {
+    SOCKET_ADDRESS LocalAddr;
+    SOCKET_ADDRESS RemoteAddr;
+    INT            iSocketType;
+    INT            iProtocol;
+} CSADDR_INFO, *PCSADDR_INFO, *LPCSADDR_INFO;
+
+typedef struct akari_afprotocols {
+    INT iAddressFamily;
+    INT iProtocol;
+} AFPROTOCOLS, *PAFPROTOCOLS, *LPAFPROTOCOLS;
+
+typedef struct akari_blob {
+    ULONG cbSize;
+    BYTE *pBlobData;
+} BLOB, *LPBLOB;
+
+typedef struct akari_wsanetworkevents {
+    long lNetworkEvents;
+    int  iErrorCode[FD_MAX_EVENTS];
+} WSANETWORKEVENTS, *LPWSANETWORKEVENTS;
+
+#define MAX_PROTOCOL_CHAIN 7
+#define BASE_PROTOCOL      1
+#define LAYERED_PROTOCOL   0
+#define WSAPROTOCOL_LEN    255
+
+typedef struct akari_wsaprotocol_chain {
+    int   ChainLen;
+    DWORD ChainEntries[MAX_PROTOCOL_CHAIN];
+} WSAPROTOCOLCHAIN, *LPWSAPROTOCOLCHAIN;
+
+typedef enum akari_wsaecomparator {
+    COMP_EQUAL = 0,
+    COMP_NOTLESS
+} WSAECOMPARATOR, *PWSAECOMPARATOR, *LPWSAECOMPARATOR;
+
+typedef struct akari_wsaversion {
+    DWORD          dwVersion;
+    WSAECOMPARATOR ecHow;
+} WSAVERSION, *PWSAVERSION, *LPWSAVERSION;
+
+typedef struct akari_wsanamespace_infow {
+    GUID   NSProviderId;
+    DWORD  dwNameSpace;
+    BOOL   fActive;
+    DWORD  dwVersion;
+    LPWSTR lpszIdentifier;
+} WSANAMESPACE_INFOW, *PWSANAMESPACE_INFOW, *LPWSANAMESPACE_INFOW;
+
+typedef enum akari_wsacompletiontype {
+    NSP_NOTIFY_IMMEDIATELY = 0,
+    NSP_NOTIFY_HWND,
+    NSP_NOTIFY_EVENT,
+    NSP_NOTIFY_PORT,
+    NSP_NOTIFY_APC
+} WSACOMPLETIONTYPE, *PWSACOMPLETIONTYPE, *LPWSACOMPLETIONTYPE;
+
+typedef struct akari_wsacompletion {
+    WSACOMPLETIONTYPE Type;
+    union akari_wsacompletion_u {
+        struct akari_wsc_window {
+            HWND   hWnd;
+            UINT   uMsg;
+            WPARAM context;
+        } WindowMessage;
+        struct akari_wsc_event {
+            LPWSAOVERLAPPED lpOverlapped;
+        } Event;
+        struct akari_wsc_apc {
+            LPWSAOVERLAPPED lpOverlapped;
+            void (CALLBACK *lpfnCompletionProc)(DWORD, DWORD, LPWSAOVERLAPPED, DWORD);
+        } Apc;
+        struct akari_wsc_port {
+            LPWSAOVERLAPPED lpOverlapped;
+            HANDLE          hPort;
+            ULONG_PTR       Key;
+        } Port;
+    } Parameters;
+} WSACOMPLETION, *PWSACOMPLETION, *LPWSACOMPLETION;
+
+typedef int (CALLBACK *LPCONDITIONPROC)(LPWSABUF, LPWSABUF, LPQOS, LPQOS,
+    LPWSABUF, LPWSABUF, GROUP *, DWORD_PTR);
+
+typedef void (CALLBACK *LPWSAOVERLAPPED_COMPLETION_ROUTINE)(DWORD dwError,
+    DWORD cbTransferred, LPWSAOVERLAPPED lpOverlapped, DWORD dwFlags);
 
 #define WSA_FLAG_OVERLAPPED     0x01
 #define WSA_FLAG_MULTIPOINT_C_ROOT  0x02
@@ -282,19 +451,19 @@ typedef enum _WSAESETSERVICEOP {
 typedef struct _WSAQUERYSETW {
     DWORD dwSize;
     LPWSTR lpszServiceInstanceName;
-    void *lpServiceClassId;
-    void *lpVersion;
+    LPGUID lpServiceClassId;
+    LPWSAVERSION lpVersion;
     LPWSTR lpszComment;
     DWORD dwNameSpace;
-    void *lpNSProviderId;
+    LPGUID lpNSProviderId;
     LPWSTR lpszContext;
     DWORD dwNumberOfProtocols;
-    void *lpafpProtocols;
+    LPAFPROTOCOLS lpafpProtocols;
     LPWSTR lpszQueryString;
     DWORD dwNumberOfCsAddrs;
-    void *lpcsaBuffer;
+    LPCSADDR_INFO lpcsaBuffer;
     DWORD dwOutputFlags;
-    LPWSTR lpszBlob;
+    LPBLOB lpBlob;
 } WSAQUERYSETW, *LPWSAQUERYSETW;
 
 #define LUP_DEEP                0x0001
@@ -326,19 +495,23 @@ typedef struct _WSAPROTOCOL_INFOW {
     DWORD dwProviderFlags;
     GUID ProviderId;
     DWORD dwCatalogEntryId;
-    DWORD ProtocolChainLen;
-    INT iLayer;
+    WSAPROTOCOLCHAIN ProtocolChain;
+    INT iVersion;
+    INT iAddressFamily;
+    INT iMaxSockAddr;
+    INT iMinSockAddr;
+    INT iSocketType;
     INT iProtocol;
     INT iProtocolMaxOffset;
     INT iNetworkByteOrder;
     INT iSecurityScheme;
     DWORD dwMessageSize;
     DWORD dwProviderReserved;
-    WCHAR szProtocol[256];
+    WCHAR szProtocol[WSAPROTOCOL_LEN + 1];
 } WSAPROTOCOL_INFOW, *LPWSAPROTOCOL_INFOW;
 
 typedef int (WINAPI *LPFN_WSARECV)(SOCKET, LPWSABUF, DWORD, LPDWORD, LPDWORD,
-    void *, void *);
+    LPWSAOVERLAPPED, LPWSAOVERLAPPED_COMPLETION_ROUTINE);
 
 WINBASEAPI int WINAPI WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData);
 WINBASEAPI int WINAPI WSACleanup(VOID);
@@ -346,19 +519,19 @@ WINBASEAPI int WINAPI WSAGetLastError(VOID);
 WINBASEAPI void WINAPI WSASetLastError(int iError);
 WINBASEAPI SOCKET WINAPI socket(int af, int type, int protocol);
 WINBASEAPI SOCKET WINAPI WSASocketW(int af, int type, int protocol,
-    const WSAPROTOCOL_INFOW *lpProtocolInfo, unsigned int g, DWORD dwFlags);
+    LPWSAPROTOCOL_INFOW lpProtocolInfo, GROUP g, DWORD dwFlags);
 WINBASEAPI int WINAPI closesocket(SOCKET s);
 WINBASEAPI int WINAPI bind(SOCKET s, const struct sockaddr *name, int namelen);
 WINBASEAPI int WINAPI connect(SOCKET s, const struct sockaddr *name, int namelen);
 WINBASEAPI int WINAPI WSAConnect(SOCKET s, const struct sockaddr *name, int namelen,
-    LPWSABUF lpCallerData, LPWSABUF lpCalleeData, void *lpSQOS, void *lpGQOS);
+    LPWSABUF lpCallerData, LPWSABUF lpCalleeData, LPQOS lpSQOS, LPQOS lpGQOS);
 WINBASEAPI int WINAPI listen(SOCKET s, int backlog);
 WINBASEAPI SOCKET WINAPI accept(SOCKET s, struct sockaddr *addr, int *addrlen);
-WINBASEAPI SOCKET WINAPI WSAAccept(SOCKET s, struct sockaddr *addr, int *addrlen,
-    void *lpfnCondition, DWORD_PTR dwCallbackData);
+WINBASEAPI SOCKET WINAPI WSAAccept(SOCKET s, struct sockaddr *addr, LPINT addrlen,
+    LPCONDITIONPROC lpfnCondition, DWORD_PTR dwCallbackData);
 #if (_WIN32_WCE >= 0x500)
 WINBASEAPI SOCKET WINAPI WSAJoinLeaf(SOCKET s, const struct sockaddr *name, int namelen,
-    LPWSABUF lpCallerData, LPWSABUF lpCalleeData, void *lpSQOS, void *lpGQOS, DWORD dwFlags);
+    LPWSABUF lpCallerData, LPWSABUF lpCalleeData, LPQOS lpSQOS, LPQOS lpGQOS, DWORD dwFlags);
 #endif
 WINBASEAPI int WINAPI send(SOCKET s, const char *buf, int len, int flags);
 WINBASEAPI int WINAPI sendto(SOCKET s, const char *buf, int len, int flags,
@@ -367,18 +540,19 @@ WINBASEAPI int WINAPI recv(SOCKET s, char *buf, int len, int flags);
 WINBASEAPI int WINAPI recvfrom(SOCKET s, char *buf, int len, int flags,
     struct sockaddr *from, int *fromlen);
 WINBASEAPI int WINAPI WSASend(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount,
-    LPDWORD lpNumberOfBytesSent, DWORD dwFlags, void *lpOverlapped, void *lpCompletionRoutine);
+    LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped,
+    LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
 WINBASEAPI int WINAPI WSASendTo(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount,
     LPDWORD lpNumberOfBytesSent, DWORD dwFlags, const struct sockaddr *lpTo, int iTolen,
-    void *lpOverlapped, void *lpCompletionRoutine);
+    LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
 WINBASEAPI int WINAPI WSARecv(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount,
-    LPDWORD lpNumberOfBytesRecvd, LPDWORD lpFlags, void *lpOverlapped,
-    void *lpCompletionRoutine);
+    LPDWORD lpNumberOfBytesRecvd, LPDWORD lpFlags, LPWSAOVERLAPPED lpOverlapped,
+    LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
 WINBASEAPI int WINAPI WSARecvFrom(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount,
-    LPDWORD lpNumberOfBytesRecvd, LPDWORD lpFlags, struct sockaddr *lpFrom, int *lpFromlen,
-    void *lpOverlapped, void *lpCompletionRoutine);
-WINBASEAPI int WINAPI select(int nfds, struct fd_set *readfds, struct fd_set *writefds,
-    struct fd_set *exceptfds, const struct timeval *timeout);
+    LPDWORD lpNumberOfBytesRecvd, LPDWORD lpFlags, struct sockaddr *lpFrom, LPINT lpFromlen,
+    LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
+WINBASEAPI int WINAPI select(int nfds, fd_set *readfds, fd_set *writefds,
+    fd_set *exceptfds, const struct timeval *timeout);
 WINBASEAPI int WINAPI shutdown(SOCKET s, int how);
 WINBASEAPI int WINAPI getsockopt(SOCKET s, int level, int optname, char *optval,
     int *optlen);
@@ -386,24 +560,24 @@ WINBASEAPI int WINAPI setsockopt(SOCKET s, int level, int optname, const char *o
     int optlen);
 WINBASEAPI int WINAPI getsockname(SOCKET s, struct sockaddr *name, int *namelen);
 WINBASEAPI int WINAPI getpeername(SOCKET s, struct sockaddr *name, int *namelen);
-WINBASEAPI int WINAPI ioctlsocket(SOCKET s, LONG cmd, ULONG *argp);
+WINBASEAPI int WINAPI ioctlsocket(SOCKET s, long cmd, u_long *argp);
 WINBASEAPI int WINAPI WSAIoctl(SOCKET s, DWORD dwIoControlCode, LPVOID lpvInBuffer,
     DWORD cbInBuffer, LPVOID lpvOutBuffer, DWORD cbOutBuffer, LPDWORD lpcbBytesReturned,
-    void *lpOverlapped, void *lpCompletionRoutine);
+    LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine);
 WINBASEAPI u_long WINAPI htonl(u_long hostlong);
 WINBASEAPI u_short WINAPI htons(u_short hostshort);
 WINBASEAPI u_long WINAPI ntohl(u_long netlong);
 WINBASEAPI u_short WINAPI ntohs(u_short netshort);
-WINBASEAPI DWORD WINAPI WSAHtonl(SOCKET s, u_long hostlong, u_long *lpNetlong);
-WINBASEAPI DWORD WINAPI WSAHtons(SOCKET s, u_short hostshort, u_short *lpNetshort);
-WINBASEAPI DWORD WINAPI WSANtohl(SOCKET s, u_long netlong, u_long *lpHostlong);
-WINBASEAPI DWORD WINAPI WSANtohs(SOCKET s, u_short netshort, u_short *lpHostshort);
-WINBASEAPI ULONG WINAPI inet_addr(const char *cp);
+WINBASEAPI int WINAPI WSAHtonl(SOCKET s, u_long hostlong, u_long *lpNetlong);
+WINBASEAPI int WINAPI WSAHtons(SOCKET s, u_short hostshort, u_short *lpNetshort);
+WINBASEAPI int WINAPI WSANtohl(SOCKET s, u_long netlong, u_long *lpHostlong);
+WINBASEAPI int WINAPI WSANtohs(SOCKET s, u_short netshort, u_short *lpHostshort);
+WINBASEAPI u_long WINAPI inet_addr(const char *cp);
 WINBASEAPI char *WINAPI inet_ntoa(struct in_addr in);
 WINBASEAPI struct hostent *WINAPI gethostbyname(const char *name);
 WINBASEAPI struct hostent *WINAPI gethostbyaddr(const char *addr, int len, int type);
 WINBASEAPI int WINAPI gethostname(char *name, int namelen);
-WINBASEAPI int WINAPI sethostname(const char *name, int namelen);
+WINBASEAPI int WINAPI sethostname(char *name, int namelen);
 WINBASEAPI struct servent *WINAPI getservbyname(const char *name, const char *proto);
 WINBASEAPI struct servent *WINAPI getservbyport(int port, const char *proto);
 WINBASEAPI struct protoent *WINAPI getprotobyname(const char *name);
@@ -414,18 +588,18 @@ WINBASEAPI int WINAPI getnameinfo(const struct sockaddr *sa, int salen, char *ho
     int hostlen, char *serv, int servlen, int flags);
 WINBASEAPI void WINAPI freeaddrinfo(void *ai);
 #if (_WIN32_WCE >= 0x500)
-WINBASEAPI int WINAPI WSAAddressToStringW(LPSOCKADDR Address, DWORD AddressLength,
-    void *lpProtocolInfo, LPWSTR AddressString, LPDWORD lpdwAddressStringLength);
+WINBASEAPI INT WINAPI WSAAddressToStringW(LPSOCKADDR lpsaAddress, DWORD dwAddressLength,
+    LPWSAPROTOCOL_INFOW lpProtocolInfo, LPWSTR lpszAddressString, LPDWORD lpdwAddressStringLength);
 #endif
-WINBASEAPI int WINAPI WSAEnumProtocolsW(LPINT lpiProtocols, void *lpProtocolBuffer,
+WINBASEAPI int WINAPI WSAEnumProtocolsW(LPINT lpiProtocols, LPWSAPROTOCOL_INFOW lpProtocolBuffer,
     LPDWORD lpdwBufferLength);
-WINBASEAPI int WINAPI WSAEnumNameSpaceProvidersW(LPDWORD lpdwBufferLength, void *lpnspBuffer);
-WINBASEAPI int WINAPI WSALookupServiceBeginW(const WSAQUERYSETW *lpqsRestrictions,
-    DWORD dwControlFlags, HANDLE *lphLookup);
-WINBASEAPI int WINAPI WSALookupServiceNextW(HANDLE hLookup, DWORD dwControlFlags,
-    LPDWORD lpdwBufferLength, WSAQUERYSETW *lpqsResults);
-WINBASEAPI int WINAPI WSALookupServiceEnd(HANDLE hLookup);
-WINBASEAPI int WINAPI WSASetServiceW(const WSAQUERYSETW *lpqsRegInfo,
+WINBASEAPI INT WINAPI WSAEnumNameSpaceProvidersW(LPDWORD lpdwBufferLength, LPWSANAMESPACE_INFOW lpnspBuffer);
+WINBASEAPI INT WINAPI WSALookupServiceBeginW(LPWSAQUERYSETW lpqsRestrictions,
+    DWORD dwControlFlags, LPHANDLE lphLookup);
+WINBASEAPI INT WINAPI WSALookupServiceNextW(HANDLE hLookup, DWORD dwControlFlags,
+    LPDWORD lpdwBufferLength, LPWSAQUERYSETW lpqsResults);
+WINBASEAPI INT WINAPI WSALookupServiceEnd(HANDLE hLookup);
+WINBASEAPI INT WINAPI WSASetServiceW(LPWSAQUERYSETW lpqsRegInfo,
     WSAESETSERVICEOP essOperation, DWORD dwControlFlags);
 #if (_WIN32_WCE >= 0x500)
 WINBASEAPI int WINAPI WSAAsyncSelect(SOCKET s, HWND hWnd, UINT wMsg, LONG lEvent);
@@ -439,18 +613,19 @@ WINBASEAPI BOOL WINAPI WSASetEvent(HANDLE hEvent);
 WINBASEAPI BOOL WINAPI WSAResetEvent(HANDLE hEvent);
 WINBASEAPI DWORD WINAPI WSAWaitForMultipleEvents(DWORD cEvents, const HANDLE *lphEvents,
     BOOL fWaitAll, DWORD dwTimeout, BOOL fAlertable);
-WINBASEAPI int WINAPI WSAEventSelect(SOCKET s, HANDLE hEventObject, LONG lNetworkEvents);
-WINBASEAPI int WINAPI WSAEnumNetworkEvents(SOCKET s, HANDLE hEventObject, void *lpNetworkEvents);
-WINBASEAPI BOOL WINAPI WSAGetOverlappedResult(SOCKET s, void *lpOverlapped,
+WINBASEAPI int WINAPI WSAEventSelect(SOCKET s, HANDLE hEventObject, long lNetworkEvents);
+WINBASEAPI int WINAPI WSAEnumNetworkEvents(SOCKET s, HANDLE hEventObject, LPWSANETWORKEVENTS lpNetworkEvents);
+WINBASEAPI BOOL WINAPI WSAGetOverlappedResult(SOCKET s, LPWSAOVERLAPPED lpOverlapped,
     LPDWORD lpcbTransfer, BOOL fWait, LPDWORD lpdwFlags);
 #if (_WIN32_WCE >= 0x500)
 WINBASEAPI int WINAPI WSANSPIoctl(HANDLE hLookup, DWORD dwControlCode, LPVOID lpvInBuffer,
     DWORD cbInBuffer, LPVOID lpvOutBuffer, DWORD cbOutBuffer, LPDWORD lpcbBytesReturned,
-    void *lpCompletion);
+    LPWSACOMPLETION lpCompletion);
 #endif
 #if (_WIN32_WCE >= 0x600)
-WINBASEAPI int WINAPI WSAControl(DWORD dwControlCode, LPVOID lpvInBuffer, DWORD cbInBuffer,
-    LPVOID lpvOutBuffer, DWORD cbOutBuffer, LPDWORD lpcbBytesReturned);
+WINBASEAPI DWORD WINAPI WSAControl(DWORD dwControlCode, ULONG ulOption,
+    LPVOID lpvInputBuffer, LPDWORD lpdwInputBufferSize,
+    LPVOID lpvOutputBuffer, LPDWORD lpdwOutputBufferSize);
 #endif
 WINBASEAPI int WINAPI __WSAFDIsSet(SOCKET s, struct fd_set *fds);
 

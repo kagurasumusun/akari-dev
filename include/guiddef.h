@@ -22,9 +22,16 @@ typedef struct _GUID {
     unsigned char  Data4[8];
 } GUID;
 
+typedef GUID *LPGUID;
+typedef const GUID *LPCGUID;
+
 typedef GUID CLSID;
 typedef CLSID *LPCLSID;
-typedef const GUID *LPCGUID;
+#ifdef __cplusplus
+#define REFGUID const GUID &
+#else
+#define REFGUID const GUID * __MIDL_CONST
+#endif
 typedef GUID IID;
 typedef IID *LPIID;
 typedef GUID FMTID;
