@@ -1,6 +1,9 @@
 /* GDI. Original text. Exported by coredll.dll. */
 #ifndef AKARI_WCE_WINGDI_H
 #define AKARI_WCE_WINGDI_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winbase.h"
 
@@ -211,7 +214,7 @@ WINBASEAPI BOOL WINAPI RoundRect(HDC hdc, int nLeftRect, int nTopRect, int nRigh
     int nBottomRect, int nWidth, int nHeight);
 WINBASEAPI BOOL WINAPI Polygon(HDC hdc, const POINT *lpPoints, int nCount);
 WINBASEAPI BOOL WINAPI Polyline(HDC hdc, const POINT *lpPoints, int nCount);
-WINBASEAPI BOOL WINAPI SetPixel(HDC hdc, int x, int y, COLORREF crColor);
+WINBASEAPI COLORREF WINAPI SetPixel(HDC hdc, int x, int y, COLORREF crColor);
 WINBASEAPI COLORREF WINAPI GetPixel(HDC hdc, int nXPos, int nYPos);
 WINBASEAPI int WINAPI FillRect(HDC hDC, const RECT *lprc, HBRUSH hbr);
 WINBASEAPI BOOL WINAPI InvertRect(HDC hDC, const RECT *lprc);
@@ -222,9 +225,16 @@ WINBASEAPI BOOL WINAPI StretchBlt(HDC hdcDest, int nXOriginDest, int nYOriginDes
     int nWidthSrc, int nHeightSrc, DWORD dwRop);
 WINBASEAPI HBITMAP WINAPI CreateBitmap(int nWidth, int nHeight, UINT cPlanes,
     UINT cBitsPerPel, const VOID *lpvBits);
+/*
+ * Windows CE 4.2 left this out of the export table for the Thumb and MIPS16
+ * builds of coredll only; every other release and CPU has it.
+ */
+#if !((_WIN32_WCE == 0x420) && \
+      (defined(AKARI_CPU_THUMB) || defined(AKARI_CPU_MIPS16)))
 WINBASEAPI BOOL WINAPI SetDIBitsToDevice(HDC hdc, int XDest, int YDest, DWORD dwWidth,
     DWORD dwHeight, int XSrc, int YSrc, UINT uStartScan, UINT cScanLines,
     const VOID *lpvBits, const BITMAPINFO *lpbmi, UINT fuColorUse);
+#endif
 WINBASEAPI int WINAPI GetDeviceCaps(HDC hdc, int nIndex);
 WINBASEAPI int WINAPI SaveDC(HDC hdc);
 WINBASEAPI BOOL WINAPI RestoreDC(HDC hdc, int nSavedDC);
@@ -243,4 +253,7 @@ WINBASEAPI int WINAPI MulDiv(int nNumber, int nNumerator, int nDenominator);
 WINBASEAPI BOOL WINAPI GetObjectW(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject);
 WINBASEAPI int WINAPI SetROP2(HDC hdc, int fnDrawMode);
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINGDI_H */

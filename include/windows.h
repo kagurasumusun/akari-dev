@@ -6,6 +6,9 @@
  */
 #ifndef AKARI_WCE_WINDOWS_H
 #define AKARI_WCE_WINDOWS_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "wcever.h"
 #include "winnt.h"
@@ -26,4 +29,7 @@
 #include "pm.h"
 #include "notify.h"
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINDOWS_H */

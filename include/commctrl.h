@@ -1,8 +1,12 @@
 /* Common controls. Original text. Exported by commctrl.dll. */
 #ifndef AKARI_WCE_COMMCTRL_H
 #define AKARI_WCE_COMMCTRL_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winuser.h"
+
 
 #define WC_LISTVIEWW       L"SysListView32"
 #define WC_TREEVIEWW       L"SysTreeView32"
@@ -512,4 +516,8 @@ WINBASEAPI HICON WINAPI ImageList_GetIcon(HIMAGELIST himl, int i, UINT flags);
 #define LBS_NOINTEGRALHEIGHT  0x0100L
 #define LBS_EXTENDEDSEL       0x0800L
 
+
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_COMMCTRL_H */

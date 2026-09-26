@@ -1,6 +1,9 @@
 /* Locale and code page services. Original text. Exported by coredll.dll. */
 #ifndef AKARI_WCE_WINNLS_H
 #define AKARI_WCE_WINNLS_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winbase.h"
 
@@ -130,4 +133,7 @@ WINBASEAPI BOOL WINAPI EnumSystemLocalesW(void *lpLocaleEnumProc, DWORD dwFlags)
 #define TIME_NOTIMEMARKER       0x00000004
 #define TIME_FORCE24HOURFORMAT  0x00000008
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINNLS_H */

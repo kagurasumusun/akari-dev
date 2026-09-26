@@ -1,6 +1,9 @@
 /* Power management. Original text. Exported by coredll.dll. */
 #ifndef AKARI_WCE_PM_H
 #define AKARI_WCE_PM_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winbase.h"
 #include "tchar.h"
@@ -9,7 +12,7 @@ typedef struct akari_POWER_BROADCAST {
     DWORD Message;
     DWORD Flags;
     DWORD Length;
-    WCHAR SystemPowerState[64];
+    WCHAR SystemPowerState[1];
 } POWER_BROADCAST, *PPOWER_BROADCAST;
 
 typedef struct akari_SYSTEM_POWER_STATUS_EX {
@@ -48,8 +51,6 @@ typedef struct akari_SYSTEM_POWER_STATUS_EX2 {
     DWORD BatteryTemperature;
     DWORD BackupBatteryVoltage;
     BYTE BatteryChemistry;
-    BYTE BatteryTemperatureSensitivity;
-    DWORD ExternalPower;
 } SYSTEM_POWER_STATUS_EX2, *PSYSTEM_POWER_STATUS_EX2;
 
 #define AC_LINE_OFFLINE     0x00
@@ -66,26 +67,37 @@ typedef struct akari_SYSTEM_POWER_STATUS_EX2 {
 
 #define PBT_TRANSITION        1
 #define PBT_RESUME            2
-#define PBT_POWERINFOCHANGE   3
+#define PBT_POWERINFOCHANGE   8
 #define PBT_OEMACTION         4
 #define POWER_STATE_ON        0x00010000
 #define POWER_STATE_OFF       0x00020000
 #define POWER_STATE_CRITICAL  0x00040000
-#define POWER_STATE_USERIDLE  0x00100000
+#define POWER_STATE_USERIDLE  0x01000000
 #define POWER_STATE_BACKLIGHT 0x00200000
 
 typedef HANDLE HPOWER_NOTIFY, *PHPOWER_NOTIFY;
 typedef DWORD DEVICE_POWER_NOTIFY;
 typedef DWORD (*PFN_POWER_NOTIFY)(DWORD, PVOID);
 
+/* Device power states, Dx. */
+typedef enum akari_CEDEVICE_POWER_STATE {
+    PwrDeviceUnspecified = -1,
+    D0 = 0,
+    D1,
+    D2,
+    D3,
+    D4,
+    PwrDeviceMaximum
+} CEDEVICE_POWER_STATE, *PCEDEVICE_POWER_STATE;
+
 PMAPI BOOL WINAPI GetSystemPowerStatusEx(PSYSTEM_POWER_STATUS_EX pSystemPowerStatus,
     BOOL fUpdate);
 PMAPI DWORD WINAPI GetSystemPowerStatusEx2(PSYSTEM_POWER_STATUS_EX2 pSystemPowerStatus,
     DWORD dwLen, BOOL fUpdate);
 PMAPI DWORD WINAPI SetSystemPowerState(LPCWSTR pwszStateName, DWORD dwHint, DWORD dwFlags);
-PMAPI DWORD WINAPI GetSystemPowerState(LPTSTR pwszName, DWORD nBufferSize, DWORD dwFlags);
-PMAPI HPOWER_NOTIFY WINAPI DevicePowerNotify(LPCWSTR pwszDeviceName,
-    PFN_POWER_NOTIFY pfnCallback, PVOID pContext, DWORD dwFlags);
+PMAPI DWORD WINAPI GetSystemPowerState(LPTSTR pwszName, DWORD nBufferSize, PDWORD pdwFlags);
+PMAPI DWORD WINAPI DevicePowerNotify(PVOID pvDevice,
+    CEDEVICE_POWER_STATE DeviceState, DWORD Flags);
 #if (_WIN32_WCE >= 0x500)
 PMAPI DWORD WINAPI GetIdleTime(DWORD *pdwIdleTime);
 #endif
@@ -95,4 +107,7 @@ PMAPI DWORD WINAPI GetIdleTime(DWORD *pdwIdleTime);
  * declared here.
  */
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_PM_H */

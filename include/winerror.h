@@ -5,6 +5,9 @@
  */
 #ifndef AKARI_WCE_WINERROR_H
 #define AKARI_WCE_WINERROR_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "windef.h"
 
@@ -833,7 +836,7 @@ typedef LONG HRESULT;
 #define ERROR_INTERNET_INCORRECT_USER_NAME                        12013L
 #define ERROR_INTERNET_INTERNAL_ERROR                             12004L
 #define ERROR_INTERNET_INVALID_CA                                 12045L
-#define ERROR_INTERNET_INVALID_OPERATION                          12106L
+#define ERROR_INTERNET_INVALID_OPERATION                          12016L
 #define ERROR_INTERNET_INVALID_OPTION                             12009L
 #define ERROR_INTERNET_INVALID_PROXY_REQUEST                      12033L
 #define ERROR_INTERNET_INVALID_URL                                12005L
@@ -1650,4 +1653,7 @@ typedef LONG HRESULT;
 #define MK_E_UNAVAILABLE           0x800401E3L
 #define RPC_E_DISCONNECTED         0x80010108L
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINERROR_H */

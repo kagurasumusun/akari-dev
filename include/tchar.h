@@ -5,6 +5,9 @@
  */
 #ifndef AKARI_WCE_TCHAR_H
 #define AKARI_WCE_TCHAR_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winnt.h"
 
@@ -131,10 +134,10 @@ typedef const char *PCTSTR;
 #define _tcsdup     _wcsdup
 #define _totupper   towupper
 #define _totlower   towlower
-#define _ttoi(s)    ((int)_wtol(s))
+#define _ttoi       _wtoi
 #define _ttol       _wtol
 #define _sntprintf  _snwprintf
-#define _vstprintf  _vsnwprintf
+#define _vstprintf  vswprintf
 #else
 #define _tcslen     strlen
 #define _tcscpy     strcpy
@@ -154,4 +157,7 @@ typedef const char *PCTSTR;
 #define _vstprintf  _vsnprintf
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_TCHAR_H */

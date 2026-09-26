@@ -6,11 +6,15 @@
  */
 #ifndef AKARI_WCE_COMMDLG_H
 #define AKARI_WCE_COMMDLG_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "wingdi.h"
 
+
 #define CF_SCREENFONTS   0x00000001
-#define CF_INITTOLOGFONTSTRUCT 0x00000020
+#define CF_INITTOLOGFONTSTRUCT 0x00000040L
 #define CF_EFFECTS       0x00000100
 #define CF_APPLY         0x00000200
 #define CF_NOSIMULATIONS 0x00001000
@@ -167,4 +171,8 @@ WINBASEAPI BOOL WINAPI PrintDlg(LPPRINTDLGW lppd);
 
 #define PRINTDLG PrintDlg
 
+
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_COMMDLG_H */

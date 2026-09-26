@@ -6,6 +6,9 @@
  */
 #ifndef AKARI_WCE_WINBASE_H
 #define AKARI_WCE_WINBASE_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winnt.h"
 #include "winerror.h"
@@ -444,4 +447,7 @@ WINBASEAPI int WINAPI wvsprintfW(LPWSTR lpOutput, LPCWSTR lpFmt, void *arglist);
 #include "storemgr.h"
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINBASE_H */

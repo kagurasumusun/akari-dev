@@ -3,6 +3,9 @@
  */
 #ifndef AKARI_WCE_WINNT_H
 #define AKARI_WCE_WINNT_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "guiddef.h"
 #include "windef.h"
@@ -29,9 +32,9 @@ typedef union akari_ULARGE_INTEGER {
 typedef struct akari_CRITICAL_SECTION {
     unsigned int LockCount;
     HANDLE OwnerThread;
-    HANDLE EventHandle;
-    DWORD TrapState;
-    DWORD Contentions;
+    HANDLE hCrit;
+    DWORD needtrap;
+    DWORD dwContentions;
 } CRITICAL_SECTION, *PCRITICAL_SECTION, *LPCRITICAL_SECTION;
 
 typedef struct akari_SECURITY_ATTRIBUTES {
@@ -58,7 +61,7 @@ typedef struct akari_FILETIME { DWORD dwLowDateTime; DWORD dwHighDateTime; }
 #define FILE_ATTRIBUTE_INROM       0x00000040
 #define FILE_ATTRIBUTE_NORMAL      0x00000080
 #define FILE_ATTRIBUTE_TEMPORARY   0x00000100
-#define FILE_ATTRIBUTE_ROMMODULE   0x00020000
+#define FILE_ATTRIBUTE_ROMMODULE       0x00002000
 
 #define GENERIC_READ     0x80000000
 #define GENERIC_WRITE    0x40000000
@@ -147,4 +150,7 @@ WINBASEAPI LONG WINAPI InterlockedCompareExchange(LONG volatile *Destination,
                                                   LONG Exchange, LONG Comparand);
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINNT_H */

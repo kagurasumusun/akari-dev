@@ -19,8 +19,18 @@
 #error "This kit covers Windows CE .NET 4.2, CE 5.0 and CE 6.0 (0x420/0x500/0x600)."
 #endif
 
-/* CPU selection. The macros follow the ones the CE toolchains predefine. */
-#if defined(_M_IX86) || defined(_X86_) || (defined(__i386__) && !defined(__MINGW32__))
+/*
+ * CPU selection. The macros follow the ones the CE toolchains predefine, and
+ * can be defined by hand before including anything when cross compiling with a
+ * toolchain whose predefined macros this file does not recognise.
+ *
+ * AKARI_CPU_THUMB and AKARI_CPU_MIPS16 mark the two instruction set variants
+ * that a few releases shipped a reduced export table for; they are separate from
+ * the CPU family because the family is the same.
+ */
+#if !defined(AKARI_CPU_X86) && !defined(AKARI_CPU_ARM) && \
+    !defined(AKARI_CPU_SH4) && !defined(AKARI_CPU_MIPS)
+#if defined(_M_IX86) || defined(_X86_) || defined(__i386__)
 #define AKARI_CPU_X86 1
 #elif defined(_M_ARM) || defined(_ARM_) || defined(__arm__)
 #define AKARI_CPU_ARM 1
@@ -28,6 +38,14 @@
 #define AKARI_CPU_SH4 1
 #elif defined(_M_MRX000) || defined(_MIPS_) || defined(__mips__)
 #define AKARI_CPU_MIPS 1
+#endif
+#endif
+
+#if defined(AKARI_CPU_ARM) && (defined(_M_ARMT) || defined(__thumb__))
+#define AKARI_CPU_THUMB 1
+#endif
+#if defined(AKARI_CPU_MIPS) && (defined(_MIPS16_) || defined(__mips16))
+#define AKARI_CPU_MIPS16 1
 #endif
 
 /* Calling convention. Windows CE has one calling convention for the API: the
@@ -74,6 +92,9 @@
 #define OLEAUT32API AKARI_DLLIMPORT
 #define CRYPT32API AKARI_DLLIMPORT
 #define WS2API AKARI_DLLIMPORT
+#define TOOLHELPAPI AKARI_DLLIMPORT
+#define MMTIMERAPI AKARI_DLLIMPORT
+#define IPHLPAPI AKARI_DLLIMPORT
 #endif
 
 #if !defined(_WIN32)

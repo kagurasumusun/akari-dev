@@ -1,6 +1,9 @@
 /* Base types, handles and geometry. Original text. */
 #ifndef AKARI_WCE_WINDEF_H
 #define AKARI_WCE_WINDEF_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stddef.h>
 #include "wcever.h"
@@ -162,4 +165,7 @@ typedef INT (WINAPI *FARPROC)(void);
 #define UNREFERENCED_PARAMETER(P) (P)
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINDEF_H */

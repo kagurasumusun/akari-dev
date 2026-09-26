@@ -15,6 +15,9 @@
  */
 #ifndef AKARI_WCE_WCESTR_H
 #define AKARI_WCE_WCESTR_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "wcever.h"
 #include "windef.h"
@@ -130,4 +133,7 @@ int _vsnwprintf(wchar_t *buffer, size_t count, const wchar_t *format, void *argp
 
 #endif /* _WIN32_WCE < 0x600 */
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WCESTR_H */

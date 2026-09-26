@@ -3,6 +3,9 @@
  */
 #ifndef AKARI_WCE_WINUSER_H
 #define AKARI_WCE_WINUSER_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "wingdi.h"
 
@@ -410,4 +413,7 @@ WINBASEAPI DWORD WINAPI SizeofResource(HMODULE hModule, HRSRC hResInfo);
 #define SWP_SHOWWINDOW 0x0040
 #define SWP_HIDEWINDOW 0x0080
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINUSER_H */

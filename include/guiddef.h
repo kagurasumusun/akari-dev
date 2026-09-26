@@ -6,6 +6,9 @@
  */
 #ifndef AKARI_WCE_GUIDDEF_H
 #define AKARI_WCE_GUIDDEF_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "windef.h"
 
@@ -58,4 +61,7 @@ static __inline int IsEqualGUID(const GUID *a, const GUID *b)
 #endif
 #endif
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_GUIDDEF_H */

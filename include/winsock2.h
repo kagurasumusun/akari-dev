@@ -5,6 +5,9 @@
  */
 #ifndef AKARI_WCE_WINSOCK2_H
 #define AKARI_WCE_WINSOCK2_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winbase.h"
 
@@ -458,4 +461,7 @@ WINBASEAPI int WINAPI __WSAFDIsSet(SOCKET s, struct fd_set *fds);
 #define WSAGetSelectEvent(lParam)  LOWORD(lParam)
 #define WSAGetSelectError(lParam)  HIWORD(lParam)
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINSOCK2_H */

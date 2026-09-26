@@ -1,6 +1,9 @@
 /* Registry. Original text. Exported by coredll.dll. */
 #ifndef AKARI_WCE_WINREG_H
 #define AKARI_WCE_WINREG_H
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "winbase.h"
 
@@ -69,4 +72,7 @@ WINBASEAPI LONG WINAPI RegQueryInfoKeyW(HKEY hKey, LPWSTR lpClass, LPDWORD lpcbC
 WINBASEAPI LONG WINAPI RegFlushKey(HKEY hKey);
 /* Windows CE has no registry change notification. */
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* AKARI_WCE_WINREG_H */
