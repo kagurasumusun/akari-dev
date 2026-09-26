@@ -193,7 +193,12 @@ WINBASEAPI DWORD WINAPI SetFilePointer(HANDLE hFile, LONG lDistanceToMove,
 WINBASEAPI DWORD WINAPI GetFileSize(HANDLE hFile, LPDWORD lpFileSizeHigh);
 WINBASEAPI BOOL WINAPI GetFileInformationByHandle(HANDLE hFile,
     LPBY_HANDLE_FILE_INFORMATION lpFileInformation);
-WINBASEAPI BOOL WINAPI GetFileAttributesExW(LPCWSTR lpFileName, int fInfoLevelId,
+typedef enum akari_GET_FILEEX_INFO_LEVELS {
+    GetFileExInfoStandard,
+    GetFileExMaxInfoLevel
+} GET_FILEEX_INFO_LEVELS;
+
+WINBASEAPI BOOL WINAPI GetFileAttributesExW(LPCWSTR lpFileName, GET_FILEEX_INFO_LEVELS fInfoLevelId,
     LPVOID lpFileInformation);
 WINBASEAPI DWORD WINAPI GetFileAttributesW(LPCWSTR lpFileName);
 WINBASEAPI BOOL WINAPI SetFileAttributesW(LPCWSTR lpFileName, DWORD dwFileAttributes);
