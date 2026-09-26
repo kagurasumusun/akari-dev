@@ -1248,6 +1248,7 @@ EXPORTS
     tanh @1076
     TerminateProcess @544
     TerminateThread @491
+    TlsCall @520
     TlsGetValue @15
     TlsSetValue @16
     tolower @1090

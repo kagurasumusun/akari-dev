@@ -1106,6 +1106,7 @@ EXPORTS
     SystemTimeToFileTime @19
     TerminateProcess @544
     TerminateThread @491
+    TlsCall @520
     TlsGetValue @15
     TlsSetValue @16
     TrackPopupMenuEx @845

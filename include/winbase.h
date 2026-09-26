@@ -273,10 +273,22 @@ WINBASEAPI BOOL WINAPI VirtualProtect(LPVOID lpAddress, DWORD dwSize,
     DWORD flNewProtect, PDWORD lpflOldProtect);
 WINBASEAPI VOID WINAPI GlobalMemoryStatus(LPMEMORYSTATUS lpBuffer);
 
-/* Thread local storage. Windows CE allocates the slots at link time, so there is
- * no TlsAlloc or TlsFree; TlsGetValue and TlsSetValue index a fixed range. */
+/*
+ * Thread local storage. The single exported entry point is TlsCall, which
+ * allocates and releases an index; TlsAlloc and TlsFree are the documented names
+ * applications use and are provided here as inline wrappers over it.
+ */
+#define TLS_FUNCALLOC 0
+#define TLS_FUNCFREE  1
+
+WINBASEAPI DWORD WINAPI TlsCall(DWORD dwFunction, DWORD dwParam);
 WINBASEAPI LPVOID WINAPI TlsGetValue(DWORD dwTlsIndex);
 WINBASEAPI BOOL WINAPI TlsSetValue(DWORD dwTlsIndex, LPVOID lpTlsValue);
+
+static __inline DWORD TlsAlloc(void) { return TlsCall(TLS_FUNCALLOC, 0); }
+static __inline BOOL TlsFree(DWORD dwTlsIndex) { return (BOOL)TlsCall(TLS_FUNCFREE, dwTlsIndex); }
+
+#define TLS_OUT_OF_INDEXES 0xFFFFFFFF
 
 /* Threads and processes. */
 WINBASEAPI HANDLE WINAPI CreateThread(LPSECURITY_ATTRIBUTES lpThreadAttributes,

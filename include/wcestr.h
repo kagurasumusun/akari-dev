@@ -35,6 +35,20 @@ int strncmp(const char *s1, const char *s2, size_t n);
 char *strchr(const char *s, int c);
 char *strrchr(const char *s, int c);
 char *strstr(const char *s1, const char *s2);
+char *strtok(char *s, const char *delim);
+char *strpbrk(const char *s, const char *accept);
+size_t strcspn(const char *s, const char *reject);
+size_t strspn(const char *s, const char *accept);
+char *_strdup(const char *s);
+int _stricmp(const char *s1, const char *s2);
+int _strnicmp(const char *s1, const char *s2, size_t n);
+char *_strlwr(char *s);
+char *_strupr(char *s);
+char *_strrev(char *s);
+char *_strnset(char *s, int c, size_t n);
+char *_strset(char *s, int c);
+void *_memccpy(void *dst, const void *src, int c, size_t n);
+int _memicmp(const void *s1, const void *s2, size_t n);
 #endif /* _INC_STRING */
 
 #ifndef _INC_WCHAR
@@ -52,8 +66,21 @@ wchar_t *wcsstr(const wchar_t *s1, const wchar_t *s2);
 wchar_t *_wcsupr(wchar_t *s);
 wchar_t *_wcslwr(wchar_t *s);
 wchar_t *_wcsdup(const wchar_t *s);
+size_t wcscspn(const wchar_t *s, const wchar_t *reject);
+size_t wcsspn(const wchar_t *s, const wchar_t *accept);
+wchar_t *wcspbrk(const wchar_t *s, const wchar_t *accept);
+wchar_t *wcstok(wchar_t *s, const wchar_t *delim);
+wchar_t *wcsncat(wchar_t *dst, const wchar_t *src, size_t n);
+wchar_t *_wcsdup(const wchar_t *s);
+wchar_t *_wcsrev(wchar_t *s);
+wchar_t *_wcsnset(wchar_t *s, wchar_t c, size_t n);
+wchar_t *_wcsset(wchar_t *s, wchar_t c);
+double wcstod(const wchar_t *s, wchar_t **endptr);
+long wcstol(const wchar_t *s, wchar_t **endptr, int base);
+unsigned long wcstoul(const wchar_t *s, wchar_t **endptr, int base);
 wint_t towupper(wint_t c);
 wint_t towlower(wint_t c);
+int iswctype(wint_t c, int mask);
 #endif /* _INC_WCHAR */
 
 #ifndef _INC_STDLIB
@@ -70,6 +97,24 @@ unsigned long strtoul(const char *s, char **endptr, int base);
 char *_itoa(int value, char *str, int radix);
 char *_ltoa(long value, char *str, int radix);
 char *_ultoa(unsigned long value, char *str, int radix);
+wchar_t *_itow(int value, wchar_t *str, int radix);
+wchar_t *_ltow(long value, wchar_t *str, int radix);
+wchar_t *_ultow(unsigned long value, wchar_t *str, int radix);
+long _wtol(const wchar_t *s);
+long long _wtoll(const wchar_t *s);
+long long _atoi64(const char *s);
+double strtod(const char *s, char **endptr);
+size_t mbstowcs(wchar_t *dst, const char *src, size_t n);
+size_t wcstombs(char *dst, const wchar_t *src, size_t n);
+void _swab(char *src, char *dst, size_t n);
+int tolower(int c);
+int toupper(int c);
+int rand(void);
+void srand(unsigned int seed);
+typedef struct akari_DIV_T { int quot; int rem; } akari_div_t;
+typedef struct akari_LDIV_T { long quot; long rem; } akari_ldiv_t;
+akari_div_t div(int numer, int denom);
+akari_ldiv_t ldiv(long numer, long denom);
 int abs(int n);
 long labs(long n);
 void qsort(void *base, size_t num, size_t width,
