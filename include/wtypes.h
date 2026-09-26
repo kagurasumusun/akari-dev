@@ -198,10 +198,20 @@ typedef OLECHAR **SNB;
 typedef void *PSECURITY_DESCRIPTOR;
 
 /* BLOB, as used by the property system and by PROPVARIANT. */
+/* BLOB, as used by the property system and by PROPVARIANT.  Both this header
+ * and winsock2.h declare it, exactly as the CE SDK does -- wtypes.h:1138 and
+ * winsock2.h:1309 -- and CE guards both with _tagBLOB_DEFINED so that only one
+ * is emitted.  Without that guard the two typedefs collide and a translation
+ * unit that includes both fails to compile. */
+#ifndef _tagBLOB_DEFINED
+#define _tagBLOB_DEFINED
+#define _BLOB_DEFINED
+#define _LPBLOB_DEFINED
 typedef struct akari_tagBLOB {
     ULONG cbSize;
     BYTE *pBlobData;
 } BLOB, *LPBLOB;
+#endif /* _tagBLOB_DEFINED */
 
 #ifdef __cplusplus
 }

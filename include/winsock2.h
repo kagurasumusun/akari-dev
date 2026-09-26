@@ -361,10 +361,15 @@ typedef struct akari_afprotocols {
     INT iProtocol;
 } AFPROTOCOLS, *PAFPROTOCOLS, *LPAFPROTOCOLS;
 
-typedef struct akari_blob {
+#ifndef _tagBLOB_DEFINED
+#define _tagBLOB_DEFINED
+#define _BLOB_DEFINED
+#define _LPBLOB_DEFINED
+typedef struct akari_tagBLOB {
     ULONG cbSize;
     BYTE *pBlobData;
 } BLOB, *LPBLOB;
+#endif /* _tagBLOB_DEFINED */
 
 typedef struct akari_wsanetworkevents {
     long lNetworkEvents;
