@@ -45,6 +45,8 @@ typedef char *PCHAR, *LPSTR, *PSTR;
 typedef const char *LPCSTR, *PCSTR;
 typedef unsigned char UCHAR;
 typedef UCHAR *PUCHAR;
+typedef BYTE BOOLEAN;
+typedef BOOLEAN *PBOOLEAN;
 typedef unsigned short USHORT;
 typedef USHORT *PUSHORT;
 typedef unsigned long ULONG;
