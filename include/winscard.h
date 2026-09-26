@@ -1,0 +1,182 @@
+/*
+ * winscard.h -- Smart Card Services for Windows CE.
+ *
+ * Part of the WinCE development API surface kit.  Covers CE 4.2, 5.0 and 6.0.
+ * The resource manager entry points of winscard.dll are declared here.
+ */
+#ifndef AKARI_WCE_WINSCARD_H
+#define AKARI_WCE_WINSCARD_H
+
+#include <wcever.h>
+#include <windef.h>
+#include <winnt.h>
+
+#ifndef _WINSCARD_
+#define _WINSCARD_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifndef WINSCARDAPI
+#define WINSCARDAPI AKARI_DLLIMPORT
+#endif
+
+/* --------------------------------------------------------- handles */
+
+typedef ULONG SCARDCONTEXT, *PSCARDCONTEXT, *LPSCARDCONTEXT;
+typedef const SCARDCONTEXT *LPCSCARDCONTEXT;
+typedef ULONG SCARDHANDLE, *PSCARDHANDLE, *LPSCARDHANDLE;
+typedef const SCARDHANDLE *LPCSCARDHANDLE;
+
+#define SCARD_AUTOALLOCATE ((DWORD)(-1))
+
+/* ------------------------------------------------- protocol control */
+
+typedef struct akari_SCARD_IO_REQUEST {
+    DWORD dwProtocol;
+    DWORD cbPciLength;
+} SCARD_IO_REQUEST, *PSCARD_IO_REQUEST, *LPSCARD_IO_REQUEST;
+typedef const SCARD_IO_REQUEST *LPCSCARD_IO_REQUEST;
+
+#define MAX_ATR_STRING 33
+
+typedef struct akari_SCARD_READERSTATEW {
+    LPCWSTR szReader;
+    LPVOID  pvUserData;
+    DWORD   dwCurrentState;
+    DWORD   dwEventState;
+    DWORD   cbAtr;
+    BYTE    rgbAtr[36];
+} SCARD_READERSTATEW, *PSCARD_READERSTATEW, *LPSCARD_READERSTATEW;
+typedef const SCARD_READERSTATEW *LPCSCARD_READERSTATEW;
+#define SCARD_READERSTATE SCARD_READERSTATEW
+#define LPSCARD_READERSTATE LPSCARD_READERSTATEW
+
+typedef struct akari_SCARD_ATRMASK {
+    DWORD cbAtr;
+    BYTE  rgbAtr[36];
+    BYTE  rgbMask[36];
+} SCARD_ATRMASK, *PSCARD_ATRMASK, *LPSCARD_ATRMASK;
+typedef const SCARD_ATRMASK *LPCSCARD_ATRMASK;
+
+/* ------------------------------------------------------ constants */
+
+#define SCARD_SCOPE_USER     0
+#define SCARD_SCOPE_TERMINAL 1
+#define SCARD_SCOPE_SYSTEM   2
+
+#define SCARD_PROTOCOL_UNDEFINED 0x00000000
+#define SCARD_PROTOCOL_T0        0x00000001
+#define SCARD_PROTOCOL_T1        0x00000002
+#define SCARD_PROTOCOL_RAW       0x00010000
+#define SCARD_PROTOCOL_DEFAULT   0x80000000
+#define SCARD_PROTOCOL_OPTIMAL   0x00000000
+#define SCARD_PROTOCOL_ANY (SCARD_PROTOCOL_T0 | SCARD_PROTOCOL_T1)
+
+#define SCARD_SHARE_EXCLUSIVE 1
+#define SCARD_SHARE_SHARED    2
+#define SCARD_SHARE_DIRECT    3
+
+#define SCARD_LEAVE_CARD   0
+#define SCARD_RESET_CARD   1
+#define SCARD_UNPOWER_CARD 2
+#define SCARD_EJECT_CARD   3
+
+#define SCARD_UNKNOWN    0
+#define SCARD_ABSENT     1
+#define SCARD_PRESENT    2
+#define SCARD_SWALLOWED  3
+#define SCARD_POWERED    4
+#define SCARD_NEGOTIABLE 5
+#define SCARD_SPECIFIC   6
+
+#define SCARD_STATE_UNAWARE     0x00000000
+#define SCARD_STATE_IGNORE      0x00000001
+#define SCARD_STATE_CHANGED     0x00000002
+#define SCARD_STATE_UNKNOWN     0x00000004
+#define SCARD_STATE_UNAVAILABLE 0x00000008
+#define SCARD_STATE_EMPTY       0x00000010
+#define SCARD_STATE_PRESENT     0x00000020
+#define SCARD_STATE_ATRMATCH    0x00000040
+#define SCARD_STATE_EXCLUSIVE   0x00000080
+#define SCARD_STATE_INUSE       0x00000100
+#define SCARD_STATE_MUTEX       0x00000200
+#define SCARD_STATE_UNPOWERED   0x00000400
+
+#define SCARD_ATTR_VALUE(Class, Tag) ((((ULONG)(Class)) << 16) | ((ULONG)(Tag)))
+#define SCARD_CLASS_VENDOR_INFO   1
+#define SCARD_CLASS_COMMUNICATIONS 2
+#define SCARD_CLASS_PROTOCOL      3
+#define SCARD_CLASS_POWER_MGMT    4
+#define SCARD_CLASS_SECURITY      5
+#define SCARD_CLASS_MECHANICAL    6
+#define SCARD_CLASS_VENDOR_DEFINED 7
+
+#define SCARD_LEAVE_CARD_L  SCARD_LEAVE_CARD
+
+#define SCARD_S_SUCCESS             ((LONG)0x00000000L)
+#define SCARD_F_INTERNAL_ERROR      ((LONG)0x80100001L)
+#define SCARD_E_CANCELLED           ((LONG)0x80100002L)
+#define SCARD_E_INVALID_HANDLE      ((LONG)0x80100003L)
+#define SCARD_E_INVALID_PARAMETER   ((LONG)0x80100004L)
+#define SCARD_E_INVALID_TARGET      ((LONG)0x80100005L)
+#define SCARD_E_NO_MEMORY           ((LONG)0x80100006L)
+#define SCARD_F_WAITED_TOO_LONG     ((LONG)0x80100007L)
+#define SCARD_E_INSUFFICIENT_BUFFER ((LONG)0x80100008L)
+#define SCARD_E_UNKNOWN_READER      ((LONG)0x80100009L)
+#define SCARD_E_TIMEOUT             ((LONG)0x8010000AL)
+#define SCARD_E_SHARING_VIOLATION   ((LONG)0x8010000BL)
+#define SCARD_E_NO_SMARTCARD        ((LONG)0x8010000CL)
+#define SCARD_E_UNKNOWN_CARD        ((LONG)0x8010000DL)
+#define SCARD_E_CANT_DISPOSE        ((LONG)0x8010000EL)
+#define SCARD_E_PROTO_MISMATCH      ((LONG)0x8010000FL)
+#define SCARD_E_NOT_READY           ((LONG)0x80100010L)
+#define SCARD_E_INVALID_VALUE       ((LONG)0x80100011L)
+#define SCARD_E_SYSTEM_CANCELLED    ((LONG)0x80100012L)
+#define SCARD_E_NO_SERVICE          ((LONG)0x8010001DL)
+#define SCARD_E_SERVICE_STOPPED     ((LONG)0x8010001EL)
+#define SCARD_E_NO_READERS_AVAILABLE ((LONG)0x8010002EL)
+#define SCARD_W_UNSUPPORTED_CARD    ((LONG)0x80100065L)
+#define SCARD_W_UNRESPONSIVE_CARD   ((LONG)0x80100066L)
+#define SCARD_W_UNPOWERED_CARD      ((LONG)0x80100067L)
+#define SCARD_W_RESET_CARD          ((LONG)0x80100068L)
+#define SCARD_W_REMOVED_CARD        ((LONG)0x80100069L)
+
+/* ------------------------------------------------------- prototypes */
+
+WINSCARDAPI LONG WINAPI SCardBeginTransaction(SCARDHANDLE hCard);
+WINSCARDAPI LONG WINAPI SCardCancel(SCARDCONTEXT hContext);
+WINSCARDAPI LONG WINAPI SCardConnectW(SCARDCONTEXT hContext, LPCWSTR szReader, DWORD dwShareMode, DWORD dwPreferredProtocols, LPSCARDHANDLE phCard, LPDWORD pdwActiveProtocol);
+WINSCARDAPI LONG WINAPI SCardControl(SCARDHANDLE hCard, DWORD dwControlCode, LPCVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesReturned);
+WINSCARDAPI LONG WINAPI SCardDisconnect(SCARDHANDLE hCard, DWORD dwDisposition);
+WINSCARDAPI LONG WINAPI SCardEndTransaction(SCARDHANDLE hCard, DWORD dwDisposition);
+WINSCARDAPI LONG WINAPI SCardEstablishContext(DWORD dwScope, LPCVOID pvReserved1, LPCVOID pvReserved2, LPSCARDCONTEXT phContext);
+WINSCARDAPI LONG WINAPI SCardForgetCardTypeW(SCARDCONTEXT hContext, LPCWSTR szCardName);
+WINSCARDAPI LONG WINAPI SCardForgetReaderW(SCARDCONTEXT hContext, LPCWSTR szReaderName);
+WINSCARDAPI LONG WINAPI SCardFreeMemory(SCARDCONTEXT hContext, LPVOID pvMem);
+WINSCARDAPI LONG WINAPI SCardGetAttrib(SCARDHANDLE hCard, DWORD dwAttrId, LPBYTE pbAttr, LPDWORD pcbAttrLen);
+WINSCARDAPI LONG WINAPI SCardGetCardTypeProviderNameW(SCARDCONTEXT hContext, LPCWSTR szCardName, DWORD dwProviderId, LPWSTR szProvider, LPDWORD pcchProvider);
+WINSCARDAPI LONG WINAPI SCardGetProviderIdW(SCARDCONTEXT hContext, LPCWSTR szCard, LPGUID pguidProviderId);
+WINSCARDAPI LONG WINAPI SCardGetStatusChangeW(SCARDCONTEXT hContext, DWORD dwTimeout, LPSCARD_READERSTATEW rgReaderStates, DWORD cReaders);
+WINSCARDAPI LONG WINAPI SCardIntroduceCardTypeW(SCARDCONTEXT hContext, LPCWSTR szCardName, LPCGUID pguidPrimaryProvider, LPCGUID rgguidInterfaces, DWORD dwInterfaceCount, LPCBYTE pbAtr, LPCBYTE pbAtrMask, DWORD cbAtrLen);
+WINSCARDAPI LONG WINAPI SCardIntroduceReaderW(SCARDCONTEXT hContext, LPCWSTR szReaderName, LPCWSTR szDeviceName);
+WINSCARDAPI LONG WINAPI SCardIsValidContext(SCARDCONTEXT hContext);
+WINSCARDAPI LONG WINAPI SCardListCardsW(SCARDCONTEXT hContext, LPCBYTE pbAtr, LPCGUID rgquidInterfaces, DWORD cguidInterfaceCount, LPWSTR mszCards, LPDWORD pcchCards);
+WINSCARDAPI LONG WINAPI SCardListInterfacesW(SCARDCONTEXT hContext, LPCWSTR szCard, LPGUID pguidInterfaces, LPDWORD pcguidInterfaces);
+WINSCARDAPI LONG WINAPI SCardListReadersW(SCARDCONTEXT hContext, LPCWSTR mszGroups, LPWSTR mszReaders, LPDWORD pcchReaders);
+WINSCARDAPI LONG WINAPI SCardLocateCardsByATRW(SCARDCONTEXT hContext, LPSCARD_ATRMASK rgAtrMasks, DWORD cAtrs, LPSCARD_READERSTATEW rgReaderStates, DWORD cReaders);
+WINSCARDAPI LONG WINAPI SCardLocateCardsW(SCARDCONTEXT hContext, LPCWSTR mszCards, LPSCARD_READERSTATEW rgReaderStates, DWORD cReaders);
+WINSCARDAPI LONG WINAPI SCardReconnect(SCARDHANDLE hCard, DWORD dwShareMode, DWORD dwPreferredProtocols, DWORD dwInitialization, LPDWORD pdwActiveProtocol);
+WINSCARDAPI LONG WINAPI SCardReleaseContext(SCARDCONTEXT hContext);
+WINSCARDAPI LONG WINAPI SCardSetAttrib(SCARDHANDLE hCard, DWORD dwAttrId, LPCBYTE pbAttr, DWORD cbAttrLen);
+WINSCARDAPI LONG WINAPI SCardSetCardTypeProviderNameW(SCARDCONTEXT hContext, LPCWSTR szCardName, DWORD dwProviderId, LPCWSTR szProvider);
+WINSCARDAPI LONG WINAPI SCardStatusW(SCARDHANDLE hCard, LPWSTR szReaderName, LPDWORD pcchReaderLen, LPDWORD pdwState, LPDWORD pdwProtocol, LPBYTE pbAtr, LPDWORD pcbAtrLen);
+WINSCARDAPI LONG WINAPI SCardTransmit(SCARDHANDLE hCard, LPCSCARD_IO_REQUEST pioSendPci, LPCBYTE pbSendBuffer, DWORD cbSendLength, LPSCARD_IO_REQUEST pioRecvPci, LPBYTE pbRecvBuffer, LPDWORD pcbRecvLength);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _WINSCARD_ */
+#endif /* AKARI_WCE_WINSCARD_H */

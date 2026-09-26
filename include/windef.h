@@ -23,6 +23,7 @@ typedef int BOOL;
 typedef BOOL *PBOOL, *LPBOOL;
 typedef unsigned char BYTE;
 typedef BYTE *PBYTE, *LPBYTE;
+typedef const BYTE *LPCBYTE;
 typedef unsigned short WORD;
 typedef WORD *PWORD, *LPWORD;
 typedef unsigned long DWORD;
