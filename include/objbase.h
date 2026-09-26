@@ -64,7 +64,8 @@ WINOLEAPI CoCopyProxy(IUnknown *pProxy, IUnknown **ppCopy);
 WINOLEAPI CoCreateFreeThreadedMarshaler(LPUNKNOWN punkOuter, LPUNKNOWN *ppunkMarshal);
 WINOLEAPI CoCreateGuid(GUID *pguid);
 WINOLEAPI CoCreateInstance(REFCLSID rclsid, LPUNKNOWN pUnkOuter, DWORD dwClsContext, REFIID riid, LPVOID * ppv);
-WINOLEAPI CoCreateInstanceEx(REFCLSID Clsid, IUnknown * punkOuter);
+WINOLEAPI CoCreateInstanceEx(REFCLSID Clsid, IUnknown * punkOuter, DWORD dwClsCtx,
+    COSERVERINFO * pServerInfo, DWORD dwCount, MULTI_QI * pResults);
 WINOLEAPI CoDisconnectObject(LPUNKNOWN pUnk, DWORD dwReserved);
 WINOLEAPI CoFileTimeNow(FILETIME * lpFileTime);
 WINOLEAPI_(void) CoFreeAllLibraries(void);
@@ -74,8 +75,12 @@ WINOLEAPI_(void) CoFreeUnusedLibrariesEx(DWORD dwUnloadDelay, DWORD dwReserved);
 WINOLEAPI CoGetCallContext(REFIID riid, void **ppInterface);
 WINOLEAPI CoGetClassObject(REFCLSID rclsid, DWORD dwClsContext, LPVOID pvReserved, REFIID riid, LPVOID * ppv);
 WINOLEAPI_(DWORD) CoGetCurrentProcess(void);
-WINOLEAPI CoGetInstanceFromFile(COSERVERINFO * pServerInfo, CLSID * pClsid, IUnknown * punkOuter);
-WINOLEAPI CoGetInstanceFromIStorage(COSERVERINFO * pServerInfo, CLSID * pClsid, IUnknown * punkOuter);
+WINOLEAPI CoGetInstanceFromFile(COSERVERINFO * pServerInfo, CLSID * pClsid,
+    IUnknown * punkOuter, DWORD dwClsCtx, DWORD grfMode, OLECHAR * pwszName,
+    DWORD dwCount, MULTI_QI * pResults);
+WINOLEAPI CoGetInstanceFromIStorage(COSERVERINFO * pServerInfo, CLSID * pClsid,
+    IUnknown * punkOuter, DWORD dwClsCtx, struct IStorage * pstg, DWORD dwCount,
+    MULTI_QI * pResults);
 WINOLEAPI CoGetInterfaceAndReleaseStream(LPSTREAM pStm, REFIID iid, LPVOID * ppv);
 WINOLEAPI CoGetMalloc(DWORD dwMemContext, LPMALLOC * ppMalloc);
 WINOLEAPI CoGetMarshalSizeMax(ULONG *pulSize, REFIID riid, LPUNKNOWN pUnk, DWORD dwDestContext, LPVOID pvDestContext, DWORD mshlflags);
