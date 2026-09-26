@@ -582,11 +582,6 @@ WINBASEAPI struct servent *WINAPI getservbyname(const char *name, const char *pr
 WINBASEAPI struct servent *WINAPI getservbyport(int port, const char *proto);
 WINBASEAPI struct protoent *WINAPI getprotobyname(const char *name);
 WINBASEAPI struct protoent *WINAPI getprotobynumber(int number);
-WINBASEAPI int WINAPI getaddrinfo(const char *nodename, const char *servname,
-    const void *hints, void **res);
-WINBASEAPI int WINAPI getnameinfo(const struct sockaddr *sa, int salen, char *host,
-    int hostlen, char *serv, int servlen, int flags);
-WINBASEAPI void WINAPI freeaddrinfo(void *ai);
 #if (_WIN32_WCE >= 0x500)
 WINBASEAPI INT WINAPI WSAAddressToStringW(LPSOCKADDR lpsaAddress, DWORD dwAddressLength,
     LPWSAPROTOCOL_INFOW lpProtocolInfo, LPWSTR lpszAddressString, LPDWORD lpdwAddressStringLength);

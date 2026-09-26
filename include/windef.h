@@ -19,6 +19,20 @@ extern "C" {
 #define FALSE 0
 #define TRUE  1
 
+/* Segmented-address modifiers inherited from 16-bit Windows.  On every 32-bit
+ * CE CPU they expand to nothing, but they still appear in the SDK's own
+ * declarations, so code written against them has to compile.
+ */
+#undef  FAR
+#undef  NEAR
+#define FAR                 far
+#define NEAR                near
+#define far
+#define near
+#ifndef CONST
+#define CONST               const
+#endif
+
 typedef int BOOL;
 typedef BOOL *PBOOL, *LPBOOL;
 typedef unsigned char BYTE;
