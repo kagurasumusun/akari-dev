@@ -911,3 +911,57 @@ set.  What remains is:
 So the figure is not a measure of remaining error.  It counts places where the
 two sides are written differently, and most of them mean the same thing.  The
 useful signals in it were the numeric ones, and those are now all zero.
+
+### Checking the ABI claims by compiling them, and the BLOB collision
+
+The claim that the remaining differences were all rendering artifacts had been
+justified on one example, `BERVAL`.  That was not enough.  Checked properly, by
+compiling assertions rather than by reading either parser's output, it was wrong
+in both directions: one difference was a real layout bug, and one that looked
+like a bug was not.
+
+**`CPINFO` was genuinely wrong.** The kit sized `DefaultChar` with
+`MAX_LEADBYTES`.  CE defines a separate `MAX_DEFAULTCHAR` at `winnls.h:52` --
+the comment there reads "single or double byte" -- and `_cpinfo` uses it for
+`DefaultChar`, while `MAX_LEADBYTES` sizes only `LeadByte`.  The kit had no
+`MAX_DEFAULTCHAR` at all, so `DefaultChar` was ten bytes too long and `LeadByte`
+sat at offset 16 instead of 6.  Any caller reading lead byte ranges read the
+wrong bytes.  Fixed, and now held by static assertions on every offset.
+
+**`LDAPControlA` and `LDAPControlW` were correct all along.** They looked wrong
+because the reference layout was cross-checked by compiling it with the host
+`gcc`, which is 64-bit: there `BERVAL` is 12 bytes and the control structure 24.
+On the 32-bit CE ABI that mingw targets the same source gives `BERVAL` 8,
+`ldctl_iscritical` at 12 and the structure 16, which is exactly what the kit
+has.  **A layout cross-check means nothing unless it is compiled for the target
+ABI.**  Getting that wrong would have "fixed" two correct structures.
+
+The same method settled `URL_COMPONENTSW.nScheme`: `verify3` reports the kit as
+`unsigned short` against the reference's `INTERNET_SCHEME`, but that is a
+`DWORD` here and an enum there, both four bytes, and the assertions on
+`INTERNET_SCHEME`'s size and on `lpszHostName`'s offset both hold.
+
+**A new check found a bug none of the existing ones could.** `BLOB` was defined
+twice, under two different struct tags, and neither copy was guarded, so a
+translation unit including both `wtypes.h` and `winsock2.h` failed to compile
+with conflicting types.  The standalone matrix compiles each header alone and
+each header is fine alone, so it could never see this.  CE has the same
+duplication but guards both copies with `_tagBLOB_DEFINED`; the kit had copied
+the duplication without the guard.  Both now use that guard and one tag.
+
+The check that found it -- compiling every ordered pair of headers together --
+has been run across all 43: **1,849 pairs in C and 1,849 in C++, zero failures,
+in both include orders.**  It is cheap enough to run every time and it covers a
+class of defect the per-header matrix structurally cannot.
+
+### What the 475 remaining differences are
+
+After the fixes there are **zero** numeric value differences and **zero**
+prototype differences across the whole CE6 set.  The remainder is struct-layout
+rendering -- `verify3` expanding a kit typedef into an inline struct where the
+reference names it -- the kit's own import-macro spelling against
+`DECLSPEC_IMPORT`, and at least one outright false positive (`WS_OVERLAPPED`
+renders identically on both sides and is still listed, because the differ cannot
+compare a macro whose value is an expression).  The number is not a measure of
+remaining error; the useful signals in it were the numeric ones, and those are
+now all zero.
