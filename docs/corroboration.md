@@ -840,3 +840,74 @@ not catch either mistake, because both produce perfectly valid C; it was
 `xcheck`, which cross-references declarations against the `.def` export lists,
 that found them.  A move like this has to be followed by `xcheck`, not just by a
 compile.
+
+### Widening verify3 found thirteen real bugs, and one of my fixes was wrong
+
+`verify3.py` had never checked eleven of the kit's headers.  Its include lists
+were hardcoded and named only the headers that existed when it was written, so
+`oaidl.h`, `oleauto.h`, `ole2.h`, `ws2tcpip.h`, `prsht.h`, `icmpapi.h`,
+`wincrypt.h`, `winber.h`, `winldap.h`, `winscard.h` and `objbase.h` were all
+reported as "not preprocessed on one side" -- which reads like a gap in the
+reference, but meant the checker was silently verifying nothing.  Extending the
+lists raised the CE6 total from 90 to 488.  That is coverage, not damage.
+
+It immediately found real bugs, all in constants an application passes to or
+reads back from a DLL:
+
+`winldap.h`, three:
+- `LDAP_UNICODE` was hardcoded to 0.  CE derives it from `UNICODE` at
+  `winldap.h:64`, so a UNICODE build -- the normal CE build -- gets 1.  With 0,
+  `LDAPControl`, `LDAPMod` and `LDAPSortKey` and their three pointer aliases all
+  resolved to the A forms, handing back a `PCHAR` oid where CE gives a `PWCHAR`.
+- `LDAP_OPT_API_INFO` was `0x12`; the reference has `0x00` at `:672`.
+- `LDAP_OPT_GETDSNAME_FLAGS` was `0x14`; the reference has `0x3D` at `:737`.
+
+`wincrypt.h`, ten: the extended certificate property identifiers are renumbered
+on CE (`CERT_ARCHIVED_PROP_ID` 14->19, `CERT_EXTENDED_ERROR_INFO_PROP_ID`
+10->30, `CERT_ISSUER_SERIAL_NUMBER_MD5_HASH_PROP_ID` 8->28,
+`CERT_SUBJECT_NAME_MD5_HASH_PROP_ID` 9->29); the two close-store flags are
+swapped; the two enhanced-key-usage find flags are `0x1`/`0x2` where the desktop
+uses `0x10`/`0x40`; `CERT_STORE_MAXIMUM_ALLOWED_FLAG` is `0x00001000` not
+`0x00010000`; `X509_NDR_ENCODING` is `0x00000002` not `0x00000020`.  Plus
+`szOID_BASIC_CONSTRAINTS`, which CE gives as `"2.5.29.10"` with `"2.5.29.19"`
+going to `szOID_BASIC_CONSTRAINTS2` -- the desktop numbers those the other way
+round.
+
+Every one of these is invisible from the export list.  Only the reference header
+shows them, which is why an unchecked header is a hole rather than a formality.
+
+**One of my fixes was wrong, and verify3 caught it.** `WS_OVERLAPPED` was
+changed to `0x00000000L` after grepping the CE 6.0 header, which does show that
+value at `winuser.h:406`.  That line is inside `#ifdef UNDER_NT`, which is not
+defined on CE.  The value that applies is in the `#else` arm at `:409` and it is
+`WS_BORDER | WS_CAPTION` -- what the kit already had, and what MS Learn
+`ms942868` documents.  The change was reverted.
+
+This is the same mistake as moving the `Interlocked*` helpers out of their CPU
+conditional, made twice.  It deserves stating as a rule rather than treated as a
+slip: **a value taken from a CE header by grep is not verified until the branch
+it sits in is checked.** `grep -m1` returns the first textual match, which may be
+a dead branch.  Only preprocessing shows which arm is live, and that is exactly
+what `verify3` does -- which is why it reported the discrepancy while the grep
+did not.
+
+### What the 477 remaining differences are, and are not
+
+Measured rather than assumed.  After the fixes above there are **zero** numeric
+value differences and **zero** prototype differences left across the whole CE6
+set.  What remains is:
+
+- struct-layout renderings, where `verify3` expands a kit typedef such as
+  `BERVAL` into an inline struct while the reference writes `struct berval`.  The
+  layouts are identical -- `ULONG bv_len` and `PCHAR bv_val`, with the same
+  `LDAP_BERVAL`, `PLDAP_BERVAL`, `BERVAL`, `PBERVAL` and `BerValue` aliases.
+- the import macros -- `AKARI_DLLIMPORT` against `DECLSPEC_IMPORT` and friends --
+  which are the kit's own spelling of the same thing.
+- at least one outright false positive: `WS_OVERLAPPED` now renders identically
+  on both sides as `WS_BORDER | WS_CAPTION` and is still listed, because the
+  differ cannot compare a macro whose value is an expression rather than a
+  literal.
+
+So the figure is not a measure of remaining error.  It counts places where the
+two sides are written differently, and most of them mean the same thing.  The
+useful signals in it were the numeric ones, and those are now all zero.
