@@ -99,7 +99,7 @@ PMAPI DWORD WINAPI GetSystemPowerState(LPTSTR pwszName, DWORD nBufferSize, PDWOR
 PMAPI DWORD WINAPI DevicePowerNotify(PVOID pvDevice,
     CEDEVICE_POWER_STATE DeviceState, DWORD Flags);
 #if (_WIN32_WCE >= 0x500)
-PMAPI DWORD WINAPI GetIdleTime(DWORD *pdwIdleTime);
+PMAPI DWORD WINAPI GetIdleTime(VOID);
 #endif
 /*
  * DevicePowerNotifyClose, GetSystemPowerUpTime, SetThreadTime and

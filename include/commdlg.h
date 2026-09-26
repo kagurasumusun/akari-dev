@@ -114,26 +114,23 @@ typedef struct akari_CHOOSEFONTW {
     INT nSizeMax;
 } CHOOSEFONTW, *LPCHOOSEFONTW;
 
+/* CE's print dialog structure is not the desktop PRINTDLG: it carries page
+   margins rather than page ranges, and PrintDlg is obsolete in favour of
+   PageSetupDlg. */
+typedef UINT (CALLBACK *LPPRINTHOOKPROC)(HWND, UINT, WPARAM, LPARAM);
+
 typedef struct akari_PRINTDLGW {
-    DWORD lStructSize;
-    HWND hwndOwner;
-    HGLOBAL hDevMode;
-    HGLOBAL hDevNames;
-    HDC hDC;
-    DWORD Flags;
-    WORD nFromPage;
-    WORD nToPage;
-    WORD nMinPage;
-    WORD nMaxPage;
-    WORD nCopies;
-    HINSTANCE hInstance;
-    LPARAM lCustData;
-    void *lpfnPrintHook;
-    void *lpfnSetupHook;
-    LPCWSTR lpPrintTemplateName;
-    LPCWSTR lpSetupTemplateName;
-    HGLOBAL hPrintTemplate;
-    HGLOBAL hSetupTemplate;
+    DWORD           cbStruct;
+    HWND            hwndOwner;
+    HDC             hdc;
+    DWORD           dwFlags;
+    RECT            rcMinMargin;
+    RECT            rcMargin;
+    HINSTANCE       hinst;
+    LPARAM          lCustData;
+    LPPRINTHOOKPROC pfnPrintHook;
+    LPCWSTR         pszPrintTemplateName;
+    HGLOBAL         hglbPrintTemplateResource;
 } PRINTDLGW, *LPPRINTDLGW;
 
 typedef struct akari_DEVNAMES {
