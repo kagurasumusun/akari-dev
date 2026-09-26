@@ -688,3 +688,60 @@ showed that the kit's `objidl.h` declared `LPBC` but not `LPBINDCTX`. The CE 6.0
 reference declares both, at `objidl.h:1674` and `:1676`, so `LPBINDCTX` is a
 genuine gap in the kit and was added. That fix is corroborated by the CE
 reference and does not depend on any desktop header.
+
+### Audit of header names and placement against the CE 6.0 reference
+
+Every kit header was checked against the CE 6.0 reference for two things: does
+a header of that name exist in the CE SDK, and is each declaration in the header
+CE puts it in.  This found four real faults, all now fixed.
+
+**`toolhelp.h` and `tlhelp32.h` were the wrong way round.** CE calls this
+surface `tlhelp32.h`; there is no `toolhelp.h` in the CE SDK.  The kit had all
+118 lines of content in `toolhelp.h` and made `tlhelp32.h` a nine-line shim, so
+the CE-canonical name was the alias.  The shim's comment also asserted the
+opposite of the truth -- "Alternate name for toolhelp.h, which is how Windows CE
+names it".  The content now lives in `tlhelp32.h` and `toolhelp.h` is the shim,
+kept because `toolhelp.dll` is the module the entry points come from.  The same
+check was run on `aygshell.h`, the other alias in the kit, and that one was
+already correct: content in `shellsdk.h`, which is the CE 6.0 name.
+
+**`ws2tcpip.h` did not exist.** CE declares the getaddrinfo family and the
+per-socket TCP/IP option structures there, separate from `winsock2.h`.  The kit
+had declared `getaddrinfo`, `getnameinfo` and `freeaddrinfo` in `winsock2.h` and
+had no `ws2tcpip.h` at all, so `#include <ws2tcpip.h>` resolved to the *host
+toolchain's* header.  `fwapi.h` hit that and had to be rewritten.  `windef.h`
+was also missing `FAR`, `NEAR`, `far`, `near` and `CONST` entirely, which the CE
+6.0 reference defines at `windef.h:154` and which `ADDRINFO` uses.
+
+**`prsht.h` and `icmpapi.h` did not exist.** CE declares the property sheet
+handle, notification record and three entry points in `prsht.h`, and the four
+ICMP helpers in `icmpapi.h` -- separate from `commctrl.h` and `iphlpapi.h`
+respectively, though the same DLLs export them.  The kit had them in those two
+headers.  `HPROPSHEETPAGE` was in `windef.h` as an alias for `HANDLE`; CE
+declares it as a pointer to an incomplete `struct _PSP`.  All thirty `PSN_*`,
+`PSM_*`, `PSBTN_*` and `PSNRET_*` constants were in the kit's `commctrl.h`; CE
+declares all thirty in `prsht.h` and none in `commctrl.h`.
+
+**`oleauto.h` did not exist.** CE splits the automation surface: `oaidl.h` holds
+the types and has no `DECLARE_INTERFACE` at all, while `oleauto.h` holds the 244
+`WINOLEAUTAPI` prototypes and includes `oaidl.h`.  The kit had both halves in
+`oaidl.h`.  The 238 prototypes now live in `oleauto.h`.
+
+Five kit headers still have no same-named CE reference header, and each is
+intentional: `wcever.h` is the kit's own version selector, `wcestr.h` holds the
+CRT string prototypes CE spreads across its own CRT headers, `wininet.h` and
+`shellsdk.h` do exist in CE but under `PUBLIC/IE/SDK/INC` and as the CE 6.0
+spelling respectively, and `aygshell.h` and `toolhelp.h` are now documented
+aliases.
+
+### The verify3 count moved down for the wrong reason, and that is recorded
+
+The CE6 total went 93 -> 90 across these changes.  It is not an improvement in
+correctness.  Measured against the committed state rather than assumed:
+`commctrl.h` went from 16 differences to 13, exactly the three property sheet
+prototypes leaving it for `prsht.h`, and `iphlpapi.h` stayed at 6, so the four
+ICMP prototypes were never counted as differences.  Three declarations moved out
+of reach of the checker.  `oaidl.h`, `oleauto.h`, `prsht.h`, `icmpapi.h` and
+`ws2tcpip.h` are all headers verify3 cannot preprocess, so the placement work
+that put declarations into them necessarily *reduces* the reported figure.  A
+falling number here means less is being checked, not that less is wrong.
