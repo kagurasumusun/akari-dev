@@ -9,6 +9,7 @@
 
 #include <wtypes.h>
 #include <unknwn.h>
+#include <objidl.h>
 
 #ifndef _OBJBASE_H
 #define _OBJBASE_H
@@ -28,16 +29,6 @@ extern "C" {
 #endif
 
 /* ------------------------------------------------- structures */
-
-typedef struct akari_BIND_OPTS {
-    DWORD  cbStruct;
-    DWORD  grfFlags;
-    DWORD  grfMode;
-    DWORD  dwTickCountDeadline;
-} BIND_OPTS, *LPBIND_OPTS;
-
-#define BIND_MAYBOTHERUSER  1
-#define BIND_JUSTTESTEXISTENCE 2
 
 typedef struct akari_COSERVERINFO {
     DWORD             dwReserved1;
@@ -61,9 +52,6 @@ typedef struct akari_SOLE_AUTHENTICATION_SERVICE {
 
 typedef struct akari_RPC_AUTH_IDENTITY_HANDLE__ *RPC_AUTH_IDENTITY_HANDLE;
 typedef struct akari_RPC_AUTHZ_HANDLE__ *RPC_AUTHZ_HANDLE;
-
-/* Server-side name binding: an array of length-terminated name pointers. */
-typedef OLECHAR **SNB;
 
 /* ------------------------------------------------- prototypes */
 

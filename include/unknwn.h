@@ -84,6 +84,13 @@ DECLARE_INTERFACE(IUnknown)
 
 typedef IUnknown *LPUNKNOWN;
 
+/* Identifies one method of one interface, for the message filter. */
+typedef struct akari_INTERFACEINFO {
+    IUnknown *pUnk;
+    IID       iid;
+    WORD      wMethod;
+} INTERFACEINFO, *LPINTERFACEINFO;
+
 #endif /* __IUnknown_INTERFACE_DEFINED__ */
 
 /* -------------------------------------------------------- IClassFactory */
@@ -131,24 +138,16 @@ typedef IPersist *LPPERSIST;
 /* ------------------------------------------ forward-declared interfaces
  *
  * These are referenced by the objbase.h entry points.  They are declared as
- * incomplete types so that callers can pass and receive the pointers; their
- * full method tables live in objidl.h.
+ * incomplete types so that callers can pass and receive the pointers.  The
+ * interfaces with full method tables are defined in objidl.h.
  */
-struct akari_ISequentialStream;       typedef struct akari_ISequentialStream       ISequentialStream,       *LPSEQUENTIALSTREAM;
-struct akari_IStream;                 typedef struct akari_IStream                 IStream,                 *LPSTREAM;
-struct akari_IStorage;                typedef struct akari_IStorage                IStorage,                *LPSTORAGE;
-struct akari_ILockBytes;              typedef struct akari_ILockBytes              ILockBytes,              *LPLOCKBYTES;
-struct akari_IMalloc;                 typedef struct akari_IMalloc                 IMalloc,                 *LPMALLOC;
-struct akari_IMallocSpy;              typedef struct akari_IMallocSpy              IMallocSpy,              *LPMALLOCSPY;
-struct akari_IMarshal;                typedef struct akari_IMarshal                IMarshal,                *LPMARSHAL;
-struct akari_IMessageFilter;          typedef struct akari_IMessageFilter          IMessageFilter,          *LPMESSAGEFILTER;
-struct akari_ISurrogate;              typedef struct akari_ISurrogate              ISurrogate,              *LPSURROGATE;
-struct akari_IChannelHook;            typedef struct akari_IChannelHook            IChannelHook,            *LPCHANNELHOOK;
-struct akari_IRunningObjectTable;     typedef struct akari_IRunningObjectTable     IRunningObjectTable,     *LPRUNNINGOBJECTTABLE;
-struct akari_IBindCtx;                typedef struct akari_IBindCtx                IBindCtx,                *LPBC;
 struct akari_IMoniker;                typedef struct akari_IMoniker                IMoniker,                *LPMONIKER;
-struct akari_IPersistStorage;         typedef struct akari_IPersistStorage         IPersistStorage,         *LPPERSISTSTORAGE;
-struct akari_IPersistStream;          typedef struct akari_IPersistStream          IPersistStream,          *LPPERSISTSTREAM;
+struct akari_IEnumMoniker;            typedef struct akari_IEnumMoniker            IEnumMoniker,            *LPENUMMONIKER;
+struct akari_IEnumString;             typedef struct akari_IEnumString             IEnumString,             *LPENUMSTRING;
+struct akari_IEnumFORMATETC;          typedef struct akari_IEnumFORMATETC          IEnumFORMATETC,          *LPENUMFORMATETC;
+struct akari_IAdviseSink;             typedef struct akari_IAdviseSink             IAdviseSink,             *LPADVISESINK;
+struct akari_IDataObject;             typedef struct akari_IDataObject             IDataObject,             *LPDATAOBJECT;
+struct akari_IParseDisplayName;       typedef struct akari_IParseDisplayName       IParseDisplayName,       *LPPARSEDISPLAYNAME;
 struct akari_IOleAdviseHolder;        typedef struct akari_IOleAdviseHolder        IOleAdviseHolder,        *LPOLEADVISEHOLDER;
 struct akari_IOleObject;              typedef struct akari_IOleObject              IOleObject,              *LPOLEOBJECT;
 struct akari_IOleClientSite;          typedef struct akari_IOleClientSite          IOleClientSite,          *LPOLECLIENTSITE;

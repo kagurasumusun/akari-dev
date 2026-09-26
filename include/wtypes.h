@@ -13,6 +13,7 @@
 #include <guiddef.h>
 #include <winerror.h>
 
+
 #ifndef _WTYPES_
 #define _WTYPES_
 
@@ -186,6 +187,12 @@ typedef struct akari_FORMATETC {
 
 #define DATADIR_GET   1
 #define DATADIR_SET   2
+
+/* Task handle, used by the message filter. */
+typedef void *HTASK;
+
+/* Server-side name binding: a null-terminated array of name pointers. */
+typedef OLECHAR **SNB;
 
 /* Security descriptor, used by the DCOM entry points. */
 typedef void *PSECURITY_DESCRIPTOR;
