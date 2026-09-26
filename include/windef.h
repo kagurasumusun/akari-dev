@@ -93,7 +93,6 @@ typedef HANDLE HRSRC;
 typedef HANDLE HGLOBAL;
 typedef HANDLE HLOCAL;
 typedef HANDLE HFILE;
-typedef HANDLE HPROPSHEETPAGE;
 typedef struct akari_IMAGELIST *HIMAGELIST;
 typedef ULONG ATOM;
 typedef HANDLE HDROP;

@@ -330,12 +330,6 @@ IPHLPAPI DWORD WINAPI GetFriendlyIfIndex(DWORD IfIndex);
  * iphlpapi in Windows CE 5.0; the x86 build of Windows CE 4.2 already had them.
  */
 #if (_WIN32_WCE >= 0x500) || defined(AKARI_CPU_X86)
-IPHLPAPI HANDLE WINAPI IcmpCreateFile(VOID);
-IPHLPAPI BOOL WINAPI IcmpCloseHandle(HANDLE IcmpHandle);
-IPHLPAPI DWORD WINAPI IcmpSendEcho(HANDLE IcmpHandle, ULONG DestinationAddress,
-    LPVOID RequestData, WORD RequestSize, PIP_OPTION_INFORMATION RequestOptions,
-    LPVOID ReplyBuffer, DWORD ReplySize, DWORD Timeout);
-IPHLPAPI DWORD WINAPI IcmpParseReplies(LPVOID ReplyBuffer, DWORD ReplySize);
 #endif
 
 IPHLPAPI DWORD WINAPI SendARP(ULONG DestIP, ULONG SrcIP, PULONG pMacAddr, PULONG PhyAddrLen);

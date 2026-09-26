@@ -418,38 +418,8 @@ typedef struct akari_TBADDBITMAP {
 #define PSP_USEREFPARENT   0x00000040
 #define PSP_USECALLBACK    0x00000080
 
-#define PSN_FIRST          ((UINT)-200)
-#define PSN_SETACTIVE      (PSN_FIRST - 0)
-#define PSN_KILLACTIVE     (PSN_FIRST - 1)
-#define PSN_APPLY          (PSN_FIRST - 2)
-#define PSN_RESET          (PSN_FIRST - 3)
-#define PSN_HELP           (PSN_FIRST - 5)
-#define PSN_WIZBACK        (PSN_FIRST - 6)
-#define PSN_WIZNEXT        (PSN_FIRST - 7)
-#define PSN_WIZFINISH      (PSN_FIRST - 8)
-#define PSN_QUERYCANCEL    (PSN_FIRST - 9)
 
-#define PSNRET_NOERROR         0
-#define PSNRET_INVALID         1
-#define PSNRET_INVALID_NOCHANGEPAGE 2
-#define PSNRET_MESSAGEHANDLED  3
 
-#define PSM_SETCURSEL       (WM_USER + 101)
-#define PSM_CHANGED         (WM_USER + 104)
-#define PSM_RESTARTWINDOWS  (WM_USER + 105)
-#define PSM_REBOOTSYSTEM    (WM_USER + 106)
-#define PSM_CANCELTOCLOSE   (WM_USER + 107)
-#define PSM_QUERYSIBLINGS   (WM_USER + 108)
-#define PSM_UNCHANGED       (WM_USER + 109)
-#define PSM_APPLY           (WM_USER + 110)
-#define PSM_PRESSBUTTON     (WM_USER + 113)
-#define PSBTN_BACK    0
-#define PSBTN_NEXT    1
-#define PSBTN_FINISH  2
-#define PSBTN_OK      3
-#define PSBTN_APPLYNOW 4
-#define PSBTN_CANCEL  5
-#define PSBTN_HELP    6
 
 typedef UINT (CALLBACK *LPFNPSPCALLBACKW)(HWND hwnd, UINT uMsg, void *ppsp);
 typedef int (CALLBACK *PFNPROPSHEETCALLBACK)(HWND hwnd, UINT uMsg, LPARAM lParam);
@@ -520,9 +490,6 @@ WINBASEAPI HWND WINAPI CommandBands_GetCommandBar(HWND hwndCB, UINT uBandIndex);
 WINBASEAPI BOOL WINAPI CommandBands_GetRestoreInformation(HWND hwndCmdBands, UINT uBand,
     LPCOMMANDBANDSRESTOREINFO pcbri);
 WINBASEAPI BOOL WINAPI IsCommandBarMessage(HWND hwndCB, MSG *pMsg);
-WINBASEAPI HPROPSHEETPAGE WINAPI CreatePropertySheetPageW(LPCPROPSHEETPAGEW lppsp);
-WINBASEAPI BOOL WINAPI DestroyPropertySheetPage(HPROPSHEETPAGE hPSPage);
-WINBASEAPI int WINAPI PropertySheetW(LPCPROPSHEETHEADERW ppsph);
 WINBASEAPI BOOL WINAPI ImageList_SetImageCount(HIMAGELIST himl, UINT uNewCount);
 WINBASEAPI int WINAPI ImageList_Add(HIMAGELIST himl, HBITMAP hbmImage, HBITMAP hbmMask);
 WINBASEAPI int WINAPI ImageList_AddMasked(HIMAGELIST himl, HBITMAP hbmImage, COLORREF crMask);
