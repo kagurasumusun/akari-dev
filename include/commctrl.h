@@ -119,6 +119,42 @@ typedef struct akari_INITCOMMONCONTROLSEX {
 #define LVN_ODCACHEHINT         (LVN_FIRST - 13)
 #define LVN_ODFINDITEMW         (LVN_FIRST - 79)
 
+typedef struct akari_REBARBANDINFOW {
+    UINT     cbSize;
+    UINT     fMask;
+    UINT     fStyle;
+    COLORREF clrFore;
+    COLORREF clrBack;
+    LPWSTR   lpText;
+    UINT     cch;
+    int      iImage;
+    HWND     hwndChild;
+    UINT     cxMinChild;
+    UINT     cyMinChild;
+    UINT     cx;
+    HBITMAP  hbmBack;
+    UINT     wID;
+#if (_WIN32_IE >= 0x0400)
+    UINT     cyChild;
+    UINT     cyMaxChild;
+    UINT     cyIntegral;
+    UINT     cxIdeal;
+    LPARAM   lParam;
+#endif
+} REBARBANDINFOW, *LPREBARBANDINFOW;
+
+typedef REBARBANDINFOW const *LPCREBARBANDINFOW;
+
+typedef struct akari_COMMANDBANDSRESTOREINFO {
+    UINT cbSize;
+    UINT wID;
+    UINT fStyle;
+    UINT cxRestored;
+    BOOL fMaximized;
+} COMMANDBANDSRESTOREINFO, *LPCOMMANDBANDSRESTOREINFO;
+
+typedef COMMANDBANDSRESTOREINFO const *LPCCOMMANDBANDSRESTOREINFO;
+
 typedef struct akari_LVITEMW {
     UINT mask;
     int iItem;
@@ -431,6 +467,7 @@ typedef struct akari_PROPSHEETPAGEW {
     LPFNPSPCALLBACKW pfnCallback;
     void *pcRefParent;
 } PROPSHEETPAGEW, *LPPROPSHEETPAGEW;
+typedef PROPSHEETPAGEW const *LPCPROPSHEETPAGEW;
 
 typedef struct akari_PROPSHEETHEADERW {
     DWORD dwSize;
@@ -444,9 +481,10 @@ typedef struct akari_PROPSHEETHEADERW {
     const PROPSHEETPAGEW *ppsp;
     PFNPROPSHEETCALLBACK pfnCallback;
 } PROPSHEETHEADERW, *LPPROPSHEETHEADERW;
+typedef PROPSHEETHEADERW const *LPCPROPSHEETHEADERW;
 
 WINBASEAPI void WINAPI InitCommonControls(VOID);
-WINBASEAPI BOOL WINAPI InitCommonControlsEx(const INITCOMMONCONTROLSEX *);
+WINBASEAPI BOOL WINAPI InitCommonControlsEx(LPINITCOMMONCONTROLSEX lpInitCtrls);
 WINBASEAPI HWND WINAPI CreateToolbarEx(HWND hwnd, DWORD ws, UINT wID, int nBitmaps,
     HINSTANCE hBMInst, UINT_PTR wBMID, const TBBUTTON *lpButtons, int iNumButtons,
     int dxButton, int dyButton, int dxBitmap, int dyBitmap, UINT uStructSize);
@@ -456,35 +494,35 @@ WINBASEAPI HWND WINAPI CreateUpDownControl(DWORD dwStyle, int x, int y, int cx, 
 WINBASEAPI HWND WINAPI CreateStatusWindowW(LONG style, LPCWSTR lpszText, HWND hwndParent,
     UINT wID);
 WINBASEAPI void WINAPI DrawStatusTextW(HDC hDC, LPRECT lprc, LPCWSTR text, UINT uFlags);
-WINBASEAPI HWND WINAPI CommandBar_Create(HINSTANCE hInst, HWND hwndParent, UINT uId);
+WINBASEAPI HWND WINAPI CommandBar_Create(HINSTANCE hInst, HWND hwndParent, int idCmdBar);
 WINBASEAPI BOOL WINAPI CommandBar_Show(HWND hwndCB, BOOL fShow);
 WINBASEAPI int WINAPI CommandBar_Height(HWND hwndCB);
 WINBASEAPI BOOL WINAPI CommandBar_AddAdornments(HWND hwndCB, DWORD dwFlags, DWORD dwReserved);
 WINBASEAPI BOOL WINAPI CommandBar_AddBitmap(HWND hwndCB, HINSTANCE hInst, int iBitmapID,
     int iNumImages, int iImageWidth, int iImageHeight);
-WINBASEAPI HWND WINAPI CommandBar_InsertMenubar(HWND hwndCB, HINSTANCE hInst, UINT uMenuID,
-    UINT uIndex);
-WINBASEAPI HWND WINAPI CommandBar_InsertMenubarEx(HWND hwndCB, HINSTANCE hInst, UINT uMenuID,
-    UINT uIndex, WORD dwFlags);
-WINBASEAPI HMENU WINAPI CommandBar_GetMenu(HWND hwndCB, UINT uIndex);
-WINBASEAPI HWND WINAPI CommandBar_InsertComboBox(HWND hwndCB, HINSTANCE hInst, UINT uIndex,
-    UINT uWidth, UINT uID, UINT uPosition);
-WINBASEAPI BOOL WINAPI CommandBar_DrawMenuBar(HWND hwndCB, UINT uIndex);
+WINBASEAPI BOOL WINAPI CommandBar_InsertMenubar(HWND hwndCB, HINSTANCE hInst, WORD idMenu,
+    WORD iButton);
+WINBASEAPI BOOL WINAPI CommandBar_InsertMenubarEx(HWND hwndCB, HINSTANCE hInst, LPWSTR pszMenu,
+    WORD iButton);
+WINBASEAPI HMENU WINAPI CommandBar_GetMenu(HWND hwndCB, WORD iButton);
+WINBASEAPI HWND WINAPI CommandBar_InsertComboBox(HWND hwndCB, HINSTANCE hInstance, int iWidth,
+    UINT dwStyle, WORD idComboBox, WORD iButton);
+WINBASEAPI BOOL WINAPI CommandBar_DrawMenuBar(HWND hwndCB, WORD iButton);
 WINBASEAPI void WINAPI CommandBar_AlignAdornments(HWND hwndCB);
-WINBASEAPI HWND WINAPI CommandBands_Create(HINSTANCE hInstance, HWND hwndParent, UINT uID,
-    DWORD dwFlags, HMENU hmenu, const void *prb, HIMAGELIST himlLarge, HIMAGELIST himlSmall,
-    UINT nBtnTextLen);
+WINBASEAPI HWND WINAPI CommandBands_Create(HINSTANCE hinst, HWND hwndParent, UINT wID,
+    DWORD dwStyles, HIMAGELIST himl);
 WINBASEAPI BOOL WINAPI CommandBands_Show(HWND hwndCB, BOOL fShow);
-WINBASEAPI BOOL WINAPI CommandBands_AddBands(HWND hwndCB, HINSTANCE hInst, UINT uBandCount,
-    DWORD dwBandFlags, const void *prb, HMENU hmenu, HIMAGELIST himlSmall, UINT nBtnTextLen);
-WINBASEAPI BOOL WINAPI CommandBands_AddAdornments(HWND hwndCB, DWORD dwFlags, DWORD dwReserved);
+WINBASEAPI BOOL WINAPI CommandBands_AddBands(HWND hwndCmdBands, HINSTANCE hinst, UINT cBands,
+    LPREBARBANDINFOW prbbi);
+WINBASEAPI BOOL WINAPI CommandBands_AddAdornments(HWND hwndCmdBands, HINSTANCE hinst,
+    DWORD dwFlags, LPREBARBANDINFOW prbbi);
 WINBASEAPI HWND WINAPI CommandBands_GetCommandBar(HWND hwndCB, UINT uBandIndex);
-WINBASEAPI BOOL WINAPI CommandBands_GetRestoreInformation(HWND hwndCB, UINT uBandIndex,
-    void *pcri);
+WINBASEAPI BOOL WINAPI CommandBands_GetRestoreInformation(HWND hwndCmdBands, UINT uBand,
+    LPCOMMANDBANDSRESTOREINFO pcbri);
 WINBASEAPI BOOL WINAPI IsCommandBarMessage(HWND hwndCB, MSG *pMsg);
-WINBASEAPI HPROPSHEETPAGE WINAPI CreatePropertySheetPageW(const PROPSHEETPAGEW *pPSPage);
+WINBASEAPI HPROPSHEETPAGE WINAPI CreatePropertySheetPageW(LPCPROPSHEETPAGEW lppsp);
 WINBASEAPI BOOL WINAPI DestroyPropertySheetPage(HPROPSHEETPAGE hPSPage);
-WINBASEAPI INT_PTR WINAPI PropertySheetW(const PROPSHEETHEADERW *pPSHead);
+WINBASEAPI int WINAPI PropertySheetW(LPCPROPSHEETHEADERW ppsph);
 WINBASEAPI BOOL WINAPI ImageList_SetImageCount(HIMAGELIST himl, UINT uNewCount);
 WINBASEAPI int WINAPI ImageList_Add(HIMAGELIST himl, HBITMAP hbmImage, HBITMAP hbmMask);
 WINBASEAPI int WINAPI ImageList_AddMasked(HIMAGELIST himl, HBITMAP hbmImage, COLORREF crMask);
