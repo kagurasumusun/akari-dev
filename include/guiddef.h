@@ -27,10 +27,27 @@ typedef const GUID *LPCGUID;
 
 typedef GUID CLSID;
 typedef CLSID *LPCLSID;
+#ifndef __MIDL_CONST
+#define __MIDL_CONST const
+#endif
 #ifdef __cplusplus
 #define REFGUID const GUID &
 #else
 #define REFGUID const GUID * __MIDL_CONST
+#endif
+#ifndef REFCLSID
+#ifdef __cplusplus
+#define REFCLSID const CLSID &
+#else
+#define REFCLSID const CLSID * __MIDL_CONST
+#endif
+#endif
+#ifndef REFIID
+#ifdef __cplusplus
+#define REFIID const IID &
+#else
+#define REFIID const IID * __MIDL_CONST
+#endif
 #endif
 typedef GUID IID;
 typedef IID *LPIID;
