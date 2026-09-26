@@ -340,7 +340,11 @@ typedef BOOL (WINAPI *PFN_CRYPT_ENUM_OID_INFO)(
 #define szOID_RSA_SHA1RSA               "1.2.840.113549.1.1.5"
 #define szOID_ENHANCED_KEY_USAGE        "2.5.29.37"
 #define szOID_KEY_USAGE                 "2.5.29.15"
-#define szOID_BASIC_CONSTRAINTS         "2.5.29.19"
+/* CE uses 2.5.29.10 for the basic constraints extension and 2.5.29.19 for the
+ * version 2 form, at wincrypt.h:2475 and :2478.  The desktop numbering has
+ * these the other way round, which is where the previous value came from. */
+#define szOID_BASIC_CONSTRAINTS         "2.5.29.10"
+#define szOID_BASIC_CONSTRAINTS2        "2.5.29.19"
 
 #define CERT_TRUST_NO_ERROR                   0x00000000
 #define CERT_TRUST_IS_NOT_TIME_VALID          0x00000001

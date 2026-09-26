@@ -74,6 +74,12 @@ extern "C" {
 #define CS_SAVEBITS       0x0800
 #define CS_PARENTDC       0x0080
 
+/* WS_BORDER | WS_CAPTION, not 0.  The CE 6.0 header has both spellings: 0x00000000L
+ * under #ifdef UNDER_NT at winuser.h:406, and WS_BORDER | WS_CAPTION in the #else
+ * arm at :409.  UNDER_NT is not defined on CE, so the #else arm is the one that
+ * applies, and this matches the MS Learn description at ms942868.  A grep that
+ * takes the first match reports the wrong one; only preprocessing shows which
+ * branch is live. */
 #define WS_OVERLAPPED WS_BORDER | WS_CAPTION
 #define WS_TILED        WS_OVERLAPPED
 #define WS_TABSTOP      0x00010000
